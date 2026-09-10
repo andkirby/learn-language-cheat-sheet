@@ -145,3 +145,15 @@ slots without Cyrillic get `lang="de"`/`lang="en"` from a tiny JS pass at
 load and after each dialog render (bold/italic marking the pattern text was
 already the content convention). Closes the deferred a11y item without
 churning every card.
+
+## 2026-09-10 — iOS-only `maximum-scale=1` on installable pages (standalone zoom-state bug)
+
+After Add to Home Screen, iOS standalone apps can relaunch with a restored
+zoom level > 1 and pinch-out is unavailable there (long-standing WebKit
+behavior; reported by the user post-install). Fix: a synchronous `<head>`
+sniff (iPhone/iPod; iPad via Macintosh UA + `maxTouchPoints > 1`) rewrites
+the viewport meta to include `maximum-scale=1` on the two language pages
+only. The scope is deliberate: Safari proper ignores `maximum-scale`
+(pinch-zoom unaffected there), Android and desktop never see it, and the
+landing (not installable) keeps the plain meta. Never add
+`user-scalable=no` — that one does block zoom everywhere.

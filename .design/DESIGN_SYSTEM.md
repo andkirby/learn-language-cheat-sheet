@@ -109,6 +109,10 @@ Rules:
 - Keyboard: every control reachable and operable; dialog traps focus natively
   (`showModal`), closes with Escape.
 - System font stack only; no external fonts.
+- Viewport zoom: never `user-scalable=no`. `maximum-scale=1` is applied to
+  installable pages **only on iOS** (synchronous `<head>` UA sniff) to stop
+  the standalone relaunch zoom-state bug; Safari ignores the attribute, so
+  pinch-zoom survives everywhere else.
 
 ## Content/copy conventions
 
