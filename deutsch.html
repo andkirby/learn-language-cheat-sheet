@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#172033" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="DE Cheat" />
+  <meta name="description" content="Мобильная шпаргалка по немецкой грамматике: падежи, артикли, порядок слов, придаточные, глагольные конструкции." />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+  <title>German Grammar Cheatsheet</title>
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --surface: #ffffff;
+      --surface-2: #eef1f7;
+      --text: #172033;
+      --muted: #667085;
+      --line: #dfe4ec;
+      --accent: #6b4eff;
+      --accent-soft: #eeeaff;
+      --ok: #0e7c66;
+      --warn: #996300;
+      --shadow: 0 10px 30px rgba(23, 32, 51, .08);
+      --radius: 18px;
+      --nav-h: 72px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 112px; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 18px);
+    }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid rgba(107,78,255,.35); outline-offset: 3px; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      border-bottom: 1px solid rgba(223,228,236,.8);
+    }
+    .topbar-inner, main { width: min(100%, 980px); margin: 0 auto; }
+    .topbar-inner { padding: 12px 16px 10px; }
+    .brand-row { display: flex; align-items: center; gap: 10px; }
+    .brand {
+      display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1;
+      font-weight: 800; letter-spacing: -.02em;
+    }
+    .brand-mark {
+      width: 36px; height: 36px; border-radius: 11px;
+      display: grid; place-items: center; background: var(--text); color: white; font-weight: 900;
+    }
+    .brand small { display: block; color: var(--muted); font-weight: 600; font-size: .72rem; letter-spacing: 0; }
+    .install-btn {
+      min-height: 44px; padding: 0 14px; border: 1px solid var(--line); border-radius: 12px;
+      background: var(--surface); font-weight: 750; cursor: pointer; box-shadow: 0 2px 8px rgba(23,32,51,.04);
+    }
+    .install-btn[hidden] { display: none; }
+    .search-wrap { position: relative; margin-top: 10px; }
+    .search {
+      width: 100%; min-height: 46px; border: 1px solid var(--line); border-radius: 14px;
+      background: var(--surface); color: var(--text); padding: 0 44px 0 42px; box-shadow: 0 3px 12px rgba(23,32,51,.04);
+    }
+    .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+    .clear-search {
+      position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 36px; height: 36px;
+      border: 0; border-radius: 10px; background: transparent; cursor: pointer; color: var(--muted); font-size: 1.2rem;
+    }
+
+    main { padding: 18px 16px 8px; }
+    .hero {
+      background: linear-gradient(135deg, #172033 0%, #27324b 100%); color: white;
+      border-radius: 24px; padding: 20px; box-shadow: var(--shadow);
+    }
+    .hero h1 { font-size: clamp(1.65rem, 6vw, 2.45rem); line-height: 1.05; margin: 0 0 9px; letter-spacing: -.04em; }
+    .hero p { margin: 0; color: #d9dfeb; max-width: 65ch; }
+    .rule-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 9px; margin-top: 16px; }
+    .rule {
+      border: 1px solid rgba(255,255,255,.13); background: rgba(255,255,255,.08); border-radius: 14px;
+      padding: 11px; min-height: 80px;
+    }
+    .rule b { display: block; font-size: .95rem; }
+    .rule span { display: block; margin-top: 4px; color: #d9dfeb; font-size: .82rem; }
+
+    .jump-row { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 14px 0 2px; }
+    .jump-row::-webkit-scrollbar { display: none; }
+    .jump-chip {
+      flex: 0 0 auto; min-height: 40px; display: inline-flex; align-items: center; text-decoration: none;
+      border: 1px solid var(--line); border-radius: 999px; background: var(--surface); padding: 0 13px; font-weight: 700; font-size: .88rem;
+    }
+
+    section { margin-top: 28px; }
+    .section-head { display: flex; gap: 10px; align-items: end; justify-content: space-between; margin-bottom: 11px; }
+    .section-head h2 { margin: 0; font-size: 1.28rem; letter-spacing: -.025em; }
+    .section-head p { margin: 3px 0 0; color: var(--muted); font-size: .85rem; }
+    .section-badge { font-size: .72rem; color: var(--muted); white-space: nowrap; }
+
+    .cards { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    .cheat-card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 15px; box-shadow: 0 3px 14px rgba(23,32,51,.035);
+    }
+    .cheat-card h3 { margin: 0 0 8px; font-size: 1rem; letter-spacing: -.015em; }
+    .cheat-card p { margin: 6px 0; }
+    .muted { color: var(--muted); }
+    .tiny { font-size: .78rem; color: var(--muted); }
+    .example { margin-top: 9px; padding: 10px 11px; background: var(--surface-2); border-radius: 12px; font-size: .92rem; }
+    .example b { font-weight: 800; }
+    .arrow { color: var(--muted); padding: 0 3px; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 9px; }
+    .tap {
+      min-height: 36px; border: 1px solid #d6d0ff; background: var(--accent-soft); color: #3d2db5;
+      border-radius: 999px; padding: 0 11px; cursor: pointer; font-weight: 800; font-size: .83rem;
+    }
+    .tap.neutral { background: var(--surface-2); border-color: var(--line); color: var(--text); }
+    .tap.case { min-height: 42px; padding: 0 14px; }
+
+    .case-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 9px; }
+    .case-box { padding: 13px; border-radius: 15px; border: 1px solid var(--line); background: var(--surface); }
+    .case-box strong { display: block; }
+    .case-q { font-size: 1.12rem; margin-top: 3px; font-weight: 900; }
+    .case-hint { color: var(--muted); font-size: .8rem; margin-top: 3px; }
+
+    .table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; }
+    table { width: 100%; border-collapse: collapse; min-width: 560px; background: var(--surface); font-size: .85rem; }
+    th, td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+    th { background: var(--surface-2); font-size: .76rem; color: var(--muted); text-transform: uppercase; letter-spacing: .02em; }
+    tr:last-child td { border-bottom: 0; }
+    td.hot { font-weight: 850; color: #3d2db5; }
+
+    .formula {
+      display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 10px 0 4px;
+      font-weight: 780;
+    }
+    .slot { padding: 6px 8px; border-radius: 9px; background: var(--surface-2); }
+    .slot.verb { background: #e7f6f1; color: #0c6857; }
+    .slot.end { background: #fff3d8; color: #7a5000; }
+    .slot.sub { background: var(--accent-soft); color: #3d2db5; }
+
+    .notice { border-left: 4px solid var(--accent); background: var(--accent-soft); padding: 10px 12px; border-radius: 10px; font-size: .86rem; }
+    .warning { border-left-color: #d18a00; background: #fff7e7; }
+
+    .practice-q { padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .practice-q:last-child { border-bottom: 0; }
+    .answer { margin-top: 8px; padding: 9px 10px; border-radius: 10px; background: #e7f6f1; color: #0c6857; font-weight: 700; }
+    .answer[hidden] { display: none; }
+
+    .no-results { display: none; margin: 24px 0; padding: 18px; border: 1px dashed var(--line); border-radius: var(--radius); text-align: center; color: var(--muted); }
+
+    .bottom-nav {
+      position: fixed; left: 50%; transform: translateX(-50%); bottom: 0; z-index: 30;
+      width: min(100%, 980px); height: calc(var(--nav-h) + env(safe-area-inset-bottom));
+      display: grid; grid-template-columns: repeat(5,1fr); align-items: start; padding: 8px 8px env(safe-area-inset-bottom);
+      background: color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter: blur(16px);
+      border: 1px solid var(--line); border-bottom: 0; border-radius: 18px 18px 0 0; box-shadow: 0 -10px 30px rgba(23,32,51,.08);
+    }
+    .nav-item {
+      min-height: 54px; border: 0; background: transparent; border-radius: 12px; text-decoration: none;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: var(--muted); font-size: .68rem; font-weight: 750;
+    }
+    .nav-item .ico { font-size: 1rem; font-weight: 900; }
+    .nav-item.active { background: var(--accent-soft); color: #3d2db5; }
+
+    dialog {
+      width: min(100% - 18px, 620px); max-height: min(78vh, 720px); margin: auto auto 8px;
+      border: 0; border-radius: 22px 22px 16px 16px; padding: 0; color: var(--text); background: var(--surface); box-shadow: 0 24px 70px rgba(23,32,51,.3);
+    }
+    dialog::backdrop { background: rgba(18,24,38,.45); backdrop-filter: blur(2px); }
+    .sheet { padding: 10px 16px 18px; overflow: auto; max-height: min(78vh,720px); }
+    .grab { width: 42px; height: 5px; border-radius: 999px; background: #d4d8e0; margin: 2px auto 12px; }
+    .sheet-head { display: flex; align-items: start; gap: 12px; }
+    .sheet-head > div { flex: 1; }
+    .sheet h2 { margin: 0; font-size: 1.22rem; }
+    .sheet .lead { color: var(--muted); margin: 5px 0 12px; }
+    .close-sheet { width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface); cursor: pointer; font-size: 1.2rem; }
+    .detail-block { margin-top: 11px; padding: 11px; background: var(--surface-2); border-radius: 12px; }
+    .detail-block b { display: block; margin-bottom: 4px; }
+
+    .ios-tip { display:none; }
+    .footer { color: var(--muted); font-size: .78rem; text-align: center; padding: 28px 0 10px; }
+
+    @media (min-width: 720px) {
+      .topbar-inner { padding-left: 24px; padding-right: 24px; }
+      main { padding-left: 24px; padding-right: 24px; }
+      .cards.two { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .cards.three { grid-template-columns: repeat(3, minmax(0,1fr)); }
+      .case-grid { grid-template-columns: repeat(4, minmax(0,1fr)); }
+      .rule-grid { grid-template-columns: repeat(4, minmax(0,1fr)); }
+      dialog { margin-bottom: 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.001ms !important; animation-duration: 0.001ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand-row">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">DE</div>
+          <div>German Cheat<small>RU → DE · A1–B1</small></div>
+        </div>
+        <button class="install-btn" id="installBtn" type="button">Установить</button>
+      </div>
+      <div class="search-wrap">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="search" class="search" type="search" autocomplete="off" placeholder="Поиск: wem, weil, modal, Dativ…" aria-label="Поиск по шпаргалке" />
+        <button id="clearSearch" class="clear-search" type="button" aria-label="Очистить поиск">×</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="start" data-section>
+      <h1>Немецкая грамматика без листания учебника</h1>
+      <p>Сначала смотри на <b>триггер</b>: падеж, предлог, союз или глагольную конструкцию. Потом — на форму и позицию.</p>
+      <div class="rule-grid">
+        <div class="rule"><b>Главное предложение</b><span>Спрягаемый глагол = позиция 2</span></div>
+        <div class="rule"><b>Придаточное</b><span>Спрягаемый глагол → в конец</span></div>
+        <div class="rule"><b>Akkusativ</b><span>Wen? Was?</span></div>
+        <div class="rule"><b>Dativ</b><span>Wem?</span></div>
+      </div>
+    </section>
+
+    <nav class="jump-row" aria-label="Быстрые переходы">
+      <a class="jump-chip" href="#cases">Падежи</a>
+      <a class="jump-chip" href="#forms">Формы</a>
+      <a class="jump-chip" href="#preps">Предлоги</a>
+      <a class="jump-chip" href="#order">Порядок слов</a>
+      <a class="jump-chip" href="#clauses">Придаточные</a>
+      <a class="jump-chip" href="#verbs">Глаголы</a>
+      <a class="jump-chip" href="#extras">Окончания</a>
+      <a class="jump-chip" href="#practice">Повтор</a>
+    </nav>
+
+    <div id="noResults" class="no-results">Ничего не найдено. Попробуй “wem”, “modal”, “weil”, “Dativ”, “Perfekt”.</div>
+
+    <section id="cases" data-section>
+      <div class="section-head"><div><h2>1. Падежи</h2><p>Вопрос → функция → форма.</p></div><span class="section-badge">4 Fälle</span></div>
+      <div class="case-grid cheat-card" data-search="fälle cases падеж вопросы nominativ akkusativ dativ genitiv wer wen wem wessen wohin wo was">
+        <button class="tap case" data-detail="nominativ"><strong>Nominativ</strong><br>Wer? Was?</button>
+        <button class="tap case" data-detail="akkusativ"><strong>Akkusativ</strong><br>Wen? Was?</button>
+        <button class="tap case" data-detail="dativ"><strong>Dativ</strong><br>Wem?</button>
+        <button class="tap case" data-detail="genitiv"><strong>Genitiv</strong><br>Wessen?</button>
+      </div>
+      <div class="cards two" style="margin-top:10px">
+        <article class="cheat-card" data-search="wo wohin wechselpräpositionen movement location направление место akkusativ dativ">
+          <h3>Wo? / Wohin?</h3>
+          <p><b>Wo?</b> где? → обычно <b>Dativ</b> с Wechselpräpositionen.</p>
+          <p><b>Wohin?</b> куда? → обычно <b>Akkusativ</b>.</p>
+          <div class="example"><b>Ich bin in der Schule.</b><br><b>Ich gehe in die Schule.</b></div>
+          <div class="chips"><button class="tap" data-detail="wo-wohin">Когда это правило работает?</button></div>
+        </article>
+        <article class="cheat-card" data-search="direct indirect object прямое косвенное дополнение akkusativ dativ geben helfen sehen">
+          <h3>Быстрый смысл</h3>
+          <p><b>Akk.</b> часто = прямой объект: <i>вижу кого?</i></p>
+          <p><b>Dat.</b> часто = получатель/адресат: <i>даю кому?</i></p>
+          <div class="example"><b>Ich gebe dem Mann das Buch.</b><br>dem Mann = Dat. · das Buch = Akk.</div>
+          <div class="chips"><button class="tap" data-detail="objects">Два объекта</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="forms" data-section>
+      <div class="section-head"><div><h2>2. Артикли и местоимения</h2><p>Главные формы, которые реально меняются.</p></div><span class="section-badge">Formen</span></div>
+
+      <article class="cheat-card" data-search="artikel der die das den dem des definite артикли определенный">
+        <h3>Определённый артикль</h3>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th></th><th>Mask.</th><th>Neut.</th><th>Fem.</th><th>Plural</th></tr></thead>
+            <tbody>
+              <tr><td>Nom.</td><td>der</td><td>das</td><td>die</td><td>die</td></tr>
+              <tr><td>Akk.</td><td class="hot">den</td><td>das</td><td>die</td><td>die</td></tr>
+              <tr><td>Dat.</td><td class="hot">dem</td><td class="hot">dem</td><td class="hot">der</td><td class="hot">den</td></tr>
+              <tr><td>Gen.</td><td>des</td><td>des</td><td>der</td><td>der</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <div class="cards two" style="margin-top:10px">
+        <article class="cheat-card" data-search="ein eine einen einem eines indefinite kein mein dein possessiv притяжательные">
+          <h3>ein / kein / mein…</h3>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th></th><th>Mask.</th><th>Neut.</th><th>Fem.</th><th>Plural*</th></tr></thead>
+              <tbody>
+                <tr><td>Nom.</td><td>mein</td><td>mein</td><td>meine</td><td>meine</td></tr>
+                <tr><td>Akk.</td><td class="hot">meinen</td><td>mein</td><td>meine</td><td>meine</td></tr>
+                <tr><td>Dat.</td><td class="hot">meinem</td><td class="hot">meinem</td><td class="hot">meiner</td><td class="hot">meinen</td></tr>
+                <tr><td>Gen.</td><td>meines</td><td>meines</td><td>meiner</td><td>meiner</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="tiny">* У <i>ein</i> нет мн. числа; колонка показывает модель для <i>kein/mein/dein…</i>.</p>
+          <div class="chips"><button class="tap" data-detail="possessives">mein / dein / sein / ihr…</button><button class="tap" data-detail="ihrem">Почему ihrem?</button></div>
+        </article>
+
+        <article class="cheat-card" data-search="personal pronouns личные местоимения ich mich mir du dich dir ihn ihm uns euch ihnen">
+          <h3>Личные местоимения</h3>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Nom.</th><th>Akk.</th><th>Dat.</th></tr></thead>
+              <tbody>
+                <tr><td>ich</td><td>mich</td><td class="hot">mir</td></tr>
+                <tr><td>du</td><td>dich</td><td class="hot">dir</td></tr>
+                <tr><td>er</td><td>ihn</td><td class="hot">ihm</td></tr>
+                <tr><td>sie</td><td>sie</td><td class="hot">ihr</td></tr>
+                <tr><td>es</td><td>es</td><td class="hot">ihm</td></tr>
+                <tr><td>wir</td><td>uns</td><td>uns</td></tr>
+                <tr><td>ihr</td><td>euch</td><td>euch</td></tr>
+                <tr><td>sie/Sie</td><td>sie/Sie</td><td class="hot">ihnen/Ihnen</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="chips"><button class="tap" data-detail="pronouns">Как быстро запомнить</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="preps" data-section>
+      <div class="section-head"><div><h2>3. Предлоги</h2><p>Предлог часто сразу определяет падеж.</p></div><span class="section-badge">Präpositionen</span></div>
+      <div class="cards two">
+        <article class="cheat-card" data-search="akkusativ prepositions durch für gegen ohne um bis entlang">
+          <h3>Всегда Akkusativ</h3>
+          <div class="chips"><button class="tap neutral" data-detail="prep-akk">durch</button><button class="tap neutral" data-detail="prep-akk">für</button><button class="tap neutral" data-detail="prep-akk">gegen</button><button class="tap neutral" data-detail="prep-akk">ohne</button><button class="tap neutral" data-detail="prep-akk">um</button></div>
+          <div class="example">für <b>den</b> Mann · ohne <b>mich</b></div>
+        </article>
+        <article class="cheat-card" data-search="dativ prepositions aus bei mit nach seit von zu gegenüber">
+          <h3>Всегда Dativ</h3>
+          <div class="chips"><button class="tap neutral" data-detail="prep-dat">aus</button><button class="tap neutral" data-detail="prep-dat">bei</button><button class="tap neutral" data-detail="prep-dat">mit</button><button class="tap neutral" data-detail="prep-dat">nach</button><button class="tap neutral" data-detail="prep-dat">seit</button><button class="tap neutral" data-detail="prep-dat">von</button><button class="tap neutral" data-detail="prep-dat">zu</button></div>
+          <div class="example">mit <b>meinem</b> Bruder · zu <b>der</b> Arbeit → zur Arbeit</div>
+        </article>
+        <article class="cheat-card" data-search="wechselpräpositionen an auf hinter in neben über unter vor zwischen wo wohin two-way">
+          <h3>Два падежа: Wo? / Wohin?</h3>
+          <p><b>an, auf, hinter, in, neben, über, unter, vor, zwischen</b></p>
+          <div class="example">auf <b>dem</b> Tisch (Wo?)<br>auf <b>den</b> Tisch (Wohin?)</div>
+          <div class="chips"><button class="tap" data-detail="two-way">Главная оговорка</button></div>
+        </article>
+        <article class="cheat-card" data-search="genitiv prepositions wegen trotz während statt innerhalb außerhalb">
+          <h3>Часто Genitiv</h3>
+          <p><b>wegen, trotz, während, statt, innerhalb, außerhalb</b></p>
+          <div class="example">wegen <b>des Wetters</b></div>
+          <p class="tiny">В разговорной речи некоторые из них встречаются и с Dativ, но в норме учи Genitiv.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="order" data-section>
+      <div class="section-head"><div><h2>4. Порядок слов</h2><p>Сначала найди спрягаемый глагол.</p></div><span class="section-badge">Wortstellung</span></div>
+      <div class="cards two">
+        <article class="cheat-card" data-search="main clause hauptsatz verb second v2 position 2 второе место heute ich gehe">
+          <h3>Главное: V2</h3>
+          <div class="formula"><span class="slot">Позиция 1</span><span class="arrow">→</span><span class="slot verb">глагол</span><span class="arrow">→</span><span class="slot">остальное</span></div>
+          <div class="example"><b>Ich gehe</b> heute in den Laden.<br><b>Heute gehe</b> ich in den Laden.</div>
+          <div class="chips"><button class="tap" data-detail="v2">Что значит “позиция 2”?</button></div>
+        </article>
+        <article class="cheat-card" data-search="inversion heute dann danach deshalb position 1 subject после наречия">
+          <h3>Если сначала Heute / Dann / Deshalb…</h3>
+          <p>Подлежащее уходит <b>после глагола</b>.</p>
+          <div class="example"><b>Heute muss ich</b> arbeiten.<br>Не: <s>Heute ich muss…</s></div>
+        </article>
+        <article class="cheat-card" data-search="question fragen yes no w frage wer was wann warum wie verb first v1">
+          <h3>Вопросы</h3>
+          <div class="formula"><span class="slot verb">Kommst</span><span class="slot">du heute?</span></div>
+          <div class="formula"><span class="slot">Wann</span><span class="slot verb">kommst</span><span class="slot">du?</span></div>
+          <p class="tiny">Да/нет → глагол первым. W-вопрос → вопросительное слово + глагол.</p>
+        </article>
+        <article class="cheat-card" data-search="tekamolo temporal kausal modal lokal order обстоятельства время причина способ место">
+          <h3>TeKaMoLo</h3>
+          <p><b>Te</b>mporal → <b>Ka</b>usal → <b>Mo</b>dal → <b>Lo</b>kal</p>
+          <div class="example">Ich fahre <b>heute</b> <b>wegen der Arbeit</b> <b>mit dem Zug</b> <b>nach Berlin</b>.</div>
+          <div class="chips"><button class="tap" data-detail="tekamolo">Это жёсткое правило?</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="verbs" data-section>
+      <div class="section-head"><div><h2>5. Глагольная рамка</h2><p>Часть глагола часто живёт в конце.</p></div><span class="section-badge">Satzklammer</span></div>
+      <div class="cards two">
+        <article class="cheat-card" data-search="modal müssen können wollen sollen dürfen mögen infinitiv end modal verbs">
+          <h3>Модальные глаголы</h3>
+          <div class="formula"><span class="slot">Heute</span><span class="slot verb">muss</span><span class="slot">ich in den Laden</span><span class="slot end">gehen</span></div>
+          <p><b>muss</b> = V2, смысловой инфинитив = конец.</p>
+          <div class="chips"><button class="tap" data-detail="modal">Все модальные</button></div>
+        </article>
+        <article class="cheat-card" data-search="perfekt haben sein partizip ii gegangen gemacht gegessen past perfect">
+          <h3>Perfekt</h3>
+          <div class="formula"><span class="slot">Ich</span><span class="slot verb">habe</span><span class="slot">das schon</span><span class="slot end">gemacht</span></div>
+          <div class="example">Ich <b>bin</b> nach Hause <b>gegangen</b>.</div>
+          <div class="chips"><button class="tap" data-detail="perfekt">haben или sein?</button></div>
+        </article>
+        <article class="cheat-card" data-search="separable trennbare verben aufstehen einkaufen anrufen prefix отделяемые приставки">
+          <h3>Отделяемые глаголы</h3>
+          <div class="formula"><span class="slot">Ich</span><span class="slot verb">stehe</span><span class="slot">um 7 Uhr</span><span class="slot end">auf</span></div>
+          <div class="example">weil ich um 7 Uhr <b>aufstehe</b></div>
+          <div class="chips"><button class="tap" data-detail="separable">Почему в придаточном снова вместе?</button></div>
+        </article>
+        <article class="cheat-card" data-search="passive passiv werden partizip ii wird gemacht wurde gebaut пассив">
+          <h3>Passiv</h3>
+          <div class="formula"><span class="slot">Das Haus</span><span class="slot verb">wird</span><span class="slot">2026</span><span class="slot end">gebaut</span></div>
+          <p><b>werden + Partizip II</b></p>
+          <div class="chips"><button class="tap" data-detail="passive">Passiv vs Perfekt</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="clauses" data-section>
+      <div class="section-head"><div><h2>6. Придаточные</h2><p>Союз в начале, спрягаемый глагол — в конец.</p></div><span class="section-badge">Nebensätze</span></div>
+      <div class="cards two">
+        <article class="cheat-card" data-search="weil because потому что subordinate verb end придаточное">
+          <h3>weil — потому что</h3>
+          <div class="formula"><span class="slot sub">weil</span><span class="slot">ich heute arbeiten</span><span class="slot end">muss</span></div>
+          <div class="example">Ich komme nicht, <b>weil ich arbeiten muss.</b></div>
+        </article>
+        <article class="cheat-card" data-search="dass that что ich glaube denke hoffe sage subordinate">
+          <h3>dass — что</h3>
+          <div class="example">Ich glaube, <b>dass er heute kommt.</b></div>
+          <p class="tiny">Типично после glauben, denken, hoffen, sagen, wissen…</p>
+        </article>
+        <article class="cheat-card" data-search="wenn if when если когда condition repeated als subordinate">
+          <h3>wenn — если / когда</h3>
+          <div class="example"><b>Wenn ich Zeit habe,</b> komme ich.</div>
+          <p>Если придаточное стоит первым, после запятой сразу идёт глагол главного: <b>…, komme ich.</b></p>
+          <div class="chips"><button class="tap" data-detail="wenn-als">wenn vs als</button></div>
+        </article>
+        <article class="cheat-card" data-search="obwohl although хотя subordinate verb end trotzdem">
+          <h3>obwohl — хотя</h3>
+          <div class="example">Er geht spazieren, <b>obwohl es regnet.</b></div>
+          <div class="chips"><button class="tap" data-detail="obwohl">obwohl vs trotzdem</button></div>
+        </article>
+        <article class="cheat-card" data-search="ob whether ли indirect question indirekte frage">
+          <h3>ob — ли</h3>
+          <div class="example">Ich weiß nicht, <b>ob er kommt.</b></div>
+        </article>
+        <article class="cheat-card" data-search="und aber denn oder sondern coordinating conjunctions coordinators verb second не отправляют глагол в конец">
+          <h3>Не отправляют глагол в конец</h3>
+          <p><b>und, aber, denn, oder, sondern</b></p>
+          <div class="example">Ich bleibe zu Hause, <b>denn ich bin müde.</b></div>
+          <div class="chips"><button class="tap" data-detail="coordinators">weil vs denn</button></div>
+        </article>
+      </div>
+
+      <div class="cards two" style="margin-top:10px">
+        <article class="cheat-card" data-search="um zu damit purpose цель чтобы infinitive subject same different">
+          <h3>um … zu / damit — чтобы</h3>
+          <div class="example">Ich lerne Deutsch, <b>um in Berlin zu arbeiten.</b><br>Ich erkläre es langsam, <b>damit du alles verstehst.</b></div>
+          <div class="chips"><button class="tap" data-detail="um-damit">Как выбрать?</button></div>
+        </article>
+        <article class="cheat-card" data-search="relative clause relativsatz der die das den dem dessen deren который относительные">
+          <h3>Относительное придаточное</h3>
+          <div class="example">Das ist der Mann, <b>der hier arbeitet.</b><br>Das ist der Mann, <b>den ich kenne.</b></div>
+          <div class="chips"><button class="tap" data-detail="relative">Как выбрать der/den/dem?</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="extras" data-section>
+      <div class="section-head"><div><h2>7. Окончания и изменения</h2><p>Небольшие правила, которые часто ломают правильную форму.</p></div><span class="section-badge">Endungen</span></div>
+      <div class="cards two">
+        <article class="cheat-card" data-search="dativ plural n kindern freunden существительное множественное">
+          <h3>Dativ Plural</h3>
+          <p>Обычно артикль <b>den</b> + существительное получает <b>-n</b>, если его ещё нет.</p>
+          <div class="example">mit <b>den Kindern</b> · mit <b>meinen Freunden</b></div>
+        </article>
+        <article class="cheat-card" data-search="genitiv s es mannes kindes vaters noun endings">
+          <h3>Genitiv: -s / -es</h3>
+          <p>Maskulin/Neutrum часто получают <b>-s/-es</b>.</p>
+          <div class="example">das Auto <b>des Vaters</b><br>die Farbe <b>des Hauses</b></div>
+        </article>
+        <article class="cheat-card" data-search="n-deklination student studenten mensch menschen herrn weak nouns">
+          <h3>N-Deklination</h3>
+          <p>Некоторые мужские существительные получают <b>-n/-en</b> почти везде, кроме Nominativ Singular.</p>
+          <div class="example">der Student → den/dem/des <b>Studenten</b></div>
+          <div class="chips"><button class="tap" data-detail="n-decl">Частые слова</button></div>
+        </article>
+        <article class="cheat-card" data-search="adjective endings прилагательные der ein guter guten gutem окончания">
+          <h3>Прилагательные: не учи вслепую</h3>
+          <p>После <b>der-слов</b> артикль уже показывает род/падеж, поэтому прилагательное чаще имеет <b>-e/-en</b>.</p>
+          <div class="example">der gut<b>e</b> Mann · mit dem gut<b>en</b> Mann</div>
+          <div class="chips"><button class="tap" data-detail="adjectives">Короткая модель</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="practice" data-section>
+      <div class="section-head"><div><h2>8. Быстрый повтор</h2><p>Три вопроса без отдельного “режима урока”.</p></div><span class="section-badge">30 sec</span></div>
+      <article class="cheat-card" data-search="practice quiz повтор тест">
+        <div class="practice-q">
+          <b>1. Ich helfe ___ Mann.</b> Какой падеж?
+          <div class="chips"><button class="tap neutral reveal" data-target="a1">Показать</button></div>
+          <div class="answer" id="a1" hidden>Dativ → Wem? → <b>dem Mann</b>.</div>
+        </div>
+        <div class="practice-q">
+          <b>2. Heute ___ ich in den Laden gehen.</b> Где стоит <i>müssen</i>?
+          <div class="chips"><button class="tap neutral reveal" data-target="a2">Показать</button></div>
+          <div class="answer" id="a2" hidden><b>Heute muss ich in den Laden gehen.</b> Модальный глагол = V2, инфинитив = конец.</div>
+        </div>
+        <div class="practice-q">
+          <b>3. weil ich heute arbeiten ___</b>
+          <div class="chips"><button class="tap neutral reveal" data-target="a3">Показать</button></div>
+          <div class="answer" id="a3" hidden><b>weil ich heute arbeiten muss</b> — в придаточном спрягаемый глагол уходит в конец.</div>
+        </div>
+      </article>
+    </section>
+
+    <section id="install-help" data-section>
+      <div class="section-head"><div><h2>Установка на телефон</h2><p>Это PWA: после первой загрузки работает и офлайн.</p></div></div>
+      <article class="cheat-card" data-search="install pwa add home screen iphone android установка телефон офлайн">
+        <p><b>Android / Chrome:</b> нажми “Установить” сверху, если кнопка доступна, или используй меню браузера → Install app / Add to Home screen.</p>
+        <p><b>iPhone / Safari:</b> Share → Add to Home Screen.</p>
+        <div class="notice warning">Для настоящей установки и offline-кэша страницу нужно открыть по <b>HTTPS</b> (или localhost). Если просто открыть HTML-файл из Files, service worker не запустится.</div>
+      </article>
+    </section>
+
+    <div class="footer">German Cheat · content plan lives in SITE_PLAN.md</div>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Основная навигация">
+    <a class="nav-item active" href="#cases" data-nav="cases"><span class="ico">A/D</span><span>Падежи</span></a>
+    <a class="nav-item" href="#forms" data-nav="forms"><span class="ico">der</span><span>Формы</span></a>
+    <a class="nav-item" href="#order" data-nav="order"><span class="ico">V2</span><span>Порядок</span></a>
+    <a class="nav-item" href="#clauses" data-nav="clauses"><span class="ico">weil</span><span>Придат.</span></a>
+    <a class="nav-item" href="#verbs" data-nav="verbs"><span class="ico">→</span><span>Глаголы</span></a>
+  </nav>
+
+  <dialog id="detailDialog" aria-labelledby="detailTitle">
+    <div class="sheet">
+      <div class="grab" aria-hidden="true"></div>
+      <div class="sheet-head">
+        <div><h2 id="detailTitle"></h2><p class="lead" id="detailLead"></p></div>
+        <button class="close-sheet" id="closeDialog" aria-label="Закрыть">×</button>
+      </div>
+      <div id="detailBody"></div>
+    </div>
+  </dialog>
+
+  <script>
+    const DETAILS = {
+      nominativ: {title:'Nominativ', lead:'Wer? Was? — кто? что?', body:`<div class="detail-block"><b>Обычно</b>Подлежащее: тот, кто выполняет действие.</div><div class="detail-block"><b>Пример</b><i>Der Mann</i> arbeitet. — Кто работает? Der Mann.</div>`},
+      akkusativ: {title:'Akkusativ', lead:'Wen? Was? — кого? что?', body:`<div class="detail-block"><b>Часто</b>Прямой объект действия.</div><div class="detail-block"><b>Пример</b>Ich sehe <i>den Mann</i>. — Wen sehe ich?</div><div class="detail-block"><b>Самое заметное изменение</b>Maskulin: der → <b>den</b>, ein → <b>einen</b>.</div>`},
+      dativ: {title:'Dativ', lead:'Wem? — кому? чему?', body:`<div class="detail-block"><b>Часто</b>Получатель, адресат, косвенный объект.</div><div class="detail-block"><b>Пример</b>Ich helfe <i>dem Mann</i>. — Wem helfe ich?</div><div class="detail-block"><b>Запомни</b>mit, bei, nach, seit, von, zu, aus → Dativ.</div>`},
+      genitiv: {title:'Genitiv', lead:'Wessen? — чей? кого/чего?', body:`<div class="detail-block"><b>Часто</b>Принадлежность или связь.</div><div class="detail-block"><b>Пример</b>Das Auto <i>des Mannes</i>.</div><div class="detail-block"><b>Форма</b>Maskulin/Neutrum: des + существительное часто -s/-es.</div>`},
+      'wo-wohin': {title:'Wo? / Wohin?', lead:'Это правило связано с Wechselpräpositionen.', body:`<div class="detail-block"><b>Wo? → Dativ</b>Статичное местоположение: Ich bin <i>in der Schule</i>.</div><div class="detail-block"><b>Wohin? → Akkusativ</b>Направление/смена положения относительно места: Ich gehe <i>in die Schule</i>.</div><div class="detail-block"><b>Важно</b>Не любое движение автоматически означает Akkusativ. Спроси именно: меняется ли положение относительно объекта/границы, которую задаёт предлог?</div>`},
+      objects: {title:'Два объекта', lead:'Некоторые глаголы легко дают Dativ + Akkusativ.', body:`<div class="detail-block"><b>geben</b>Ich gebe <i>dem Kind</i> (Wem? Dat.) <i>das Buch</i> (Was? Akk.).</div><div class="detail-block"><b>Типовая логика</b>Кому? = получатель → Dativ. Что? = передаваемая вещь → Akkusativ.</div>`},
+      possessives: {title:'Притяжательные', lead:'mein, dein, sein, ihr, unser, euer, ihr, Ihr', body:`<div class="detail-block"><b>Значения</b>мой, твой, его, её, наш, ваш, их, Ваш.</div><div class="detail-block"><b>Модель</b>Склоняются как ein-слова. Поэтому: mein Bruder → meinen Bruder → meinem Bruder → meines Bruders.</div>`},
+      ihrem: {title:'Почему “ihrem”?', lead:'ihr + окончание Dativ.', body:`<div class="detail-block"><b>Maskulin / Neutrum, Dativ</b>ihr + -em = <b>ihrem</b>.</div><div class="detail-block"><b>Примеры</b>mit <b>ihrem Bruder</b>; mit <b>ihrem Kind</b>.</div><div class="detail-block"><b>Но</b>Feminin: mit <b>ihrer Mutter</b>. Plural: mit <b>ihren Freunden</b>.</div>`},
+      pronouns: {title:'Личные местоимения', lead:'Самые важные пары лучше выучить как тройки.', body:`<div class="detail-block"><b>Тройки</b>ich–mich–mir · du–dich–dir · er–ihn–ihm · sie–sie–ihr · es–es–ihm.</div><div class="detail-block"><b>Plural</b>wir–uns–uns · ihr–euch–euch · sie–sie–ihnen.</div>`},
+      'prep-akk': {title:'Akkusativ-предлоги', lead:'durch, für, gegen, ohne, um', body:`<div class="detail-block"><b>Примеры</b>für <i>den Mann</i> · ohne <i>mich</i> · durch <i>die Stadt</i>.</div><div class="detail-block"><b>Практика</b>Если видишь один из этих предлогов, не ищи смысловой вопрос — падеж уже задан предлогом.</div>`},
+      'prep-dat': {title:'Dativ-предлоги', lead:'aus, bei, mit, nach, seit, von, zu', body:`<div class="detail-block"><b>Примеры</b>mit <i>meinem Bruder</i> · bei <i>der Arbeit</i> · nach <i>Berlin</i>.</div><div class="detail-block"><b>Сокращения</b>zu dem → <b>zum</b>, zu der → <b>zur</b>, von dem → <b>vom</b>.</div>`},
+      'two-way': {title:'Wechselpräpositionen', lead:'an, auf, hinter, in, neben, über, unter, vor, zwischen', body:`<div class="detail-block"><b>Dativ</b>Wo? положение: Das Buch liegt <i>auf dem Tisch</i>.</div><div class="detail-block"><b>Akkusativ</b>Wohin? смена положения: Ich lege das Buch <i>auf den Tisch</i>.</div>`},
+      v2: {title:'Что такое V2', lead:'Глагол стоит во второй синтаксической позиции, не обязательно вторым словом.', body:`<div class="detail-block"><b>1 позиция может быть длинной</b><i>Heute Morgen um acht</i> gehe ich zur Arbeit. Вся группа “Heute Morgen um acht” занимает позицию 1.</div><div class="detail-block"><b>Потом</b>сразу идёт спрягаемый глагол.</div>`},
+      tekamolo: {title:'TeKaMoLo', lead:'Полезный порядок обстоятельств, но не железный закон.', body:`<div class="detail-block"><b>База</b>Temporal → Kausal → Modal → Lokal.</div><div class="detail-block"><b>Почему не закон</b>Порядок может меняться из-за акцента, местоимений, определённости и контекста. Используй TeKaMoLo как безопасный дефолт.</div>`},
+      modal: {title:'Модальные глаголы', lead:'können, müssen, wollen, sollen, dürfen, mögen', body:`<div class="detail-block"><b>Главное предложение</b>Ich <b>muss</b> heute <b>arbeiten</b>. — finite modal в V2, инфинитив в конце.</div><div class="detail-block"><b>Придаточное</b>…, weil ich heute arbeiten <b>muss</b>. Спрягаемый modal уходит в самый конец.</div>`},
+      perfekt: {title:'Perfekt', lead:'haben/sein + Partizip II', body:`<div class="detail-block"><b>haben</b>Для большинства глаголов: Ich habe gearbeitet.</div><div class="detail-block"><b>sein</b>Часто для перемещения/смены состояния без прямого объекта: Ich bin gegangen. Er ist eingeschlafen.</div><div class="detail-block"><b>Важно</b>Есть глаголы, форму которых надо просто знать; это не 100% механическое правило.</div>`},
+      separable: {title:'Отделяемые глаголы', lead:'aufstehen, einkaufen, anrufen…', body:`<div class="detail-block"><b>Главное</b>Ich <b>rufe</b> dich später <b>an</b>.</div><div class="detail-block"><b>Инфинитив / придаточное</b>anrufen; …, weil ich dich später <b>anrufe</b>.</div><div class="detail-block"><b>Perfekt</b>angerufen — ge часто вставляется между приставкой и основой.</div>`},
+      passive: {title:'Passiv', lead:'werden + Partizip II', body:`<div class="detail-block"><b>Passiv Präsens</b>Das Haus <b>wird gebaut</b>. — Дом строят.</div><div class="detail-block"><b>Не путай с Perfekt</b>Das Haus <b>ist gebaut worden</b>. — Дом был построен.</div>`},
+      'wenn-als': {title:'wenn vs als', lead:'Оба могут значить “когда”.', body:`<div class="detail-block"><b>als</b>Однократное событие в прошлом: Als ich klein war…</div><div class="detail-block"><b>wenn</b>Повторяющееся “когда”, настоящее/будущее или “если”: Wenn ich Zeit habe…</div>`},
+      obwohl: {title:'obwohl vs trotzdem', lead:'Оба дают контраст, но строят предложение по-разному.', body:`<div class="detail-block"><b>obwohl</b>Союз придаточного → глагол в конец: obwohl es regnet.</div><div class="detail-block"><b>trotzdem</b>Наречие в главном → V2: Es regnet. Trotzdem <b>gehe</b> ich raus.</div>`},
+      coordinators: {title:'weil vs denn', lead:'Оба = “потому что”, но порядок слов разный.', body:`<div class="detail-block"><b>weil</b>Ich bleibe, weil ich müde <b>bin</b>.</div><div class="detail-block"><b>denn</b>Ich bleibe, denn ich <b>bin</b> müde. После denn остаётся обычный V2.</div>`},
+      'um-damit': {title:'um … zu vs damit', lead:'Оба часто переводятся “чтобы”.', body:`<div class="detail-block"><b>um … zu</b>Обычно субъект один и тот же: Ich lerne, um in Deutschland zu arbeiten.</div><div class="detail-block"><b>damit</b>Нужное полноценное придаточное, особенно если субъекты разные: Ich spreche langsam, damit du mich verstehst.</div>`},
+      relative: {title:'Относительные предложения', lead:'Род/число берём от существительного, падеж — из роли внутри придаточного.', body:`<div class="detail-block"><b>Nominativ внутри</b>Der Mann, <b>der</b> hier arbeitet… (кто работает? der)</div><div class="detail-block"><b>Akkusativ внутри</b>Der Mann, <b>den</b> ich kenne… (кого я знаю? den)</div><div class="detail-block"><b>Dativ внутри</b>Der Mann, <b>dem</b> ich helfe… (кому я помогаю? dem)</div>`},
+      'n-decl': {title:'N-Deklination', lead:'Частые слабые мужские существительные.', body:`<div class="detail-block"><b>Примеры</b>Student, Mensch, Junge, Kunde, Kollege, Herr (особая форма Herrn).</div><div class="detail-block"><b>Модель</b>der Student, aber den/dem/des Studenten.</div>`},
+      adjectives: {title:'Окончания прилагательных', lead:'Сначала спроси: артикль уже показывает род/падеж или нет?', body:`<div class="detail-block"><b>После der-слов</b>Чаще -e или -en: der gute Mann, den guten Mann, dem guten Mann.</div><div class="detail-block"><b>После ein-слов</b>Если артикль не показывает окончание, это делает прилагательное: ein guter Mann, ein gutes Kind. Но: einen guten Mann, einem guten Mann.</div><div class="detail-block"><b>Без артикля</b>Прилагательное несёт больше грамматической информации: guter Wein, mit gutem Wein.</div>`}
+    };
+
+    const dialog = document.getElementById('detailDialog');
+    const detailTitle = document.getElementById('detailTitle');
+    const detailLead = document.getElementById('detailLead');
+    const detailBody = document.getElementById('detailBody');
+
+    document.addEventListener('click', (event) => {
+      const trigger = event.target.closest('[data-detail]');
+      if (trigger) {
+        const item = DETAILS[trigger.dataset.detail];
+        if (item) {
+          detailTitle.textContent = item.title;
+          detailLead.textContent = item.lead || '';
+          detailBody.innerHTML = item.body || '';
+          dialog.showModal();
+        }
+      }
+      const reveal = event.target.closest('.reveal');
+      if (reveal) {
+        const answer = document.getElementById(reveal.dataset.target);
+        if (answer) {
+          answer.hidden = !answer.hidden;
+          reveal.textContent = answer.hidden ? 'Показать' : 'Скрыть';
+        }
+      }
+    });
+
+    document.getElementById('closeDialog').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (event) => {
+      const r = dialog.getBoundingClientRect();
+      if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) dialog.close();
+    });
+
+    const search = document.getElementById('search');
+    const clearSearch = document.getElementById('clearSearch');
+    const cards = [...document.querySelectorAll('.cheat-card')];
+    const sections = [...document.querySelectorAll('section[data-section]')];
+    const noResults = document.getElementById('noResults');
+
+    function applySearch() {
+      const q = search.value.trim().toLowerCase();
+      let shown = 0;
+      cards.forEach(card => {
+        const hay = `${card.textContent} ${card.dataset.search || ''}`.toLowerCase();
+        const match = !q || hay.includes(q);
+        card.style.display = match ? '' : 'none';
+        if (match) shown++;
+      });
+      sections.forEach(section => {
+        if (!q || section.id === 'start') { section.style.display = ''; return; }
+        const visible = [...section.querySelectorAll('.cheat-card')].some(c => c.style.display !== 'none');
+        section.style.display = visible ? '' : 'none';
+      });
+      noResults.style.display = q && shown === 0 ? 'block' : 'none';
+    }
+    search.addEventListener('input', applySearch);
+    clearSearch.addEventListener('click', () => { search.value = ''; applySearch(); search.focus(); });
+
+    const navItems = [...document.querySelectorAll('.nav-item')];
+    const navTargets = ['cases','forms','order','clauses','verbs'].map(id => document.getElementById(id));
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter(e => e.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      navItems.forEach(item => item.classList.toggle('active', item.dataset.nav === visible.target.id));
+    }, {rootMargin:'-25% 0px -60% 0px', threshold:[0,.1,.25,.5]});
+    navTargets.forEach(el => el && observer.observe(el));
+
+    let deferredPrompt = null;
+    const installBtn = document.getElementById('installBtn');
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+    if (isIOS && !isStandalone) installBtn.hidden = false;
+    else installBtn.hidden = true;
+
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault();
+      deferredPrompt = event;
+      installBtn.hidden = false;
+    });
+
+    installBtn.addEventListener('click', async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        await deferredPrompt.userChoice;
+        deferredPrompt = null;
+        installBtn.hidden = true;
+      } else if (isIOS) {
+        detailTitle.textContent = 'Установка на iPhone';
+        detailLead.textContent = 'Safari не показывает стандартный install prompt.';
+        detailBody.innerHTML = '<div class="detail-block"><b>1.</b>Открой меню Share.</div><div class="detail-block"><b>2.</b>Выбери Add to Home Screen.</div><div class="detail-block"><b>3.</b>Подтверди Add.</div>';
+        dialog.showModal();
+      } else {
+        document.getElementById('install-help').scrollIntoView({behavior:'smooth'});
+      }
+    });
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+    }
+  </script>
+</body>
+</html>
