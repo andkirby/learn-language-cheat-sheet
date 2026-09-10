@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#10131b" media="(prefers-color-scheme: dark)" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="Мобильные шпаргалки по грамматике: немецкий и английский для русскоговорящих. Падежи, времена, артикли, порядок слов. Работают офлайн." />
+  <link rel="icon" href="./icons/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="./icons/icon-32.png" sizes="32x32" type="image/png" />
+  <meta property="og:title" content="Языковые шпаргалки — Language Cheat Sheets" />
+  <meta property="og:description" content="Немецкий и английский для русскоговорящих: короткие мобильные шпаргалки по грамматике. A1–B1, офлайн." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://andkirby.github.io/learn-language-cheat-sheet/" />
+  <meta property="og:image" content="https://andkirby.github.io/learn-language-cheat-sheet/icons/icon-512.png" />
+  <meta name="twitter:card" content="summary" />
+  <title>Языковые шпаргалки — Language Cheat Sheets</title>
+  <style>
+    :root {
+      color-scheme: light;
+      /* Semantic tokens — must match .design/DESIGN_SYSTEM.md */
+      --bg: #f6f7fb;
+      --surface: #ffffff;
+      --surface-2: #eef1f7;
+      --text: #172033;
+      --muted: #667085;
+      --line: #dfe4ec;
+      --accent: #6b4eff;
+      --accent-soft: #eeeaff;
+      --on-accent-soft: #3d2db5;
+      --hero-1: #172033;
+      --hero-2: #27324b;
+      --hero-text: #d9dfeb;
+      --hero-line: rgba(255, 255, 255, .13);
+      --hero-card: rgba(255, 255, 255, .08);
+      --shadow: 0 10px 30px rgba(23, 32, 51, .08);
+      --radius: 18px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --bg: #10131b;
+        --surface: #191e2b;
+        --surface-2: #232a3a;
+        --text: #e9ecf4;
+        --muted: #9ba4b8;
+        --line: #2c3448;
+        --accent: #a08dff;
+        --accent-soft: #282147;
+        --on-accent-soft: #c9bcff;
+        --hero-1: #191f30;
+        --hero-2: #232b41;
+        --hero-text: #c9d1e2;
+        --hero-line: rgba(255, 255, 255, .09);
+        --hero-card: rgba(255, 255, 255, .05);
+        --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+      }
+    }
+
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #10131b;
+      --surface: #191e2b;
+      --surface-2: #232a3a;
+      --text: #e9ecf4;
+      --muted: #9ba4b8;
+      --line: #2c3448;
+      --accent: #a08dff;
+      --accent-soft: #282147;
+      --on-accent-soft: #c9bcff;
+      --hero-1: #191f30;
+      --hero-2: #232b41;
+      --hero-text: #c9d1e2;
+      --hero-line: rgba(255, 255, 255, .09);
+      --hero-card: rgba(255, 255, 255, .05);
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+    }
+    button { font: inherit; color: inherit; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner { width: min(100%, 980px); margin: 0 auto; padding: 12px 16px 10px; }
+    .brand-row { display: flex; align-items: center; gap: 10px; }
+    .brand { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1; font-weight: 800; letter-spacing: -.02em; }
+    .brand-mark {
+      width: 36px; height: 36px; border-radius: 11px; flex: 0 0 auto;
+      display: grid; place-items: center; background: var(--text); color: var(--bg); font-weight: 900;
+    }
+    .brand small { display: block; color: var(--muted); font-weight: 600; font-size: .72rem; letter-spacing: 0; }
+    .theme-btn {
+      width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 12px;
+      background: var(--surface); cursor: pointer; font-size: 1.15rem; line-height: 1;
+      display: grid; place-items: center; flex: 0 0 auto;
+    }
+
+    main { width: min(100%, 980px); margin: 0 auto; padding: 18px 16px 40px; }
+    .hero {
+      background: linear-gradient(135deg, var(--hero-1) 0%, var(--hero-2) 100%);
+      border-radius: 24px; padding: 22px 20px; box-shadow: var(--shadow);
+    }
+    .hero h1 { font-size: clamp(1.6rem, 6vw, 2.3rem); line-height: 1.08; margin: 0 0 8px; letter-spacing: -.035em; color: #fff; }
+    .hero p { margin: 0; color: var(--hero-text); max-width: 60ch; }
+
+    .lang-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 16px; }
+    @media (min-width: 720px) { .lang-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    .lang-card {
+      display: flex; gap: 14px; align-items: center; text-decoration: none;
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 18px 16px; box-shadow: 0 3px 14px rgba(23,32,51,.035); min-height: 96px;
+    }
+    .lang-card:hover { border-color: var(--accent); }
+    .lang-mark {
+      width: 52px; height: 52px; border-radius: 15px; flex: 0 0 auto;
+      display: grid; place-items: center; background: var(--text); color: var(--bg); font-weight: 900; font-size: 1.15rem;
+    }
+    .lang-card b { display: block; font-size: 1.08rem; }
+    .lang-card .topics { display: block; margin-top: 3px; font-size: .88rem; }
+    .lang-card .meta { display: block; margin-top: 5px; color: var(--muted); font-size: .78rem; }
+    .lang-card .go { margin-left: auto; color: var(--on-accent-soft); font-weight: 900; font-size: 1.3rem; }
+
+    .footer { color: var(--muted); font-size: .8rem; text-align: center; padding: 18px 0 30px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand-row">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">Aa</div>
+          <div>Языковые шпаргалки<small>RU → DE / EN · A1–B1</small></div>
+        </div>
+        <button class="theme-btn" id="themeBtn" type="button" aria-label="Тема: системная">◐</button>
+      </div>
+    </div>
+  </header>
+
+  <noscript>
+    <style>.theme-btn { display: none !important; }</style>
+  </noscript>
+
+  <main>
+    <section class="hero">
+      <h1>Грамматика без листания учебника</h1>
+      <p>Короткие мобильные шпаргалки: сначала триггер — падеж, предлог, время или союз, — потом форма и позиция. Открой один раз: дальше работает офлайн.</p>
+    </section>
+
+    <div class="lang-grid">
+      <a class="lang-card" href="./deutsch/">
+        <span class="lang-mark" aria-hidden="true">DE</span>
+        <span>
+          <b>Немецкий · Deutsch</b>
+          <span class="topics">Падежи · артикли · порядок слов · придаточные</span>
+          <span class="meta">RU → DE · A1–B1 · устанавливается на телефон</span>
+        </span>
+        <span class="go" aria-hidden="true">→</span>
+      </a>
+      <a class="lang-card" href="./english/">
+        <span class="lang-mark" aria-hidden="true">EN</span>
+        <span>
+          <b>Английский · English</b>
+          <span class="topics">Времена · артикли · порядок слов · условные</span>
+          <span class="meta">RU → EN · A1–B1 · устанавливается на телефон</span>
+        </span>
+        <span class="go" aria-hidden="true">→</span>
+      </a>
+    </div>
+
+    <div class="footer">Каждую шпаргалку можно установить как приложение — кнопка «Установить» на её странице.</div>
+  </main>
+
+  <script>
+    // Theme: auto (OS) / light / dark — persisted per visitor.
+    const THEME_KEY = 'theme';
+    const THEME_UI = {
+      auto:  { icon: '◐', label: 'Тема: системная' },
+      light: { icon: '☀', label: 'Тема: светлая' },
+      dark:  { icon: '☾', label: 'Тема: тёмная' },
+    };
+    const themeBtn = document.getElementById('themeBtn');
+    const themeMetas = [...document.querySelectorAll('meta[name="theme-color"]')];
+    const themeMetaDefaults = themeMetas.map(m => m.content);
+    function applyTheme(mode) {
+      if (mode === 'auto') document.documentElement.removeAttribute('data-theme');
+      else document.documentElement.setAttribute('data-theme', mode);
+      themeBtn.textContent = THEME_UI[mode].icon;
+      themeBtn.setAttribute('aria-label', THEME_UI[mode].label);
+      themeBtn.title = THEME_UI[mode].label;
+      themeMetas.forEach((m, i) => {
+        m.content = mode === 'auto' ? themeMetaDefaults[i] : getComputedStyle(document.body).backgroundColor;
+      });
+    }
+    let themeMode = 'auto';
+    try { themeMode = localStorage.getItem(THEME_KEY) || 'auto'; } catch (e) {}
+    applyTheme(themeMode);
+    themeBtn.addEventListener('click', () => {
+      themeMode = themeMode === 'auto' ? 'light' : themeMode === 'light' ? 'dark' : 'auto';
+      try { localStorage.setItem(THEME_KEY, themeMode); } catch (e) {}
+      applyTheme(themeMode);
+    });
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+    }
+  </script>
+</body>
+</html>

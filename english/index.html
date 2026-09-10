@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#10131b" media="(prefers-color-scheme: dark)" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="EN Cheat" />
+  <meta name="description" content="Мобильная шпаргалка по английской грамматике: времена, артикли, порядок слов, условные предложения, предлоги." />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./icons/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="./icons/icon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="./icons/icon-180.png" />
+  <meta property="og:title" content="English Grammar Cheatsheet" />
+  <meta property="og:description" content="Английская грамматика без листания учебника: времена, артикли, порядок слов, условные. A1–B1, офлайн." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://andkirby.github.io/learn-language-cheat-sheet/english/" />
+  <meta property="og:image" content="https://andkirby.github.io/learn-language-cheat-sheet/english/icons/icon-512.png" />
+  <meta name="twitter:card" content="summary" />
+  <title>English Grammar Cheatsheet</title>
+  <style>
+    :root {
+      color-scheme: light;
+      /* Semantic tokens — the only place raw colors are allowed.
+         Keep .design/DESIGN_SYSTEM.md in sync when changing these. */
+      --bg: #f6f7fb;
+      --surface: #ffffff;
+      --surface-2: #eef1f7;
+      --text: #172033;
+      --muted: #667085;
+      --line: #dfe4ec;
+      --accent: #6b4eff;
+      --accent-soft: #eeeaff;
+      --on-accent-soft: #3d2db5;
+      --tap-line: #d6d0ff;
+      --ok: #0c6857;
+      --ok-soft: #e7f6f1;
+      --warn: #7a5000;
+      --warn-soft: #fff3d8;
+      --warn-line: #d18a00;
+      --notice-warn-bg: #fff7e7;
+      --hero-1: #172033;
+      --hero-2: #27324b;
+      --hero-text: #d9dfeb;
+      --hero-line: rgba(255, 255, 255, .13);
+      --hero-card: rgba(255, 255, 255, .08);
+      --grab: #d4d8e0;
+      --backdrop: rgba(15, 19, 30, .5);
+      --shadow: 0 10px 30px rgba(23, 32, 51, .08);
+      --radius: 18px;
+      --nav-h: 72px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --bg: #10131b;
+        --surface: #191e2b;
+        --surface-2: #232a3a;
+        --text: #e9ecf4;
+        --muted: #9ba4b8;
+        --line: #2c3448;
+        --accent: #a08dff;
+        --accent-soft: #282147;
+        --on-accent-soft: #c9bcff;
+        --tap-line: #41386e;
+        --ok: #8adccb;
+        --ok-soft: #17352c;
+        --warn: #eec36a;
+        --warn-soft: #3a2f11;
+        --warn-line: #a97e1f;
+        --notice-warn-bg: #2e2510;
+        --hero-1: #191f30;
+        --hero-2: #232b41;
+        --hero-text: #c9d1e2;
+        --hero-line: rgba(255, 255, 255, .09);
+        --hero-card: rgba(255, 255, 255, .05);
+        --grab: #4a5468;
+        --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+      }
+    }
+
+    /* Manual dark choice (theme toggle) overrides the OS preference. */
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #10131b;
+      --surface: #191e2b;
+      --surface-2: #232a3a;
+      --text: #e9ecf4;
+      --muted: #9ba4b8;
+      --line: #2c3448;
+      --accent: #a08dff;
+      --accent-soft: #282147;
+      --on-accent-soft: #c9bcff;
+      --tap-line: #41386e;
+      --ok: #8adccb;
+      --ok-soft: #17352c;
+      --warn: #eec36a;
+      --warn-soft: #3a2f11;
+      --warn-line: #a97e1f;
+      --notice-warn-bg: #2e2510;
+      --hero-1: #191f30;
+      --hero-2: #232b41;
+      --hero-text: #c9d1e2;
+      --hero-line: rgba(255, 255, 255, .09);
+      --hero-card: rgba(255, 255, 255, .05);
+      --grab: #4a5468;
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 116px; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 18px);
+    }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner, main { width: min(100%, 980px); margin: 0 auto; }
+    .topbar-inner { padding: 12px 16px 10px; }
+    .brand-row { display: flex; align-items: center; gap: 10px; }
+    .brand {
+      display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1;
+      font-weight: 800; letter-spacing: -.02em;
+    }
+    .brand-mark {
+      width: 36px; height: 36px; border-radius: 11px;
+      display: grid; place-items: center; background: var(--text); color: var(--bg); font-weight: 900;
+    }
+    .brand small { display: block; color: var(--muted); font-weight: 600; font-size: .72rem; letter-spacing: 0; }
+    .install-btn {
+      min-height: 44px; padding: 0 14px; border: 1px solid var(--line); border-radius: 12px;
+      background: var(--surface); font-weight: 750; cursor: pointer; box-shadow: 0 2px 8px rgba(23,32,51,.04);
+    }
+    .install-btn[hidden] { display: none; }
+    .theme-btn {
+      width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 12px;
+      background: var(--surface); cursor: pointer; font-size: 1.15rem; line-height: 1;
+      display: grid; place-items: center; flex: 0 0 auto;
+    }
+    .search-wrap { position: relative; margin-top: 10px; }
+    .search {
+      width: 100%; min-height: 46px; border: 1px solid var(--line); border-radius: 14px;
+      background: var(--surface); color: var(--text); padding: 0 44px 0 42px; box-shadow: 0 3px 12px rgba(23,32,51,.04);
+    }
+    .search::-webkit-search-cancel-button, .search::-webkit-search-decoration { -webkit-appearance: none; appearance: none; }
+    .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+    .clear-search {
+      position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px;
+      border: 0; border-radius: 10px; background: transparent; cursor: pointer; color: var(--muted); font-size: 1.2rem;
+    }
+
+    main { padding: 18px 16px 8px; }
+    .hero {
+      background: linear-gradient(135deg, var(--hero-1) 0%, var(--hero-2) 100%); color: var(--hero-text);
+      border-radius: 24px; padding: 20px; box-shadow: var(--shadow);
+    }
+    .hero h1 { font-size: clamp(1.65rem, 6vw, 2.45rem); line-height: 1.05; margin: 0 0 9px; letter-spacing: -.04em; color: #fff; }
+    .hero p { margin: 0; color: var(--hero-text); max-width: 65ch; }
+    .rule-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 9px; margin-top: 16px; }
+    .rule {
+      border: 1px solid var(--hero-line); background: var(--hero-card); border-radius: 14px;
+      padding: 11px; min-height: 80px;
+    }
+    .rule b { display: block; font-size: .95rem; color: #fff; }
+    .rule span { display: block; margin-top: 4px; color: var(--hero-text); font-size: .82rem; }
+
+    .jump-row { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 14px 0 2px; }
+    .jump-row::-webkit-scrollbar { display: none; }
+    .jump-chip {
+      flex: 0 0 auto; min-height: 40px; display: inline-flex; align-items: center; text-decoration: none;
+      border: 1px solid var(--line); border-radius: 999px; background: var(--surface); padding: 0 13px; font-weight: 700; font-size: .88rem;
+    }
+
+    section { margin-top: 28px; }
+    .section-head { display: flex; gap: 10px; align-items: end; justify-content: space-between; margin-bottom: 11px; }
+    .section-head h2 { margin: 0; font-size: 1.28rem; letter-spacing: -.025em; }
+    .section-head p { margin: 3px 0 0; color: var(--muted); font-size: .85rem; }
+    .section-badge { font-size: .72rem; color: var(--muted); white-space: nowrap; }
+
+    .cards { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    .cards > * { min-width: 0; } /* grid items must shrink so .table-scroll scrolls, not the page */
+    .cheat-card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 15px; box-shadow: 0 3px 14px rgba(23,32,51,.035);
+    }
+    .cheat-card h3 { margin: 0 0 8px; font-size: 1rem; letter-spacing: -.015em; }
+    .cheat-card p { margin: 6px 0; }
+    .muted { color: var(--muted); }
+    .tiny { font-size: .78rem; color: var(--muted); }
+    .example { margin-top: 9px; padding: 10px 11px; background: var(--surface-2); border-radius: 12px; font-size: .92rem; }
+    .example b { font-weight: 800; }
+    .arrow { color: var(--muted); padding: 0 3px; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 9px; }
+    .tap {
+      position: relative; min-height: 40px; border: 1px solid var(--tap-line); background: var(--accent-soft); color: var(--on-accent-soft);
+      border-radius: 999px; padding: 0 11px; cursor: pointer; font-weight: 800; font-size: .83rem;
+    }
+    .tap::after { content: ""; position: absolute; inset: -3px -5px; } /* expand hit area to ~46px without visual bulk */
+    .tap.neutral { background: var(--surface-2); border-color: var(--line); color: var(--text); }
+    .tap.case { min-height: 44px; padding: 0 14px; }
+
+    .table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; }
+    table { width: 100%; border-collapse: collapse; min-width: 560px; background: var(--surface); font-size: .85rem; }
+    th, td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+    th { background: var(--surface-2); font-size: .76rem; color: var(--muted); text-transform: uppercase; letter-spacing: .02em; }
+    tr:last-child td { border-bottom: 0; }
+    td.hot { font-weight: 850; color: var(--on-accent-soft); }
+
+    .formula {
+      display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 10px 0 4px;
+      font-weight: 780;
+    }
+    .slot { padding: 6px 8px; border-radius: 9px; background: var(--surface-2); }
+    .slot.verb { background: var(--ok-soft); color: var(--ok); }
+    .slot.end { background: var(--warn-soft); color: var(--warn); }
+    .slot.sub { background: var(--accent-soft); color: var(--on-accent-soft); }
+
+    .notice { border-left: 4px solid var(--accent); background: var(--accent-soft); padding: 10px 12px; border-radius: 10px; font-size: .86rem; }
+    .warning { border-left-color: var(--warn-line); background: var(--notice-warn-bg); }
+
+    .practice-q { padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .practice-q:last-child { border-bottom: 0; }
+    .answer { margin-top: 8px; padding: 9px 10px; border-radius: 10px; background: var(--ok-soft); color: var(--ok); font-weight: 700; }
+    .answer[hidden] { display: none; }
+
+    .no-results { display: none; margin: 24px 0; padding: 18px; border: 1px dashed var(--line); border-radius: var(--radius); text-align: center; color: var(--muted); }
+
+    /* While searching, results come first: hide the hero and jump chips
+       (their anchors point at sections that may be filtered out). */
+    body.searching .hero, body.searching .jump-row { display: none; }
+
+    .bottom-nav {
+      position: fixed; left: 50%; transform: translateX(-50%); bottom: 0; z-index: 30;
+      width: min(100%, 980px); height: calc(var(--nav-h) + env(safe-area-inset-bottom));
+      display: grid; grid-template-columns: repeat(5,1fr); align-items: start; padding: 8px 8px env(safe-area-inset-bottom);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      background: color-mix(in srgb, var(--surface) 94%, transparent);
+      border: 1px solid var(--line); border-bottom: 0; border-radius: 18px 18px 0 0; box-shadow: 0 -10px 30px rgba(23,32,51,.08);
+    }
+    .nav-item {
+      min-height: 54px; border: 0; background: transparent; border-radius: 12px; text-decoration: none;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: var(--muted); font-size: .68rem; font-weight: 750;
+    }
+    .nav-item .ico { font-size: 1rem; font-weight: 900; }
+    .nav-item.active { background: var(--accent-soft); color: var(--on-accent-soft); }
+
+    dialog {
+      width: min(100% - 18px, 620px); max-height: min(78vh, 720px); margin: auto auto 8px;
+      border: 0; border-radius: 22px 22px 16px 16px; padding: 0; color: var(--text); background: var(--surface); box-shadow: 0 24px 70px rgba(23,32,51,.3);
+    }
+    dialog::backdrop { background: var(--backdrop); }
+    .sheet { padding: 10px 16px 18px; overflow: auto; max-height: min(78vh,720px); }
+    .grab { width: 42px; height: 5px; border-radius: 999px; background: var(--grab); margin: 2px auto 12px; }
+    .sheet-head { display: flex; align-items: start; gap: 12px; }
+    .sheet-head > div { flex: 1; }
+    .sheet h2 { margin: 0; font-size: 1.22rem; }
+    .sheet .lead { color: var(--muted); margin: 5px 0 12px; }
+    .close-sheet { width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface); cursor: pointer; font-size: 1.2rem; }
+    .detail-block { margin-top: 11px; padding: 11px; background: var(--surface-2); border-radius: 12px; }
+    .detail-block b { display: block; margin-bottom: 4px; }
+
+    .footer { color: var(--muted); font-size: .78rem; text-align: center; padding: 28px 0 10px; }
+
+    @media (min-width: 720px) {
+      .topbar-inner { padding-left: 24px; padding-right: 24px; }
+      main { padding-left: 24px; padding-right: 24px; }
+      .cards.two { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .cards.three { grid-template-columns: repeat(3, minmax(0,1fr)); }
+      .rule-grid { grid-template-columns: repeat(4, minmax(0,1fr)); }
+      dialog { margin-bottom: 24px; }
+    }
+
+    @media print {
+      .topbar, .bottom-nav, .jump-row, .chips, .no-results, dialog { display: none !important; }
+      body { padding: 0; background: #fff; color: #000; }
+      .cheat-card { break-inside: avoid; box-shadow: none; }
+      .table-scroll { overflow: visible; }
+      table { min-width: 0; }
+      .answer[hidden] { display: block; }
+      .hero { color: #000; background: none; box-shadow: none; }
+      .hero h1, .rule b { color: #000; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.001ms !important; animation-duration: 0.001ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand-row">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">EN</div>
+          <div>English Cheat<small>RU → EN · A1–B1</small></div>
+        </div>
+        <button class="theme-btn" id="themeBtn" type="button" aria-label="Тема: системная">◐</button>
+        <button class="install-btn" id="installBtn" type="button">Установить</button>
+      </div>
+      <div class="search-wrap">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="search" class="search" type="search" autocomplete="off" enterkeyhint="search" placeholder="Поиск: present, the, if, must…" aria-label="Поиск по шпаргалке" />
+        <button id="clearSearch" class="clear-search" type="button" aria-label="Очистить поиск" hidden>×</button>
+      </div>
+    </div>
+  </header>
+
+  <noscript>
+    <style>
+      .tap, .install-btn, .clear-search, .theme-btn { display: none !important; }
+      .answer[hidden] { display: block; }
+    </style>
+    <div class="notice" style="margin:12px 16px 0">Поиск, детали и установка приложения требуют JavaScript. Всё содержимое шпаргалки доступно ниже без него.</div>
+  </noscript>
+
+  <main>
+    <section class="hero" id="start" data-section>
+      <h1>Английская грамматика без листания учебника</h1>
+      <p>Сначала ищи <b>маркер</b>: сигнальное слово времени, артикль, союз или модальный глагол. Потом — форму и порядок слов.</p>
+      <div class="rule-grid">
+        <div class="rule"><b>Порядок слов</b><span>кто → делает → что</span></div>
+        <div class="rule"><b>Вопросы</b><span>Do / Does / Did</span></div>
+        <div class="rule"><b>Времена</b><span>решают сигнальные слова</span></div>
+        <div class="rule"><b>Артикли</b><span>a/an = один из · the = этот</span></div>
+      </div>
+    </section>
+
+    <nav class="jump-row" aria-label="Быстрые переходы">
+      <a class="jump-chip" href="#articles">Артикли</a>
+      <a class="jump-chip" href="#pronouns">Местоимения</a>
+      <a class="jump-chip" href="#order">Порядок слов</a>
+      <a class="jump-chip" href="#tenses">Времена</a>
+      <a class="jump-chip" href="#verbs">Глаголы</a>
+      <a class="jump-chip" href="#preps">Предлоги</a>
+      <a class="jump-chip" href="#nouns">Слова</a>
+      <a class="jump-chip" href="#conditionals">Условные</a>
+      <a class="jump-chip" href="#practice">Повтор</a>
+    </nav>
+
+    <div id="noResults" class="no-results">Ничего не найдено. Попробуй “present”, “the”, “if”, “must”, “did”.</div>
+
+    <section id="articles" data-section>
+      <div class="section-head"><div><h2>1. Артикли</h2><p>Главный маркер: известно, о чём речь, или нет.</p></div><span class="section-badge">Articles</span></div>
+      <div class="cards two">
+        <article class="cheat-card" data-search="article a an the артикли неопределенный определенный нулевой">
+          <h3>a / an / the / —</h3>
+          <div class="formula"><span class="slot">a / an</span><span class="arrow">=</span><span class="slot">один из многих</span></div>
+          <div class="formula"><span class="slot sub">the</span><span class="arrow">=</span><span class="slot">конкретно этот</span></div>
+          <div class="example"><b>I have a car.</b> Это какая-то машина.<br><b>The car is red.</b> Уже та самая.</div>
+          <div class="chips"><button class="tap" data-detail="a-an">a или an?</button><button class="tap" data-detail="the-article">Когда the</button><button class="tap" data-detail="zero-article">Когда без артикля</button></div>
+        </article>
+        <article class="cheat-card" data-search="school hospital zero article institution ошибки русскоговорящих">
+          <h3>Ловушки для русскоговорящих</h3>
+          <p>Русский часто обходится без артикля — английский нет:</p>
+          <div class="example"><b>I go to school.</b> Я учусь (роль), не «иду к зданию».<br><b>She plays the piano.</b> Инструмент — с <b>the</b>.</div>
+          <div class="chips"><button class="tap" data-detail="school-exceptions">Школа, кровать, тюрьма</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="pronouns" data-section>
+      <div class="section-head"><div><h2>2. Местоимения</h2><p>Четыре формы на каждое лицо — не путать роли.</p></div><span class="section-badge">Pronouns</span></div>
+      <article class="cheat-card" data-search="pronouns personal possessive личные местоимения притяжательные my mine his him">
+        <h3>Личные и притяжательные</h3>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Кто (Nom.)</th><th>Кого (Obj.)</th><th>Чей</th><th>Вещь чья</th></tr></thead>
+            <tbody>
+              <tr><td>I</td><td>me</td><td>my</td><td class="hot">mine</td></tr>
+              <tr><td>you</td><td>you</td><td>your</td><td class="hot">yours</td></tr>
+              <tr><td>he</td><td class="hot">him</td><td>his</td><td>his</td></tr>
+              <tr><td>she</td><td class="hot">her</td><td>her</td><td class="hot">hers</td></tr>
+              <tr><td>it</td><td>it</td><td class="hot">its</td><td>—</td></tr>
+              <tr><td>we</td><td class="hot">us</td><td>our</td><td class="hot">ours</td></tr>
+              <tr><td>they</td><td class="hot">them</td><td>their</td><td class="hot">theirs</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="chips"><button class="tap" data-detail="my-mine">my или mine?</button><button class="tap" data-detail="reflexive">myself / yourself…</button></div>
+      </article>
+    </section>
+
+    <section id="order" data-section>
+      <div class="section-head"><div><h2>3. Порядок слов</h2><p>Английский не позволяет переставлять, как русский.</p></div><span class="section-badge">Word order</span></div>
+      <div class="cards two">
+        <article class="cheat-card" data-search="svo word order порядок слов подлежащее сказуемое дополнение строгий">
+          <h3>SVO — строгий</h3>
+          <div class="formula"><span class="slot">Кто</span><span class="arrow">→</span><span class="slot verb">делает</span><span class="arrow">→</span><span class="slot">что</span></div>
+          <div class="example"><b>I love you.</b> Порядок фиксирует роли.<br>Не: <s>You love I.</s></div>
+          <div class="chips"><button class="tap" data-detail="svo">Чем это отличается от русского</button></div>
+        </article>
+        <article class="cheat-card" data-search="do does did questions вопросы вспомогательный inversion">
+          <h3>Вопросы: Do / Does / Did</h3>
+          <div class="formula"><span class="slot sub">Do</span><span class="slot">you</span><span class="slot verb">like</span><span class="slot">tea?</span></div>
+          <p>После Do/Does/Did глагол — в <b>базовой форме</b>.</p>
+          <div class="example"><b>Does she work?</b> Не: <s>Does she works?</s><br><b>Where do you live?</b></div>
+          <div class="chips"><button class="tap" data-detail="do-questions">Как строить и где ошибаются</button></div>
+        </article>
+        <article class="cheat-card" data-search="adverbs frequency always usually never often место наречий частоты">
+          <h3>Всегда / Обычно / Никогда</h3>
+          <p>Наречия частоты — <b>перед смысловым глаголом</b>, но <b>после be</b>.</p>
+          <div class="example"><b>I always drink</b> coffee.<br><b>He is always late.</b></div>
+          <div class="chips"><button class="tap" data-detail="frequency">Шкала always → never</button></div>
+        </article>
+        <article class="cheat-card" data-search="where you live mistake omission do error типичные ошибки вопрос без do">
+          <h3>Ошибка №1 русскоговорящих</h3>
+          <div class="example"><s>Where you work?</s> → <b>Where do you work?</b><br><s>She like tea?</s> → <b>Does she like tea?</b></div>
+          <p class="tiny">В русском вопрос задаётся интонацией — в английском нужен вспомогательный глагол.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="tenses" data-section>
+      <div class="section-head"><div><h2>4. Времена</h2><p>Сигнальные слова подсказывают время.</p></div><span class="section-badge">Tenses</span></div>
+      <div class="cards two">
+        <article class="cheat-card" data-search="present simple время настоящее простое every day usually">
+          <h3>Present Simple</h3>
+          <div class="formula"><span class="slot">V</span><span class="arrow">+</span><span class="slot end">s (3 л.)</span></div>
+          <p>Привычки, факты, расписания. Маркеры: <b>every day, usually, always, often</b>.</p>
+          <div class="example"><b>She works</b> every day.<br><b>He doesn't work</b> on Sundays.</div>
+          <div class="chips"><button class="tap" data-detail="present-simple">Когда и как</button></div>
+        </article>
+        <article class="cheat-card" data-search="present continuous ing now moment в процессе">
+          <h3>Present Continuous</h3>
+          <div class="formula"><span class="slot">am / is / are</span><span class="arrow">+</span><span class="slot end">V-ing</span></div>
+          <p>Сейчас / в этот период. Маркеры: <b>now, at the moment, Look!, Listen!</b>.</p>
+          <div class="example"><b>I'm reading</b> now.<br><b>Look! It's raining.</b></div>
+          <div class="chips"><button class="tap" data-detail="present-continuous">Simple vs Continuous</button></div>
+        </article>
+        <article class="cheat-card" data-search="past simple yesterday yesterday вчерашний V2 вторая форма">
+          <h3>Past Simple</h3>
+          <div class="formula"><span class="slot">V2</span><span class="arrow">/</span><span class="slot">did + V1</span></div>
+          <p>Завершённые события прошлого. Маркеры: <b>yesterday, last week, in 2010, ago</b>.</p>
+          <div class="example"><b>I saw</b> him yesterday.<br><b>Did you see</b> him?</div>
+          <div class="chips"><button class="tap" data-detail="past-simple">Правильные и неправильные</button></div>
+        </article>
+        <article class="cheat-card" data-search="present perfect have has v3 just already yet ever результат опыт">
+          <h3>Present Perfect</h3>
+          <div class="formula"><span class="slot">have / has</span><span class="arrow">+</span><span class="slot end">V3</span></div>
+          <p>Результат сейчас / опыт без времени. Маркеры: <b>just, already, yet, ever, never, recently</b>.</p>
+          <div class="example"><b>I have lost</b> my keys (не могу зайти).<br><b>Have you ever been</b> to London?</div>
+          <div class="chips"><button class="tap" data-detail="present-perfect">Почему этого времени нет в русском</button></div>
+        </article>
+        <article class="cheat-card" data-search="present perfect vs past simple разница вчера just выбор времени">
+          <h3>Perfect vs Past Simple</h3>
+          <p><b>Время названо?</b> → Past Simple. <b>Результат/опыт сейчас?</b> → Perfect.</p>
+          <div class="example"><b>I saw</b> this film <b>yesterday</b>.<br><b>I have seen</b> this film <b>(уже знаю его)</b>.</div>
+          <div class="chips"><button class="tap" data-detail="pp-vs-past">Разбор на парах</button></div>
+        </article>
+        <article class="cheat-card" data-search="future will going to будущее план решение прогноз">
+          <h3>Future: will / going to</h3>
+          <div class="formula"><span class="slot">will + V1</span><span class="arrow">·</span><span class="slot">be going to + V1</span></div>
+          <p><b>will</b> — решение сейчас, прогноз. <b>going to</b> — план/намерение, очевидное следствие.</p>
+          <div class="example"><b>I'll help</b> you (только что решил).<br><b>I'm going to visit</b> Paris (план).</div>
+          <div class="chips"><button class="tap" data-detail="future">Как выбрать</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="verbs" data-section>
+      <div class="section-head"><div><h2>5. Глагольные конструкции</h2><p>Модальные, пассив, V-ing vs to V.</p></div><span class="section-badge">Verbs</span></div>
+      <div class="cards two">
+        <article class="cheat-card" data-search="modal can could must should may might модальные глаголы">
+          <h3>Модальные глаголы</h3>
+          <div class="formula"><span class="slot sub">modal</span><span class="arrow">+</span><span class="slot verb">V1 без to</span></div>
+          <p><b>can/could</b> — умею/просьба · <b>must</b> — должен · <b>should</b> — совет · <b>may/might</b> — возможно.</p>
+          <div class="example"><b>Can you help</b> me? · <b>You should sleep</b> more.</div>
+          <div class="chips"><button class="tap" data-detail="modals-en">Все значения</button></div>
+        </article>
+        <article class="cheat-card" data-search="mustnt don't have to запрещено не обязательно must not">
+          <h3>mustn't ≠ don't have to</h3>
+          <p><b>mustn't</b> = запрещено. <b>don't have to</b> = не обязательно.</p>
+          <div class="example"><b>You mustn't smoke</b> here.<br><b>You don't have to come</b> early.</div>
+          <div class="chips"><button class="tap" data-detail="mustnt">Почему это путают</button></div>
+        </article>
+        <article class="cheat-card" data-search="passive voice пассив страдательный be v3 built">
+          <h3>Пассив</h3>
+          <div class="formula"><span class="slot">be</span><span class="arrow">+</span><span class="slot end">V3</span></div>
+          <div class="example"><b>The house was built</b> in 1930.<br>Кто построил — не важно.</div>
+          <div class="chips"><button class="tap" data-detail="passive-en">Во сколько и в каком времени</button></div>
+        </article>
+        <article class="cheat-card" data-search="gerund infinitive enjoy finish want decide v-ing to v">
+          <h3>V-ing или to V?</h3>
+          <p><b>enjoy, finish, mind</b> + V-ing · <b>want, decide, hope</b> + to V.</p>
+          <div class="example"><b>I enjoy reading.</b> · <b>I want to read.</b></div>
+          <div class="chips"><button class="tap" data-detail="gerund-infinitive">Список частых глаголов</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="preps" data-section>
+      <div class="section-head"><div><h2>6. Предлоги</h2><p>in / on / at + предлоги, которые не переводятся дословно.</p></div><span class="section-badge">Prepositions</span></div>
+      <div class="cards two">
+        <article class="cheat-card" data-search="prepositions time in on at время предлоги месяцы дни часы">
+          <h3>Время: in / on / at</h3>
+          <div class="formula"><span class="slot sub">in</span><span class="slot">месяцы, годы</span><span class="slot sub">on</span><span class="slot">дни, даты</span><span class="slot sub">at</span><span class="slot">часы, night</span></div>
+          <div class="example">in July · in 2026 · on Monday · on the 5th of May · at 7 o'clock · at night</div>
+          <div class="chips"><button class="tap" data-detail="time-preps">Полная модель</button></div>
+        </article>
+        <article class="cheat-card" data-search="prepositions place in on at место внутри поверхности точка">
+          <h3>Место: in / on / at</h3>
+          <div class="formula"><span class="slot sub">in</span><span class="slot">внутри</span><span class="slot sub">on</span><span class="slot">поверхность</span><span class="slot sub">at</span><span class="slot">точка</span></div>
+          <div class="example">in the room · on the table · at the bus stop · at the door</div>
+          <div class="chips"><button class="tap" data-detail="place-preps">Как не перепутать</button></div>
+        </article>
+        <article class="cheat-card" data-search="dependent prepositions depend on interested in listen to afraid of good at wait for зависимые предлоги ошибки">
+          <h3>Предлоги-ловушки</h3>
+          <p>Русский предлог ≠ английский. Учить парами:</p>
+          <div class="chips">
+            <button class="tap neutral" data-detail="dependent-preps">depend <b>on</b></button>
+            <button class="tap neutral" data-detail="dependent-preps">interested <b>in</b></button>
+            <button class="tap neutral" data-detail="dependent-preps">listen <b>to</b></button>
+            <button class="tap neutral" data-detail="dependent-preps">afraid <b>of</b></button>
+            <button class="tap neutral" data-detail="dependent-preps">good <b>at</b></button>
+            <button class="tap neutral" data-detail="dependent-preps">wait <b>for</b></button>
+          </div>
+          <div class="example">Зависит <b>от</b> → depend <b>on</b> (не from!)</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="nouns" data-section>
+      <div class="section-head"><div><h2>7. Слова: числа и сравнения</h2><p>Множественное число, исчисляемость, степени сравнения.</p></div><span class="section-badge">Nouns</span></div>
+      <div class="cards two">
+        <article class="cheat-card" data-search="plural nouns множественное число s es ies irregular неправильные men children">
+          <h3>Множественное число</h3>
+          <p>Обычно <b>+s</b>; после шипящих/свистящих <b>+es</b>; согласная + y → <b>-ies</b>.</p>
+          <div class="example">cats · boxes · cities<br>Исключения: <b>man–men, child–children, foot–feet, tooth–teeth</b></div>
+          <div class="chips"><button class="tap" data-detail="plurals">Правила и исключения</button></div>
+        </article>
+        <article class="cheat-card" data-search="countable uncountable much many few little advice news исчисляемые">
+          <h3>Исчисляемое / нет</h3>
+          <p><b>many/few</b> + исчисляемые · <b>much/little</b> + неисчисляемые.</p>
+          <div class="example">much time · many friends<br><b>advice, news, money</b> — обычно как единственное число</div>
+          <div class="chips"><button class="tap" data-detail="countable">Как считать неисчисляемое</button></div>
+        </article>
+        <article class="cheat-card" data-search="some any некоторые любые утверждение отрицание вопрос">
+          <h3>some / any</h3>
+          <div class="formula"><span class="slot">some</span><span class="arrow">+</span><span class="slot">утверждение</span><span class="slot">any</span><span class="arrow">+</span><span class="slot end">вопрос / отрицание</span></div>
+          <div class="example"><b>I have some money.</b><br><b>Do you have any questions?</b> · <b>I don't have any money.</b></div>
+          <div class="chips"><button class="tap" data-detail="some-any">Нюансы</button></div>
+        </article>
+        <article class="cheat-card" data-search="comparative superlative сравнительная превосходная er est more most better best">
+          <h3>Сравнение</h3>
+          <div class="formula"><span class="slot">big — bigger — the biggest</span></div>
+          <p>Короткие: <b>-er / the -est</b>. Длинные: <b>more / the most</b>. Сравнение — через <b>than</b>.</p>
+          <div class="example"><b>She is taller than</b> me.<br><b>good — better — the best</b></div>
+          <div class="chips"><button class="tap" data-detail="comparative">Правила и исключения</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="conditionals" data-section>
+      <div class="section-head"><div><h2>8. Условные предложения</h2><p>Формула одинаковая: If + условие, + следствие.</p></div><span class="section-badge">If-clauses</span></div>
+      <div class="cards two">
+        <article class="cheat-card" data-search="conditional 1 first real условное первое настоящее will реальное">
+          <h3>Type 1 — реальное</h3>
+          <div class="formula"><span class="slot sub">If + Present</span><span class="arrow">,</span><span class="slot verb">will + V1</span></div>
+          <div class="example"><b>If it rains, we will stay</b> at home.</div>
+          <p class="tiny">После <b>if</b> — не will! Will живёт в следствии.</p>
+          <div class="chips"><button class="tap" data-detail="cond1">Разбор</button></div>
+        </article>
+        <article class="cheat-card" data-search="conditional 2 second unreal нереальное would were если бы сейчас">
+          <h3>Type 2 — нереальное сейчас</h3>
+          <div class="formula"><span class="slot sub">If + Past</span><span class="arrow">,</span><span class="slot verb">would + V1</span></div>
+          <div class="example"><b>If I had time, I would help</b> you.<br><b>If I were</b> you… (were для всех лиц)</div>
+          <div class="chips"><button class="tap" data-detail="cond2">Почему were</button></div>
+        </article>
+        <article class="cheat-card" data-search="conditional 0 zero законы always настоящее условное нулевое">
+          <h3>Type 0 — всегда так</h3>
+          <div class="formula"><span class="slot sub">If + Present</span><span class="arrow">,</span><span class="slot verb">Present</span></div>
+          <div class="example"><b>If you heat ice, it melts.</b> Законы, правила, привычные связи.</div>
+          <div class="chips"><button class="tap" data-detail="cond0">Когда выбирать 0 вместо 1</button></div>
+        </article>
+        <article class="cheat-card" data-search="conditional 3 third past regret упущенное прошлое would have">
+          <h3>Type 3 — прошлое нереальное</h3>
+          <div class="formula"><span class="slot sub">If + had V3</span><span class="arrow">,</span><span class="slot verb">would have V3</span></div>
+          <div class="example"><b>If I had known, I would have called.</b> Сожаление о прошлом.</div>
+          <p class="tiny">Для B1+ — распознавать достаточно.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="practice" data-section>
+      <div class="section-head"><div><h2>9. Быстрый повтор</h2><p>Три вопроса без отдельного “режима урока”.</p></div><span class="section-badge">30 sec</span></div>
+      <article class="cheat-card" data-search="practice quiz повтор тест">
+        <div class="practice-q">
+          <b>1. She ___ (go) to school every day.</b> Какое время и форма?
+          <div class="chips"><button class="tap neutral reveal" data-target="a1" aria-expanded="false" aria-controls="a1">Показать</button></div>
+          <div class="answer" id="a1" hidden>Present Simple, 3-е лицо: <b>goes</b>. Маркер — every day.</div>
+        </div>
+        <div class="practice-q">
+          <b>2. I ___ (see) this film yesterday.</b>
+          <div class="chips"><button class="tap neutral reveal" data-target="a2" aria-expanded="false" aria-controls="a2">Показать</button></div>
+          <div class="answer" id="a2" hidden>Past Simple: <b>saw</b>. Маркер — yesterday: время названо.</div>
+        </div>
+        <div class="practice-q">
+          <b>3. If it rains, we ___ (stay) at home.</b>
+          <div class="chips"><button class="tap neutral reveal" data-target="a3" aria-expanded="false" aria-controls="a3">Показать</button></div>
+          <div class="answer" id="a3" hidden>Conditional 1: <b>will stay</b>. will — в следствии, не после if.</div>
+        </div>
+      </article>
+    </section>
+
+    <section id="install-help" data-section>
+      <div class="section-head"><div><h2>Установка на телефон</h2><p>Это PWA: после первой загрузки работает и офлайн.</p></div></div>
+      <article class="cheat-card" data-search="install pwa add home screen iphone android установка телефон офлайн">
+        <p><b>Android / Chrome:</b> нажми “Установить” сверху, если кнопка доступна, или используй меню браузера → Install app / Add to Home screen.</p>
+        <p><b>iPhone / Safari:</b> Share → Add to Home Screen.</p>
+        <div class="notice warning">Для настоящей установки и offline-кэша страницу нужно открыть по <b>HTTPS</b> (или localhost). Если просто открыть HTML-файл из Files, service worker не запустится.</div>
+      </article>
+    </section>
+
+    <div class="footer">English Cheat · <a href="../">все шпаргалки</a> · план контента: <code>english/SITE_PLAN.md</code></div>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Основная навигация">
+    <a class="nav-item active" href="#articles" data-nav="articles" aria-current="true"><span class="ico">a/the</span><span>Артикли</span></a>
+    <a class="nav-item" href="#tenses" data-nav="tenses"><span class="ico">V+s</span><span>Времена</span></a>
+    <a class="nav-item" href="#order" data-nav="order"><span class="ico">SVO</span><span>Порядок</span></a>
+    <a class="nav-item" href="#verbs" data-nav="verbs"><span class="ico">can</span><span>Глаголы</span></a>
+    <a class="nav-item" href="#preps" data-nav="preps"><span class="ico">in/on</span><span>Предлоги</span></a>
+  </nav>
+
+  <dialog id="detailDialog" aria-labelledby="detailTitle">
+    <div class="sheet">
+      <div class="grab" aria-hidden="true"></div>
+      <div class="sheet-head">
+        <div><h2 id="detailTitle"></h2><p class="lead" id="detailLead"></p></div>
+        <button class="close-sheet" id="closeDialog" aria-label="Закрыть">×</button>
+      </div>
+      <div id="detailBody"></div>
+    </div>
+  </dialog>
+
+  <script>
+    const DETAILS = {
+      'a-an': {title:'a или an', lead:'Выбор по первому ЗВУКУ, не по букве.', body:`<div class="detail-block"><b>Правило</b>a + согласный звук, an + гласный звук: a cat, an apple.</div><div class="detail-block"><b>Ловушки</b>an hour (h немая) · a university (произносится «ю») · an MBA (эм).</div>`},
+      'the-article': {title:'Когда the', lead:'Собеседник понимает, о чём именно речь.', body:`<div class="detail-block"><b>Сигналы</b>Второе упоминание · единственный в контексте (the sun, the kitchen в нашем доме) · сверхлатив (the best).</div><div class="detail-block"><b>Пример</b>I bought <i>a</i> book. <i>The</i> book is interesting.</div>`},
+      'zero-article': {title:'Без артикля', lead:'Обобщения и абстракции.', body:`<div class="detail-block"><b>Обобщение множественным</b>Dogs are loyal. Coffee is expensive.</div><div class="detail-block"><b>Группы</b>Языки (English), приёмы пищи (at lunch), виды спорта (play football), имена людей/городов.</div><div class="detail-block"><b>Но</b>Инструмент — с the: play the piano.</div>`},
+      'school-exceptions': {title:'Школа, кровать, тюрьма', lead:'Учреждение как роль — без артикля, как здание — с the.', body:`<div class="detail-block"><b>Роль</b>go to school (учиться) · go to bed (спать) · in hospital (лечиться, брит.).</div><div class="detail-block"><b>Здание/место</b>go to the school (родителя зовут) · meet at the hospital.</div>`},
+      'my-mine': {title:'my или mine', lead:'my + существительное, mine — само по себе.', body:`<div class="detail-block"><b>Сравни</b><i>my</i> book = the book is <i>mine</i>.</div><div class="detail-block"><b>Ещё</b>a friend of mine — «один из моих друзей».</div>`},
+      reflexive: {title:'Возвратные', lead:'-self / -selves: действие на себя.', body:`<div class="detail-block"><b>Формы</b>myself, yourself, himself, herself, itself, ourselves, themselves.</div><div class="detail-block"><b>Пример</b>I hurt myself. · Help yourself!</div>`},
+      svo: {title:'Чем отличается от русского', lead:'В русском roles задают окончания, в английском — позиция.', body:`<div class="detail-block"><b>Русский</b>«Машу любит Ваня» — падежи спасают порядок.</div><div class="detail-block"><b>Английский</b>«Masha loves Vanya» — кто первый, тот и субъект. Переставил — поменял смысл.</div>`},
+      'do-questions': {title:'Как строить вопросы', lead:'Вспомогательный глагол вперёд, смысловой — базовая форма.', body:`<div class="detail-block"><b>Yes/No</b>Do/Does/Did + подлежащее + V1?: Does he work here?</div><div class="detail-block"><b>W-вопрос</b>W-word + do/does/did…: Where did you go?</div><div class="detail-block"><b>Исключение</b>Кто/что — субъект: Who lives here? (без do).</div><div class="detail-block"><b>Частая ошибка</b>Did you saw → Did you <b>see</b>.</div>`},
+      frequency: {title:'Шкала частоты', lead:'always → usually → often → sometimes → rarely → never.', body:`<div class="detail-block"><b>Позиция</b>Перед смысловым глаголом, после be: He <b>is always</b> late. · I <b>always drive</b>.</div><div class="detail-block"><b>Крайности</b>never и rarely уже отрицательные — второй not не нужен.</div>`},
+      'present-simple': {title:'Present Simple', lead:'Привычки, факты, расписания.', body:`<div class="detail-block"><b>Форма</b>V; 3-е лицо ед.ч. +s/-es (watches, studies).</div><div class="detail-block"><b>Отрицание/вопрос</b>don't/doesn't + V1: She doesn't smoke.</div><div class="detail-block"><b>Маркеры</b>every day, usually, always, on Mondays, never.</div>`},
+      'present-continuous': {title:'Simple vs Continuous', lead:'Факт/привычка против процесса сейчас.', body:`<div class="detail-block"><b>Simple</b>I work at Google (работаю вообще).</div><div class="detail-block"><b>Continuous</b>I'm working now (в процессе). am/is/are + V-ing.</div><div class="detail-block"><b>Не с continuous</b>know, like, want, need — состояния, обычно Simple.</div>`},
+      'past-simple': {title:'Правильные и неправильные', lead:'V2 одинакова для всех лиц.', body:`<div class="detail-block"><b>Правильные</b>+ed: work → worked.</div><div class="detail-block"><b>Неправильные</b>надо знать: go–went–gone, see–saw–seen, have–had–had.</div><div class="detail-block"><b>Вопрос/отрицание</b>did + V1: Did you go? · I didn't go.</div>`},
+      'present-perfect': {title:'Present Perfect', lead:'Прошлое, важное для настоящего.', body:`<div class="detail-block"><b>Суть</b>Результат сейчас или опыт без указания времени: I've lost my keys (всё ещё нет ключей).</div><div class="detail-block"><b>Маркеры</b>just, already, yet, ever, never, so far, recently.</div><div class="detail-block"><b>Форма</b>have/has + V3 (третья форма).</div>`},
+      'pp-vs-past': {title:'Perfect vs Past Simple', lead:'Есть точное время в прошлом → Past Simple.', body:`<div class="detail-block"><b>Past Simple</b>I saw him yesterday / in 2020 / last week.</div><div class="detail-block"><b>Perfect</b>I have seen him (когда — не важно; важно, что знаю его).</div><div class="detail-block"><b>Тест</b>Можешь спросить «когда?» и ответ назван в предложении? — Past Simple.</div>`},
+      future: {title:'will или going to', lead:'Решение сейчас против плана.', body:`<div class="detail-block"><b>will</b>Решил в момент речи или прогноз: I'll help you. · It will rain.</div><div class="detail-block"><b>going to</b>План до этого или очевидное: I'm going to study tonight. · Look at the clouds — it's going to rain.</div><div class="detail-block"><b>Расписание</b>Present Simple для расписаний: The train leaves at 6.</div>`},
+      'modals-en': {title:'Модальные', lead:'После модального — V1 без to.', body:`<div class="detail-block"><b>can/could</b>способность, просьба, разрешение.</div><div class="detail-block"><b>must</b>внутренняя необходимость, строгий вывод: You must stop.</div><div class="detail-block"><b>have to</b>внешнее правило: I have to wear a uniform.</div><div class="detail-block"><b>should</b>совет: You should rest.</div><div class="detail-block"><b>may/might</b>возможность/разрешение: It might rain.</div>`},
+      mustnt: {title:'mustn\'t vs don\'t have to', lead:'Оба про «не надо», но смысл противоположный.', body:`<div class="detail-block"><b>mustn't</b>Запрещено: You mustn't tell anyone.</div><div class="detail-block"><b>don't have to</b>Не обязательно (можно, но не нужно): You don't have to come.</div><div class="detail-block"><b>Почему путают</b>В русском «не должен» часто означает именно «не обязательно».</div>`},
+      'passive-en': {title:'Пассив', lead:'be (в нужном времени) + V3.', body:`<div class="detail-block"><b>Времена</b>is built (сейчас) · was built (прошлое) · will be built (будущее) · has been built (perfect).</div><div class="detail-block"><b>Кем/чем</b>…by the workers, if needed.</div>`},
+      'gerund-infinitive': {title:'V-ing vs to V', lead:'Какой глагол впереди — такой хвост.', body:`<div class="detail-block"><b>+ V-ing</b>enjoy, finish, mind, suggest, avoid, keep.</div><div class="detail-block"><b>+ to V</b>want, decide, hope, plan, promise, need.</div><div class="detail-block"><b>Меняют смысл</b>stop smoking (бросить) ≠ stop to smoke (остановиться, чтобы).</div>`},
+      'time-preps': {title:'Время: in / on / at', lead:'От длинного к точному.', body:`<div class="detail-block"><b>in</b>Месяцы, годы, сезоны, части дня: in July, in 2026, in the morning.</div><div class="detail-block"><b>on</b>Дни и даты: on Monday, on 5 May, on my birthday.</div><div class="detail-block"><b>at</b>Точки времени: at 7 o'clock, at night, at the weekend (брит.).</div>`},
+      'place-preps': {title:'Место: in / on / at', lead:'Объём, поверхность, точка.', body:`<div class="detail-block"><b>in</b>Внутри объёма: in the kitchen, in Paris, in a car.</div><div class="detail-block"><b>on</b>Поверхность/линия: on the table, on the wall, on the bus.</div><div class="detail-block"><b>at</b>Точка/событие: at the door, at school, at the party.</div>`},
+      'dependent-preps': {title:'Предлоги-ловушки', lead:'Не переводить с русского — запоминать пару.', body:`<div class="detail-block"><b>Частые</b>depend on · interested in · listen to · afraid of · good at · wait for · arrive in (город) / at (место) · apologize for.</div><div class="detail-block"><b>Ошибка №1</b>«зависит от» → depend <b>on</b>, не from.</div>`},
+      plurals: {title:'Множественное число', lead:'+s по умолчанию, но есть правила и исключения.', body:`<div class="detail-block"><b>Правила</b>+s · после -s/-sh/-ch/-x/-o часто +es (boxes, tomatoes) · согласная+y → ies (cities).</div><div class="detail-block"><b>Исключения</b>man–men · woman–women · child–children · foot–feet · tooth–teeth · mouse–mice · person–people.</div><div class="detail-block"><b>Не меняются</b>fish, sheep, aircraft.</div>`},
+      countable: {title:'Исчисляемость', lead:'Можно ли «посчитать» слово напрямую.', body:`<div class="detail-block"><b>Исчисляемые</b>many friends, a few books, few mistakes.</div><div class="detail-block"><b>Неисчисляемые</b>much time, a little money, little news.</div><div class="detail-block"><b>Счётная форма</b>a piece of advice / a cup of coffee / a news item.</div><div class="detail-block"><b>Ловушки</b>advice, information, news, money — без -s и с it.</div>`},
+      'some-any': {title:'some / any', lead:'some — утверждения, any — вопросы и отрицания.', body:`<div class="detail-block"><b>База</b>I have some money. · Do you have any money? · I don't have any money.</div><div class="detail-block"><b>any = любой</b>В утверждениях: Take any seat.</div><div class="detail-block"><b>Просьба</b>В вопросах-просьбах some: Can I have some water?</div>`},
+      comparative: {title:'Степени сравнения', lead:'Короче слово — суффикс, длиннее — more/most.', body:`<div class="detail-block"><b>Короткие</b>cheap – cheaper – the cheapest.</div><div class="detail-block"><b>Длинные</b>expensive – more expensive – the most expensive.</div><div class="detail-block"><b>Исключения</b>good–better–best · bad–worse–worst · far–further–furthest.</div><div class="detail-block"><b>Формула</b>…er <b>than</b> · the …est / the most …</div>`},
+      cond0: {title:'Type 0', lead:'Если всегда так — оба Present.', body:`<div class="detail-block"><b>Формула</b>If + Present Simple, Present Simple.</div><div class="detail-block"><b>Смысл</b>Законы природы, правила, инструкции: If you press this, the light turns on.</div><div class="detail-block"><b>vs Type 1</b>Type 1 — конкретное будущее условие; Type 0 — «всегда».</div>`},
+      cond1: {title:'Type 1', lead:'Реальное условие о будущем.', body:`<div class="detail-block"><b>Формула</b>If + Present Simple, will + V1.</div><div class="detail-block"><b>Главная ошибка</b>will после if: <s>If it will rain…</s> → If it <b>rains</b>…</div><div class="detail-block"><b>Порядок</b>Можно и наоборот: We'll stay at home if it rains (без запятой).</div>`},
+      cond2: {title:'Type 2', lead:'Нереальное сейчас/в будущем.', body:`<div class="detail-block"><b>Формула</b>If + Past Simple, would + V1.</div><div class="detail-block"><b>were для всех</b>If I were you, If she were here — сослагательное were.</div><div class="detail-block"><b>Смысл</b>Мечты, советы: If I had money, I would travel.</div>`}
+    };
+
+    // Theme: auto (OS) / light / dark — persisted per visitor.
+    const THEME_KEY = 'theme';
+    const THEME_UI = {
+      auto:  { icon: '◐', label: 'Тема: системная' },
+      light: { icon: '☀', label: 'Тема: светлая' },
+      dark:  { icon: '☾', label: 'Тема: тёмная' },
+    };
+    const themeBtn = document.getElementById('themeBtn');
+    const themeMetas = [...document.querySelectorAll('meta[name="theme-color"]')];
+    const themeMetaDefaults = themeMetas.map(m => m.content);
+    function applyTheme(mode) {
+      if (mode === 'auto') document.documentElement.removeAttribute('data-theme');
+      else document.documentElement.setAttribute('data-theme', mode);
+      themeBtn.textContent = THEME_UI[mode].icon;
+      themeBtn.setAttribute('aria-label', THEME_UI[mode].label);
+      themeBtn.title = THEME_UI[mode].label;
+      themeMetas.forEach((m, i) => {
+        m.content = mode === 'auto' ? themeMetaDefaults[i] : getComputedStyle(document.body).backgroundColor;
+      });
+    }
+    let themeMode = 'auto';
+    try { themeMode = localStorage.getItem(THEME_KEY) || 'auto'; } catch (e) {}
+    applyTheme(themeMode);
+    themeBtn.addEventListener('click', () => {
+      themeMode = themeMode === 'auto' ? 'light' : themeMode === 'light' ? 'dark' : 'auto';
+      try { localStorage.setItem(THEME_KEY, themeMode); } catch (e) {}
+      applyTheme(themeMode);
+    });
+
+    const dialog = document.getElementById('detailDialog');
+    const detailTitle = document.getElementById('detailTitle');
+    const detailLead = document.getElementById('detailLead');
+    const detailBody = document.getElementById('detailBody');
+
+    document.addEventListener('click', (event) => {
+      const trigger = event.target.closest('[data-detail]');
+      if (trigger) {
+        const item = DETAILS[trigger.dataset.detail];
+        if (item) {
+          detailTitle.textContent = item.title;
+          detailLead.textContent = item.lead || '';
+          detailBody.innerHTML = item.body || '';
+          dialog.showModal();
+        }
+      }
+      const reveal = event.target.closest('.reveal');
+      if (reveal) {
+        const answer = document.getElementById(reveal.dataset.target);
+        if (answer) {
+          answer.hidden = !answer.hidden;
+          reveal.textContent = answer.hidden ? 'Показать' : 'Скрыть';
+          reveal.setAttribute('aria-expanded', String(!answer.hidden));
+        }
+      }
+    });
+
+    document.getElementById('closeDialog').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+
+    const search = document.getElementById('search');
+    const clearSearch = document.getElementById('clearSearch');
+    const cards = [...document.querySelectorAll('.cheat-card')];
+    const sections = [...document.querySelectorAll('section[data-section]')];
+    const noResults = document.getElementById('noResults');
+
+    function applySearch() {
+      const q = search.value.trim().toLowerCase();
+      document.body.classList.toggle('searching', !!q);
+      clearSearch.hidden = !q;
+      let shown = 0;
+      cards.forEach(card => {
+        const hay = `${card.textContent} ${card.dataset.search || ''}`.toLowerCase();
+        const match = !q || hay.includes(q);
+        card.style.display = match ? '' : 'none';
+        if (match) shown++;
+      });
+      sections.forEach(section => {
+        if (!q || section.id === 'start') { section.style.display = ''; return; }
+        const visible = [...section.querySelectorAll('.cheat-card')].some(c => c.style.display !== 'none');
+        section.style.display = visible ? '' : 'none';
+      });
+      noResults.style.display = q && shown === 0 ? 'block' : 'none';
+    }
+    search.addEventListener('input', applySearch);
+    clearSearch.addEventListener('click', () => { search.value = ''; applySearch(); search.focus(); });
+
+    const navItems = [...document.querySelectorAll('.nav-item')];
+    // Sections that are not nav destinations map to the closest nav concept.
+    const NAV_MAP = {
+      articles: 'articles', pronouns: 'articles',
+      order: 'order', tenses: 'tenses', verbs: 'verbs', preps: 'preps',
+      nouns: 'articles', conditionals: 'verbs',
+      practice: null, 'install-help': null, start: null,
+    };
+    const navTargets = Object.keys(NAV_MAP).map(id => document.getElementById(id)).filter(Boolean);
+    const setActiveNav = (navId) => {
+      navItems.forEach(item => {
+        const on = item.dataset.nav === navId;
+        item.classList.toggle('active', on);
+        if (on) item.setAttribute('aria-current', 'true');
+        else item.removeAttribute('aria-current');
+      });
+    };
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter(e => e.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      setActiveNav(NAV_MAP[visible.target.id]);
+    }, {rootMargin:'-25% 0px -60% 0px', threshold:[0,.1,.25,.5]});
+    navTargets.forEach(el => observer.observe(el));
+
+    let deferredPrompt = null;
+    const installBtn = document.getElementById('installBtn');
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+    if (isIOS && !isStandalone) installBtn.hidden = false;
+    else installBtn.hidden = true;
+
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault();
+      deferredPrompt = event;
+      installBtn.hidden = false;
+    });
+
+    window.addEventListener('appinstalled', () => {
+      deferredPrompt = null;
+      installBtn.hidden = true;
+    });
+
+    installBtn.addEventListener('click', async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        await deferredPrompt.userChoice;
+        deferredPrompt = null;
+        installBtn.hidden = true;
+      } else if (isIOS) {
+        detailTitle.textContent = 'Установка на iPhone';
+        detailLead.textContent = 'Safari не показывает стандартный install prompt.';
+        detailBody.innerHTML = '<div class="detail-block"><b>1.</b>Открой меню Share.</div><div class="detail-block"><b>2.</b>Выбери Add to Home Screen.</div><div class="detail-block"><b>3.</b>Подтверди Add.</div>';
+        dialog.showModal();
+      } else {
+        document.getElementById('install-help').scrollIntoView({behavior:'smooth'});
+      }
+    });
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('../sw.js').catch(() => {}));
+    }
+  </script>
+</body>
+</html>
