@@ -56,8 +56,11 @@ python3 -m http.server 8931   # open http://127.0.0.1:8931/
 - No console errors on any page; manifests, icons, `sw.js` resolve.
 - At ~390px: no horizontal page overflow; tables scroll inside `.table-scroll`.
 - Theme toggle cycles авто → светлая → тёмная, persists across reload.
-- Search filters cards and restores on clear; dialogs close via ×, Escape,
-  backdrop; practice reveal works.
+- Bottom nav switches views (active item carries `aria-current`); legacy
+  anchors (`#preps` on DE, `#nouns`/`#conditionals` on EN) open the right
+  view and scroll to the section.
+- Search filters cards across all views and restores the active view on
+  clear; dialogs close via ×, Escape, backdrop; practice reveal works.
 - Offline reload works after first load.
 - Live check after push: `https://andkirby.github.io/learn-language-cheat-sheet/`
   (+ `/deutsch/`, `/english/`; `/deutsch.html` redirects).

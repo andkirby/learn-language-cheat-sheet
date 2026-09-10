@@ -17,36 +17,47 @@ Create a single-page, mobile-first German grammar cheatsheet for a Russian-speak
 7. “Show one short example, then a deeper explanation if I tap.”
 
 ## 3. Information architecture
-The UI is one page with these blocks:
-- Start / Quick rules
-- Cases
-- Articles & possessives
-- Personal pronouns
-- Prepositions
-- Sentence order
-- Verb bracket & verb constructions
-- Subordinate clauses
-- Relative clauses / um…zu / damit
-- Adjective endings & noun changes
-- Quick practice
+The page is a lookup deck: a one-line intro, then five bottom-nav views.
+Each view groups sections by the learner's retrieval question, not by
+textbook order:
+- Падежи (`#cases`): Cases · Prepositions
+- Формы (`#forms`): Articles & possessives · Pronouns · Endings & noun changes
+- Глагол и порядок (`#order`): Sentence order · Verb bracket & constructions
+- Придаточные (`#clauses`): Subordinate clauses · Relative / um…zu / damit
+- Повтор (`#practice`): Quick practice
+
+Install help lives in the install dialog plus a footer line (`#install-help`),
+not in its own section. There is no hero block and no numbered headings — the
+deck is for random access, not linear reading.
 
 ## 4. Navigation
-- Mobile: sticky bottom navigation with 5 high-frequency destinations: Cases, Forms, Order, Clauses, Verbs.
-- Desktop/tablet: same navigation remains usable; content width is capped.
-- Top search filters visible cheat cards by keywords such as “wem”, “modal”, “weil”, “Dativ”.
-- Every section has an anchor id and is reachable from the bottom nav / quick jump chips.
-- Scroll position updates active nav state (`NAV_MAP` in `index.html` maps
-  non-nav sections: preps→Cases, extras→Forms; practice/install-help clear the
-  highlight). Active item carries `aria-current="true"`.
-- While a search query is active (`body.searching`), the hero and jump chips
-  are hidden so results come first.
+- Bottom navigation = five **view destinations**: Падежи, Формы, Порядок,
+  Придаточные, Повтор. A tap switches the visible view (sections carry
+  `data-view`); the active item is simply the selected view and carries
+  `aria-current="true"`. No scrollspy, no `NAV_MAP` — the selection is the
+  truth. Tapping a destination also clears an active search.
+- Top search is global: it filters cheat cards across **all** views at once
+  (keywords like “wem”, “modal”, “weil”, “Dativ”); matching sections from
+  other views become visible while `body.searching` is set. Clearing the
+  query restores the current view.
+- Anchors stay stable: `#cases/#forms/#order/#clauses/#practice` are views;
+  legacy `#preps/#extras/#verbs/#start` still resolve — the target section's
+  view opens first, then the section scrolls into view. `#install-help`
+  resolves to the footer install line.
+- Without JavaScript all sections are stacked and visible; JS adds view
+  switching, search and dialogs on top (progressive enhancement).
 
 ## 5. Interaction model
 - Key grammar tokens are tappable chips/buttons.
 - Tap opens a bottom-sheet dialog with: meaning, rule, one positive example, one contrast/example when useful.
 - Tables are horizontally scrollable only when unavoidable; prefer compact responsive grids.
 - “Show answer” interactions are used in Quick practice, never hidden behind hover-only UI.
+- The “Установить” button explains itself in a dialog (native Android prompt
+  when available, otherwise platform steps); there is no install section.
 - Search should not destroy page state; clearing search restores all cards.
+- Bold text inside `.example`/`.answer` and italics inside `.detail-block`
+  carry the German text; JS sets `lang="de"` on them (screen-reader
+  pronunciation). Formula slots are marked when they contain no Cyrillic.
 
 ## 6. Content principles
 - Russian explanation first; German terminology retained.

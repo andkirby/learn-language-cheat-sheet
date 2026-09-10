@@ -11,7 +11,8 @@ lives at the repo root. Target effort for a new language: one working session.
 
 Write `Sitemap thinking` into the new `SITE_PLAN.md` **before** the page:
 - Primary use cases (5–7 questions a learner asks).
-- Section list (~8 sections + practice + install help; see below).
+- Section list (~8 sections + practice; install help is a dialog + footer
+  line, not a section; see below);
 - What is *hard for a Russian speaker specifically* in this language —
   those traps get first-class cards (like артикли/предлоги for English,
   падежи/рамка for German). Search the web only if you are unsure about
@@ -26,7 +27,7 @@ Default section skeleton (adapt, don't force):
 6. Prepositions/particles
 7. Word morphology (plurals, agreement, comparison)
 8. One high-value advanced topic (conditionals / subordinate clauses)
-9. Practice (3 items) · 10. Install help
+9. Practice (3 items) · 10. Install help (dialog + footer line)
 
 ## 1. Create the folder (copy as starting point)
 
@@ -62,7 +63,11 @@ Mechanical checklist for the copy:
   ids unless the sections match** — anchors are per-page anyway.
 - `DETAILS` object: one entry per chip; keys kebab-case; RU explanation +
   DE/EN/… terms kept in the target language.
-- `NAV_MAP` covers every section id (map to nearest nav concept or `null`).
+- `NAV_MAP` is gone: every section carries `data-view="<view-id>"` and the
+  bottom nav's five destinations are view ids. Sections without their own
+  nav item join the closest view (DE: preps→cases; EN: nouns→articles,
+  conditionals→verbs). Legacy anchors resolve: the section's view opens
+  first, then the section scrolls into view.
 - Every `.cheat-card` gets `data-search` with RU + target-language keywords.
 - Register `../sw.js`; manifest `./manifest.webmanifest`; og:url/og:image
   absolute: `https://andkirby.github.io/learn-language-cheat-sheet/<lang>/…`.
@@ -85,8 +90,11 @@ python3 -m http.server 8931
 - Console clean at `http://127.0.0.1:8931/<lang>/`; manifest + icons resolve.
 - 390px: no horizontal page overflow; tables scroll inside `.table-scroll`.
 - Theme toggle cycles auto/light/dark and survives reload.
-- Search filters/restores; dialogs open/close (×, Escape, backdrop);
-  practice reveal works; bottom-nav highlight matches sections.
+- Search filters/restores across all views; dialogs open/close (×, Escape,
+  backdrop); practice reveal works.
+- View switching: each nav tap shows its view (active item =
+  `aria-current`); a legacy anchor like `#preps` opens the right view and
+  scrolls to the section; tapping a nav item clears an active search.
 - Offline reload works after first visit.
 
 ## 6. Ship

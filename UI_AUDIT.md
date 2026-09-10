@@ -56,5 +56,18 @@ Status reflects the upgrade done the same day. Re-run the checks in
 | 19 | P3 | English page missing entirely. | Added: full RU→EN A1–B1 cheatsheet at feature parity (tenses, articles, order/questions, modals, prepositions traps, conditionals, practice). |
 | 20 | P3 | og:url/og:image were relative — previews unreliable. | Fixed: absolute URLs on all pages. |
 
-Deferred (second pass): `lang="de"`/`lang="en"` on target-language examples;
-search-term highlighting; scroll affordances.
+Deferred (second pass): `lang="de"`/`lang="en"` on target-language examples
+(done in pass 3 below); search-term highlighting; scroll affordances.
+
+---
+
+# Third pass — 2026-09-10 (lookup-deck navigation)
+
+| # | Severity | Finding | Status |
+|---|---|---|---|
+| 21 | P2 | Three parallel nav mechanisms (jump chips, bottom nav + `NAV_MAP` scrollspy, search) partly duplicated each other; scrollspy highlights approximated on one long page; as an installed standalone PWA there is no address bar / Ctrl+F. | Fixed: bottom nav = true view switcher (`data-view` on sections; no scrollspy, no `NAV_MAP`); hero, jump chips, numbered headings and the install-help section removed (install help → dialog + footer anchor). Views — DE: Падежи/Формы/Порядок(+глаголы)/Придаточные/Повтор; EN: Артикли(+местоимения+слова)/Времена/Порядок/Глаголы(+условные)/Предлоги. |
+| 22 | P3 | Deferred from pass 1: `lang="de"`/`lang="en"` on target-language examples (screen-reader pronunciation). | Fixed by convention: JS marks `.example b`, `.answer b`, `.detail-block i` and Cyrillic-free formula slots with the page's target language, at load and after each dialog render. |
+
+Search is now global across views while `body.searching` is set (matching
+sections from other views become visible; clearing restores the active
+view). Print expands all views; noscript shows the full stacked deck.

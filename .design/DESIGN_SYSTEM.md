@@ -34,7 +34,7 @@ Every page ships the same token set.
 | `--ok` / `--ok-soft` | `#0c6857` / `#e7f6f1` | `#8adccb` / `#17352c` | verb slots, answers |
 | `--warn` / `--warn-soft` | `#7a5000` / `#fff3d8` | `#eec36a` / `#3a2f11` | end-of-sentence slots |
 | `--warn-line` / `--notice-warn-bg` | `#d18a00` / `#fff7e7` | `#a97e1f` / `#2e2510` | warning notice |
-| `--hero-1`/`-2`, `--hero-text`, `--hero-line`, `--hero-card` | navy gradient block | slightly deeper | hero only (always dark) |
+| `--hero-1`/`-2`, `--hero-text`, `--hero-line`, `--hero-card` | navy gradient block | slightly deeper | landing hero only (always dark; language pages have no hero) |
 | `--grab`, `--backdrop`, `--shadow`, `--radius`, `--nav-h` | — | — | sheet handle, dialog backdrop, elevation, shape |
 
 Rules:
@@ -61,13 +61,18 @@ Rules:
 ## Layout & responsive behavior
 
 - Breakpoints: base (mobile-first, one column) and `min-width: 720px`
-  (`.cards.two` → 2 cols, `.cards.three` → 3, `.case-grid` → 4, `.rule-grid` → 4).
+  (`.cards.two` → 2 cols, `.cards.three` → 3, `.case-grid` → 4).
 - Grid/flex children that contain wide content (tables) must be allowed to
   shrink: `.cards > * { min-width: 0 }` — tables scroll inside
   `.table-scroll`, never the page.
 - `scroll-padding-top: 116px` keeps anchored sections clear of the sticky topbar.
-- Bottom nav is fixed, 5 destinations (`#cases`, `#forms`, `#order`,
-  `#clauses`, `#verbs`), respects `env(safe-area-inset-bottom)`.
+- Bottom nav is fixed, 5 **view destinations**, respects
+  `env(safe-area-inset-bottom)`. A tap switches the visible view (sections
+  carry `data-view`); there is no scrollspy — the selected view is the nav
+  truth. German views: cases, forms, order, clauses, practice; English:
+  articles, tenses, order, verbs, preps (practice is anchor-only, linked
+  from the footer). Legacy anchors (`#preps`, `#verbs`, `#nouns`, …) open
+  the section's view first, then scroll to it.
 
 ## Components
 
@@ -80,8 +85,8 @@ Rules:
 | `.notice` / `.warning` | Callouts. Accent = info, warn tokens = caveat. |
 | `.answer` + `.reveal` | Show/hide practice answer; `aria-expanded`/`aria-controls` required; visible without JS (noscript unhides). |
 | `dialog` bottom sheet | One shared `#detailDialog`; title/lead set from `DETAILS`; closes via ×, Escape, backdrop tap (`event.target === dialog`). |
-| `.bottom-nav` | Active item gets `.active` **and** `aria-current="true"`; non-nav sections map via `NAV_MAP` (preps→cases, extras→forms). |
-| `.jump-chip` | Anchor pills to sections; hidden while `body.searching`. |
+| `.bottom-nav` | View switcher. Active item = selected view, gets `.active` **and** `aria-current="true"`; a tap clears an active search, updates the hash and scrolls to top. |
+| `section[data-view]` | View membership. JS hides non-active views via the `hidden` attribute; search unhides matching sections across views; noscript and print show everything stacked. |
 | `.theme-btn` | 44px topbar icon button; cycles/persists the theme (see Theming). |
 | `.lang-card` (landing only) | Whole-card link to a language folder: mark + name + topics + `→`; hover accent border. |
 
@@ -89,9 +94,10 @@ Rules:
 
 - Focus: global `:focus-visible` = 3px `var(--accent)` outline, offset 2px.
   Never remove without replacement.
-- Search (`body.searching`): hero and jump chips hide; cards/sections with no
-  match hide; `#noResults` appears at 0 matches; clearing restores everything.
-  Search must never destroy dialog or answer state.
+- Search (`body.searching`): the intro line hides; cards/sections with no
+  match hide — **across all views** (matching sections from other views
+  become visible stacked); `#noResults` appears at 0 matches; clearing
+  restores the active view. Search must never destroy dialog or answer state.
 - `prefers-reduced-motion`: smooth scroll and all transitions off.
 
 ## Accessibility baseline

@@ -19,30 +19,41 @@ model as the German page — see `../.design/DESIGN_SYSTEM.md`.
 7. “Show one short example, then a deeper explanation if I tap.”
 
 ## 3. Information architecture
-- Start / Quick rules (hero)
-- Articles (a/an/the/zero + RU-speaker traps)
-- Pronouns (subject/object/possessive + reflexive)
-- Word order & questions (SVO, Do/Does/Did, frequency adverbs, top RU error)
-- Tenses (Pres. Simple/Continuous, Past Simple, Pres. Perfect, PP vs Past,
-  will vs going to)
-- Verb constructions (modals, mustn't vs don't have to, passive, V-ing vs to V)
-- Prepositions (time, place, dependent-preposition traps)
-- Words (plurals, countable/uncountable, some/any, comparatives)
-- Conditionals (0/1/2/3)
-- Quick practice
-- Install help
+The page is a lookup deck: a one-line intro, then five bottom-nav views.
+Each view groups sections by the learner's retrieval question:
+- Артикли и слова (`#articles`): Articles · Pronouns · Numbers & comparison
+- Времена (`#tenses`): Tenses
+- Порядок (`#order`): Word order & questions
+- Глаголы (`#verbs`): Verb constructions · Conditionals
+- Предлоги (`#preps`): Prepositions
+
+Повтор (`#practice`) is an anchor-only view linked from the footer (bottom
+nav is capped at five). Install help lives in the install dialog plus a
+footer line (`#install-help`), not in its own section. There is no hero
+block and no numbered headings.
 
 ## 4. Navigation
-- Bottom nav (5): Articles, Tenses, Order, Verbs, Prepositions.
-- NAV_MAP for non-nav sections: pronouns→articles, nouns→articles,
-  conditionals→verbs, practice/install-help→no highlight.
-- Jump chips for all sections; hidden while searching (body.searching).
-- Active item carries `aria-current="true"`.
+- Bottom nav = five **view destinations**: Артикли, Времена, Порядок,
+  Глаголы, Предлоги. A tap switches the visible view (sections carry
+  `data-view`); the active item is the selected view with
+  `aria-current="true"`. No scrollspy, no `NAV_MAP`. Tapping a destination
+  also clears an active search.
+- Повтор (`#practice`) is an anchor-only view, linked from the footer.
+- Top search is global: it filters cheat cards across **all** views at once
+  while `body.searching` is set (the intro line hides). Clearing restores
+  the current view.
+- Anchors stay stable: `#pronouns/#nouns` resolve inside the Артикли view,
+  `#conditionals` inside Глаголы, `#start` → top, `#install-help` → footer;
+  the target section's view opens first, then the section scrolls into view.
+- Without JavaScript all sections are stacked and visible.
 
 ## 5. Interaction model
 Identical to the German page: tappable chips → bottom-sheet dialogs
 (`DETAILS` object), searchable cards via `data-search` + text, show-answer
-practice with `aria-expanded`, no hover-only UI.
+practice with `aria-expanded`, no hover-only UI. The “Установить” button
+explains itself in a dialog; there is no install section. Bold text inside
+`.example`/`.answer` and italics inside `.detail-block` carry the English
+text; JS sets `lang="en"` on them.
 
 ## 6. Content principles
 - Russian explanation first; English terminology retained.

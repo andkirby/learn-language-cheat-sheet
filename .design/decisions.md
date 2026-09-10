@@ -108,3 +108,40 @@ RU→EN A1–B1 with RU-interference traps as first-class cards (артикли,
 do-вопросы, Perfect vs Past, предлоги-ловушки, mustn't vs don't have to).
 `docs/ADD_LANGUAGE.md` captures the reusable playbook, drafted from this
 work so language #3 is a copy-adapt-verify task, not a redesign.
+
+---
+
+# Third pass — lookup-deck navigation (same day)
+
+## 2026-09-10 — Bottom nav becomes true view switching; scrollspy and NAV_MAP removed
+
+The long-scroll model fought the app model: `NAV_MAP` faked a 5-destination
+nav over 8 sections, scrollspy highlights were approximations, and the hero +
+jump chips existed mainly to be hidden during search. Every SITE_PLAN use
+case is known-item lookup, and as an installed standalone PWA there is no
+address bar or Ctrl+F — so each cheatsheet now switches discrete views.
+Sections carry `data-view`; German views: Падежи (cases+preps), Формы
+(forms+extras), Порядок (order+verbs), Придаточные, Повтор. English:
+Артикли (articles+pronouns+nouns), Времена, Порядок, Глаголы
+(verbs+conditionals), Предлоги (Повтор is anchor-only — nav is capped at 5).
+The selected view is the nav truth; legacy anchors open the right view, then
+scroll. Search became global: while `body.searching` is set, matching
+sections from every view are shown stacked; clearing restores the active
+view; tapping a nav destination clears the query for a predictable landing.
+
+## 2026-09-10 — Hero, jump chips, numbered headings and install-help section removed
+
+First-screen real estate goes to search + views. A one-line `.intro` (keeps
+the `#start` anchor) replaces the hero block — hero tokens stay in the shared
+block because the landing still uses them. Jump chips duplicated the bottom
+nav and were deleted. Install help moved into the install dialog plus a
+footer line carrying the `#install-help` anchor (noscript keeps the
+instructions visible). The print stylesheet now expands every view.
+
+## 2026-09-10 — Target-language text marked via convention (`lang` attribute)
+
+Bold inside `.example`/`.answer`, italics inside `.detail-block`, and formula
+slots without Cyrillic get `lang="de"`/`lang="en"` from a tiny JS pass at
+load and after each dialog render (bold/italic marking the pattern text was
+already the content convention). Closes the deferred a11y item without
+churning every card.

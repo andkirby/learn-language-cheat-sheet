@@ -171,26 +171,8 @@
     }
 
     main { padding: 18px 16px 8px; }
-    .hero {
-      background: linear-gradient(135deg, var(--hero-1) 0%, var(--hero-2) 100%); color: var(--hero-text);
-      border-radius: 24px; padding: 20px; box-shadow: var(--shadow);
-    }
-    .hero h1 { font-size: clamp(1.65rem, 6vw, 2.45rem); line-height: 1.05; margin: 0 0 9px; letter-spacing: -.04em; color: #fff; }
-    .hero p { margin: 0; color: var(--hero-text); max-width: 65ch; }
-    .rule-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 9px; margin-top: 16px; }
-    .rule {
-      border: 1px solid var(--hero-line); background: var(--hero-card); border-radius: 14px;
-      padding: 11px; min-height: 80px;
-    }
-    .rule b { display: block; font-size: .95rem; color: #fff; }
-    .rule span { display: block; margin-top: 4px; color: var(--hero-text); font-size: .82rem; }
-
-    .jump-row { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 14px 0 2px; }
-    .jump-row::-webkit-scrollbar { display: none; }
-    .jump-chip {
-      flex: 0 0 auto; min-height: 40px; display: inline-flex; align-items: center; text-decoration: none;
-      border: 1px solid var(--line); border-radius: 999px; background: var(--surface); padding: 0 13px; font-weight: 700; font-size: .88rem;
-    }
+    .intro { margin: 2px 2px 0; color: var(--muted); font-size: .9rem; }
+    .intro b { color: var(--text); }
 
     section { margin-top: 28px; }
     .section-head { display: flex; gap: 10px; align-items: end; justify-content: space-between; margin-bottom: 11px; }
@@ -252,9 +234,8 @@
 
     .no-results { display: none; margin: 24px 0; padding: 18px; border: 1px dashed var(--line); border-radius: var(--radius); text-align: center; color: var(--muted); }
 
-    /* While searching, results come first: hide the hero and jump chips
-       (their anchors point at sections that may be filtered out). */
-    body.searching .hero, body.searching .jump-row { display: none; }
+    /* While searching, results come first: hide the intro line. */
+    body.searching .intro { display: none; }
 
     .bottom-nav {
       position: fixed; left: 50%; transform: translateX(-50%); bottom: 0; z-index: 30;
@@ -295,19 +276,17 @@
       .cards.two { grid-template-columns: repeat(2, minmax(0,1fr)); }
       .cards.three { grid-template-columns: repeat(3, minmax(0,1fr)); }
       .case-grid { grid-template-columns: repeat(4, minmax(0,1fr)); }
-      .rule-grid { grid-template-columns: repeat(4, minmax(0,1fr)); }
       dialog { margin-bottom: 24px; }
     }
 
     @media print {
-      .topbar, .bottom-nav, .jump-row, .chips, .no-results, dialog { display: none !important; }
+      .topbar, .bottom-nav, .chips, .no-results, dialog { display: none !important; }
       body { padding: 0; background: #fff; color: #000; }
       .cheat-card { break-inside: avoid; box-shadow: none; }
       .table-scroll { overflow: visible; }
       table { min-width: 0; }
       .answer[hidden] { display: block; }
-      .hero { color: #000; background: none; box-shadow: none; }
-      .hero h1, .rule b { color: #000; }
+      section[data-view] { display: block !important; } /* print the whole deck */
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -344,32 +323,12 @@
   </noscript>
 
   <main>
-    <section class="hero" id="start" data-section>
-      <h1>Немецкая грамматика без листания учебника</h1>
-      <p>Сначала смотри на <b>триггер</b>: падеж, предлог, союз или глагольную конструкцию. Потом — на форму и позицию.</p>
-      <div class="rule-grid">
-        <div class="rule"><b>Главное предложение</b><span>Спрягаемый глагол = позиция 2</span></div>
-        <div class="rule"><b>Придаточное</b><span>Спрягаемый глагол → в конец</span></div>
-        <div class="rule"><b>Akkusativ</b><span>Wen? Was?</span></div>
-        <div class="rule"><b>Dativ</b><span>Wem?</span></div>
-      </div>
-    </section>
-
-    <nav class="jump-row" aria-label="Быстрые переходы">
-      <a class="jump-chip" href="#cases">Падежи</a>
-      <a class="jump-chip" href="#forms">Формы</a>
-      <a class="jump-chip" href="#preps">Предлоги</a>
-      <a class="jump-chip" href="#order">Порядок слов</a>
-      <a class="jump-chip" href="#clauses">Придаточные</a>
-      <a class="jump-chip" href="#verbs">Глаголы</a>
-      <a class="jump-chip" href="#extras">Окончания</a>
-      <a class="jump-chip" href="#practice">Повтор</a>
-    </nav>
+    <p class="intro" id="start">Смотри на <b>триггер</b> — падеж, предлог, союз или глагольную конструкцию, — потом на форму и позицию. Или ищи сразу: <i>wem</i>, <i>weil</i>, <i>Perfekt</i>.</p>
 
     <div id="noResults" class="no-results">Ничего не найдено. Попробуй “wem”, “modal”, “weil”, “Dativ”, “Perfekt”.</div>
 
-    <section id="cases" data-section>
-      <div class="section-head"><div><h2>1. Падежи</h2><p>Вопрос → функция → форма.</p></div><span class="section-badge">4 Fälle</span></div>
+    <section id="cases" data-section data-view="cases">
+      <div class="section-head"><div><h2>Падежи</h2><p>Вопрос → функция → форма.</p></div><span class="section-badge">4 Fälle</span></div>
       <div class="case-grid cheat-card" data-search="fälle cases падеж вопросы nominativ akkusativ dativ genitiv wer wen wem wessen wohin wo was">
         <button class="tap case" data-detail="nominativ"><strong>Nominativ</strong><br>Wer? Was?</button>
         <button class="tap case" data-detail="akkusativ"><strong>Akkusativ</strong><br>Wen? Was?</button>
@@ -394,8 +353,8 @@
       </div>
     </section>
 
-    <section id="forms" data-section>
-      <div class="section-head"><div><h2>2. Артикли и местоимения</h2><p>Главные формы, которые реально меняются.</p></div><span class="section-badge">Formen</span></div>
+    <section id="forms" data-section data-view="forms">
+      <div class="section-head"><div><h2>Артикли и местоимения</h2><p>Главные формы, которые реально меняются.</p></div><span class="section-badge">Formen</span></div>
 
       <article class="cheat-card" data-search="artikel der die das den dem des definite артикли определенный">
         <h3>Определённый артикль</h3>
@@ -452,8 +411,8 @@
       </div>
     </section>
 
-    <section id="preps" data-section>
-      <div class="section-head"><div><h2>3. Предлоги</h2><p>Предлог часто сразу определяет падеж.</p></div><span class="section-badge">Präpositionen</span></div>
+    <section id="preps" data-section data-view="cases">
+      <div class="section-head"><div><h2>Предлоги</h2><p>Предлог часто сразу определяет падеж.</p></div><span class="section-badge">Präpositionen</span></div>
       <div class="cards two">
         <article class="cheat-card" data-search="akkusativ prepositions durch für gegen ohne um bis entlang">
           <h3>Всегда Akkusativ</h3>
@@ -480,8 +439,8 @@
       </div>
     </section>
 
-    <section id="order" data-section>
-      <div class="section-head"><div><h2>4. Порядок слов</h2><p>Сначала найди спрягаемый глагол.</p></div><span class="section-badge">Wortstellung</span></div>
+    <section id="order" data-section data-view="order">
+      <div class="section-head"><div><h2>Порядок слов</h2><p>Сначала найди спрягаемый глагол.</p></div><span class="section-badge">Wortstellung</span></div>
       <div class="cards two">
         <article class="cheat-card" data-search="main clause hauptsatz verb second v2 position 2 второе место heute ich gehe">
           <h3>Главное: V2</h3>
@@ -509,8 +468,8 @@
       </div>
     </section>
 
-    <section id="verbs" data-section>
-      <div class="section-head"><div><h2>5. Глагольная рамка</h2><p>Часть глагола часто живёт в конце.</p></div><span class="section-badge">Satzklammer</span></div>
+    <section id="verbs" data-section data-view="order">
+      <div class="section-head"><div><h2>Глагольная рамка</h2><p>Часть глагола часто живёт в конце.</p></div><span class="section-badge">Satzklammer</span></div>
       <div class="cards two">
         <article class="cheat-card" data-search="modal müssen können wollen sollen dürfen mögen infinitiv end modal verbs">
           <h3>Модальные глаголы</h3>
@@ -539,8 +498,8 @@
       </div>
     </section>
 
-    <section id="clauses" data-section>
-      <div class="section-head"><div><h2>6. Придаточные</h2><p>Союз в начале, спрягаемый глагол — в конец.</p></div><span class="section-badge">Nebensätze</span></div>
+    <section id="clauses" data-section data-view="clauses">
+      <div class="section-head"><div><h2>Придаточные</h2><p>Союз в начале, спрягаемый глагол — в конец.</p></div><span class="section-badge">Nebensätze</span></div>
       <div class="cards two">
         <article class="cheat-card" data-search="weil because потому что subordinate verb end придаточное">
           <h3>weil — потому что</h3>
@@ -589,8 +548,8 @@
       </div>
     </section>
 
-    <section id="extras" data-section>
-      <div class="section-head"><div><h2>7. Окончания и изменения</h2><p>Небольшие правила, которые часто ломают правильную форму.</p></div><span class="section-badge">Endungen</span></div>
+    <section id="extras" data-section data-view="forms">
+      <div class="section-head"><div><h2>Окончания и изменения</h2><p>Небольшие правила, которые часто ломают правильную форму.</p></div><span class="section-badge">Endungen</span></div>
       <div class="cards two">
         <article class="cheat-card" data-search="dativ plural n kindern freunden существительное множественное">
           <h3>Dativ Plural</h3>
@@ -617,8 +576,8 @@
       </div>
     </section>
 
-    <section id="practice" data-section>
-      <div class="section-head"><div><h2>8. Быстрый повтор</h2><p>Три вопроса без отдельного “режима урока”.</p></div><span class="section-badge">30 sec</span></div>
+    <section id="practice" data-section data-view="practice">
+      <div class="section-head"><div><h2>Быстрый повтор</h2><p>Три вопроса без отдельного “режима урока”.</p></div><span class="section-badge">30 sec</span></div>
       <article class="cheat-card" data-search="practice quiz повтор тест">
         <div class="practice-q">
           <b>1. Ich helfe ___ Mann.</b> Какой падеж?
@@ -638,16 +597,7 @@
       </article>
     </section>
 
-    <section id="install-help" data-section>
-      <div class="section-head"><div><h2>Установка на телефон</h2><p>Это PWA: после первой загрузки работает и офлайн.</p></div></div>
-      <article class="cheat-card" data-search="install pwa add home screen iphone android установка телефон офлайн">
-        <p><b>Android / Chrome:</b> нажми “Установить” сверху, если кнопка доступна, или используй меню браузера → Install app / Add to Home screen.</p>
-        <p><b>iPhone / Safari:</b> Share → Add to Home Screen.</p>
-        <div class="notice warning">Для настоящей установки и offline-кэша страницу нужно открыть по <b>HTTPS</b> (или localhost). Если просто открыть HTML-файл из Files, service worker не запустится.</div>
-      </article>
-    </section>
-
-    <div class="footer">German Cheat · <a href="../">все шпаргалки</a> · план контента: <code>deutsch/SITE_PLAN.md</code></div>
+    <div class="footer">German Cheat · <a href="../">все шпаргалки</a> · <span id="install-help">Установка: Android — кнопка «Установить» или меню браузера · iPhone — Share → Add to Home Screen</span> · план контента: <code>deutsch/SITE_PLAN.md</code></div>
   </main>
 
   <nav class="bottom-nav" aria-label="Основная навигация">
@@ -655,7 +605,7 @@
     <a class="nav-item" href="#forms" data-nav="forms"><span class="ico">der</span><span>Формы</span></a>
     <a class="nav-item" href="#order" data-nav="order"><span class="ico">V2</span><span>Порядок</span></a>
     <a class="nav-item" href="#clauses" data-nav="clauses"><span class="ico">weil</span><span>Придат.</span></a>
-    <a class="nav-item" href="#verbs" data-nav="verbs"><span class="ico">→</span><span>Глаголы</span></a>
+    <a class="nav-item" href="#practice" data-nav="practice"><span class="ico">?</span><span>Повтор</span></a>
   </nav>
 
   <dialog id="detailDialog" aria-labelledby="detailTitle">
@@ -732,6 +682,16 @@
     const detailLead = document.getElementById('detailLead');
     const detailBody = document.getElementById('detailBody');
 
+    // Bold in .example/.answer, italics in .detail-block and German-only
+    // formula slots carry the target-language text (screen-reader pronunciation).
+    const TARGET_LANG = 'de';
+    function markTargetLang(root) {
+      root.querySelectorAll('.example b, .answer b, .detail-block i, .formula .slot').forEach(el => {
+        if (!/[а-яё]/i.test(el.textContent)) el.lang = TARGET_LANG;
+      });
+    }
+    markTargetLang(document);
+
     document.addEventListener('click', (event) => {
       const trigger = event.target.closest('[data-detail]');
       if (trigger) {
@@ -740,6 +700,7 @@
           detailTitle.textContent = item.title;
           detailLead.textContent = item.lead || '';
           detailBody.innerHTML = item.body || '';
+          markTargetLang(detailBody);
           dialog.showModal();
         }
       }
@@ -777,37 +738,56 @@
         if (match) shown++;
       });
       sections.forEach(section => {
-        if (!q || section.id === 'start') { section.style.display = ''; return; }
+        if (!q) { section.style.display = ''; return; }
+        section.hidden = false; // search spans every view
         const visible = [...section.querySelectorAll('.cheat-card')].some(c => c.style.display !== 'none');
         section.style.display = visible ? '' : 'none';
       });
+      if (!q) setView(currentView); // re-apply the active view
       noResults.style.display = q && shown === 0 ? 'block' : 'none';
     }
     search.addEventListener('input', applySearch);
     clearSearch.addEventListener('click', () => { search.value = ''; applySearch(); search.focus(); });
 
+    // Views: the bottom nav switches discrete views; the selection is the truth
+    // (no scrollspy). Sections carry data-view; legacy anchors open the right
+    // view first, then scroll to the section.
     const navItems = [...document.querySelectorAll('.nav-item')];
-    // Sections that are not nav destinations map to the closest nav concept.
-    const NAV_MAP = {
-      cases: 'cases', forms: 'forms', preps: 'cases',
-      order: 'order', clauses: 'clauses', verbs: 'verbs',
-      extras: 'forms', practice: null, 'install-help': null, start: null,
-    };
-    const navTargets = Object.keys(NAV_MAP).map(id => document.getElementById(id)).filter(Boolean);
-    const setActiveNav = (navId) => {
+    const viewSections = [...document.querySelectorAll('section[data-view]')];
+    let currentView = navItems[0].dataset.nav;
+    function setView(viewId) {
+      currentView = viewId;
+      viewSections.forEach(s => {
+        s.hidden = s.dataset.view !== viewId;
+        s.style.display = '';
+      });
       navItems.forEach(item => {
-        const on = item.dataset.nav === navId;
+        const on = item.dataset.nav === viewId;
         item.classList.toggle('active', on);
         if (on) item.setAttribute('aria-current', 'true');
         else item.removeAttribute('aria-current');
       });
-    };
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries.filter(e => e.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (!visible) return;
-      setActiveNav(NAV_MAP[visible.target.id]);
-    }, {rootMargin:'-25% 0px -60% 0px', threshold:[0,.1,.25,.5]});
-    navTargets.forEach(el => observer.observe(el));
+    }
+    navItems.forEach(item => item.addEventListener('click', (event) => {
+      event.preventDefault();
+      const viewId = item.dataset.nav;
+      if (search.value) { search.value = ''; applySearch(); } // predictable destination
+      if (location.hash !== '#' + viewId) history.pushState(null, '', '#' + viewId);
+      setView(viewId);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }));
+    function onHash() {
+      const id = location.hash.slice(1);
+      const target = id ? document.getElementById(id) : null;
+      const hostSection = target && target.closest('section[data-view]');
+      const viewId = hostSection ? hostSection.dataset.view
+        : (navItems.some(n => n.dataset.nav === id) ? id : null);
+      if (!viewId) return; // unknown hash: keep the current view
+      setView(viewId);
+      if (target && hostSection && target !== hostSection) target.scrollIntoView();
+    }
+    window.addEventListener('hashchange', onHash);
+    if (location.hash) onHash(); else setView(currentView);
 
     let deferredPrompt = null;
     const installBtn = document.getElementById('installBtn');
@@ -839,7 +819,10 @@
         detailBody.innerHTML = '<div class="detail-block"><b>1.</b>Открой меню Share.</div><div class="detail-block"><b>2.</b>Выбери Add to Home Screen.</div><div class="detail-block"><b>3.</b>Подтверди Add.</div>';
         dialog.showModal();
       } else {
-        document.getElementById('install-help').scrollIntoView({behavior:'smooth'});
+        detailTitle.textContent = 'Установка на телефон';
+        detailLead.textContent = 'Это PWA: после первой загрузки работает и офлайн.';
+        detailBody.innerHTML = '<div class="detail-block"><b>Android / Chrome</b>Меню браузера → Install app / Add to Home screen.</div><div class="detail-block"><b>iPhone / Safari</b>Share → Add to Home Screen.</div><div class="detail-block"><b>Важно</b>Для установки и offline-кэша страницу нужно открыть по HTTPS (или localhost), не как локальный файл из Files.</div>';
+        dialog.showModal();
       }
     });
 
