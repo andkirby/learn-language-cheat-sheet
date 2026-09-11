@@ -200,3 +200,17 @@ APP_SHELL) renders every component from base.css with real specimens and
 carries the class-role table — the semantic-naming documentation. Class
 renames were deliberately not done: the audit found the naming already
 semantic; the gap was documentation, not naming.
+
+### 2026-09-11 — Study-voice stack tuned: Charter first
+
+User feedback after seeing New York everywhere on Apple: consider another
+font. Research (screen-reading serifs, per-platform availability) kept the
+no-vendored-fonts rule and retuned the system stack instead:
+`Charter, "Bitstream Charter", ui-serif, "Sitka Text", Cambria, "Noto Serif",
+serif`. The ordering is the point: macOS ships Charter (sturdier, bookish —
+Carter's low-res-era design brief) and takes it; iOS has no Charter and
+falls through to `ui-serif` = New York; Windows gets Sitka/Cambria, Android
+Noto Serif. Zero bytes downloaded, one token changed. A bundled
+single-family option (Literata / Gentium Book Plus / Source Serif 4,
+self-hosted subset) was evaluated and deliberately deferred — revisit if
+cross-device consistency starts to matter more than the zero-footprint rule.

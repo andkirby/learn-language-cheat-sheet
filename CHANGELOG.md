@@ -6,6 +6,9 @@ Append the entry in the same commit that ships the change.
 
 ## 2026-09-11
 
+- **Style**: study-voice serif retuned — Charter on macOS, New York on iOS,
+  Sitka/Cambria on Windows, Noto Serif on Android (system stacks only, no
+  downloaded fonts). `CACHE_VERSION` v7.
 - **Style**: shared `assets/base.css` replaces the per-page inline copies;
   target-language text (German/English examples, answers, declension tables)
   now renders in a serif study voice via the `lang` attribute — Russian

@@ -38,9 +38,12 @@
   --radius: 18px;
   --nav-h: 72px;
   /* type voices: --font-ui is the default stack; --font-study marks the
-     target-language text (set via the lang attribute, see markTargetLang) */
+     target-language text (set via the lang attribute, see markTargetLang).
+     Charter-first: macOS gets Charter (bookish, screen-sturdy); iOS has no
+     Charter and falls through to ui-serif = New York; Windows gets
+     Sitka/Cambria, Android Noto Serif. */
   --font-ui: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-study: ui-serif, Georgia, "Times New Roman", Times, serif;
+  --font-study: Charter, "Bitstream Charter", ui-serif, "Sitka Text", Cambria, "Noto Serif", serif;
 }
 
 @media (prefers-color-scheme: dark) {
