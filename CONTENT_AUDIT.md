@@ -71,11 +71,54 @@ language plan or close it with evidence here.
 | ID | Topic / evidence | Consequence | Required action | Status / retest |
 | --- | --- | --- | --- | --- |
 | C-01 | `AGENTS.md` verification and both plans' update protocols previously contained only runtime/design gates | Working UI could be mistaken for reviewed grammar | Add and link content gates | Documentation fixed; page review NOT RUN |
-| C-02 | EN-05/06: English plan previously used signal-word selection and “время названо?” | Shortcut boundaries were not required | Require meaning/context and contrasting examples; inspect actual tense cards/dialogs against references | Plan requirement revised; page/reference retest pending |
+| C-02 | EN-05/06: English plan previously used signal-word selection and “время названо?” | Shortcut boundaries were not required | Require meaning/context and contrasting examples; inspect actual tense cards/dialogs against references | Plan revised 2026-09-10; page aligned 2026-09-11 (meaning-first card/dialog/practice answer, `since 2020` limit on card); independent reference retest pending |
 | C-03 | Both plans: baseline without independent syllabus comparison or sourced level placement | Completeness cannot be established | Resolve DE-G01–06 and EN-G01–07 plus any gaps found by reference comparison | Open; explicit category exclusions now recorded in both plans |
 | C-04 | Shared design contract specified German terminology despite serving English too | Shared content guidance was language-specific | State target-language terminology in the shared contract | Documentation fixed in both relevant bullets; no UI change |
-| C-05 | Add-language playbook required three practice items without topic mapping | Exercise count could substitute for coverage evidence | Map practice to topics; review every answer; use additional audit probes where needed | Procedure fixed; actual practice review pending |
+| C-05 | Add-language playbook required three practice items without topic mapping | Exercise count could substitute for coverage evidence | Map practice to topics; review every answer; use additional audit probes where needed | Procedure fixed; practice remapped on both pages 2026-09-11 (DE-03/07/08, EN-01/04/06) — answer review pending |
 | C-06 | Plan-authoring questions and scope-decision rules were spread across several files | Authors could omit exclusions or put evidence into the plan | Add one authoring owner and standardize both language plans | Documentation fixed; content baseline remains NOT RUN |
+
+## 2026-09-11 — Incremental change: page alignment with accepted plans
+
+Protocol §5 changed-unit record. Reviewer: ZCode (page-change author; not an
+independent linguistic reviewer — author review only, full gates remain
+NOT RUN). Base: `057e836` + uncommitted documentation rework; both pages
+were unmodified before this change. `CACHE_VERSION` bumped to `v5`.
+
+References consulted (accessed 2026-09-11; author-level grounding, not the
+full baseline comparison):
+
+- Lingolia, “Konjunktiv I und II” — <https://deutsch.lingolia.com/de/grammatik/verben/konjunktiv>:
+  würde + Infinitiv for most verbs; direct forms wäre/hätte/könnte/müsste/sollte;
+  unreal conditions, polite requests, advice, wishes.
+- Grammis (IDS Mannheim), “Ersatzinfinitiv” — <https://grammis.ids-mannheim.de/systematische-grammatik/1615>
+  (+ <https://www.deutschplus.net/pages/Ersatzinfinitiv>): Perfekt with core
+  modal verbs uses the infinitive instead of Partizip II; *Ich habe arbeiten
+  müssen*; *…, weil ich habe arbeiten müssen*.
+- Cambridge Dictionary Grammar, “Past simple or present perfect?” —
+  <https://dictionary.cambridge.org/us/grammar/british-grammar/past-simple-or-present-perfect>:
+  present perfect = time up to now / connection with the present; past simple
+  with finished periods; present perfect with unfinished periods (*today*)
+  and *for/since* duration.
+
+Changed units (all verified: structural integrity, `node --check`, runtime
+browser pass at 390px with no console errors):
+
+| Unit | Change | Coverage after change |
+| --- | --- | --- |
+| DE-12 card + `konjunktiv2` dialog (`#verbs`) | Added (was required, missing) | Covered (author-reviewed) |
+| DE-14 card + `double-infinitive` dialog (`#verbs`) | Added recognition note with parsed example | Covered (author-reviewed) |
+| DE practice item 1 answer | Now surfaces `der → dem` (DE-03 step) and the `einem Mann` alternative | Matches DE-03/07/08 mapping |
+| EN-06 card + `pp-vs-past` dialog + practice item 2 | Meaning/context first; “время названо?” demoted to a clue with the `since 2020` counterexample on the card | Covered (author-reviewed); C-02 page half done |
+| EN practice items 1 and 3 | Replaced per plan mapping: `play the piano` (EN-01), `Does she like` (EN-04); the conditional item (EN-16) left the practice set — consequence of the accepted three-topic mapping, recorded here | Matches EN-01/04/06 mapping |
+
+Verified unaffected neighbors: DE-13 Passiv card/dialog unchanged;
+EN-05 cards already present markers as secondary clues; EN-09 passive dialog
+lists only the four shown tense forms (no “all tenses” claim).
+
+Gate impact: none of the four gates changes status — Baseline, Coverage,
+Accuracy and Teaching remain NOT RUN pending the full independent review.
+This record only establishes that the changed units match the accepted plans
+and cited references at author level.
 
 ## Next full review record
 

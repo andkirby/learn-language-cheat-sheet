@@ -22,6 +22,8 @@ tools/make_icons.py icon generator (stdlib only)
 docs/               authoring, validation and add-language procedures
 CONTENT_AUDIT.md    content evidence, open questions and verdicts
 UI_AUDIT.md         UI review evidence and open findings
+DEBT.md             deferred work with owners and triggers
+CHANGELOG.md        user-visible changes, newest first
 ```
 
 ## Source-of-truth map
@@ -37,6 +39,8 @@ UI_AUDIT.md         UI review evidence and open findings
 | Why a UI decision was made | `.design/decisions.md` |
 | UI review evidence and open/deferred findings | `UI_AUDIT.md` |
 | Deployment / GitHub Pages | `README.md` |
+| Deliberately deferred work | `DEBT.md` |
+| What changed, newest first | `CHANGELOG.md` |
 
 ## Hard rules
 

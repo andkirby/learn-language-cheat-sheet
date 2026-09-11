@@ -2,7 +2,7 @@
 // Lives at the repo root; each page registers it with '../sw.js'
 // (the landing uses './sw.js').
 // After changing any page or asset, bump CACHE_VERSION (see AGENTS.md).
-const CACHE_VERSION = 'v4';
+const CACHE_VERSION = 'v5';
 const CACHE_NAME = `lang-cheat-${CACHE_VERSION}`;
 const APP_SHELL = [
   './',
