@@ -1,15 +1,19 @@
 # Design System — Language Cheat Sheets
 
-Shared contract for every page in the hub: the landing (`index.html`) and each
-language cheatsheet (`deutsch/`, `english/`, …) — single-file pages, no build
-step, no external dependencies. This contract constrains all UI changes;
-each language's `SITE_PLAN.md` owns that language's scope and content.
+## Responsibility
+
+This file owns the shared visual, component, interaction and accessibility
+contract for the landing page and every language page. It does not own a
+language's topic scope, view membership, stable anchors or review evidence;
+those belong in its `SITE_PLAN.md` and `CONTENT_AUDIT.md` respectively.
+
+All pages are single-file pages with no build step or external dependencies.
 
 ## Product character & density
 
 - Compact reference cards, not a textbook. First layer = trigger + rule + one
   short example; depth lives in tap-to-open bottom-sheet dialogs.
-- Russian explanation first, German terminology retained.
+- Russian explanation first, target-language terminology retained.
 - Content width capped at 980px; the page must never scroll horizontally.
 
 ## Tokens
@@ -20,7 +24,7 @@ exception is the `:root` token blocks themselves (plus black-key shadows).
 Every page ships the same token set.
 
 | Role | Light | Dark | Used for |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `--bg` | `#f6f7fb` | `#10131b` | page background |
 | `--surface` | `#ffffff` | `#191e2b` | cards, tables, topbar |
 | `--surface-2` | `#eef1f7` | `#232a3a` | examples, th, detail blocks |
@@ -65,19 +69,18 @@ Rules:
 - Grid/flex children that contain wide content (tables) must be allowed to
   shrink: `.cards > * { min-width: 0 }` — tables scroll inside
   `.table-scroll`, never the page.
-- `scroll-padding-top: 116px` keeps anchored sections clear of the sticky topbar.
+- `scroll-padding-top: 116px` keeps anchored sections clear of the sticky
+  topbar.
 - Bottom nav is fixed, 5 **view destinations**, respects
   `env(safe-area-inset-bottom)`. A tap switches the visible view (sections
   carry `data-view`); there is no scrollspy — the selected view is the nav
-  truth. German views: cases, forms, order, clauses, practice; English:
-  articles, tenses, order, verbs, preps (practice is anchor-only, linked
-  from the footer). Legacy anchors (`#preps`, `#verbs`, `#nouns`, …) open
-  the section's view first, then scroll to it.
+  truth. Each language plan owns its destinations, section membership and
+  legacy anchors. A legacy anchor opens the section's view before scrolling.
 
 ## Components
 
 | Component | Contract |
-|---|---|
+| --- | --- |
 | `.cheat-card` | Atomic unit; content + optional `.chips`. Searchable via `data-search`. Must shrink (see layout). |
 | `.tap` (chip) | Opens a `DETAILS` dialog entry or reveals an answer. Variants: `.neutral` (secondary), `.case` (44px). Visual min-height 40px + `::after` hit-area expansion to ≥46px. No other button styles. |
 | `.table-scroll` + `table` | Horizontal scroll container; `td.hot` marks case-changing forms via `--on-accent-soft`. |
@@ -116,7 +119,8 @@ Rules:
 
 ## Content/copy conventions
 
-- UI language Russian; German grammar terms stay German (Dativ, weil, V2).
+- UI language Russian; grammar terms stay in the target language
+  (German: Dativ, weil; English: Present Perfect).
 - Examples ≤ 2 lines; bold marks the pattern-carrying words.
 
 ## Governance & exceptions
@@ -124,7 +128,8 @@ Rules:
 - Changing a token, adding a component/variant, or deviating from anything
   above requires an entry in `decisions.md` — and must be applied to **every**
   page in the same commit (shared contract).
-- Content coverage/scope changes go to that language's `SITE_PLAN.md` first,
-  then the page (its update protocol applies).
+- Author or revise accepted content scope with `docs/SITE_PLAN_GUIDE.md` and
+  update that language's `SITE_PLAN.md` before the page. Review results and
+  unresolved content questions belong in `CONTENT_AUDIT.md`.
 - New languages follow `docs/ADD_LANGUAGE.md`; they inherit this contract
   without renegotiation.
