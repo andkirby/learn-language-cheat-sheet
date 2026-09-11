@@ -14,6 +14,15 @@ Append the entry in the same commit that ships the change.
   mobile viewport; the anti-zoom `maximum-scale=1` lock stays in place.
   The landing page got the same iOS head script the deck pages already
   had (it was missing there). `CACHE_VERSION` v11.
+- **Clarity**: the three paradigm tables (артикли, ein-слова, местоимения)
+  each gained an anchor example («Ich sehe **den** Mann», «Kennst du **ihn**?
+  — Ich helfe **ihm**») and legends that state what the highlight actually
+  marks; meaning-rule examples (Konjunktiv II, um…zu vs damit, Perfekt,
+  mustn't) gained short Russian deciding glosses while form-rule examples
+  stay unglossed — policy recorded in both plans. Search hygiene: keywords
+  that named content absent from the card were removed or made visible
+  (dessen/deren, modal-verb list, W-words); the generator now rejects such
+  keywords. möchte, euer→eure and она/они/Вы glosses added.
 - **Structure**: pages moved to `de/ru/` and `en/ru/` — one folder per
   (target × audience) pair, ready for decks in other explanation languages;
   the landing gained a locale selector (Русский today, English — soon) that

@@ -13,6 +13,7 @@ static files with no build step, and the page stays readable without JS.
 import argparse
 import html
 import json
+import re
 import pathlib
 import sys
 
@@ -34,6 +35,62 @@ def js(obj):
 
 
 # ---------------------------------------------------------------- validation
+
+def _runs_text(runs):
+    return " ".join(r.get("t", "") if isinstance(r, dict) else r for r in runs)
+
+
+_UMAP = str.maketrans({"ä": "a", "ö": "o", "ü": "u", "ß": "ss"})
+# word chars incl. Cyrillic (для видимого текста) — letter-runs split on punctuation/slashes
+_WORD_RE = re.compile(r"[a-zà-ÿ0-9а-яёіґїє]+")
+
+
+def _norm(s):
+    return s.lower().translate(_UMAP).replace("'", "").replace("’", "")
+
+
+def _grammar_terms(site, target_id):
+    """Search-index exemptions from content/decks/site.json: grammar
+    terminology that may sit in data-search without being visible on the
+    card. The shared list applies to every target; a target's own list
+    applies only to its decks — new languages edit site.json, not this file."""
+    terms = set(_norm(t) for t in site.get("grammar_terms_common", []))
+    for t in site.get("targets", []):
+        if t.get("id") == target_id:
+            terms |= set(_norm(x) for x in t.get("grammar_terms", []))
+    return terms
+
+
+def _card_visible_text(card):
+    """Everything a learner sees on the card (search never indexes dialogs)."""
+    parts = []
+    if card.get("case_grid"):
+        for c in card["case_grid"]:
+            parts.append(_runs_text(c.get("label", [])))
+        return " ".join(parts).lower().replace("ё", "е")
+    for block in card.get("blocks", []):
+        for key in ("h", "p", "tiny", "example", "notice"):
+            if key in block:
+                parts.append(_runs_text(block[key]))
+        if "formula" in block:
+            for item in block["formula"]:
+                parts.append(item["arrow"] if "arrow" in item
+                             else (item["slot"] if isinstance(item["slot"], str)
+                                   else _runs_text(item["slot"])))
+        if "table" in block:
+            parts.extend(block["table"].get("head", []))
+            for row in block["table"].get("rows", []):
+                for cell in row:
+                    parts.append(cell["hot"] if isinstance(cell, dict) else cell)
+        if "chips" in block:
+            for chip in block["chips"]:
+                parts.append(chip["label"] if isinstance(chip["label"], str)
+                             else _runs_text(chip["label"]))
+        if "detail" in block:
+            parts.append(block["detail"]["label"])
+            parts.append(_runs_text(block["detail"]["runs"]))
+    return " ".join(str(p) for p in parts).lower().replace("ё", "е")
+
 
 def validate(deck, site):
     errors = []
@@ -117,6 +174,8 @@ def validate(deck, site):
                 d = block[key]
                 check_runs(d.get("runs", []), f"{where}[{i}].detail.runs")
 
+    grammar_terms = _grammar_terms(site, meta.get("target"))
+
     def check_card(card, where):
         if not card.get("search"):
             errors.append(f"{where}: search keywords required")
@@ -130,6 +189,22 @@ def validate(deck, site):
                 check_runs(c.get("label", []), f"{where}.case_grid[{j}].label")
         else:
             check_blocks(card["blocks"], where)
+        # Search-index hygiene (see GRAMMAR_TERMS note above).
+        words = set(_WORD_RE.findall(_norm(_card_visible_text(card))))
+        for token in str(card.get("search", "")).split():
+            t = _norm(token)
+            if t in grammar_terms or len(t) < 3:
+                continue
+            if re.search(r"[\u0400-\u04FF]", token):
+                continue  # searcher's own script (any Cyrillic): variants expected
+            ok = t in words or any(
+                len(w) >= 3 and (w.startswith(t) or t.startswith(w))
+                for w in words
+            )
+            if not ok:
+                errors.append(f"{where}: search token {token!r} is not visible on the card "
+                               f"(surface it on the card, or add it to grammar_terms in content/decks/site.json "
+                               f"if it is grammar terminology)")
 
     def check_group(group, where):
         if not group.get("cards"):
@@ -203,6 +278,9 @@ def validate(deck, site):
             errors.append(f"strings.{s}.title is required")
 
     # Site registry: every deck must be present in it (it drives the menu).
+    for key in ("grammar_terms_common",):
+        if not isinstance(site.get(key, []), list):
+            errors.append(f"site.json {key} must be a list")
     target_ids = []
     for i, t in enumerate(site.get("targets", [])):
         if not t.get("id") or not t.get("label"):
@@ -215,6 +293,8 @@ def validate(deck, site):
         for j, a in enumerate(t.get("audiences", [])):
             if not a.get("id") or not a.get("label"):
                 errors.append(f"site.json targets[{i}].audiences[{j}]: id and label required")
+        if not isinstance(t.get("grammar_terms", []), list):
+            errors.append(f"site.json target {t.get('id')!r}: grammar_terms must be a list")
         target_ids.append(t.get("id"))
     if len(set(target_ids)) != len(target_ids):
         errors.append("site.json: target ids not unique")

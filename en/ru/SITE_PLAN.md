@@ -88,6 +88,14 @@ defined in the design system. English content adds these requirements:
 
 - A first-layer rule gives the learner a meaning/use trigger, form or position,
   and one short natural example. Signal words are secondary clues.
+- Example glosses follow the rule type. Form and position rules (paradigms,
+  word order, V-ing/to V patterns) keep examples in the target language only,
+  with structural annotation — bold forms, minimal pairs; a Russian
+  translation cannot demonstrate English morphology or syntax. Meaning/usage
+  rules (article choice, tense choice, mustn't vs don't have to) add a short
+  Russian gloss carrying the deciding difference, not a full translation.
+  Word fragments stay unglossed. A gloss that does not add the choice
+  criterion is removed.
 - A dangerous simplification includes its essential limit on the card. In
   particular, Present Perfect versus Past Simple must use meaning and discourse
   context; “is a time mentioned?” is not a sufficient decision rule.

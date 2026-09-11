@@ -85,6 +85,14 @@ defined in the design system. German content adds these requirements:
 - A first-layer rule gives the learner a trigger, form or position, and one
   short natural example. A dangerous simplification includes its essential
   limit on the card.
+- Example glosses follow the rule type. Form and position rules (endings,
+  case forms, word order) keep examples in the target language only, with
+  structural annotation — bold forms, `dem Mann = Dat.` labels, minimal
+  pairs; a Russian translation cannot demonstrate German morphology or
+  syntax. Meaning/usage rules (Konjunktiv II use, um … zu vs damit,
+  preposition choice) add a short Russian gloss carrying the deciding
+  difference, not a full translation. Declension fragments stay unglossed.
+  A gloss that does not add the choice criterion is removed.
 - Dialogs add reasoning, contrast or exceptions without contradicting the
   card. New tappable explanations use the page's `DETAILS` object.
 - German pattern text carries `lang="de"`; Russian explanations and

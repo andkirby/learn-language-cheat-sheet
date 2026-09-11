@@ -99,7 +99,12 @@ deck-level integration checks, not a second copy of that contract:
    **bump `CACHE_VERSION`**.
 2. `content/decks/site.json`: add the audience to the target's entry (drop
    `"soon"` when its deck ships) — the header language menu on every deck
-   page regenerates from it.
+   page regenerates from it. If your target language has grammar terminology
+   that belongs in `data-search` without appearing on a card (the Russian
+   equivalent is shown instead), add those terms to the target's
+   `grammar_terms` — the build gate flags any search token that names
+   content the card does not show; searcher-script words (Cyrillic etc.)
+   and inflections are matched automatically.
 3. Landing `index.html`: mirror the registry change — `DECKS`, the
    `.lang-menu` «Язык обучения»/«Язык объяснений» markup — and, for a new
    target, add a `.lang-card` (mark, name, topics, meta, `→`,

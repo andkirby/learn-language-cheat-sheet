@@ -103,7 +103,7 @@
           ]
         },
         {
-          "search": "school hospital zero article institution ошибки русскоговорящих",
+          "search": "school zero article ошибки русскоговорящих",
           "blocks": [
             {"h": ["Ловушки для русскоговорящих"]},
             {"p": ["Русский часто обходится без артикля — английский нет:"]},
@@ -136,6 +136,7 @@
                 ["they", {"hot": "them"}, "their", {"hot": "theirs"}]
               ]
             }},
+            {"example": ["I saw ", {"t": "him", "b": true}, " yesterday. · This is ", {"t": "his", "b": true}, " car."]},
             {"tiny": ["Жирным — формы-ловушки: то, что меняется и на чём чаще всего ошибаются."]},
             {"chips": [
               {"label": "my или mine?", "detail": "my-mine"},
@@ -175,7 +176,7 @@
           ]
         },
         {
-          "search": "adverbs frequency always usually never often место наречий частоты",
+          "search": "adverbs frequency always never место наречий частоты",
           "blocks": [
             {"h": ["Всегда / Обычно / Никогда"]},
             {"p": ["Наречия частоты — ", {"t": "перед смысловым глаголом", "b": true}, ", но ", {"t": "после be", "b": true}, "."]},
@@ -187,7 +188,7 @@
           ]
         },
         {
-          "search": "where you live mistake omission do error типичные ошибки вопрос без do",
+          "search": "where you do mistake omission error типичные ошибки вопрос без do",
           "blocks": [
             {"h": ["Ошибка №1 русскоговорящих"]},
             {"example": [
@@ -256,7 +257,7 @@
           ]
         },
         {
-          "search": "present perfect vs past simple разница вчера just since for finished выбор времени",
+          "search": "present perfect vs past simple разница вчера since выбор времени",
           "_note": "C-02 rework: meaning-first, «время названо?» demoted to a clue with since/for limit.",
           "blocks": [
             {"h": ["Perfect vs Past Simple"]},
@@ -306,8 +307,8 @@
             {"h": ["mustn't ≠ don't have to"]},
             {"p": [{"t": "mustn't", "b": true}, " = запрещено. ", {"t": "don't have to", "b": true}, " = не обязательно."]},
             {"example": [
-              {"t": "You mustn't smoke", "b": true}, " here.", {"br": true},
-              {"t": "You don't have to come", "b": true}, " early."
+              {"t": "You mustn't smoke", "b": true}, " here — здесь нельзя.", {"br": true},
+              {"t": "You don't have to come", "b": true}, " early — не обязательно."
             ]},
             {"chips": [{"label": "Почему это путают", "detail": "mustnt"}]}
           ]
@@ -325,7 +326,7 @@
           ]
         },
         {
-          "search": "gerund infinitive enjoy finish want decide v-ing to v",
+          "search": "gerund infinitive enjoy finish want decide to v",
           "blocks": [
             {"h": ["V-ing или to V?"]},
             {"p": [{"t": "enjoy, finish, mind", "b": true}, " + V-ing · ", {"t": "want, decide, hope", "b": true}, " + to V."]},
@@ -459,7 +460,7 @@
           ]
         },
         {
-          "search": "conditional 0 zero законы always настоящее условное нулевое",
+          "search": "conditional 0 zero законы настоящее условное нулевое",
           "blocks": [
             {"h": ["Type 0 — всегда так"]},
             {"formula": [{"slot": "If + Present", "role": "sub"}, {"arrow": ","}, {"slot": "Present", "role": "verb"}]},
