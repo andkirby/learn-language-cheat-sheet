@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="@@HTML_LANG@@">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <!-- iOS standalone (Add to Home Screen): two WebKit viewport workarounds.
+       (1) Relaunch restores a stale zoom level and pinch-out is unavailable
+       there, so the scale is locked on iOS only (Safari itself ignores
+       maximum-scale, Android and desktop keep pinch-zoom entirely).
+       (2) A resumed standalone window can come back reporting a ~980px
+       viewport, which trips the 720px desktop breakpoint in base.css;
+       rewriting the meta forces WebKit to rebuild the real one. -->
+  <script>
+    if (/iphone|ipod/i.test(navigator.userAgent) || (/macintosh/i.test(navigator.userAgent) && navigator.maxTouchPoints > 1)) {
+      const viewportMeta = document.querySelector('meta[name="viewport"]');
+      const iOSViewport = 'width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover';
+      viewportMeta.setAttribute('content', iOSViewport);
+      if (navigator.standalone) {
+        const repairViewport = () => {
+          if (window.innerWidth > screen.width * 1.5) {
+            viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1');
+            setTimeout(() => viewportMeta.setAttribute('content', iOSViewport), 50);
+          }
+        };
+        window.addEventListener('pageshow', repairViewport);
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible') setTimeout(repairViewport, 0);
+        });
+      }
+    }
+  </script>
+  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#10131b" media="(prefers-color-scheme: dark)" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="@@APPLE_TITLE@@" />
+  <meta name="description" content="@@DESCRIPTION@@" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./icons/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="./icons/icon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="./icons/icon-180.png" />
+  <meta property="og:title" content="@@OG_TITLE@@" />
+  <meta property="og:description" content="@@OG_DESCRIPTION@@" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="@@OG_URL@@" />
+  <meta property="og:image" content="@@OG_IMAGE@@" />
+  <meta name="twitter:card" content="summary" />
+  <title>@@TITLE@@</title>
+  <link rel="stylesheet" href="@@ROOT@@assets/base.css" />
+  <!-- Generated from @@DECK_PATH@@ by tools/build_pages.py — do not edit by hand;
+       regenerate with: python3 tools/build_pages.py @@DECK_PATH@@ -->
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand-row">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">@@BRAND_MARK@@</div>
+          <div>@@BRAND_NAME@@<small>@@BRAND_SUB@@</small></div>
+        </div>
+        @@HELP_BUTTON@@<button class="theme-btn" id="themeBtn" type="button" aria-label="@@THEME_AUTO_LABEL@@">@@THEME_AUTO_ICON@@</button>
+        <button class="install-btn" id="installBtn" type="button">@@INSTALL_LABEL@@</button>
+      </div>
+      <div class="search-row">
+        <div class="search-wrap">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="search" class="search" type="search" autocomplete="off" enterkeyhint="search" placeholder="@@SEARCH_PLACEHOLDER@@" aria-label="@@SEARCH_ARIA@@" />
+          <button id="clearSearch" class="clear-search" type="button" aria-label="@@CLEAR_ARIA@@" hidden>×</button>
+        </div>
+        @@LANG_MENU@@
+      </div>
+    </div>
+  </header>
+
+  <noscript>
+    <style>
+      .tap, .install-btn, .clear-search, .theme-btn, .icon-btn { display: none !important; }
+      .answer[hidden] { display: block; }
+    </style>
+    <div class="notice" style="margin:12px 16px 0">@@NOSCRIPT_NOTICE@@</div>
+    <p class="intro" style="margin:10px 16px 0">@@NOSCRIPT_INTRO@@</p>
+  </noscript>
+
+  <main>
+    <div id="noResults" class="no-results">@@NO_RESULTS@@</div>
+
+@@SECTIONS@@
+    <div class="footer">@@BRAND_NAME@@ · <a href="@@ROOT@@">@@FOOTER_ALL@@</a>@@FOOTER_PRACTICE@@ · <span id="install-help">@@FOOTER_INSTALL@@</span> · @@FOOTER_PLAN@@ <code>@@PLAN_PATH@@</code></div>
+  </main>
+
+  <nav class="bottom-nav" aria-label="@@NAV_ARIA@@">
+@@NAV_ITEMS@@
+  </nav>
+
+  <dialog id="detailDialog" aria-labelledby="detailTitle">
+    <div class="sheet">
+      <div class="grab" aria-hidden="true"></div>
+      <div class="sheet-head">
+        <div><h2 id="detailTitle"></h2><p class="lead" id="detailLead"></p></div>
+        <button class="close-sheet" id="closeDialog" aria-label="@@CLOSE_ARIA@@" type="button">×</button>
+      </div>
+      <div id="detailBody"></div>
+    </div>
+  </dialog>
+
+  <script>
+    const DETAILS = @@DETAILS@@;
+
+    // Theme: auto (OS) / light / dark — persisted per visitor.
+    const THEME_KEY = 'theme';
+    const THEME_UI = @@THEME_UI@@;
+    const themeBtn = document.getElementById('themeBtn');
+    const themeMetas = [...document.querySelectorAll('meta[name="theme-color"]')];
+    const themeMetaDefaults = themeMetas.map(m => m.content);
+    function applyTheme(mode) {
+      if (mode === 'auto') document.documentElement.removeAttribute('data-theme');
+      else document.documentElement.setAttribute('data-theme', mode);
+      themeBtn.textContent = THEME_UI[mode].icon;
+      themeBtn.setAttribute('aria-label', THEME_UI[mode].label);
+      themeBtn.title = THEME_UI[mode].label;
+      themeMetas.forEach((m, i) => {
+        m.content = mode === 'auto' ? themeMetaDefaults[i] : getComputedStyle(document.body).backgroundColor;
+      });
+    }
+    let themeMode = 'auto';
+    try { themeMode = localStorage.getItem(THEME_KEY) || 'auto'; } catch (e) {}
+    applyTheme(themeMode);
+    themeBtn.addEventListener('click', () => {
+      themeMode = themeMode === 'auto' ? 'light' : themeMode === 'light' ? 'dark' : 'auto';
+      try { localStorage.setItem(THEME_KEY, themeMode); } catch (e) {}
+      applyTheme(themeMode);
+    });
+
+    const dialog = document.getElementById('detailDialog');
+    const detailTitle = document.getElementById('detailTitle');
+    const detailLead = document.getElementById('detailLead');
+    const detailBody = document.getElementById('detailBody');
+
+    // Target-language text gets lang="@@TARGET_LANG@@" (screen-reader pronunciation + the
+    // serif study voice from base.css). Whole containers that carry only
+    // target-language text (examples, answers, declension tables) are marked directly;
+    // otherwise the fragments are: bold in .example/.answer, italics in
+    // .detail-block, formula slots without Cyrillic.
+    const TARGET_LANG = '@@TARGET_LANG@@';
+    function markTargetLang(root) {
+      root.querySelectorAll('.example, .answer, .table-scroll').forEach(el => {
+        if (!/[а-яё]/i.test(el.textContent)) el.lang = TARGET_LANG;
+      });
+      root.querySelectorAll('.example b, .answer b, .detail-block i, .formula .slot').forEach(el => {
+        if (!/[а-яё]/i.test(el.textContent)) el.lang = TARGET_LANG;
+      });
+    }
+    markTargetLang(document);
+
+    document.addEventListener('click', (event) => {
+      const trigger = event.target.closest('[data-detail]');
+      if (trigger) {
+        const item = DETAILS[trigger.dataset.detail];
+        if (item) {
+          detailTitle.textContent = item.title;
+          detailLead.textContent = item.lead || '';
+          detailBody.innerHTML = item.body || '';
+          markTargetLang(detailBody);
+          dialog.showModal();
+        }
+      }
+      const reveal = event.target.closest('.reveal');
+      if (reveal) {
+        const answer = document.getElementById(reveal.dataset.target);
+        if (answer) {
+          answer.hidden = !answer.hidden;
+          reveal.textContent = answer.hidden ? '@@REVEAL_SHOW@@' : '@@REVEAL_HIDE@@';
+          reveal.setAttribute('aria-expanded', String(!answer.hidden));
+        }
+      }
+    });
+
+    document.getElementById('closeDialog').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+
+    // Language menu: light-dismiss (native <details> has none) + Escape.
+    const langMenu = document.getElementById('langMenu');
+    if (langMenu) {
+      document.addEventListener('click', (event) => {
+        if (langMenu.open && !langMenu.contains(event.target)) langMenu.open = false;
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && langMenu.open) langMenu.open = false;
+      });
+    }
+    // Remember what is being studied so the landing can greet the learner.
+    try { localStorage.setItem('target', TARGET_LANG); } catch (e) {}
+
+    const search = document.getElementById('search');
+    const clearSearch = document.getElementById('clearSearch');
+    const cards = [...document.querySelectorAll('.cheat-card')];
+    const sections = [...document.querySelectorAll('section[data-section]')];
+    const noResults = document.getElementById('noResults');
+
+    function applySearch() {
+      const q = search.value.trim().toLowerCase();
+      document.body.classList.toggle('searching', !!q);
+      clearSearch.hidden = !q;
+      let shown = 0;
+      cards.forEach(card => {
+        const hay = `${card.textContent} ${card.dataset.search || ''}`.toLowerCase();
+        const match = !q || hay.includes(q);
+        card.style.display = match ? '' : 'none';
+        if (match) shown++;
+      });
+      sections.forEach(section => {
+        if (!q) { section.style.display = ''; return; }
+        section.hidden = false; // search spans every view
+        const visible = [...section.querySelectorAll('.cheat-card')].some(c => c.style.display !== 'none');
+        section.style.display = visible ? '' : 'none';
+      });
+      if (!q) setView(currentView); // re-apply the active view
+      noResults.style.display = q && shown === 0 ? 'block' : 'none';
+    }
+    search.addEventListener('input', applySearch);
+    clearSearch.addEventListener('click', () => { search.value = ''; applySearch(); search.focus(); });
+
+    // Views: the bottom nav switches discrete views; the selection is the truth
+    // (no scrollspy). Sections carry data-view; legacy anchors open the right
+    // view first, then scroll to the section.
+    const navItems = [...document.querySelectorAll('.nav-item')];
+    const viewSections = [...document.querySelectorAll('section[data-view]')];
+    let currentView = navItems[0].dataset.nav;
+    function setView(viewId) {
+      currentView = viewId;
+      viewSections.forEach(s => {
+        s.hidden = s.dataset.view !== viewId;
+        s.style.display = '';
+      });
+      navItems.forEach(item => {
+        const on = item.dataset.nav === viewId;
+        item.classList.toggle('active', on);
+        if (on) item.setAttribute('aria-current', 'true');
+        else item.removeAttribute('aria-current');
+      });
+    }
+    navItems.forEach(item => item.addEventListener('click', (event) => {
+      event.preventDefault();
+      const viewId = item.dataset.nav;
+      if (search.value) { search.value = ''; applySearch(); } // predictable destination
+      if (location.hash !== '#' + viewId) history.pushState(null, '', '#' + viewId);
+      setView(viewId);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }));
+    function onHash() {
+      const id = location.hash.slice(1);
+      const target = id ? document.getElementById(id) : null;
+      const hostSection = target && target.closest('section[data-view]');
+      const viewId = hostSection ? hostSection.dataset.view
+        : (navItems.some(n => n.dataset.nav === id) ? id : null);
+      if (!viewId) return; // unknown hash: keep the current view
+      setView(viewId);
+      if (target && hostSection && target !== hostSection) target.scrollIntoView();
+    }
+    window.addEventListener('hashchange', onHash);
+    if (location.hash) onHash(); else setView(currentView);
+
+    let deferredPrompt = null;
+    const installBtn = document.getElementById('installBtn');
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+    if (isIOS && !isStandalone) installBtn.hidden = false;
+    else installBtn.hidden = true;
+
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault();
+      deferredPrompt = event;
+      installBtn.hidden = false;
+    });
+
+    window.addEventListener('appinstalled', () => {
+      deferredPrompt = null;
+      installBtn.hidden = true;
+    });
+
+    const INSTALL = @@INSTALL@@;
+    installBtn.addEventListener('click', async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        await deferredPrompt.userChoice;
+        deferredPrompt = null;
+        installBtn.hidden = true;
+      } else if (isIOS) {
+        detailTitle.textContent = INSTALL.ios.title;
+        detailLead.textContent = INSTALL.ios.lead;
+        detailBody.innerHTML = INSTALL.ios.body;
+        dialog.showModal();
+      } else {
+        detailTitle.textContent = INSTALL.generic.title;
+        detailLead.textContent = INSTALL.generic.lead;
+        detailBody.innerHTML = INSTALL.generic.body;
+        dialog.showModal();
+      }
+    });
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('@@ROOT@@sw.js').catch(() => {}));
+    }
+  </script>
+</body>
+</html>

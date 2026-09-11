@@ -25,6 +25,7 @@ sw.js               shared service worker (root scope, all languages)
 icons/              landing favicon + og image
 tools/make_icons.py icon generator (stdlib only)
 tools/build_pages.py deck→page generator + validator (stdlib only)
+tools/page_template.html page skeleton (@@TOKENS@@) loaded by build_pages.py
 docs/               authoring, validation and add-language procedures
 research/           external reference research notes (not content source)
 CONTENT_AUDIT.md    content evidence, open questions and verdicts
