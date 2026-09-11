@@ -76,6 +76,7 @@ language plan or close it with evidence here.
 | C-04 | Shared design contract specified German terminology despite serving English too | Shared content guidance was language-specific | State target-language terminology in the shared contract | Documentation fixed in both relevant bullets; no UI change |
 | C-05 | Add-language playbook required three practice items without topic mapping | Exercise count could substitute for coverage evidence | Map practice to topics; review every answer; use additional audit probes where needed | Procedure fixed; practice remapped on both pages 2026-09-11 (DE-03/07/08, EN-01/04/06) — answer review pending |
 | C-06 | Plan-authoring questions and scope-decision rules were spread across several files | Authors could omit exclusions or put evidence into the plan | Add one authoring owner and standardize both language plans | Documentation fixed; content baseline remains NOT RUN |
+| C-07 | User-reported teaching-quality gaps (2026-09-11): DE `objects` lead named no verbs, DE `tekamolo` «База» used unglossed Temporal/Kausal/Modal/Lokal, DE `perfekt` «Важно» named no verbs; sweep added DE `wo-wohin` caveat and `passive` block without examples, EN `svo` lead typo («roles») | Learner cannot act on a rule whose terms or exceptions are not exemplified | Fix the six units; run the full unit-by-unit Teaching gate later | Six units fixed in page 2026-09-11 (author review); Teaching gate still NOT RUN — see D-01 |
 
 ## 2026-09-11 — Incremental change: page alignment with accepted plans
 
@@ -119,6 +120,28 @@ Gate impact: none of the four gates changes status — Baseline, Coverage,
 Accuracy and Teaching remain NOT RUN pending the full independent review.
 This record only establishes that the changed units match the accepted plans
 and cited references at author level.
+
+## 2026-09-11 — Teaching-quality pass (user-reported signals)
+
+Reviewer: ZCode (page author; user acting as first learner reviewer). Trigger:
+three units reported unclear by the user while reading the live German page.
+Method: targeted class-sweep of every dialog lead and caveat-style block
+(«Важно», «Но», «Запомни», «База») on both pages — not the unit-by-unit
+Teaching gate. `CACHE_VERSION` v6.
+
+Fixed units:
+
+| Unit | Was | Now |
+| --- | --- | --- |
+| DE `objects` (DE-01 area) | «Некоторые глаголы легко дают Dativ + Akkusativ» — no verbs, no why | Lead states the two-object requirement; body lists geben, schenken, zeigen, bringen, sagen, erklären + the geben parse |
+| DE `tekamolo` (DE-09) | Temporal → Kausal → Modal → Lokal, unglossed | Russian question glosses (когда?/почему?/как?/где?) + one demo sentence |
+| DE `perfekt` (DE-07) | «форму которых надо просто знать» — no verbs | ist geblieben / ist passiert vs hat getanzt named |
+| DE `wo-wohin` (DE-02) | Caveat reasoned but no example | im Park / in den Park contrast pair added |
+| DE `passive` (DE-13) | «Не путай с Perfekt» label over a Perfekt-passive form | Relabeled «А вот Perfekt Passiv» |
+| EN `svo` (EN-03) | Lead typo «roles» in Russian text | «роли» |
+
+Verified: chip↔dialog bijection, `node --check`, curly-quote scan clean.
+Gates unchanged: all four remain NOT RUN.
 
 ## Next full review record
 

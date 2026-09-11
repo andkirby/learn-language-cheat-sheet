@@ -6,6 +6,19 @@ Append the entry in the same commit that ships the change.
 
 ## 2026-09-11
 
+- **Style**: shared `assets/base.css` replaces the per-page inline copies;
+  target-language text (German/English examples, answers, declension tables)
+  now renders in a serif study voice via the `lang` attribute — Russian
+  explanations stay sans; new `style-guide.html` documents tokens,
+  components and class roles with live specimens. `CACHE_VERSION` v6.
+- **Refactor/style**: shared `assets/base.css` (tokens + components, one
+  source instead of three inlined copies), target-language text now set in a
+  serif study voice, new `style-guide.html` component specimens; service
+  worker shell includes the stylesheet.
+- **Clarity**: teaching-quality pass after learner feedback — German dialogs
+  now name the two-object verbs, gloss TeKaMoLo terms in Russian, exemplify
+  the haben/sein exceptions, and contrast wo/wohin with a jogging pair;
+  English SVO dialog typo fixed. `CACHE_VERSION` v6 (finding C-07).
 - **Content**: pages aligned with the accepted plans — German gains the
   Konjunktiv II card and the modal-perfect double-infinitive note (DE-12,
   DE-14); English Perfect-vs-Past Simple is reworked meaning-first with the

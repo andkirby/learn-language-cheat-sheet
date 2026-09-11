@@ -14,6 +14,8 @@ step, no external dependencies, everything works offline.
 
 ```text
 index.html          landing (language cards)
+assets/base.css     shared stylesheet: tokens + components (specimens: style-guide.html)
+style-guide.html    living component specimens + class roles (noindex, not cached)
 deutsch/            German page + its manifest, icons, SITE_PLAN.md
 english/            English page + its manifest, icons, SITE_PLAN.md
 sw.js               shared service worker (root scope, all languages)
@@ -36,6 +38,7 @@ CHANGELOG.md        user-visible changes, newest first
 | How content is validated | `docs/CONTENT_VALIDATION.md` |
 | Open content questions, review evidence and verdicts | `CONTENT_AUDIT.md` |
 | Design tokens, components, a11y rules | `.design/DESIGN_SYSTEM.md` |
+| Component specimens and class roles | `style-guide.html` |
 | Why a UI decision was made | `.design/decisions.md` |
 | UI review evidence and open/deferred findings | `UI_AUDIT.md` |
 | Deployment / GitHub Pages | `README.md` |

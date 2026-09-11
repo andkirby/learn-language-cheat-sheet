@@ -55,6 +55,12 @@ Follow [the design system](../.design/DESIGN_SYSTEM.md). The items below are
 integration checks, not a second copy of that contract:
 
 - `<html lang="ru">` (UI language stays Russian), brand mark = language code.
+- Link `../assets/base.css` — never copy component styles into the page.
+  Page-specific styles (if truly needed) go in a small local `<style>` block.
+- Set `TARGET_LANG` and keep `markTargetLang` intact: it sets `lang`
+  attributes (screen-reader pronunciation + the serif study voice) on
+  pure-target `.example`/`.answer`/`.table-scroll` containers and on bold /
+  italic / Cyrillic-free slot fragments.
 - Section ids stay lowercase-English slugs; **never reuse another language's
   ids unless the sections match** — anchors are per-page anyway.
 - `DETAILS` object: one entry per chip; keys kebab-case; RU explanation +

@@ -7,7 +7,12 @@ contract for the landing page and every language page. It does not own a
 language's topic scope, view membership, stable anchors or review evidence;
 those belong in its `SITE_PLAN.md` and `CONTENT_AUDIT.md` respectively.
 
-All pages are single-file pages with no build step or external dependencies.
+All pages are static HTML with no build step or external dependencies.
+Shared tokens and components live in **`assets/base.css`** — the machine
+source of truth every page links (`../assets/base.css`; landing and style
+guide: `./assets/base.css`). Pages keep only page-specific styles in a small
+local `<style>` block. Living component specimens and class roles:
+`style-guide.html`.
 
 ## Product character & density
 
@@ -18,10 +23,11 @@ All pages are single-file pages with no build step or external dependencies.
 
 ## Tokens
 
-CSS custom properties in each page's `:root` are the **only** source of
-truth for color. Raw hex/rgba in component rules is forbidden — the one
-exception is the `:root` token blocks themselves (plus black-key shadows).
-Every page ships the same token set.
+CSS custom properties in the `:root` blocks of `assets/base.css` are the
+**only** source of truth for color. Raw hex/rgba in component rules is
+forbidden — the one exception is the `:root` token blocks themselves (plus
+black-key shadows). Every page gets the same token set via the shared
+stylesheet.
 
 | Role | Light | Dark | Used for |
 | --- | --- | --- | --- |
@@ -40,6 +46,7 @@ Every page ships the same token set.
 | `--warn-line` / `--notice-warn-bg` | `#d18a00` / `#fff7e7` | `#a97e1f` / `#2e2510` | warning notice |
 | `--hero-1`/`-2`, `--hero-text`, `--hero-line`, `--hero-card` | navy gradient block | slightly deeper | landing hero only (always dark; language pages have no hero) |
 | `--grab`, `--backdrop`, `--shadow`, `--radius`, `--nav-h` | — | — | sheet handle, dialog backdrop, elevation, shape |
+| `--font-ui` / `--font-study` | — | — | system sans (Russian UI) / system serif (target-language text via `[lang]`) |
 
 Rules:
 
@@ -48,6 +55,13 @@ Rules:
 - Both themes must ship together: changing a light value requires its dark
   counterpart to stay ≥ 4.5:1 for text.
 - `theme-color` meta tags must match `--bg` light/dark values.
+- Type voices: `--font-ui` (system sans) is the default; `--font-study`
+  (system serif) applies to any element carrying an explicit `lang`
+  attribute (`[lang]` selector in base.css). Pages set those attributes via
+  `markTargetLang`: pure-target `.example`/`.answer`/`.table-scroll`
+  containers wholesale; otherwise bold in `.example`/`.answer`, italics in
+  `.detail-block`, and Cyrillic-free formula slots. The serif is the
+  "studied language" signal — never apply it to Russian text.
 
 ## Theming (auto + manual)
 

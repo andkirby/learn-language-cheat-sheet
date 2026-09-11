@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#10131b" media="(prefers-color-scheme: dark)" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Style Guide — Language Cheat Sheets</title>
+  <link rel="stylesheet" href="./assets/base.css" />
+  <style>
+    /* Guide-specific layout only. Every component below is rendered by
+       base.css — if a specimen here needs a style that is not in base.css,
+       that style belongs in base.css (or in the page that owns it). */
+    .sg-nav { position: static; transform: none; width: 100%; }
+    .sg-toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; }
+    .sg-toc a { text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: .82rem; font-weight: 700; background: var(--surface); }
+    .sg-block { margin-top: 34px; }
+    .sg-block > h2 { margin: 0 0 4px; font-size: 1.3rem; letter-spacing: -.02em; }
+    .sg-block > .sg-why { color: var(--muted); font-size: .85rem; margin: 0 0 14px; max-width: 72ch; }
+    .sg-row { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 12px; }
+    @media (min-width: 720px) { .sg-row { grid-template-columns: repeat(2, minmax(0,1fr)); } .sg-row.trio { grid-template-columns: repeat(3, minmax(0,1fr)); } }
+    .sg-swatch { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--surface); }
+    .sg-swatch .chip { height: 56px; }
+    .sg-swatch .lbl { padding: 8px 10px; font-size: .74rem; }
+    .sg-swatch .lbl code { color: var(--muted); }
+    .sg-note { border-left: 4px solid var(--accent); background: var(--accent-soft); padding: 10px 12px; border-radius: 10px; font-size: .86rem; margin-top: 12px; }
+    .sg-anno { font-size: .76rem; color: var(--muted); margin-top: 6px; }
+    .sg-anno code { color: var(--text); }
+    table.roles td:first-child { white-space: nowrap; }
+    .dont s { opacity: .8; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand-row">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">Aa</div>
+          <div>Style Guide<small>Language Cheat Sheets · base.css</small></div>
+        </div>
+        <button class="theme-btn" id="themeBtn" type="button" aria-label="Тема: системная">◐</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <p class="intro" id="top">Living documentation for <code>assets/base.css</code> and the contract in <code>.design/DESIGN_SYSTEM.md</code>. Every specimen below is rendered by the shared stylesheet — this page is honest by construction: if it looks wrong here, it is wrong everywhere.</p>
+
+    <nav class="sg-toc" aria-label="Sections">
+      <a href="#voices">Type voices</a>
+      <a href="#tokens">Color tokens</a>
+      <a href="#card">Cards</a>
+      <a href="#chips">Chips</a>
+      <a href="#tables">Tables</a>
+      <a href="#formula">Formulas</a>
+      <a href="#cases">Case grid</a>
+      <a href="#notices">Notices</a>
+      <a href="#practice">Practice</a>
+      <a href="#dialog">Bottom sheet</a>
+      <a href="#nav">Bottom nav &amp; views</a>
+      <a href="#roles">Class roles</a>
+      <a href="#rules">Do / don’t</a>
+    </nav>
+
+    <section class="sg-block" id="voices">
+      <h2>Type voices</h2>
+      <p class="sg-why">Two voices, one rule: Russian explanation text uses <code>--font-ui</code> (system sans); any element carrying the studied language is marked with a <code>lang</code> attribute (set by <code>markTargetLang</code> in each page) and rendered in <code>--font-study</code> (system serif). The serif is the “this is the language you are learning” signal — a textbook convention. No external fonts.</p>
+      <div class="cheat-card">
+        <h3>RU explanation — sans <code>--font-ui</code></h3>
+        <p>Предлог часто сразу определяет падеж: спроси <i>Wo?</i> или <i>Wohin?</i> перед Wechselpräpositionen.</p>
+        <div class="example">auf <b lang="de">dem</b> Tisch (Wo?)<br>auf <b lang="de">den</b> Tisch (Wohin?)</div>
+        <div class="example" lang="de">Ich gebe dem Kind das Buch. — Wem? Dat. · Was? Akk.</div>
+        <p class="sg-anno">Line 1: mixed RU/DE — only the German fragments carry <code>lang="de"</code> (bold). Line 2: pure German — the whole <code>.example</code> container is marked, so the full sentence takes the study voice and stays readable as one unit.</p>
+      </div>
+      <p class="sg-note">Marking rule (page JS): whole <code>.example</code>/<code>.answer</code>/<code>.table-scroll</code> containers are marked when they contain no Cyrillic; otherwise bold in <code>.example</code>/<code>.answer</code>, italics in <code>.detail-block</code>, and formula slots without Cyrillic are marked individually.</p>
+    </section>
+
+    <section class="sg-block" id="tokens">
+      <h2>Color tokens</h2>
+      <p class="sg-why">Semantic roles only — raw hex lives exclusively in the <code>:root</code> blocks of <code>base.css</code>. Every light value ships with its dark twin (≥ 4.5:1 for text). Toggle the theme in the topbar to check both.</p>
+      <div class="sg-row trio">
+        <div class="sg-swatch"><div class="chip" style="background:var(--bg); border-bottom:1px solid var(--line)"></div><div class="lbl"><b>--bg</b> · page</div></div>
+        <div class="sg-swatch"><div class="chip" style="background:var(--surface)"></div><div class="lbl"><b>--surface</b> · cards, topbar</div></div>
+        <div class="sg-swatch"><div class="chip" style="background:var(--surface-2)"></div><div class="lbl"><b>--surface-2</b> · examples, th</div></div>
+        <div class="sg-swatch"><div class="chip" style="background:var(--text)"></div><div class="lbl"><b>--text</b> · body</div></div>
+        <div class="sg-swatch"><div class="chip" style="background:var(--muted)"></div><div class="lbl"><b>--muted</b> · secondary</div></div>
+        <div class="sg-swatch"><div class="chip" style="background:var(--line)"></div><div class="lbl"><b>--line</b> · hairlines</div></div>
+        <div class="sg-swatch"><div class="chip" style="background:var(--accent)"></div><div class="lbl"><b>--accent</b> · focus, info</div></div>
+        <div class="sg-swatch"><div class="chip" style="background:var(--accent-soft)"></div><div class="lbl"><b>--accent-soft</b> · chips, active nav</div></div>
+        <div class="sg-swatch"><div class="chip" style="background:var(--on-accent-soft)"></div><div class="lbl"><b>--on-accent-soft</b> · on accent-soft, <code>td.hot</code></div></div>
+        <div class="sg-swatch"><div class="chip" style="background:var(--ok)"></div><div class="lbl"><b>--ok / --ok-soft</b> · verb slots, answers</div></div>
+        <div class="sg-swatch"><div class="chip" style="background:var(--warn)"></div><div class="lbl"><b>--warn / --warn-soft</b> · end-of-sentence slots</div></div>
+        <div class="sg-swatch"><div class="chip" style="background:var(--hero-1)"></div><div class="lbl"><b>--hero-1/-2…</b> · landing hero only</div></div>
+      </div>
+      <p class="sg-note">Non-color tokens: <code>--grab</code>, <code>--backdrop</code>, <code>--shadow</code>, <code>--radius</code>, <code>--nav-h</code>, <code>--font-ui</code>, <code>--font-study</code>.</p>
+    </section>
+
+    <section class="sg-block" id="card">
+      <h2>Cheat card</h2>
+      <p class="sg-why">The atomic unit: trigger + rule + one short example on the first layer; depth goes into <code>DETAILS</code> dialogs, never more card body. Searchable via <code>data-search</code>; must shrink (<code>.cards &gt; * { min-width: 0 }</code>).</p>
+      <div class="cards two">
+        <article class="cheat-card" data-search=" specimen card">
+          <h3>Главное: V2</h3>
+          <div class="formula"><span class="slot">Позиция 1</span><span class="arrow">→</span><span class="slot verb">глагол</span><span class="arrow">→</span><span class="slot">остальное</span></div>
+          <div class="example"><b lang="de">Heute gehe</b> <span lang="de">ich in den Laden.</span></div>
+          <div class="chips"><button class="tap" type="button" data-detail="v2-demo">Что значит “позиция 2”?</button></div>
+        </article>
+        <article class="cheat-card">
+          <h3>Быстрый смысл</h3>
+          <p><b>Dat.</b> часто = получатель: <i>даю кому?</i></p>
+          <div class="example"><b lang="de">Ich gebe dem Mann das Buch.</b></div>
+          <p class="sg-anno">Real specimen from <code>deutsch/</code>. Grid: <code>.cards.two</code> → 2 columns ≥ 720px.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="sg-block" id="chips">
+      <h2>Tappable chips</h2>
+      <p class="sg-why">The only button styles on language pages. Open a <code>DETAILS</code> dialog or reveal an answer. Visual min-height 40px with <code>::after</code> hit-area expansion to ≥ 46px — density without missed taps.</p>
+      <div class="chips">
+        <button class="tap" type="button" data-detail="v2-demo">detail chip</button>
+        <button class="tap neutral" type="button">neutral chip</button>
+        <button class="tap case" type="button"><strong>Nominativ</strong><br>Wer?</button>
+      </div>
+      <p class="sg-anno"><code>.tap</code> primary · <code>.tap.neutral</code> secondary · <code>.tap.case</code> 44px case tile. No other button styles.</p>
+    </section>
+
+    <section class="sg-block" id="tables">
+      <h2>Tables</h2>
+      <p class="sg-why">Reference tables scroll horizontally inside <code>.table-scroll</code> — never the page. <code>td.hot</code> marks the forms that change across cases (bold + <code>--on-accent-soft</code>: never color alone).</p>
+      <div class="cheat-card">
+        <h3>Определённый артикль</h3>
+        <div class="table-scroll" lang="de">
+          <table>
+            <thead><tr><th></th><th>Mask.</th><th>Neut.</th><th>Fem.</th><th>Plural</th></tr></thead>
+            <tbody>
+              <tr><td>Nom.</td><td>der</td><td>das</td><td>die</td><td>die</td></tr>
+              <tr><td>Akk.</td><td class="hot">den</td><td>das</td><td>die</td><td>die</td></tr>
+              <tr><td>Dat.</td><td class="hot">dem</td><td class="hot">dem</td><td class="hot">der</td><td class="hot">den</td></tr>
+              <tr><td>Gen.</td><td>des</td><td>des</td><td>der</td><td>der</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="sg-anno">Pure-target-language tables take the study voice as a whole (<code>lang</code> on <code>.table-scroll</code>).</p>
+      </div>
+    </section>
+
+    <section class="sg-block" id="formula">
+      <h2>Formula &amp; slots</h2>
+      <p class="sg-why">Sentence-position diagram. Slot color is grammar meaning: verb = ok green, sentence-end = warn amber, subordinator = accent.</p>
+      <div class="cheat-card">
+        <div class="formula"><span class="slot">Heute</span><span class="slot verb" lang="de">muss</span><span class="slot" lang="de">ich in den Laden</span><span class="slot end" lang="de">gehen</span></div>
+        <div class="formula"><span class="slot sub" lang="de">weil</span><span class="slot" lang="de">ich heute arbeiten</span><span class="slot end" lang="de">muss</span></div>
+      </div>
+    </section>
+
+    <section class="sg-block" id="cases">
+      <h2>Case grid <span class="section-badge">DE-specific</span></h2>
+      <p class="sg-why">Lives in base.css but only used by the German page: 2 columns mobile → 4 columns ≥ 720px.</p>
+      <div class="case-grid">
+        <div class="case-box"><strong>Nominativ</strong><span class="case-q" lang="de">Wer? Was?</span><span class="case-hint">подлежащее</span></div>
+        <div class="case-box"><strong>Dativ</strong><span class="case-q" lang="de">Wem?</span><span class="case-hint">получатель</span></div>
+      </div>
+    </section>
+
+    <section class="sg-block" id="notices">
+      <h2>Notices</h2>
+      <p class="sg-why">Accent = information, warn tokens = caveat. Full-width callouts, used sparingly.</p>
+      <div class="notice">Поиск ищет по всем видам сразу — попробуй “wem”.</div>
+      <div class="notice warning" style="margin-top:8px">После <span lang="de">weil</span> спрягаемый глагол уходит в конец.</div>
+    </section>
+
+    <section class="sg-block" id="practice">
+      <h2>Practice &amp; answers</h2>
+      <p class="sg-why">Show-answer pattern with honest ARIA (<code>aria-expanded</code>/<code>aria-controls</code>); answers are visible without JS (noscript unhides them).</p>
+      <article class="cheat-card">
+        <div class="practice-q">
+          <b>1. Ich helfe ___ Mann.</b> Какой падеж?
+          <div class="chips"><button class="tap neutral reveal" type="button" data-target="sg-a1" aria-expanded="false" aria-controls="sg-a1">Показать</button></div>
+          <div class="answer" id="sg-a1" hidden><span lang="de">Dativ</span> → <span lang="de">Wem?</span> → <b lang="de">dem Mann</b>.</div>
+        </div>
+      </article>
+    </section>
+
+    <section class="sg-block" id="dialog">
+      <h2>Bottom-sheet dialog</h2>
+      <p class="sg-why">One shared <code>#detailDialog</code> per page; content set from the page’s <code>DETAILS</code> object. Closes via ×, Escape and backdrop tap. Focus is trapped natively by <code>showModal()</code>.</p>
+      <div class="chips"><button class="tap" type="button" data-detail="v2-demo">Открыть пример диалога</button></div>
+    </section>
+
+    <section class="sg-block" id="nav">
+      <h2>Bottom nav &amp; views</h2>
+      <p class="sg-why">Five view destinations; the selected view is the nav truth (<code>aria-current</code>), no scrollspy. Sections carry <code>data-view</code>; legacy anchors open the section’s view first. While <code>body.searching</code> is set, the intro line hides and matching sections from every view are shown stacked. Shown here as a static specimen (<code>.sg-nav</code> override).</p>
+      <div class="sg-demo">
+        <nav class="bottom-nav sg-nav" aria-label="Specimen">
+          <a class="nav-item active" href="#nav" data-nav="cases" aria-current="true"><span class="ico">A/D</span><span>Падежи</span></a>
+          <a class="nav-item" href="#nav" data-nav="forms"><span class="ico">der</span><span>Формы</span></a>
+          <a class="nav-item" href="#nav" data-nav="order"><span class="ico">V2</span><span>Порядок</span></a>
+          <a class="nav-item" href="#nav" data-nav="clauses"><span class="ico">weil</span><span>Придат.</span></a>
+          <a class="nav-item" href="#nav" data-nav="practice"><span class="ico">?</span><span>Повтор</span></a>
+        </nav>
+      </div>
+      <p class="sg-anno">Real pages: fixed to the bottom, respects <code>env(safe-area-inset-bottom)</code>.</p>
+    </section>
+
+    <section class="sg-block" id="roles">
+      <h2>Class roles</h2>
+      <p class="sg-why">Classes are semantic — named by role, not appearance. The small utility tail (<code>.muted</code>, <code>.tiny</code>, <code>.cards.two/.three</code>, <code>td.hot</code>) is deliberate and documented here; if a name stops matching its role, rename it in base.css and every page in the same commit.</p>
+      <div class="table-scroll">
+        <table class="roles">
+          <thead><tr><th>Selector</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td><code>.cheat-card</code></td><td>Atomic reference unit; searchable via <code>data-search</code></td></tr>
+            <tr><td><code>.cards</code> + <code>.two/.three</code></td><td>Card grid and its density columns (layout layer)</td></tr>
+            <tr><td><code>.tap</code> / <code>.neutral</code> / <code>.case</code></td><td>Tappable chip: opens detail dialog / secondary / 44px case tile</td></tr>
+            <tr><td><code>.example</code></td><td>Example line(s); may carry <code>lang</code> wholesale when pure target-language</td></tr>
+            <tr><td><code>.formula</code> + <code>.slot</code> <code>.verb/.end/.sub</code></td><td>Sentence-position diagram; slot color = grammatical role</td></tr>
+            <tr><td><code>.table-scroll</code>, <code>td.hot</code></td><td>Scrollable table; <code>.hot</code> = the form that changes across cases</td></tr>
+            <tr><td><code>.notice</code> / <code>.warning</code></td><td>Info callout / caveat callout</td></tr>
+            <tr><td><code>.practice-q</code>, <code>.answer</code>, <code>.reveal</code></td><td>Self-check block; hidden answer; toggle control</td></tr>
+            <tr><td><code>.bottom-nav</code>, <code>.nav-item</code>, <code>data-view</code></td><td>View switcher; active destination; section→view membership</td></tr>
+            <tr><td><code>.section-head</code>, <code>.section-badge</code>, <code>.intro</code></td><td>Section header, its German tag, the one-line page intro</td></tr>
+            <tr><td><code>.brand</code>, <code>.search</code>, <code>.theme-btn</code>, <code>.install-btn</code></td><td>Topbar identity and controls</td></tr>
+            <tr><td><code>.muted</code>, <code>.tiny</code></td><td>Utility tail: secondary text color / small print</td></tr>
+            <tr><td><code>[lang]</code></td><td>Target-language text → serif study voice (set by <code>markTargetLang</code>)</td></tr>
+            <tr><td><code>body.searching</code></td><td>State: search active (intro hidden, matches from all views stacked)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="sg-note">Not in base.css: the landing hero and <code>.lang-card</code> live inline in <code>index.html</code> (hub-only components), and each language page owns nothing beyond the shared stylesheet.</p>
+    </section>
+
+    <section class="sg-block" id="rules">
+      <h2>Do / don’t</h2>
+      <div class="cards two">
+        <article class="cheat-card">
+          <h3>Do</h3>
+          <p>· New color → semantic token in <code>:root</code> first, light + dark together.</p>
+          <p>· Keep touch targets ≥ 44px effective (hit-area padding allowed).</p>
+          <p>· Depth goes into <code>DETAILS</code> dialogs; first layer stays one screen.</p>
+          <p>· Mark target-language text with <code>lang</code> — it drives pronunciation and the study voice.</p>
+          <p>· Bump <code>CACHE_VERSION</code> after any asset change; keep anchors stable.</p>
+        </article>
+        <article class="cheat-card dont">
+          <h3>Don’t</h3>
+          <p>· <s>Raw hex in component rules or page-local overrides of base.css.</s></p>
+          <p>· <s><code>user-scalable=no</code> or unconditional <code>maximum-scale=1</code>.</s></p>
+          <p>· <s>Information by color alone (pair <code>td.hot</code>-style cues with weight/text).</s></p>
+          <p>· <s>New button styles beside <code>.tap</code>, or hero/jump-chip style navigation.</s></p>
+          <p>· <s>Behaviors that die without JS — noscript must still read the whole deck.</s></p>
+        </article>
+      </div>
+    </section>
+
+    <div class="footer">Style guide · rendered by <code>assets/base.css</code> · contract: <code>.design/DESIGN_SYSTEM.md</code></div>
+  </main>
+
+  <dialog id="detailDialog" aria-labelledby="detailTitle">
+    <div class="sheet">
+      <div class="grab" aria-hidden="true"></div>
+      <div class="sheet-head">
+        <div><h2 id="detailTitle"></h2><p class="lead" id="detailLead"></p></div>
+        <button class="close-sheet" id="closeDialog" aria-label="Закрыть" type="button">×</button>
+      </div>
+      <div id="detailBody"></div>
+    </div>
+  </dialog>
+
+  <script>
+    // Same theme cycle as the site.
+    const THEME_KEY = 'theme';
+    const THEME_UI = {
+      auto:  { icon: '◐', label: 'Тема: системная' },
+      light: { icon: '☀', label: 'Тема: светлая' },
+      dark:  { icon: '☾', label: 'Тема: тёмная' },
+    };
+    const themeBtn = document.getElementById('themeBtn');
+    function applyTheme(mode) {
+      if (mode === 'auto') document.documentElement.removeAttribute('data-theme');
+      else document.documentElement.setAttribute('data-theme', mode);
+      themeBtn.textContent = THEME_UI[mode].icon;
+      themeBtn.setAttribute('aria-label', THEME_UI[mode].label);
+    }
+    let themeMode = 'auto';
+    try { themeMode = localStorage.getItem(THEME_KEY) || 'auto'; } catch (e) {}
+    applyTheme(themeMode);
+    themeBtn.addEventListener('click', () => {
+      themeMode = themeMode === 'auto' ? 'light' : themeMode === 'light' ? 'dark' : 'auto';
+      try { localStorage.setItem(THEME_KEY, themeMode); } catch (e) {}
+      applyTheme(themeMode);
+    });
+
+    // One specimen dialog + the reveal toggle, mirroring the pages.
+    const DETAILS = {
+      'v2-demo': {title:'Что такое V2', lead:'Глагол стоит во второй синтаксической позиции, не обязательно вторым словом.', body:`<div class="detail-block"><b>1 позиция может быть длинной</b><i lang="de">Heute Morgen um acht</i> gehe ich zur Arbeit.</div><div class="detail-block"><b>Потом</b>сразу идёт спрягаемый глагол.</div>`}
+    };
+    const dialog = document.getElementById('detailDialog');
+    document.addEventListener('click', (event) => {
+      const trigger = event.target.closest('[data-detail]');
+      if (trigger && DETAILS[trigger.dataset.detail]) {
+        const item = DETAILS[trigger.dataset.detail];
+        document.getElementById('detailTitle').textContent = item.title;
+        document.getElementById('detailLead').textContent = item.lead;
+        document.getElementById('detailBody').innerHTML = item.body;
+        dialog.showModal();
+      }
+      const reveal = event.target.closest('.reveal');
+      if (reveal) {
+        const answer = document.getElementById(reveal.dataset.target);
+        if (answer) {
+          answer.hidden = !answer.hidden;
+          reveal.textContent = answer.hidden ? 'Показать' : 'Скрыть';
+          reveal.setAttribute('aria-expanded', String(!answer.hidden));
+        }
+      }
+    });
+    document.getElementById('closeDialog').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+  </script>
+</body>
+</html>

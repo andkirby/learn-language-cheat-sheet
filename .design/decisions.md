@@ -182,3 +182,21 @@ Corrected the two German-only copy rules in the shared design contract to
 cover every language. Per-language scope stays in SITE_PLAN.md; the new
 `docs/CONTENT_VALIDATION.md` owns content review and `CONTENT_AUDIT.md` owns
 evidence. This clarifies documentation; no page or UI behavior was changed.
+
+## 2026-09-11 — Shared `assets/base.css`, serif study voice, style guide
+
+Three related changes, one contract revision. (1) The token+component CSS
+that every page inlined (three drifting copies) was extracted to
+`assets/base.css`; language pages link `../assets/base.css`, the landing and
+the new `style-guide.html` link `./assets/base.css` — a component change is
+now one edit instead of N copies. `APP_SHELL` gained the stylesheet. (2)
+Target-language text now has a distinct typographic voice: new tokens
+`--font-ui`/`--font-study` and an `[lang]` selector render anything marked
+with a `lang` attribute in a system serif. `markTargetLang` was extended:
+pure-target `.example`/`.answer`/`.table-scroll` containers are marked
+wholesale (fixes hard-to-scan mixed lines like "Ich gebe dem Kind … das
+Buch"), fragments as before. (3) `style-guide.html` (noindex, not in
+APP_SHELL) renders every component from base.css with real specimens and
+carries the class-role table — the semantic-naming documentation. Class
+renames were deliberately not done: the audit found the naming already
+semantic; the gap was documentation, not naming.
