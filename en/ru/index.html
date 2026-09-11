@@ -3,13 +3,30 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <!-- iOS standalone (Add to Home Screen) restores a stale zoom level on
-       relaunch and pinch-out is unavailable there; lock the scale on iOS only.
-       Safari itself ignores maximum-scale (pinch-zoom stays), Android and
-       desktop keep pinch-zoom entirely. -->
+  <!-- iOS standalone (Add to Home Screen): two WebKit viewport workarounds.
+       (1) Relaunch restores a stale zoom level and pinch-out is unavailable
+       there, so the scale is locked on iOS only (Safari itself ignores
+       maximum-scale, Android and desktop keep pinch-zoom entirely).
+       (2) A resumed standalone window can come back reporting a ~980px
+       viewport, which trips the 720px desktop breakpoint in base.css;
+       rewriting the meta forces WebKit to rebuild the real one. -->
   <script>
     if (/iphone|ipod/i.test(navigator.userAgent) || (/macintosh/i.test(navigator.userAgent) && navigator.maxTouchPoints > 1)) {
-      document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover');
+      const viewportMeta = document.querySelector('meta[name="viewport"]');
+      const iOSViewport = 'width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover';
+      viewportMeta.setAttribute('content', iOSViewport);
+      if (navigator.standalone) {
+        const repairViewport = () => {
+          if (window.innerWidth > screen.width * 1.5) {
+            viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1');
+            setTimeout(() => viewportMeta.setAttribute('content', iOSViewport), 50);
+          }
+        };
+        window.addEventListener('pageshow', repairViewport);
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible') setTimeout(repairViewport, 0);
+        });
+      }
     }
   </script>
   <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />

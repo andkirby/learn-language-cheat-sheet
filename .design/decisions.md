@@ -315,3 +315,30 @@ learners with `DE · RU`. «Интерфейс» wording rejected for «Язык
 объяснений» — already the site's vocabulary. Noscript: «Язык обучения»
 items remain real links; the current audience is a non-interactive state
 mark.
+
+## 2026-09-11 — iOS standalone: repair the 980px resume viewport; landing parity
+
+Symptom: a Home Screen app (standalone display) reopened from background
+sometimes rendered the desktop layout (`min-width: 720px` in base.css) —
+WebKit can restore a resumed standalone window with the legacy 980px
+default viewport instead of the device width. The existing head-level
+`maximum-scale=1` lock (057e836) only runs during initial head execution,
+so it cannot see a viewport that breaks later, on resume.
+
+Decision: extend the existing iOS-only head sniff (template in
+`tools/build_pages.py`, mirrored by hand in the landing `index.html`) with
+a repair: when the page is standalone (`navigator.standalone`) and
+`innerWidth > screen.width * 1.5`, rewrite the viewport meta to a differing
+value and restore it 50 ms later — the content change forces WebKit to
+rebuild the viewport. Runs on `pageshow` and on `visibilitychange →
+visible`. The steady-state meta stays exactly
+`width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover`,
+so the repair can never strip the anti-zoom lock (a proposed variant that
+restored without `maximum-scale=1` was rejected for exactly that reason).
+Threshold 1.5× avoids false positives in landscape (where `screen.width`
+follows orientation). The landing previously had no iOS head script at
+all — it now carries the same block for parity (its standalone branch is
+inert until the hub gets a manifest, but Safari visits share the
+maximum-scale behavior with deck pages). Not regression-testable in
+Chromium; verified by node syntax check + iPhone-UA browser pass (meta
+rewrite fires, console clean) — the 980px state itself is WebKit-only.

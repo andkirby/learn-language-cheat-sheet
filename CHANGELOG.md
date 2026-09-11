@@ -6,6 +6,14 @@ Append the entry in the same commit that ships the change.
 
 ## 2026-09-11
 
+- **Fix (iOS)**: a Home Screen app (Add to Home Screen) could come back
+  from the background rendering the desktop layout — WebKit can restore a
+  resumed standalone window with a ~980px viewport, which trips the 720px
+  desktop breakpoint. The page now detects that state on
+  return (pageshow / visibilitychange) and forces WebKit to rebuild the
+  mobile viewport; the anti-zoom `maximum-scale=1` lock stays in place.
+  The landing page got the same iOS head script the deck pages already
+  had (it was missing there). `CACHE_VERSION` v11.
 - **Structure**: pages moved to `de/ru/` and `en/ru/` — one folder per
   (target × audience) pair, ready for decks in other explanation languages;
   the landing gained a locale selector (Русский today, English — soon) that
