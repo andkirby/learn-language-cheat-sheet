@@ -97,11 +97,15 @@ deck-level integration checks, not a second copy of that contract:
 1. Root `sw.js`: add `'./<target>/<audience>/'`, `…/index.html`,
    `…/manifest.webmanifest` and its icons to `APP_SHELL`;
    **bump `CACHE_VERSION`**.
-2. Landing `index.html`: add a `.lang-card` for a new target (mark, name,
-   topics, meta, `→`, `data-target`), and register the deck's audience in
-   `DECKS` so the locale selector can route to it. A new audience for an
-   existing target usually needs no new card — just a `DECKS` entry.
-3. `README.md`: add the URL row.
+2. `content/decks/site.json`: add the audience to the target's entry (drop
+   `"soon"` when its deck ships) — the header language menu on every deck
+   page regenerates from it.
+3. Landing `index.html`: mirror the registry change — `DECKS`, the
+   `.lang-menu` «Язык обучения»/«Язык объяснений» markup — and, for a new
+   target, add a `.lang-card` (mark, name, topics, meta, `→`,
+   `data-target`). A new audience for an existing target usually needs no
+   new card.
+4. `README.md`: add the URL row.
 
 ## 5. Verify (same gates as existing pages)
 

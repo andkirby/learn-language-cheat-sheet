@@ -17,11 +17,7 @@
     "description": "Мобильная шпаргалка по английской грамматике: времена, артикли, порядок слов, условные предложения, предлоги.",
     "og_title": "English Grammar Cheatsheet",
     "og_description": "Английская грамматика без листания учебника: времена, артикли, порядок слов, условные. A1–B1, офлайн.",
-    "plan_path": "en/ru/SITE_PLAN.md",
-    "locales": [
-      {"id": "ru", "label": "Русский"},
-      {"id": "en", "label": "English", "soon": true}
-    ]
+    "plan_path": "en/ru/SITE_PLAN.md"
   },
   "strings": {
     "search_placeholder": "Поиск: present, the, if, must…",
@@ -66,8 +62,10 @@
     "footer_practice": "Быстрый повтор",
     "footer_install": "Установка: Android — кнопка «Установить» или меню браузера · iPhone — Share → Add to Home Screen",
     "footer_plan": "план контента:",
-    "locale_aria": "Язык объяснений",
-    "locale_soon": "скоро"
+    "lang_menu_aria": "Язык обучения и язык объяснений",
+    "lang_group_target": "Язык обучения",
+    "lang_group_audience": "Язык объяснений",
+    "lang_soon": "скоро"
   },
   "help": {
     "id": "start",

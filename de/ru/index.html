@@ -51,7 +51,7 @@
           <input id="search" class="search" type="search" autocomplete="off" enterkeyhint="search" placeholder="Поиск: wem, weil, modal, Dativ…" aria-label="Поиск по шпаргалке" />
           <button id="clearSearch" class="clear-search" type="button" aria-label="Очистить поиск" hidden>×</button>
         </div>
-        <details class="locale-menu" id="localeMenu"><summary aria-label="Язык объяснений">RU</summary><div class="locale-pop"><span class="cur">Русский</span><span class="soon">English — скоро</span></div></details>
+        <details class="lang-menu" id="langMenu"><summary aria-label="Язык обучения и язык объяснений">DE · RU</summary><div class="lang-pop"><div class="lang-group"><div class="lang-group-label">Язык обучения</div><span class="cur">Deutsch</span><a href="../../en/ru/">English</a></div><div class="lang-group"><div class="lang-group-label">Язык объяснений</div><span class="cur">Русский</span><span class="soon">English — скоро</span></div></div></details>
       </div>
     </div>
   </header>
@@ -600,16 +600,18 @@
       if (event.target === dialog) dialog.close();
     });
 
-    // Locale menu: light-dismiss (native <details> has none) + Escape.
-    const localeMenu = document.getElementById('localeMenu');
-    if (localeMenu) {
+    // Language menu: light-dismiss (native <details> has none) + Escape.
+    const langMenu = document.getElementById('langMenu');
+    if (langMenu) {
       document.addEventListener('click', (event) => {
-        if (localeMenu.open && !localeMenu.contains(event.target)) localeMenu.open = false;
+        if (langMenu.open && !langMenu.contains(event.target)) langMenu.open = false;
       });
       document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && localeMenu.open) localeMenu.open = false;
+        if (event.key === 'Escape' && langMenu.open) langMenu.open = false;
       });
     }
+    // Remember what is being studied so the landing can greet the learner.
+    try { localStorage.setItem('target', TARGET_LANG); } catch (e) {}
 
     const search = document.getElementById('search');
     const clearSearch = document.getElementById('clearSearch');

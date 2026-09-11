@@ -35,7 +35,7 @@ def js(obj):
 
 # ---------------------------------------------------------------- validation
 
-def validate(deck):
+def validate(deck, site):
     errors = []
     meta = deck.get("meta", {})
     for field in ("deck", "target", "audience", "target_lang", "lang", "out",
@@ -202,24 +202,32 @@ def validate(deck):
         if not strings.get(s, {}).get("title"):
             errors.append(f"strings.{s}.title is required")
 
-    # Locale menu (optional): sibling audiences of the same target language.
-    locales = meta.get("locales")
-    if locales is not None:
-        if not isinstance(locales, list) or not locales:
-            errors.append("meta.locales must be a non-empty list when present")
-        else:
-            loc_ids = []
-            for i, loc in enumerate(locales):
-                if not loc.get("id") or not loc.get("label"):
-                    errors.append(f"meta.locales[{i}]: id and label required")
-                if isinstance(loc, dict) and loc.get("id") == meta.get("audience") and loc.get("soon"):
-                    errors.append(f"meta.locales[{i}]: the deck's own audience cannot be marked soon")
-                loc_ids.append(loc.get("id") if isinstance(loc, dict) else None)
-            if meta.get("audience") not in loc_ids:
-                errors.append("meta.locales must include the deck's own audience")
-        for s in ("locale_aria", "locale_soon"):
-            if not strings.get(s):
-                errors.append(f"strings.{s} is required when meta.locales is present")
+    # Site registry: every deck must be present in it (it drives the menu).
+    target_ids = []
+    for i, t in enumerate(site.get("targets", [])):
+        if not t.get("id") or not t.get("label"):
+            errors.append(f"site.json targets[{i}]: id and label required")
+        aud_ids = [a.get("id") for a in t.get("audiences", [])]
+        if not aud_ids:
+            errors.append(f"site.json target {t.get('id')!r}: needs at least one audience")
+        if len(set(aud_ids)) != len(aud_ids):
+            errors.append(f"site.json target {t.get('id')!r}: audience ids not unique")
+        for j, a in enumerate(t.get("audiences", [])):
+            if not a.get("id") or not a.get("label"):
+                errors.append(f"site.json targets[{i}].audiences[{j}]: id and label required")
+        target_ids.append(t.get("id"))
+    if len(set(target_ids)) != len(target_ids):
+        errors.append("site.json: target ids not unique")
+    own = next((t for t in site.get("targets", []) if t.get("id") == meta.get("target")), None)
+    if own is None:
+        errors.append(f"site.json: deck target {meta.get('target')!r} is missing from the registry")
+    elif meta.get("audience") not in [a.get("id") for a in own.get("audiences", [])]:
+        errors.append(f"site.json: target {meta.get('target')!r} has no audience {meta.get('audience')!r}")
+    elif not any(a.get("id") == meta.get("audience") and not a.get("soon") for a in own["audiences"]):
+        errors.append(f"site.json: the deck's own audience {meta.get('audience')!r} cannot be marked soon")
+    for s in ("lang_menu_aria", "lang_group_target", "lang_group_audience", "lang_soon"):
+        if not strings.get(s):
+            errors.append(f"strings.{s} is required (header language menu)")
 
     return errors
 
@@ -417,7 +425,7 @@ PAGE = """<!doctype html>
           <input id="search" class="search" type="search" autocomplete="off" enterkeyhint="search" placeholder="@@SEARCH_PLACEHOLDER@@" aria-label="@@SEARCH_ARIA@@" />
           <button id="clearSearch" class="clear-search" type="button" aria-label="@@CLEAR_ARIA@@" hidden>×</button>
         </div>
-        @@LOCALE_MENU@@
+        @@LANG_MENU@@
       </div>
     </div>
   </header>
@@ -530,16 +538,18 @@ PAGE = """<!doctype html>
       if (event.target === dialog) dialog.close();
     });
 
-    // Locale menu: light-dismiss (native <details> has none) + Escape.
-    const localeMenu = document.getElementById('localeMenu');
-    if (localeMenu) {
+    // Language menu: light-dismiss (native <details> has none) + Escape.
+    const langMenu = document.getElementById('langMenu');
+    if (langMenu) {
       document.addEventListener('click', (event) => {
-        if (localeMenu.open && !localeMenu.contains(event.target)) localeMenu.open = false;
+        if (langMenu.open && !langMenu.contains(event.target)) langMenu.open = false;
       });
       document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && localeMenu.open) localeMenu.open = false;
+        if (event.key === 'Escape' && langMenu.open) langMenu.open = false;
       });
     }
+    // Remember what is being studied so the landing can greet the learner.
+    try { localStorage.setItem('target', TARGET_LANG); } catch (e) {}
 
     const search = document.getElementById('search');
     const clearSearch = document.getElementById('clearSearch');
@@ -657,7 +667,7 @@ PAGE = """<!doctype html>
 """
 
 
-def render(deck, deck_path):
+def render(deck, deck_path, site):
     meta, strings = deck["meta"], deck["strings"]
     og_url = meta["site_base"] + meta["site_path"]
     og_image = og_url + "icons/icon-512.png"
@@ -673,23 +683,35 @@ def render(deck, deck_path):
                      f"aria-label=\"{escq(help_btn['label'])}\" title=\"{escq(help_btn['label'])}\">"
                      f"<span class=\"ico\" aria-hidden=\"true\">{esc(help_btn['ico'])}</span></button>")
 
-    def locale_menu_html(deck):
+    def lang_menu_html(deck, site):
         meta, strings = deck["meta"], deck["strings"]
-        locales = meta.get("locales")
-        if not locales:
-            return ""
-        items = []
-        for loc in locales:
-            label = loc["label"] + (f" — {strings['locale_soon']}" if loc.get("soon") else "")
-            if loc.get("soon"):
-                items.append(f"<span class=\"soon\">{esc(label)}</span>")
-            elif loc["id"] == meta["audience"]:
-                items.append(f"<span class=\"cur\">{esc(label)}</span>")
+        targets = site["targets"]
+        cur_target = next(t for t in targets if t["id"] == meta["target"])
+        t_items = []
+        for t in targets:
+            if t["id"] == meta["target"]:
+                t_items.append(f"<span class=\"cur\">{esc(t['label'])}</span>")
             else:
-                items.append(f"<a href=\"../{escq(loc['id'])}/\">{esc(label)}</a>")
-        return (f"<details class=\"locale-menu\" id=\"localeMenu\">"
-                f"<summary aria-label=\"{escq(strings['locale_aria'])}\">{esc(meta['audience'].upper())}</summary>"
-                f"<div class=\"locale-pop\">{''.join(items)}</div></details>")
+                # keep the reader's audience when that deck exists, else the
+                # target's first non-soon audience
+                real = [a["id"] for a in t["audiences"] if not a.get("soon")]
+                aud = meta["audience"] if meta["audience"] in real else real[0]
+                t_items.append(f"<a href=\"../../{escq(t['id'])}/{escq(aud)}/\">{esc(t['label'])}</a>")
+        a_items = []
+        for a in cur_target["audiences"]:
+            if a["id"] == meta["audience"]:
+                a_items.append(f"<span class=\"cur\">{esc(a['label'])}</span>")
+            elif a.get("soon"):
+                a_items.append(f"<span class=\"soon\">{esc(a['label'])} — {esc(strings['lang_soon'])}</span>")
+            else:
+                a_items.append(f"<a href=\"../{escq(a['id'])}/\">{esc(a['label'])}</a>")
+        return (f"<details class=\"lang-menu\" id=\"langMenu\">"
+                f"<summary aria-label=\"{escq(strings['lang_menu_aria'])}\">"
+                f"{esc(meta['target'].upper())} · {esc(meta['audience'].upper())}</summary>"
+                f"<div class=\"lang-pop\">"
+                f"<div class=\"lang-group\"><div class=\"lang-group-label\">{esc(strings['lang_group_target'])}</div>{''.join(t_items)}</div>"
+                f"<div class=\"lang-group\"><div class=\"lang-group-label\">{esc(strings['lang_group_audience'])}</div>{''.join(a_items)}</div>"
+                f"</div></details>")
 
     sections_html = "".join(section_html(s) for s in deck["sections"]) + practice_html(deck["practice"], strings)
 
@@ -740,7 +762,7 @@ def render(deck, deck_path):
         "@@NOSCRIPT_NOTICE@@": esc(strings["noscript_notice"]),
         "@@NOSCRIPT_INTRO@@": runs_html(strings["noscript_intro"]),
         "@@HELP_BUTTON@@": help_html,
-        "@@LOCALE_MENU@@": locale_menu_html(deck),
+        "@@LANG_MENU@@": lang_menu_html(deck, site),
         "@@NO_RESULTS@@": esc(strings["no_results"]),
         "@@SECTIONS@@": sections_html.rstrip("\n"),
         "@@FOOTER_PRACTICE@@": footer_practice,
@@ -775,8 +797,13 @@ def main():
 
     deck_path = pathlib.Path(args.deck)
     deck = json.loads(deck_path.read_text(encoding="utf-8"))
+    site_path = deck_path.parent / "site.json"
+    if not site_path.exists():
+        print(f"✗ {site_path} not found — the language menu needs the site registry", file=sys.stderr)
+        sys.exit(2)
+    site = json.loads(site_path.read_text(encoding="utf-8"))
 
-    errors = validate(deck)
+    errors = validate(deck, site)
     if errors:
         print(f"✗ {deck_path}: {len(errors)} validation error(s):", file=sys.stderr)
         for e in errors:
@@ -784,7 +811,7 @@ def main():
         sys.exit(2)
 
     out_path = ROOT / deck["meta"]["out"] if not args.out else pathlib.Path(args.out)
-    page = render(deck, str(deck_path))
+    page = render(deck, str(deck_path), site)
 
     if args.check:
         current = out_path.read_text(encoding="utf-8") if out_path.exists() else ""

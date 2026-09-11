@@ -25,8 +25,12 @@ Append the entry in the same commit that ships the change.
   adds a `dein` example (finding C-08).
 - **UX**: the usage intro line is now a compact (i) button in the header
   («Как пользоваться», opens the standard bottom sheet); noscript keeps the
-  plain line. The header also gained an audience switcher [RU ▾] — Русский
-  today, English marked «скоро» — native details, works without JS.
+  plain line.
+- **UX**: one language menu in the topbar of every page — `DE · RU ▾`
+  opens two flat groups: «Язык обучения» (Deutsch / English) and «Язык
+  объяснений» (Русский; English — скоро). On the landing it replaced the
+  mid-page selector and remembers the language you study; native details,
+  works without JS. `CACHE_VERSION` v10.
 - **Style**: study-voice serif retuned — Charter on macOS, New York on iOS,
   Sitka/Cambria on Windows, Noto Serif on Android (system stacks only, no
   downloaded fonts). `CACHE_VERSION` v7.

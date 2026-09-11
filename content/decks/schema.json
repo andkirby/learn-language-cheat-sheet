@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Language cheat deck",
-  "description": "One (target language × audience language) cheatsheet. Rendered by tools/build_pages.py into a static page. _note / _readme fields carry provenance and are ignored.",
+  "description": "One (target language × audience language) cheatsheet. Rendered by tools/build_pages.py into a static page; the header language menu comes from the sibling site.json registry. _note / _readme fields carry provenance and are ignored.",
   "type": "object",
   "required": ["meta", "strings", "views", "sections", "practice", "details"],
   "additionalProperties": false,
@@ -28,20 +28,7 @@
         "description": {"type": "string"},
         "og_title": {"type": "string"},
         "og_description": {"type": "string"},
-        "plan_path": {"type": "string"},
-        "locales": {
-          "type": "array", "minItems": 1,
-          "description": "sibling audiences of the same target — drives the header locale menu; must include the deck's own audience",
-          "items": {
-            "type": "object", "required": ["id", "label"],
-            "additionalProperties": false,
-            "properties": {
-              "id": {"type": "string", "pattern": "^[a-z]{2}$"},
-              "label": {"type": "string"},
-              "soon": {"type": "boolean", "description": "no deck yet — rendered as a disabled item"}
-            }
-          }
-        }
+        "plan_path": {"type": "string"}
       }
     },
     "strings": {"$ref": "#/definitions/strings"},
@@ -292,8 +279,10 @@
         "footer_practice": {"type": "string", "description": "optional: omit when the footer has no practice link"},
         "footer_install": {"type": "string"},
         "footer_plan": {"type": "string"},
-        "locale_aria": {"type": "string", "description": "required when meta.locales is present"},
-        "locale_soon": {"type": "string", "description": "required when meta.locales is present — appended to soon items"}
+        "lang_menu_aria": {"type": "string", "description": "header language menu — summary aria-label"},
+        "lang_group_target": {"type": "string", "description": "menu group header: learning language"},
+        "lang_group_audience": {"type": "string", "description": "menu group header: explanation language"},
+        "lang_soon": {"type": "string", "description": "marker for audiences without a deck yet"}
       }
     },
     "themeMode": {

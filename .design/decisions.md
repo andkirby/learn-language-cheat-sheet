@@ -287,3 +287,31 @@ and Escape. Landing keeps its full selector; the menu is the on-page
 equivalent. Both ship in the same generator template, so all deck pages
 get them from one edit; style-guide specimen and DESIGN_SYSTEM rows
 updated in the same change.
+
+## 2026-09-11 — One combined language menu: learning + explanation language
+
+User feedback: the landing's audience selector sat mid-page and stated only
+half the picture; the two language choices belong together, in the first
+line. Redesign (design-architecture EXTEND): the per-page `.locale-menu`
+evolved into a single `.lang-menu` present in the topbar of every page —
+summary chip `DE · RU`, popover with two flat labeled groups: «Язык
+обучение» (targets — navigational links) and «Язык объяснений» (audiences —
+current/upcoming). Decisions, grounded in language-selector research
+(Smashing Magazine 2022: decouple presets, avoid bundled assumptions,
+non-modal, text labels not flags; NN/g: switchers must be discoverable in
+the header): (1) flat groups, NOT the proposed `[Интерфейс >]` submenu —
+both choices are visible state, and progressive disclosure is wrong for
+state (product-interaction guardrail); (2) the axes stay decoupled — two
+groups with explicit headers, no preset bundling like "Russian ⇒ Deutsch";
+(3) placement: landing brand row; deck pages search row — measured: brand
+row + (i) + theme + install + chip overflows at 390px; (4) availability is
+honest: audiences without a deck render disabled «— скоро», so a combined
+control never promises content that doesn't exist; (5) data moved out of
+per-deck `meta.locales` into `content/decks/site.json` (one registry: per
+target, audiences + soon flags) read by the generator; the landing mirrors
+it inline (hand-written page) — documented in ADD_LANGUAGE; (6) continuity:
+deck pages persist `localStorage.target`; the landing chip greets returning
+learners with `DE · RU`. «Интерфейс» wording rejected for «Язык
+объяснений» — already the site's vocabulary. Noscript: «Язык обучения»
+items remain real links; the current audience is a non-interactive state
+mark.

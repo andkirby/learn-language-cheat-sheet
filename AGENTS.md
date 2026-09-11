@@ -16,7 +16,7 @@ step, no external dependencies, everything works offline.
 index.html          landing (language cards + audience-locale selector)
 assets/base.css     shared stylesheet: tokens + components (specimens: style-guide.html)
 style-guide.html    living component specimens + class roles (noindex, not cached)
-content/decks/      deck data + schema.json — the source of generated pages
+content/decks/      deck data + schema.json + site.json (language registry) — the source of generated pages
 de/ru/              German-for-Russians page: GENERATED from content/decks/de-ru.json
 en/ru/              English-for-Russians page: GENERATED from content/decks/en-ru.json
 deutsch/, english/  redirect stubs to ./de/ru/, ./en/ru/ (kept for old URLs and installs)
@@ -34,8 +34,10 @@ CHANGELOG.md        user-visible changes, newest first
 ```
 
 Deck pages live at `<target>/<audience>/` (`de/ru/`, later `de/en/`…) so sibling
-audiences share a target. The landing locale selector picks the audience; the
-available (target, audience) pairs are listed in `DECKS` in `index.html`.
+audiences share a target. Every page's header shows one combined language
+menu («Язык обучения» + «Язык объяснений») driven by `content/decks/site.json`
+on deck pages and mirrored by hand in `index.html` (DECKS + the menu markup) —
+update both when adding a language or audience.
 
 ## Source-of-truth map
 
@@ -46,7 +48,7 @@ available (target, audience) pairs are listed in `DECKS` in `index.html`.
 | Accepted language scope, exclusions and topic inventory | `de/ru/SITE_PLAN.md` / `en/ru/SITE_PLAN.md` |
 | How content is validated | `docs/CONTENT_VALIDATION.md` |
 | Open content questions, review evidence and verdicts | `CONTENT_AUDIT.md` |
-| External reference research (hobbydeutsch.de DE, British Council EN) | `research/` |
+| External reference research (DE/EN grammar sites, tense-usage notes) | `research/` |
 | Design tokens, components, a11y rules | `.design/DESIGN_SYSTEM.md` |
 | Component specimens and class roles | `style-guide.html` |
 | Why a UI decision was made | `.design/decisions.md` |

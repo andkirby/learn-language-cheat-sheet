@@ -106,7 +106,7 @@ Rules:
 | `section[data-view]` | View membership. JS hides non-active views via the `hidden` attribute; search unhides matching sections across views; noscript and print show everything stacked. |
 | `.theme-btn` | 44px topbar icon button; cycles/persists the theme (see Theming). |
 | `.icon-btn` | 44px topbar icon button (shares `.theme-btn` styling); the (i) usage button opens the shared dialog via `data-detail="lookup-help"`; carries `#start`; hidden on noscript pages, which keep a plain `.intro` line. |
-| `.locale-menu` | Topbar audience switcher: native `<details>` (works without JS) listing the sibling audiences of the same target from deck `meta.locales`; `.cur` = current audience, `.soon` = no deck yet; JS adds light dismiss + Escape. |
+| `.lang-menu` | Topbar language control (native `<details>`, works without JS): one popover, two flat labeled groups — «Язык обучения» (targets, navigational links, from `content/decks/site.json`) and «Язык объяснений» (audiences; `.cur` = current, `.soon` = no deck yet). Landing: brand row; deck pages: search row (brand row can't fit it beside the install button at 390px). JS adds light dismiss + Escape. Never a submenu — both choices are visible state. |
 | `.lang-card` (landing only) | Whole-card link to a language folder: mark + name + topics + `→`; hover accent border. |
 
 ## Interaction states & feedback

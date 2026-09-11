@@ -160,28 +160,35 @@ a { color: inherit; }
 }
 .icon-btn .ico { font-family: var(--font-study); font-style: italic; font-size: 1.05rem; }
 
-/* Locale switcher: sibling audiences of the same target language. Native
-   <details> keeps it functional without JS; JS adds light dismiss. */
-.locale-menu { position: relative; flex: 0 0 auto; }
-.locale-menu summary {
+/* Language menu: learning language + explanation language in one topbar
+   control. Native <details> keeps it functional without JS; JS adds light
+   dismiss. Flat labeled groups — never a submenu: both choices are visible
+   state, not advanced configuration. */
+.lang-menu { position: relative; flex: 0 0 auto; }
+.lang-menu summary {
   min-height: 44px; padding: 0 10px; border: 1px solid var(--line); border-radius: 12px;
   background: var(--surface); cursor: pointer; font-size: .72rem; font-weight: 800;
   letter-spacing: .05em; display: flex; align-items: center; gap: 4px; list-style: none;
 }
-.locale-menu summary::-webkit-details-marker { display: none; }
-.locale-menu summary::after { content: "▾"; color: var(--muted); font-size: .62rem; }
-.locale-pop {
-  position: absolute; right: 0; top: calc(100% + 8px); z-index: 40; min-width: 172px; padding: 6px;
+.lang-menu summary::-webkit-details-marker { display: none; }
+.lang-menu summary::after { content: "▾"; color: var(--muted); font-size: .62rem; }
+.lang-pop {
+  position: absolute; right: 0; top: calc(100% + 8px); z-index: 40; min-width: 200px; padding: 6px;
   border: 1px solid var(--line); border-radius: 14px; background: var(--surface);
   box-shadow: 0 14px 40px rgba(23,32,51,.14);
 }
-.locale-pop a, .locale-pop .cur, .locale-pop .soon {
-  display: block; padding: 10px 11px; border-radius: 9px; font-size: .88rem;
-  text-decoration: none; color: var(--text);
+.lang-group + .lang-group { margin-top: 5px; padding-top: 5px; border-top: 1px solid var(--line); }
+.lang-group-label {
+  padding: 7px 11px 5px; font-size: .68rem; font-weight: 750; text-transform: uppercase;
+  letter-spacing: .05em; color: var(--muted);
 }
-.locale-pop a:hover, .locale-pop a:active { background: var(--surface-2); }
-.locale-pop .cur { background: var(--accent-soft); color: var(--on-accent-soft); font-weight: 800; }
-.locale-pop .soon { color: var(--muted); cursor: default; }
+.lang-pop a, .lang-pop button, .lang-pop .cur, .lang-pop .soon {
+  display: block; width: 100%; text-align: left; padding: 10px 11px; border: 0; border-radius: 9px;
+  font: inherit; font-size: .88rem; text-decoration: none; color: var(--text); background: none; cursor: pointer;
+}
+.lang-pop a:hover, .lang-pop a:active, .lang-pop button:not(:disabled):hover { background: var(--surface-2); }
+.lang-pop .cur { background: var(--accent-soft); color: var(--on-accent-soft); font-weight: 800; cursor: default; }
+.lang-pop .soon { color: var(--muted); cursor: default; }
 /* Search row: field + audience locale switcher side by side. */
 .search-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
 .search-wrap { position: relative; flex: 1; min-width: 0; }

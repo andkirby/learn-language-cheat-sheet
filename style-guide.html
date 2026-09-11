@@ -99,13 +99,16 @@
     </section>
 
     <section class="sg-block" id="helprow">
-      <h2>Header controls: help + locale</h2>
-      <p class="sg-why">The usage note lives behind the compact (i) <code>.icon-btn</code> in the topbar (opens the standard bottom sheet via <code>data-detail="lookup-help"</code>, carries <code>#start</code>); the <code>.locale-menu</code> switches the audience language of the same target — native <code>&lt;details&gt;</code>, so it works without JS; JS only adds light dismiss. Noscript pages hide the buttons and keep a plain <code>.intro</code> line.</p>
+      <h2>Header controls: help + language menu</h2>
+      <p class="sg-why">The usage note lives behind the compact (i) <code>.icon-btn</code> in the topbar (opens the standard bottom sheet via <code>data-detail="lookup-help"</code>, carries <code>#start</code>). The <code>.lang-menu</code> combines both language choices in one topbar popover — <em>Язык обучения</em> (navigational links) and <em>Язык объяснений</em> (current + upcoming audiences); flat groups, never a submenu. Native <code>&lt;details&gt;</code> keeps it functional without JS; JS adds light dismiss. On deck pages it sits in the search row (the brand row can't fit it beside the install button at 390px); the landing has it in the brand row.</p>
       <div class="search-row" style="border:1px dashed var(--line);border-radius:12px;padding:10px;margin-top:12px">
         <button class="icon-btn" type="button" tabindex="-1" aria-label="Как пользоваться" style="margin-right:auto"><span class="ico" aria-hidden="true">i</span></button>
-        <details class="locale-menu" open>
-          <summary aria-label="Язык объяснений">RU</summary>
-          <div class="locale-pop" style="position:static;margin-top:8px"><span class="cur">Русский</span><span class="soon">English — скоро</span></div>
+        <details class="lang-menu" open>
+          <summary aria-label="Язык обучения и язык объяснений">DE · RU</summary>
+          <div class="lang-pop" style="position:static;margin-top:8px">
+            <div class="lang-group"><div class="lang-group-label">Язык обучения</div><span class="cur">Deutsch</span><a href="#" onclick="return false">English</a></div>
+            <div class="lang-group"><div class="lang-group-label">Язык объяснений</div><span class="cur">Русский</span><span class="soon">English — скоро</span></div>
+          </div>
         </details>
         <button class="theme-btn" type="button" tabindex="-1" aria-label="Тема">◐</button>
       </div>
@@ -237,7 +240,7 @@
             <tr><td><code>.bottom-nav</code>, <code>.nav-item</code>, <code>data-view</code></td><td>View switcher; active destination; section→view membership</td></tr>
             <tr><td><code>.section-head</code>, <code>.section-badge</code>, <code>.intro</code></td><td>Section header, its German tag, the noscript/plain intro line</td></tr>
             <tr><td><code>.icon-btn</code> + <code>.ico</code></td><td>44px topbar icon button; the (i) usage button → <code>lookup-help</code> bottom sheet; carries <code>#start</code> on language pages</td></tr>
-            <tr><td><code>.locale-menu</code>, <code>.locale-pop</code></td><td>Topbar audience switcher (native <code>&lt;details&gt;</code>); <code>.cur</code> = current audience, <code>.soon</code> = no deck yet</td></tr>
+            <tr><td><code>.lang-menu</code>, <code>.lang-pop</code>, <code>.lang-group</code></td><td>Topbar language control: «Язык обучения» links + «Язык объяснений» state in one native <code>&lt;details&gt;</code> popover; <code>.cur</code> = current, <code>.soon</code> = no deck yet</td></tr>
             <tr><td><code>.brand</code>, <code>.search</code>, <code>.theme-btn</code>, <code>.install-btn</code></td><td>Topbar identity and controls</td></tr>
             <tr><td><code>.muted</code>, <code>.tiny</code></td><td>Utility tail: secondary text color / small print</td></tr>
             <tr><td><code>[lang]</code></td><td>Target-language text → serif study voice (set by <code>markTargetLang</code>)</td></tr>

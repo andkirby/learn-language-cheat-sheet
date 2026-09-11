@@ -17,11 +17,7 @@
     "description": "Мобильная шпаргалка по немецкой грамматике: падежи, артикли, порядок слов, придаточные, глагольные конструкции.",
     "og_title": "German Grammar Cheatsheet",
     "og_description": "Немецкая грамматика без листания учебника: падежи, артикли, порядок слов, придаточные. A1–B1, офлайн.",
-    "plan_path": "de/ru/SITE_PLAN.md",
-    "locales": [
-      {"id": "ru", "label": "Русский"},
-      {"id": "en", "label": "English", "soon": true}
-    ]
+    "plan_path": "de/ru/SITE_PLAN.md"
   },
   "strings": {
     "_note": "footer_practice is deliberately absent: the hand-written German footer never had a practice link (the English deck does). Follow-up candidate, not a migration change.",
@@ -66,8 +62,10 @@
     "footer_all": "все шпаргалки",
     "footer_install": "Установка: Android — кнопка «Установить» или меню браузера · iPhone — Share → Add to Home Screen",
     "footer_plan": "план контента:",
-    "locale_aria": "Язык объяснений",
-    "locale_soon": "скоро"
+    "lang_menu_aria": "Язык обучения и язык объяснений",
+    "lang_group_target": "Язык обучения",
+    "lang_group_audience": "Язык объяснений",
+    "lang_soon": "скоро"
   },
   "help": {
     "id": "start",

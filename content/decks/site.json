@@ -1,0 +1,21 @@
+{
+  "_readme": "Site language registry: learning targets and, per target, the available explanation audiences. Read by tools/build_pages.py to render the header language menu on every deck page; mirrored by hand in index.html (DECKS + the lang-menu markup). Update both when adding a language or audience. Labels are language-proper names (Deutsch, Русский) — audience-language UI strings (group headers, «скоро») live in each deck's strings.",
+  "targets": [
+    {
+      "id": "de",
+      "label": "Deutsch",
+      "audiences": [
+        {"id": "ru", "label": "Русский"},
+        {"id": "en", "label": "English", "soon": true}
+      ]
+    },
+    {
+      "id": "en",
+      "label": "English",
+      "audiences": [
+        {"id": "ru", "label": "Русский"},
+        {"id": "en", "label": "English", "soon": true}
+      ]
+    }
+  ]
+}
