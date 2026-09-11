@@ -8,7 +8,7 @@ status and retest evidence may be updated without erasing their history.
 
 It does not own accepted language scope. Promote an accepted Required,
 Deferred or Excluded decision to the relevant
-[German](deutsch/SITE_PLAN.md) or [English](english/SITE_PLAN.md) plan. The
+[German](de/ru/SITE_PLAN.md) or [English](en/ru/SITE_PLAN.md) plan. The
 procedure is [content validation](docs/CONTENT_VALIDATION.md); plan authors use
 [the SITE_PLAN guide](docs/SITE_PLAN_GUIDE.md).
 
@@ -77,6 +77,9 @@ language plan or close it with evidence here.
 | C-05 | Add-language playbook required three practice items without topic mapping | Exercise count could substitute for coverage evidence | Map practice to topics; review every answer; use additional audit probes where needed | Procedure fixed; practice remapped on both pages 2026-09-11 (DE-03/07/08, EN-01/04/06) — answer review pending |
 | C-06 | Plan-authoring questions and scope-decision rules were spread across several files | Authors could omit exclusions or put evidence into the plan | Add one authoring owner and standardize both language plans | Documentation fixed; content baseline remains NOT RUN |
 | C-07 | User-reported teaching-quality gaps (2026-09-11): DE `objects` lead named no verbs, DE `tekamolo` «База» used unglossed Temporal/Kausal/Modal/Lokal, DE `perfekt` «Важно» named no verbs; sweep added DE `wo-wohin` caveat and `passive` block without examples, EN `svo` lead typo («roles») | Learner cannot act on a rule whose terms or exceptions are not exemplified | Fix the six units; run the full unit-by-unit Teaching gate later | Six units fixed in page 2026-09-11 (author review); Teaching gate still NOT RUN — see D-01 |
+| C-08 | User-reported (2026-09-11): DE possessives table shows only `mein`; the «одна модель для всех основ» design was unclear until explained in conversation | A correct-by-scope presentation reads as incomplete coverage to the learner | State the one-model rule on the card (stems named, «основа + окончание») and add a `dein` example in the dialog | Fixed in page 2026-09-11 (author review); Teaching gate still NOT RUN |
+| C-09 | User-reported (2026-09-11): DE ein-words table has no reading key — why Akk. m = `meinen`, Dat. = `-em/-er/-en` was unclear | A declension table without its generating rule must be memorised cell by cell | Add the key: endings mirror the definite article (den→meinen, dem→meinem, der→meiner); only three «empty» cells (Nom. m/n, Akk. n); Akk. visible in masc. only, Dat. marks all genders | Fixed in page 2026-09-11 (`why-ein-endings` chip + dialog); Teaching gate still NOT RUN |
+| C-10 | User-reported (2026-09-11): the bold/`td.hot` table convention was missed entirely by the first learner — it is documented for developers (style-guide, DESIGN_SYSTEM) but never labeled for learners | An unlabeled visual convention does not exist for the reader it is meant to serve | One consistent `.tiny` legend under every table with hot cells (3 DE, 1 EN) | Fixed in page 2026-09-11; Teaching gate still NOT RUN |
 
 ## 2026-09-11 — Incremental change: page alignment with accepted plans
 
@@ -139,6 +142,9 @@ Fixed units:
 | DE `wo-wohin` (DE-02) | Caveat reasoned but no example | im Park / in den Park contrast pair added |
 | DE `passive` (DE-13) | «Не путай с Perfekt» label over a Perfekt-passive form | Relabeled «А вот Perfekt Passiv» |
 | EN `svo` (EN-03) | Lead typo «roles» in Russian text | «роли» |
+| DE possessives card + `possessives` dialog (DE-05; later same day, finding C-08) | One-model table design lived only in the dialog; learner read `dein` as missing | Card tiny note names the stems and the «основа + окончание» rule; dialog adds a `dein` example |
+| DE ein-words card + `why-ein-endings` dialog (DE-03/05; later same day, finding C-09) | Declension table had no generating rule; endings read as arbitrary | New chip «Почему meinen?» + dialog: endings mirror the definite article; three empty cells; Akk./Dat. reading rules |
+| All tables with `td.hot` (DE×3, EN×1; later same day, finding C-10) | Bold/accent convention never labeled for learners | Consistent `.tiny` legend under each table: «Жирным — формы-ловушки…» |
 
 Verified: chip↔dialog bijection, `node --check`, curly-quote scan clean.
 Gates unchanged: all four remain NOT RUN.

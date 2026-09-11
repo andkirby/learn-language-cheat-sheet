@@ -1,0 +1,321 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Language cheat deck",
+  "description": "One (target language × audience language) cheatsheet. Rendered by tools/build_pages.py into a static page. _note / _readme fields carry provenance and are ignored.",
+  "type": "object",
+  "required": ["meta", "strings", "views", "sections", "practice", "details"],
+  "additionalProperties": false,
+  "properties": {
+    "_readme": {"type": "string"},
+    "meta": {
+      "type": "object",
+      "required": ["deck", "target", "audience", "target_lang", "lang", "out", "site_base", "site_path", "brand_mark", "brand_name", "brand_sub", "apple_title", "title", "description", "og_title", "og_description", "plan_path"],
+      "additionalProperties": false,
+      "properties": {
+        "deck": {"type": "string", "pattern": "^[a-z]{2}-[a-z]{2}$"},
+        "target": {"type": "string", "pattern": "^[a-z]{2}$"},
+        "audience": {"type": "string", "pattern": "^[a-z]{2}$"},
+        "target_lang": {"type": "string", "pattern": "^[a-z]{2}$"},
+        "lang": {"type": "string", "pattern": "^[a-z]{2}$", "description": "UI/explanation language of the page (<html lang>)"},
+        "out": {"type": "string"},
+        "site_base": {"type": "string", "format": "uri"},
+        "site_path": {"type": "string", "description": "URL path of the page relative to site_base, e.g. de/ru/ — its depth drives the ../../ prefix for root assets"},
+        "brand_mark": {"type": "string"},
+        "brand_name": {"type": "string"},
+        "brand_sub": {"type": "string"},
+        "apple_title": {"type": "string"},
+        "title": {"type": "string"},
+        "description": {"type": "string"},
+        "og_title": {"type": "string"},
+        "og_description": {"type": "string"},
+        "plan_path": {"type": "string"},
+        "locales": {
+          "type": "array", "minItems": 1,
+          "description": "sibling audiences of the same target — drives the header locale menu; must include the deck's own audience",
+          "items": {
+            "type": "object", "required": ["id", "label"],
+            "additionalProperties": false,
+            "properties": {
+              "id": {"type": "string", "pattern": "^[a-z]{2}$"},
+              "label": {"type": "string"},
+              "soon": {"type": "boolean", "description": "no deck yet — rendered as a disabled item"}
+            }
+          }
+        }
+      }
+    },
+    "strings": {"$ref": "#/definitions/strings"},
+    "help": {
+      "type": "object",
+      "required": ["id", "ico", "label", "detail"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string"},
+        "ico": {"type": "string"},
+        "label": {"type": "string"},
+        "detail": {"type": "string"}
+      }
+    },
+    "views": {
+      "type": "array", "minItems": 3, "maxItems": 5,
+      "items": {
+        "type": "object", "required": ["id", "ico", "label"],
+        "additionalProperties": false,
+        "properties": {"id": {"type": "string"}, "ico": {"type": "string"}, "label": {"type": "string"}}
+      }
+    },
+    "sections": {"type": "array", "items": {"$ref": "#/definitions/section"}},
+    "practice": {"$ref": "#/definitions/practice"},
+    "details": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"$ref": "#/definitions/detailEntry"}
+    }
+  },
+  "definitions": {
+    "runs": {
+      "type": "array",
+      "items": {"$ref": "#/definitions/run"}
+    },
+    "run": {
+      "oneOf": [
+        {"type": "string", "minLength": 1},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "t": {"type": "string"},
+            "b": {"type": "boolean"},
+            "i": {"type": "boolean"},
+            "s": {"type": "boolean"},
+            "br": {"type": "boolean"}
+          },
+          "anyOf": [{"required": ["t"]}, {"required": ["br"]}]
+        }
+      ]
+    },
+    "block": {
+      "oneOf": [
+        {"type": "object", "required": ["h"], "additionalProperties": false, "properties": {"h": {"$ref": "#/definitions/runs"}}},
+        {"type": "object", "required": ["p"], "additionalProperties": false, "properties": {"p": {"$ref": "#/definitions/runs"}}},
+        {"type": "object", "required": ["tiny"], "additionalProperties": false, "properties": {"tiny": {"$ref": "#/definitions/runs"}}},
+        {"type": "object", "required": ["example"], "additionalProperties": false, "properties": {"example": {"$ref": "#/definitions/runs"}}},
+        {
+          "type": "object", "required": ["formula"], "additionalProperties": false,
+          "properties": {
+            "formula": {
+              "type": "array", "minItems": 1,
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object", "required": ["slot"], "additionalProperties": false,
+                    "properties": {"slot": {"$ref": "#/definitions/runsOrString"}, "role": {"enum": ["verb", "end", "sub"]}}
+                  },
+                  {"type": "object", "required": ["arrow"], "additionalProperties": false, "properties": {"arrow": {"type": "string"}}}
+                ]
+              }
+            }
+          }
+        },
+        {
+          "type": "object", "required": ["table"], "additionalProperties": false,
+          "properties": {
+            "table": {
+              "type": "object", "required": ["head", "rows"],
+              "additionalProperties": false,
+              "properties": {
+                "head": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+                "rows": {
+                  "type": "array", "minItems": 1,
+                  "items": {"type": "array", "items": {"$ref": "#/definitions/cell"}}
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object", "required": ["chips"], "additionalProperties": false,
+          "properties": {
+            "chips": {
+              "type": "array", "minItems": 1,
+              "items": {
+                "type": "object", "required": ["label", "detail"],
+                "additionalProperties": false,
+                "properties": {
+                  "label": {"$ref": "#/definitions/runsOrString"},
+                  "detail": {"type": "string"},
+                  "neutral": {"type": "boolean"}
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object", "required": ["notice"], "additionalProperties": false,
+          "properties": {
+            "notice": {"$ref": "#/definitions/runs"},
+            "warning": {"type": "boolean"}
+          }
+        },
+        {
+          "type": "object", "required": ["detail"], "additionalProperties": false,
+          "properties": {
+            "detail": {
+              "type": "object", "required": ["label", "runs"],
+              "additionalProperties": false,
+              "properties": {"label": {"type": "string"}, "runs": {"$ref": "#/definitions/runs"}}
+            }
+          }
+        }
+      ]
+    },
+    "cell": {
+      "oneOf": [
+        {"type": "string"},
+        {"type": "object", "required": ["hot"], "additionalProperties": false, "properties": {"hot": {"type": "string"}}}
+      ]
+    },
+    "runsOrString": {
+      "oneOf": [{"type": "string"}, {"$ref": "#/definitions/runs"}]
+    },
+    "card": {
+      "type": "object",
+      "required": ["search"],
+      "additionalProperties": false,
+      "properties": {
+        "search": {"type": "string"},
+        "_note": {"type": "string"},
+        "blocks": {"type": "array", "minItems": 1, "items": {"$ref": "#/definitions/block"}},
+        "case_grid": {
+          "type": "array", "minItems": 1,
+          "description": "Renders the card as div.case-grid.cheat-card of tappable case buttons",
+          "items": {
+            "type": "object", "required": ["detail", "label"],
+            "additionalProperties": false,
+            "properties": {"detail": {"type": "string"}, "label": {"$ref": "#/definitions/runs"}}
+          }
+        }
+      },
+      "oneOf": [{"required": ["blocks"]}, {"required": ["case_grid"]}]
+    },
+    "group": {
+      "type": "object",
+      "required": ["cards"],
+      "additionalProperties": false,
+      "properties": {
+        "cards": {"type": "array", "minItems": 1, "items": {"$ref": "#/definitions/card"}},
+        "grid": {"enum": ["two", "three", null]},
+        "gap": {"type": "boolean", "description": "adds margin-top:10px to the gridded group (build validator: requires grid)"}
+      }
+    },
+    "section": {
+      "type": "object",
+      "required": ["id", "view", "heading", "sub"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string"},
+        "view": {"type": "string"},
+        "badge": {"type": "string"},
+        "heading": {"type": "string"},
+        "sub": {"type": "string"},
+        "_note": {"type": "string"},
+        "grid": {"enum": ["two", "three", null]},
+        "cards": {"type": "array", "minItems": 1, "items": {"$ref": "#/definitions/card"}},
+        "groups": {"type": "array", "minItems": 1, "items": {"$ref": "#/definitions/group"}}
+      },
+      "oneOf": [{"required": ["cards"]}, {"required": ["groups"]}]
+    },
+    "practice": {
+      "type": "object",
+      "required": ["id", "view", "heading", "sub", "search", "items"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string"},
+        "view": {"type": "string"},
+        "badge": {"type": "string"},
+        "heading": {"type": "string"},
+        "sub": {"type": "string"},
+        "search": {"type": "string"},
+        "items": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object", "required": ["q", "answer"],
+            "additionalProperties": false,
+            "properties": {
+              "_note": {"type": "string"},
+              "q": {"$ref": "#/definitions/runs"},
+              "answer": {"$ref": "#/definitions/runs"}
+            }
+          }
+        }
+      }
+    },
+    "detailEntry": {
+      "type": "object",
+      "required": ["title", "lead", "blocks"],
+      "additionalProperties": false,
+      "properties": {
+        "title": {"type": "string"},
+        "lead": {"type": "string"},
+        "blocks": {"type": "array", "minItems": 1, "items": {"$ref": "#/definitions/block"}}
+      }
+    },
+    "strings": {
+      "type": "object",
+      "required": ["search_placeholder", "search_aria", "clear_aria", "install_label", "close_aria", "nav_aria", "no_results", "noscript_notice", "noscript_intro", "theme", "reveal_show", "reveal_hide", "install_ios", "install_generic", "footer_all", "footer_install", "footer_plan"],
+      "additionalProperties": false,
+      "properties": {
+        "_note": {"type": "string"},
+        "search_placeholder": {"type": "string"},
+        "search_aria": {"type": "string"},
+        "clear_aria": {"type": "string"},
+        "install_label": {"type": "string"},
+        "close_aria": {"type": "string"},
+        "nav_aria": {"type": "string"},
+        "no_results": {"type": "string"},
+        "noscript_notice": {"type": "string"},
+        "noscript_intro": {"$ref": "#/definitions/runs"},
+        "theme": {
+          "type": "object", "required": ["auto", "light", "dark"],
+          "additionalProperties": false,
+          "properties": {
+            "auto": {"$ref": "#/definitions/themeMode"},
+            "light": {"$ref": "#/definitions/themeMode"},
+            "dark": {"$ref": "#/definitions/themeMode"}
+          }
+        },
+        "reveal_show": {"type": "string"},
+        "reveal_hide": {"type": "string"},
+        "install_ios": {"$ref": "#/definitions/installDialog"},
+        "install_generic": {"$ref": "#/definitions/installDialog"},
+        "footer_all": {"type": "string"},
+        "footer_practice": {"type": "string", "description": "optional: omit when the footer has no practice link"},
+        "footer_install": {"type": "string"},
+        "footer_plan": {"type": "string"},
+        "locale_aria": {"type": "string", "description": "required when meta.locales is present"},
+        "locale_soon": {"type": "string", "description": "required when meta.locales is present — appended to soon items"}
+      }
+    },
+    "themeMode": {
+      "type": "object", "required": ["icon", "label"],
+      "additionalProperties": false,
+      "properties": {"icon": {"type": "string"}, "label": {"type": "string"}}
+    },
+    "installDialog": {
+      "type": "object", "required": ["title", "lead", "blocks"],
+      "additionalProperties": false,
+      "properties": {
+        "title": {"type": "string"},
+        "lead": {"type": "string"},
+        "blocks": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object", "required": ["label", "runs"],
+            "additionalProperties": false,
+            "properties": {"label": {"type": "string"}, "runs": {"$ref": "#/definitions/runs"}}
+          }
+        }
+      }
+    }
+  }
+}

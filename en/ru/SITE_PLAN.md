@@ -4,13 +4,17 @@
 
 This file owns the accepted product intent, English content target, durable
 scope decisions and language-specific information architecture for
-`english/index.html`. Use [the authoring guide](../docs/SITE_PLAN_GUIDE.md)
+`en/ru/index.html`. Use [the authoring guide](../../docs/SITE_PLAN_GUIDE.md)
 when revising it.
 
 It does not prove that the page matches the target or that the content is
-correct. Those results belong in [CONTENT_AUDIT.md](../CONTENT_AUDIT.md).
-Shared UI behavior belongs in [the design system](../.design/DESIGN_SYSTEM.md),
-and operation and deployment belong in [README.md](../README.md).
+correct. Those results belong in [CONTENT_AUDIT.md](../../CONTENT_AUDIT.md).
+Shared UI behavior belongs in [the design system](../../.design/DESIGN_SYSTEM.md),
+and operation and deployment belong in [README.md](../../README.md).
+
+The page lives at `<target>/<audience>/` (`en/ru/`) so sibling audiences
+(`en/de/`, …) can later share the target. The former `english/` URL is a
+redirect stub to here, kept for installed PWAs and old links.
 
 Status: the product and interaction target is accepted. The content baseline
 is provisional until the baseline gate is reviewed against named A1–B1 and
@@ -125,11 +129,15 @@ evidence in the content audit.
 
 ## Acceptance and maintenance
 
+- **This page is generated**: `en/ru/index.html` is rendered from
+  [`content/decks/en-ru.json`](../../content/decks/en-ru.json) by
+  `python3 tools/build_pages.py content/decks/en-ru.json`. Edit the deck, not
+  the HTML; regenerate and commit both. `--check` fails when they drift.
 - Revise this plan before changing accepted scope, exclusions, content depth,
   practice mapping, view membership or stable anchors.
 - Keep unresolved proposals in the content audit. Promote them here only after
   a Required, Deferred or Excluded decision is accepted.
-- Apply [content validation](../docs/CONTENT_VALIDATION.md) after content
+- Apply [content validation](../../docs/CONTENT_VALIDATION.md) after content
   changes and record the reviewed revision, sources, findings and gate results
   in `CONTENT_AUDIT.md`.
 - Follow `AGENTS.md` for shared page-change and runtime checks. A runtime pass

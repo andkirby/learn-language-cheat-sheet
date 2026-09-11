@@ -51,6 +51,7 @@
     <nav class="sg-toc" aria-label="Sections">
       <a href="#voices">Type voices</a>
       <a href="#tokens">Color tokens</a>
+      <a href="#helprow">Help row</a>
       <a href="#card">Cards</a>
       <a href="#chips">Chips</a>
       <a href="#tables">Tables</a>
@@ -95,6 +96,19 @@
         <div class="sg-swatch"><div class="chip" style="background:var(--hero-1)"></div><div class="lbl"><b>--hero-1/-2…</b> · landing hero only</div></div>
       </div>
       <p class="sg-note">Non-color tokens: <code>--grab</code>, <code>--backdrop</code>, <code>--shadow</code>, <code>--radius</code>, <code>--nav-h</code>, <code>--font-ui</code>, <code>--font-study</code>.</p>
+    </section>
+
+    <section class="sg-block" id="helprow">
+      <h2>Header controls: help + locale</h2>
+      <p class="sg-why">The usage note lives behind the compact (i) <code>.icon-btn</code> in the topbar (opens the standard bottom sheet via <code>data-detail="lookup-help"</code>, carries <code>#start</code>); the <code>.locale-menu</code> switches the audience language of the same target — native <code>&lt;details&gt;</code>, so it works without JS; JS only adds light dismiss. Noscript pages hide the buttons and keep a plain <code>.intro</code> line.</p>
+      <div class="search-row" style="border:1px dashed var(--line);border-radius:12px;padding:10px;margin-top:12px">
+        <button class="icon-btn" type="button" tabindex="-1" aria-label="Как пользоваться" style="margin-right:auto"><span class="ico" aria-hidden="true">i</span></button>
+        <details class="locale-menu" open>
+          <summary aria-label="Язык объяснений">RU</summary>
+          <div class="locale-pop" style="position:static;margin-top:8px"><span class="cur">Русский</span><span class="soon">English — скоро</span></div>
+        </details>
+        <button class="theme-btn" type="button" tabindex="-1" aria-label="Тема">◐</button>
+      </div>
     </section>
 
     <section class="sg-block" id="card">
@@ -221,11 +235,13 @@
             <tr><td><code>.notice</code> / <code>.warning</code></td><td>Info callout / caveat callout</td></tr>
             <tr><td><code>.practice-q</code>, <code>.answer</code>, <code>.reveal</code></td><td>Self-check block; hidden answer; toggle control</td></tr>
             <tr><td><code>.bottom-nav</code>, <code>.nav-item</code>, <code>data-view</code></td><td>View switcher; active destination; section→view membership</td></tr>
-            <tr><td><code>.section-head</code>, <code>.section-badge</code>, <code>.intro</code></td><td>Section header, its German tag, the one-line page intro</td></tr>
+            <tr><td><code>.section-head</code>, <code>.section-badge</code>, <code>.intro</code></td><td>Section header, its German tag, the noscript/plain intro line</td></tr>
+            <tr><td><code>.icon-btn</code> + <code>.ico</code></td><td>44px topbar icon button; the (i) usage button → <code>lookup-help</code> bottom sheet; carries <code>#start</code> on language pages</td></tr>
+            <tr><td><code>.locale-menu</code>, <code>.locale-pop</code></td><td>Topbar audience switcher (native <code>&lt;details&gt;</code>); <code>.cur</code> = current audience, <code>.soon</code> = no deck yet</td></tr>
             <tr><td><code>.brand</code>, <code>.search</code>, <code>.theme-btn</code>, <code>.install-btn</code></td><td>Topbar identity and controls</td></tr>
             <tr><td><code>.muted</code>, <code>.tiny</code></td><td>Utility tail: secondary text color / small print</td></tr>
             <tr><td><code>[lang]</code></td><td>Target-language text → serif study voice (set by <code>markTargetLang</code>)</td></tr>
-            <tr><td><code>body.searching</code></td><td>State: search active (intro hidden, matches from all views stacked)</td></tr>
+            <tr><td><code>body.searching</code></td><td>State: search active (noscript intro hidden, matches from all views stacked)</td></tr>
           </tbody>
         </table>
       </div>

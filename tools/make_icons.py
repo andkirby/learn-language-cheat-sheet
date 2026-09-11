@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate PWA PNG icons with the Python stdlib only (no Pillow).
 
-Regenerate every language set (root "Aa", deutsch "DE", english "EN"):
+Regenerate every language set (root "Aa", German "DE", English "EN"):
     python3 tools/make_icons.py
 
 Add a set for a new language (letters must exist in FONT below):
@@ -82,8 +82,8 @@ FULL_SIZES = [
 # The landing (root) has no manifest: it only needs a favicon and an og:image.
 SETS = [
     {"mark": "Aa", "out": ".", "sizes": FULL_SIZES[:1] + FULL_SIZES[3:4]},
-    {"mark": "DE", "out": "deutsch"},
-    {"mark": "EN", "out": "english"},
+    {"mark": "DE", "out": "de/ru"},
+    {"mark": "EN", "out": "en/ru"},
 ]
 
 

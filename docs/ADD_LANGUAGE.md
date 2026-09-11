@@ -7,9 +7,17 @@ self-contained folder, implement the accepted plan, connect shared site
 surfaces, validate and ship. It does not own language scope, shared UI rules,
 content-review rules or deployment policy; it links to those owners.
 
-A language page is **self-contained**: one folder with the page, its manifest,
-its icons, and its plan. Everything shared (tokens/contract, sw, tools, docs)
-lives at the repo root.
+A deck is the pairing **(target language × audience language)**, e.g.
+`de-ru` = German explained in Russian. It lives as
+`content/decks/<target>-<audience>.json` and is rendered by
+`tools/build_pages.py` into `<target>/<audience>/index.html` (schema:
+`content/decks/schema.json`). Everything shared (tokens/contract, sw, tools,
+docs) lives at the repo root.
+
+> Both current decks are generated this way (`de/ru/`, `en/ru/`, migrated
+> 2026-09-11 from hand-written `deutsch/` / `english/`, which are now redirect
+> stubs kept for old URLs and installed PWAs). A new deck is authored as JSON,
+> not copied from HTML.
 
 ## 0. Establish the content target
 
@@ -23,20 +31,27 @@ using [content validation](CONTENT_VALIDATION.md). Sources, unresolved
 questions and results go in [CONTENT_AUDIT.md](../CONTENT_AUDIT.md), not in the
 plan. Do not treat the copied language page as a coverage template.
 
-## 1. Create the folder (copy as starting point)
+## 1. Author the deck and render it
+
+Start from the closest existing deck as a content reference (not a coverage
+template — see step 0):
 
 ```bash
-cp -r english <lang>          # or deutsch — pick the closer grammar cousin
+cp content/decks/de-ru.json content/decks/<target>-<audience>.json
+python3 tools/build_pages.py content/decks/<target>-<audience>.json
 ```
 
-Then in `<lang>/`, before adapting `index.html`:
+Then, before adapting the deck's content:
 
-- `SITE_PLAN.md` — replace it with the accepted target from step 0; copied
-  content is not valid for the new language.
-- `index.html` — replace content per the contract below.
-- `manifest.webmanifest` — name/short_name/description; `start_url`/`scope`
-  stay `./`; icons stay `./icons/…`.
-- `icons/` — regenerate (step 2); favicon.svg letters.
+- `meta` — set `deck`, `target`, `audience`, `target_lang`, `lang` (the
+  audience's ISO code — it becomes `<html lang>`), `out`, `site_path`
+  (`<target>/<audience>/`), brand fields, titles and `plan_path`
+  (`<target>/<audience>/SITE_PLAN.md`).
+- `<target>/<audience>/SITE_PLAN.md` — the accepted target from step 0; copied
+  content is not valid for the new deck. Fix its `../../` links.
+- `<target>/<audience>/manifest.webmanifest` — name/short_name/description;
+  `start_url`/`scope` stay `./`; icons stay `./icons/…`.
+- `<target>/<audience>/icons/` — regenerate (step 2).
 
 ## 2. Generate icons
 
@@ -46,41 +61,46 @@ python3 tools/make_icons.py --mark IT --out ital
 ```
 
 Each glyph is a 5×7 bitmap (rows of `X`/`.`). Letters already present:
-A, D, E, N, a. The set lands in `<out>/icons/` (32/180/192/512 + maskable).
-Edit `<lang>/icons/favicon.svg` letters by hand (SVG text — no font needed).
+A, D, E, N, a. The set lands in `<out>/icons/` (32/180/192/512 + maskable) —
+use `<target>/<audience>` as `--out`. Edit `icons/favicon.svg` letters by hand
+(SVG text — no font needed).
 
-## 3. Implement the shared page contract
+## 3. The shared page contract
 
-Follow [the design system](../.design/DESIGN_SYSTEM.md). The items below are
-integration checks, not a second copy of that contract:
+Follow [the design system](../.design/DESIGN_SYSTEM.md). The generator
+(`tools/build_pages.py`) already provides the shell; the items below are
+deck-level integration checks, not a second copy of that contract:
 
-- `<html lang="ru">` (UI language stays Russian), brand mark = language code.
-- Link `../assets/base.css` — never copy component styles into the page.
-  Page-specific styles (if truly needed) go in a small local `<style>` block.
-- Set `TARGET_LANG` and keep `markTargetLang` intact: it sets `lang`
-  attributes (screen-reader pronunciation + the serif study voice) on
-  pure-target `.example`/`.answer`/`.table-scroll` containers and on bold /
-  italic / Cyrillic-free slot fragments.
+- `meta.lang` = audience language (`<html lang>`), brand mark = target code.
+  `meta.site_path` depth drives the `../../` prefix for root assets — don't
+  hardcode `../` anywhere.
+- Keep `TARGET_LANG` behavior (generator-managed): it sets `lang` attributes
+  (screen-reader pronunciation + the serif study voice) on pure-target
+  `.example`/`.answer`/`.table-scroll` containers and on bold/italic/
+  Cyrillic-free slot fragments.
 - Section ids stay lowercase-English slugs; **never reuse another language's
   ids unless the sections match** — anchors are per-page anyway.
-- `DETAILS` object: one entry per chip; keys kebab-case; RU explanation +
-  DE/EN/… terms kept in the target language.
-- Every section carries the plan's `data-view="<view-id>"`; bottom-navigation
-  destinations and legacy-anchor routing match the plan.
-- Every `.cheat-card` gets `data-search` with RU + target-language keywords.
-- Register `../sw.js`; manifest `./manifest.webmanifest`; og:url/og:image
-  absolute: `https://andkirby.github.io/learn-language-cheat-sheet/<lang>/…`.
-- Practice implements the plan's topic mapping with `.reveal`,
+- One `details` entry per chip; keys kebab-case; explanation in the audience
+  language, target-language terms stay in the target language.
+- Every section carries the plan's `view`; bottom-navigation destinations and
+  legacy-anchor routing match the plan (a deck may keep `practice` as its own
+  nav destination, like `de-ru`, or footer-only, like `en-ru`).
+- Every card gets `search` with audience-language + target-language keywords.
+- Register `'../../sw.js'`; manifest `./manifest.webmanifest`; og:url/og:image
+  absolute: `https://andkirby.github.io/learn-language-cheat-sheet/<target>/<audience>/…`.
+- Practice implements the plan's topic mapping; the generator wires `.reveal`,
   `aria-expanded` and `aria-controls`. Review all answers; learner exercises
   do not replace validation of every rule, table and example.
 
 ## 4. Wire into the site
 
-1. Root `sw.js`: add `'./<lang>/'`, `'./<lang>/index.html'`,
-   `'./<lang>/manifest.webmanifest'` and its icons to `APP_SHELL`;
+1. Root `sw.js`: add `'./<target>/<audience>/'`, `…/index.html`,
+   `…/manifest.webmanifest` and its icons to `APP_SHELL`;
    **bump `CACHE_VERSION`**.
-2. Landing `index.html`: add a `.lang-card` (mark, name, topics, meta, `→`)
-   pointing to `./<lang>/`.
+2. Landing `index.html`: add a `.lang-card` for a new target (mark, name,
+   topics, meta, `→`, `data-target`), and register the deck's audience in
+   `DECKS` so the locale selector can route to it. A new audience for an
+   existing target usually needs no new card — just a `DECKS` entry.
 3. `README.md`: add the URL row.
 
 ## 5. Verify (same gates as existing pages)
@@ -94,7 +114,7 @@ Then run the separate runtime checks:
 python3 -m http.server 8931
 ```
 
-- Console clean at `http://127.0.0.1:8931/<lang>/`; manifest + icons resolve.
+- Console clean at `http://127.0.0.1:8931/<target>/<audience>/`; manifest + icons resolve.
 - 390px: no horizontal page overflow; tables scroll inside `.table-scroll`.
 - Theme toggle cycles auto/light/dark and survives reload.
 - Search filters/restores across all views; dialogs open/close (×, Escape,
@@ -106,10 +126,11 @@ python3 -m http.server 8931
 
 ## 6. Ship
 
-Commit (`feat: add <language> cheatsheet`), push to `main`; GitHub Pages
-deploys automatically. Verify
-`https://andkirby.github.io/learn-language-cheat-sheet/<lang>/` returns 200
-(first build can lag a minute), then from the landing page.
+Commit (`feat: add <language> cheatsheet` / `feat: add <audience> deck`),
+push to `main`; GitHub Pages deploys automatically. Verify
+`https://andkirby.github.io/learn-language-cheat-sheet/<target>/<audience>/`
+returns 200 (first build can lag a minute), then from the landing page with
+the audience selected.
 
 ## Ownership after shipping
 

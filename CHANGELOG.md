@@ -6,6 +6,27 @@ Append the entry in the same commit that ships the change.
 
 ## 2026-09-11
 
+- **Structure**: pages moved to `de/ru/` and `en/ru/` — one folder per
+  (target × audience) pair, ready for decks in other explanation languages;
+  the landing gained a locale selector (Русский today, English — soon) that
+  remembers the choice. Old addresses (`/deutsch/`, `/english/`, `/de/`,
+  `/deutsch.html`) redirect, including offline for already-installed apps.
+  The German page is now generated from `content/decks/de-ru.json` like the
+  English one. `CACHE_VERSION` v9.
+- **Clarity**: every table now labels its bold convention — «Жирным —
+  формы-ловушки» legend under all four tables with hot cells; the
+  convention was documented for developers only (finding C-10).
+- **Clarity**: ein-words table gets a reading key — new «Почему meinen?»
+  chip explains that the endings mirror the definite article
+  (den→meinen, dem→meinem), with the three empty cells and the
+  Akk./Dat. reading rules (finding C-09).
+- **Clarity**: possessives card now states the one-model rule on the card
+  («mein — модель для всех: kein, dein, sein… основа + окончание»), dialog
+  adds a `dein` example (finding C-08).
+- **UX**: the usage intro line is now a compact (i) button in the header
+  («Как пользоваться», opens the standard bottom sheet); noscript keeps the
+  plain line. The header also gained an audience switcher [RU ▾] — Русский
+  today, English marked «скоро» — native details, works without JS.
 - **Style**: study-voice serif retuned — Charter on macOS, New York on iOS,
   Sitka/Cambria on Windows, Noto Serif on Android (system stacks only, no
   downloaded fonts). `CACHE_VERSION` v7.

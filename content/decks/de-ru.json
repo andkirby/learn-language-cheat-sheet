@@ -1,0 +1,725 @@
+{
+  "_readme": "German cheat deck for Russian speakers. Rendered by tools/build_pages.py into de/ru/index.html — edit this file, then regenerate (see AGENTS.md). Schema: schema.json. _note fields carry review provenance and are ignored by the generator. Migrated 2026-09-11 from the hand-written deutsch/index.html (Phase 2 of the content-as-data refactor); grammar DETAILS copied verbatim.",
+  "meta": {
+    "deck": "de-ru",
+    "target": "de",
+    "audience": "ru",
+    "target_lang": "de",
+    "lang": "ru",
+    "out": "de/ru/index.html",
+    "site_base": "https://andkirby.github.io/learn-language-cheat-sheet/",
+    "site_path": "de/ru/",
+    "brand_mark": "DE",
+    "brand_name": "German Cheat",
+    "brand_sub": "RU → DE · A1–B1",
+    "apple_title": "DE Cheat",
+    "title": "German Grammar Cheatsheet",
+    "description": "Мобильная шпаргалка по немецкой грамматике: падежи, артикли, порядок слов, придаточные, глагольные конструкции.",
+    "og_title": "German Grammar Cheatsheet",
+    "og_description": "Немецкая грамматика без листания учебника: падежи, артикли, порядок слов, придаточные. A1–B1, офлайн.",
+    "plan_path": "de/ru/SITE_PLAN.md",
+    "locales": [
+      {"id": "ru", "label": "Русский"},
+      {"id": "en", "label": "English", "soon": true}
+    ]
+  },
+  "strings": {
+    "_note": "footer_practice is deliberately absent: the hand-written German footer never had a practice link (the English deck does). Follow-up candidate, not a migration change.",
+    "search_placeholder": "Поиск: wem, weil, modal, Dativ…",
+    "search_aria": "Поиск по шпаргалке",
+    "clear_aria": "Очистить поиск",
+    "install_label": "Установить",
+    "close_aria": "Закрыть",
+    "nav_aria": "Основная навигация",
+    "no_results": "Ничего не найдено. Попробуй “wem”, “modal”, “weil”, “Dativ”, “Perfekt”.",
+    "noscript_notice": "Поиск, детали и установка приложения требуют JavaScript. Всё содержимое шпаргалки доступно ниже без него.",
+    "noscript_intro": [
+      "Смотри на ",
+      {"t": "триггер", "b": true},
+      " — падеж, предлог, союз или глагольную конструкцию, — потом на форму и позицию."
+    ],
+    "theme": {
+      "auto": {"icon": "◐", "label": "Тема: системная"},
+      "light": {"icon": "☀", "label": "Тема: светлая"},
+      "dark": {"icon": "☾", "label": "Тема: тёмная"}
+    },
+    "reveal_show": "Показать",
+    "reveal_hide": "Скрыть",
+    "install_ios": {
+      "title": "Установка на iPhone",
+      "lead": "Safari не показывает стандартный install prompt.",
+      "blocks": [
+        {"label": "1.", "runs": ["Открой меню Share."]},
+        {"label": "2.", "runs": ["Выбери Add to Home Screen."]},
+        {"label": "3.", "runs": ["Подтверди Add."]}
+      ]
+    },
+    "install_generic": {
+      "title": "Установка на телефон",
+      "lead": "Это PWA: после первой загрузки работает и офлайн.",
+      "blocks": [
+        {"label": "Android / Chrome", "runs": ["Меню браузера → Install app / Add to Home screen."]},
+        {"label": "iPhone / Safari", "runs": ["Share → Add to Home Screen."]},
+        {"label": "Важно", "runs": ["Для установки и offline-кэша страницу нужно открыть по HTTPS (или localhost), не как локальный файл из Files."]}
+      ]
+    },
+    "footer_all": "все шпаргалки",
+    "footer_install": "Установка: Android — кнопка «Установить» или меню браузера · iPhone — Share → Add to Home Screen",
+    "footer_plan": "план контента:",
+    "locale_aria": "Язык объяснений",
+    "locale_soon": "скоро"
+  },
+  "help": {
+    "id": "start",
+    "ico": "i",
+    "label": "Как пользоваться",
+    "detail": "lookup-help"
+  },
+  "views": [
+    {"id": "cases", "ico": "A/D", "label": "Падежи"},
+    {"id": "forms", "ico": "der", "label": "Формы"},
+    {"id": "order", "ico": "V2", "label": "Порядок"},
+    {"id": "clauses", "ico": "weil", "label": "Придат."},
+    {"id": "practice", "ico": "?", "label": "Повтор"}
+  ],
+  "sections": [
+    {
+      "id": "cases", "view": "cases", "badge": "4 Fälle",
+      "heading": "Падежи", "sub": "Вопрос → функция → форма.",
+      "_note": "Group 1 is the case-grid card: buttons render <b> where the hand-written page used <strong> — identical UA styling inside .tap (font-weight 800 + bolder).",
+      "groups": [
+        {
+          "cards": [
+            {
+              "search": "fälle cases падеж вопросы nominativ akkusativ dativ genitiv wer wen wem wessen wohin wo was",
+              "case_grid": [
+                {"detail": "nominativ", "label": [{"t": "Nominativ", "b": true}, {"br": true}, "Wer? Was?"]},
+                {"detail": "akkusativ", "label": [{"t": "Akkusativ", "b": true}, {"br": true}, "Wen? Was?"]},
+                {"detail": "dativ", "label": [{"t": "Dativ", "b": true}, {"br": true}, "Wem?"]},
+                {"detail": "genitiv", "label": [{"t": "Genitiv", "b": true}, {"br": true}, "Wessen?"]}
+              ]
+            }
+          ]
+        },
+        {
+          "grid": "two", "gap": true,
+          "cards": [
+            {
+              "search": "wo wohin wechselpräpositionen movement location направление место akkusativ dativ",
+              "blocks": [
+                {"h": ["Wo? / Wohin?"]},
+                {"p": [{"t": "Wo?", "b": true}, " где? → обычно ", {"t": "Dativ", "b": true}, " с Wechselpräpositionen."]},
+                {"p": [{"t": "Wohin?", "b": true}, " куда? → обычно ", {"t": "Akkusativ", "b": true}, "."]},
+                {"example": [{"t": "Ich bin in der Schule.", "b": true}, {"br": true}, {"t": "Ich gehe in die Schule.", "b": true}]},
+                {"chips": [{"label": "Когда это правило работает?", "detail": "wo-wohin"}]}
+              ]
+            },
+            {
+              "search": "direct indirect object прямое косвенное дополнение akkusativ dativ geben helfen sehen",
+              "blocks": [
+                {"h": ["Быстрый смысл"]},
+                {"p": [{"t": "Akk.", "b": true}, " часто = прямой объект: ", {"t": "вижу кого?", "i": true}]},
+                {"p": [{"t": "Dat.", "b": true}, " часто = получатель/адресат: ", {"t": "даю кому?", "i": true}]},
+                {"example": [{"t": "Ich gebe dem Mann das Buch.", "b": true}, {"br": true}, "dem Mann = Dat. · das Buch = Akk."]},
+                {"chips": [{"label": "Два объекта", "detail": "objects"}]}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "forms", "view": "forms", "badge": "Formen",
+      "heading": "Артикли и местоимения", "sub": "Главные формы, которые реально меняются.",
+      "groups": [
+        {
+          "cards": [
+            {
+              "search": "artikel der die das den dem des definite артикли определенный",
+              "blocks": [
+                {"h": ["Определённый артикль"]},
+                {"table": {
+                  "head": ["", "Mask.", "Neut.", "Fem.", "Plural"],
+                  "rows": [
+                    ["Nom.", "der", "das", "die", "die"],
+                    ["Akk.", {"hot": "den"}, "das", "die", "die"],
+                    ["Dat.", {"hot": "dem"}, {"hot": "dem"}, {"hot": "der"}, {"hot": "den"}],
+                    ["Gen.", "des", "des", "der", "der"]
+                  ]
+                }},
+                {"tiny": ["Жирным — формы-ловушки: то, что меняется и на чём чаще всего ошибаются."]}
+              ]
+            }
+          ]
+        },
+        {
+          "grid": "two", "gap": true,
+          "cards": [
+            {
+              "search": "ein eine einen einem eines indefinite kein mein dein possessiv притяжательные",
+              "blocks": [
+                {"h": ["ein / kein / mein…"]},
+                {"table": {
+                  "head": ["", "Mask.", "Neut.", "Fem.", "Plural*"],
+                  "rows": [
+                    ["Nom.", "mein", "mein", "meine", "meine"],
+                    ["Akk.", {"hot": "meinen"}, "mein", "meine", "meine"],
+                    ["Dat.", {"hot": "meinem"}, {"hot": "meinem"}, {"hot": "meiner"}, {"hot": "meinen"}],
+                    ["Gen.", "meines", "meines", "meiner", "meiner"]
+                  ]
+                }},
+                {"tiny": ["Жирным — формы-ловушки: то, что меняется и на чём чаще всего ошибаются."]},
+                {"tiny": ["* У ", {"t": "ein", "i": true}, " нет мн. числа. Колонка ", {"t": "mein", "i": true}, " — модель для всех: ", {"t": "kein, dein, sein, ihr, unser, euer", "i": true}, " склоняются так же — основа + окончание из таблицы."]},
+                {"chips": [
+                  {"label": "mein / dein / sein / ihr…", "detail": "possessives"},
+                  {"label": "Почему meinen?", "detail": "why-ein-endings"},
+                  {"label": "Почему ihrem?", "detail": "ihrem"}
+                ]}
+              ]
+            },
+            {
+              "search": "personal pronouns личные местоимения ich mich mir du dich dir ihn ihm uns euch ihnen",
+              "blocks": [
+                {"h": ["Личные местоимения"]},
+                {"table": {
+                  "head": ["Nom.", "Akk.", "Dat."],
+                  "rows": [
+                    ["ich", "mich", {"hot": "mir"}],
+                    ["du", "dich", {"hot": "dir"}],
+                    ["er", "ihn", {"hot": "ihm"}],
+                    ["sie", "sie", {"hot": "ihr"}],
+                    ["es", "es", {"hot": "ihm"}],
+                    ["wir", "uns", "uns"],
+                    ["ihr", "euch", "euch"],
+                    ["sie/Sie", "sie/Sie", {"hot": "ihnen/Ihnen"}]
+                  ]
+                }},
+                {"tiny": ["Жирным — формы-ловушки: то, что меняется и на чём чаще всего ошибаются."]},
+                {"chips": [{"label": "Как быстро запомнить", "detail": "pronouns"}]}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preps", "view": "cases", "badge": "Präpositionen",
+      "heading": "Предлоги", "sub": "Предлог часто сразу определяет падеж.", "grid": "two",
+      "cards": [
+        {
+          "search": "akkusativ prepositions durch für gegen ohne um bis entlang",
+          "blocks": [
+            {"h": ["Всегда Akkusativ"]},
+            {"chips": [
+              {"label": "durch", "detail": "prep-akk", "neutral": true},
+              {"label": "für", "detail": "prep-akk", "neutral": true},
+              {"label": "gegen", "detail": "prep-akk", "neutral": true},
+              {"label": "ohne", "detail": "prep-akk", "neutral": true},
+              {"label": "um", "detail": "prep-akk", "neutral": true}
+            ]},
+            {"example": ["für ", {"t": "den", "b": true}, " Mann · ohne ", {"t": "mich", "b": true}]}
+          ]
+        },
+        {
+          "search": "dativ prepositions aus bei mit nach seit von zu gegenüber",
+          "blocks": [
+            {"h": ["Всегда Dativ"]},
+            {"chips": [
+              {"label": "aus", "detail": "prep-dat", "neutral": true},
+              {"label": "bei", "detail": "prep-dat", "neutral": true},
+              {"label": "mit", "detail": "prep-dat", "neutral": true},
+              {"label": "nach", "detail": "prep-dat", "neutral": true},
+              {"label": "seit", "detail": "prep-dat", "neutral": true},
+              {"label": "von", "detail": "prep-dat", "neutral": true},
+              {"label": "zu", "detail": "prep-dat", "neutral": true}
+            ]},
+            {"example": ["mit ", {"t": "meinem", "b": true}, " Bruder · zu ", {"t": "der", "b": true}, " Arbeit → zur Arbeit"]}
+          ]
+        },
+        {
+          "search": "wechselpräpositionen an auf hinter in neben über unter vor zwischen wo wohin two-way",
+          "blocks": [
+            {"h": ["Два падежа: Wo? / Wohin?"]},
+            {"p": [{"t": "an, auf, hinter, in, neben, über, unter, vor, zwischen", "b": true}]},
+            {"example": ["auf ", {"t": "dem", "b": true}, " Tisch (Wo?)", {"br": true}, "auf ", {"t": "den", "b": true}, " Tisch (Wohin?)"]},
+            {"chips": [{"label": "Главная оговорка", "detail": "two-way"}]}
+          ]
+        },
+        {
+          "search": "genitiv prepositions wegen trotz während statt innerhalb außerhalb",
+          "blocks": [
+            {"h": ["Часто Genitiv"]},
+            {"p": [{"t": "wegen, trotz, während, statt, innerhalb, außerhalb", "b": true}]},
+            {"example": ["wegen ", {"t": "des Wetters", "b": true}]},
+            {"tiny": ["В разговорной речи некоторые из них встречаются и с Dativ, но в норме учи Genitiv."]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "order", "view": "order", "badge": "Wortstellung",
+      "heading": "Порядок слов", "sub": "Сначала найди спрягаемый глагол.", "grid": "two",
+      "cards": [
+        {
+          "search": "main clause hauptsatz verb second v2 position 2 второе место heute ich gehe",
+          "blocks": [
+            {"h": ["Главное: V2"]},
+            {"formula": [{"slot": "Позиция 1"}, {"arrow": "→"}, {"slot": "глагол", "role": "verb"}, {"arrow": "→"}, {"slot": "остальное"}]},
+            {"example": [{"t": "Ich gehe", "b": true}, " heute in den Laden.", {"br": true}, {"t": "Heute gehe", "b": true}, " ich in den Laden."]},
+            {"chips": [{"label": "Что значит “позиция 2”?", "detail": "v2"}]}
+          ]
+        },
+        {
+          "search": "inversion heute dann danach deshalb position 1 subject после наречия",
+          "blocks": [
+            {"h": ["Если сначала Heute / Dann / Deshalb…"]},
+            {"p": ["Подлежащее уходит ", {"t": "после глагола", "b": true}, "."]},
+            {"example": [{"t": "Heute muss ich", "b": true}, " arbeiten.", {"br": true}, "Не: ", {"t": "Heute ich muss…", "s": true}]}
+          ]
+        },
+        {
+          "search": "question fragen yes no w frage wer was wann warum wie verb first v1",
+          "blocks": [
+            {"h": ["Вопросы"]},
+            {"formula": [{"slot": "Kommst", "role": "verb"}, {"slot": "du heute?"}]},
+            {"formula": [{"slot": "Wann"}, {"slot": "kommst", "role": "verb"}, {"slot": "du?"}]},
+            {"tiny": ["Да/нет → глагол первым. W-вопрос → вопросительное слово + глагол."]}
+          ]
+        },
+        {
+          "search": "tekamolo temporal kausal modal lokal order обстоятельства время причина способ место",
+          "blocks": [
+            {"h": ["TeKaMoLo"]},
+            {"p": [{"t": "Te", "b": true}, "mporal → ", {"t": "Ka", "b": true}, "usal → ", {"t": "Mo", "b": true}, "dal → ", {"t": "Lo", "b": true}, "kal"]},
+            {"example": ["Ich fahre ", {"t": "heute", "b": true}, " ", {"t": "wegen der Arbeit", "b": true}, " ", {"t": "mit dem Zug", "b": true}, " ", {"t": "nach Berlin", "b": true}, "."]},
+            {"chips": [{"label": "Это жёсткое правило?", "detail": "tekamolo"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "verbs", "view": "order", "badge": "Satzklammer",
+      "heading": "Глагольная рамка", "sub": "Часть глагола часто живёт в конце.", "grid": "two",
+      "cards": [
+        {
+          "search": "modal müssen können wollen sollen dürfen mögen infinitiv end modal verbs",
+          "blocks": [
+            {"h": ["Модальные глаголы"]},
+            {"formula": [{"slot": "Heute"}, {"slot": "muss", "role": "verb"}, {"slot": "ich in den Laden"}, {"slot": "gehen", "role": "end"}]},
+            {"p": [{"t": "muss", "b": true}, " = V2, смысловой инфинитив = конец."]},
+            {"chips": [{"label": "Все модальные", "detail": "modal"}]}
+          ]
+        },
+        {
+          "search": "perfekt haben sein partizip ii gegangen gemacht gegessen past perfect",
+          "blocks": [
+            {"h": ["Perfekt"]},
+            {"formula": [{"slot": "Ich"}, {"slot": "habe", "role": "verb"}, {"slot": "das schon"}, {"slot": "gemacht", "role": "end"}]},
+            {"example": ["Ich ", {"t": "bin", "b": true}, " nach Hause ", {"t": "gegangen", "b": true}, "."]},
+            {"chips": [{"label": "haben или sein?", "detail": "perfekt"}]}
+          ]
+        },
+        {
+          "search": "separable trennbare verben aufstehen einkaufen anrufen prefix отделяемые приставки",
+          "blocks": [
+            {"h": ["Отделяемые глаголы"]},
+            {"formula": [{"slot": "Ich"}, {"slot": "stehe", "role": "verb"}, {"slot": "um 7 Uhr"}, {"slot": "auf", "role": "end"}]},
+            {"example": ["weil ich um 7 Uhr ", {"t": "aufstehe", "b": true}]},
+            {"chips": [{"label": "Почему в придаточном снова вместе?", "detail": "separable"}]}
+          ]
+        },
+        {
+          "search": "passive passiv werden partizip ii wird gemacht wurde gebaut пассив",
+          "blocks": [
+            {"h": ["Passiv"]},
+            {"formula": [{"slot": "Das Haus"}, {"slot": "wird", "role": "verb"}, {"slot": "2026"}, {"slot": "gebaut", "role": "end"}]},
+            {"p": [{"t": "werden + Partizip II", "b": true}]},
+            {"chips": [{"label": "Passiv vs Perfekt", "detail": "passive"}]}
+          ]
+        },
+        {
+          "search": "konjunktiv ii würde wurde wäre hätte könnte müsste sollte сослагательное нереальное вежливость совет unreal wish polite",
+          "blocks": [
+            {"h": ["Konjunktiv II"]},
+            {"p": [{"t": "würde + инфинитив", "b": true}, " — универсальная форма; частые прямые: ", {"t": "wäre, hätte, könnte, müsste, sollte", "b": true}, "."]},
+            {"example": ["Wenn ich Zeit ", {"t": "hätte", "b": true}, ", ", {"t": "würde", "b": true}, " ich reisen.", {"br": true}, {"t": "Könnten Sie", "b": true}, " mir helfen?"]},
+            {"chips": [{"label": "Когда и зачем", "detail": "konjunktiv2"}]}
+          ]
+        },
+        {
+          "search": "doppelinfinitiv ersatzinfinitiv haben arbeiten müssen два инфинитива modal perfekt double infinitive",
+          "blocks": [
+            {"h": ["Perfekt с модальным: два инфинитива"]},
+            {"p": ["Вместо Partizip II — ", {"t": "Infinitiv + Infinitiv", "b": true}, "."]},
+            {"example": ["Ich ", {"t": "habe arbeiten müssen", "b": true}, ". — не “gemusst”."]},
+            {"tiny": ["Достаточно узнавать; активно — уровень выше."]},
+            {"chips": [{"label": "Разбор", "detail": "double-infinitive"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clauses", "view": "clauses", "badge": "Nebensätze",
+      "heading": "Придаточные", "sub": "Союз в начале, спрягаемый глагол — в конец.",
+      "groups": [
+        {
+          "grid": "two",
+          "cards": [
+            {
+              "search": "weil because потому что subordinate verb end придаточное",
+              "blocks": [
+                {"h": ["weil — потому что"]},
+                {"formula": [{"slot": "weil", "role": "sub"}, {"slot": "ich heute arbeiten"}, {"slot": "muss", "role": "end"}]},
+                {"example": ["Ich komme nicht, ", {"t": "weil ich arbeiten muss.", "b": true}]}
+              ]
+            },
+            {
+              "search": "dass that что ich glaube denke hoffe sage subordinate",
+              "blocks": [
+                {"h": ["dass — что"]},
+                {"example": ["Ich glaube, ", {"t": "dass er heute kommt.", "b": true}]},
+                {"tiny": ["Типично после glauben, denken, hoffen, sagen, wissen…"]}
+              ]
+            },
+            {
+              "search": "wenn if when если когда condition repeated als subordinate",
+              "blocks": [
+                {"h": ["wenn — если / когда"]},
+                {"example": [{"t": "Wenn ich Zeit habe,", "b": true}, " komme ich."]},
+                {"p": ["Если придаточное стоит первым, после запятой сразу идёт глагол главного: ", {"t": "…, komme ich.", "b": true}]},
+                {"chips": [{"label": "wenn vs als", "detail": "wenn-als"}]}
+              ]
+            },
+            {
+              "search": "obwohl although хотя subordinate verb end trotzdem",
+              "blocks": [
+                {"h": ["obwohl — хотя"]},
+                {"example": ["Er geht spazieren, ", {"t": "obwohl es regnet.", "b": true}]},
+                {"chips": [{"label": "obwohl vs trotzdem", "detail": "obwohl"}]}
+              ]
+            },
+            {
+              "search": "ob whether ли indirect question indirekte frage",
+              "blocks": [
+                {"h": ["ob — ли"]},
+                {"example": ["Ich weiß nicht, ", {"t": "ob er kommt.", "b": true}]}
+              ]
+            },
+            {
+              "search": "und aber denn oder sondern coordinating conjunctions coordinators verb second не отправляют глагол в конец",
+              "blocks": [
+                {"h": ["Не отправляют глагол в конец"]},
+                {"p": [{"t": "und, aber, denn, oder, sondern", "b": true}]},
+                {"example": ["Ich bleibe zu Hause, ", {"t": "denn ich bin müde.", "b": true}]},
+                {"chips": [{"label": "weil vs denn", "detail": "coordinators"}]}
+              ]
+            }
+          ]
+        },
+        {
+          "grid": "two", "gap": true,
+          "cards": [
+            {
+              "search": "um zu damit purpose цель чтобы infinitive subject same different",
+              "blocks": [
+                {"h": ["um … zu / damit — чтобы"]},
+                {"example": ["Ich lerne Deutsch, ", {"t": "um in Berlin zu arbeiten.", "b": true}, {"br": true}, "Ich erkläre es langsam, ", {"t": "damit du alles verstehst.", "b": true}]},
+                {"chips": [{"label": "Как выбрать?", "detail": "um-damit"}]}
+              ]
+            },
+            {
+              "search": "relative clause relativsatz der die das den dem dessen deren который относительные",
+              "blocks": [
+                {"h": ["Относительное придаточное"]},
+                {"example": ["Das ist der Mann, ", {"t": "der hier arbeitet.", "b": true}, {"br": true}, "Das ist der Mann, ", {"t": "den ich kenne.", "b": true}]},
+                {"chips": [{"label": "Как выбрать der/den/dem?", "detail": "relative"}]}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "extras", "view": "forms", "badge": "Endungen",
+      "heading": "Окончания и изменения", "sub": "Небольшие правила, которые часто ломают правильную форму.", "grid": "two",
+      "cards": [
+        {
+          "search": "dativ plural n kindern freunden существительное множественное",
+          "blocks": [
+            {"h": ["Dativ Plural"]},
+            {"p": ["Обычно артикль ", {"t": "den", "b": true}, " + существительное получает ", {"t": "-n", "b": true}, ", если его ещё нет."]},
+            {"example": ["mit ", {"t": "den Kindern", "b": true}, " · mit ", {"t": "meinen Freunden", "b": true}]}
+          ]
+        },
+        {
+          "search": "genitiv s es mannes kindes vaters noun endings",
+          "blocks": [
+            {"h": ["Genitiv: -s / -es"]},
+            {"p": ["Maskulin/Neutrum часто получают ", {"t": "-s/-es", "b": true}, "."]},
+            {"example": ["das Auto ", {"t": "des Vaters", "b": true}, {"br": true}, "die Farbe ", {"t": "des Hauses", "b": true}]}
+          ]
+        },
+        {
+          "search": "n-deklination student studenten mensch menschen herrn weak nouns",
+          "blocks": [
+            {"h": ["N-Deklination"]},
+            {"p": ["Некоторые мужские существительные получают ", {"t": "-n/-en", "b": true}, " почти везде, кроме Nominativ Singular."]},
+            {"example": ["der Student → den/dem/des ", {"t": "Studenten", "b": true}]},
+            {"chips": [{"label": "Частые слова", "detail": "n-decl"}]}
+          ]
+        },
+        {
+          "search": "adjective endings прилагательные der ein guter guten gutem окончания",
+          "blocks": [
+            {"h": ["Прилагательные: не учи вслепую"]},
+            {"p": ["После ", {"t": "der-слов", "b": true}, " артикль уже показывает род/падеж, поэтому прилагательное чаще имеет ", {"t": "-e/-en", "b": true}, "."]},
+            {"example": ["der gut", {"t": "e", "b": true}, " Mann · mit dem gut", {"t": "en", "b": true}, " Mann"]},
+            {"chips": [{"label": "Короткая модель", "detail": "adjectives"}]}
+          ]
+        }
+      ]
+    }
+  ],
+  "practice": {
+    "id": "practice", "view": "practice", "badge": "30 sec",
+    "heading": "Быстрый повтор", "sub": "Три вопроса без отдельного “режима урока”.",
+    "search": "practice quiz повтор тест",
+    "items": [
+      {
+        "_note": "Case after verb: helfen + Dativ (plan practice item 1).",
+        "q": [{"t": "1. Ich helfe ___ Mann.", "b": true}, " Какой падеж?"],
+        "answer": ["Dativ (helfen + Dat., Wem?): ", {"t": "dem Mann", "b": true}, " — der → dem; с неопределённым артиклем — ", {"t": "einem Mann", "b": true}, "."]
+      },
+      {
+        "_note": "Modal verb position: V2 + infinitive last (plan practice item 2).",
+        "q": [{"t": "2. Heute ___ ich in den Laden gehen.", "b": true}, " Где стоит ", {"t": "müssen", "i": true}, "?"],
+        "answer": [{"t": "Heute muss ich in den Laden gehen.", "b": true}, " Модальный глагол = V2, инфинитив = конец."]
+      },
+      {
+        "_note": "Subordinate clause: finite verb last (plan practice item 3).",
+        "q": [{"t": "3. weil ich heute arbeiten ___", "b": true}],
+        "answer": [{"t": "weil ich heute arbeiten muss", "b": true}, " — в придаточном спрягаемый глагол уходит в конец."]
+      }
+    ]
+  },
+  "details": {
+    "lookup-help": {
+      "title": "Как пользоваться", "lead": "Триггер → форма → позиция.",
+      "blocks": [
+        {"detail": {"label": "Схема", "runs": ["Найди триггер — падежный вопрос, предлог, союз или глагольную конструкцию, — потом смотри нужную форму и позицию глагола."]}},
+        {"detail": {"label": "Поиск", "runs": ["Ищи сразу: ", {"t": "wem", "i": true}, ", ", {"t": "weil", "i": true}, ", ", {"t": "Perfekt", "i": true}, " — или по-русски. Поиск проверяет все разделы сразу."]}},
+        {"detail": {"label": "Навигация", "runs": ["Пять разделов внизу; Повтор — короткая проверка главных ловушек."]}}
+      ]
+    },
+    "nominativ": {
+      "title": "Nominativ", "lead": "Wer? Was? — кто? что?",
+      "blocks": [
+        {"detail": {"label": "Обычно", "runs": ["Подлежащее: тот, кто выполняет действие."]}},
+        {"detail": {"label": "Пример", "runs": [{"t": "Der Mann", "i": true}, " arbeitet. — Кто работает? Der Mann."]}}
+      ]
+    },
+    "akkusativ": {
+      "title": "Akkusativ", "lead": "Wen? Was? — кого? что?",
+      "blocks": [
+        {"detail": {"label": "Часто", "runs": ["Прямой объект действия."]}},
+        {"detail": {"label": "Пример", "runs": ["Ich sehe ", {"t": "den Mann", "i": true}, ". — Wen sehe ich?"]}},
+        {"detail": {"label": "Самое заметное изменение", "runs": ["Maskulin: der → ", {"t": "den", "b": true}, ", ein → ", {"t": "einen", "b": true}, "."]}}
+      ]
+    },
+    "dativ": {
+      "title": "Dativ", "lead": "Wem? — кому? чему?",
+      "blocks": [
+        {"detail": {"label": "Часто", "runs": ["Получатель, адресат, косвенный объект."]}},
+        {"detail": {"label": "Пример", "runs": ["Ich helfe ", {"t": "dem Mann", "i": true}, ". — Wem helfe ich?"]}},
+        {"detail": {"label": "Запомни", "runs": ["mit, bei, nach, seit, von, zu, aus → Dativ."]}}
+      ]
+    },
+    "genitiv": {
+      "title": "Genitiv", "lead": "Wessen? — чей? кого/чего?",
+      "blocks": [
+        {"detail": {"label": "Часто", "runs": ["Принадлежность или связь."]}},
+        {"detail": {"label": "Пример", "runs": ["Das Auto ", {"t": "des Mannes", "i": true}, "."]}},
+        {"detail": {"label": "Форма", "runs": ["Maskulin/Neutrum: des + существительное часто -s/-es."]}}
+      ]
+    },
+    "wo-wohin": {
+      "title": "Wo? / Wohin?", "lead": "Это правило связано с Wechselpräpositionen.",
+      "blocks": [
+        {"detail": {"label": "Wo? → Dativ", "runs": ["Статичное местоположение: Ich bin ", {"t": "in der Schule", "i": true}, "."]}},
+        {"detail": {"label": "Wohin? → Akkusativ", "runs": ["Направление/смена положения относительно места: Ich gehe ", {"t": "in die Schule", "i": true}, "."]}},
+        {"detail": {"label": "Важно", "runs": ["Не любое движение автоматически означает Akkusativ. Спроси: меняется ли положение относительно границы, которую задаёт предлог? ", {"t": "Ich jogge im Park", "i": true}, " (движение внутри — Dat.) · ", {"t": "Ich jogge in den Park", "i": true}, " (вхожу в парк — Akk.)."]}}
+      ]
+    },
+    "objects": {
+      "title": "Два объекта", "lead": "Некоторые глаголы требуют сразу два объекта: кому (Dat.) + что (Akk.).",
+      "blocks": [
+        {"detail": {"label": "Такие глаголы", "runs": ["geben, schenken, zeigen, bringen, sagen, erklären…"]}},
+        {"detail": {"label": "geben", "runs": ["Ich gebe ", {"t": "dem Kind", "i": true}, " (Wem? Dat.) ", {"t": "das Buch", "i": true}, " (Was? Akk.)."]}},
+        {"detail": {"label": "Типовая логика", "runs": ["Кому? = получатель → Dativ. Что? = передаваемая вещь → Akkusativ."]}}
+      ]
+    },
+    "possessives": {
+      "title": "Притяжательные", "lead": "mein, dein, sein, ihr, unser, euer, ihr, Ihr",
+      "blocks": [
+        {"detail": {"label": "Значения", "runs": ["мой, твой, его, её, наш, ваш, их, Ваш."]}},
+        {"detail": {"label": "Модель", "runs": ["Склоняются как ein-слова. Поэтому: mein Bruder → meinen Bruder → meinem Bruder → meines Bruders. То же с любой основой: dein Bruder → deinen Bruder → deinem Bruder."]}}
+      ]
+    },
+    "why-ein-endings": {
+      "title": "Почему meinen / meinem?", "lead": "Окончание — как у артикля: den → meinen, dem → meinem, der → meiner.",
+      "blocks": [
+        {"detail": {"label": "Ключ", "runs": ["Окончания те же, что у определённого артикля. Сравни: den Mann → ", {"t": "meinen", "i": true}, " Mann · dem Mann → ", {"t": "meinem", "i": true}, " Mann · der Frau → ", {"t": "meiner", "i": true}, " Frau."]}},
+        {"detail": {"label": "Где окончания нет", "runs": ["Только три клетки: Nom. m/n и Akk. n — ", {"t": "ein Mann, ein Kind", "i": true}, ". Там форма без окончания, как в der-таблице der/das."]}},
+        {"detail": {"label": "Akkusativ", "runs": ["Видимо меняется только Maskulin: der → ", {"t": "den", "i": true}, ", mein → ", {"t": "meinen", "i": true}, ". Fem./Neut./Plural выглядят как Nominativ."]}},
+        {"detail": {"label": "Dativ", "runs": ["Различает всё: m/n → ", {"t": "-em", "i": true}, ", f → ", {"t": "-er", "i": true}, ", Plural → ", {"t": "-en", "i": true}, " (+ -n у существительного)."]}}
+      ]
+    },
+    "ihrem": {
+      "title": "Почему “ihрем”?", "lead": "ihr + окончание Dativ.",
+      "blocks": [
+        {"detail": {"label": "Maskulin / Neutrum, Dativ", "runs": ["ihr + -em = ", {"t": "ihrem", "b": true}, "."]}},
+        {"detail": {"label": "Примеры", "runs": ["mit ", {"t": "ihrem Bruder", "b": true}, "; mit ", {"t": "ihrem Kind", "b": true}, "."]}},
+        {"detail": {"label": "Но", "runs": ["Feminin: mit ", {"t": "ihrer Mutter", "b": true}, ". Plural: mit ", {"t": "ihren Freunden", "b": true}, "."]}}
+      ]
+    },
+    "pronouns": {
+      "title": "Личные местоимения", "lead": "Самые важные пары лучше выучить как тройки.",
+      "blocks": [
+        {"detail": {"label": "Тройки", "runs": ["ich–mich–mir · du–dich–dir · er–ihn–ihm · sie–sie–ihr · es–es–ihm."]}},
+        {"detail": {"label": "Plural", "runs": ["wir–uns–uns · ihr–euch–euch · sie–sie–ihnen."]}}
+      ]
+    },
+    "prep-akk": {
+      "title": "Akkusativ-предлоги", "lead": "durch, für, gegen, ohne, um",
+      "blocks": [
+        {"detail": {"label": "Примеры", "runs": ["für ", {"t": "den Mann", "i": true}, " · ohne ", {"t": "mich", "i": true}, " · durch ", {"t": "die Stadt", "i": true}, "."]}},
+        {"detail": {"label": "Практика", "runs": ["Если видишь один из этих предлогов, не ищи смысловой вопрос — падеж уже задан предлогом."]}}
+      ]
+    },
+    "prep-dat": {
+      "title": "Dativ-предлоги", "lead": "aus, bei, mit, nach, seit, von, zu",
+      "blocks": [
+        {"detail": {"label": "Примеры", "runs": ["mit ", {"t": "meinem Bruder", "i": true}, " · bei ", {"t": "der Arbeit", "i": true}, " · nach ", {"t": "Berlin", "i": true}, "."]}},
+        {"detail": {"label": "Сокращения", "runs": ["zu dem → ", {"t": "zum", "b": true}, ", zu der → ", {"t": "zur", "b": true}, ", von dem → ", {"t": "vom", "b": true}, "."]}}
+      ]
+    },
+    "two-way": {
+      "title": "Wechselpräpositionen", "lead": "an, auf, hinter, in, neben, über, unter, vor, zwischen",
+      "blocks": [
+        {"detail": {"label": "Dativ", "runs": ["Wo? положение: Das Buch liegt ", {"t": "auf dem Tisch", "i": true}, "."]}},
+        {"detail": {"label": "Akkusativ", "runs": ["Wohin? смена положения: Ich lege das Buch ", {"t": "auf den Tisch", "i": true}, "."]}}
+      ]
+    },
+    "v2": {
+      "title": "Что такое V2", "lead": "Глагол стоит во второй синтаксической позиции, не обязательно вторым словом.",
+      "blocks": [
+        {"detail": {"label": "1 позиция может быть длинной", "runs": [{"t": "Heute Morgen um acht", "i": true}, " gehe ich zur Arbeit. Вся группа “Heute Morgen um acht” занимает позицию 1."]}},
+        {"detail": {"label": "Потом", "runs": ["сразу идёт спрягаемый глагол."]}}
+      ]
+    },
+    "tekamolo": {
+      "title": "TeKaMoLo", "lead": "Полезный порядок обстоятельств, но не железный закон.",
+      "blocks": [
+        {"detail": {"label": "База", "runs": ["Temporal (когда?) → Kausal (почему?) → Modal (как?) → Lokal (где?): ", {"t": "Ich fahre heute wegen des Wetters mit dem Bus zur Arbeit", "i": true}, "."]}},
+        {"detail": {"label": "Почему не закон", "runs": ["Порядок может меняться из-за акцента, местоимений, определённости и контекста. Используй TeKaMoLo как безопасный дефолт."]}}
+      ]
+    },
+    "modal": {
+      "title": "Модальные глаголы", "lead": "können, müssen, wollen, sollen, dürfen, mögen",
+      "blocks": [
+        {"detail": {"label": "Главное предложение", "runs": ["Ich ", {"t": "muss", "b": true}, " heute ", {"t": "arbeiten", "b": true}, ". — finite modal в V2, инфинитив в конце."]}},
+        {"detail": {"label": "Придаточное", "runs": ["…, weil ich heute arbeiten ", {"t": "muss", "b": true}, ". Спрягаемый modal уходит в самый конец."]}}
+      ]
+    },
+    "perfekt": {
+      "title": "Perfekt", "lead": "haben/sein + Partizip II",
+      "blocks": [
+        {"detail": {"label": "haben", "runs": ["Для большинства глаголов: Ich habe gearbeitet."]}},
+        {"detail": {"label": "sein", "runs": ["Часто для перемещения/смены состояния без прямого объекта: Ich bin gegangen. Er ist eingeschlafen."]}},
+        {"detail": {"label": "Важно", "runs": ["Есть глаголы, форму которых надо просто знать: ", {"t": "ist geblieben", "i": true}, " (bleiben), ", {"t": "ist passiert", "i": true}, " (passieren) — sein; но ", {"t": "hat getanzt", "i": true}, " (tanzen) — haben, несмотря на «движение»."]}}
+      ]
+    },
+    "separable": {
+      "title": "Отделяемые глаголы", "lead": "aufstehen, einkaufen, anrufen…",
+      "blocks": [
+        {"detail": {"label": "Главное", "runs": ["Ich ", {"t": "rufe", "b": true}, " dich später ", {"t": "an", "b": true}, "."]}},
+        {"detail": {"label": "Инфинитив / придаточное", "runs": ["anrufen; …, weil ich dich später ", {"t": "anrufe", "b": true}, "."]}},
+        {"detail": {"label": "Perfekt", "runs": ["angerufen — ge часто вставляется между приставкой и основой."]}}
+      ]
+    },
+    "passive": {
+      "title": "Passiv", "lead": "werden + Partizip II",
+      "blocks": [
+        {"detail": {"label": "Passiv Präsens", "runs": ["Das Haus ", {"t": "wird gebaut", "b": true}, ". — Дом строят."]}},
+        {"detail": {"label": "А вот Perfekt Passiv", "runs": ["Das Haus ", {"t": "ist gebaut worden", "i": true}, ". — Дом был построен."]}}
+      ]
+    },
+    "konjunktiv2": {
+      "title": "Konjunktiv II", "lead": "Нереальное, вежливость, совет.",
+      "blocks": [
+        {"detail": {"label": "würde + Infinitiv", "runs": ["Подходит для большинства глаголов: Wenn ich Zeit hätte, ", {"t": "würde ich mehr lesen", "i": true}, "."]}},
+        {"detail": {"label": "Прямые формы", "runs": ["wäre, hätte, könnte, müsste, sollte — учи как готовые слова: Ich ", {"t": "wäre", "i": true}, " froh. Du ", {"t": "solltest", "i": true}, " schlafen."]}},
+        {"detail": {"label": "Когда", "runs": ["Нереальное условие, вежливая просьба (Könnten Sie…?), пожелание (Ich hätte gern…), совет (Du solltest…)."]}}
+      ]
+    },
+    "double-infinitive": {
+      "title": "Два инфинитива", "lead": "Perfekt с модальным глаголом.",
+      "blocks": [
+        {"detail": {"label": "Форма", "runs": ["haben + Infinitiv + Infinitiv: Ich habe lange ", {"t": "arbeiten müssen", "i": true}, ". Partizip II (gemusst) здесь не используется."]}},
+        {"detail": {"label": "В придаточном", "runs": ["…, weil ich lange ", {"t": "habe arbeiten müssen", "i": true}, " — haben поднимается перед парой инфинитивов."]}},
+        {"detail": {"label": "Уровень", "runs": ["Достаточно узнавать конструкцию; активно она понадобится позже."]}}
+      ]
+    },
+    "wenn-als": {
+      "title": "wenn vs als", "lead": "Оба могут значить “когда”.",
+      "blocks": [
+        {"detail": {"label": "als", "runs": ["Однократное событие в прошлом: Als ich klein war…"]}},
+        {"detail": {"label": "wenn", "runs": ["Повторяющееся “когда”, настоящее/будущее или “если”: Wenn ich Zeit habe…"]}}
+      ]
+    },
+    "obwohl": {
+      "title": "obwohl vs trotzdem", "lead": "Оба дают контраст, но строят предложение по-разному.",
+      "blocks": [
+        {"detail": {"label": "obwohl", "runs": ["Союз придаточного → глагол в конец: obwohl es regnet."]}},
+        {"detail": {"label": "trotzdem", "runs": ["Наречие в главном → V2: Es regnet. Trotzdem ", {"t": "gehe", "b": true}, " ich raus."]}}
+      ]
+    },
+    "coordinators": {
+      "title": "weil vs denn", "lead": "Оба = “потому что”, но порядок слов разный.",
+      "blocks": [
+        {"detail": {"label": "weil", "runs": ["Ich bleibe, weil ich müde ", {"t": "bin", "b": true}, "."]}},
+        {"detail": {"label": "denn", "runs": ["Ich bleibe, denn ich ", {"t": "bin", "b": true}, " müde. После denn остаётся обычный V2."]}}
+      ]
+    },
+    "um-damit": {
+      "title": "um … zu vs damit", "lead": "Оба часто переводятся “чтобы”.",
+      "blocks": [
+        {"detail": {"label": "um … zu", "runs": ["Обычно субъект один и тот же: Ich lerne, um in Deutschland zu arbeiten."]}},
+        {"detail": {"label": "damit", "runs": ["Нужное полноценное придаточное, особенно если субъекты разные: Ich spreche langsam, damit du mich verstehst."]}}
+      ]
+    },
+    "relative": {
+      "title": "Относительные предложения", "lead": "Род/число берём от существительного, падеж — из роли внутри придаточного.",
+      "blocks": [
+        {"detail": {"label": "Nominativ внутри", "runs": ["Der Mann, ", {"t": "der", "b": true}, " hier arbeitet… (кто работает? der)"]}},
+        {"detail": {"label": "Akkusativ внутри", "runs": ["Der Mann, ", {"t": "den", "b": true}, " ich kenne… (кого я знаю? den)"]}},
+        {"detail": {"label": "Dativ внутри", "runs": ["Der Mann, ", {"t": "dem", "b": true}, " ich helfe… (кому я помогаю? dem)"]}}
+      ]
+    },
+    "n-decl": {
+      "title": "N-Deklination", "lead": "Частые слабые мужские существительные.",
+      "blocks": [
+        {"detail": {"label": "Примеры", "runs": ["Student, Mensch, Junge, Kunde, Kollege, Herr (особая форма Herrn)."]}},
+        {"detail": {"label": "Модель", "runs": ["der Student, aber den/dem/des Studenten."]}}
+      ]
+    },
+    "adjectives": {
+      "title": "Окончания прилагательных", "lead": "Сначала спроси: артикль уже показывает род/падеж или нет?",
+      "blocks": [
+        {"detail": {"label": "После der-слов", "runs": ["Чаще -e или -en: der gute Mann, den guten Mann, dem guten Mann."]}},
+        {"detail": {"label": "После ein-слов", "runs": ["Если артикль не показывает окончание, это делает прилагательное: ein guter Mann, ein gutes Kind. Но: einen guten Mann, einem guten Mann."]}},
+        {"detail": {"label": "Без артикля", "runs": ["Прилагательное несёт больше грамматической информации: guter Wein, mit gutem Wein."]}}
+      ]
+    }
+  }
+}

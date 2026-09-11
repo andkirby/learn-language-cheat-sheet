@@ -105,13 +105,15 @@ Rules:
 | `.bottom-nav` | View switcher. Active item = selected view, gets `.active` **and** `aria-current="true"`; a tap clears an active search, updates the hash and scrolls to top. |
 | `section[data-view]` | View membership. JS hides non-active views via the `hidden` attribute; search unhides matching sections across views; noscript and print show everything stacked. |
 | `.theme-btn` | 44px topbar icon button; cycles/persists the theme (see Theming). |
+| `.icon-btn` | 44px topbar icon button (shares `.theme-btn` styling); the (i) usage button opens the shared dialog via `data-detail="lookup-help"`; carries `#start`; hidden on noscript pages, which keep a plain `.intro` line. |
+| `.locale-menu` | Topbar audience switcher: native `<details>` (works without JS) listing the sibling audiences of the same target from deck `meta.locales`; `.cur` = current audience, `.soon` = no deck yet; JS adds light dismiss + Escape. |
 | `.lang-card` (landing only) | Whole-card link to a language folder: mark + name + topics + `→`; hover accent border. |
 
 ## Interaction states & feedback
 
 - Focus: global `:focus-visible` = 3px `var(--accent)` outline, offset 2px.
   Never remove without replacement.
-- Search (`body.searching`): the intro line hides; cards/sections with no
+- Search (`body.searching`): the help row hides; cards/sections with no
   match hide — **across all views** (matching sections from other views
   become visible stacked); `#noResults` appears at 0 matches; clearing
   restores the active view. Search must never destroy dialog or answer state.

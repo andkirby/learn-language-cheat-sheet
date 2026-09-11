@@ -1,0 +1,744 @@
+{
+  "_readme": "English cheat deck for Russian speakers. Rendered by tools/build_pages.py into en/ru/index.html — edit this file, then regenerate (see AGENTS.md). Schema: schema.json. _note fields carry review provenance and are ignored by the generator.",
+  "meta": {
+    "deck": "en-ru",
+    "target": "en",
+    "audience": "ru",
+    "target_lang": "en",
+    "lang": "ru",
+    "out": "en/ru/index.html",
+    "site_base": "https://andkirby.github.io/learn-language-cheat-sheet/",
+    "site_path": "en/ru/",
+    "brand_mark": "EN",
+    "brand_name": "English Cheat",
+    "brand_sub": "RU → EN · A1–B1",
+    "apple_title": "EN Cheat",
+    "title": "English Grammar Cheatsheet",
+    "description": "Мобильная шпаргалка по английской грамматике: времена, артикли, порядок слов, условные предложения, предлоги.",
+    "og_title": "English Grammar Cheatsheet",
+    "og_description": "Английская грамматика без листания учебника: времена, артикли, порядок слов, условные. A1–B1, офлайн.",
+    "plan_path": "en/ru/SITE_PLAN.md",
+    "locales": [
+      {"id": "ru", "label": "Русский"},
+      {"id": "en", "label": "English", "soon": true}
+    ]
+  },
+  "strings": {
+    "search_placeholder": "Поиск: present, the, if, must…",
+    "search_aria": "Поиск по шпаргалке",
+    "clear_aria": "Очистить поиск",
+    "install_label": "Установить",
+    "close_aria": "Закрыть",
+    "nav_aria": "Основная навигация",
+    "no_results": "Ничего не найдено. Попробуй “present”, “the”, “if”, “must”, “did”.",
+    "noscript_notice": "Поиск, детали и установка приложения требуют JavaScript. Всё содержимое шпаргалки доступно ниже без него.",
+    "noscript_intro": [
+      "Ищи ",
+      {"t": "маркер", "b": true},
+      " — сигнальное слово, артикль, союз или модальный глагол, — потом форму и порядок слов."
+    ],
+    "theme": {
+      "auto": {"icon": "◐", "label": "Тема: системная"},
+      "light": {"icon": "☀", "label": "Тема: светлая"},
+      "dark": {"icon": "☾", "label": "Тема: тёмная"}
+    },
+    "reveal_show": "Показать",
+    "reveal_hide": "Скрыть",
+    "install_ios": {
+      "title": "Установка на iPhone",
+      "lead": "Safari не показывает стандартный install prompt.",
+      "blocks": [
+        {"label": "1.", "runs": ["Открой меню Share."]},
+        {"label": "2.", "runs": ["Выбери Add to Home Screen."]},
+        {"label": "3.", "runs": ["Подтверди Add."]}
+      ]
+    },
+    "install_generic": {
+      "title": "Установка на телефон",
+      "lead": "Это PWA: после первой загрузки работает и офлайн.",
+      "blocks": [
+        {"label": "Android / Chrome", "runs": ["Меню браузера → Install app / Add to Home screen."]},
+        {"label": "iPhone / Safari", "runs": ["Share → Add to Home Screen."]},
+        {"label": "Важно", "runs": ["Для установки и offline-кэша страницу нужно открыть по HTTPS (или localhost), не как локальный файл из Files."]}
+      ]
+    },
+    "footer_all": "все шпаргалки",
+    "footer_practice": "Быстрый повтор",
+    "footer_install": "Установка: Android — кнопка «Установить» или меню браузера · iPhone — Share → Add to Home Screen",
+    "footer_plan": "план контента:",
+    "locale_aria": "Язык объяснений",
+    "locale_soon": "скоро"
+  },
+  "help": {
+    "id": "start",
+    "ico": "i",
+    "label": "Как пользоваться",
+    "detail": "lookup-help"
+  },
+  "views": [
+    {"id": "articles", "ico": "a/the", "label": "Артикли"},
+    {"id": "tenses", "ico": "V+s", "label": "Времена"},
+    {"id": "order", "ico": "SVO", "label": "Порядок"},
+    {"id": "verbs", "ico": "can", "label": "Глаголы"},
+    {"id": "preps", "ico": "in/on", "label": "Предлоги"}
+  ],
+  "sections": [
+    {
+      "id": "articles", "view": "articles", "badge": "Articles",
+      "heading": "Артикли", "sub": "Главный маркер: известно, о чём речь, или нет.", "grid": "two",
+      "cards": [
+        {
+          "search": "article a an the артикли неопределенный определенный нулевой",
+          "blocks": [
+            {"h": ["a / an / the / —"]},
+            {"formula": [{"slot": "a / an"}, {"arrow": "="}, {"slot": "один из многих"}]},
+            {"formula": [{"slot": "the", "role": "sub"}, {"arrow": "="}, {"slot": "конкретно этот"}]},
+            {"example": [
+              {"t": "I have a car.", "b": true}, " Это какая-то машина.", {"br": true},
+              {"t": "The car is red.", "b": true}, " Уже та самая."
+            ]},
+            {"chips": [
+              {"label": "a или an?", "detail": "a-an"},
+              {"label": "Когда the", "detail": "the-article"},
+              {"label": "Когда без артикля", "detail": "zero-article"}
+            ]}
+          ]
+        },
+        {
+          "search": "school hospital zero article institution ошибки русскоговорящих",
+          "blocks": [
+            {"h": ["Ловушки для русскоговорящих"]},
+            {"p": ["Русский часто обходится без артикля — английский нет:"]},
+            {"example": [
+              {"t": "I go to school.", "b": true}, " Я учусь (роль), не «иду к зданию».", {"br": true},
+              {"t": "She plays the piano.", "b": true}, " Инструмент — с ", {"t": "the", "b": true}, "."
+            ]},
+            {"chips": [{"label": "Школа, кровать, тюрьма", "detail": "school-exceptions"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pronouns", "view": "articles", "badge": "Pronouns",
+      "heading": "Местоимения", "sub": "Четыре формы на каждое лицо — не путать роли.", "grid": null,
+      "cards": [
+        {
+          "search": "pronouns personal possessive личные местоимения притяжательные my mine his him",
+          "blocks": [
+            {"h": ["Личные и притяжательные"]},
+            {"table": {
+              "head": ["Кто (Nom.)", "Кого (Obj.)", "Чей", "Вещь чья"],
+              "rows": [
+                ["I", "me", "my", {"hot": "mine"}],
+                ["you", "you", "your", {"hot": "yours"}],
+                ["he", {"hot": "him"}, "his", "his"],
+                ["she", {"hot": "her"}, "her", {"hot": "hers"}],
+                ["it", "it", {"hot": "its"}, "—"],
+                ["we", {"hot": "us"}, "our", {"hot": "ours"}],
+                ["they", {"hot": "them"}, "their", {"hot": "theirs"}]
+              ]
+            }},
+            {"tiny": ["Жирным — формы-ловушки: то, что меняется и на чём чаще всего ошибаются."]},
+            {"chips": [
+              {"label": "my или mine?", "detail": "my-mine"},
+              {"label": "myself / yourself…", "detail": "reflexive"}
+            ]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "order", "view": "order", "badge": "Word order",
+      "heading": "Порядок слов", "sub": "Английский не позволяет переставлять, как русский.", "grid": "two",
+      "cards": [
+        {
+          "search": "svo word order порядок слов подлежащее сказуемое дополнение строгий",
+          "blocks": [
+            {"h": ["SVO — строгий"]},
+            {"formula": [{"slot": "Кто"}, {"arrow": "→"}, {"slot": "делает", "role": "verb"}, {"arrow": "→"}, {"slot": "что"}]},
+            {"example": [
+              {"t": "I love you.", "b": true}, " Порядок фиксирует роли.", {"br": true},
+              "Не: ", {"t": "You love I.", "s": true}
+            ]},
+            {"chips": [{"label": "Чем это отличается от русского", "detail": "svo"}]}
+          ]
+        },
+        {
+          "search": "do does did questions вопросы вспомогательный inversion",
+          "blocks": [
+            {"h": ["Вопросы: Do / Does / Did"]},
+            {"formula": [{"slot": "Do", "role": "sub"}, {"slot": "you"}, {"slot": "like", "role": "verb"}, {"slot": "tea?"}]},
+            {"p": ["После Do/Does/Did глагол — в ", {"t": "базовой форме", "b": true}, "."]},
+            {"example": [
+              {"t": "Does she work?", "b": true}, " Не: ", {"t": "Does she works?", "s": true}, {"br": true},
+              {"t": "Where do you live?", "b": true}
+            ]},
+            {"chips": [{"label": "Как строить и где ошибаются", "detail": "do-questions"}]}
+          ]
+        },
+        {
+          "search": "adverbs frequency always usually never often место наречий частоты",
+          "blocks": [
+            {"h": ["Всегда / Обычно / Никогда"]},
+            {"p": ["Наречия частоты — ", {"t": "перед смысловым глаголом", "b": true}, ", но ", {"t": "после be", "b": true}, "."]},
+            {"example": [
+              {"t": "I always drink", "b": true}, " coffee.", {"br": true},
+              {"t": "He is always late.", "b": true}
+            ]},
+            {"chips": [{"label": "Шкала always → never", "detail": "frequency"}]}
+          ]
+        },
+        {
+          "search": "where you live mistake omission do error типичные ошибки вопрос без do",
+          "blocks": [
+            {"h": ["Ошибка №1 русскоговорящих"]},
+            {"example": [
+              {"t": "Where you work?", "s": true}, " → ", {"t": "Where do you work?", "b": true}, {"br": true},
+              {"t": "She like tea?", "s": true}, " → ", {"t": "Does she like tea?", "b": true}
+            ]},
+            {"tiny": ["В русском вопрос задаётся интонацией — в английском нужен вспомогательный глагол."]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tenses", "view": "tenses", "badge": "Tenses",
+      "heading": "Времена", "sub": "Сигнальные слова подсказывают время.", "grid": "two",
+      "cards": [
+        {
+          "search": "present simple время настоящее простое every day usually",
+          "blocks": [
+            {"h": ["Present Simple"]},
+            {"formula": [{"slot": "V"}, {"arrow": "+"}, {"slot": "s (3 л.)", "role": "end"}]},
+            {"p": ["Привычки, факты, расписания. Маркеры: ", {"t": "every day, usually, always, often", "b": true}, "."]},
+            {"example": [
+              {"t": "She works", "b": true}, " every day.", {"br": true},
+              {"t": "He doesn't work", "b": true}, " on Sundays."
+            ]},
+            {"chips": [{"label": "Когда и как", "detail": "present-simple"}]}
+          ]
+        },
+        {
+          "search": "present continuous ing now moment в процессе",
+          "blocks": [
+            {"h": ["Present Continuous"]},
+            {"formula": [{"slot": "am / is / are"}, {"arrow": "+"}, {"slot": "V-ing", "role": "end"}]},
+            {"p": ["Сейчас / в этот период. Маркеры: ", {"t": "now, at the moment, Look!, Listen!", "b": true}, "."]},
+            {"example": [
+              {"t": "I'm reading", "b": true}, " now.", {"br": true},
+              {"t": "Look! It's raining.", "b": true}
+            ]},
+            {"chips": [{"label": "Simple vs Continuous", "detail": "present-continuous"}]}
+          ]
+        },
+        {
+          "search": "past simple yesterday yesterday вчерашний V2 вторая форма",
+          "blocks": [
+            {"h": ["Past Simple"]},
+            {"formula": [{"slot": "V2"}, {"arrow": "/"}, {"slot": "did + V1"}]},
+            {"p": ["Завершённые события прошлого. Маркеры: ", {"t": "yesterday, last week, in 2010, ago", "b": true}, "."]},
+            {"example": [
+              {"t": "I saw", "b": true}, " him yesterday.", {"br": true},
+              {"t": "Did you see", "b": true}, " him?"
+            ]},
+            {"chips": [{"label": "Правильные и неправильные", "detail": "past-simple"}]}
+          ]
+        },
+        {
+          "search": "present perfect have has v3 just already yet ever результат опыт",
+          "blocks": [
+            {"h": ["Present Perfect"]},
+            {"formula": [{"slot": "have / has"}, {"arrow": "+"}, {"slot": "V3", "role": "end"}]},
+            {"p": ["Результат сейчас / опыт без времени. Маркеры: ", {"t": "just, already, yet, ever, never, recently", "b": true}, "."]},
+            {"example": [
+              {"t": "I have lost", "b": true}, " my keys (не могу зайти).", {"br": true},
+              {"t": "Have you ever been", "b": true}, " to London?"
+            ]},
+            {"chips": [{"label": "Почему этого времени нет в русском", "detail": "present-perfect"}]}
+          ]
+        },
+        {
+          "search": "present perfect vs past simple разница вчера just since for finished выбор времени",
+          "_note": "C-02 rework: meaning-first, «время названо?» demoted to a clue with since/for limit.",
+          "blocks": [
+            {"h": ["Perfect vs Past Simple"]},
+            {"p": ["Смысл: результат/опыт ", {"t": "сейчас", "b": true}, " → Perfect · законченный факт прошлого → Past Simple."]},
+            {"example": [
+              {"t": "I have seen", "b": true}, " this film (уже знаю его).", {"br": true},
+              {"t": "I saw", "b": true}, " it ", {"t": "yesterday", "b": true}, "."
+            ]},
+            {"tiny": ["«Время названо?» — только подсказка: ", {"t": "I've lived here since 2020", "i": true}, " — время названо, но Perfect."]},
+            {"chips": [{"label": "Разбор на парах", "detail": "pp-vs-past"}]}
+          ]
+        },
+        {
+          "search": "future will going to будущее план решение прогноз",
+          "blocks": [
+            {"h": ["Future: will / going to"]},
+            {"formula": [{"slot": "will + V1"}, {"arrow": "·"}, {"slot": "be going to + V1"}]},
+            {"p": [{"t": "will", "b": true}, " — решение сейчас, прогноз. ", {"t": "going to", "b": true}, " — план/намерение, очевидное следствие."]},
+            {"example": [
+              {"t": "I'll help", "b": true}, " you (только что решил).", {"br": true},
+              {"t": "I'm going to visit", "b": true}, " Paris (план)."
+            ]},
+            {"chips": [{"label": "Как выбрать", "detail": "future"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "verbs", "view": "verbs", "badge": "Verbs",
+      "heading": "Глагольные конструкции", "sub": "Модальные, пассив, V-ing vs to V.", "grid": "two",
+      "cards": [
+        {
+          "search": "modal can could must should may might модальные глаголы",
+          "blocks": [
+            {"h": ["Модальные глаголы"]},
+            {"formula": [{"slot": "modal", "role": "sub"}, {"arrow": "+"}, {"slot": "V1 без to", "role": "verb"}]},
+            {"p": [{"t": "can/could", "b": true}, " — умею/просьба · ", {"t": "must", "b": true}, " — должен · ", {"t": "should", "b": true}, " — совет · ", {"t": "may/might", "b": true}, " — возможно."]},
+            {"example": [
+              {"t": "Can you help", "b": true}, " me? · ", {"t": "You should sleep", "b": true}, " more."
+            ]},
+            {"chips": [{"label": "Все значения", "detail": "modals-en"}]}
+          ]
+        },
+        {
+          "search": "mustnt don't have to запрещено не обязательно must not",
+          "blocks": [
+            {"h": ["mustn't ≠ don't have to"]},
+            {"p": [{"t": "mustn't", "b": true}, " = запрещено. ", {"t": "don't have to", "b": true}, " = не обязательно."]},
+            {"example": [
+              {"t": "You mustn't smoke", "b": true}, " here.", {"br": true},
+              {"t": "You don't have to come", "b": true}, " early."
+            ]},
+            {"chips": [{"label": "Почему это путают", "detail": "mustnt"}]}
+          ]
+        },
+        {
+          "search": "passive voice пассив страдательный be v3 built",
+          "blocks": [
+            {"h": ["Пассив"]},
+            {"formula": [{"slot": "be"}, {"arrow": "+"}, {"slot": "V3", "role": "end"}]},
+            {"example": [
+              {"t": "The house was built", "b": true}, " in 1930.", {"br": true},
+              "Кто построил — не важно."
+            ]},
+            {"chips": [{"label": "Во сколько и в каком времени", "detail": "passive-en"}]}
+          ]
+        },
+        {
+          "search": "gerund infinitive enjoy finish want decide v-ing to v",
+          "blocks": [
+            {"h": ["V-ing или to V?"]},
+            {"p": [{"t": "enjoy, finish, mind", "b": true}, " + V-ing · ", {"t": "want, decide, hope", "b": true}, " + to V."]},
+            {"example": [
+              {"t": "I enjoy reading.", "b": true}, " · ", {"t": "I want to read.", "b": true}
+            ]},
+            {"chips": [{"label": "Список частых глаголов", "detail": "gerund-infinitive"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preps", "view": "preps", "badge": "Prepositions",
+      "heading": "Предлоги", "sub": "in / on / at + предлоги, которые не переводятся дословно.", "grid": "two",
+      "cards": [
+        {
+          "search": "prepositions time in on at время предлоги месяцы дни часы",
+          "blocks": [
+            {"h": ["Время: in / on / at"]},
+            {"formula": [{"slot": "in", "role": "sub"}, {"slot": "месяцы, годы"}, {"slot": "on", "role": "sub"}, {"slot": "дни, даты"}, {"slot": "at", "role": "sub"}, {"slot": "часы, night"}]},
+            {"example": ["in July · in 2026 · on Monday · on the 5th of May · at 7 o'clock · at night"]},
+            {"chips": [{"label": "Полная модель", "detail": "time-preps"}]}
+          ]
+        },
+        {
+          "search": "prepositions place in on at место внутри поверхности точка",
+          "blocks": [
+            {"h": ["Место: in / on / at"]},
+            {"formula": [{"slot": "in", "role": "sub"}, {"slot": "внутри"}, {"slot": "on", "role": "sub"}, {"slot": "поверхность"}, {"slot": "at", "role": "sub"}, {"slot": "точка"}]},
+            {"example": ["in the room · on the table · at the bus stop · at the door"]},
+            {"chips": [{"label": "Как не перепутать", "detail": "place-preps"}]}
+          ]
+        },
+        {
+          "search": "dependent prepositions depend on interested in listen to afraid of good at wait for зависимые предлоги ошибки",
+          "blocks": [
+            {"h": ["Предлоги-ловушки"]},
+            {"p": ["Русский предлог ≠ английский. Учить парами:"]},
+            {"chips": [
+              {"label": ["depend ", {"t": "on", "b": true}], "detail": "dependent-preps", "neutral": true},
+              {"label": ["interested ", {"t": "in", "b": true}], "detail": "dependent-preps", "neutral": true},
+              {"label": ["listen ", {"t": "to", "b": true}], "detail": "dependent-preps", "neutral": true},
+              {"label": ["afraid ", {"t": "of", "b": true}], "detail": "dependent-preps", "neutral": true},
+              {"label": ["good ", {"t": "at", "b": true}], "detail": "dependent-preps", "neutral": true},
+              {"label": ["wait ", {"t": "for", "b": true}], "detail": "dependent-preps", "neutral": true}
+            ]},
+            {"example": ["Зависит ", {"t": "от", "b": true}, " → depend ", {"t": "on", "b": true}, " (не from!)"]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nouns", "view": "articles", "badge": "Nouns",
+      "heading": "Слова: числа и сравнения", "sub": "Множественное число, исчисляемость, степени сравнения.", "grid": "two",
+      "cards": [
+        {
+          "search": "plural nouns множественное число s es ies irregular неправильные men children",
+          "blocks": [
+            {"h": ["Множественное число"]},
+            {"p": ["Обычно ", {"t": "+s", "b": true}, "; после шипящих/свистящих ", {"t": "+es", "b": true}, "; согласная + y → ", {"t": "-ies", "b": true}, "."]},
+            {"example": [
+              "cats · boxes · cities", {"br": true},
+              "Исключения: ", {"t": "man–men, child–children, foot–feet, tooth–teeth", "b": true}
+            ]},
+            {"chips": [{"label": "Правила и исключения", "detail": "plurals"}]}
+          ]
+        },
+        {
+          "search": "countable uncountable much many few little advice news исчисляемые",
+          "blocks": [
+            {"h": ["Исчисляемое / нет"]},
+            {"p": [{"t": "many/few", "b": true}, " + исчисляемые · ", {"t": "much/little", "b": true}, " + неисчисляемые."]},
+            {"example": [
+              "much time · many friends", {"br": true},
+              {"t": "advice, news, money", "b": true}, " — обычно как единственное число"
+            ]},
+            {"chips": [{"label": "Как считать неисчисляемое", "detail": "countable"}]}
+          ]
+        },
+        {
+          "search": "some any некоторые любые утверждение отрицание вопрос",
+          "blocks": [
+            {"h": ["some / any"]},
+            {"formula": [{"slot": "some"}, {"arrow": "+"}, {"slot": "утверждение"}, {"slot": "any"}, {"arrow": "+"}, {"slot": "вопрос / отрицание", "role": "end"}]},
+            {"example": [
+              {"t": "I have some money.", "b": true}, {"br": true},
+              {"t": "Do you have any questions?", "b": true}, " · ", {"t": "I don't have any money.", "b": true}
+            ]},
+            {"chips": [{"label": "Нюансы", "detail": "some-any"}]}
+          ]
+        },
+        {
+          "search": "comparative superlative сравнительная превосходная er est more most better best",
+          "blocks": [
+            {"h": ["Сравнение"]},
+            {"formula": [{"slot": "big — bigger — the biggest"}]},
+            {"p": ["Короткие: ", {"t": "-er / the -est", "b": true}, ". Длинные: ", {"t": "more / the most", "b": true}, ". Сравнение — через ", {"t": "than", "b": true}, "."]},
+            {"example": [
+              {"t": "She is taller than", "b": true}, " me.", {"br": true},
+              {"t": "good — better — the best", "b": true}
+            ]},
+            {"chips": [{"label": "Правила и исключения", "detail": "comparative"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conditionals", "view": "verbs", "badge": "If-clauses",
+      "heading": "Условные предложения", "sub": "Формула одинаковая: If + условие, + следствие.", "grid": "two",
+      "cards": [
+        {
+          "search": "conditional 1 first real условное первое настоящее will реальное",
+          "blocks": [
+            {"h": ["Type 1 — реальное"]},
+            {"formula": [{"slot": "If + Present", "role": "sub"}, {"arrow": ","}, {"slot": "will + V1", "role": "verb"}]},
+            {"example": [{"t": "If it rains, we will stay", "b": true}, " at home."]},
+            {"tiny": ["После ", {"t": "if", "b": true}, " — не will! Will живёт в следствии."]},
+            {"chips": [{"label": "Разбор", "detail": "cond1"}]}
+          ]
+        },
+        {
+          "search": "conditional 2 second unreal нереальное would were если бы сейчас",
+          "blocks": [
+            {"h": ["Type 2 — нереальное сейчас"]},
+            {"formula": [{"slot": "If + Past", "role": "sub"}, {"arrow": ","}, {"slot": "would + V1", "role": "verb"}]},
+            {"example": [
+              {"t": "If I had time, I would help", "b": true}, " you.", {"br": true},
+              {"t": "If I were", "b": true}, " you… (were для всех лиц)"
+            ]},
+            {"chips": [{"label": "Почему were", "detail": "cond2"}]}
+          ]
+        },
+        {
+          "search": "conditional 0 zero законы always настоящее условное нулевое",
+          "blocks": [
+            {"h": ["Type 0 — всегда так"]},
+            {"formula": [{"slot": "If + Present", "role": "sub"}, {"arrow": ","}, {"slot": "Present", "role": "verb"}]},
+            {"example": [{"t": "If you heat ice, it melts.", "b": true}, " Законы, правила, привычные связи."]},
+            {"chips": [{"label": "Когда выбирать 0 вместо 1", "detail": "cond0"}]}
+          ]
+        },
+        {
+          "search": "conditional 3 third past regret упущенное прошлое would have",
+          "blocks": [
+            {"h": ["Type 3 — прошлое нереальное"]},
+            {"formula": [{"slot": "If + had V3", "role": "sub"}, {"arrow": ","}, {"slot": "would have V3", "role": "verb"}]},
+            {"example": [{"t": "If I had known, I would have called.", "b": true}, " Сожаление о прошлом."]},
+            {"tiny": ["Для B1+ — распознавать достаточно."]}
+          ]
+        }
+      ]
+    }
+  ],
+  "practice": {
+    "id": "practice", "view": "practice", "badge": "30 sec",
+    "heading": "Быстрый повтор", "sub": "Три вопроса без отдельного “режима урока”.",
+    "search": "practice quiz повтор тест",
+    "items": [
+      {
+        "_note": "EN-01: articles + instrument the.",
+        "q": [{"t": "1. She plays ___ piano very well.", "b": true}, " Какой артикль?"],
+        "answer": [{"t": "the", "b": true}, " — игра на инструменте: play the piano; сравни: play football — без артикля."]
+      },
+      {
+        "_note": "EN-04: past simple vs present perfect.",
+        "q": [{"t": "2. I ___ (see) this film yesterday.", "b": true}],
+        "answer": ["Past Simple: ", {"t": "saw", "b": true}, " — закрытый факт прошлого (вчера). yesterday — подсказка, решает смысл."]
+      },
+      {
+        "_note": "EN-06: do-questions.",
+        "q": [{"t": "3. Спроси, любит ли она чай: ___ she ___ (like) tea?", "b": true}],
+        "answer": [{"t": "Does she like", "b": true}, " tea? — Does + V1; в русском вопрос строится без вспомогательного глагола."]
+      }
+    ]
+  },
+  "details": {
+    "lookup-help": {
+      "title": "Как пользоваться", "lead": "Маркер → форма → порядок слов.",
+      "blocks": [
+        {"detail": {"label": "Схема", "runs": ["Найди маркер — сигнальное слово, артикль, союз или модальный глагол, — потом смотри нужную форму и порядок слов."]}},
+        {"detail": {"label": "Поиск", "runs": ["Ищи сразу: ", {"t": "present", "i": true}, ", ", {"t": "the", "i": true}, ", ", {"t": "must", "i": true}, " — или по-русски. Поиск проверяет все разделы сразу."]}},
+        {"detail": {"label": "Навигация", "runs": ["Пять разделов внизу; Повтор — в подвале страницы."]}}
+      ]
+    },
+    "a-an": {
+      "title": "a или an", "lead": "Выбор по первому ЗВУКУ, не по букве.",
+      "blocks": [
+        {"detail": {"label": "Правило", "runs": ["a + согласный звук, an + гласный звук: a cat, an apple."]}},
+        {"detail": {"label": "Ловушки", "runs": ["an hour (h немая) · a university (произносится «ю») · an MBA (эм)."]}}
+      ]
+    },
+    "the-article": {
+      "title": "Когда the", "lead": "Собеседник понимает, о чём именно речь.",
+      "blocks": [
+        {"detail": {"label": "Сигналы", "runs": ["Второе упоминание · единственный в контексте (the sun, the kitchen в нашем доме) · сверхлатив (the best)."]}},
+        {"detail": {"label": "Пример", "runs": ["I bought ", {"t": "a", "i": true}, " book. ", {"t": "The", "i": true}, " book is interesting."]}}
+      ]
+    },
+    "zero-article": {
+      "title": "Без артикля", "lead": "Обобщения и абстракции.",
+      "blocks": [
+        {"detail": {"label": "Обобщение множественным", "runs": ["Dogs are loyal. Coffee is expensive."]}},
+        {"detail": {"label": "Группы", "runs": ["Языки (English), приёмы пищи (at lunch), виды спорта (play football), имена людей/городов."]}},
+        {"detail": {"label": "Но", "runs": ["Инструмент — с the: play the piano."]}}
+      ]
+    },
+    "school-exceptions": {
+      "title": "Школа, кровать, тюрьма", "lead": "Учреждение как роль — без артикля, как здание — с the.",
+      "blocks": [
+        {"detail": {"label": "Роль", "runs": ["go to school (учиться) · go to bed (спать) · in hospital (лечиться, брит.)."]}},
+        {"detail": {"label": "Здание/место", "runs": ["go to the school (родителя зовут) · meet at the hospital."]}}
+      ]
+    },
+    "my-mine": {
+      "title": "my или mine", "lead": "my + существительное, mine — само по себе.",
+      "blocks": [
+        {"detail": {"label": "Сравни", "runs": [{"t": "my", "i": true}, " book = the book is ", {"t": "mine", "i": true}, "."]}},
+        {"detail": {"label": "Ещё", "runs": ["a friend of mine — «один из моих друзей»."]}}
+      ]
+    },
+    "reflexive": {
+      "title": "Возвратные", "lead": "-self / -selves: действие на себя.",
+      "blocks": [
+        {"detail": {"label": "Формы", "runs": ["myself, yourself, himself, herself, itself, ourselves, themselves."]}},
+        {"detail": {"label": "Пример", "runs": ["I hurt myself. · Help yourself!"]}}
+      ]
+    },
+    "svo": {
+      "title": "Чем отличается от русского", "lead": "В русском роли задают окончания, в английском — позиция.",
+      "blocks": [
+        {"detail": {"label": "Русский", "runs": ["«Машу любит Ваня» — падежи спасают порядок."]}},
+        {"detail": {"label": "Английский", "runs": ["«Masha loves Vanya» — кто первый, тот и субъект. Переставил — поменял смысл."]}}
+      ]
+    },
+    "do-questions": {
+      "title": "Как строить вопросы", "lead": "Вспомогательный глагол вперёд, смысловой — базовая форма.",
+      "blocks": [
+        {"detail": {"label": "Yes/No", "runs": ["Do/Does/Did + подлежащее + V1?: Does he work here?"]}},
+        {"detail": {"label": "W-вопрос", "runs": ["W-word + do/does/did…: Where did you go?"]}},
+        {"detail": {"label": "Исключение", "runs": ["Кто/что — субъект: Who lives here? (без do)."]}},
+        {"detail": {"label": "Частая ошибка", "runs": ["Did you saw → Did you ", {"t": "see", "b": true}, "."]}}
+      ]
+    },
+    "frequency": {
+      "title": "Шкала частоты", "lead": "always → usually → often → sometimes → rarely → never.",
+      "blocks": [
+        {"detail": {"label": "Позиция", "runs": ["Перед смысловым глаголом, после be: He ", {"t": "is always", "b": true}, " late. · I ", {"t": "always drive", "b": true}, "."]}},
+        {"detail": {"label": "Крайности", "runs": ["never и rarely уже отрицательные — второй not не нужен."]}}
+      ]
+    },
+    "present-simple": {
+      "title": "Present Simple", "lead": "Привычки, факты, расписания.",
+      "blocks": [
+        {"detail": {"label": "Форма", "runs": ["V; 3-е лицо ед.ч. +s/-es (watches, studies)."]}},
+        {"detail": {"label": "Отрицание/вопрос", "runs": ["don't/doesn't + V1: She doesn't smoke."]}},
+        {"detail": {"label": "Маркеры", "runs": ["every day, usually, always, on Mondays, never."]}}
+      ]
+    },
+    "present-continuous": {
+      "title": "Simple vs Continuous", "lead": "Факт/привычка против процесса сейчас.",
+      "blocks": [
+        {"detail": {"label": "Simple", "runs": ["I work at Google (работаю вообще)."]}},
+        {"detail": {"label": "Continuous", "runs": ["I'm working now (в процессе). am/is/are + V-ing."]}},
+        {"detail": {"label": "Не с continuous", "runs": ["know, like, want, need — состояния, обычно Simple."]}}
+      ]
+    },
+    "past-simple": {
+      "title": "Правильные и неправильные", "lead": "V2 одинакова для всех лиц.",
+      "blocks": [
+        {"detail": {"label": "Правильные", "runs": ["+ed: work → worked."]}},
+        {"detail": {"label": "Неправильные", "runs": ["надо знать: go–went–gone, see–saw–seen, have–had–had."]}},
+        {"detail": {"label": "Вопрос/отрицание", "runs": ["did + V1: Did you go? · I didn't go."]}}
+      ]
+    },
+    "present-perfect": {
+      "title": "Present Perfect", "lead": "Прошлое, важное для настоящего.",
+      "blocks": [
+        {"detail": {"label": "Суть", "runs": ["Результат сейчас или опыт без указания времени: I've lost my keys (всё ещё нет ключей)."]}},
+        {"detail": {"label": "Маркеры", "runs": ["just, already, yet, ever, never, so far, recently."]}},
+        {"detail": {"label": "Форма", "runs": ["have/has + V3 (третья форма)."]}}
+      ]
+    },
+    "pp-vs-past": {
+      "title": "Perfect vs Past Simple", "lead": "Решает смысл связи с «сейчас», а не слово-маркер.",
+      "blocks": [
+        {"detail": {"label": "Past Simple", "runs": ["Факт законченного прошлого: I saw him yesterday / in 2020 / last week."]}},
+        {"detail": {"label": "Perfect", "runs": ["Связь с настоящим: результат сейчас (I have lost my keys — не могу зайти) или опыт без времени (I have seen him — важно, что знаю его)."]}},
+        {"detail": {"label": "Где подводит «время названо?»", "runs": ["Длительность до сих пор: I have lived here since 2020 / for two years. Незакрытый отрезок: Have you seen Anna today? Маркеры — подсказка, решение за смыслом."]}}
+      ]
+    },
+    "future": {
+      "title": "will или going to", "lead": "Решение сейчас против плана.",
+      "blocks": [
+        {"detail": {"label": "will", "runs": ["Решил в момент речи или прогноз: I'll help you. · It will rain."]}},
+        {"detail": {"label": "going to", "runs": ["План до этого или очевидное: I'm going to study tonight. · Look at the clouds — it's going to rain."]}},
+        {"detail": {"label": "Расписание", "runs": ["Present Simple для расписаний: The train leaves at 6."]}}
+      ]
+    },
+    "modals-en": {
+      "title": "Модальные", "lead": "После модального — V1 без to.",
+      "blocks": [
+        {"detail": {"label": "can/could", "runs": ["способность, просьба, разрешение."]}},
+        {"detail": {"label": "must", "runs": ["внутренняя необходимость, строгий вывод: You must stop."]}},
+        {"detail": {"label": "have to", "runs": ["внешнее правило: I have to wear a uniform."]}},
+        {"detail": {"label": "should", "runs": ["совет: You should rest."]}},
+        {"detail": {"label": "may/might", "runs": ["возможность/разрешение: It might rain."]}}
+      ]
+    },
+    "mustnt": {
+      "title": "mustn't vs don't have to", "lead": "Оба про «не надо», но смысл противоположный.",
+      "blocks": [
+        {"detail": {"label": "mustn't", "runs": ["Запрещено: You mustn't tell anyone."]}},
+        {"detail": {"label": "don't have to", "runs": ["Не обязательно (можно, но не нужно): You don't have to come."]}},
+        {"detail": {"label": "Почему путают", "runs": ["В русском «не должен» часто означает именно «не обязательно»."]}}
+      ]
+    },
+    "passive-en": {
+      "title": "Пассив", "lead": "be (в нужном времени) + V3.",
+      "blocks": [
+        {"detail": {"label": "Времена", "runs": ["is built (сейчас) · was built (прошлое) · will be built (будущее) · has been built (perfect)."]}},
+        {"detail": {"label": "Кем/чем", "runs": ["…by the workers, if needed."]}}
+      ]
+    },
+    "gerund-infinitive": {
+      "title": "V-ing vs to V", "lead": "Какой глагол впереди — такой хвост.",
+      "blocks": [
+        {"detail": {"label": "+ V-ing", "runs": ["enjoy, finish, mind, suggest, avoid, keep."]}},
+        {"detail": {"label": "+ to V", "runs": ["want, decide, hope, plan, promise, need."]}},
+        {"detail": {"label": "Меняют смысл", "runs": ["stop smoking (бросить) ≠ stop to smoke (остановиться, чтобы)."]}}
+      ]
+    },
+    "time-preps": {
+      "title": "Время: in / on / at", "lead": "От длинного к точному.",
+      "blocks": [
+        {"detail": {"label": "in", "runs": ["Месяцы, годы, сезоны, части дня: in July, in 2026, in the morning."]}},
+        {"detail": {"label": "on", "runs": ["Дни и даты: on Monday, on 5 May, on my birthday."]}},
+        {"detail": {"label": "at", "runs": ["Точки времени: at 7 o'clock, at night, at the weekend (брит.)."]}}
+      ]
+    },
+    "place-preps": {
+      "title": "Место: in / on / at", "lead": "Объём, поверхность, точка.",
+      "blocks": [
+        {"detail": {"label": "in", "runs": ["Внутри объёма: in the kitchen, in Paris, in a car."]}},
+        {"detail": {"label": "on", "runs": ["Поверхность/линия: on the table, on the wall, on the bus."]}},
+        {"detail": {"label": "at", "runs": ["Точка/событие: at the door, at school, at the party."]}}
+      ]
+    },
+    "dependent-preps": {
+      "title": "Предлоги-ловушки", "lead": "Не переводить с русского — запоминать пару.",
+      "blocks": [
+        {"detail": {"label": "Частые", "runs": ["depend on · interested in · listen to · afraid of · good at · wait for · arrive in (город) / at (место) · apologize for."]}},
+        {"detail": {"label": "Ошибка №1", "runs": ["«зависит от» → depend ", {"t": "on", "b": true}, ", не from."]}}
+      ]
+    },
+    "plurals": {
+      "title": "Множественное число", "lead": "+s по умолчанию, но есть правила и исключения.",
+      "blocks": [
+        {"detail": {"label": "Правила", "runs": ["+s · после -s/-sh/-ch/-x/-o часто +es (boxes, tomatoes) · согласная+y → ies (cities)."]}},
+        {"detail": {"label": "Исключения", "runs": ["man–men · woman–women · child–children · foot–feet · tooth–teeth · mouse–mice · person–people."]}},
+        {"detail": {"label": "Не меняются", "runs": ["fish, sheep, aircraft."]}}
+      ]
+    },
+    "countable": {
+      "title": "Исчисляемость", "lead": "Можно ли «посчитать» слово напрямую.",
+      "blocks": [
+        {"detail": {"label": "Исчисляемые", "runs": ["many friends, a few books, few mistakes."]}},
+        {"detail": {"label": "Неисчисляемые", "runs": ["much time, a little money, little news."]}},
+        {"detail": {"label": "Счётная форма", "runs": ["a piece of advice / a cup of coffee / a news item."]}},
+        {"detail": {"label": "Ловушки", "runs": ["advice, information, news, money — без -s и с it."]}}
+      ]
+    },
+    "some-any": {
+      "title": "some / any", "lead": "some — утверждения, any — вопросы и отрицания.",
+      "blocks": [
+        {"detail": {"label": "База", "runs": ["I have some money. · Do you have any money? · I don't have any money."]}},
+        {"detail": {"label": "any = любой", "runs": ["В утверждениях: Take any seat."]}},
+        {"detail": {"label": "Просьба", "runs": ["В вопросах-просьбах some: Can I have some water?"]}}
+      ]
+    },
+    "comparative": {
+      "title": "Степени сравнения", "lead": "Короче слово — суффикс, длиннее — more/most.",
+      "blocks": [
+        {"detail": {"label": "Короткие", "runs": ["cheap – cheaper – the cheapest."]}},
+        {"detail": {"label": "Длинные", "runs": ["expensive – more expensive – the most expensive."]}},
+        {"detail": {"label": "Исключения", "runs": ["good–better–best · bad–worse–worst · far–further–furthest."]}},
+        {"detail": {"label": "Формула", "runs": ["…er ", {"t": "than", "b": true}, " · the …est / the most …"]}}
+      ]
+    },
+    "cond0": {
+      "title": "Type 0", "lead": "Если всегда так — оба Present.",
+      "blocks": [
+        {"detail": {"label": "Формула", "runs": ["If + Present Simple, Present Simple."]}},
+        {"detail": {"label": "Смысл", "runs": ["Законы природы, правила, инструкции: If you press this, the light turns on."]}},
+        {"detail": {"label": "vs Type 1", "runs": ["Type 1 — конкретное будущее условие; Type 0 — «всегда»."]}}
+      ]
+    },
+    "cond1": {
+      "title": "Type 1", "lead": "Реальное условие о будущем.",
+      "blocks": [
+        {"detail": {"label": "Формула", "runs": ["If + Present Simple, will + V1."]}},
+        {"detail": {"label": "Главная ошибка", "runs": ["will после if: ", {"t": "If it will rain…", "s": true}, " → If it ", {"t": "rains", "b": true}, "…"]}},
+        {"detail": {"label": "Порядок", "runs": ["Можно и наоборот: We'll stay at home if it rains (без запятой)."]}}
+      ]
+    },
+    "cond2": {
+      "title": "Type 2", "lead": "Нереальное сейчас/в будущем.",
+      "blocks": [
+        {"detail": {"label": "Формула", "runs": ["If + Past Simple, would + V1."]}},
+        {"detail": {"label": "were для всех", "runs": ["If I were you, If she were here — сослагательное were."]}},
+        {"detail": {"label": "Смысл", "runs": ["Мечты, советы: If I had money, I would travel."]}}
+      ]
+    }
+  }
+}

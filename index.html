@@ -43,6 +43,17 @@
     .lang-card .topics { display: block; margin-top: 3px; font-size: .88rem; }
     .lang-card .meta { display: block; margin-top: 5px; color: var(--muted); font-size: .78rem; }
     .lang-card .go { margin-left: auto; color: var(--on-accent-soft); font-weight: 900; font-size: 1.3rem; }
+    /* Locale selector: picks the explanation language for the decks below. */
+    .locale-row { display: flex; align-items: center; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+    .locale-label { color: var(--muted); font-size: .85rem; }
+    .locale-opt {
+      min-height: 38px; padding: 0 15px; border-radius: 999px; cursor: pointer; font: inherit; font-size: .85rem;
+      border: 1px solid var(--line); background: var(--surface); color: var(--text);
+    }
+    .locale-opt[aria-pressed="true"] {
+      background: var(--accent-soft); border-color: var(--accent); color: var(--on-accent-soft); font-weight: 800;
+    }
+    .locale-opt:disabled { color: var(--muted); cursor: default; }
   </style>
 </head>
 <body>
@@ -59,7 +70,7 @@
   </header>
 
   <noscript>
-    <style>.theme-btn { display: none !important; }</style>
+    <style>.theme-btn, .locale-row { display: none !important; }</style>
   </noscript>
 
   <main>
@@ -68,8 +79,14 @@
       <p>Короткие мобильные шпаргалки: сначала триггер — падеж, предлог, время или союз, — потом форма и позиция. Открой один раз: дальше работает офлайн.</p>
     </section>
 
+    <div class="locale-row" role="group" aria-label="Язык объяснений">
+      <span class="locale-label">Объяснения на:</span>
+      <button type="button" class="locale-opt" data-locale="ru" aria-pressed="true">русском</button>
+      <button type="button" class="locale-opt" data-locale="en" disabled title="Появится позже">English — скоро</button>
+    </div>
+
     <div class="lang-grid">
-      <a class="lang-card" href="./deutsch/">
+      <a class="lang-card" href="./de/ru/" data-target="de">
         <span class="lang-mark" aria-hidden="true">DE</span>
         <span>
           <b>Немецкий · Deutsch</b>
@@ -78,7 +95,7 @@
         </span>
         <span class="go" aria-hidden="true">→</span>
       </a>
-      <a class="lang-card" href="./english/">
+      <a class="lang-card" href="./en/ru/" data-target="en">
         <span class="lang-mark" aria-hidden="true">EN</span>
         <span>
           <b>Английский · English</b>
@@ -121,6 +138,26 @@
       try { localStorage.setItem(THEME_KEY, themeMode); } catch (e) {}
       applyTheme(themeMode);
     });
+
+    // Locale: remembers which audience's decks the visitor reads. Cards keep
+    // plain ./<target>/ru/ hrefs in the markup (works without JS); with JS the
+    // hrefs follow the chosen locale wherever that deck exists.
+    const DECKS = { de: ['ru'], en: ['ru'] };
+    const LOCALE_KEY = 'locale';
+    const localeBtns = [...document.querySelectorAll('.locale-opt')];
+    const langCards = [...document.querySelectorAll('.lang-card')];
+    function applyLocale(loc) {
+      localeBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.locale === loc)));
+      langCards.forEach(card => {
+        const target = card.dataset.target;
+        if (DECKS[target] && DECKS[target].includes(loc)) card.href = `./${target}/${loc}/`;
+      });
+      try { localStorage.setItem(LOCALE_KEY, loc); } catch (e) {}
+    }
+    let locale = 'ru';
+    try { locale = localStorage.getItem(LOCALE_KEY) || 'ru'; } catch (e) {}
+    applyLocale(locale);
+    localeBtns.forEach(b => b.addEventListener('click', () => applyLocale(b.dataset.locale)));
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));

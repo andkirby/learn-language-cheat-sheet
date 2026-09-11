@@ -15,12 +15,15 @@ NOT RUN. See [the content audit](CONTENT_AUDIT.md).
 
 Live: <https://andkirby.github.io/learn-language-cheat-sheet/>
 
+Deck pages live at `<target>/<audience>/`; the landing locale selector picks
+the audience (Русский today — the architecture is ready for more).
+
 | URL | What |
 | --- | --- |
-| `/` | Landing — language cards |
-| `/deutsch/` | Немецкий: падежи, артикли, порядок слов, придаточные |
-| `/english/` | Английский: времена, артикли, вопросы, условные |
-| `/deutsch.html` | Legacy URL — redirects to `/deutsch/` |
+| `/` | Landing — locale selector + language cards |
+| `/de/ru/` | Немецкий: падежи, артикли, порядок слов, придаточные |
+| `/en/ru/` | Английский: времена, артикли, вопросы, условные |
+| `/deutsch/`, `/english/`, `/de/`, `/deutsch.html` | Legacy URLs — redirect stubs |
 
 ## Run locally
 
@@ -41,12 +44,15 @@ relative, so the site works at the project subpath unchanged.
 
 | Path | Purpose |
 | --- | --- |
-| `index.html` | Landing page (language cards, theme toggle) |
-| `deutsch/` | German cheatsheet: `index.html`, `manifest.webmanifest`, `icons/`, `SITE_PLAN.md` |
-| `english/` | English cheatsheet: same self-contained model |
+| `index.html` | Landing page (locale selector, language cards, theme toggle) |
+| `content/decks/` | Deck data (`de-ru.json`, `en-ru.json`, …) + `schema.json` |
+| `de/ru/` | German-for-Russians page — generated from its deck, plus manifest, `icons/`, `SITE_PLAN.md` |
+| `en/ru/` | English-for-Russians page — same model |
+| `deutsch/`, `english/`, `de/` | Redirect stubs to the new URLs (kept for old links and installed PWAs) |
 | `sw.js` | Shared service worker — caches every language shell; bump `CACHE_VERSION` after changes |
 | `icons/` | Landing favicon + og image (generator: `tools/make_icons.py`) |
-| `docs/ADD_LANGUAGE.md` | Playbook for adding the next language |
+| `tools/build_pages.py` | Deck → page generator + validator (stdlib only) |
+| `docs/ADD_LANGUAGE.md` | Playbook for adding the next language or audience |
 | `docs/SITE_PLAN_GUIDE.md` | Questions and required structure for language plans |
 | `.design/` | Design system contract + decision log (all pages) |
 | `docs/CONTENT_VALIDATION.md` | Content accuracy, coverage and teaching-quality review procedure |
@@ -63,16 +69,17 @@ relative, so the site works at the project subpath unchanged.
 - After changing any page or asset, bump `CACHE_VERSION` in `sw.js` (and add
   new shell URLs to `APP_SHELL`) so clients pick up the update.
 
-## Adding a language
+## Adding a language or audience
 
-See `docs/ADD_LANGUAGE.md` — copy a language folder, regenerate icons,
+See `docs/ADD_LANGUAGE.md` — author a deck JSON, render it with
+`tools/build_pages.py` into `<target>/<audience>/`, regenerate icons,
 wire it into `sw.js` + landing, verify, push.
 
 ## Content quality
 
 Use [the SITE_PLAN guide](docs/SITE_PLAN_GUIDE.md) to define accepted scope,
-including durable exclusions. The [German](deutsch/SITE_PLAN.md) and
-[English](english/SITE_PLAN.md) plans own those language-specific decisions.
+including durable exclusions. The [German](de/ru/SITE_PLAN.md) and
+[English](en/ru/SITE_PLAN.md) plans own those language-specific decisions.
 
 Follow [content validation](docs/CONTENT_VALIDATION.md) for content changes.
 `CONTENT_AUDIT.md` owns unresolved questions, sources and results. A plan

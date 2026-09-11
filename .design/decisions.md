@@ -214,3 +214,76 @@ Noto Serif. Zero bytes downloaded, one token changed. A bundled
 single-family option (Literata / Gentium Book Plus / Source Serif 4,
 self-hosted subset) was evaluated and deliberately deferred — revisit if
 cross-device consistency starts to matter more than the zero-footprint rule.
+
+### 2026-09-11 — Intro line wrapped into a `.help-row` (i) button
+
+The one-line usage intro occupied prime first-screen space on every visit.
+It is now a compact `.help-row` (i) button in the same slot opening the
+standard DETAILS bottom sheet (`lookup-help`) — no new JS, the existing
+`data-detail` mechanism. Mobile contract kept: ≥44px target, the `#start`
+anchor stays on the row, `body.searching` hides it, and noscript keeps the
+plain `.intro` line (search examples dropped there — search is JS-only).
+Applied to both language pages in one commit; `assets/base.css` owns the
+component and `style-guide.html` carries the specimen.
+
+## 2026-09-11 — Content as data, Phase 1: english/ generated from a deck JSON
+
+Foundation for multi-audience decks (same target language explained for
+different native speakers). `content/decks/en-ru.json` now holds the whole
+English page (sections, cards as block lists, details dialogs, practice,
+UI strings, nav views); `tools/build_pages.py` (stdlib-only, the
+`make_icons.py` precedent) validates the deck — chip↔dialog reference
+integrity, unique ids, table shapes, run shapes — and renders the static
+`english/index.html`, which stays committed, noscript-readable and
+SW-cached. `--check` fails when HTML and deck drift apart. Chose JSON over
+YAML (stdlib parsing, no parse-time footguns like the Norway problem) and
+JSONL (wrong layer: streaming, not authoring); comments are covered by
+schema-sanctioned `_note` provenance fields. The block schema mirrors the
+style-guide component set; `content/decks/schema.json` is the editor
+contract. AGENTS rule 5 amended: commit-time generation by vendored stdlib
+scripts is allowed; deployment stays build-free. Migration was verified
+behavior-identical: attribute fingerprints and all 410 visible text lines
+unchanged, browser invariants matched exactly (29 cards, 35 chips ↔ 30
+dialogs, 96 lang marks, search/view/dialog/reveal behaviors).
+`deutsch/` stays hand-written as the Phase 2 control.
+
+## 2026-09-11 — Content as data, Phase 2: <target>/<audience>/ URLs; deutsch/ migrated
+
+Multi-audience architecture landed. URLs are now `<target>/<audience>/`
+(`de/ru/`, `en/ru/`) so sibling decks (`de/en/` later) share a target;
+the landing gained a noscript-safe audience-locale selector (plain RU hrefs
+in markup, JS upgrades them via a `DECKS` registry + localStorage). The
+hand-written `deutsch/index.html` became `content/decks/de-ru.json` rendered
+by `tools/build_pages.py`; the generator learned the German-only constructs
+(`case-grid` cards, multi-group sections with gaps, footer without a
+practice link, `practice` as a nav destination) plus depth-derived `../../`
+root paths and a `meta.lang` token — all byte-neutral for `en-ru` (gated:
+`--check` passed against the pre-change HTML before the move). Old URLs
+(`/deutsch/`, `/english/`, `/de/`, `/deutsch.html`) are meta-refresh +
+canonical stubs, precached so installed PWAs resolve them offline; manifests,
+icons and plans moved with their pages; `CACHE_VERSION` v9. Migration
+verified behavior-identical: 341/341 visible text lines and 561/561 element
+fingerprints unchanged (only documented diffs: `strong`→`b` in case buttons —
+identical UA rendering inside `.tap`'s 800 weight — plus the intentional
+path tokens); browser invariants (33 cards, 39 chips ↔ 29 dialogs, 3
+reveals, 95 `lang="de"` marks, view/anchor routing, search, dialogs) matched
+the pre-migration baseline exactly; en move is byte-pure modulo 5 path
+tokens. Known follow-up kept in the deck `_note`: German footer has no
+practice link while English does.
+
+## 2026-09-11 — Header controls: help (i) and the audience locale menu
+
+Two compact controls moved into the topbar, replacing the `.help-row` that
+sat at the top of `main`. (1) The usage help is now a 44px `.icon-btn`
+(same styling family as `.theme-btn`) with an italic-serif (i) glyph,
+`aria-label`/`title` «Как пользоваться», opening the same `lookup-help`
+bottom sheet via `data-detail`; the `#start` anchor stays. (2) Each deck
+page gained a `.locale-menu` — a native `<details>` whose summary shows the
+audience code (RU) and whose popover lists the sibling audiences of the
+same target language from new deck `meta.locales` (validator: must include
+the deck's own audience; `soon` items render disabled «English — скоро»).
+Native details keeps it functional without JS; JS only adds light dismiss
+and Escape. Landing keeps its full selector; the menu is the on-page
+equivalent. Both ship in the same generator template, so all deck pages
+get them from one edit; style-guide specimen and DESIGN_SYSTEM rows
+updated in the same change.
