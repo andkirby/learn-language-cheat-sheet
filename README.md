@@ -51,8 +51,9 @@ relative, so the site works at the project subpath unchanged.
 | `deutsch/`, `english/`, `de/` | Redirect stubs to the new URLs (kept for old links and installed PWAs) |
 | `sw.js` | Shared service worker — caches every language shell; bump `CACHE_VERSION` after changes |
 | `icons/` | Landing favicon + og image (generator: `tools/make_icons.py`) |
-| `tools/build_pages.py` | Deck → page generator + validator (stdlib only) |
-| `tools/page_template.html` | Page skeleton substituted with `@@TOKENS@@` by `build_pages.py` |
+| `tools/build_pages.py` | Deck → page generator CLI: validates + renders a deck JSON (stdlib only) |
+| `tools/deck_*.py` | Generator modules — `deck_blocks` (block registry), `deck_validate`, `deck_render`, `deck_html` |
+| `tools/page_template.html` | Page skeleton substituted with `@@TOKENS@@` by `deck_render` |
 | `docs/ADD_LANGUAGE.md` | Playbook for adding the next language or audience |
 | `docs/SITE_PLAN_GUIDE.md` | Questions and required structure for language plans |
 | `.design/` | Design system contract + decision log (all pages) |
