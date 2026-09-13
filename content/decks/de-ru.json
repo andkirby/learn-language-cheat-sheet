@@ -575,12 +575,12 @@
       "blocks": [
         {"detail": {"label": "Ключ", "runs": ["Окончания те же, что у определённого артикля. Сравни: den Mann → ", {"t": "meinen", "i": true}, " Mann · dem Mann → ", {"t": "meinem", "i": true}, " Mann · der Frau → ", {"t": "meiner", "i": true}, " Frau."]}},
         {"detail": {"label": "Где окончания нет", "runs": ["Только три клетки: Nom. m/n и Akk. n — ", {"t": "ein Mann, ein Kind", "i": true}, ". Там форма без окончания, как в der-таблице der/das."]}},
-        {"detail": {"label": "Akkusativ", "runs": ["Видимо меняется только Maskulin: der → ", {"t": "den", "i": true}, ", mein → ", {"t": "meinen", "i": true}, ". Fem./Neut./Plural выглядят как Nominativ."]}},
+        {"detail": {"label": "Akkusativ", "runs": ["Заметно меняется только Maskulin: der → ", {"t": "den", "i": true}, ", mein → ", {"t": "meinen", "i": true}, ". Fem./Neut./Plural выглядят как Nominativ."]}},
         {"detail": {"label": "Dativ", "runs": ["Различает всё: m/n → ", {"t": "-em", "i": true}, ", f → ", {"t": "-er", "i": true}, ", Plural → ", {"t": "-en", "i": true}, " (+ -n у существительного)."]}}
       ]
     },
     "ihrem": {
-      "title": "Почему “ihрем”?", "lead": "ihr + окончание Dativ.",
+      "title": "Почему ihrem?", "lead": "ihr + окончание Dativ.",
       "blocks": [
         {"detail": {"label": "Maskulin / Neutrum, Dativ", "runs": ["ihr + -em = ", {"t": "ihrem", "b": true}, "."]}},
         {"detail": {"label": "Примеры", "runs": ["mit ", {"t": "ihrem Bruder", "b": true}, "; mit ", {"t": "ihrem Kind", "b": true}, "."]}},

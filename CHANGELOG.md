@@ -4,6 +4,20 @@ One entry per user-visible change, newest first. UI rationale lives in
 `.design/decisions.md`, content review evidence in `CONTENT_AUDIT.md`.
 Append the entry in the same commit that ships the change.
 
+## 2026-09-13
+
+- **Fix (content)**: the 2026-09-11 content-review findings C-13…C-20 are
+  closed. English: questions now state that *be* and modals form questions
+  without *do* (EN-04); comparative spellings (bigger/happier/nicer) are
+  spelled out (EN-15); plurals carry a countability caveat (EN-13); every
+  dependent-preposition pair has a sentence example (EN-12); the passive
+  by-phrase example is a full sentence; *must* separates obligation from
+  deduction; terminology unified («превосходная степень»). German: the
+  declension-dialog wording «Видимо» → «Заметно» and a mixed-script dialog
+  title fixed. Search keywords that promised words a card never shows were
+  trimmed or surfaced (mechanical gate now in the generator); genitive
+  relative pronouns (*dessen/deren*) are now taught. `CACHE_VERSION` v14.
+
 ## 2026-09-11
 
 - **Fix (iOS)**: a Home Screen app (Add to Home Screen) could come back

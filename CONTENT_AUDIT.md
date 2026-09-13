@@ -12,11 +12,13 @@ Deferred or Excluded decision to the relevant
 procedure is [content validation](docs/CONTENT_VALIDATION.md); plan authors use
 [the SITE_PLAN guide](docs/SITE_PLAN_GUIDE.md).
 
-Current overall status: Baseline and Coverage **FAIL** for both languages;
-Accuracy and Teaching **NOT RUN** pending an independent reference-grounded
-pass. The 2026-09-11 full reviewer pass (record below) inspected both decks,
-both generated pages and all practice/search metadata. Runtime/browser gates
-remain a separate AGENTS.md checklist.
+Current overall status: Baseline **FAIL** for both languages; Coverage
+**PASS** for both languages (16/16 topics each after the 2026-09-13 findings
+sweep); Accuracy and Teaching **NOT RUN** pending an independent
+reference-grounded pass. The 2026-09-11 full reviewer pass (record below)
+inspected both decks, both generated pages and all practice/search metadata.
+Runtime/browser gates are a separate AGENTS.md checklist; a scoped smoke test
+is recorded in the 2026-09-13 entry.
 
 ## 2026-09-10 — Initial documentation review
 
@@ -87,14 +89,14 @@ language plan or close it with evidence here.
 | C-10 | User-reported (2026-09-11): the bold/`td.hot` table convention was missed entirely by the first learner — it is documented for developers (style-guide, DESIGN_SYSTEM) but never labeled for learners | An unlabeled visual convention does not exist for the reader it is meant to serve | One consistent `.tiny` legend under every table with hot cells (3 DE, 1 EN) | Fixed in page 2026-09-11; retested 2026-09-11 @ `b75c890`: legends present under all 4 tables |
 | C-11 | DE-03 `#forms`: definite-article unit is table + hot legend only — no chip, no example; the ein/kein unit's examples live in its dialogs | Plan depth for DE-03 requires "usage examples"; der/die/das in use appears only in *other* topics' dialogs (case dialogs, `why-ein-endings`) | Add a usage line or minimal pair to the definite-article card, or attach a dialog | Fixed 2026-09-11 (example sweep, author review): definite card gained `Ich sehe **den** Mann. / mit **dem** Mann`; ein-card gained `Ich habe **einen** Bruder und **eine** Schwester. / mit **meinem** Bruder · mit **meiner** Schwester` |
 | C-12 | DE-04 `#forms`: personal-pronoun unit is table + `pronouns` triples dialog; no sentence-level example anywhere in the unit | Plan depth requires "paradigm plus examples"; form recall without usage | Add one natural usage example (e.g. *Kannst du mir helfen?*) | Fixed 2026-09-11 (example sweep, author review): card gained `Kennst du **ihn**? — Ich helfe **ihm**.`; dialog triplets gained она/они/Вы glosses and a Genitiv-absence note |
-| C-13 | Search metadata (both pages): DE tokens `helfen`, `sehen` (objects card), `bis`, `entlang` (prep-akk), `gegenüber` (prep-dat), `dessen`, `deren` (relative — taught nowhere), `wo`, `wohin` (case grid) are not visible on their card; EN keywords all land on delivered content | A hit that never shows the promised word is a misleading hit; `dessen`/`deren` additionally index untaught content | Surface the tokens on the cards or trim the keywords; an uncommitted search-hygiene validator in the worktree mechanically flags this class (28 DE + 10 EN tokens; its exemption list still absorbs intentional routings such as `wurde`→Konjunktiv-II) | Open (filed 2026-09-11 full pass; overlaps in-progress D-04 work — an uncommitted trim of the flagged DE tokens was observed in the worktree during this pass and is not evaluated here, being outside the reviewed revision) |
-| C-14 | EN-04 `#order`: do-support card + subject-who exception present; the plan's "be/modal distinction" (no do-support after be/modals) is absent from the whole deck | Plan-required acceptance depth missing; learner is given no *Is she…? / Can you…?* rule | Add the be/modal line to the questions card or `do-questions` dialog; the remainder overlaps EN-G01 | Open (filed 2026-09-11 full pass) |
-| C-15 | EN-15 `#nouns`: comparative spelling limits only implicit — `big — bigger — the biggest` shows doubling by example; -y→-ier and e-drop are absent | Plan depth names "spelling limits"; *happier/nicer* are underivable from the card | State the three spelling rules compactly in the card or `comparative` dialog | Open (filed 2026-09-11 full pass) |
-| C-16 | EN-13 `#nouns`: plurals unit has rules + irregulars + invariates but no countability caveat (countability itself lives one card away in EN-14) | Plan depth for EN-13 explicitly names a countability caveat | Add a one-line caveat to the plurals unit, or record a plan-depth revision | Open (filed 2026-09-11 full pass) |
-| C-17 | EN-12 `#preps`: 8 listed pairs (6 chips + `arrive in/at`, `apologize for` in the dialog); only `depend on` has a sentence example | Plan depth says "all listed combinations with examples" — ambiguous between pair-listing and per-pair examples | Add a short example per pair **or** revise the plan depth (owner decision; not promoted here) | Open (filed 2026-09-11 full pass) |
-| C-18 | `en-ru.json` practice `_note` topic IDs swapped: item 2 (saw/EN-06) is noted EN-04; item 3 (Does she like/EN-04) is noted EN-06 | Provenance metadata misleads future reviews; not rendered (generator ignores `_note`) | Swap the two `_note` IDs | Open (filed 2026-09-11 full pass) |
-| C-19 | DE learner-visible text defects @ `b75c890`: `ihrem` dialog title «Почему “ihрем”?» mixes Cyrillic р/е/м into the German word (deck + rendered page); `why-ein-endings` dialog «Видимо меняется только Maskulin» — «Видимо» reads as "apparently", intended "visibly" | Copying the title yields wrong characters; ambiguous wording weakens the Akk.-reading rule | Fix both strings in `de-ru.json` + regenerate | Open (filed 2026-09-11 full pass) |
-| C-20 | EN example/terminology nits @ `b75c890`: `the-article` dialog uses «сверхлатив» (deck elsewhere says «превосходная»); `passive-en` dialog «Кем/чем: …by the workers, if needed.» is a fragment, not an example; `modals-en` must example (*You must stop*) shows obligation only while its label also promises deduction | Inconsistent terminology; examples that don't demonstrate the stated meaning | Rewrite the three fragments in `en-ru.json` + regenerate | Open (filed 2026-09-11 full pass) |
+| C-13 | Search metadata (both pages): DE tokens `helfen`, `sehen` (objects card), `bis`, `entlang` (prep-akk), `gegenüber` (prep-dat), `dessen`, `deren` (relative — taught nowhere), `wo`, `wohin` (case grid) are not visible on their card; EN keywords all land on delivered content | A hit that never shows the promised word is a misleading hit; `dessen`/`deren` additionally index untaught content | Surface the tokens on the cards or trim the keywords; an uncommitted search-hygiene validator in the worktree mechanically flags this class (28 DE + 10 EN tokens; its exemption list still absorbs intentional routings such as `wurde`→Konjunktiv-II) | Fixed by follow-up commits 2026-09-11→13: the hygiene validator landed in the generator (mechanical gate on every `--check`, see D-04), invisible tokens were trimmed, and `dessen`/`deren` were surfaced by teaching genitive relatives on the relative card + dialog; both `--check` gates green @ `0b5e442` |
+| C-14 | EN-04 `#order`: do-support card + subject-who exception present; the plan's "be/modal distinction" (no do-support after be/modals) is absent from the whole deck | Plan-required acceptance depth missing; learner is given no *Is she…? / Can you…?* rule | Add the be/modal line to the questions card or `do-questions` dialog; the remainder overlaps EN-G01 | Fixed 2026-09-13: card `tiny` «be и модальные обходятся без do: **Is she…? Can you…?**» + `do-questions` dialog block «be / модальные» (inversion, do only for lexical verbs); EN-04 now covered |
+| C-15 | EN-15 `#nouns`: comparative spelling limits only implicit — `big — bigger — the biggest` shows doubling by example; -y→-ier and e-drop are absent | Plan depth names "spelling limits"; *happier/nicer* are underivable from the card | State the three spelling rules compactly in the card or `comparative` dialog | Fixed 2026-09-13: `comparative` dialog «Орфография» block (big → bigger, happy → happier, nice → nicer); EN-15 now covered |
+| C-16 | EN-13 `#nouns`: plurals unit has rules + irregulars + invariates but no countability caveat (countability itself lives one card away in EN-14) | Plan depth for EN-13 explicitly names a countability caveat | Add a one-line caveat to the plurals unit, or record a plan-depth revision | Fixed 2026-09-13: `plurals` dialog «Только исчисляемые» caveat (water/advice/information, cross-reference to the EN-14 card); EN-13 now covered |
+| C-17 | EN-12 `#preps`: 8 listed pairs (6 chips + `arrive in/at`, `apologize for` in the dialog); only `depend on` has a sentence example | Plan depth says "all listed combinations with examples" — ambiguous between pair-listing and per-pair examples | Add a short example per pair **or** revise the plan depth (owner decision; not promoted here) | Fixed 2026-09-13 via the examples route (plan unchanged, no scope decision needed): `dependent-preps` dialog «Примеры» block gives a sentence for every listed pair; EN-12 now covered |
+| C-18 | `en-ru.json` practice `_note` topic IDs swapped: item 2 (saw/EN-06) is noted EN-04; item 3 (Does she like/EN-04) is noted EN-06 | Provenance metadata misleads future reviews; not rendered (generator ignores `_note`) | Swap the two `_note` IDs | Fixed 2026-09-13: notes now read EN-06 (item 2) and EN-04 (item 3) |
+| C-19 | DE learner-visible text defects @ `b75c890`: `ihrem` dialog title «Почему “ihрем”?» mixes Cyrillic р/е/м into the German word (deck + rendered page); `why-ein-endings` dialog «Видимо меняется только Maskulin» — «Видимо» reads as "apparently", intended "visibly" | Copying the title yields wrong characters; ambiguous wording weakens the Akk.-reading rule | Fix both strings in `de-ru.json` + regenerate | Fixed 2026-09-13: title «Почему ihrem?», «Видимо» → «Заметно»; mixed-script scan clean on both decks and pages |
+| C-20 | EN example/terminology nits @ `b75c890`: `the-article` dialog uses «сверхлатив» (deck elsewhere says «превосходная»); `passive-en` dialog «Кем/чем: …by the workers, if needed.» is a fragment, not an example; `modals-en` must example (*You must stop*) shows obligation only while its label also promises deduction | Inconsistent terminology; examples that don't demonstrate the stated meaning | Rewrite the three fragments in `en-ru.json` + regenerate | Fixed 2026-09-13: «превосходная степень»; full example «The house was built **by the workers**. — рабочими»; must block split «необходимость: You must stop. · строгий вывод: He must be tired» |
 | C-21 | User-reported (2026-09-12): DE double-infinitive unit (DE-14) carries no translation in its card example or either dialog example block, while the unit is declared recognition-level («Достаточно узнавать») | The form notes («не gemusst», «haben поднимается») attach to sentences the learner cannot decode; the gloss policy's form/meaning axis missed decodability (the Passiv dialog, same class, is glossed) | Amend the gloss policy with the recognition-level class and gloss the three examples | Fixed 2026-09-12 (comprehension-access change, author review): policy amended in the guide + both plans + validation §3; card and both dialog blocks glossed |
 
 ## 2026-09-11 — Incremental change: page alignment with accepted plans
@@ -358,6 +360,47 @@ Verified: `--check` idempotent both decks (validator + search gate pass);
 rendered diff confined to the unit — card example and dialog body, three
 strings, nothing else (page 50854 → 50945 bytes). Gates unchanged: all
 four remain NOT RUN.
+
+## 2026-09-13 — Incremental change: findings sweep closes C-13…C-20
+
+Protocol §5 changed-unit record. Reviewer/implementer: ZCode (same session as
+the 2026-09-11 full pass; not an independent linguistic reviewer). Base:
+`0b5e442` (which had already closed C-11/C-12 via the example sweep and
+C-13's mechanical half via the validator), worktree clean. `CACHE_VERSION`
+v13 → v14.
+
+Changed units (all verified: both `--check` gates exit 0, mixed-script scan
+clean, runtime smoke test below):
+
+| Unit | Change | Finding |
+| --- | --- | --- |
+| EN-04 questions card + `do-questions` dialog (`#order`) | be/modal no-do rule: card `tiny` + dialog block «be / модальные» | C-14 |
+| EN-15 `comparative` dialog (`#nouns`) | «Орфография» block: doubling, -y → -ier, e-drop | C-15 |
+| EN-13 `plurals` dialog (`#nouns`) | «Только исчисляемые» caveat with cross-ref to EN-14 | C-16 |
+| EN-12 `dependent-preps` dialog (`#preps`) | «Примеры» block: sentence example for every listed pair | C-17 |
+| EN practice `_note` metadata | Topic-ID swap corrected (EN-06 / EN-04) | C-18 |
+| DE-05 `why-ein-endings` + `ihrem` dialogs (`#forms`) | «Видимо» → «Заметно»; title «Почему “ihрем”?» → «Почему ihrem?» | C-19 |
+| EN `the-article`, `passive-en`, `modals-en` dialogs | «сверхлатив» → «превосходная степень»; full by-phrase example; must obligation vs deduction split | C-20 |
+
+Verified unaffected neighbors: DE-03/DE-04 example lines from the 2026-09-11
+sweep intact; genitive-relative teaching on the DE relative unit intact
+(C-13 surface half); chip↔dialog bijection re-enforced by the generator's
+validator; practice items and answers untouched.
+
+Runtime smoke test (scoped; not the full AGENTS.md checklist): served via
+`http.server 8931`, service-worker cache reset, both pages reloaded — no
+console errors; EN search «interested» filters to the dependent-preps card;
+DE search «wem» works; `do-questions`, `comparative`, `dependent-preps`,
+`plurals`, `ihrem` dialogs open with the new blocks; practice reveal works;
+`lang="en"` marking present on dialog examples. Offline reload, 390px
+overflow, theme cycle and redirect checks: **NOT RUN** this pass.
+
+Gate impact: Coverage → **PASS** for both languages (16/16 required topics
+covered; all content mapped back to scope in the 2026-09-11 pass, and no
+unmapped content was added). Baseline remains **FAIL** (DE-G01–06, EN-G01–08
+undecided). Accuracy and Teaching remain **NOT RUN** pending the independent
+reference-grounded pass (D-01). EN-G08 (Present Continuous + always) still
+requires an owner decision and is not promoted to the plan.
 
 ## Next full review record
 

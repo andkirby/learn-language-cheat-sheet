@@ -172,6 +172,7 @@
               {"t": "Does she work?", "b": true}, " Не: ", {"t": "Does she works?", "s": true}, {"br": true},
               {"t": "Where do you live?", "b": true}
             ]},
+            {"tiny": ["be и модальные обходятся без do: ", {"t": "Is she…? Can you…?", "b": true}]},
             {"chips": [{"label": "Как строить и где ошибаются", "detail": "do-questions"}]}
           ]
         },
@@ -491,12 +492,12 @@
         "answer": [{"t": "the", "b": true}, " — игра на инструменте: play the piano; сравни: play football — без артикля."]
       },
       {
-        "_note": "EN-04: past simple vs present perfect.",
+        "_note": "EN-06: past simple vs present perfect.",
         "q": [{"t": "2. I ___ (see) this film yesterday.", "b": true}],
         "answer": ["Past Simple: ", {"t": "saw", "b": true}, " — закрытый факт прошлого (вчера). yesterday — подсказка, решает смысл."]
       },
       {
-        "_note": "EN-06: do-questions.",
+        "_note": "EN-04: do-questions.",
         "q": [{"t": "3. Спроси, любит ли она чай: ___ she ___ (like) tea?", "b": true}],
         "answer": [{"t": "Does she like", "b": true}, " tea? — Does + V1; в русском вопрос строится без вспомогательного глагола."]
       }
@@ -521,7 +522,7 @@
     "the-article": {
       "title": "Когда the", "lead": "Собеседник понимает, о чём именно речь.",
       "blocks": [
-        {"detail": {"label": "Сигналы", "runs": ["Второе упоминание · единственный в контексте (the sun, the kitchen в нашем доме) · сверхлатив (the best)."]}},
+        {"detail": {"label": "Сигналы", "runs": ["Второе упоминание · единственный в контексте (the sun, the kitchen в нашем доме) · превосходная степень (the best)."]}},
         {"detail": {"label": "Пример", "runs": ["I bought ", {"t": "a", "i": true}, " book. ", {"t": "The", "i": true}, " book is interesting."]}}
       ]
     },
@@ -566,6 +567,7 @@
       "blocks": [
         {"detail": {"label": "Yes/No", "runs": ["Do/Does/Did + подлежащее + V1?: Does he work here?"]}},
         {"detail": {"label": "W-вопрос", "runs": ["W-word + do/does/did…: Where did you go?"]}},
+        {"detail": {"label": "be / модальные", "runs": ["Тоже без do — просто инверсия: Is he…? Are they…? Can you…? Do нужен только смысловым глаголам."]}},
         {"detail": {"label": "Исключение", "runs": ["Кто/что — субъект: Who lives here? (без do)."]}},
         {"detail": {"label": "Частая ошибка", "runs": ["Did you saw → Did you ", {"t": "see", "b": true}, "."]}}
       ]
@@ -629,7 +631,7 @@
       "title": "Модальные", "lead": "После модального — V1 без to.",
       "blocks": [
         {"detail": {"label": "can/could", "runs": ["способность, просьба, разрешение."]}},
-        {"detail": {"label": "must", "runs": ["внутренняя необходимость, строгий вывод: You must stop."]}},
+        {"detail": {"label": "must", "runs": ["необходимость: You must stop. · строгий вывод: He must be tired — «наверное, устал»."]}},
         {"detail": {"label": "have to", "runs": ["внешнее правило: I have to wear a uniform."]}},
         {"detail": {"label": "should", "runs": ["совет: You should rest."]}},
         {"detail": {"label": "may/might", "runs": ["возможность/разрешение: It might rain."]}}
@@ -647,7 +649,7 @@
       "title": "Пассив", "lead": "be (в нужном времени) + V3.",
       "blocks": [
         {"detail": {"label": "Времена", "runs": ["is built (сейчас) · was built (прошлое) · will be built (будущее) · has been built (perfect)."]}},
-        {"detail": {"label": "Кем/чем", "runs": ["…by the workers, if needed."]}}
+        {"detail": {"label": "Кем/чем", "runs": ["The house was built ", {"t": "by the workers", "b": true}, ". — рабочими (кем построили)."]}}
       ]
     },
     "gerund-infinitive": {
@@ -678,6 +680,7 @@
       "title": "Предлоги-ловушки", "lead": "Не переводить с русского — запоминать пару.",
       "blocks": [
         {"detail": {"label": "Частые", "runs": ["depend on · interested in · listen to · afraid of · good at · wait for · arrive in (город) / at (место) · apologize for."]}},
+        {"detail": {"label": "Примеры", "runs": ["I'm interested ", {"t": "in", "b": true}, " history. · Listen ", {"t": "to", "b": true}, " me. · I'm afraid ", {"t": "of", "b": true}, " dogs. · She's good ", {"t": "at", "b": true}, " math. · Wait ", {"t": "for", "b": true}, " me. · We arrived ", {"t": "in", "b": true}, " Berlin / ", {"t": "at", "b": true}, " the station. · He apologized ", {"t": "for", "b": true}, " the delay."]}},
         {"detail": {"label": "Ошибка №1", "runs": ["«зависит от» → depend ", {"t": "on", "b": true}, ", не from."]}}
       ]
     },
@@ -686,7 +689,8 @@
       "blocks": [
         {"detail": {"label": "Правила", "runs": ["+s · после -s/-sh/-ch/-x/-o часто +es (boxes, tomatoes) · согласная+y → ies (cities)."]}},
         {"detail": {"label": "Исключения", "runs": ["man–men · woman–women · child–children · foot–feet · tooth–teeth · mouse–mice · person–people."]}},
-        {"detail": {"label": "Не меняются", "runs": ["fish, sheep, aircraft."]}}
+        {"detail": {"label": "Не меняются", "runs": ["fish, sheep, aircraft."]}},
+        {"detail": {"label": "Только исчисляемые", "runs": ["Множественное число образуют исчисляемые: water, advice, information числа не имеют (см. Исчисляемое / нет)."]}}
       ]
     },
     "countable": {
@@ -710,6 +714,7 @@
       "title": "Степени сравнения", "lead": "Короче слово — суффикс, длиннее — more/most.",
       "blocks": [
         {"detail": {"label": "Короткие", "runs": ["cheap – cheaper – the cheapest."]}},
+        {"detail": {"label": "Орфография", "runs": ["удвоение согласной: big → bigger · -y → -ier: happy → happier · немое -e отпадает: nice → nicer."]}},
         {"detail": {"label": "Длинные", "runs": ["expensive – more expensive – the most expensive."]}},
         {"detail": {"label": "Исключения", "runs": ["good–better–best · bad–worse–worst · far–further–furthest."]}},
         {"detail": {"label": "Формула", "runs": ["…er ", {"t": "than", "b": true}, " · the …est / the most …"]}}
