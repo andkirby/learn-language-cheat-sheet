@@ -67,7 +67,9 @@ Check every content unit, including every table cell and hidden answer:
   counterexample to shortcuts or absolute wording. Keep necessary caveats
   visible wherever a standalone card would otherwise teach a false rule.
 - Examples are natural, demonstrate the stated rule and agree with the
-  Russian explanation. Translations preserve the relevant meaning.
+  Russian explanation. Translations preserve the relevant meaning. Every
+  example is decodable by the intended learner; recognition-level examples
+  carry a short gloss (comprehension access).
 - Formulas account for the constructions they claim to cover; cases,
   endings, spelling, person/number and tense are consistent throughout.
 - Language variety, register and exceptions are identified when relevant.

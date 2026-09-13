@@ -91,7 +91,11 @@ defined in the design system. German content adds these requirements:
   pairs; a Russian translation cannot demonstrate German morphology or
   syntax. Meaning/usage rules (Konjunktiv II use, um … zu vs damit,
   preposition choice) add a short Russian gloss carrying the deciding
-  difference, not a full translation. Declension fragments stay unglossed.
+  difference, not a full translation. Recognition-level constructions
+  (double infinitive, Perfekt Passiv) are a third class: the learner is
+  not expected to decode the example, so it always carries a short
+  gloss — comprehension access to the sentence the rule is about, not
+  the choice criterion. Declension fragments stay unglossed.
   A gloss that does not add the choice criterion is removed.
 - Dialogs add reasoning, contrast or exceptions without contradicting the
   card. New tappable explanations use the page's `DETAILS` object.

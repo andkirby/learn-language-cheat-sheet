@@ -86,6 +86,10 @@ reviewable topic rather than one row for an entire grammar domain.
 
 - What must the first-layer card contain: trigger, meaning, form, position,
   example or contrast?
+- Can the intended learner decode every example? Any example the learner
+  cannot be expected to decode — recognition-level constructions first of
+  all — always carries a short gloss: the gloss there is comprehension
+  access to the sentence the rule is about, not the choice criterion.
 - Which limits or counterexamples must remain visible on the card?
 - Which details belong in a dialog?
 - Which tables or formula diagrams are necessary?

@@ -94,8 +94,12 @@ defined in the design system. English content adds these requirements:
   translation cannot demonstrate English morphology or syntax. Meaning/usage
   rules (article choice, tense choice, mustn't vs don't have to) add a short
   Russian gloss carrying the deciding difference, not a full translation.
-  Word fragments stay unglossed. A gloss that does not add the choice
-  criterion is removed.
+  Recognition-level constructions are a third class: the learner is not
+  expected to decode the example, so it always carries a short gloss —
+  comprehension access to the sentence the rule is about, not the choice
+  criterion. No current English unit is recognition-level; apply this when
+  one enters the deck. Word fragments stay unglossed. A gloss that does
+  not add the choice criterion is removed.
 - A dangerous simplification includes its essential limit on the card. In
   particular, Present Perfect versus Past Simple must use meaning and discourse
   context; “is a time mentioned?” is not a sufficient decision rule.

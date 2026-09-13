@@ -95,6 +95,7 @@ language plan or close it with evidence here.
 | C-18 | `en-ru.json` practice `_note` topic IDs swapped: item 2 (saw/EN-06) is noted EN-04; item 3 (Does she like/EN-04) is noted EN-06 | Provenance metadata misleads future reviews; not rendered (generator ignores `_note`) | Swap the two `_note` IDs | Open (filed 2026-09-11 full pass) |
 | C-19 | DE learner-visible text defects @ `b75c890`: `ihrem` dialog title «Почему “ihрем”?» mixes Cyrillic р/е/м into the German word (deck + rendered page); `why-ein-endings` dialog «Видимо меняется только Maskulin» — «Видимо» reads as "apparently", intended "visibly" | Copying the title yields wrong characters; ambiguous wording weakens the Akk.-reading rule | Fix both strings in `de-ru.json` + regenerate | Open (filed 2026-09-11 full pass) |
 | C-20 | EN example/terminology nits @ `b75c890`: `the-article` dialog uses «сверхлатив» (deck elsewhere says «превосходная»); `passive-en` dialog «Кем/чем: …by the workers, if needed.» is a fragment, not an example; `modals-en` must example (*You must stop*) shows obligation only while its label also promises deduction | Inconsistent terminology; examples that don't demonstrate the stated meaning | Rewrite the three fragments in `en-ru.json` + regenerate | Open (filed 2026-09-11 full pass) |
+| C-21 | User-reported (2026-09-12): DE double-infinitive unit (DE-14) carries no translation in its card example or either dialog example block, while the unit is declared recognition-level («Достаточно узнавать») | The form notes («не gemusst», «haben поднимается») attach to sentences the learner cannot decode; the gloss policy's form/meaning axis missed decodability (the Passiv dialog, same class, is glossed) | Amend the gloss policy with the recognition-level class and gloss the three examples | Fixed 2026-09-12 (comprehension-access change, author review): policy amended in the guide + both plans + validation §3; card and both dialog blocks glossed |
 
 ## 2026-09-11 — Incremental change: page alignment with accepted plans
 
@@ -324,6 +325,39 @@ view/anchor routing, search/reveal/dialog probes — «dessen»→relative card,
 anchors, +3 new pure-German example containers, −3 containers that gained
 Cyrillic glosses); `--check` idempotent both decks (includes the new search
 gate); JS syntax clean; 390px no overflow; console clean.
+
+## 2026-09-12 — Incremental change: comprehension-access glosses
+
+Protocol §5 changed-unit record. Reviewer: ZCode (page-change author; author
+review only — full gates remain NOT RUN). Base: `50dd17a`, worktree clean.
+Trigger: user-reported comprehension failure on the live double-infinitive
+dialog (C-21) — recognition-level examples carried no translation.
+
+Change: the example-gloss policy gains a third class — recognition-level
+constructions and any example the intended learner cannot be expected to
+decode always carry a short gloss; there the gloss is comprehension access
+to the sentence the rule is about, not the choice criterion. The principle
+is recorded in [the SITE_PLAN guide](docs/SITE_PLAN_GUIDE.md) §6
+(cross-language owner), instantiated in both language plans, and added as
+a review check in [content validation](docs/CONTENT_VALIDATION.md) §3.
+No external reference consulted: the change translates existing sentences
+and adds no grammar.
+
+| Unit | Change | Coverage after change |
+| --- | --- | --- |
+| DE-14 card example (`#verbs`) | `Ich habe arbeiten müssen. — Я должен был работать. Не “gemusst”.` | Covered (author-reviewed) |
+| DE-14 `double-infinitive` dialog, «Форма» | `Ich habe lange arbeiten müssen. — Я долго должен был работать.` + existing Partizip-II note kept | Covered (author-reviewed) |
+| DE-14 `double-infinitive` dialog, «В придаточном» | `…, weil ich lange habe arbeiten müssen. — «…что мне долго пришлось работать»` + existing word-order note kept | Covered (author-reviewed) |
+
+EN sweep: every detail/example block in `en-ru.json` scanned
+(mechanical Cyrillic-free block list + author judgment) — all
+English-only blocks are A1–B1-decodable sentences or word-list fragments;
+no recognition-level unit exists, no change required.
+
+Verified: `--check` idempotent both decks (validator + search gate pass);
+rendered diff confined to the unit — card example and dialog body, three
+strings, nothing else (page 50854 → 50945 bytes). Gates unchanged: all
+four remain NOT RUN.
 
 ## Next full review record
 

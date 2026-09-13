@@ -354,7 +354,7 @@
           "blocks": [
             {"h": ["Perfekt с модальным: два инфинитива"]},
             {"p": ["Вместо Partizip II — ", {"t": "Infinitiv + Infinitiv", "b": true}, "."]},
-            {"example": ["Ich ", {"t": "habe arbeiten müssen", "b": true}, ". — не “gemusst”."]},
+            {"example": ["Ich ", {"t": "habe arbeiten müssen", "b": true}, ". — Я должен был работать. Не “gemusst”."]},
             {"tiny": ["Достаточно узнавать; активно — уровень выше."]},
             {"chips": [{"label": "Разбор", "detail": "double-infinitive"}]}
           ]
@@ -671,8 +671,8 @@
     "double-infinitive": {
       "title": "Два инфинитива", "lead": "Perfekt с модальным глаголом.",
       "blocks": [
-        {"detail": {"label": "Форма", "runs": ["haben + Infinitiv + Infinitiv: Ich habe lange ", {"t": "arbeiten müssen", "i": true}, ". Partizip II (gemusst) здесь не используется."]}},
-        {"detail": {"label": "В придаточном", "runs": ["…, weil ich lange ", {"t": "habe arbeiten müssen", "i": true}, " — haben поднимается перед парой инфинитивов."]}},
+        {"detail": {"label": "Форма", "runs": ["haben + Infinitiv + Infinitiv: Ich habe lange ", {"t": "arbeiten müssen", "i": true}, ". — Я долго должен был работать. Partizip II (gemusst) здесь не используется."]}},
+        {"detail": {"label": "В придаточном", "runs": ["…, weil ich lange ", {"t": "habe arbeiten müssen", "i": true}, ". — «…что мне долго пришлось работать»; haben поднимается перед парой инфинитивов."]}},
         {"detail": {"label": "Уровень", "runs": ["Достаточно узнавать конструкцию; активно она понадобится позже."]}}
       ]
     },
