@@ -30,6 +30,7 @@ tools/page_template.html page skeleton (@@TOKENS@@) loaded by deck_render
 docs/               authoring, validation and add-language procedures
 research/           external reference research notes (not content source)
 CONTENT_AUDIT.md    content evidence, open questions and verdicts
+ROADMAP.md          candidate topics + standing scope decision rules
 UI_AUDIT.md         UI review evidence and open findings
 DEBT.md             deferred work with owners and triggers
 CHANGELOG.md        user-visible changes, newest first
@@ -50,6 +51,7 @@ update both when adding a language or audience.
 | Accepted language scope, exclusions and topic inventory | `de/ru/SITE_PLAN.md` / `en/ru/SITE_PLAN.md` |
 | How content is validated | `docs/CONTENT_VALIDATION.md` |
 | Open content questions, review evidence and verdicts | `CONTENT_AUDIT.md` |
+| What could be added next; standing scope rules | `ROADMAP.md` |
 | External reference research (DE/EN grammar sites, tense-usage notes) | `research/` |
 | Design tokens, components, a11y rules | `.design/DESIGN_SYSTEM.md` |
 | Component specimens and class roles | `style-guide.html` |
