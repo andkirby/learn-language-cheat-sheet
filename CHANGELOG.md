@@ -6,6 +6,11 @@ Append the entry in the same commit that ships the change.
 
 ## 2026-09-13
 
+- **New (German)**: modal-particles unit (DE-17, plan + deck) — doch, mal,
+  denn, ja, schon, gar, wohl with Russian decision-equivalents (ведь, же,
+  ну…), a contrast dialog with placement rule, and the denn
+  particle-vs-conjunction warning. Search finds it by particle or by Russian
+  hint word. `CACHE_VERSION` v15.
 - **Fix (content)**: the 2026-09-11 content-review findings C-13…C-20 are
   closed. English: questions now state that *be* and modals form questions
   without *do* (EN-04); comparative spellings (bigger/happier/nicer) are

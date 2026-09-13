@@ -58,7 +58,8 @@ in `CONTENT_AUDIT.md`, not silent exclusions or plan commitments.
 4. How does the verb bracket change with modal, separable and perfect forms?
 5. What changes in subordinate clauses?
 6. Which prepositions govern Akkusativ, Dativ or Genitiv?
-7. Can I see one short example and open a deeper explanation when needed?
+7. Which particle carries the tone — doch, mal, denn, ja, schon, gar, wohl?
+8. Can I see one short example and open a deeper explanation when needed?
 
 ## Information architecture
 
@@ -68,7 +69,7 @@ The page is a lookup deck with five view destinations:
 | --- | --- | --- |
 | Падежи | `#cases` | DE-01, DE-02 (`#preps`) |
 | Формы | `#forms` | DE-03–05, DE-15–16 (`#extras`) |
-| Глагол и порядок | `#order` | DE-06–07, DE-09, DE-12–14 (`#verbs`) |
+| Глагол и порядок | `#order` | DE-06–07, DE-09, DE-12–14 (`#verbs`), DE-17 |
 | Придаточные | `#clauses` | DE-08, DE-10–11 |
 | Повтор | `#practice` | Practice contract below |
 
@@ -132,6 +133,7 @@ evidence in the content audit.
 | DE-14 | Why can a modal perfect contain two infinitives? | `#verbs` | Recognition note with one parsed example |
 | DE-15 | When does the noun change? Dativ plural, masculine/neuter Genitiv and N-declension | `#extras` | Endings, limits and examples |
 | DE-16 | Which adjective ending follows der-words and ein-words? | `#extras` | Compact overview and examples; no claim of exhaustive adjective declension |
+| DE-17 | Which particle carries the tone? doch, mal, denn, ja, schon, gar, wohl | `#order` | High-frequency set with Russian decision-equivalents and placement after the verb; bounded set — no particle lexicon (DE-X02) |
 
 ## Acceptance and maintenance
 

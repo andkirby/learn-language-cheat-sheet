@@ -296,6 +296,24 @@
             {"example": ["Ich fahre ", {"t": "heute", "b": true}, " ", {"t": "wegen der Arbeit", "b": true}, " ", {"t": "mit dem Zug", "b": true}, " ", {"t": "nach Berlin", "b": true}, "."]},
             {"chips": [{"label": "Это жёсткое правило?", "detail": "tekamolo"}]}
           ]
+        },
+        {
+          "search": "modalpartikeln doch mal denn ja schon gar wohl частицы ведь же ну разве оттенок",
+          "blocks": [
+            {"h": ["Частицы: doch, mal, denn…"]},
+            {"p": ["Не переводятся дословно — задают ", {"t": "оттенок", "b": true}, ". Учить парами с русским:"]},
+            {"chips": [
+              {"label": ["doch — ", {"t": "ведь / же", "b": true}], "detail": "particles", "neutral": true},
+              {"label": ["mal — ", {"t": "ну, -ка", "b": true}], "detail": "particles", "neutral": true},
+              {"label": ["denn — ", {"t": "же / разве", "b": true}], "detail": "particles", "neutral": true},
+              {"label": ["ja — ", {"t": "ведь", "b": true}], "detail": "particles", "neutral": true},
+              {"label": ["schon — ", {"t": "уж", "b": true}], "detail": "particles", "neutral": true},
+              {"label": ["gar — ", {"t": "вообще", "b": true}], "detail": "particles", "neutral": true},
+              {"label": ["wohl — ", {"t": "наверное", "b": true}], "detail": "particles", "neutral": true}
+            ]},
+            {"example": ["Komm ", {"t": "mal", "b": true}, " her! · Das ist ", {"t": "ja", "b": true}, " klar! · Wie heißt ", {"t": "denn", "b": true}, " du?"]},
+            {"chips": [{"label": "Разбор и позиция", "detail": "particles"}]}
+          ]
         }
       ]
     },
@@ -628,6 +646,18 @@
       "blocks": [
         {"detail": {"label": "База", "runs": ["Temporal (когда?) → Kausal (почему?) → Modal (как?) → Lokal (где?): ", {"t": "Ich fahre heute wegen des Wetters mit dem Bus zur Arbeit", "i": true}, "."]}},
         {"detail": {"label": "Почему не закон", "runs": ["Порядок может меняться из-за акцента, местоимений, определённости и контекста. Используй TeKaMoLo как безопасный дефолт."]}}
+      ]
+    },
+    "particles": {
+      "title": "Частицы: разбор", "lead": "Позиция — середина предложения, обычно сразу после глагола или подлежащего.",
+      "blocks": [
+        {"detail": {"label": "doch", "runs": ["Es ist ", {"t": "doch", "i": true}, " spät. — «ведь уже поздно»: ссылаешься на то, что собеседник знает или сам говорит."]}},
+        {"detail": {"label": "ja", "runs": ["Das ist ", {"t": "ja", "i": true}, " klar. — «это ведь ясно»: очевидно для обоих, доказывать не нужно."]}},
+        {"detail": {"label": "denn", "runs": ["Только в вопросах: Wie heißt ", {"t": "denn", "i": true}, " du? — «а как же тебя зовут»: живой интерес, не «зачем». Не путай с союзом denn — тот тоже есть, см. Придаточные."]}},
+        {"detail": {"label": "mal", "runs": ["Komm ", {"t": "mal", "i": true}, " her! — смягчает просьбу: «ну подойди»."]}},
+        {"detail": {"label": "schon / gar", "runs": ["Das stimmt ", {"t": "schon", "i": true}, ". — «ладно, уж правда» (уступка) · Das ist ", {"t": "gar", "i": true}, " nicht schwer. — «вообще не сложно» (усиление, чаще всего с nicht)"]}},
+        {"detail": {"label": "wohl", "runs": ["Er kommt ", {"t": "wohl", "i": true}, " später. — «наверное»: осторожное предположение, без уверенности."]}},
+        {"detail": {"label": "Позиция", "runs": ["В середине предложения: Ich habe ", {"t": "doch", "i": true}, " nichts gesagt. — после глагола/подлежащего, перед остальным."]}}
       ]
     },
     "modal": {

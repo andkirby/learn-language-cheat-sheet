@@ -64,6 +64,7 @@ language plan or close it with evidence here.
 | DE-G06 | German | Verb-governed cases and reflexive verbs | Required depth and placement | Open — reconfirmed 2026-09-11 @ `b75c890`: helfen+Dativ and six geben-class verbs appear in dialogs/practice; no systematic unit; reflexives absent |
 | DE-G07 | German | der vs ein vs kein choice (known/specific vs new, professions without article, kein as noun negation) | Retrieval question 2 arguably promises usage choice, not only form; needs an accepted depth and placement decision | Open (2026-09-11 page review, example-sweep session) |
 | DE-G08 | German | seit vs vor («живу здесь два года» vs «переехал два года назад») | Textbook Russian-interference time-preposition trap; include/defer decision needed | Open (2026-09-11 page review, example-sweep session) |
+| DE-G09 | German | Modal particles (Modalpartikeln): doch, mal, denn, ja, schon, gar, wohl (+ eben/halt/etwa) | User probe 2026-09-13: absent from the deck (denn appears only as coordinator, schon only as adverb in the Perfekt example); Russian encodes the same nuances (же/ведь/ну/уж/разве), so the transfer gap is real at A2–B1 — but a curated high-frequency set must not drift into the excluded particle-dictionary territory (DE-X02) | **Decided 2026-09-13: Required** → promoted to the plan as DE-17 (bounded set, decision-equivalents only) and implemented the same day — see the DE-17 record below |
 | EN-G01 | English | be questions/negatives and there is/are | Required depth and placement | Open — reconfirmed 2026-09-11 @ `b75c890`: absent; the EN-04 "be/modal distinction" half is required *now* by the plan and filed as C-14 |
 | EN-G02 | English | Negation beyond modal prohibitions | Required depth and placement | Open — reconfirmed 2026-09-11 @ `b75c890`: only scattered basics (doesn't/don't + any, never/rarely) |
 | EN-G03 | English | Past Continuous and narrative tense contrasts | Include, defer or exclude | Open — reconfirmed 2026-09-11 @ `b75c890`: absent |
@@ -401,6 +402,42 @@ unmapped content was added). Baseline remains **FAIL** (DE-G01–06, EN-G01–08
 undecided). Accuracy and Teaching remain **NOT RUN** pending the independent
 reference-grounded pass (D-01). EN-G08 (Present Continuous + always) still
 requires an owner decision and is not promoted to the plan.
+
+## 2026-09-13 — Scope addition: DE-17 modal particles (DE-G09 decided)
+
+Protocol §5 changed-unit record. Author: ZCode session, with the user as
+scope owner (user probe «What about german: gar, schon, etc.?» → Required
+decision accepted in-session). Plan first per AGENTS rule 3: retrieval
+question 7 added, `#order` IA row and DE-17 inventory row added to
+`de/ru/SITE_PLAN.md` (bounded set; explicitly no particle lexicon, DE-X02).
+
+Changed units:
+
+| Unit | Change |
+| --- | --- |
+| DE `order` section, new particles card (DE-17) | 7 chips doch/mal/denn/ja/schon/gar/wohl with Russian decision-equivalents + three-particle example; `data-search` includes Russian intent words and the term *Modalpartikeln* (registered in `site.json` `grammar_terms[de]`) |
+| DE `particles` dialog | Per-particle contrast with RU glosses; denn question-only + coordinator disambiguation (cross-ref to the coordinators card); Mittelfeld placement rule with *Ich habe doch nichts gesagt* |
+| `content/decks/site.json` | `grammar_terms[de]` += `modalpartikeln` (registry-based exemption, not generator code) |
+| `sw.js` | CACHE_VERSION v14 → v15 |
+
+Unit-quality self-review (author level; the formal Accuracy gate stays NOT
+RUN, D-01): particle functions checked against contemporary standard usage —
+doch (reference to the known, «ведь/же»), ja (shared knowledge, «ведь»), denn
+(question-only particle, distinct from the coordinator taught on the
+coordinators card), mal (request softener), schon (concession), gar
+(intensifier, stated limit «чаще всего с nicht»), wohl (assumption). Russian
+glosses are decision-equivalents per the gloss policy's meaning-rule class.
+Practice untouched (three-item contract, DE-X05); DE-17 validation runs
+through audit probes.
+
+Verified: JSON valid; both `--check` gates exit 0; mixed-script scan clean;
+runtime smoke — search «doch» surfaces the card, `particles` dialog opens
+with all blocks, `lang="de"` marking applies, no console errors.
+
+Gate impact: Coverage stays **PASS** for German with the inventory now
+17/17 (DE-17 added and covered in the same change; no unmapped content).
+Baseline still **FAIL** (DE-G01–08, EN-G01–08 open). Accuracy/Teaching
+NOT RUN. DE-G09 is decided and no longer open.
 
 ## Next full review record
 
