@@ -6,6 +6,13 @@ Append the entry in the same commit that ships the change.
 
 ## 2026-09-13
 
+- **New (both languages)**: linking-words units (DE-18, EN-18) — German
+  deshalb/trotzdem/allerdings/außerdem/währenddessen (position 1 + verb,
+  trotzdem-vs-obwohl boundary) and English but/however, so/therefore,
+  meanwhile, nevertheless, although/despite (despite + noun vs although +
+  clause trap). Plus the English flavour-words unit (EN-17): just,
+  actually (≠ «актуально»), still, even, sentence-final though. Search
+  finds each card by word or Russian hint. `CACHE_VERSION` v16.
 - **New (German)**: modal-particles unit (DE-17, plan + deck) — doch, mal,
   denn, ja, schon, gar, wohl with Russian decision-equivalents (ведь, же,
   ну…), a contrast dialog with placement rule, and the denn

@@ -59,7 +59,8 @@ in `CONTENT_AUDIT.md`, not silent exclusions or plan commitments.
 5. What changes in subordinate clauses?
 6. Which prepositions govern Akkusativ, Dativ or Genitiv?
 7. Which particle carries the tone — doch, mal, denn, ja, schon, gar, wohl?
-8. Can I see one short example and open a deeper explanation when needed?
+8. Which linking adverb connects the clauses — deshalb, trotzdem, allerdings, außerdem, währenddessen?
+9. Can I see one short example and open a deeper explanation when needed?
 
 ## Information architecture
 
@@ -70,7 +71,7 @@ The page is a lookup deck with five view destinations:
 | Падежи | `#cases` | DE-01, DE-02 (`#preps`) |
 | Формы | `#forms` | DE-03–05, DE-15–16 (`#extras`) |
 | Глагол и порядок | `#order` | DE-06–07, DE-09, DE-12–14 (`#verbs`), DE-17 |
-| Придаточные | `#clauses` | DE-08, DE-10–11 |
+| Придаточные | `#clauses` | DE-08, DE-10–11, DE-18 |
 | Повтор | `#practice` | Practice contract below |
 
 `#start`, `#preps`, `#extras`, `#verbs` and `#install-help` are stable legacy
@@ -134,6 +135,7 @@ evidence in the content audit.
 | DE-15 | When does the noun change? Dativ plural, masculine/neuter Genitiv and N-declension | `#extras` | Endings, limits and examples |
 | DE-16 | Which adjective ending follows der-words and ein-words? | `#extras` | Compact overview and examples; no claim of exhaustive adjective declension |
 | DE-17 | Which particle carries the tone? doch, mal, denn, ja, schon, gar, wohl | `#order` | High-frequency set with Russian decision-equivalents and placement after the verb; bounded set — no particle lexicon (DE-X02) |
+| DE-18 | Which linking adverb connects the clauses? deshalb, trotzdem, allerdings, außerdem, währenddessen | `#clauses` | Position 1 + verb-second rule, Russian equivalents, trotzdem-vs-obwohl boundary; bounded set (DE-X02) |
 
 ## Acceptance and maintenance
 

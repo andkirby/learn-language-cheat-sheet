@@ -456,6 +456,22 @@
                 {"tiny": ["Genitiv: der Mann, ", {"t": "dessen", "b": true}, " Auto… (чей; ж.р./мн.ч. — ", {"t": "deren", "b": true}, ")"]},
             {"chips": [{"label": "Как выбрать der/den/dem?", "detail": "relative"}]}
               ]
+            },
+            {
+              "search": "deshalb trotzdem allerdings außerdem währenddessen связки поэтому тем не менее впрочем кроме того тем временем",
+              "blocks": [
+                {"h": ["Связующие наречия"]},
+                {"p": ["Не союзы: занимают ", {"t": "позицию 1", "b": true}, ", дальше глагол (см. V2):"]},
+                {"chips": [
+                  {"label": ["deshalb — ", {"t": "поэтому", "b": true}], "detail": "linking-adverbs", "neutral": true},
+                  {"label": ["trotzdem — ", {"t": "тем не менее", "b": true}], "detail": "linking-adverbs", "neutral": true},
+                  {"label": ["allerdings — ", {"t": "впрочем / однако", "b": true}], "detail": "linking-adverbs", "neutral": true},
+                  {"label": ["außerdem — ", {"t": "кроме того", "b": true}], "detail": "linking-adverbs", "neutral": true},
+                  {"label": ["währenddessen — ", {"t": "тем временем", "b": true}], "detail": "linking-adverbs", "neutral": true}
+                ]},
+                {"example": ["Es regnete. ", {"t": "Deshalb", "b": true}, " blieben wir zu Hause. · ", {"t": "Trotzdem", "b": true}, " ging er spazieren."]},
+                {"chips": [{"label": "Чем отличаются от союзов?", "detail": "linking-adverbs"}]}
+              ]
             }
           ]
         }
@@ -531,6 +547,17 @@
         {"detail": {"label": "Схема", "runs": ["Найди триггер — падежный вопрос, предлог, союз или глагольную конструкцию, — потом смотри нужную форму и позицию глагола."]}},
         {"detail": {"label": "Поиск", "runs": ["Ищи сразу: ", {"t": "wem", "i": true}, ", ", {"t": "weil", "i": true}, ", ", {"t": "Perfekt", "i": true}, " — или по-русски. Поиск проверяет все разделы сразу."]}},
         {"detail": {"label": "Навигация", "runs": ["Пять разделов внизу; Повтор — короткая проверка главных ловушек."]}}
+      ]
+    },
+    "linking-adverbs": {
+      "title": "Связующие наречия: разбор", "lead": "Позиция 1, глагол сразу после: Deshalb blieben wir…",
+      "blocks": [
+        {"detail": {"label": "deshalb / deswegen", "runs": ["Ich war müde, ", {"t": "deshalb", "i": true}, " schlief ich sofort. — «поэтому»: причина — в первом предложении."]}},
+        {"detail": {"label": "trotzdem vs obwohl", "runs": ["Es regnete. ", {"t": "Trotzdem", "i": true}, " ging er raus. — наречие, позиция 1. · …, ", {"t": "obwohl", "i": true}, " es regnete. — союз, глагол в конец. «Trotzdem, dass…» — разговорное; в норме obwohl."]}},
+        {"detail": {"label": "allerdings", "runs": ["Das Essen war gut. ", {"t": "Allerdings", "i": true}, " war es teuer. — «впрочем/однако»: мягкий контраст."]}},
+        {"detail": {"label": "außerdem", "runs": ["Er ist müde. ", {"t": "Außerdem", "i": true}, " hat er Kopfschmerzen. — «кроме того»: добавление."]}},
+        {"detail": {"label": "währenddessen", "runs": ["Ich koche. ", {"t": "Währenddessen", "i": true}, " sieht er fern. — «тем временем»: одновременность."]}},
+        {"detail": {"label": "Позиция", "runs": ["Позиция 1 — как Heute/Dann в V2. Сравни с союзом denn: после него обычный порядок слов, см. Coordinators."]}}
       ]
     },
     "nominativ": {

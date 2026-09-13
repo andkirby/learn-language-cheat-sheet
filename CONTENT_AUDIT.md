@@ -65,6 +65,9 @@ language plan or close it with evidence here.
 | DE-G07 | German | der vs ein vs kein choice (known/specific vs new, professions without article, kein as noun negation) | Retrieval question 2 arguably promises usage choice, not only form; needs an accepted depth and placement decision | Open (2026-09-11 page review, example-sweep session) |
 | DE-G08 | German | seit vs vor («живу здесь два года» vs «переехал два года назад») | Textbook Russian-interference time-preposition trap; include/defer decision needed | Open (2026-09-11 page review, example-sweep session) |
 | DE-G09 | German | Modal particles (Modalpartikeln): doch, mal, denn, ja, schon, gar, wohl (+ eben/halt/etwa) | User probe 2026-09-13: absent from the deck (denn appears only as coordinator, schon only as adverb in the Perfekt example); Russian encodes the same nuances (же/ведь/ну/уж/разве), so the transfer gap is real at A2–B1 — but a curated high-frequency set must not drift into the excluded particle-dictionary territory (DE-X02) | **Decided 2026-09-13: Required** → promoted to the plan as DE-17 (bounded set, decision-equivalents only) and implemented the same day — see the DE-17 record below |
+| DE-G10 | German | Linking adverbs: deshalb, trotzdem, allerdings, außerdem, währenddessen | User request 2026-09-13 (meanwhile/nevertheless question); closed class, function-level meanings are stable — not phrasebook territory within a bounded set (DE-X02) | **Decided 2026-09-13: Required** → promoted as DE-18, implemented same day |
+| EN-G09 | English | Flavour words: just, actually, still, even, though | User request 2026-09-13 (EN mirror of DE-17); includes the *actually* ≠ «актуально» false friend | **Decided 2026-09-13: Required** → promoted as EN-17, implemented same day |
+| EN-G10 | English | Linking connectors: but/however, so/therefore, meanwhile, nevertheless, although/despite | User request 2026-09-13 (meanwhile/nevertheless question); function-level meanings are stable, not too contextual for a lookup card | **Decided 2026-09-13: Required** → promoted as EN-18, implemented same day |
 | EN-G01 | English | be questions/negatives and there is/are | Required depth and placement | Open — reconfirmed 2026-09-11 @ `b75c890`: absent; the EN-04 "be/modal distinction" half is required *now* by the plan and filed as C-14 |
 | EN-G02 | English | Negation beyond modal prohibitions | Required depth and placement | Open — reconfirmed 2026-09-11 @ `b75c890`: only scattered basics (doesn't/don't + any, never/rarely) |
 | EN-G03 | English | Past Continuous and narrative tense contrasts | Include, defer or exclude | Open — reconfirmed 2026-09-11 @ `b75c890`: absent |
@@ -438,6 +441,46 @@ Gate impact: Coverage stays **PASS** for German with the inventory now
 17/17 (DE-17 added and covered in the same change; no unmapped content).
 Baseline still **FAIL** (DE-G01–08, EN-G01–08 open). Accuracy/Teaching
 NOT RUN. DE-G09 is decided and no longer open.
+
+## 2026-09-13 — Scope additions: EN-17, EN-18, DE-18 (linking words, flavour words)
+
+Protocol §5 changed-unit record. Author: ZCode session; scope owner: user
+(requested the EN mirror of DE-17 and asked whether meanwhile/nevertheless-type
+connectors fit — assessed as yes at function level, bounded sets). Plan first:
+retrieval question 7 + `#order` IA row + EN-17/EN-18 rows in
+`en/ru/SITE_PLAN.md`; retrieval question 8 + `#clauses` IA row + DE-18 row in
+`de/ru/SITE_PLAN.md` (all bounded, no connector lexicon, DE-X02/EN-X02).
+
+Changed units:
+
+| Unit | Change |
+| --- | --- |
+| EN `order` section, new flavour-words card (EN-17) | just/actually/still/even/though with Russian decision-equivalents; examples *I like it, though* / *Even a child can do it* |
+| EN `flavor-words` dialog | just (только что vs просто, cross-ref Perfect), actually false friend (≠ «актуально»), still-vs-yet, even, sentence-final though |
+| EN `order` section, new linking-words card (EN-18) | but/however, so/therefore, meanwhile, nevertheless, although/though, despite with Russian equivalents |
+| EN `linking-words` dialog | however register + comma rule; meanwhile; nevertheless; **despite + noun vs although + clause** trap |
+| DE `clauses` section, new linking-adverbs card (DE-18) | deshalb/trotzdem/allerdings/außerdem/währenddessen with Russian equivalents; position-1 + V2 rule |
+| DE `linking-adverbs` dialog | deshalb example; **trotzdem (adverb, position 1) vs obwohl (conjunction, verb-end)** + «trotzdem, dass» colloquial note; V2/coordinators cross-refs |
+| `sw.js` | CACHE_VERSION v15 → v16 |
+
+Unit-quality self-review (author level; formal Accuracy gate stays NOT RUN,
+D-01): connector functions are closed-class and stable; register labels
+(higher-formal however/therefore/nevertheless) present; the two classic
+RU-interference traps (despite+clause, trotzdem dass) carry visible limits;
+DE position-1 behaviour ties into the existing V2/inversion and denn
+coordinator cards without contradiction. Practice untouched (three-item
+contracts, X05).
+
+Verified: JSON valid; both `--check` gates exit 0 (all new data-search tokens
+visible on their cards — validator enforces); mixed-script scan clean;
+runtime smoke — EN search «meanwhile»/«actually» surface the new cards,
+DE search «währenddessen» surfaces the card; all three dialogs open with
+expected content; no console errors.
+
+Gate impact: Coverage stays **PASS** — DE 18/18, EN 18/18 required topics
+(inventories extended and covered in the same change; no unmapped content).
+Baseline still **FAIL** (remaining open scope questions). Accuracy/Teaching
+NOT RUN. DE-G10, EN-G09, EN-G10 decided and closed.
 
 ## Next full review record
 

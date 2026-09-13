@@ -198,6 +198,39 @@
             ]},
             {"tiny": ["В русском вопрос задаётся интонацией — в английском нужен вспомогательный глагол."]}
           ]
+        },
+        {
+          "search": "just actually still even though оттенки вообще-то всё ещё даже впрочем правда на самом деле просто",
+          "blocks": [
+            {"h": ["Слова-оттенки: just, actually…"]},
+            {"p": ["Один слог меняет тон фразы. Русские соответствия:"]},
+            {"chips": [
+              {"label": ["just — ", {"t": "просто / как раз", "b": true}], "detail": "flavor-words", "neutral": true},
+              {"label": ["actually — ", {"t": "вообще-то", "b": true}], "detail": "flavor-words", "neutral": true},
+              {"label": ["still — ", {"t": "всё ещё", "b": true}], "detail": "flavor-words", "neutral": true},
+              {"label": ["even — ", {"t": "даже", "b": true}], "detail": "flavor-words", "neutral": true},
+              {"label": ["though — ", {"t": "впрочем", "b": true}], "detail": "flavor-words", "neutral": true}
+            ]},
+            {"example": ["It's expensive. I like it, ", {"t": "though", "b": true}, ". · ", {"t": "Even", "b": true}, " a child can do it."]},
+            {"chips": [{"label": "Разбор и ловушки", "detail": "flavor-words"}]}
+          ]
+        },
+        {
+          "search": "however therefore meanwhile nevertheless although despite but связки однако тем не менее тем временем несмотря поэтому",
+          "blocks": [
+            {"h": ["Связки: however, so, although…"]},
+            {"p": ["Соединяют предложения — контраст, причина, время, уступка:"]},
+            {"chips": [
+              {"label": ["but / however — ", {"t": "но / однако", "b": true}], "detail": "linking-words", "neutral": true},
+              {"label": ["so / therefore — ", {"t": "поэтому", "b": true}], "detail": "linking-words", "neutral": true},
+              {"label": ["meanwhile — ", {"t": "тем временем", "b": true}], "detail": "linking-words", "neutral": true},
+              {"label": ["nevertheless — ", {"t": "тем не менее", "b": true}], "detail": "linking-words", "neutral": true},
+              {"label": ["although / though — ", {"t": "хотя", "b": true}], "detail": "linking-words", "neutral": true},
+              {"label": ["despite — ", {"t": "несмотря на", "b": true}], "detail": "linking-words", "neutral": true}
+            ]},
+            {"example": ["It was raining. ", {"t": "However", "b": true}, ", we went out. · ", {"t": "Although", "b": true}, " it rained, we went out."]},
+            {"chips": [{"label": "despite или although?", "detail": "linking-words"}]}
+          ]
         }
       ]
     },
@@ -510,6 +543,26 @@
         {"detail": {"label": "Схема", "runs": ["Найди маркер — сигнальное слово, артикль, союз или модальный глагол, — потом смотри нужную форму и порядок слов."]}},
         {"detail": {"label": "Поиск", "runs": ["Ищи сразу: ", {"t": "present", "i": true}, ", ", {"t": "the", "i": true}, ", ", {"t": "must", "i": true}, " — или по-русски. Поиск проверяет все разделы сразу."]}},
         {"detail": {"label": "Навигация", "runs": ["Пять разделов внизу; Повтор — в подвале страницы."]}}
+      ]
+    },
+    "flavor-words": {
+      "title": "Слова-оттенки: разбор", "lead": "Позиция — перед смысловым глаголом, после be (как наречия частоты).",
+      "blocks": [
+        {"detail": {"label": "just", "runs": ["I've ", {"t": "just", "i": true}, " eaten. — «только что» (см. Present Perfect) · Just kidding! — «просто шучу»."]}},
+        {"detail": {"label": "actually", "runs": [{"t": "Actually", "i": true}, ", I don't know. — «вообще-то / на самом деле». Не «актуально»! Актуальный = relevant."]}},
+        {"detail": {"label": "still", "runs": ["I ", {"t": "still", "i": true}, " live here. — «всё ещё»: продолжается до сих пор. В вопросах/отрицаниях часто yet (см. Perfect)."]}},
+        {"detail": {"label": "even", "runs": [{"t": "Even", "i": true}, " a child can do it. — «даже»: усиление перед тем словом, которое удивляет."]}},
+        {"detail": {"label": "though", "runs": ["It's expensive. I like it, ", {"t": "though", "i": true}, ". — «впрочем/правда» в конце фразы. В начале — союз: Though it's expensive… (= хотя)."]}}
+      ]
+    },
+    "linking-words": {
+      "title": "Связки: разбор", "lead": "however, therefore, meanwhile начинают новое предложение — после них запятая.",
+      "blocks": [
+        {"detail": {"label": "but / however", "runs": ["It was raining. ", {"t": "However", "i": true}, ", we went out. — то же «но», только формальнее и отдельным предложением."]}},
+        {"detail": {"label": "so / therefore", "runs": ["I was tired, ", {"t": "so", "i": true}, " I slept. — «поэтому». ", {"t": "Therefore", "i": true}, " — то же, формальнее."]}},
+        {"detail": {"label": "meanwhile", "runs": ["I cooked. ", {"t": "Meanwhile", "i": true}, ", he watched TV. — «тем временем»: два события одновременно."]}},
+        {"detail": {"label": "nevertheless", "runs": ["The task was hard. ", {"t": "Nevertheless", "i": true}, ", she finished it. — «тем не менее»: уступка."]}},
+        {"detail": {"label": "despite vs although", "runs": [{"t": "Despite", "i": true}, " the rain ✓ · ", {"t": "Despite it was raining", "s": true}, " ✗ → ", {"t": "Although it was raining", "i": true}, " ✓. Despite + существительное/-ing; although + подлежащее и глагол."]}}
       ]
     },
     "a-an": {

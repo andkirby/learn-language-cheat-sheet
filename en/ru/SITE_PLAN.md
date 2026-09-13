@@ -57,7 +57,8 @@ in `CONTENT_AUDIT.md`, not silent exclusions or plan commitments.
 4. Should I use Present Perfect or Past Simple?
 5. Which time, place or dependent preposition applies?
 6. Which conditional pattern expresses this meaning?
-7. Can I see one short example and open a deeper explanation when needed?
+7. Which connector or flavour word fits the tone and link — but/however, so/therefore, although/despite, just, actually, still, even, though?
+8. Can I see one short example and open a deeper explanation when needed?
 
 Signal words support a tense decision; they never replace meaning and context.
 
@@ -70,7 +71,7 @@ footer-linked practice view:
 | --- | --- | --- |
 | Артикли и слова | `#articles` | EN-01–02, EN-13–15 (`#pronouns`, `#nouns`) |
 | Времена | `#tenses` | EN-05–07 |
-| Порядок | `#order` | EN-03–04 |
+| Порядок | `#order` | EN-03–04, EN-17–18 |
 | Глаголы | `#verbs` | EN-08–10, EN-16 (`#conditionals`) |
 | Предлоги | `#preps` | EN-11–12 |
 | Повтор | `#practice` | Practice contract below; footer link only |
@@ -138,6 +139,8 @@ evidence in the content audit.
 | EN-14 | Is a noun countable, and which quantity word applies? | `#nouns` | much/many/few/little and some/any with Russian-interference traps |
 | EN-15 | How are comparative and superlative forms built? | `#nouns` | Core patterns, spelling limits and high-frequency irregulars |
 | EN-16 | Which conditional expresses a fact, real future, unreal present or unreal past? | `#conditionals` | Types 0–2 core; Type 3 recognition; meaning and form for every shown type |
+| EN-17 | Which flavour word carries the tone? just, actually, still, even, though | `#order` | High-frequency set with Russian decision-equivalents; the *actually* ≠ «актуально» false friend named; bounded set (EN-X02) |
+| EN-18 | Which connector links the sentences? but/however, so/therefore, meanwhile, nevertheless, although/despite | `#order` | Core connectors with Russian equivalents; *despite* + noun vs *although* + clause rule; bounded set (EN-X02) |
 
 ## Acceptance and maintenance
 
