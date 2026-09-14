@@ -70,8 +70,8 @@ footer-linked practice view:
 | View | Stable anchor | Required topics |
 | --- | --- | --- |
 | Артикли и слова | `#articles` | EN-01–02, EN-13–15 (`#pronouns`, `#nouns`) |
-| Времена | `#tenses` | EN-05–07 |
-| Порядок | `#order` | EN-03–04, EN-17–18 |
+| Времена | `#tenses` | EN-05–07, EN-20 |
+| Порядок | `#order` | EN-03–04, EN-17–19 |
 | Глаголы | `#verbs` | EN-08–10, EN-16 (`#conditionals`) |
 | Предлоги | `#preps` | EN-11–12 |
 | Повтор | `#practice` | Practice contract below; footer link only |
@@ -127,7 +127,7 @@ evidence in the content audit.
 | EN-02 | Which pronoun? Subject, object, dependent/independent possessive and reflexive forms | `#pronouns` | Complete listed paradigm plus usage examples |
 | EN-03 | How are statements ordered, including frequency adverbs? | `#order` | Core SVO default, be placement and limitations with examples |
 | EN-04 | How are questions formed? Do/Does/Did, W-questions and subject who | `#order` | Core formulas, be/modal distinction and subject-question exception |
-| EN-05 | Present Simple or Present Continuous? | `#tenses` | Meaning/use, affirmative form and contrasting examples; signal-word limits |
+| EN-05 | Present Simple or Present Continuous? | `#tenses` | Meaning/use, affirmative form and contrasting examples; signal-word limits; PC with *always* = irritation, not "now" |
 | EN-06 | Past Simple or Present Perfect? | `#tenses` | Meaning/use, form and contextual contrast; reject the single-keyword shortcut |
 | EN-07 | will, going to or scheduled present? | `#tenses` | Usage contrast, forms and examples |
 | EN-08 | How are modals and have to used? | `#verbs` | Forms, high-frequency meanings and mustn't versus don't have to |
@@ -141,6 +141,8 @@ evidence in the content audit.
 | EN-16 | Which conditional expresses a fact, real future, unreal present or unreal past? | `#conditionals` | Types 0–2 core; Type 3 recognition; meaning and form for every shown type |
 | EN-17 | Which flavour word carries the tone? just, actually, still, even, though | `#order` | High-frequency set with Russian decision-equivalents; the *actually* ≠ «актуально» false friend named; bounded set (EN-X02) |
 | EN-18 | Which connector links the sentences? but/however, so/therefore, meanwhile, nevertheless, although/despite | `#order` | Core connectors with Russian equivalents; *despite* + noun vs *although* + clause rule; bounded set (EN-X02) |
+| EN-19 | there is or there are? | `#order` | is/are choice, negatives and questions without do (be, not do-support); There's vs It's; was/were |
+| EN-20 | Past Continuous — when? | `#tenses` | was/were + V-ing as background vs Past Simple event; parallel actions; Russian-aspect mapping |
 
 ## Acceptance and maintenance
 

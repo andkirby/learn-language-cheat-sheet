@@ -231,6 +231,15 @@
             {"example": ["It was raining. ", {"t": "However", "b": true}, ", we went out. · ", {"t": "Although", "b": true}, " it rained, we went out."]},
             {"chips": [{"label": "despite или although?", "detail": "linking-words"}]}
           ]
+        },
+        {
+          "search": "there is are there's находится есть был были отрицание вопрос",
+          "blocks": [
+            {"h": ["there is / there are"]},
+            {"p": ["= «есть, находится». ", {"t": "There is", "b": true}, " + одно или неисчисляемое, ", {"t": "There are", "b": true}, " + несколько:"]},
+            {"example": [{"t": "There is", "b": true}, " a shop nearby. · ", {"t": "There are", "b": true}, " two shops."]},
+            {"chips": [{"label": "Отрицание и There's vs It's", "detail": "there-is"}]}
+          ]
         }
       ]
     },
@@ -261,6 +270,7 @@
               {"t": "I'm reading", "b": true}, " now.", {"br": true},
               {"t": "Look! It's raining.", "b": true}
             ]},
+            {"tiny": ["Ещё PC: ", {"t": "He's always losing his keys.", "b": true}, " — раздражение привычкой, не «сейчас»."]},
             {"chips": [{"label": "Simple vs Continuous", "detail": "present-continuous"}]}
           ]
         },
@@ -315,6 +325,16 @@
               {"t": "I'm going to visit", "b": true}, " Paris (план)."
             ]},
             {"chips": [{"label": "Как выбрать", "detail": "future"}]}
+          ]
+        },
+        {
+          "search": "past continuous was were ing процесс фон пока",
+          "blocks": [
+            {"h": ["Past Continuous"]},
+            {"formula": [{"slot": "was / were"}, {"arrow": "+"}, {"slot": "V-ing", "role": "end"}]},
+            {"p": ["Был в процессе в момент прошлого — фон для события:"]},
+            {"example": ["I ", {"t": "was cooking", "b": true}, " when he ", {"t": "called", "b": true}, ". · They ", {"t": "were sleeping", "b": true}, "."]},
+            {"chips": [{"label": "vs Past Simple", "detail": "past-continuous"}]}
           ]
         }
       ]
@@ -565,6 +585,23 @@
         {"detail": {"label": "despite vs although", "runs": [{"t": "Despite", "i": true}, " the rain ✓ · ", {"t": "Despite it was raining", "s": true}, " ✗ → ", {"t": "Although it was raining", "i": true}, " ✓. Despite + существительное/-ing; although + подлежащее и глагол."]}}
       ]
     },
+    "there-is": {
+      "title": "there is / there are", "lead": "Без do: Is there…? There aren't… — это be.",
+      "blocks": [
+        {"detail": {"label": "Отрицание/вопрос", "runs": [{"t": "There isn't", "i": true}, " a shop here. · ", {"t": "There aren't", "i": true}, " any shops. · ", {"t": "Is there", "i": true}, " a shop nearby?"]}},
+        {"detail": {"label": "Прошлое", "runs": [{"t": "There was", "i": true}, " a shop. · ", {"t": "There were", "i": true}, " two shops."]}},
+        {"detail": {"label": "There's vs It's", "runs": [{"t": "There's a problem", "i": true}, " — «есть проблема» (существует) · ", {"t": "It's a problem", "i": true}, " — «это проблема» (о конкретном)."]}}
+      ]
+    },
+    "past-continuous": {
+      "title": "Past Continuous vs Past Simple", "lead": "Длинный процесс — was/were + -ing; событие — Past Simple.",
+      "blocks": [
+        {"detail": {"label": "Фон + событие", "runs": ["I ", {"t": "was cooking", "i": true}, " when he ", {"t": "called", "i": true}, ". — «готовил (в процессе), когда он позвонил»."]}},
+        {"detail": {"label": "Два параллельных", "runs": ["I ", {"t": "was reading", "i": true}, " while she ", {"t": "was sleeping", "i": true}, ". — оба процесса (см. meanwhile)."]}},
+        {"detail": {"label": "Русский аспект", "runs": ["«готовил» (процесс) → was cooking · «приготовил» (результат) → cooked. Выбор — как вид глагола."]}},
+        {"detail": {"label": "Не для фактов", "runs": ["Последовательность событий — Past Simple: I came home, saw the letter and read it."]}}
+      ]
+    },
     "a-an": {
       "title": "a или an", "lead": "Выбор по первому ЗВУКУ, не по букве.",
       "blocks": [
@@ -645,7 +682,8 @@
       "blocks": [
         {"detail": {"label": "Simple", "runs": ["I work at Google (работаю вообще)."]}},
         {"detail": {"label": "Continuous", "runs": ["I'm working now (в процессе). am/is/are + V-ing."]}},
-        {"detail": {"label": "Не с continuous", "runs": ["know, like, want, need — состояния, обычно Simple."]}}
+        {"detail": {"label": "Не с continuous", "runs": ["know, like, want, need — состояния, обычно Simple."]}},
+        {"detail": {"label": "always = раздражение", "runs": [{"t": "He's always losing his keys", "i": true}, ". — не «прямо сейчас»: привычка, которая бесит (маркеры now/Look! не нужны)."]}}
       ]
     },
     "past-simple": {

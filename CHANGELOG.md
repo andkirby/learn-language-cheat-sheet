@@ -6,6 +6,17 @@ Append the entry in the same commit that ships the change.
 
 ## 2026-09-13
 
+- **New (both languages, Tier-1 A1 core)**: German verb conjugation
+  (spielen/sein/haben with stem-change and -t/-d limits), nicht-vs-kein
+  negation with placement, imperative (du/ihr/Sie), Präteritum recognition
+  (war/hatte/modals — spoken vs written boundary), comparatives
+  (schneller/am schnellsten, umlaut group); English there is/are (no-do
+  negatives, There's vs It's) and Past Continuous (background vs event,
+  Russian-aspect mapping); Present Continuous now also covers the
+  always-irritation use (EN-G08). Inventories: DE 23, EN 20 topics.
+  Build tooling: new `--check-shell` gate (landing + service-worker vs the
+  language registry) and per-audience script exemptions in `site.json`.
+  `CACHE_VERSION` v17.
 - **New (both languages)**: linking-words units (DE-18, EN-18) — German
   deshalb/trotzdem/allerdings/außerdem/währenddessen (position 1 + verb,
   trotzdem-vs-obwohl boundary) and English but/however, so/therefore,

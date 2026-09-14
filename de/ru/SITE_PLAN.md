@@ -69,8 +69,8 @@ The page is a lookup deck with five view destinations:
 | View | Stable anchor | Required topics |
 | --- | --- | --- |
 | Падежи | `#cases` | DE-01, DE-02 (`#preps`) |
-| Формы | `#forms` | DE-03–05, DE-15–16 (`#extras`) |
-| Глагол и порядок | `#order` | DE-06–07, DE-09, DE-12–14 (`#verbs`), DE-17 |
+| Формы | `#forms` | DE-03–05, DE-20; DE-15–16, DE-19, DE-23 (`#extras`) |
+| Глагол и порядок | `#order` | DE-06–07, DE-09, DE-12–14, DE-21, DE-22 (`#verbs`), DE-17 |
 | Придаточные | `#clauses` | DE-08, DE-10–11, DE-18 |
 | Повтор | `#practice` | Practice contract below |
 
@@ -136,6 +136,11 @@ evidence in the content audit.
 | DE-16 | Which adjective ending follows der-words and ein-words? | `#extras` | Compact overview and examples; no claim of exhaustive adjective declension |
 | DE-17 | Which particle carries the tone? doch, mal, denn, ja, schon, gar, wohl | `#order` | High-frequency set with Russian decision-equivalents and placement after the verb; bounded set — no particle lexicon (DE-X02) |
 | DE-18 | Which linking adverb connects the clauses? deshalb, trotzdem, allerdings, außerdem, währenddessen | `#clauses` | Position 1 + verb-second rule, Russian equivalents, trotzdem-vs-obwohl boundary; bounded set (DE-X02) |
+| DE-19 | Which verb ending? Present of regular verbs, sein and haben | `#extras` | Full ich/du/er/wir/ihr/sie pattern + sein/haben; -t/-d insert -e- and vowel change in dialog |
+| DE-20 | nicht or kein? | `#forms` | kein for nouns (ein-pattern), nicht for everything else; placement before what is negated — rest-group first (heute nicht ins Kino), sentence-final only when nothing follows |
+| DE-21 | How do I command or request? | `#order` | du/ihr/Sie forms; sein exception; du vowel change and -t/-d +e in dialog |
+| DE-22 | Präteritum — what is it and when? | `#verbs` | Recognition: war/hatte/modals + regular -te; spoken-Perfekt vs written boundary; recognition-level → glossed examples |
+| DE-23 | Comparative and superlative? | `#extras` | -er / am -sten, umlaut group, gut/viel/gern irregulars; than = als |
 
 ## Acceptance and maintenance
 

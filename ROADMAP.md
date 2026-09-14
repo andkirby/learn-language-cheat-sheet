@@ -37,14 +37,18 @@ density, or assessment-like structure.
 **ASK the owner** when it changes product intent: practice redesign (D-03),
 new target language or audience, view/navigation restructure, audio.
 
-## Where the decks stand (2026-09-13)
+## Where the decks stand (2026-09-13, post-Tier-1)
 
-18/18 required topics per language, Coverage PASS, search hygiene gated by
-the generator. The center of gravity is A2. The honest gap: **the A1 core
-that every card assumes** (verb conjugation, negation) is not taught on the
-page, and English lacks a narrative past tense. That is what Tier 1 fixes.
+23 (DE) and 20 (EN) required topics, Coverage PASS, search hygiene gated by
+the generator. The A1 core landed the same day (Tier 1 below). The remaining
+honest gaps are the Tier-2 list: plural formation and verb+preposition pairs
+(DE), relative clauses and question tags (EN), plus the small EN reference
+items.
 
-## Tier 1 — recommended next (bounded, high value)
+## Tier 1 — shipped 2026-09-13 (DE-19–23, EN-19/20, EN-05 always; sw v17)
+
+All eight items below shipped the same day, per the standing rules. Tier 2
+is now the active frontier.
 
 | Candidate | Source | View | Slice |
 | --- | --- | --- | --- |

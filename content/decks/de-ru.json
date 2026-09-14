@@ -179,6 +179,16 @@
               ]
             },
             {
+              "search": "nicht kein отрицание не никакой вообще нет машина",
+              "blocks": [
+                {"h": ["nicht или kein"]},
+                {"p": [{"t": "kein", "b": true}, " — вместо ein перед существительным: kein Geld, keine Zeit."]},
+                {"p": [{"t": "nicht", "b": true}, " — всё остальное: глаголы, прилагательные, местоимения."]},
+                {"example": ["Ich habe ", {"t": "kein", "b": true}, " Auto. · Ich schlafe ", {"t": "nicht", "b": true}, ". · Das ist ", {"t": "nicht", "b": true}, " mein Auto."]},
+                {"chips": [{"label": "Где стоит nicht?", "detail": "negation"}]}
+              ]
+            },
+            {
               "search": "personal pronouns личные местоимения ich mich mir du dich dir ihn ihm uns euch ihnen",
               "blocks": [
                 {"h": ["Личные местоимения"]},
@@ -314,6 +324,15 @@
             {"example": ["Komm ", {"t": "mal", "b": true}, " her! · Das ist ", {"t": "ja", "b": true}, " klar! · Wie heißt ", {"t": "denn", "b": true}, " du?"]},
             {"chips": [{"label": "Разбор и позиция", "detail": "particles"}]}
           ]
+        },
+        {
+          "search": "komm geht kommen sie повелительное наклонение приказ просьба команда",
+          "blocks": [
+            {"h": ["Повелительное"]},
+            {"formula": [{"slot": "du → Komm!"}, {"arrow": "·"}, {"slot": "ihr → Geht!"}, {"arrow": "·"}, {"slot": "Sie → Kommen Sie!"}]},
+            {"example": ["Komm ", {"t": "mal", "b": true}, " her! · ", {"t": "Seien", "b": true}, " Sie ruhig!"]},
+            {"chips": [{"label": "du-форма: особенности", "detail": "imperative"}]}
+          ]
         }
       ]
     },
@@ -375,6 +394,16 @@
             {"example": ["Ich ", {"t": "habe arbeiten müssen", "b": true}, ". — Я должен был работать. Не “gemusst”."]},
             {"tiny": ["Достаточно узнавать; активно — уровень выше."]},
             {"chips": [{"label": "Разбор", "detail": "double-infinitive"}]}
+          ]
+        },
+        {
+          "search": "präteritum war hatte wollte konnte musste sollte простое прошедшее письменное",
+          "blocks": [
+            {"h": ["Präteritum: war, hatte…"]},
+            {"p": ["Вторая форма прошедшего. В речи — Perfekt; в текстах, а также с ", {"t": "sein, haben и модальными", "b": true}, " — Präteritum: ", {"t": "wollte, konnte, musste, sollte", "b": true}, ":"]},
+            {"example": ["Ich ", {"t": "war", "b": true}, " krank. — «я был болен». · Ich ", {"t": "hatte", "b": true}, " keine Zeit. — «у меня не было времени»."]},
+            {"tiny": ["Достаточно узнавать; активно — в основном war/hatte/модальные."]},
+            {"chips": [{"label": "Формы и граница", "detail": "praeteritum"}]}
           ]
         }
       ]
@@ -482,6 +511,25 @@
       "heading": "Окончания и изменения", "sub": "Небольшие правила, которые часто ломают правильную форму.", "grid": "two",
       "cards": [
         {
+          "search": "sein haben спряжение окончание глагола настоящее время ich du er sie wir ihr",
+          "blocks": [
+            {"h": ["Глагол: окончания"]},
+            {"table": {
+              "head": ["", "spielen", "sein", "haben"],
+              "rows": [
+                ["ich", {"hot": "spiele"}, "bin", "habe"],
+                ["du", {"hot": "spielst"}, "bist", "hast"],
+                ["er/sie/es", {"hot": "spielt"}, "ist", "hat"],
+                ["wir", "spielen", "sind", "haben"],
+                ["ihr", {"hot": "spielt"}, "seid", "habt"],
+                ["sie/Sie", "spielen", "sind", "haben"]
+              ]
+            }},
+            {"tiny": ["Основа + окончание: -e, -st, -t (ich/du/er). Жирным — на чём чаще всего ошибаются."]},
+            {"chips": [{"label": "Смена гласной и -t/-d", "detail": "conjugation"}]}
+          ]
+        },
+        {
           "search": "dativ plural n kindern freunden существительное множественное",
           "blocks": [
             {"h": ["Dativ Plural"]},
@@ -513,6 +561,16 @@
             {"p": ["После ", {"t": "der-слов", "b": true}, " артикль уже показывает род/падеж, поэтому прилагательное чаще имеет ", {"t": "-e/-en", "b": true}, "."]},
             {"example": ["der gut", {"t": "e", "b": true}, " Mann · mit dem gut", {"t": "en", "b": true}, " Mann"]},
             {"chips": [{"label": "Короткая модель", "detail": "adjectives"}]}
+          ]
+        },
+        {
+          "search": "komparativ superlativ schneller am schnellsten больше лучше сравнение степень als",
+          "blocks": [
+            {"h": ["Сравнение: -er / am -sten"]},
+            {"formula": [{"slot": "schnell"}, {"arrow": "→"}, {"slot": "schneller"}, {"arrow": "→"}, {"slot": "am schnellsten"}]},
+            {"example": ["Heute ist es ", {"t": "wärmer", "b": true}, ". · Ich komme ", {"t": "später", "b": true}, " ", {"t": "als", "b": true}, " du."]},
+            {"tiny": ["Неровные: gut – besser – am besten · viel – mehr – am meisten · gern – lieber."]},
+            {"chips": [{"label": "Умлаут и разбор", "detail": "comparative"}]}
           ]
         }
       ]
@@ -558,6 +616,50 @@
         {"detail": {"label": "außerdem", "runs": ["Er ist müde. ", {"t": "Außerdem", "i": true}, " hat er Kopfschmerzen. — «кроме того»: добавление."]}},
         {"detail": {"label": "währenddessen", "runs": ["Ich koche. ", {"t": "Währenddessen", "i": true}, " sieht er fern. — «тем временем»: одновременность."]}},
         {"detail": {"label": "Позиция", "runs": ["Позиция 1 — как Heute/Dann в V2. Сравни с союзом denn: после него обычный порядок слов, см. Coordinators."]}}
+      ]
+    },
+    "conjugation": {
+      "title": "Спряжение: нюансы", "lead": "Основа + окончание — но у сильных глаголов меняется гласная.",
+      "blocks": [
+        {"detail": {"label": "-t/-d основы", "runs": ["arbeiten → du ", {"t": "arbeitest", "i": true}, " — между -t-основой и -st/-t вставляется -e-."]}},
+        {"detail": {"label": "Смена гласной", "runs": [{"t": "lesen", "i": true}, " → du ", {"t": "liest", "i": true}, " · ", {"t": "fahren", "i": true}, " → du ", {"t": "fährst", "i": true}, ", er ", {"t": "fährt", "i": true}, " (a → ä). Только du и er."]}},
+        {"detail": {"label": "sein / haben", "runs": ["Нерегулярные целиком: ", {"t": "bin, bist, ist…", "i": true}, " · ", {"t": "habe, hast, hat…", "i": true}, " — учи как таблицу."]}},
+        {"detail": {"label": "wir / ihr / Sie", "runs": ["wir = инфинитив · ihr = основа + ", {"t": "-t", "i": true}, " · sie/Sie = инфинитив — никогда не меняются."]}}
+      ]
+    },
+    "negation": {
+      "title": "nicht: позиция", "lead": "Обычно перед тем, что остаётся; перед словом — когда отрицаешь именно его.",
+      "blocks": [
+        {"detail": {"label": "Перед остатком", "runs": ["Ich komme ", {"t": "nicht", "b": true}, ". · Ich gehe heute ", {"t": "nicht", "b": true}, " ins Kino. — не в самом конце, а перед тем, что осталось в предложении."]}},
+        {"detail": {"label": "Перед словом", "runs": ["Ich komme ", {"t": "nicht", "b": true}, " heute, sondern morgen. — «не сегодня»: отрицаешь обстоятельство, а не приход."]}},
+        {"detail": {"label": "kein склоняется", "runs": ["Как ein: kein Auto · keine Zeit · ", {"t": "keinen", "i": true}, " Mann (Akk.) · keinem Kind (Dat.)."]}},
+        {"detail": {"label": "Разница", "runs": [{"t": "kein", "i": true}, " Auto = вообще нет машины · ", {"t": "nicht", "i": true}, " mein Auto = машина есть, но не моя."]}}
+      ]
+    },
+    "imperative": {
+      "title": "Повелительное: du-форма", "lead": "du-форма → убираешь -st и само du.",
+      "blocks": [
+        {"detail": {"label": "Правило du", "runs": [{"t": "du kommst", "i": true}, " → ", {"t": "Komm!", "i": true}, " · ", {"t": "du machst", "i": true}, " → ", {"t": "Mach!", "i": true}, "."]}},
+        {"detail": {"label": "e→i остаётся, умлаут теряется", "runs": [{"t": "du gibst", "i": true}, " → ", {"t": "Gib!", "i": true}, " · ", {"t": "du liest", "i": true}, " → ", {"t": "Lies!", "i": true}, " · ", {"t": "du fährst", "i": true}, " → ", {"t": "Fahr!", "i": true}, " (умлаут в повелительном теряется)."]}},
+        {"detail": {"label": "-t/-d основы", "runs": [{"t": "du wartest", "i": true}, " → ", {"t": "Warte!", "i": true}, " — вставное -e-."]}},
+        {"detail": {"label": "sein", "runs": [{"t": "Sei ruhig!", "i": true}, " · ", {"t": "Seid ruhig!", "i": true}, " · ", {"t": "Seien Sie ruhig!", "i": true}, " — исключение."]}},
+        {"detail": {"label": "ihr / Sie", "runs": ["ihr-форма без ihr: ", {"t": "Geht!", "i": true}, " · глагол + Sie: ", {"t": "Kommen Sie bitte!", "i": true}, "."]}}
+      ]
+    },
+    "praeteritum": {
+      "title": "Präteritum: формы", "lead": "Модальные, sein и haben почти всегда в Präteritum — даже в речи.",
+      "blocks": [
+        {"detail": {"label": "Готовые формы", "runs": [{"t": "war, hatte, wollte, konnte, musste, sollte, durfte", "i": true}, " — учи списком."]}},
+        {"detail": {"label": "Регулярные", "runs": ["основа + ", {"t": "-te", "i": true}, ": machte, spielte, arbeitete. 1-е и 3-е лицо совпадают."]}},
+        {"detail": {"label": "Граница с Perfekt", "runs": ["Речь: ", {"t": "Ich bin gegangen", "i": true}, ". Текст: ", {"t": "Er ging", "i": true}, " — «пошёл». Но модальные и sein/haben — почти всегда Präteritum: ", {"t": "Ich musste arbeiten", "i": true}, " (см. Два инфинитива)."]}}
+      ]
+    },
+    "comparative": {
+      "title": "Сравнение: разбор", "lead": "Короткое прилагательное часто получает умлаут: kurz → kürzer.",
+      "blocks": [
+        {"detail": {"label": "Умлаут", "runs": [{"t": "kurz → kürzer", "i": true}, " · ", {"t": "alt → älter", "i": true}, " · ", {"t": "groß → größer", "i": true}, " — обычно односложные."]}},
+        {"detail": {"label": "than = als", "runs": ["größer ", {"t": "als", "i": true}, " ich. — «чем я». В сравнении — всегда als (равенство — so … wie)."]}},
+        {"detail": {"label": "am -sten", "runs": ["Суперлатив-наречие: Er läuft ", {"t": "am schnellsten", "i": true}, ". С артиклем: der beste Film."]}}
       ]
     },
     "nominativ": {
