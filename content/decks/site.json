@@ -7,7 +7,8 @@
       "audiences": [
         {
           "id": "ru",
-          "label": "Русский"
+          "label": "Русский",
+          "script": "cyrillic"
         },
         {
           "id": "en",
@@ -30,6 +31,7 @@
         "indirekte",
         "infinitiv",
         "kausal",
+        "komparativ",
         "lokal",
         "modalpartikeln",
         "n-deklination",
@@ -39,6 +41,7 @@
         "possessiv",
         "relativsatz",
         "satzklammer",
+        "superlativ",
         "temporal",
         "trennbare",
         "verben",
@@ -51,7 +54,8 @@
       "audiences": [
         {
           "id": "ru",
-          "label": "Русский"
+          "label": "Русский",
+          "script": "cyrillic"
         },
         {
           "id": "en",

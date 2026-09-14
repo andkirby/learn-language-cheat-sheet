@@ -20,6 +20,7 @@ import sys
 
 from deck_render import render
 from deck_validate import validate
+from shell_check import check_shell
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -29,6 +30,9 @@ def main():
     ap.add_argument("deck", help="path to the deck JSON, e.g. content/decks/en-ru.json")
     ap.add_argument("--check", action="store_true",
                     help="compare the rendered page with the file on disk; exit 1 on drift")
+    ap.add_argument("--check-shell", action="store_true", dest="check_shell",
+                    help="check the landing DECKS map and sw.js APP_SHELL against "
+                         "the live pairs in site.json; exit 1 on drift")
     ap.add_argument("--out", help="output path (default: meta.out from the deck)")
     args = ap.parse_args()
 
@@ -39,6 +43,16 @@ def main():
         print(f"✗ {site_path} not found — the language menu needs the site registry", file=sys.stderr)
         sys.exit(2)
     site = json.loads(site_path.read_text(encoding="utf-8"))
+
+    if args.check_shell:
+        errors = check_shell(site, ROOT)
+        if errors:
+            print(f"✗ shell drift against {site_path}:", file=sys.stderr)
+            for e in errors:
+                print(f"  - {e}", file=sys.stderr)
+            sys.exit(1)
+        print(f"✓ landing and sw.js APP_SHELL match the live pairs in {site_path}")
+        return
 
     errors = validate(deck, site)
     if errors:

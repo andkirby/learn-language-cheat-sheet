@@ -15,6 +15,19 @@ _UMAP = str.maketrans({"ä": "a", "ö": "o", "ü": "u", "ß": "ss"})
 # word chars incl. Cyrillic (для видимого текста) — letter-runs split on punctuation/slashes
 _WORD_RE = re.compile(r"[a-zà-ÿ0-9а-яёіґїє]+")
 
+# Audience-script exemptions, configured per audience in site.json ("script").
+# A data-search token in the searcher's own script may legitimately differ
+# from the card wording. Absent or unknown script = no exemption (strict),
+# so Latin-script audiences get no free pass.
+_SCRIPTS = {"cyrillic": re.compile(r"[\u0400-\u04FF]")}
+
+
+def _audience_script(site, target_id, audience_id):
+    own = next((t for t in site.get("targets", []) if t.get("id") == target_id), None)
+    aud = next((a for a in (own or {}).get("audiences", [])
+                if a.get("id") == audience_id), None)
+    return _SCRIPTS.get((aud or {}).get("script"))
+
 
 def _norm(s):
     return s.lower().translate(_UMAP).replace("'", "").replace("’", "")
@@ -68,10 +81,11 @@ def _check_runs(errors, runs, where):
 class _Checker:
     """Deck-shape checks (blocks, cards, groups) accumulating errors in place."""
 
-    def __init__(self, errors, details, grammar_terms):
+    def __init__(self, errors, details, grammar_terms, audience_script):
         self.errors = errors
         self.details = details
         self.grammar_terms = grammar_terms
+        self.audience_script = audience_script
 
     def check_runs(self, runs, where):
         _check_runs(self.errors, runs, where)
@@ -106,8 +120,8 @@ class _Checker:
             t = _norm(token)
             if t in self.grammar_terms or len(t) < 3:
                 continue
-            if re.search(r"[\u0400-\u04FF]", token):
-                continue  # searcher's own script (any Cyrillic): variants expected
+            if self.audience_script and self.audience_script.search(token):
+                continue  # searcher's own script (configured per audience): variants expected
             ok = t in words or any(
                 len(w) >= 3 and (w.startswith(t) or t.startswith(w))
                 for w in words
@@ -142,7 +156,8 @@ def _validate_content(deck, site, errors):
     """Views, sections, cards, practice, help, details and id uniqueness."""
     meta = deck.get("meta", {})
     details = deck.get("details", {})
-    chk = _Checker(errors, details, _grammar_terms(site, meta.get("target")))
+    chk = _Checker(errors, details, _grammar_terms(site, meta.get("target")),
+                   _audience_script(site, meta.get("target"), meta.get("audience")))
 
     views = deck.get("views", [])
     view_ids = [v.get("id") for v in views]
@@ -233,6 +248,9 @@ def _validate_site(deck, site, errors):
         for j, a in enumerate(t.get("audiences", [])):
             if not a.get("id") or not a.get("label"):
                 errors.append(f"site.json targets[{i}].audiences[{j}]: id and label required")
+            if a.get("script") is not None and a.get("script") not in _SCRIPTS:
+                errors.append(f"site.json targets[{i}].audiences[{j}]: unknown script "
+                              f"{a.get('script')!r} (known: {sorted(_SCRIPTS)})")
         if not isinstance(t.get("grammar_terms", []), list):
             errors.append(f"site.json target {t.get('id')!r}: grammar_terms must be a list")
         target_ids.append(t.get("id"))
