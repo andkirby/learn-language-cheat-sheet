@@ -79,6 +79,28 @@ page, and English lacks a narrative past tense. That is what Tier 1 fixes.
 - Audio/pronunciation and course sequencing: reaffirmed **excluded**
   (DE-X01/EN-X01, DE-X05/EN-X05).
 
+### Source model for the multi-language cross product (2026-09-13)
+
+Owner ambition: a cross product of 5 languages (~20 pairs; self-pairs like
+de-de are a different product — native-speaker reference — and stay out of
+scope). Decision recorded from the brainstorm:
+
+- **Rejected**: monolingual masters (de-de, en-en) as originals — a native
+  reference organizes by form, a learner deck by L1 interference; overlap is
+  ~40% and masters add authoring work instead of removing it.
+- **Chosen, in principle**: two-layer source — per-target invariant core
+  (paradigm tables, canonical examples, topic inventory) + per-audience
+  overlay (retrieval questions, emphasis, glosses, selection); generator
+  merges.
+- **Trigger (three-sample rule)**: extract the core only when a target gets
+  its second audience (de-en or de-uk), i.e. Phase 3a, cutting the boundary
+  from three real decks — not speculated at two.
+- Until then: `de-ru` / `en-ru` are the canonical per-target references.
+- Scaling notes: sw precache strategy needs revisiting past ~10 pages
+  (cache landing + selected pair, lazy-cache the rest); content authoring —
+  plan → ~30 cards + ~30 dialogs → gates → audit per pair — is the binding
+  constraint, so growth is demand-driven, not matrix completion.
+
 ### Multi-place edit tax (measured 2026-09-13, owner question)
 
 Where an edit lands today:
