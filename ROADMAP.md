@@ -74,10 +74,35 @@ page, and English lacks a narrative past tense. That is what Tier 1 fixes.
 - **Practice pool + shuffle** (D-03): replay value vs the three-item contract.
 - **Phase 3 audience**: `de-en` deck (content-as-data machinery is ready;
   landing registry flips EN from «скоро»).
-- **New target language** (uk is infra-ready: validator already handles
-  Cyrillic scripts via `site.json`).
+- **New target language** (uk: term exemptions already registry-based in
+  `site.json`; the script check needs the generalization below).
 - Audio/pronunciation and course sequencing: reaffirmed **excluded**
   (DE-X01/EN-X01, DE-X05/EN-X05).
+
+### Multi-place edit tax (measured 2026-09-13, owner question)
+
+Where an edit lands today:
+
+| Edit type | Places | Status |
+| --- | --- | --- |
+| Content inside a language | 1 — the deck JSON, then regenerate + `CACHE_VERSION` | Solved by Phase 2; `--check` guards drift |
+| Shared UI/generator behaviour | 1 — `tools/deck_*.py` + `page_template.html` (+ `base.css`), applies to every deck | Solved by the shared template |
+| Content policy (e.g. gloss rules) | 3 — guide + both SITE_PLANs | By design: contracts are per-audience |
+| New target×audience pair | ~6 — deck JSON, its SITE_PLAN, `site.json` flip, **landing `index.html` by hand** (`DECKS` + menu markup), `sw.js` APP_SHELL, icons run | Partially manual; landing has **no drift check** |
+| Validator script exemption | code — Cyrillic range `\u0400-\u04FF` hardcoded as «audience script» | Breaks for Latin-script audiences (en-de): German data-search words would be flagged as invisible target words |
+
+Pre-Phase-3 automations (small, kill most of the tax):
+
+1. **Landing sync**: generate the landing from `site.json`, or at minimum a
+   `--check-landing` that parses `DECKS`/menu markup and compares to the
+   registry.
+2. **Audience script as data**: per-audience `script`/`lang` in `site.json`;
+   the validator replaces the hardcoded Cyrillic range with it.
+3. **APP_SHELL from the registry**: emit or check the shell list against
+   `site.json` live pairs.
+
+After those three, a new pair costs: deck JSON + its plan + one `site.json`
+line — everything else is generated or checked.
 
 ## What the format cannot take (design limits, not gaps)
 
