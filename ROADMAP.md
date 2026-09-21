@@ -37,9 +37,9 @@ density, or assessment-like structure.
 **ASK the owner** when it changes product intent: practice redesign (D-03),
 new target language or audience, view/navigation restructure, audio.
 
-## Where the decks stand (2026-09-21, post-Tier-1 + DE-24)
+## Where the decks stand (2026-09-21, post-Tier-1 + DE-24/25)
 
-24 (DE) and 20 (EN) required topics, Coverage PASS, search hygiene gated by
+25 (DE) and 20 (EN) required topics, Coverage PASS, search hygiene gated by
 the generator. The A1 core landed 2026-09-13 (Tier 1 below); DE plural
 formation followed 2026-09-21 as DE-24. The remaining honest gaps are the
 Tier-2 list: verb+preposition pairs (DE), relative clauses and question tags
@@ -66,7 +66,7 @@ is now the active frontier.
 | Candidate | Source | Lean |
 | --- | --- | --- |
 | DE verb + preposition pairs (warten auf, denken an…) | DE-G06 | Small pairs card;RU-preposition interference is the hook |
-| DE demonstratives: dieser family (declines like der-words; RU «этот») | DE-G11 | One card in `#forms` next to the article tables; welcher- same pattern in dialog |
+| DE demonstratives: dieser family (declines like der-words; RU «этот») | DE-G11 | **Shipped 2026-09-21 as DE-25** — card in `#forms` next to the article tables + `dieser` dialog (welcher- pattern, dieser-vs-der, das in «это»-phrases) |
 | DE plural formation (−e/¨-er/−s/−n + umlaut) | DE-G05 | **Shipped 2026-09-21 as DE-24** — gender-based five-pattern card + `plural` dialog, «нет одного правила» limit |
 | EN relative clauses (who/which/that) | EN-G05 | One card; object-relative omission in dialog |
 | EN question tags (…, isn't it?) | new | RU «не так ли?» is the trap; tail copies the auxiliary |

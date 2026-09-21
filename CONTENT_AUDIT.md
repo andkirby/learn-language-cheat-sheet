@@ -66,7 +66,7 @@ language plan or close it with evidence here.
 | DE-G08 | German | seit vs vor («живу здесь два года» vs «переехал два года назад») | Textbook Russian-interference time-preposition trap; include/defer decision needed | Open (2026-09-11 page review, example-sweep session) |
 | DE-G09 | German | Modal particles (Modalpartikeln): doch, mal, denn, ja, schon, gar, wohl (+ eben/halt/etwa) | User probe 2026-09-13: absent from the deck (denn appears only as coordinator, schon only as adverb in the Perfekt example); Russian encodes the same nuances (же/ведь/ну/уж/разве), so the transfer gap is real at A2–B1 — but a curated high-frequency set must not drift into the excluded particle-dictionary territory (DE-X02) | **Decided 2026-09-13: Required** → promoted to the plan as DE-17 (bounded set, decision-equivalents only) and implemented the same day — see the DE-17 record below |
 | DE-G10 | German | Linking adverbs: deshalb, trotzdem, allerdings, außerdem, währenddessen | User request 2026-09-13 (meanwhile/nevertheless question); closed class, function-level meanings are stable — not phrasebook territory within a bounded set (DE-X02) | **Decided 2026-09-13: Required** → promoted as DE-18, implemented same day |
-| DE-G11 | German | Demonstratives: dieser/diese/dieses (RU «этот») — and the dieser-vs-der choice | User probe 2026-09-21 («dieser — этот, где можно найти это?»): absent from the deck entirely (checked deck, page, plan, ROADMAP). dieser declines exactly on the deck's own definite-article pattern (dies- + der-word endings), so the morphology is already taught — the missing pieces are the word family itself and the RU «этот/тот» mapping (dieser covers both); natural home is `#forms` next to the article tables; welcher- shares the same pattern | Open (2026-09-21 user probe, filed same day) |
+| DE-G11 | German | Demonstratives: dieser/diese/dieses (RU «этот») — and the dieser-vs-der choice | User probe 2026-09-21 («dieser — этот, где можно найти это?»): absent from the deck entirely (checked deck, page, plan, ROADMAP). dieser declines exactly on the deck's own definite-article pattern (dies- + der-word endings), so the morphology is already taught — the missing pieces are the word family itself and the RU «этот/тот» mapping (dieser covers both); natural home is `#forms` next to the article tables; welcher- shares the same pattern | **Decided 2026-09-21: Required** → promoted as DE-25 and implemented same day (card in `#forms` next to the article tables + `dieser` dialog: model, «этот/тот» collapse, welcher- pattern, dieser-vs-der and das in «это»-phrases, adjective-endings cross-reference) |
 | EN-G09 | English | Flavour words: just, actually, still, even, though | User request 2026-09-13 (EN mirror of DE-17); includes the *actually* ≠ «актуально» false friend | **Decided 2026-09-13: Required** → promoted as EN-17, implemented same day |
 | EN-G10 | English | Linking connectors: but/however, so/therefore, meanwhile, nevertheless, although/despite | User request 2026-09-13 (meanwhile/nevertheless question); function-level meanings are stable, not too contextual for a lookup card | **Decided 2026-09-13: Required** → promoted as EN-18, implemented same day |
 | EN-G01 | English | be questions/negatives and there is/are | Required depth and placement | **Decided + closed:** the be/modal question half shipped 2026-09-13 (C-14); there is/are + be-negatives → EN-19 shipped same day |
@@ -577,6 +577,37 @@ matching the block's own rule) and 5×P3 (dead cross-reference
 «plural» in RU text → «множественное число»; «много/многие с умлаутом»
 drift unified; EN dialog label «-f → -ves» → «-f/-fe → -ves»; DE-24 plan row
 under-promised the shipped dialog depth — depth clause appended).
+
+## 2026-09-21 — Scope addition: DE-25 demonstratives, dieser family (DE-G11 decided)
+
+User accepted the DE-G11 recommendation in-session («Ok, надо добавить») the
+same day it was filed. Plan-first per the standing rules.
+
+- **DE-25** (`de/ru/SITE_PLAN.md` + deck): card «dieser / diese / dieses»
+  (anchor `forms-dieser`, badge A1/формы) in `#forms` group 0, directly
+  after the article tables — RU «этот/тот» collapse into one word, the
+  generating rule dies- + der-word endings, examples across genders plus
+  an Akkusativ sentence. Dialog `dieser` carries depth: the full
+  Nom/Akk/Dat model against der/die/das, the «этот/тот» collapse, welcher-
+  as the same pattern with a question-answer pair, dieser-vs-der plus the
+  das-not-dieser rule for «это»-phrases (Das ist schön), and the
+  adjective-endings cross-reference to DE-16.
+- Bounded set: dieser family + welcher- pattern; no demonstrative lexicon
+  (jener, solcher and per-case paradigms stay out — the article table
+  remains the single declension source).
+
+Verified: JSON valid; `--check` + `--check-shell` exit 0 (search tokens
+dieser/dieses/diese visible on the card; anchor slug `dieser` unique).
+Scoped runtime smoke (localhost:8931, stale-SW reset): search «dieser»
+surfaces the card with the A1 badge, anchor `forms-dieser` present,
+`dieser` dialog opens with all five blocks verified, console clean, 390px
+— no page overflow. Offline reload, theme cycle and redirect checks:
+**NOT RUN** this pass.
+
+Gate impact: Coverage stays **PASS** — DE 25/25, EN 20/20 required topics
+(DE inventory extended and covered in the same change). Baseline still
+**FAIL** (open: DE-G06, DE-G07, DE-G08, EN-G02, EN-G04, EN-G05, EN-G06
+remainder, EN-G07). Accuracy/Teaching NOT RUN.
 
 ## Next full review record
 

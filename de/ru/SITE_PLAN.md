@@ -69,7 +69,7 @@ The page is a lookup deck with five view destinations:
 | View | Stable anchor | Required topics |
 | --- | --- | --- |
 | Падежи | `#cases` | DE-01, DE-02 (`#preps`) |
-| Формы | `#forms` | DE-03–05, DE-20; DE-15–16, DE-19, DE-23–24 (`#extras`) |
+| Формы | `#forms` | DE-03–05, DE-20, DE-25; DE-15–16, DE-19, DE-23–24 (`#extras`) |
 | Глагол и порядок | `#order` | DE-06–07, DE-09, DE-12–14, DE-21, DE-22 (`#verbs`), DE-17 |
 | Придаточные | `#clauses` | DE-08, DE-10–11, DE-18 |
 | Повтор | `#practice` | Practice contract below |
@@ -142,6 +142,7 @@ evidence in the content audit.
 | DE-22 | Präteritum — what is it and when? | `#verbs` | Recognition: war/hatte/modals + regular -te; spoken-Perfekt vs written boundary; recognition-level → glossed examples |
 | DE-23 | Comparative and superlative? | `#extras` | -er / am -sten, umlaut group, gut/viel/gern irregulars; than = als |
 | DE-24 | How is the plural formed? Five ending patterns, guessed by gender | `#extras` | Feminin → -en/-n, Maskulin → -e, Neutrum → -er (umlaut group), unchanged -er/-el/-en, loanwords → -s; «no single rule» limit; Dativ-Plural cross-reference; suffix groups (-ung/-heit/-keit…), -chen/-lein and compounds in the `plural` dialog |
+| DE-25 | this/that — which demonstrative? dieser/diese/dieses | `#forms` | dieser copies the definite-article pattern (dies- + der-word endings); RU «этот/тот» collapse into one word; welcher- same pattern, dieser-vs-der and das in «это»-phrases in the `dieser` dialog; adjective-endings cross-reference |
 
 ## Acceptance and maintenance
 

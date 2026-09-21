@@ -6,6 +6,14 @@ Append the entry in the same commit that ships the change.
 
 ## 2026-09-21
 
+- **New (German)**: demonstratives unit (DE-25, plan + deck) — the
+  «dieser / diese / dieses» card (A1) next to the article tables in
+  Артикли и местоимения: Russian «этот/тот» collapse into one word, and
+  dieser copies the article's endings (dies- + der/die/das pattern). The
+  dialog adds the full Nom/Akk/Dat model, welcher- as the same pattern
+  (Welcher Bus? — Dieser), dieser-vs-der, and the das-not-dieser rule for
+  «это»-phrases (Das ist schön). Card anchor `forms-dieser`, searchable by
+  «этот». Inventories: DE 25, EN 20 topics. `CACHE_VERSION` v22.
 - **New (both languages)**: cards carry level + kind badges (A1/A2/B1 and
   «формы», «употребление», «порядок»…) — scanning a view now tells you the
   CEFR level and what each card gives you without reading the title.

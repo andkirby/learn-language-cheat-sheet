@@ -161,6 +161,19 @@
                 {"tiny": ["Жирным — ловушки этого уровня: Maskulin-Akkusativ и весь Dativ. Genitiv меняется тоже, но на A1–B1 нужен реже."]},
                 {"tiny": ["Genitiv и Dativ Plural меняют и существительное: des Mannes · den Kindern — см. «Окончания и изменения»."]}
               ]
+            },
+            {
+              "id": "dieser", "level": "A1", "kind": "формы",
+              "search": "dieser dieses diese указательное этот тот местоимение",
+              "blocks": [
+                {"h": ["dieser / diese / dieses"]},
+                {"p": ["«Этот» и «тот» — одним словом. Склоняется как артикль: ", {"t": "dies-", "b": true}, " + окончания der/die/das."]},
+                {"example": [
+                  {"t": "dieser", "b": true}, " Mann · ", {"t": "diese", "b": true}, " Frau · ", {"t": "dieses", "b": true}, " Kind", {"br": true},
+                  "Ich nehme ", {"t": "diesen", "b": true}, " Bus."
+                ]},
+                {"chips": [{"label": "Склонение и welcher", "detail": "dieser"}]}
+              ]
             }
           ]
         },
@@ -1031,6 +1044,17 @@
         {"detail": {"label": "Akkusativ внутри", "runs": ["Der Mann, ", {"t": "den", "b": true}, " ich kenne… (кого я знаю? den)"]}},
         {"detail": {"label": "Dativ внутри", "runs": ["Der Mann, ", {"t": "dem", "b": true}, " ich helfe… (кому я помогаю? dem)"]}},
         {"detail": {"label": "Genitiv внутри", "runs": ["Der Mann, ", {"t": "dessen", "b": true}, " Auto dort steht, … — чей (м.р./ср.р.); ", {"t": "deren", "b": true}, " — ж.р./мн.ч."]}}
+      ]
+    },
+    "dieser": {
+      "title": "dieser: склонение",
+      "lead": "dies- встаёт вместо der/die/das — окончания те же самые.",
+      "blocks": [
+        {"detail": {"label": "Модель", "runs": ["Nominativ: ", {"t": "dieser / diese / dieses", "i": true}, " (der/die/das) · Akkusativ: ", {"t": "diesen", "i": true}, " / diese / dieses (den/die/das) · Dativ: ", {"t": "diesem / dieser / diesen", "i": true}, " (dem/der/den)."]}},
+        {"detail": {"label": "Этот или тот", "runs": ["Русский различает «этот» (близко) и «тот» (далеко) — немецкий говорит ", {"t": "dieser", "b": true}, " для обоих: Dieser Tisch = этот или тот стол."]}},
+        {"detail": {"label": "welcher", "runs": ["Тот же паттерн: ", {"t": "welch-", "b": true}, " → welcher/welche/welches («который?»). Вопрос-ответ: ", {"t": "Welcher Bus? — Dieser.", "i": true}, "."]}},
+        {"detail": {"label": "dieser или der", "runs": ["dieser выделяет предмет («вон тот»); der — обычная ссылка без указания: Der Mann dort. А «это» в общих фразах — das: ", {"t": "Das ist schön.", "i": true}, " (не dieser)."]}},
+        {"detail": {"label": "Практика", "runs": ["Прилагательное после dieser получает те же -e/-en, что после der-слов — см. карточку «Прилагательные» в разделе «Окончания и изменения»."]}}
       ]
     },
     "plural": {
