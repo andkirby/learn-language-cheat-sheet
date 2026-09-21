@@ -18,29 +18,35 @@ def block_html(block):
     raise ValueError(f"unknown block: {block}")
 
 
-def card_html(card, indent="      "):
+def card_html(card, indent="      ", anchor=""):
+    id_attr = f' id="{escq(anchor)}"' if anchor else ""
     if card.get("case_grid"):
         buttons = [f'<button class="tap case" data-detail="{escq(c["detail"])}">'
                    f"{runs_html(c['label'])}</button>" for c in card["case_grid"]]
-        return (f'{indent}<div class="case-grid cheat-card" data-search="{escq(card["search"])}">\n'
+        return (f'{indent}<div class="case-grid cheat-card"{id_attr} data-search="{escq(card["search"])}">\n'
                 + "".join(f"{indent}  {b}\n" for b in buttons)
                 + f"{indent}</div>\n")
-    out = [f"{indent}<article class=\"cheat-card\" data-search=\"{escq(card['search'])}\">\n"]
+    out = [f"{indent}<article class=\"cheat-card\"{id_attr} data-search=\"{escq(card['search'])}\">\n"]
     for block in card["blocks"]:
         out.append(block_html(block))
     out.append(f"{indent}</article>\n")
     return "".join(out)
 
 
-def group_html(group, indent="      "):
+def group_html(group, indent="      ", sec_id=""):
+    # Card anchors are <section-id>-<card-id>: slugs stay short and only
+    # need to be unique within their section.
+    def anchor(card):
+        return f"{sec_id}-{card['id']}" if sec_id and card.get("id") else ""
+
     if group.get("grid"):
         cls = f"cards {group['grid']}"
         style = ' style="margin-top:10px"' if group.get("gap") else ""
         out = f'{indent}<div class="{cls}"{style}>\n'
         for card in group["cards"]:
-            out += card_html(card, indent + "  ")
+            out += card_html(card, indent + "  ", anchor(card))
         return out + f"{indent}</div>\n"
-    return "".join(card_html(card, indent) for card in group["cards"])
+    return "".join(card_html(card, indent, anchor(card)) for card in group["cards"])
 
 
 def _section_head(sec):
@@ -54,9 +60,9 @@ def section_html(sec):
     head = (f"    <section id=\"{escq(sec['id'])}\" data-section data-view=\"{escq(sec['view'])}\">\n"
             + _section_head(sec))
     if sec.get("groups"):
-        body = "".join(group_html(g) for g in sec["groups"])
+        body = "".join(group_html(g, sec_id=sec["id"]) for g in sec["groups"])
     else:
-        body = group_html({"cards": sec["cards"], "grid": sec.get("grid")})
+        body = group_html({"cards": sec["cards"], "grid": sec.get("grid")}, sec_id=sec["id"])
     return head + body + "    </section>\n"
 
 

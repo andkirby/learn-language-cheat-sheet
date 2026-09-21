@@ -86,6 +86,7 @@
       "heading": "Артикли", "sub": "Главный маркер: известно, о чём речь, или нет.", "grid": "two",
       "cards": [
         {
+          "id": "articles",
           "search": "article a an the артикли неопределенный определенный нулевой",
           "blocks": [
             {"h": ["a / an / the / —"]},
@@ -103,6 +104,7 @@
           ]
         },
         {
+          "id": "zero-article",
           "search": "school zero article ошибки русскоговорящих",
           "blocks": [
             {"h": ["Ловушки для русскоговорящих"]},
@@ -121,6 +123,7 @@
       "heading": "Местоимения", "sub": "Четыре формы на каждое лицо — не путать роли.", "grid": null,
       "cards": [
         {
+          "id": "pronouns",
           "search": "pronouns personal possessive личные местоимения притяжательные my mine his him",
           "blocks": [
             {"h": ["Личные и притяжательные"]},
@@ -151,6 +154,7 @@
       "heading": "Порядок слов", "sub": "Английский не позволяет переставлять, как русский.", "grid": "two",
       "cards": [
         {
+          "id": "svo",
           "search": "svo word order порядок слов подлежащее сказуемое дополнение строгий",
           "blocks": [
             {"h": ["SVO — строгий"]},
@@ -163,6 +167,7 @@
           ]
         },
         {
+          "id": "do-questions",
           "search": "do does did questions вопросы вспомогательный inversion",
           "blocks": [
             {"h": ["Вопросы: Do / Does / Did"]},
@@ -177,6 +182,7 @@
           ]
         },
         {
+          "id": "frequency",
           "search": "adverbs frequency always never место наречий частоты",
           "blocks": [
             {"h": ["Всегда / Обычно / Никогда"]},
@@ -189,6 +195,7 @@
           ]
         },
         {
+          "id": "mistakes",
           "search": "where you do mistake omission error типичные ошибки вопрос без do",
           "blocks": [
             {"h": ["Ошибка №1 русскоговорящих"]},
@@ -200,6 +207,7 @@
           ]
         },
         {
+          "id": "nuances",
           "search": "just actually still even though оттенки вообще-то всё ещё даже впрочем правда на самом деле просто",
           "blocks": [
             {"h": ["Слова-оттенки: just, actually…"]},
@@ -216,6 +224,7 @@
           ]
         },
         {
+          "id": "linkers",
           "search": "however therefore meanwhile nevertheless although despite but связки однако тем не менее тем временем несмотря поэтому",
           "blocks": [
             {"h": ["Связки: however, so, although…"]},
@@ -233,6 +242,7 @@
           ]
         },
         {
+          "id": "there-is",
           "search": "there is are there's находится есть был были отрицание вопрос",
           "blocks": [
             {"h": ["there is / there are"]},
@@ -248,6 +258,7 @@
       "heading": "Времена", "sub": "Сигнальные слова подсказывают время.", "grid": "two",
       "cards": [
         {
+          "id": "present-simple",
           "search": "present simple время настоящее простое every day usually",
           "blocks": [
             {"h": ["Present Simple"]},
@@ -261,6 +272,7 @@
           ]
         },
         {
+          "id": "present-continuous",
           "search": "present continuous ing now moment в процессе",
           "blocks": [
             {"h": ["Present Continuous"]},
@@ -275,6 +287,7 @@
           ]
         },
         {
+          "id": "past-simple",
           "search": "past simple yesterday yesterday вчерашний V2 вторая форма",
           "blocks": [
             {"h": ["Past Simple"]},
@@ -288,6 +301,7 @@
           ]
         },
         {
+          "id": "present-perfect",
           "search": "present perfect have has v3 just already yet ever результат опыт",
           "blocks": [
             {"h": ["Present Perfect"]},
@@ -301,6 +315,7 @@
           ]
         },
         {
+          "id": "pp-vs-past",
           "search": "present perfect vs past simple разница вчера since выбор времени",
           "_note": "C-02 rework: meaning-first, «время названо?» demoted to a clue with since/for limit.",
           "blocks": [
@@ -315,6 +330,7 @@
           ]
         },
         {
+          "id": "future",
           "search": "future will going to будущее план решение прогноз",
           "blocks": [
             {"h": ["Future: will / going to"]},
@@ -328,6 +344,7 @@
           ]
         },
         {
+          "id": "past-continuous",
           "search": "past continuous was were ing процесс фон пока",
           "blocks": [
             {"h": ["Past Continuous"]},
@@ -344,6 +361,7 @@
       "heading": "Глагольные конструкции", "sub": "Модальные, пассив, V-ing vs to V.", "grid": "two",
       "cards": [
         {
+          "id": "modals",
           "search": "modal can could must should may might модальные глаголы",
           "blocks": [
             {"h": ["Модальные глаголы"]},
@@ -356,6 +374,7 @@
           ]
         },
         {
+          "id": "mustnt",
           "search": "mustnt don't have to запрещено не обязательно must not",
           "blocks": [
             {"h": ["mustn't ≠ don't have to"]},
@@ -368,6 +387,7 @@
           ]
         },
         {
+          "id": "passive",
           "search": "passive voice пассив страдательный be v3 built",
           "blocks": [
             {"h": ["Пассив"]},
@@ -380,6 +400,7 @@
           ]
         },
         {
+          "id": "gerund-infinitive",
           "search": "gerund infinitive enjoy finish want decide to v",
           "blocks": [
             {"h": ["V-ing или to V?"]},
@@ -397,6 +418,7 @@
       "heading": "Предлоги", "sub": "in / on / at + предлоги, которые не переводятся дословно.", "grid": "two",
       "cards": [
         {
+          "id": "time",
           "search": "prepositions time in on at время предлоги месяцы дни часы",
           "blocks": [
             {"h": ["Время: in / on / at"]},
@@ -406,6 +428,7 @@
           ]
         },
         {
+          "id": "place",
           "search": "prepositions place in on at место внутри поверхности точка",
           "blocks": [
             {"h": ["Место: in / on / at"]},
@@ -415,6 +438,7 @@
           ]
         },
         {
+          "id": "dependent",
           "search": "dependent prepositions depend on interested in listen to afraid of good at wait for зависимые предлоги ошибки",
           "blocks": [
             {"h": ["Предлоги-ловушки"]},
@@ -437,6 +461,7 @@
       "heading": "Слова: числа и сравнения", "sub": "Множественное число, исчисляемость, степени сравнения.", "grid": "two",
       "cards": [
         {
+          "id": "plurals",
           "search": "plural nouns множественное число s es ies irregular неправильные men children",
           "blocks": [
             {"h": ["Множественное число"]},
@@ -449,6 +474,7 @@
           ]
         },
         {
+          "id": "countable",
           "search": "countable uncountable much many few little advice news исчисляемые",
           "blocks": [
             {"h": ["Исчисляемое / нет"]},
@@ -461,6 +487,7 @@
           ]
         },
         {
+          "id": "some-any",
           "search": "some any некоторые любые утверждение отрицание вопрос",
           "blocks": [
             {"h": ["some / any"]},
@@ -473,6 +500,7 @@
           ]
         },
         {
+          "id": "comparative",
           "search": "comparative superlative сравнительная превосходная er est more most better best",
           "blocks": [
             {"h": ["Сравнение"]},
@@ -492,6 +520,7 @@
       "heading": "Условные предложения", "sub": "Формула одинаковая: If + условие, + следствие.", "grid": "two",
       "cards": [
         {
+          "id": "cond1",
           "search": "conditional 1 first real условное первое настоящее will реальное",
           "blocks": [
             {"h": ["Type 1 — реальное"]},
@@ -502,6 +531,7 @@
           ]
         },
         {
+          "id": "cond2",
           "search": "conditional 2 second unreal нереальное would were если бы сейчас",
           "blocks": [
             {"h": ["Type 2 — нереальное сейчас"]},
@@ -514,6 +544,7 @@
           ]
         },
         {
+          "id": "cond0",
           "search": "conditional 0 zero законы настоящее условное нулевое",
           "blocks": [
             {"h": ["Type 0 — всегда так"]},
@@ -523,6 +554,7 @@
           ]
         },
         {
+          "id": "cond3",
           "search": "conditional 3 third past regret упущенное прошлое would have",
           "blocks": [
             {"h": ["Type 3 — прошлое нереальное"]},

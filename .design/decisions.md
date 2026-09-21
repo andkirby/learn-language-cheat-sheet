@@ -342,3 +342,33 @@ inert until the hub gets a manifest, but Safari visits share the
 maximum-scale behavior with deck pages). Not regression-testable in
 Chromium; verified by node syntax check + iPhone-UA browser pass (meta
 rewrite fires, console clean) — the 980px state itself is WebKit-only.
+
+## 2026-09-21 — Card anchors: every card is deep-linkable
+
+Cards had no ids: the finest shareable/bookmarkable address was the section,
+and the planned search jump-to-context (UI gap: search finds an element but
+cannot take you to its page) had no precise landing target.
+
+Decision: every deck card carries an explicit `id` slug in its deck JSON
+(latin grammar terms, `[a-z0-9-]`, 2–32 chars) — explicit, never derived from
+the displayed heading, because content sweeps reword headings constantly and
+a derived id would silently break links. The generator assembles the anchor
+`<section-id>-<slug>` (e.g. `#verbs-doppelinfinitiv`), so slugs only need to
+be unique within a section; the build gate enforces presence, charset and
+global uniqueness (incl. against section/practice/help ids). The generated
+practice card stays id-less — it is not authored content.
+
+Landing feedback is pure CSS: `.cheat-card:target` runs a one-shot
+`card-flash` keyframe (accent ring fading into the resting shadow), using
+the same `--accent` as `:focus-visible` — one "you are here" color. CSS-only
+means no-JS visits land highlighted too, and the global
+`prefers-reduced-motion` block already neutralizes it. No template JS
+changed: the existing `onHash()` routing (view switch + `scrollIntoView`)
+already handled arbitrary element ids, so card anchors worked the moment the
+ids existed. Latin slugs over Cyrillic: Cyrillic percent-encodes into
+`%D0%BC…` garbage in shared URLs.
+
+The search result→jump UI (location label + tap-to-context) is deliberately
+NOT part of this change; it layers on these anchors as its follow-up.
+Deliberately no style-guide.html specimen: `:target` is a card state, not a
+component; this entry is its record.

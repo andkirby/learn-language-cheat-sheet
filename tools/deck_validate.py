@@ -29,6 +29,11 @@ def _audience_script(site, target_id, audience_id):
     return _SCRIPTS.get((aud or {}).get("script"))
 
 
+# Card anchor slugs: latin grammar terms only — Cyrillic slugs percent-encode
+# into unreadable shared URLs. 2-32 chars, inner hyphens allowed.
+_SLUG_RE = re.compile(r"[a-z0-9](?:[a-z0-9-]{0,30}[a-z0-9])?")
+
+
 def _norm(s):
     return s.lower().translate(_UMAP).replace("'", "").replace("’", "")
 
@@ -104,6 +109,13 @@ class _Checker:
     def check_card(self, card, where):
         if not card.get("search"):
             self.errors.append(f"{where}: search keywords required")
+        slug = card.get("id")
+        if not slug:
+            self.errors.append(f"{where}: card id is required (anchor slug; the page "
+                               f"anchor is <section-id>-<card-id>)")
+        elif not _SLUG_RE.fullmatch(slug):
+            self.errors.append(f"{where}: card id {slug!r} must be 2-32 chars of "
+                               f"[a-z0-9-] with no leading/trailing hyphen")
         if bool(card.get("blocks")) == bool(card.get("case_grid")):
             self.errors.append(f"{where}: needs exactly one of blocks / case_grid")
             return
@@ -167,6 +179,7 @@ def _validate_content(deck, site, errors):
         errors.append("view ids are not unique")
 
     section_ids = []
+    card_anchors = []  # <section-id>-<card-id>; slug uniqueness is per-section
     for si, sec in enumerate(deck.get("sections", [])):
         sid = sec.get("id", f"<section {si}>")
         section_ids.append(sec.get("id"))
@@ -181,9 +194,14 @@ def _validate_content(deck, site, errors):
                 errors.append(f"section {sid!r}: grid must be two/three/null")
             for ci, card in enumerate(sec.get("cards", [])):
                 chk.check_card(card, f"section {sid!r} card {ci}")
+                if card.get("id"):
+                    card_anchors.append(f"{sec['id']}-{card['id']}")
         else:
             for gi, group in enumerate(sec["groups"]):
                 chk.check_group(group, f"section {sid!r} group {gi}")
+                for card in group.get("cards", []):
+                    if card.get("id"):
+                        card_anchors.append(f"{sec['id']}-{card['id']}")
 
     practice = deck.get("practice", {})
     section_ids.append(practice.get("id"))
@@ -211,8 +229,9 @@ def _validate_content(deck, site, errors):
         if not entry.get("blocks"):
             errors.append(f"details.{key}: blocks required")
 
-    if len([i for i in section_ids if i]) != len(set(i for i in section_ids if i)):
-        errors.append(f"ids are not unique across sections/practice/help: {section_ids}")
+    all_anchor_ids = [i for i in section_ids if i] + card_anchors
+    if len(all_anchor_ids) != len(set(all_anchor_ids)):
+        errors.append(f"ids are not unique across sections/practice/help/cards: {all_anchor_ids}")
 
 
 def _validate_strings(deck, errors):

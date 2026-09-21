@@ -85,7 +85,12 @@ deck-level integration checks, not a second copy of that contract:
 - Every section carries the plan's `view`; bottom-navigation destinations and
   legacy-anchor routing match the plan (a deck may keep `practice` as its own
   nav destination, like `de-ru`, or footer-only, like `en-ru`).
-- Every card gets `search` with audience-language + target-language keywords.
+- Every card gets `search` with audience-language + target-language keywords
+  and an `id` — a short latin grammar-term slug (`[a-z0-9-]`, 2–32 chars; no
+  Cyrillic, which percent-encodes into unreadable URLs). The generator
+  assembles the page anchor `<section-id>-<id>`; the build gate enforces
+  charset and global uniqueness. Card ids are stable forever: renaming one
+  breaks every shared link to that card.
 - Register `'../../sw.js'`; manifest `./manifest.webmanifest`; og:url/og:image
   absolute: `https://andkirby.github.io/learn-language-cheat-sheet/<target>/<audience>/…`.
 - Practice implements the plan's topic mapping; the generator wires `.reveal`,

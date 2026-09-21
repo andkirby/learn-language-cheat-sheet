@@ -220,6 +220,14 @@ section { margin-top: 28px; }
 }
 .cheat-card h3 { margin: 0 0 8px; font-size: 1rem; letter-spacing: -.015em; }
 .cheat-card p { margin: 6px 0; }
+/* Deep-link landing (card anchors): accent ring fades into the resting shadow.
+   Same accent as :focus-visible — one "you are here" color. CSS-only, so
+   no-JS visits land highlighted too; reduced-motion is neutralized globally. */
+.cheat-card:target { animation: card-flash 1.6s ease-out; }
+@keyframes card-flash {
+  from { box-shadow: 0 0 0 4px var(--accent), 0 3px 14px rgba(23,32,51,.035); }
+  to   { box-shadow: 0 0 0 4px transparent, 0 3px 14px rgba(23,32,51,.035); }
+}
 .muted { color: var(--muted); }
 .tiny { font-size: .78rem; color: var(--muted); }
 .example { margin-top: 9px; padding: 10px 11px; background: var(--surface-2); border-radius: 12px; font-size: .92rem; }

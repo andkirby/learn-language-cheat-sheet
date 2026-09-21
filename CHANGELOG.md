@@ -6,6 +6,12 @@ Append the entry in the same commit that ships the change.
 
 ## 2026-09-21
 
+- **New (both languages)**: every card is deep-linkable. All 72 cards (40
+  German, 32 English) carry stable anchors like
+  `…/de/ru/#verbs-doppelinfinitiv` — opening such a link switches to the
+  right view, scrolls to the card and plays a one-shot accent highlight
+  (CSS-only, works without JS, respects reduced motion). Share or bookmark
+  the exact card; the ids are stable and never renamed.
 - **New (German)**: plural-formation unit (DE-24, plan + deck) — «Plural:
   ставка по роду» card in Окончания и изменения: feminine → -en/-n,
   masculine → -e, neuter → -er (umlaut group), unchanged -er/-el/-en,

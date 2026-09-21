@@ -89,6 +89,7 @@
         {
           "cards": [
             {
+              "id": "faelle",
               "search": "fälle cases падеж вопросы nominativ akkusativ dativ genitiv wer wen wem wessen was",
               "case_grid": [
                 {"detail": "nominativ", "label": [{"t": "Nominativ", "b": true}, {"br": true}, "Wer? Was?"]},
@@ -103,6 +104,7 @@
           "grid": "two", "gap": true,
           "cards": [
             {
+              "id": "wo-wohin",
               "search": "wo wohin wechselpräpositionen movement location направление место akkusativ dativ",
               "blocks": [
                 {"h": ["Wo? / Wohin?"]},
@@ -113,6 +115,7 @@
               ]
             },
             {
+              "id": "objects",
               "search": "direct indirect object прямое косвенное дополнение akkusativ dativ geben",
               "blocks": [
                 {"h": ["Быстрый смысл"]},
@@ -133,6 +136,7 @@
         {
           "cards": [
             {
+              "id": "artikel",
               "search": "artikel der die das den dem des definite артикли определенный",
               "blocks": [
                 {"h": ["Определённый артикль"]},
@@ -156,6 +160,7 @@
           "grid": "two", "gap": true,
           "cards": [
             {
+              "id": "ein-words",
               "search": "ein eine einen indefinite kein mein dein possessiv притяжательные",
               "blocks": [
                 {"h": ["ein / kein / mein…"]},
@@ -179,6 +184,7 @@
               ]
             },
             {
+              "id": "negation",
               "search": "nicht kein отрицание не никакой вообще нет машина",
               "blocks": [
                 {"h": ["nicht или kein"]},
@@ -189,6 +195,7 @@
               ]
             },
             {
+              "id": "pronomen",
               "search": "personal pronouns личные местоимения ich mich mir du dich dir ihn ihm uns euch ihnen",
               "blocks": [
                 {"h": ["Личные местоимения"]},
@@ -219,6 +226,7 @@
       "heading": "Предлоги", "sub": "Предлог часто сразу определяет падеж.", "grid": "two",
       "cards": [
         {
+          "id": "praep-akk",
           "search": "akkusativ prepositions durch für gegen ohne um",
           "blocks": [
             {"h": ["Всегда Akkusativ"]},
@@ -233,6 +241,7 @@
           ]
         },
         {
+          "id": "praep-dat",
           "search": "dativ prepositions aus bei mit nach seit von zu",
           "blocks": [
             {"h": ["Всегда Dativ"]},
@@ -249,6 +258,7 @@
           ]
         },
         {
+          "id": "wechsel",
           "search": "wechselpräpositionen an auf hinter in neben über unter vor zwischen wo wohin two-way",
           "blocks": [
             {"h": ["Два падежа: Wo? / Wohin?"]},
@@ -258,6 +268,7 @@
           ]
         },
         {
+          "id": "praep-gen",
           "search": "genitiv prepositions wegen trotz während statt innerhalb außerhalb",
           "blocks": [
             {"h": ["Часто Genitiv"]},
@@ -273,6 +284,7 @@
       "heading": "Порядок слов", "sub": "Сначала найди спрягаемый глагол.", "grid": "two",
       "cards": [
         {
+          "id": "v2",
           "search": "main clause hauptsatz verb second v2 position 2 второе место heute ich gehe",
           "blocks": [
             {"h": ["Главное: V2"]},
@@ -282,6 +294,7 @@
           ]
         },
         {
+          "id": "inversion",
           "search": "inversion heute dann deshalb position 1 subject после наречия",
           "blocks": [
             {"h": ["Если сначала Heute / Dann / Deshalb…"]},
@@ -290,6 +303,7 @@
           ]
         },
         {
+          "id": "w-fragen",
           "search": "question fragen w frage wer was wann warum wie verb first v1",
           "blocks": [
             {"h": ["Вопросы"]},
@@ -299,6 +313,7 @@
           ]
         },
         {
+          "id": "tekamolo",
           "search": "tekamolo temporal kausal modal lokal order обстоятельства время причина способ место",
           "blocks": [
             {"h": ["TeKaMoLo"]},
@@ -308,6 +323,7 @@
           ]
         },
         {
+          "id": "partikeln",
           "search": "modalpartikeln doch mal denn ja schon gar wohl частицы ведь же ну разве оттенок",
           "blocks": [
             {"h": ["Частицы: doch, mal, denn…"]},
@@ -326,6 +342,7 @@
           ]
         },
         {
+          "id": "imperativ",
           "search": "komm geht kommen sie повелительное наклонение приказ просьба команда",
           "blocks": [
             {"h": ["Повелительное"]},
@@ -341,6 +358,7 @@
       "heading": "Глагольная рамка", "sub": "Часть глагола часто живёт в конце.", "grid": "two",
       "cards": [
         {
+          "id": "modalverben",
           "search": "modal müssen können wollen sollen dürfen mögen infinitiv end modal verbs",
           "blocks": [
             {"h": ["Модальные глаголы"]},
@@ -351,6 +369,7 @@
           ]
         },
         {
+          "id": "perfekt",
           "search": "perfekt haben sein partizip ii gegangen gemacht past perfect",
           "blocks": [
             {"h": ["Perfekt"]},
@@ -360,6 +379,7 @@
           ]
         },
         {
+          "id": "trennbare",
           "search": "separable trennbare verben aufstehen prefix отделяемые приставки",
           "blocks": [
             {"h": ["Отделяемые глаголы"]},
@@ -369,6 +389,7 @@
           ]
         },
         {
+          "id": "passiv",
           "search": "passive passiv werden partizip ii wird gebaut пассив",
           "blocks": [
             {"h": ["Passiv"]},
@@ -378,6 +399,7 @@
           ]
         },
         {
+          "id": "konjunktiv2",
           "search": "konjunktiv ii würde wurde wäre hätte könnte müsste sollte сослагательное нереальное вежливость совет unreal wish polite",
           "blocks": [
             {"h": ["Konjunktiv II"]},
@@ -387,6 +409,7 @@
           ]
         },
         {
+          "id": "doppelinfinitiv",
           "search": "doppelinfinitiv ersatzinfinitiv haben arbeiten müssen два инфинитива modal perfekt double infinitive",
           "blocks": [
             {"h": ["Perfekt с модальным: два инфинитива"]},
@@ -397,6 +420,7 @@
           ]
         },
         {
+          "id": "praeteritum",
           "search": "präteritum war hatte wollte konnte musste sollte простое прошедшее письменное",
           "blocks": [
             {"h": ["Präteritum: war, hatte…"]},
@@ -416,6 +440,7 @@
           "grid": "two",
           "cards": [
             {
+              "id": "weil",
               "search": "weil because потому что subordinate verb end придаточное",
               "blocks": [
                 {"h": ["weil — потому что"]},
@@ -424,6 +449,7 @@
               ]
             },
             {
+              "id": "dass",
               "search": "dass that что ich glaube denke hoffe sage subordinate",
               "blocks": [
                 {"h": ["dass — что"]},
@@ -432,6 +458,7 @@
               ]
             },
             {
+              "id": "wenn-als",
               "search": "wenn if when если когда condition repeated als subordinate",
               "blocks": [
                 {"h": ["wenn — если / когда"]},
@@ -441,6 +468,7 @@
               ]
             },
             {
+              "id": "obwohl",
               "search": "obwohl although хотя subordinate verb end trotzdem",
               "blocks": [
                 {"h": ["obwohl — хотя"]},
@@ -449,6 +477,7 @@
               ]
             },
             {
+              "id": "ob",
               "search": "ob whether ли indirect question indirekte frage",
               "blocks": [
                 {"h": ["ob — ли"]},
@@ -456,6 +485,7 @@
               ]
             },
             {
+              "id": "konnektoren",
               "search": "und aber denn oder sondern coordinating conjunctions coordinators verb second не отправляют глагол в конец",
               "blocks": [
                 {"h": ["Не отправляют глагол в конец"]},
@@ -470,6 +500,7 @@
           "grid": "two", "gap": true,
           "cards": [
             {
+              "id": "um-zu-damit",
               "search": "um zu damit purpose цель чтобы infinitive subject same different",
               "blocks": [
                 {"h": ["um … zu / damit — чтобы"]},
@@ -478,6 +509,7 @@
               ]
             },
             {
+              "id": "relativsatz",
               "search": "relative clause relativsatz der das den dem dessen deren который относительные",
               "blocks": [
                 {"h": ["Относительное придаточное"]},
@@ -487,6 +519,7 @@
               ]
             },
             {
+              "id": "verknuepfungen",
               "search": "deshalb trotzdem allerdings außerdem währenddessen связки поэтому тем не менее впрочем кроме того тем временем",
               "blocks": [
                 {"h": ["Связующие наречия"]},
@@ -511,6 +544,7 @@
       "heading": "Окончания и изменения", "sub": "Небольшие правила, которые часто ломают правильную форму.", "grid": "two",
       "cards": [
         {
+          "id": "verb-endungen",
           "search": "sein haben спряжение окончание глагола настоящее время ich du er sie wir ihr",
           "blocks": [
             {"h": ["Глагол: окончания"]},
@@ -530,6 +564,7 @@
           ]
         },
         {
+          "id": "dativ-plural",
           "search": "dativ plural n kindern freunden существительное множественное",
           "blocks": [
             {"h": ["Dativ Plural"]},
@@ -538,6 +573,7 @@
           ]
         },
         {
+          "id": "plural",
           "search": "plural множественное число умлаут frauen stühle kinder autos",
           "blocks": [
             {"h": ["Plural: ставка по роду"]},
@@ -551,6 +587,7 @@
           ]
         },
         {
+          "id": "genitiv-s",
           "search": "genitiv s es vaters noun endings",
           "blocks": [
             {"h": ["Genitiv: -s / -es"]},
@@ -559,6 +596,7 @@
           ]
         },
         {
+          "id": "n-deklination",
           "search": "n-deklination student studenten weak nouns",
           "blocks": [
             {"h": ["N-Deklination"]},
@@ -568,6 +606,7 @@
           ]
         },
         {
+          "id": "adjektive",
           "search": "adjective endings прилагательные der ein guter guten gutem окончания",
           "blocks": [
             {"h": ["Прилагательные: не учи вслепую"]},
@@ -577,6 +616,7 @@
           ]
         },
         {
+          "id": "komparativ",
           "search": "komparativ superlativ schneller am schnellsten больше лучше сравнение степень als",
           "blocks": [
             {"h": ["Сравнение: -er / am -sten"]},

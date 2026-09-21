@@ -79,7 +79,9 @@ update both when adding a language or audience.
    `python3 tools/build_pages.py <deck>`; the committed HTML is what deploys.
 6. Colors only via semantic tokens (light **and** dark + manual-dark blocks)
    — see `.design/DESIGN_SYSTEM.md`. Theme toggle is part of the contract.
-7. Keep section anchor ids stable within a language.
+7. Keep section and card anchor ids stable within a language. Card anchors are
+   `<section-id>-<slug>` (slug = the deck card's `id`); renaming breaks shared
+   links. The build validates slug charset and global uniqueness.
 8. New tappable explanations go into that page's `DETAILS` object; cards stay
    concise, depth goes in dialogs.
 9. After changing any page or asset: bump `CACHE_VERSION` in the root `sw.js`
