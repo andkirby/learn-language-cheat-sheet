@@ -4,6 +4,18 @@ One entry per user-visible change, newest first. UI rationale lives in
 `.design/decisions.md`, content review evidence in `CONTENT_AUDIT.md`.
 Append the entry in the same commit that ships the change.
 
+## 2026-09-21
+
+- **New (German)**: plural-formation unit (DE-24, plan + deck) — «Plural:
+  ставка по роду» card in Окончания и изменения: feminine → -en/-n,
+  masculine → -e, neuter → -er (umlaut group), unchanged -er/-el/-en,
+  loanwords → -s, with the honest «no single rule» limit. The dialog adds
+  suffix groups (-ung/-heit/-keit…), -chen/-lein, compound nouns (plural on
+  the last root) and the Dativ-Plural +n cross-reference. **Extended
+  (English)**: plurals rules now cover vowel+y → +s (days) vs consonant+y →
+  -ies and -f/-fe → -ves (knife → knives) with the roofs/chiefs limit.
+  Inventories: DE 24, EN 20 topics. `CACHE_VERSION` v18.
+
 ## 2026-09-13
 
 - **New (both languages, Tier-1 A1 core)**: German verb conjugation

@@ -60,7 +60,7 @@ language plan or close it with evidence here.
 | DE-G02 | German | nicht versus kein and negation placement | Required depth and placement | **Decided 2026-09-13: Required** → promoted as DE-20, shipped same day (placement rule + kein declension in the `negation` dialog) |
 | DE-G03 | German | Imperative | Include, defer or exclude | **Decided 2026-09-13: Required** → promoted as DE-21, shipped same day (du/ihr/Sie + sein exception; du vowel-change and -t/-d limits in dialog) |
 | DE-G04 | German | Perfekt formation/auxiliary choice and Präteritum usage | Required depth and tense boundary | **Decided 2026-09-13 (split):** Perfekt bracket + auxiliary choice shipped earlier (DE-07); Präteritum → promoted as DE-22 recognition-level, shipped same day; the tense boundary now on-page |
-| DE-G05 | German | Plural formation, comparison and adjective endings without an article | Split into reviewable decisions | **Partially decided 2026-09-13:** comparison → DE-23 shipped; adjective endings without an article covered by the `adjectives` dialog; **plural formation remains open** (Tier 2 in ROADMAP) |
+| DE-G05 | German | Plural formation, comparison and adjective endings without an article | Split into reviewable decisions | **Decided:** comparison → DE-23 shipped 2026-09-13; adjective endings without an article covered by the `adjectives` dialog; plural formation → **Required** 2026-09-21, promoted as DE-24 and shipped same day (gender-based five-pattern card + `plural` dialog in `#extras`, «no single rule» limit) |
 | DE-G06 | German | Verb-governed cases and reflexive verbs | Required depth and placement | Open — reconfirmed 2026-09-11 @ `b75c890`: helfen+Dativ and six geben-class verbs appear in dialogs/practice; no systematic unit; reflexives absent |
 | DE-G07 | German | der vs ein vs kein choice (known/specific vs new, professions without article, kein as noun negation) | Retrieval question 2 arguably promises usage choice, not only form; needs an accepted depth and placement decision | Open (2026-09-11 page review, example-sweep session) |
 | DE-G08 | German | seit vs vor («живу здесь два года» vs «переехал два года назад») | Textbook Russian-interference time-preposition trap; include/defer decision needed | Open (2026-09-11 page review, example-sweep session) |
@@ -528,6 +528,43 @@ Gate impact: Coverage stays **PASS** — DE 23/23, EN 20/20 required topics
 EN-G02, EN-G04, EN-G05, EN-G06 remainder, EN-G07). Accuracy/Teaching
 NOT RUN.
 Seven scope questions decided and closed this change.
+
+## 2026-09-21 — Scope addition: DE-24 plural formation (DE-G05 decided) + EN-13 gap-fill
+
+Tier-2 candidate from ROADMAP executed per the standing rules (plan-first →
+deck → gates → audit → local commit). Research pass: no dedicated plural
+source in `research/` (British Council A1–A2 sample itself lacks a plural
+lesson); content built on the standard Duden/Collins gender-heuristic model —
+five ending patterns with the honest «no single rule» limit, not a
+word-by-word table.
+
+- **DE-24** (`de/ru/SITE_PLAN.md` + deck): new card «Plural: ставка по роду»
+  in `#extras` after the Dativ-Plural card — fem → -en/-n, mask → -e,
+  neut → -er (umlaut group), unchanged -er/-el/-en, loanwords → -s; dialog
+  `plural` carries depth (suffix groups -ung/-heit/-keit/-schaft/-ion,
+  -chen/-lein, compounds pluralize on the last root, Dativ-Plural +n
+  cross-reference, dictionary limit, der/die/das dependency note).
+- **EN-13 depth extension** (within accepted plan depth «Core rules»):
+  card rule line + example now contrast consonant+y → -ies with vowel+y →
+  +s (days) and name -f/-fe → -ves (leaves); `plurals` dialog gains the
+  vowel+y contrast and an «-f → -ves» block with the roofs/chiefs limit.
+
+Verified: JSON valid; `--check` ×2 exit 0 (search-token visibility gate
+passes with the new tokens plural/frauen/stühle/kinder/autos); regenerated
+pages contain the new card and dialog. Scoped runtime smoke (localhost:8931,
+stale-SW reset): DE search «plural» surfaces the new card (next to the
+article tables and Dativ Plural), `plural` dialog opens with all eight
+blocks incl. the Dativ-Plural cross-reference; EN search «plural» isolates
+the plurals card, `plurals` dialog shows the -f → -ves block, the vowel+y
+contrast and the intact countability caveat; console clean on both pages;
+390px — no page or card overflow. Offline reload, theme cycle and redirect
+checks: **NOT RUN** this pass.
+
+Gate impact: Coverage stays **PASS** — DE 24/24, EN 20/20 required topics
+(DE inventory extended and covered in the same change). Baseline still
+**FAIL** (open: DE-G06, DE-G07, DE-G08, EN-G02, EN-G04, EN-G05, EN-G06
+remainder, EN-G07) — DE-G05 fully decided, no open piece remains. Baseline
+Accuracy/Teaching NOT RUN.
 
 ## Next full review record
 

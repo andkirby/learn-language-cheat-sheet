@@ -538,6 +538,19 @@
           ]
         },
         {
+          "search": "plural множественное число умлаут frauen stühle kinder autos",
+          "blocks": [
+            {"h": ["Plural: ставка по роду"]},
+            {"p": ["Единого правила нет: fem → ", {"t": "-en/-n", "b": true}, ", mask → ", {"t": "-e", "b": true}, ", neut → ", {"t": "-er", "b": true}, " — часто с умлаутом; на -er/-el/-en чаще без изменения."]},
+            {"example": [
+              "die Frau → die ", {"t": "Frauen", "b": true}, " · der Stuhl → die ", {"t": "Stühle", "b": true}, {"br": true},
+              "das Kind → die ", {"t": "Kinder", "b": true}, " · das Auto → die ", {"t": "Autos", "b": true}
+            ]},
+            {"tiny": ["Заимствования и короткие слова → -s: Parks, Handys. Форму конкретного слова при сомнении проверяй в словаре."]},
+            {"chips": [{"label": "Все пять моделей", "detail": "plural"}]}
+          ]
+        },
+        {
           "search": "genitiv s es vaters noun endings",
           "blocks": [
             {"h": ["Genitiv: -s / -es"]},
@@ -870,6 +883,20 @@
         {"detail": {"label": "Akkusativ внутри", "runs": ["Der Mann, ", {"t": "den", "b": true}, " ich kenne… (кого я знаю? den)"]}},
         {"detail": {"label": "Dativ внутри", "runs": ["Der Mann, ", {"t": "dem", "b": true}, " ich helfe… (кому я помогаю? dem)"]}},
         {"detail": {"label": "Genitiv внутри", "runs": ["Der Mann, ", {"t": "dessen", "b": true}, " Auto dort steht, … — чей (м.р./ср.р.); ", {"t": "deren", "b": true}, " — ж.р./мн.ч."]}}
+      ]
+    },
+    "plural": {
+      "title": "Множественное число: пять моделей",
+      "lead": "Род делает ставку, словарь даёт ответ.",
+      "blocks": [
+        {"detail": {"label": "Feminin", "runs": ["Почти всегда ", {"t": "-en/-n", "b": true}, ": die Frau → Frauen. На -ung/-heit/-keit/-schaft/-ion → ", {"t": "-en", "b": true}, ": Zeitungen, Möglichkeiten."]}},
+        {"detail": {"label": "Maskulin", "runs": ["Часто ", {"t": "-e", "b": true}, ", многие с умлаутом: Tische, ", {"t": "Stühle", "i": true}, ", ", {"t": "Männer", "i": true}, "."]}},
+        {"detail": {"label": "Neutrum", "runs": ["Часто ", {"t": "-er", "b": true}, ", много с умлаутом: Kinder, ", {"t": "Bücher", "i": true}, ", ", {"t": "Häuser", "i": true}, "."]}},
+        {"detail": {"label": "Заимствования", "runs": ["Короткие и иностранные слова → ", {"t": "-s", "b": true}, ": Autos, Handys, Parks."]}},
+        {"detail": {"label": "Без изменения", "runs": ["На -er/-el/-en и -chen/-lein: Lehrer → Lehrer, Fenster → Fenster, Mädchen → Mädchen; иногда только умлаут: ", {"t": "Äpfel", "i": true}, ", ", {"t": "Vögel", "i": true}, "."]}},
+        {"detail": {"label": "Составные слова", "runs": ["Plural — у последнего корня: das ", {"t": "Wörter", "b": true}, "buch → die Wörter", {"t": "bücher", "b": true}, "."]}},
+        {"detail": {"label": "Предел", "runs": ["Единого правила нет: ставка по роду покрывает большинство слов, но форму конкретного слова при сомнении проверяй в словаре. В Dativ Plural существительное почти всегда получает ещё ", {"t": "-n", "b": true}, " — см. карточку Dativ Plural."]}},
+        {"detail": {"label": "Практика", "runs": ["Не знаешь род — не угадаешь и plural: сначала карточка der/die/das."]}}
       ]
     },
     "n-decl": {

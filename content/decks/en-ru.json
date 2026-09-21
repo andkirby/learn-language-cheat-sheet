@@ -440,9 +440,9 @@
           "search": "plural nouns множественное число s es ies irregular неправильные men children",
           "blocks": [
             {"h": ["Множественное число"]},
-            {"p": ["Обычно ", {"t": "+s", "b": true}, "; после шипящих/свистящих ", {"t": "+es", "b": true}, "; согласная + y → ", {"t": "-ies", "b": true}, "."]},
+            {"p": ["Обычно ", {"t": "+s", "b": true}, "; после шипящих/свистящих ", {"t": "+es", "b": true}, "; согласная + y → ", {"t": "-ies", "b": true}, ", гласная + y → ", {"t": "+s", "b": true}, "; часто -f/-fe → ", {"t": "-ves", "b": true}, "."]},
             {"example": [
-              "cats · boxes · cities", {"br": true},
+              "cats · boxes · cities · days · leaves", {"br": true},
               "Исключения: ", {"t": "man–men, child–children, foot–feet, tooth–teeth", "b": true}
             ]},
             {"chips": [{"label": "Правила и исключения", "detail": "plurals"}]}
@@ -778,7 +778,8 @@
     "plurals": {
       "title": "Множественное число", "lead": "+s по умолчанию, но есть правила и исключения.",
       "blocks": [
-        {"detail": {"label": "Правила", "runs": ["+s · после -s/-sh/-ch/-x/-o часто +es (boxes, tomatoes) · согласная+y → ies (cities)."]}},
+        {"detail": {"label": "Правила", "runs": ["+s по умолчанию · после -s/-sh/-ch/-x/-o часто +es (boxes, tomatoes) · согласная+y → ies (cities), но гласная+y → просто +s (days, boys)."]}},
+        {"detail": {"label": "-f → -ves", "runs": ["Часто: knife → knives, leaf → leaves, wolf → wolves. Но не всегда: roofs, chiefs."]}},
         {"detail": {"label": "Исключения", "runs": ["man–men · woman–women · child–children · foot–feet · tooth–teeth · mouse–mice · person–people."]}},
         {"detail": {"label": "Не меняются", "runs": ["fish, sheep, aircraft."]}},
         {"detail": {"label": "Только исчисляемые", "runs": ["Множественное число образуют исчисляемые: water, advice, information числа не имеют (см. Исчисляемое / нет)."]}}
