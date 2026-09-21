@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#10131b" media="(prefers-color-scheme: dark)" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Прототип: улучшенная карточка — Language Cheat Sheets</title>
+  <link rel="stylesheet" href="../assets/base.css" />
+  <style>
+    /* Prototype-only styles for the three proposed components (ux-*).
+       None of this is in base.css yet — adoption would promote them to
+       shared components via .design/decisions.md, rolled out to every
+       language page in one commit (see research/ui-design-inspiration.md).
+       Colors come only from the shared semantic tokens. */
+    .ux-meta { display: flex; flex-wrap: wrap; gap: 6px; margin: -2px 0 6px; }
+    .ux-badge {
+      display: inline-flex; align-items: center; padding: 2px 9px; border-radius: 999px;
+      font-size: .68rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+    }
+    .ux-badge.level { background: var(--accent-soft); color: var(--on-accent-soft); }
+    .ux-badge.type { background: var(--surface-2); color: var(--muted); border: 1px solid var(--line); }
+
+    .ux-pair { margin-top: 9px; padding: 10px 11px 9px; background: var(--surface-2); border-radius: 12px; }
+    .ux-pair .ux-src { margin: 0; font-size: .92rem; }
+    .ux-hit { padding: 0 4px; border-radius: 6px; background: var(--accent-soft); color: var(--on-accent-soft); font-weight: 800; }
+    .ux-gloss { margin: 7px 0 0; padding-top: 7px; border-top: 1px solid var(--line); font-size: .78rem; color: var(--muted); }
+
+    .ux-exit {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 9px;
+      margin-top: 12px; padding-top: 11px; border-top: 1px solid var(--line);
+    }
+    .ux-exit .tap { display: inline-flex; align-items: center; text-decoration: none; }
+
+    /* Before/after scaffolding (page-local, same approach as style-guide.html). */
+    .ux-sec { margin-top: 32px; }
+    .ux-sec > h2 { margin: 0 0 4px; font-size: 1.25rem; letter-spacing: -.02em; }
+    .ux-sec > .ux-why { color: var(--muted); font-size: .85rem; margin: 0; max-width: 72ch; }
+    .ux-tag { margin: 14px 0 0; font-size: .72rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+    .ux-row { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 8px; }
+    @media (min-width: 720px) { .ux-row { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    .ux-doc { margin-top: 14px; border: 1px dashed var(--line); border-radius: 12px; }
+    .ux-doc summary { cursor: pointer; padding: 9px 12px; font-size: .8rem; font-weight: 700; color: var(--muted); list-style: none; }
+    .ux-doc summary::-webkit-details-marker { display: none; }
+    .ux-doc summary::after { content: " ▸"; }
+    .ux-doc[open] summary::after { content: " ▾"; }
+    .ux-doc .ux-doc-body { padding: 2px 12px 12px; font-size: .84rem; max-width: 78ch; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand-row">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">UX</div>
+          <div>Прототип карточек<small>research · не продакшн</small></div>
+        </div>
+        <button class="theme-btn" id="themeBtn" type="button" aria-label="Тема: системная">◐</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <p class="intro" id="top">Три паттерна из <code>research/ui-design-inspiration.md</code>, показанные на настоящем контенте деки
+      <code>de-ru.json</code>. Слева — точная текущая вёрстка генератора, справа — предложение. Классы <code>ux-*</code> существуют
+      только на этой странице; живые спесимены контракта — в <a href="../style-guide.html">style-guide.html</a>.</p>
+
+    <section class="ux-sec" id="badges">
+      <h2>1 · Значки уровня и типа на карточке</h2>
+      <p class="ux-why">Глаз фильтрует карточки по уровню и виду, не читая заголовок. Источники: htmlreference.io (типовые бейджи
+        на каждой карточке), Nicos Weg (уровни A1–B1 как видимая навигация).</p>
+      <p class="ux-tag">Сейчас</p>
+      <div class="ux-row">
+        <article class="cheat-card" data-search="akkusativ prepositions durch für gegen ohne um">
+          <h3>Всегда Akkusativ</h3>
+          <div class="example">für <b lang="de">den</b> Mann · ohne <b lang="de">mich</b></div>
+          <div class="chips"><button class="tap neutral" type="button" data-detail="prep-akk">durch</button><button class="tap neutral" type="button" data-detail="prep-akk">für</button><button class="tap neutral" type="button" data-detail="prep-akk">gegen</button><button class="tap neutral" type="button" data-detail="prep-akk">ohne</button><button class="tap neutral" type="button" data-detail="prep-akk">um</button></div>
+        </article>
+      </div>
+      <p class="ux-tag">Предложение</p>
+      <div class="ux-row">
+        <article class="cheat-card" data-search="akkusativ prepositions durch für gegen ohne um">
+          <h3>Всегда Akkusativ</h3>
+          <div class="ux-meta"><span class="ux-badge level">A1</span><span class="ux-badge type">предлог → падеж</span></div>
+          <div class="example">für <b lang="de">den</b> Mann · ohne <b lang="de">mich</b></div>
+          <div class="chips"><button class="tap neutral" type="button" data-detail="prep-akk">durch</button><button class="tap neutral" type="button" data-detail="prep-akk">für</button><button class="tap neutral" type="button" data-detail="prep-akk">gegen</button><button class="tap neutral" type="button" data-detail="prep-akk">ohne</button><button class="tap neutral" type="button" data-detail="prep-akk">um</button></div>
+        </article>
+      </div>
+      <details class="ux-doc">
+        <summary>Как это устроено и что нужно для принятия</summary>
+        <div class="ux-doc-body">
+          <p><code>.ux-meta</code> — строка пилюль сразу под <code>h3</code>: уровень на <code>--accent-soft</code> (тот же смысл
+            «обрати внимание», что у <code>td.hot</code>), тип на <code>--surface-2</code> + <code>--line</code>. Информация не
+            только цветом — на каждой пилюле текст.</p>
+          <p>Для принятия нужны поля в схеме деки (например <code>level</code>, <code>kind</code>), проверка в
+            <code>deck_validate</code> и компонент в base.css — одним коммитом на обе страницы. Пока поля нет, значок честнее
+            не показывать вовсе.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="ux-sec" id="pair">
+      <h2>2 · Пример + подсказка одной парой</h2>
+      <p class="ux-why">Пример и русская подсказка-«решалка» читаются как одна единица, целевая форма подсвечена внутри
+        предложения. Источники: Reverso Context (подсветка совпадения в контексте), Glosbe (пары строк). Это визуальная форма
+        уже принятой политики глоссов (SITE_PLAN_GUIDE §6).</p>
+      <p class="ux-tag">Сейчас</p>
+      <div class="ux-row">
+        <article class="cheat-card" data-search="main clause hauptsatz verb second v2 position 2 второе место heute ich gehe">
+          <h3>Главное: V2</h3>
+          <div class="formula"><span class="slot">Позиция 1</span><span class="arrow">→</span><span class="slot verb">глагол</span><span class="arrow">→</span><span class="slot">остальное</span></div>
+          <div class="example"><b lang="de">Ich gehe</b> heute in den Laden.<br><b lang="de">Heute gehe</b> ich in den Laden.</div>
+        </article>
+      </div>
+      <p class="ux-tag">Предложение</p>
+      <div class="ux-row">
+        <article class="cheat-card" data-search="main clause hauptsatz verb second v2 position 2 второе место heute ich gehe">
+          <h3>Главное: V2</h3>
+          <div class="formula"><span class="slot">Позиция 1</span><span class="arrow">→</span><span class="slot verb">глагол</span><span class="arrow">→</span><span class="slot">остальное</span></div>
+          <div class="ux-pair">
+            <p class="ux-src" lang="de">Ich <b class="ux-hit">gehe</b> heute in den Laden.<br>Heute <b class="ux-hit">gehe</b> ich in den Laden.</p>
+            <p class="ux-gloss">спрягаемый глагол — всегда на второй позиции, даже когда предложение начинается не с подлежащего</p>
+          </div>
+        </article>
+      </div>
+      <details class="ux-doc">
+        <summary>Как это устроено и что нужно для принятия</summary>
+        <div class="ux-doc-body">
+          <p><code>.ux-pair</code> заменяет <code>.example</code> там, где есть подсказка: исходная строка несёт
+            <code>lang="de"</code> (учебный серифный голос + произношение), подсветка — <code>.ux-hit</code> на
+            <code>--accent-soft</code>, подсказка — <code>.ux-gloss</code> подhairline в том же сером контейнере. По правилу
+            глоссов: смысловые правила → короткая русская подсказка; формы → без подсказки, только структурная пометка.</p>
+          <p>Для принятия: компонент в base.css и обучение <code>markTargetLang</code> новому контейнеру (сейчас он знает
+            <code>.example</code>, <code>.answer</code>, <code>.table-scroll</code>); блок-реестр <code>deck_blocks</code>
+            получает новый тип блока или расширение <code>example</code>.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="ux-sec" id="exit">
+      <h2>3 · Выход на повтор из раздела</h2>
+      <p class="ux-why">Раздел кончается приглашением потренироваться именно ему — практика перестаёт быть отдельным «режимом»,
+        о котором надо вспомнить. Источники: Lingolia и British Council (каждая тема кончается упражнением).</p>
+      <p class="ux-tag">Сейчас</p>
+      <div class="ux-row">
+        <section id="order-now" data-section data-view="order">
+          <div class="section-head"><div><h2>Порядок слов</h2><p>Сначала найди спрягаемый глагол.</p></div><span class="section-badge">Wortstellung</span></div>
+          <p class="tiny">…карточки раздела…</p>
+        </section>
+      </div>
+      <p class="ux-tag">Предложение</p>
+      <div class="ux-row">
+        <section id="order-after" data-section data-view="order">
+          <div class="section-head"><div><h2>Порядок слов</h2><p>Сначала найди спрягаемый глагол.</p></div><span class="section-badge">Wortstellung</span></div>
+          <p class="tiny">…карточки раздела…</p>
+          <div class="ux-exit">
+            <a class="tap neutral" href="#practice">Повторить раздел</a>
+            <span class="tiny">вопросы по этому разделу · без отдельного «режима урока»</span>
+          </div>
+        </section>
+      </div>
+      <details class="ux-doc">
+        <summary>Как это устроено и что нужно для принятия</summary>
+        <div class="ux-doc-body">
+          <p><code>.ux-exit</code> — хвост раздела: существующий <code>.tap.neutral</code> как ссылка на
+            <code>#practice</code> плюс честный счётчик. Стиля-компонента нет — только обёртка с hairline.</p>
+          <p>Для принятия нужна привязка вопросов практики к разделам в схеме деки (сейчас «Быстрый повтор» — одна общая
+            карточка из трёх вопросов). Это правка планов (смежно с D-03, который закрыт до ревизии плана), потом схемы,
+            потом вёрстки. До тех пор ссылка честно ведёт на общий повтор.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="ux-sec" id="combined">
+      <h2>4 · Всё вместе: один раздел</h2>
+      <p class="ux-why">Композиция трёх паттернов на настоящем разделе «Предлоги». Проверь в обеих темах и на узком экране:
+            пилюли и подсветка обязаны держать контраст в светлом и тёмном режимах.</p>
+      <section id="preps-demo" data-section data-view="cases">
+        <div class="section-head"><div><h2>Предлоги</h2><p>Предлог часто сразу определяет падеж.</p></div><span class="section-badge">Präpositionen</span></div>
+        <article class="cheat-card" data-search="akkusativ prepositions durch für gegen ohne um">
+          <h3>Всегда Akkusativ</h3>
+          <div class="ux-meta"><span class="ux-badge level">A1</span><span class="ux-badge type">предлог → падеж</span></div>
+          <div class="ux-pair">
+            <p class="ux-src" lang="de">für <b class="ux-hit">den</b> Mann · ohne <b class="ux-hit">mich</b> · durch <b class="ux-hit">die</b> Stadt</p>
+            <p class="ux-gloss">падеж уже задан предлогом — смысловой вопрос не нужен</p>
+          </div>
+          <div class="chips"><button class="tap neutral" type="button" data-detail="prep-akk">durch</button><button class="tap neutral" type="button" data-detail="prep-akk">für</button><button class="tap neutral" type="button" data-detail="prep-akk">gegen</button><button class="tap neutral" type="button" data-detail="prep-akk">ohne</button><button class="tap neutral" type="button" data-detail="prep-akk">um</button></div>
+        </article>
+        <div class="ux-exit">
+          <a class="tap neutral" href="#practice">Повторить раздел</a>
+          <span class="tiny">вопросы по падежам и предлогам · без отдельного «режима урока»</span>
+        </div>
+      </section>
+    </section>
+
+    <section class="ux-sec" id="practice">
+      <div class="section-head"><div><h2>Быстрый повтор</h2><p>Настоящий вопрос из деки: цель проверки — что выход из раздела ведёт сюда.</p></div><span class="section-badge">30 sec</span></div>
+      <article class="cheat-card" data-search="practice quiz повтор тест">
+        <div class="practice-q">
+          <b>1. Ich helfe ___ Mann.</b> Какой падеж?
+          <div class="chips"><button class="tap neutral reveal" type="button" data-target="a1" aria-expanded="false" aria-controls="a1">Показать</button></div>
+          <div class="answer" id="a1" hidden>Dativ (helfen + Dat., Wem?): <b lang="de">dem Mann</b> — der → dem; с неопределённым артиклем — <b lang="de">einem Mann</b>.</div>
+        </div>
+      </article>
+    </section>
+
+    <div class="footer">Прототип · research/ui-improved-example.html · заметка: <a href="ui-design-inspiration.md">ui-design-inspiration.md</a> · контракт: <a href="../style-guide.html">style-guide.html</a></div>
+  </main>
+
+  <dialog id="detailDialog" aria-labelledby="detailTitle">
+    <div class="sheet">
+      <div class="grab" aria-hidden="true"></div>
+      <div class="sheet-head">
+        <div><h2 id="detailTitle"></h2><p class="lead" id="detailLead"></p></div>
+        <button class="close-sheet" id="closeDialog" aria-label="Закрыть" type="button">×</button>
+      </div>
+      <div id="detailBody"></div>
+    </div>
+  </dialog>
+
+  <script>
+    // Same theme cycle as the site.
+    const THEME_KEY = 'theme';
+    const THEME_UI = {
+      auto:  { icon: '◐', label: 'Тема: системная' },
+      light: { icon: '☀', label: 'Тема: светлая' },
+      dark:  { icon: '☾', label: 'Тема: тёмная' },
+    };
+    const themeBtn = document.getElementById('themeBtn');
+    function applyTheme(mode) {
+      if (mode === 'auto') document.documentElement.removeAttribute('data-theme');
+      else document.documentElement.setAttribute('data-theme', mode);
+      themeBtn.textContent = THEME_UI[mode].icon;
+      themeBtn.setAttribute('aria-label', THEME_UI[mode].label);
+    }
+    let themeMode = 'auto';
+    try { themeMode = localStorage.getItem(THEME_KEY) || 'auto'; } catch (e) {}
+    applyTheme(themeMode);
+    themeBtn.addEventListener('click', () => {
+      themeMode = themeMode === 'auto' ? 'light' : themeMode === 'light' ? 'dark' : 'auto';
+      try { localStorage.setItem(THEME_KEY, themeMode); } catch (e) {}
+      applyTheme(themeMode);
+    });
+
+    // Real dialog entries from content/decks/de-ru.json.
+    const DETAILS = {
+      'prep-akk': {title:'Akkusativ-предлоги', lead:'durch, für, gegen, ohne, um', body:`<div class="detail-block"><b>Примеры</b>für <i lang="de">den Mann</i> · ohne <i lang="de">mich</i> · durch <i lang="de">die Stadt</i>.</div><div class="detail-block"><b>Практика</b>Если видишь один из этих предлогов, не ищи смысловой вопрос — падеж уже задан предлогом.</div>`},
+      'v2': {title:'Что такое V2', lead:'Глагол стоит во второй синтаксической позиции, не обязательно вторым словом.', body:`<div class="detail-block"><b>1 позиция может быть длинной</b><i lang="de">Heute Morgen um acht</i> gehe ich zur Arbeit. Вся группа “Heute Morgen um acht” занимает позицию 1.</div><div class="detail-block"><b>Потом</b>сразу идёт спрягаемый глагол.</div>`}
+    };
+    const dialog = document.getElementById('detailDialog');
+    document.addEventListener('click', (event) => {
+      const trigger = event.target.closest('[data-detail]');
+      if (trigger && DETAILS[trigger.dataset.detail]) {
+        const item = DETAILS[trigger.dataset.detail];
+        document.getElementById('detailTitle').textContent = item.title;
+        document.getElementById('detailLead').textContent = item.lead;
+        document.getElementById('detailBody').innerHTML = item.body;
+        dialog.showModal();
+      }
+      const reveal = event.target.closest('.reveal');
+      if (reveal) {
+        const answer = document.getElementById(reveal.dataset.target);
+        if (answer) {
+          answer.hidden = !answer.hidden;
+          reveal.textContent = answer.hidden ? 'Показать' : 'Скрыть';
+          reveal.setAttribute('aria-expanded', String(!answer.hidden));
+        }
+      }
+    });
+    document.getElementById('closeDialog').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+  </script>
+</body>
+</html>

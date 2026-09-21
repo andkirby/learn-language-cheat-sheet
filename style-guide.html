@@ -16,9 +16,25 @@
     .sg-nav { position: static; transform: none; width: 100%; }
     .sg-toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; }
     .sg-toc a { text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: .82rem; font-weight: 700; background: var(--surface); }
+    .sg-part {
+      margin-top: 46px; padding-top: 16px; border-top: 1px solid var(--line);
+      font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+    }
     .sg-block { margin-top: 34px; }
     .sg-block > h2 { margin: 0 0 4px; font-size: 1.3rem; letter-spacing: -.02em; }
     .sg-block > .sg-why { color: var(--muted); font-size: .85rem; margin: 0 0 14px; max-width: 72ch; }
+    .sg-doc { margin-top: 12px; border: 1px dashed var(--line); border-radius: 12px; }
+    .sg-doc summary { cursor: pointer; padding: 9px 12px; font-size: .8rem; font-weight: 700; color: var(--muted); list-style: none; }
+    .sg-doc summary::-webkit-details-marker { display: none; }
+    .sg-doc summary::after { content: " ▸"; }
+    .sg-doc[open] summary::after { content: " ▾"; }
+    .sg-doc .sg-doc-body { padding: 2px 12px 12px; font-size: .84rem; max-width: 78ch; }
+    .sg-doc .sg-doc-body p { margin: 8px 0; }
+    .sg-code {
+      overflow-x: auto; margin: 10px 0; padding: 10px 12px; border-radius: 10px;
+      background: var(--surface-2); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .74rem; line-height: 1.55;
+    }
     .sg-row { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 12px; }
     @media (min-width: 720px) { .sg-row { grid-template-columns: repeat(2, minmax(0,1fr)); } .sg-row.trio { grid-template-columns: repeat(3, minmax(0,1fr)); } }
     .sg-swatch { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--surface); }
@@ -30,6 +46,32 @@
     .sg-anno code { color: var(--text); }
     table.roles td:first-child { white-space: nowrap; }
     .dont s { opacity: .8; }
+
+    /* Hub-only components, copied verbatim from the inline <style> of
+       index.html — if you change them there, change them here. They are
+       documented in the #hub section but owned by index.html, not base.css. */
+    .sg-hub-hero {
+      background: linear-gradient(135deg, var(--hero-1) 0%, var(--hero-2) 100%);
+      border-radius: 24px; padding: 22px 20px; box-shadow: var(--shadow);
+    }
+    .sg-hub-hero h1 { font-size: clamp(1.6rem, 6vw, 2.3rem); line-height: 1.08; margin: 0 0 8px; letter-spacing: -.035em; color: #fff; }
+    .sg-hub-hero p { margin: 0; color: var(--hero-text); max-width: 60ch; }
+    .sg-hub-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 16px; }
+    @media (min-width: 720px) { .sg-hub-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    .sg-hub-card {
+      display: flex; gap: 14px; align-items: center; text-decoration: none;
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 18px 16px; box-shadow: 0 3px 14px rgba(23,32,51,.035); min-height: 96px;
+    }
+    .sg-hub-card:hover { border-color: var(--accent); }
+    .sg-hub-mark {
+      width: 52px; height: 52px; border-radius: 15px; flex: 0 0 auto;
+      display: grid; place-items: center; background: var(--text); color: var(--bg); font-weight: 900; font-size: 1.15rem;
+    }
+    .sg-hub-card b { display: block; font-size: 1.08rem; }
+    .sg-hub-card .topics { display: block; margin-top: 3px; font-size: .88rem; }
+    .sg-hub-card .meta { display: block; margin-top: 5px; color: var(--muted); font-size: .78rem; }
+    .sg-hub-card .go { margin-left: auto; color: var(--on-accent-soft); font-weight: 900; font-size: 1.3rem; }
   </style>
 </head>
 <body>
@@ -46,12 +88,20 @@
   </header>
 
   <main>
-    <p class="intro" id="top">Living documentation for <code>assets/base.css</code> and the contract in <code>.design/DESIGN_SYSTEM.md</code>. Every specimen below is rendered by the shared stylesheet — this page is honest by construction: if it looks wrong here, it is wrong everywhere.</p>
+    <p class="intro" id="top">Living documentation for <code>assets/base.css</code> and the contract in <code>.design/DESIGN_SYSTEM.md</code>.
+      Specimens use the exact nesting the pages ship: deck markup as produced by <code>tools/build_pages.py</code> (block registry
+      in <code>tools/deck_blocks.py</code>, skeleton in <code>tools/page_template.html</code>), hub markup as written in
+      <code>index.html</code>. This page is honest by construction: if it looks wrong here, it is wrong everywhere.
+      Expanded notes live in the collapsible blocks (<code>&lt;details class="sg-doc"&gt;</code> — native, works without JS).</p>
 
     <nav class="sg-toc" aria-label="Sections">
       <a href="#voices">Type voices</a>
       <a href="#tokens">Color tokens</a>
+      <a href="#topbar">Topbar</a>
+      <a href="#searchrow">Search row</a>
       <a href="#helprow">Help row</a>
+      <a href="#noscript">Noscript</a>
+      <a href="#anatomy">Section anatomy</a>
       <a href="#card">Cards</a>
       <a href="#chips">Chips</a>
       <a href="#tables">Tables</a>
@@ -61,13 +111,17 @@
       <a href="#practice">Practice</a>
       <a href="#dialog">Bottom sheet</a>
       <a href="#nav">Bottom nav &amp; views</a>
+      <a href="#hub">Hub (landing)</a>
       <a href="#roles">Class roles</a>
       <a href="#rules">Do / don’t</a>
+      <a href="#research">Proposed (research)</a>
     </nav>
+
+    <h2 class="sg-part">Foundations</h2>
 
     <section class="sg-block" id="voices">
       <h2>Type voices</h2>
-      <p class="sg-why">Two voices, one rule: Russian explanation text uses <code>--font-ui</code> (system sans); any element carrying the studied language is marked with a <code>lang</code> attribute (set by <code>markTargetLang</code> in each page) and rendered in <code>--font-study</code> (system serif). The serif is the “this is the language you are learning” signal — a textbook convention. No external fonts.</p>
+      <p class="sg-why">Two voices, one rule: Russian explanation text uses <code>--font-ui</code> (system sans); any element carrying the studied language is marked with a <code>lang</code> attribute and rendered in <code>--font-study</code> (system serif) — the “this is the language you are learning” signal.</p>
       <div class="cheat-card">
         <h3>RU explanation — sans <code>--font-ui</code></h3>
         <p>Предлог часто сразу определяет падеж: спроси <i>Wo?</i> или <i>Wohin?</i> перед Wechselpräpositionen.</p>
@@ -75,7 +129,19 @@
         <div class="example" lang="de">Ich gebe dem Kind das Buch. — Wem? Dat. · Was? Akk.</div>
         <p class="sg-anno">Line 1: mixed RU/DE — only the German fragments carry <code>lang="de"</code> (bold). Line 2: pure German — the whole <code>.example</code> container is marked, so the full sentence takes the study voice and stays readable as one unit.</p>
       </div>
-      <p class="sg-note">Marking rule (page JS): whole <code>.example</code>/<code>.answer</code>/<code>.table-scroll</code> containers are marked when they contain no Cyrillic; otherwise bold in <code>.example</code>/<code>.answer</code>, italics in <code>.detail-block</code>, and formula slots without Cyrillic are marked individually.</p>
+      <details class="sg-doc">
+        <summary>Marking rules, fonts, and what must never take the serif</summary>
+        <div class="sg-doc-body">
+          <p>Pages set <code>lang</code> via <code>markTargetLang</code> in the page script (see <code>page_template.html</code>):
+            whole <code>.example</code> / <code>.answer</code> / <code>.table-scroll</code> containers are marked when they
+            contain no Cyrillic; otherwise the fragments are marked — bold in <code>.example</code>/<code>.answer</code>,
+            italics in <code>.detail-block</code>, and formula slots without Cyrillic individually.</p>
+          <p><code>lang</code> does two jobs: the serif study voice (<code>[lang]</code> selector in base.css) and screen-reader
+            pronunciation. Never apply it to Russian text — that would flip the explanation into the study voice and mispronounce it.</p>
+          <p>Stacks (no external fonts): <code>--font-ui</code> = system sans;
+            <code>--font-study</code> = Charter → ui-serif (New York) → Sitka/Cambria → Noto Serif.</p>
+        </div>
+      </details>
     </section>
 
     <section class="sg-block" id="tokens">
@@ -96,22 +162,156 @@
         <div class="sg-swatch"><div class="chip" style="background:var(--hero-1)"></div><div class="lbl"><b>--hero-1/-2…</b> · landing hero only</div></div>
       </div>
       <p class="sg-note">Non-color tokens: <code>--grab</code>, <code>--backdrop</code>, <code>--shadow</code>, <code>--radius</code>, <code>--nav-h</code>, <code>--font-ui</code>, <code>--font-study</code>.</p>
+      <details class="sg-doc">
+        <summary>Token governance</summary>
+        <div class="sg-doc-body">
+          <p>New color need → add a semantic token to base.css first (light + dark together, dark ≥ 4.5:1 for text), then use it.
+            Never reuse a primitive for a second meaning; never put raw hex in component rules or page styles — the only
+            exceptions are the <code>:root</code> blocks and black-key shadows. The <code>theme-color</code> metas must match the
+            light/dark <code>--bg</code> values. The full role table with hex values lives in
+            <code>.design/DESIGN_SYSTEM.md</code>; this page shows the roles, that file owns the numbers.</p>
+        </div>
+      </details>
     </section>
 
-    <section class="sg-block" id="helprow">
-      <h2>Header controls: help + language menu</h2>
-      <p class="sg-why">The usage note lives behind the compact (i) <code>.icon-btn</code> in the topbar (opens the standard bottom sheet via <code>data-detail="lookup-help"</code>, carries <code>#start</code>). The <code>.lang-menu</code> combines both language choices in one topbar popover — <em>Язык обучения</em> (navigational links) and <em>Язык объяснений</em> (current + upcoming audiences); flat groups, never a submenu. Native <code>&lt;details&gt;</code> keeps it functional without JS; JS adds light dismiss. On deck pages it sits in the search row (the brand row can't fit it beside the install button at 390px); the landing has it in the brand row.</p>
-      <div class="search-row" style="border:1px dashed var(--line);border-radius:12px;padding:10px;margin-top:12px">
-        <button class="icon-btn" type="button" tabindex="-1" aria-label="Как пользоваться" style="margin-right:auto"><span class="ico" aria-hidden="true">i</span></button>
-        <details class="lang-menu" open>
+    <h2 class="sg-part">Page chrome — exact <code>page_template.html</code> nesting</h2>
+
+    <section class="sg-block" id="topbar">
+      <h2>Topbar &amp; brand row</h2>
+      <p class="sg-why">Sticky, blurred, one <code>.brand-row</code> inside <code>.topbar-inner</code>. The deck-page order is brand → (i) help → theme → install; the landing swaps (i)+install for the language menu.</p>
+      <div class="search-row" style="border:1px dashed var(--line);border-radius:12px;padding:10px">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">DE</div>
+          <div>German Cheat<small>RU → DE · A1–B1</small></div>
+        </div>
+        <button class="icon-btn" type="button" tabindex="-1" aria-label="Как пользоваться" style="margin-left:auto"><span class="ico" aria-hidden="true">i</span></button>
+        <button class="theme-btn" type="button" tabindex="-1" aria-label="Тема">◐</button>
+        <button class="install-btn" type="button" tabindex="-1">Установить</button>
+      </div>
+      <p class="sg-anno">Deck-page brand row with real deck strings (<code>de-ru.json</code> → <code>de/ru/</code>). <code>.install-btn</code> shows only when installable (iOS Safari non-standalone, or <code>beforeinstallprompt</code>); <code>[hidden]</code> is the default.</p>
+      <details class="sg-doc">
+        <summary>Exact skeleton nesting &amp; control contracts</summary>
+        <div class="sg-doc-body">
+<pre class="sg-code">&lt;header class="topbar"&gt;
+  &lt;div class="topbar-inner"&gt;
+    &lt;div class="brand-row"&gt;
+      &lt;div class="brand"&gt;
+        &lt;div class="brand-mark" aria-hidden="true"&gt;DE&lt;/div&gt;
+        &lt;div&gt;German Cheat&lt;small&gt;RU → DE · A1–B1&lt;/small&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;button class="icon-btn" …&gt;&lt;span class="ico"&gt;i&lt;/span&gt;&lt;/button&gt;
+      &lt;button class="theme-btn" id="themeBtn" …&gt;◐&lt;/button&gt;
+      &lt;button class="install-btn" id="installBtn" …&gt;Установить&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="search-row"&gt;…field + lang menu…&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</pre>
+          <p><code>.brand small</code> hides ≤ 460px so the install button never crowds the row. <code>.theme-btn</code> and
+            <code>.icon-btn</code> share one 44px style block. The theme cycle (авто → светлая → тёмная, persisted in
+            <code>localStorage.theme</code>, <code>theme-color</code> metas synced) is part of the shared contract — removing or
+            changing it is a contract change.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="sg-block" id="searchrow">
+      <h2>Search row &amp; language menu (deck pages)</h2>
+      <p class="sg-why">Field + audience switcher side by side. The <code>.lang-menu</code> combines both language choices in one topbar popover — <em>Язык обучения</em> (navigational links) and <em>Язык объяснений</em> (current + upcoming audiences); flat groups, never a submenu.</p>
+      <div class="search-row" style="border:1px dashed var(--line);border-radius:12px;padding:10px">
+        <div class="search-wrap">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input class="search" type="search" autocomplete="off" enterkeyhint="search" placeholder="Поиск: wem, weil, modal, Dativ…" aria-label="Поиск по шпаргалке" />
+          <button class="clear-search" type="button" aria-label="Очистить поиск" hidden>×</button>
+        </div>
+        <details class="lang-menu">
           <summary aria-label="Язык обучения и язык объяснений">DE · RU</summary>
           <div class="lang-pop" style="position:static;margin-top:8px">
             <div class="lang-group"><div class="lang-group-label">Язык обучения</div><span class="cur">Deutsch</span><a href="#" onclick="return false">English</a></div>
             <div class="lang-group"><div class="lang-group-label">Язык объяснений</div><span class="cur">Русский</span><span class="soon">English — скоро</span></div>
           </div>
         </details>
-        <button class="theme-btn" type="button" tabindex="-1" aria-label="Тема">◐</button>
       </div>
+      <details class="sg-doc">
+        <summary>Search behavior &amp; menu contracts</summary>
+        <div class="sg-doc-body">
+          <p><strong>Search.</strong> Cards match on <code>card.textContent + data-search</code> (lowercased substring). While
+            searching, <code>body.searching</code> is set (the noscript intro hides), matching sections from <em>every</em> view
+            stack into one result list, <code>#noResults</code> shows at zero matches, and clearing restores the active view.
+            Search never destroys dialog or answer state. <code>data-search</code> is a designed surface: deck authors put the
+            hidden keywords there (forms, Russian prompts) — findings C-11–13 came from treating it as an afterthought.</p>
+          <p><strong>Language menu.</strong> Native <code>&lt;details&gt;</code> keeps it functional without JS; JS adds light
+            dismiss and Escape. On deck pages it sits in the search row (the brand row can't fit it beside the install button at
+            390px); the landing has it in the brand row. Driven by <code>content/decks/site.json</code> on deck pages and mirrored
+            by hand in <code>index.html</code> — update both when adding a language or audience.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="sg-block" id="helprow">
+      <h2>Help (i) button</h2>
+      <p class="sg-why">The usage note lives behind the compact (i) <code>.icon-btn</code> in the topbar — opens the standard bottom sheet via <code>data-detail="lookup-help"</code>, carries <code>#start</code> as its scroll anchor.</p>
+      <div class="chips" style="margin-top:0">
+        <button class="tap" type="button" data-detail="lookup-help">Открыть «Как пользоваться»</button>
+      </div>
+      <p class="sg-anno">Generated by <code>_help_button_html</code> in <code>deck_render.py</code>: <code>id="start"</code>,
+        <code>aria-haspopup="dialog"</code>, label + title from the deck's <code>help</code> block. Hidden by the noscript
+        stylesheet, which keeps a plain <code>.intro</code> line instead.</p>
+    </section>
+
+    <section class="sg-block" id="noscript">
+      <h2>Noscript block</h2>
+      <p class="sg-why">The whole deck must read with JS off: controls hide, answers unhide, and a notice + intro line replace the interactive chrome.</p>
+<pre class="sg-code">&lt;noscript&gt;
+  &lt;style&gt;
+    .tap, .install-btn, .clear-search, .theme-btn, .icon-btn { display: none !important; }
+    .answer[hidden] { display: block; }
+  &lt;/style&gt;
+  &lt;div class="notice" style="margin:12px 16px 0"&gt;…@@NOSCRIPT_NOTICE@@…&lt;/div&gt;
+  &lt;p class="intro" style="margin:10px 16px 0"&gt;…@@NOSCRIPT_INTRO@@…&lt;/p&gt;
+&lt;/noscript&gt;</pre>
+      <div class="notice" style="margin-top:10px">Включите JavaScript для поиска и кнопок — вся шпаргалка доступна и без него.</div>
+      <p class="sg-anno">Rendered approximation of what a noscript visitor sees first. The strings come from the deck's
+        <code>strings.noscript_notice</code> / <code>noscript_intro</code>.</p>
+    </section>
+
+    <h2 class="sg-part">Content blocks — exact generator nesting</h2>
+
+    <section class="sg-block" id="anatomy">
+      <h2>Section &amp; card anatomy</h2>
+      <p class="sg-why">Sections carry <code>data-section</code> + <code>data-view</code>; the head is a flex row with an inner <code>&lt;div&gt;</code> wrapper; cards are plain or grouped in <code>.cards</code> grids.</p>
+<pre class="sg-code">&lt;section id="preps" data-section data-view="cases"&gt;
+  &lt;div class="section-head"&gt;&lt;div&gt;&lt;h2&gt;Предлоги&lt;/h2&gt;&lt;p&gt;Предлог часто сразу определяет падеж.&lt;/p&gt;&lt;/div&gt;
+    &lt;span class="section-badge"&gt;Präpositionen&lt;/span&gt;&lt;/div&gt;
+  &lt;article class="cheat-card" data-search="…"&gt;…blocks…&lt;/article&gt;
+  &lt;div class="cards two"&gt;…&lt;/div&gt;   &lt;!-- group with grid: two/three ≥720px --&gt;
+&lt;/section&gt;</pre>
+      <details class="sg-doc">
+        <summary>Block registry: deck JSON key → markup (and the visual order)</summary>
+        <div class="sg-doc-body">
+          <p>Each card is a list of blocks; the registry (<code>tools/deck_blocks.py</code>) owns each type's markup, and one
+            block per card wins. <strong>Visual order is fixed by <code>HTML_ORDER</code>, not JSON order:</strong>
+            <code>h → p → tiny → example → formula → table → chips → notice → detail</code>.</p>
+          <div class="table-scroll">
+            <table class="roles">
+              <thead><tr><th>Deck key</th><th>Markup</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr><td><code>h</code></td><td><code>&lt;h3&gt;</code></td><td>card title</td></tr>
+                <tr><td><code>p</code> / <code>tiny</code></td><td><code>&lt;p&gt;</code> / <code>&lt;p class="tiny"&gt;</code></td><td>runs: strings or <code>{t, b, i, s, br}</code></td></tr>
+                <tr><td><code>example</code></td><td><code>&lt;div class="example"&gt;</code></td><td>bold marks the pattern-carrying words</td></tr>
+                <tr><td><code>formula</code></td><td><code>&lt;div class="formula"&gt;</code></td><td>slots + <code>{arrow}</code> items; slot <code>role</code>: verb/end/sub</td></tr>
+                <tr><td><code>table</code></td><td><code>&lt;div class="table-scroll"&gt;&lt;table&gt;</code></td><td>cell object <code>{hot: …}</code> → <code>td.hot</code></td></tr>
+                <tr><td><code>chips</code></td><td><code>&lt;div class="chips"&gt;</code></td><td>needs label + known detail key; <code>neutral: true</code> variant</td></tr>
+                <tr><td><code>notice</code></td><td><code>&lt;div class="notice"&gt;</code></td><td><code>warning: true</code> → <code>.notice.warning</code></td></tr>
+                <tr><td><code>detail</code></td><td><code>&lt;div class="detail-block"&gt;</code></td><td>dialog body blocks only (in <code>details</code>)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Special card shape: <code>case_grid</code> renders <code>&lt;div class="case-grid cheat-card"&gt;</code> of
+            <code>.tap.case</code> buttons. Practice is its own section built by <code>practice_html</code> (see #practice).
+            The validator (<code>tools/deck_validate.py</code>) gates all of this; the committed page must match the deck
+            (<code>build_pages.py &lt;deck&gt; --check</code> exits 0).</p>
+        </div>
+      </details>
     </section>
 
     <section class="sg-block" id="card">
@@ -128,9 +328,18 @@
           <h3>Быстрый смысл</h3>
           <p><b>Dat.</b> часто = получатель: <i>даю кому?</i></p>
           <div class="example"><b lang="de">Ich gebe dem Mann das Buch.</b></div>
-          <p class="sg-anno">Real specimen from <code>deutsch/</code>. Grid: <code>.cards.two</code> → 2 columns ≥ 720px.</p>
+          <p class="sg-anno">Real specimen from <code>de-ru.json</code>. Grid: <code>.cards.two</code> → 2 columns ≥ 720px.</p>
         </article>
       </div>
+      <details class="sg-doc">
+        <summary>Card density rules</summary>
+        <div class="sg-doc-body">
+          <p>First layer = trigger + rule + one short example (DESIGN_SYSTEM: “compact reference cards, not a textbook”).
+            Everything deeper is a <code>.tap</code> chip into a <code>DETAILS</code> entry. Examples ≤ 2 lines; bold marks
+            pattern-carrying words. Card content feeds search automatically via <code>textContent</code>; anything that must be
+            findable but isn't visible goes into <code>data-search</code>.</p>
+        </div>
+      </details>
     </section>
 
     <section class="sg-block" id="chips">
@@ -162,6 +371,15 @@
         </div>
         <p class="sg-anno">Pure-target-language tables take the study voice as a whole (<code>lang</code> on <code>.table-scroll</code>).</p>
       </div>
+      <details class="sg-doc">
+        <summary>Why min-width lives on the table, not the container</summary>
+        <div class="sg-doc-body">
+          <p><code>table { min-width: 560px }</code> is what forces the scroll inside <code>.table-scroll</code>; grid items are
+            allowed to shrink (<code>.cards &gt; * { min-width: 0 }</code>) so the card never overflows the page. Print undoes
+            both (<code>overflow: visible; min-width: 0</code>). The ~390px no-page-overflow check in AGENTS.md exists to guard
+            exactly this pair.</p>
+        </div>
+      </details>
     </section>
 
     <section class="sg-block" id="formula">
@@ -171,6 +389,7 @@
         <div class="formula"><span class="slot">Heute</span><span class="slot verb" lang="de">muss</span><span class="slot" lang="de">ich in den Laden</span><span class="slot end" lang="de">gehen</span></div>
         <div class="formula"><span class="slot sub" lang="de">weil</span><span class="slot" lang="de">ich heute arbeiten</span><span class="slot end" lang="de">muss</span></div>
       </div>
+      <p class="sg-anno">Deck shape: items are <code>{slot}</code>, <code>{slot, role}</code> or <code>{arrow}</code>; slots without Cyrillic get <code>lang</code> from <code>markTargetLang</code>.</p>
     </section>
 
     <section class="sg-block" id="cases">
@@ -180,6 +399,8 @@
         <div class="case-box"><strong>Nominativ</strong><span class="case-q" lang="de">Wer? Was?</span><span class="case-hint">подлежащее</span></div>
         <div class="case-box"><strong>Dativ</strong><span class="case-q" lang="de">Wem?</span><span class="case-hint">получатель</span></div>
       </div>
+      <p class="sg-anno">Generated as <code>&lt;div class="case-grid cheat-card" data-search="…"&gt;</code> of
+        <code>&lt;button class="tap case" data-detail="…"&gt;</code> — each tile opens its case dialog.</p>
     </section>
 
     <section class="sg-block" id="notices">
@@ -199,17 +420,57 @@
           <div class="answer" id="sg-a1" hidden><span lang="de">Dativ</span> → <span lang="de">Wem?</span> → <b lang="de">dem Mann</b>.</div>
         </div>
       </article>
+      <details class="sg-doc">
+        <summary>Exact practice section nesting</summary>
+        <div class="sg-doc-body">
+<pre class="sg-code">&lt;section id="practice" data-section data-view="practice"&gt;
+  &lt;div class="section-head"&gt;…&lt;/div&gt;
+  &lt;article class="cheat-card" data-search="practice quiz повтор тест"&gt;
+    &lt;div class="practice-q"&gt;
+      &lt;b&gt;1. …&lt;/b&gt; Вопрос?
+      &lt;div class="chips"&gt;&lt;button class="tap neutral reveal" data-target="a1"
+        aria-expanded="false" aria-controls="a1"&gt;Показать&lt;/button&gt;&lt;/div&gt;
+      &lt;div class="answer" id="a1" hidden&gt;…&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+&lt;/section&gt;</pre>
+          <p>Answer ids are positional (<code>a1</code>, <code>a2</code>…) — one shared card per deck today. Per-topic practice
+            mapping would be a plan + schema change first (see #research).</p>
+        </div>
+      </details>
     </section>
+
+    <h2 class="sg-part">Overlays &amp; navigation</h2>
 
     <section class="sg-block" id="dialog">
       <h2>Bottom-sheet dialog</h2>
       <p class="sg-why">One shared <code>#detailDialog</code> per page; content set from the page’s <code>DETAILS</code> object. Closes via ×, Escape and backdrop tap. Focus is trapped natively by <code>showModal()</code>.</p>
       <div class="chips"><button class="tap" type="button" data-detail="v2-demo">Открыть пример диалога</button></div>
+      <details class="sg-doc">
+        <summary>DETAILS shape &amp; dialog markup</summary>
+        <div class="sg-doc-body">
+<pre class="sg-code">&lt;dialog id="detailDialog" aria-labelledby="detailTitle"&gt;
+  &lt;div class="sheet"&gt;
+    &lt;div class="grab" aria-hidden="true"&gt;&lt;/div&gt;
+    &lt;div class="sheet-head"&gt;
+      &lt;div&gt;&lt;h2 id="detailTitle"&gt;&lt;/h2&gt;&lt;p class="lead" id="detailLead"&gt;&lt;/p&gt;&lt;/div&gt;
+      &lt;button class="close-sheet" id="closeDialog" …&gt;×&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div id="detailBody"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/dialog&gt;</pre>
+          <p><code>DETAILS[key] = {title, lead, body}</code>; body is pre-rendered from the deck's
+            <code>details[key].blocks</code> as a run of <code>.detail-block</code> divs
+            (<code>&lt;b&gt;</code>label<code>&lt;/b&gt;</code> + runs, italics take <code>lang</code>). Backdrop close relies on
+            <code>event.target === dialog</code>. The install button reuses this dialog for its iOS/generic how-to
+            (<code>INSTALL</code> object).</p>
+        </div>
+      </details>
     </section>
 
     <section class="sg-block" id="nav">
       <h2>Bottom nav &amp; views</h2>
-      <p class="sg-why">Five view destinations; the selected view is the nav truth (<code>aria-current</code>), no scrollspy. Sections carry <code>data-view</code>; legacy anchors open the section’s view first. While <code>body.searching</code> is set, the intro line hides and matching sections from every view are shown stacked. Shown here as a static specimen (<code>.sg-nav</code> override).</p>
+      <p class="sg-why">Five view destinations; the selected view is the nav truth (<code>aria-current</code>), no scrollspy. Sections carry <code>data-view</code>; legacy anchors open the section’s view first. While <code>body.searching</code> is set, matching sections from every view are shown stacked. Shown here as a static specimen (<code>.sg-nav</code> override).</p>
       <div class="sg-demo">
         <nav class="bottom-nav sg-nav" aria-label="Specimen">
           <a class="nav-item active" href="#nav" data-nav="cases" aria-current="true"><span class="ico">A/D</span><span>Падежи</span></a>
@@ -219,8 +480,61 @@
           <a class="nav-item" href="#nav" data-nav="practice"><span class="ico">?</span><span>Повтор</span></a>
         </nav>
       </div>
-      <p class="sg-anno">Real pages: fixed to the bottom, respects <code>env(safe-area-inset-bottom)</code>.</p>
+      <p class="sg-anno">Real pages: fixed to the bottom, respects <code>env(safe-area-inset-bottom)</code>. Views/destinations/legacy anchors are owned by each language plan, not by this contract.</p>
+      <details class="sg-doc">
+        <summary>View switching, hashes, and print</summary>
+        <div class="sg-doc-body">
+          <p>A nav tap: clears an active search (predictable destination), pushes <code>#viewId</code>, shows that view's
+            sections (<code>hidden</code> on the rest), sets <code>.active</code> + <code>aria-current="true"</code>, scrolls
+            top. Hash handling: section ids win (open their view, scroll to the section — the legacy-anchor path),
+            view ids switch views; unknown hashes keep the current view. Initial load honors a deep link. Noscript and print
+            show everything stacked (<code>section[data-view]</code> forced visible in print).</p>
+        </div>
+      </details>
     </section>
+
+    <h2 class="sg-part">Hub (landing only)</h2>
+
+    <section class="sg-block" id="hub">
+      <h2>Hero &amp; language cards</h2>
+      <p class="sg-why">Hub-only components — owned by the inline <code>&lt;style&gt;</code> of <code>index.html</code>, not base.css. Rendered here from a verbatim copy (styles prefixed <code>.sg-hub-*</code> to keep the guide honest about ownership).</p>
+      <div class="sg-hub-hero">
+        <h1>Грамматика без листания учебника</h1>
+        <p>Короткие мобильные шпаргалки: сначала триггер — падеж, предлог, время или союз, — потом форма и позиция. Открой один раз: дальше работает офлайн.</p>
+      </div>
+      <div class="sg-hub-grid">
+        <a class="sg-hub-card" href="#" onclick="return false">
+          <span class="sg-hub-mark" aria-hidden="true">DE</span>
+          <span>
+            <b>Немецкий · Deutsch</b>
+            <span class="topics">Падежи · артикли · порядок слов · придаточные</span>
+            <span class="meta">RU → DE · A1–B1 · устанавливается на телефон</span>
+          </span>
+          <span class="go" aria-hidden="true">→</span>
+        </a>
+        <a class="sg-hub-card" href="#" onclick="return false">
+          <span class="sg-hub-mark" aria-hidden="true">EN</span>
+          <span>
+            <b>Английский · English</b>
+            <span class="topics">Времена · артикли · порядок слов · условные</span>
+            <span class="meta">RU → EN · A1–B1 · устанавливается на телефон</span>
+          </span>
+          <span class="go" aria-hidden="true">→</span>
+        </a>
+      </div>
+      <details class="sg-doc">
+        <summary>Hub contracts</summary>
+        <div class="sg-doc-body">
+          <p>Whole card is the link; hover accent border. The landing's <code>DECKS</code> registry mirrors
+            <code>content/decks/site.json</code> — update both together when adding a language or audience. The
+            <em>Язык объяснений</em> choice persists (<code>localStorage.locale</code>) and rewrites card + menu hrefs; the last
+            studied target (<code>localStorage.target</code>, set by deck pages) greets in the summary chip. Hero tokens
+            (<code>--hero-*</code>) are the one always-dark surface; no bottom nav on the hub.</p>
+        </div>
+      </details>
+    </section>
+
+    <h2 class="sg-part">Governance</h2>
 
     <section class="sg-block" id="roles">
       <h2>Class roles</h2>
@@ -229,26 +543,40 @@
         <table class="roles">
           <thead><tr><th>Selector</th><th>Role</th></tr></thead>
           <tbody>
+            <tr><td><code>.topbar</code>, <code>.topbar-inner</code>, <code>.brand-row</code></td><td>Sticky blurred header; 980px content column; the one flex row of identity + controls</td></tr>
+            <tr><td><code>.brand</code>, <code>.brand-mark</code>, <code>.brand small</code></td><td>Identity block; square mark; sub-line hidden ≤ 460px</td></tr>
+            <tr><td><code>.install-btn</code></td><td>Install control; hidden unless installable (iOS non-standalone / <code>beforeinstallprompt</code>)</td></tr>
+            <tr><td><code>.theme-btn</code>, <code>.icon-btn</code> + <code>.ico</code></td><td>44px topbar icon buttons; theme cycle; the (i) usage button → <code>lookup-help</code> sheet, carries <code>#start</code></td></tr>
+            <tr><td><code>.search-row</code>, <code>.search-wrap</code>, <code>.search</code>, <code>.search-icon</code>, <code>.clear-search</code></td><td>Search field row; wrapping frame; the input; decorative ⌕; clear button (hidden until query)</td></tr>
+            <tr><td><code>.lang-menu</code>, <code>.lang-pop</code>, <code>.lang-group</code>, <code>.cur</code>, <code>.soon</code></td><td>Topbar language control: «Язык обучения» links + «Язык объяснений» state in one native <code>&lt;details&gt;</code> popover</td></tr>
             <tr><td><code>.cheat-card</code></td><td>Atomic reference unit; searchable via <code>data-search</code></td></tr>
             <tr><td><code>.cards</code> + <code>.two/.three</code></td><td>Card grid and its density columns (layout layer)</td></tr>
             <tr><td><code>.tap</code> / <code>.neutral</code> / <code>.case</code></td><td>Tappable chip: opens detail dialog / secondary / 44px case tile</td></tr>
             <tr><td><code>.example</code></td><td>Example line(s); may carry <code>lang</code> wholesale when pure target-language</td></tr>
-            <tr><td><code>.formula</code> + <code>.slot</code> <code>.verb/.end/.sub</code></td><td>Sentence-position diagram; slot color = grammatical role</td></tr>
+            <tr><td><code>.formula</code> + <code>.slot</code> <code>.verb/.end/.sub</code>, <code>.arrow</code></td><td>Sentence-position diagram; slot color = grammatical role</td></tr>
             <tr><td><code>.table-scroll</code>, <code>td.hot</code></td><td>Scrollable table; <code>.hot</code> = the form that changes across cases</td></tr>
+            <tr><td><code>.case-grid</code>, <code>.case-box</code>, <code>.case-q</code>, <code>.case-hint</code></td><td>Case tiles (DE page only); question word + Russian hint</td></tr>
             <tr><td><code>.notice</code> / <code>.warning</code></td><td>Info callout / caveat callout</td></tr>
             <tr><td><code>.practice-q</code>, <code>.answer</code>, <code>.reveal</code></td><td>Self-check block; hidden answer; toggle control</td></tr>
+            <tr><td><code>dialog</code>, <code>.sheet</code>, <code>.grab</code>, <code>.sheet-head</code>, <code>.close-sheet</code>, <code>.detail-block</code>, <code>.lead</code></td><td>Bottom sheet and its parts; body blocks from <code>DETAILS</code></td></tr>
             <tr><td><code>.bottom-nav</code>, <code>.nav-item</code>, <code>data-view</code></td><td>View switcher; active destination; section→view membership</td></tr>
-            <tr><td><code>.section-head</code>, <code>.section-badge</code>, <code>.intro</code></td><td>Section header, its German tag, the noscript/plain intro line</td></tr>
-            <tr><td><code>.icon-btn</code> + <code>.ico</code></td><td>44px topbar icon button; the (i) usage button → <code>lookup-help</code> bottom sheet; carries <code>#start</code> on language pages</td></tr>
-            <tr><td><code>.lang-menu</code>, <code>.lang-pop</code>, <code>.lang-group</code></td><td>Topbar language control: «Язык обучения» links + «Язык объяснений» state in one native <code>&lt;details&gt;</code> popover; <code>.cur</code> = current, <code>.soon</code> = no deck yet</td></tr>
-            <tr><td><code>.brand</code>, <code>.search</code>, <code>.theme-btn</code>, <code>.install-btn</code></td><td>Topbar identity and controls</td></tr>
-            <tr><td><code>.muted</code>, <code>.tiny</code></td><td>Utility tail: secondary text color / small print</td></tr>
+            <tr><td><code>.section-head</code>, <code>.section-badge</code>, <code>.intro</code></td><td>Section header (inner <code>&lt;div&gt;</code> + optional badge), the noscript/plain intro line</td></tr>
+            <tr><td><code>.no-results</code></td><td>Zero-match panel during search</td></tr>
+            <tr><td><code>.hero</code>, <code>.lang-grid</code>, <code>.lang-card</code>, <code>.lang-mark</code></td><td>Landing-only (inline in <code>index.html</code>): always-dark hero; language cards; their marks</td></tr>
+            <tr><td><code>.muted</code>, <code>.tiny</code>, <code>.footer</code></td><td>Utility tail: secondary text / small print / page footer</td></tr>
             <tr><td><code>[lang]</code></td><td>Target-language text → serif study voice (set by <code>markTargetLang</code>)</td></tr>
             <tr><td><code>body.searching</code></td><td>State: search active (noscript intro hidden, matches from all views stacked)</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="sg-note">Not in base.css: the landing hero and <code>.lang-card</code> live inline in <code>index.html</code> (hub-only components), and each language page owns nothing beyond the shared stylesheet.</p>
+      <details class="sg-doc">
+        <summary>What is deliberately NOT in base.css</summary>
+        <div class="sg-doc-body">
+          <p>The landing hero and <code>.lang-card</code> live inline in <code>index.html</code> (hub-only components), and each
+            language page owns nothing beyond the shared stylesheet. The <code>ux-*</code> components in
+            <code>research/ui-improved-example.html</code> are research proposals — see #research below.</p>
+        </div>
+      </details>
     </section>
 
     <section class="sg-block" id="rules">
@@ -260,7 +588,8 @@
           <p>· Keep touch targets ≥ 44px effective (hit-area padding allowed).</p>
           <p>· Depth goes into <code>DETAILS</code> dialogs; first layer stays one screen.</p>
           <p>· Mark target-language text with <code>lang</code> — it drives pronunciation and the study voice.</p>
-          <p>· Bump <code>CACHE_VERSION</code> after any asset change; keep anchors stable.</p>
+          <p>· Bump <code>CACHE_VERSION</code> after any cached page/asset change; keep anchors stable.</p>
+          <p>· Record contract changes in <code>.design/decisions.md</code> and roll them out to every page in one commit.</p>
         </article>
         <article class="cheat-card dont">
           <h3>Don’t</h3>
@@ -269,8 +598,17 @@
           <p>· <s>Information by color alone (pair <code>td.hot</code>-style cues with weight/text).</s></p>
           <p>· <s>New button styles beside <code>.tap</code>, or hero/jump-chip style navigation.</s></p>
           <p>· <s>Behaviors that die without JS — noscript must still read the whole deck.</s></p>
+          <p>· <s>Submenus in the language menu — flat groups only, both choices visible.</s></p>
         </article>
       </div>
+    </section>
+
+    <section class="sg-block" id="research">
+      <h2>Proposed components <span class="section-badge">research — not in base.css</span></h2>
+      <p class="sg-why">Three candidate patterns from <code>research/ui-design-inspiration.md</code> are prototyped on real deck content in <code>research/ui-improved-example.html</code>: card metadata badges (level/type), highlighted example + gloss pairs, and a per-topic practice exit. None of them exist in base.css or the generator yet.</p>
+      <div class="sg-note">Adoption route for any of them: deck-schema fields + validator → base.css component + generator block →
+        <code>.design/decisions.md</code> entry → both language pages in the same commit. The practice exit additionally needs a
+        plan revision first (adjacent to D-03).</div>
     </section>
 
     <div class="footer">Style guide · rendered by <code>assets/base.css</code> · contract: <code>.design/DESIGN_SYSTEM.md</code></div>
@@ -311,9 +649,11 @@
       applyTheme(themeMode);
     });
 
-    // One specimen dialog + the reveal toggle, mirroring the pages.
+    // Specimen dialogs + the reveal toggle, mirroring the pages. Entries are
+    // the real de-ru deck details.
     const DETAILS = {
-      'v2-demo': {title:'Что такое V2', lead:'Глагол стоит во второй синтаксической позиции, не обязательно вторым словом.', body:`<div class="detail-block"><b>1 позиция может быть длинной</b><i lang="de">Heute Morgen um acht</i> gehe ich zur Arbeit.</div><div class="detail-block"><b>Потом</b>сразу идёт спрягаемый глагол.</div>`}
+      'v2-demo': {title:'Что такое V2', lead:'Глагол стоит во второй синтаксической позиции, не обязательно вторым словом.', body:`<div class="detail-block"><b>1 позиция может быть длинной</b><i lang="de">Heute Morgen um acht</i> gehe ich zur Arbeit. Вся группа “Heute Morgen um acht” занимает позицию 1.</div><div class="detail-block"><b>Потом</b>сразу идёт спрягаемый глагол.</div>`},
+      'lookup-help': {title:'Как пользоваться', lead:'Триггер → форма → позиция.', body:`<div class="detail-block"><b>Схема</b>Найди триггер — падежный вопрос, предлог, союз или глагольную конструкцию, — потом смотри нужную форму и позицию глагола.</div><div class="detail-block"><b>Поиск</b>Ищи сразу: <i lang="de">wem</i>, <i lang="de">weil</i>, <i lang="de">Perfekt</i> — или по-русски. Поиск проверяет все разделы сразу.</div>`}
     };
     const dialog = document.getElementById('detailDialog');
     document.addEventListener('click', (event) => {
