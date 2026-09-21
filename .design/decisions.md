@@ -372,3 +372,28 @@ The search result→jump UI (location label + tap-to-context) is deliberately
 NOT part of this change; it layers on these anchors as its follow-up.
 Deliberately no style-guide.html specimen: `:target` is a card state, not a
 component; this entry is its record.
+
+## 2026-09-21 — Search results: location label + jump-to-card (Phase 2)
+
+Closes the user-reported gap that started this work: search filtered cards
+across all views, but a hit never said where it lives and nothing could take
+you there — tapping any nav tab silently cleared the search and landed
+elsewhere.
+
+Design (Option A, iOS-Settings-style jump-in-context): while a query is
+active, every hit card gets a small `.hit-jump` label at its top —
+«view · section ↗» (deduped to one segment when the names match, e.g.
+«Падежи ↗»). Tapping it clears the query and routes through the card's
+anchor: the existing `onHash()` switches the view, scrolls to the card and
+the Phase-1 `:target` flash marks it. Labels are built at runtime from the
+deck's own nav labels and section headings, so the flow needs no new UI
+strings and stays correct for any future audience language.
+
+Boundaries recorded as accepted trade-offs: jumping drops the query (Back
+does not restore it — the input is not history state); the generated
+practice card is the one hit without a label (it has no card id by design);
+label is one line with ellipsis truncation at 390px. In case-grid cards the
+label spans the grid's full first row (`grid-column: 1 / -1`), keeping the
+button grid intact. Rejected alternatives from the option review: grouped
+results mode (more surface, replaces a proven filter) and Spotlight overlay
+(state juggling, mobile keyboard/scroll-lock risk in the iOS PWA).

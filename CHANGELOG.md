@@ -6,6 +6,11 @@ Append the entry in the same commit that ships the change.
 
 ## 2026-09-21
 
+- **New (both languages)**: search results can jump you to the hit's page.
+  While searching, every hit card shows a «view · section ↗» label; tapping
+  it clears the search, opens that view, scrolls to the card and plays the
+  highlight — so a result now leads to its full context (related cards,
+  section). Previously results were readable in place only.
 - **New (both languages)**: every card is deep-linkable. All 72 cards (40
   German, 32 English) carry stable anchors like
   `…/de/ru/#verbs-doppelinfinitiv` — opening such a link switches to the

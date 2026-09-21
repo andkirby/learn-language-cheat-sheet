@@ -684,6 +684,7 @@
         section.style.display = visible ? '' : 'none';
       });
       if (!q) setView(currentView); // re-apply the active view
+      updateHitLabels(q);
       noResults.style.display = q && shown === 0 ? 'block' : 'none';
     }
     search.addEventListener('input', applySearch);
@@ -728,6 +729,43 @@
     }
     window.addEventListener('hashchange', onHash);
     if (location.hash) onHash(); else setView(currentView);
+
+    // Search hits: label each visible card with «view · section» and jump to
+    // the card in context on tap — clears the query, routes via the card
+    // anchor (view switch + scroll + :target flash). Labels are built from
+    // the deck's own nav/heading text, so no extra UI strings are needed.
+    const viewLabels = {};
+    navItems.forEach(item => {
+      const label = item.querySelector('span:not(.ico)'); // skip the glyph
+      viewLabels[item.dataset.nav] = (label || item).textContent.trim();
+    });
+    function updateHitLabels(q) {
+      document.querySelectorAll('.hit-jump').forEach(b => b.remove());
+      if (!q) return;
+      cards.forEach(card => {
+        if (card.style.display === 'none' || !card.id) return;
+        const sec = card.closest('section[data-view]');
+        const h2 = sec && sec.querySelector('h2');
+        if (!sec || !h2) return;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'hit-jump';
+        const view = document.createElement('span');
+        view.className = 'view';
+        view.textContent = viewLabels[sec.dataset.view] || sec.dataset.view;
+        const heading = h2.textContent.trim();
+        btn.appendChild(view);
+        if (view.textContent !== heading) btn.appendChild(document.createTextNode(' · ' + heading));
+        btn.appendChild(document.createTextNode(' ↗'));
+        btn.addEventListener('click', () => {
+          search.value = '';
+          applySearch();
+          if (location.hash === '#' + card.id) onHash();
+          else location.hash = '#' + card.id;
+        });
+        card.insertAdjacentElement('afterbegin', btn);
+      });
+    }
 
     let deferredPrompt = null;
     const installBtn = document.getElementById('installBtn');
