@@ -33,6 +33,9 @@ def _audience_script(site, target_id, audience_id):
 # into unreadable shared URLs. 2-32 chars, inner hyphens allowed.
 _SLUG_RE = re.compile(r"[a-z0-9](?:[a-z0-9-]{0,30}[a-z0-9])?")
 
+# Badge levels track the deck's A1–B1 span; new levels mean a scope change.
+_LEVELS = ("A1", "A2", "B1")
+
 
 def _norm(s):
     return s.lower().translate(_UMAP).replace("'", "").replace("’", "")
@@ -78,7 +81,7 @@ def _check_runs(errors, runs, where):
             continue
         if "t" not in run:
             errors.append(f"{where}[{i}]: run object needs 't' or 'br'")
-        for flag in ("b", "i", "s"):
+        for flag in ("b", "i", "s", "hit"):
             if flag in run and not isinstance(run[flag], bool):
                 errors.append(f"{where}[{i}]: .{flag} must be boolean")
 
@@ -116,6 +119,18 @@ class _Checker:
         elif not _SLUG_RE.fullmatch(slug):
             self.errors.append(f"{where}: card id {slug!r} must be 2-32 chars of "
                                f"[a-z0-9-] with no leading/trailing hyphen")
+        # Badges (level/kind) are article-card metadata only: case-grid
+        # launchers and generated cards never carry them.
+        if "level" in card or "kind" in card:
+            if card.get("case_grid"):
+                self.errors.append(f"{where}: level/kind badges are not supported on case_grid cards")
+            else:
+                lvl = card.get("level")
+                if lvl is not None and lvl not in _LEVELS:
+                    self.errors.append(f"{where}: level {lvl!r} must be one of {sorted(_LEVELS)}")
+                kind = card.get("kind")
+                if kind is not None and (not isinstance(kind, str) or not 1 <= len(kind) <= 40):
+                    self.errors.append(f"{where}: kind must be a 1-40 char label")
         if bool(card.get("blocks")) == bool(card.get("case_grid")):
             self.errors.append(f"{where}: needs exactly one of blocks / case_grid")
             return

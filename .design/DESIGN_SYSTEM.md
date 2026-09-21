@@ -96,9 +96,11 @@ Rules:
 | Component | Contract |
 | --- | --- |
 | `.cheat-card` | Atomic unit; content + optional `.chips`. Searchable via `data-search`. Must shrink (see layout). |
+| `.badges` + `.badge.level/.kind` | Card metadata row under the title, from deck fields `level` (A1/A2/B1) and `kind` (short label). Text on every badge — never color alone. Never on case-grid cards. |
 | `.tap` (chip) | Opens a `DETAILS` dialog entry or reveals an answer. Variants: `.neutral` (secondary), `.case` (44px). Visual min-height 40px + `::after` hit-area expansion to ≥46px. No other button styles. |
 | `.table-scroll` + `table` | Horizontal scroll container; `td.hot` marks case-changing forms via `--on-accent-soft`. |
 | `.formula` + `.slot` | Sentence-position diagram. Variants: `.verb` (ok tokens), `.end` (warn tokens), `.sub` (accent tokens). |
+| `.example` (+ `.pair-src`, `.pair-gloss`, `.hit`) | Example line(s); pure-target containers take the study voice. With a deck `gloss` → pair layout: hint under a hairline inside the same surface; `.hit` marks the taught form (accent pair, implies bold). |
 | `.notice` / `.warning` | Callouts. Accent = info, warn tokens = caveat. |
 | `.answer` + `.reveal` | Show/hide practice answer; `aria-expanded`/`aria-controls` required; visible without JS (noscript unhides). |
 | `dialog` bottom sheet | One shared `#detailDialog`; title/lead set from `DETAILS`; closes via ×, Escape, backdrop tap (`event.target === dialog`). |
@@ -137,7 +139,9 @@ Rules:
 
 - UI language Russian; grammar terms stay in the target language
   (German: Dativ, weil; English: Present Perfect).
-- Examples ≤ 2 lines; bold marks the pattern-carrying words.
+- Examples ≤ 2 lines; bold marks the pattern-carrying words. When an example
+  needs its deciding hint, the deck attaches a `gloss` and it renders as a
+  pair (hint under a hairline); `hit` runs mark the form the card teaches.
 
 ## Governance & exceptions
 

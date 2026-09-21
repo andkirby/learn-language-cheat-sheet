@@ -397,3 +397,48 @@ label spans the grid's full first row (`grid-column: 1 / -1`), keeping the
 button grid intact. Rejected alternatives from the option review: grouped
 results mode (more surface, replaces a proven filter) and Spotlight overlay
 (state juggling, mobile keyboard/scroll-lock risk in the iOS PWA).
+
+## 2026-09-21 — Card badges + example→gloss pairs (design-research adoption)
+
+User picked patterns 1 (card metadata badges) and 2 (highlighted example+gloss
+pair) out of `research/ui-design-inspiration.md`, prototyped on real deck
+content in `research/ui-improved-example.html`. Pattern 3 (per-topic practice
+exit) is explicitly deferred by the user — «повтор» is too basic to invest in
+now; revisiting needs the practice→section plan revision flagged next to D-03.
+
+Decisions:
+
+1. **Badges as free-ish card metadata.** Card-root deck fields `level`
+   (enum A1/A2/B1 — the decks' declared span; a new level is a scope change)
+   and `kind` (free 1–40 char label; recommended vocabulary: формы /
+   употребление / порядок / время / связь / условное / триггер → падеж·предлог).
+   Free text over a closed multilingual enum: two decks in two languages would
+   churn an enum every review; the build validator guards the level enum and
+   the kind length instead. Rendered as `.badges` under the title: level on
+   the accent-soft pair (the same "pay attention" semantics as `td.hot`),
+   kind on surface-2+line. Text on every badge — never color alone.
+   Forbidden on case_grid cards (a launcher, not a topic) and absent from the
+   generated practice card (not authored content).
+2. **Pair as an `example` extension, not a new block.** The optional `gloss`
+   runs payload keeps one block = one semantic unit: the search-visible text
+   and the search-index gate pick the gloss up automatically, HTML_ORDER is
+   untouched, and plain examples render byte-identical markup. Layout:
+   `.example.pair` wraps `.pair-src` (target line) and `.pair-gloss`
+   (audience-language hint) under a hairline. New `hit` run flag implies bold
+   and adds the accent highlight — the one form the card teaches.
+3. **Contrast:** the gloss keeps `--muted` on `--surface-2` — the pairing the
+   shipped `th` already uses (~4.4:1 light, ≥5:1 dark). Accepted as consistent
+   rather than minting a token for one use.
+4. **`markTargetLang` learns `.pair-src`** (wholesale marking when
+   Cyrillic-free); hits are covered by the existing `.example b` fragment rule.
+   Glosses always stay in the UI voice.
+5. **Migration was policy-driven, not wholesale:** 13 DE + 12 EN examples
+   became pairs — inline RU annotations relocated out of the sentence lines,
+   example-annotating tinies moved into glosses (only where the card has no
+   table/formula the tiny also annotates), recognition-level items glossed per
+   SITE_PLAN_GUIDE §6. Form-rule examples stay bare; 71 of 72 authored cards
+   carry badges (the case-grid launcher intentionally not).
+
+Rollout: both decks + both pages in one commit; sw v21; style-guide specimens,
+block-registry table and class-roles table updated; `content/decks/schema.json`
+is the editor contract.

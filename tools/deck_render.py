@@ -27,8 +27,24 @@ def card_html(card, indent="      ", anchor=""):
                 + "".join(f"{indent}  {b}\n" for b in buttons)
                 + f"{indent}</div>\n")
     out = [f"{indent}<article class=\"cheat-card\"{id_attr} data-search=\"{escq(card['search'])}\">\n"]
+    # Card badges (level/kind) render right after the h block — h is always
+    # first in HTML_ORDER, so the metadata row sits under the title.
+    badges = []
+    if card.get("level"):
+        badges.append(f'<span class="badge level">{esc(card["level"])}</span>')
+    if card.get("kind"):
+        badges.append(f'<span class="badge kind">{esc(card["kind"])}</span>')
+    meta = f'<div class="badges">{"".join(badges)}</div>\n' if badges else ""
+    wrote_h = False
     for block in card["blocks"]:
-        out.append(block_html(block))
+        html = block_html(block)
+        if meta and not wrote_h and "<h3>" in html:
+            out.append(html + f"{indent}  {meta}")
+            wrote_h = True
+        else:
+            out.append(html)
+    if meta and not wrote_h:
+        out.insert(1, f"{indent}  {meta}")  # no h block: badges lead the card
     out.append(f"{indent}</article>\n")
     return "".join(out)
 

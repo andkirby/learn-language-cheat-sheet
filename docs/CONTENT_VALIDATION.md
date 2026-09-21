@@ -69,7 +69,8 @@ Check every content unit, including every table cell and hidden answer:
 - Examples are natural, demonstrate the stated rule and agree with the
   Russian explanation. Translations preserve the relevant meaning. Every
   example is decodable by the intended learner; recognition-level examples
-  carry a short gloss (comprehension access).
+  carry a short gloss (comprehension access) — attach it as the example's
+  `gloss` so it renders as a pair under the sentence, not as loose prose.
 - Formulas account for the constructions they claim to cover; cases,
   endings, spelling, person/number and tense are consistent throughout.
 - Language variety, register and exceptions are identified when relevant.

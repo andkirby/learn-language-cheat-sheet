@@ -6,6 +6,14 @@ Append the entry in the same commit that ships the change.
 
 ## 2026-09-21
 
+- **New (both languages)**: cards carry level + kind badges (A1/A2/B1 and
+  «формы», «употребление», «порядок»…) — scanning a view now tells you the
+  CEFR level and what each card gives you without reading the title.
+- **New (both languages)**: 25 examples became «pairs» — the German/English
+  sentence stays clean with the taught form highlighted, and its short Russian
+  deciding hint sits right beneath it instead of being glued to the sentence
+  or buried in small print. Recognition-level items (частицы, связки,
+  условные) are now always glossed.
 - **New (both languages)**: search results can jump you to the hit's page.
   While searching, every hit card shows a «view · section ↗» label; tapping
   it clears the search, opens that view, scrolls to the card and plays the

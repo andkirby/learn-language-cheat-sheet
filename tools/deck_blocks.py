@@ -48,6 +48,28 @@ def _notice_html(block):
     return f"        <div class=\"{cls}\">{runs_html(block['notice'])}</div>\n"
 
 
+def _example_check(block, where, chk):
+    chk.check_runs(block["example"], f"{where}.example")
+    if "gloss" in block:
+        chk.check_runs(block["gloss"], f"{where}.gloss")
+
+
+def _example_text(block):
+    parts = [runs_text(block["example"])]
+    if "gloss" in block:
+        parts.append(runs_text(block["gloss"]))
+    return parts
+
+
+def _example_html(block):
+    if "gloss" not in block:
+        return f"        <div class=\"example\">{runs_html(block['example'])}</div>\n"
+    return ("        <div class=\"example pair\">\n"
+            f"          <div class=\"pair-src\">{runs_html(block['example'])}</div>\n"
+            f"          <div class=\"pair-gloss\">{runs_html(block['gloss'])}</div>\n"
+            "        </div>\n")
+
+
 def _formula_check(block, where, chk):
     items = block["formula"]
     if not isinstance(items, list) or not items:
@@ -166,7 +188,7 @@ BLOCKS = {
     "h": _runs_def("h", "h3"),
     "p": _runs_def("p", "p"),
     "tiny": _runs_def("tiny", "p", "tiny"),
-    "example": _runs_def("example", "div", "example"),
+    "example": BlockDef(_example_check, _example_text, _example_html),
     "notice": BlockDef(_notice_check, _notice_text, _notice_html),
     "formula": BlockDef(_formula_check, _formula_text, _formula_html),
     "table": BlockDef(_table_check, _table_text, _table_html),

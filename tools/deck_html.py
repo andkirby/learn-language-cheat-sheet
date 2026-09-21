@@ -31,7 +31,10 @@ def run_html(run):
         inner = f"<s>{inner}</s>"
     if run.get("i"):
         inner = f"<i>{inner}</i>"
-    if run.get("b"):
+    if run.get("hit"):
+        # hit implies bold: the .hit class carries the highlight + weight
+        inner = f'<b class="hit">{inner}</b>'
+    elif run.get("b"):
         inner = f"<b>{inner}</b>"
     return inner
 

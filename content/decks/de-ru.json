@@ -105,6 +105,8 @@
           "cards": [
             {
               "id": "wo-wohin",
+              "level": "A1",
+              "kind": "триггер → падеж",
               "search": "wo wohin wechselpräpositionen movement location направление место akkusativ dativ",
               "blocks": [
                 {"h": ["Wo? / Wohin?"]},
@@ -116,12 +118,16 @@
             },
             {
               "id": "objects",
+              "level": "A1",
+              "kind": "употребление",
               "search": "direct indirect object прямое косвенное дополнение akkusativ dativ geben",
               "blocks": [
                 {"h": ["Быстрый смысл"]},
                 {"p": [{"t": "Akk.", "b": true}, " часто = прямой объект: ", {"t": "вижу кого?", "i": true}]},
                 {"p": [{"t": "Dat.", "b": true}, " часто = получатель/адресат: ", {"t": "даю кому?", "i": true}]},
-                {"example": [{"t": "Ich gebe dem Mann das Buch.", "b": true}, {"br": true}, "dem Mann = Dat. · das Buch = Akk."]},
+                {"example": [
+                  "Ich gebe ", {"t": "dem Mann", "hit": true}, " ", {"t": "das Buch", "hit": true}, "."
+                ], "gloss": ["dem Mann = Dat. · das Buch = Akk."]},
                 {"chips": [{"label": "Два объекта", "detail": "objects"}]}
               ]
             }
@@ -137,6 +143,8 @@
           "cards": [
             {
               "id": "artikel",
+              "level": "A1",
+              "kind": "формы",
               "search": "artikel der die das den dem des definite артикли определенный",
               "blocks": [
                 {"h": ["Определённый артикль"]},
@@ -161,6 +169,8 @@
           "cards": [
             {
               "id": "ein-words",
+              "level": "A1",
+              "kind": "формы",
               "search": "ein eine einen indefinite kein mein dein possessiv притяжательные",
               "blocks": [
                 {"h": ["ein / kein / mein…"]},
@@ -185,6 +195,8 @@
             },
             {
               "id": "negation",
+              "level": "A1",
+              "kind": "употребление",
               "search": "nicht kein отрицание не никакой вообще нет машина",
               "blocks": [
                 {"h": ["nicht или kein"]},
@@ -196,6 +208,8 @@
             },
             {
               "id": "pronomen",
+              "level": "A1",
+              "kind": "формы",
               "search": "personal pronouns личные местоимения ich mich mir du dich dir ihn ihm uns euch ihnen",
               "blocks": [
                 {"h": ["Личные местоимения"]},
@@ -227,6 +241,8 @@
       "cards": [
         {
           "id": "praep-akk",
+          "level": "A1",
+          "kind": "триггер → падеж",
           "search": "akkusativ prepositions durch für gegen ohne um",
           "blocks": [
             {"h": ["Всегда Akkusativ"]},
@@ -237,11 +253,15 @@
               {"label": "ohne", "detail": "prep-akk", "neutral": true},
               {"label": "um", "detail": "prep-akk", "neutral": true}
             ]},
-            {"example": ["für ", {"t": "den", "b": true}, " Mann · ohne ", {"t": "mich", "b": true}]}
+            {"example": [
+              "für ", {"t": "den", "hit": true}, " Mann · ohne ", {"t": "mich", "hit": true}
+            ], "gloss": ["падеж уже задан предлогом — смысловой вопрос не нужен"]}
           ]
         },
         {
           "id": "praep-dat",
+          "level": "A1",
+          "kind": "триггер → падеж",
           "search": "dativ prepositions aus bei mit nach seit von zu",
           "blocks": [
             {"h": ["Всегда Dativ"]},
@@ -254,11 +274,15 @@
               {"label": "von", "detail": "prep-dat", "neutral": true},
               {"label": "zu", "detail": "prep-dat", "neutral": true}
             ]},
-            {"example": ["mit ", {"t": "meinem", "b": true}, " Bruder · zu ", {"t": "der", "b": true}, " Arbeit → zur Arbeit"]}
+            {"example": [
+              "mit ", {"t": "meinem", "hit": true}, " Bruder · zu ", {"t": "der", "hit": true}, " Arbeit → zur Arbeit"
+            ], "gloss": ["падеж уже задан предлогом — смысловой вопрос не нужен"]}
           ]
         },
         {
           "id": "wechsel",
+          "level": "A2",
+          "kind": "триггер → падеж",
           "search": "wechselpräpositionen an auf hinter in neben über unter vor zwischen wo wohin two-way",
           "blocks": [
             {"h": ["Два падежа: Wo? / Wohin?"]},
@@ -269,6 +293,8 @@
         },
         {
           "id": "praep-gen",
+          "level": "B1",
+          "kind": "триггер → падеж",
           "search": "genitiv prepositions wegen trotz während statt innerhalb außerhalb",
           "blocks": [
             {"h": ["Часто Genitiv"]},
@@ -285,16 +311,23 @@
       "cards": [
         {
           "id": "v2",
+          "level": "A1",
+          "kind": "порядок",
           "search": "main clause hauptsatz verb second v2 position 2 второе место heute ich gehe",
           "blocks": [
             {"h": ["Главное: V2"]},
             {"formula": [{"slot": "Позиция 1"}, {"arrow": "→"}, {"slot": "глагол", "role": "verb"}, {"arrow": "→"}, {"slot": "остальное"}]},
-            {"example": [{"t": "Ich gehe", "b": true}, " heute in den Laden.", {"br": true}, {"t": "Heute gehe", "b": true}, " ich in den Laden."]},
+            {"example": [
+              "Ich ", {"t": "gehe", "hit": true}, " heute in den Laden.", {"br": true},
+              "Heute ", {"t": "gehe", "hit": true}, " ich in den Laden."
+            ], "gloss": ["спрягаемый глагол — всегда на второй позиции, даже когда предложение начинается не с подлежащего"]},
             {"chips": [{"label": "Что значит “позиция 2”?", "detail": "v2"}]}
           ]
         },
         {
           "id": "inversion",
+          "level": "A2",
+          "kind": "порядок",
           "search": "inversion heute dann deshalb position 1 subject после наречия",
           "blocks": [
             {"h": ["Если сначала Heute / Dann / Deshalb…"]},
@@ -304,6 +337,8 @@
         },
         {
           "id": "w-fragen",
+          "level": "A1",
+          "kind": "порядок",
           "search": "question fragen w frage wer was wann warum wie verb first v1",
           "blocks": [
             {"h": ["Вопросы"]},
@@ -314,6 +349,8 @@
         },
         {
           "id": "tekamolo",
+          "level": "A2",
+          "kind": "порядок",
           "search": "tekamolo temporal kausal modal lokal order обстоятельства время причина способ место",
           "blocks": [
             {"h": ["TeKaMoLo"]},
@@ -324,6 +361,8 @@
         },
         {
           "id": "partikeln",
+          "level": "B1",
+          "kind": "употребление",
           "search": "modalpartikeln doch mal denn ja schon gar wohl частицы ведь же ну разве оттенок",
           "blocks": [
             {"h": ["Частицы: doch, mal, denn…"]},
@@ -337,12 +376,16 @@
               {"label": ["gar — ", {"t": "вообще", "b": true}], "detail": "particles", "neutral": true},
               {"label": ["wohl — ", {"t": "наверное", "b": true}], "detail": "particles", "neutral": true}
             ]},
-            {"example": ["Komm ", {"t": "mal", "b": true}, " her! · Das ist ", {"t": "ja", "b": true}, " klar! · Wie heißt ", {"t": "denn", "b": true}, " du?"]},
+            {"example": [
+              "Komm ", {"t": "mal", "hit": true}, " her! · Das ist ", {"t": "ja", "hit": true}, " klar! · Wie heißt ", {"t": "denn", "hit": true}, " du?"
+            ], "gloss": ["mal ≈ -ка · ja ≈ ведь · denn ≈ же"]},
             {"chips": [{"label": "Разбор и позиция", "detail": "particles"}]}
           ]
         },
         {
           "id": "imperativ",
+          "level": "A1",
+          "kind": "формы",
           "search": "komm geht kommen sie повелительное наклонение приказ просьба команда",
           "blocks": [
             {"h": ["Повелительное"]},
@@ -359,6 +402,8 @@
       "cards": [
         {
           "id": "modalverben",
+          "level": "A1",
+          "kind": "формы",
           "search": "modal müssen können wollen sollen dürfen mögen infinitiv end modal verbs",
           "blocks": [
             {"h": ["Модальные глаголы"]},
@@ -370,16 +415,22 @@
         },
         {
           "id": "perfekt",
+          "level": "A1",
+          "kind": "формы",
           "search": "perfekt haben sein partizip ii gegangen gemacht past perfect",
           "blocks": [
             {"h": ["Perfekt"]},
             {"formula": [{"slot": "Ich"}, {"slot": "habe", "role": "verb"}, {"slot": "das schon"}, {"slot": "gemacht", "role": "end"}]},
-            {"example": ["Ich ", {"t": "bin", "b": true}, " nach Hause ", {"t": "gegangen", "b": true}, " — движение → sein."]},
+            {"example": [
+              "Ich ", {"t": "bin", "hit": true}, " nach Hause ", {"t": "gegangen", "hit": true}, "."
+            ], "gloss": ["движение → sein"]},
             {"chips": [{"label": "haben или sein?", "detail": "perfekt"}]}
           ]
         },
         {
           "id": "trennbare",
+          "level": "A2",
+          "kind": "формы",
           "search": "separable trennbare verben aufstehen prefix отделяемые приставки",
           "blocks": [
             {"h": ["Отделяемые глаголы"]},
@@ -390,6 +441,8 @@
         },
         {
           "id": "passiv",
+          "level": "B1",
+          "kind": "формы",
           "search": "passive passiv werden partizip ii wird gebaut пассив",
           "blocks": [
             {"h": ["Passiv"]},
@@ -400,32 +453,45 @@
         },
         {
           "id": "konjunktiv2",
+          "level": "B1",
+          "kind": "формы",
           "search": "konjunktiv ii würde wurde wäre hätte könnte müsste sollte сослагательное нереальное вежливость совет unreal wish polite",
           "blocks": [
             {"h": ["Konjunktiv II"]},
             {"p": [{"t": "würde + инфинитив", "b": true}, " — универсальная форма; частые прямые: ", {"t": "wäre, hätte, könnte, möchte, müsste, sollte", "b": true}, "."]},
-            {"example": ["Wenn ich Zeit ", {"t": "hätte", "b": true}, ", ", {"t": "würde", "b": true}, " ich reisen — нереальное сейчас.", {"br": true}, {"t": "Könnten Sie", "b": true}, " mir helfen? — вежливая просьба."]},
+            {"example": [
+              "Wenn ich Zeit ", {"t": "hätte", "hit": true}, ", ", {"t": "würde", "hit": true}, " ich reisen.", {"br": true},
+              {"t": "Könnten Sie", "hit": true}, " mir helfen?"
+            ], "gloss": ["— нереальное сейчас.", {"br": true}, "— вежливая просьба."]},
             {"chips": [{"label": "Когда и зачем", "detail": "konjunktiv2"}]}
           ]
         },
         {
           "id": "doppelinfinitiv",
+          "level": "B1",
+          "kind": "порядок",
           "search": "doppelinfinitiv ersatzinfinitiv haben arbeiten müssen два инфинитива modal perfekt double infinitive",
           "blocks": [
             {"h": ["Perfekt с модальным: два инфинитива"]},
             {"p": ["Вместо Partizip II — ", {"t": "Infinitiv + Infinitiv", "b": true}, "."]},
-            {"example": ["Ich ", {"t": "habe arbeiten müssen", "b": true}, ". — Я должен был работать. Не “gemusst”."]},
+            {"example": [
+              "Ich ", {"t": "habe arbeiten müssen", "hit": true}, ". Не “gemusst”."
+            ], "gloss": ["Я должен был работать."]},
             {"tiny": ["Достаточно узнавать; активно — уровень выше."]},
             {"chips": [{"label": "Разбор", "detail": "double-infinitive"}]}
           ]
         },
         {
           "id": "praeteritum",
+          "level": "A2",
+          "kind": "формы",
           "search": "präteritum war hatte wollte konnte musste sollte простое прошедшее письменное",
           "blocks": [
             {"h": ["Präteritum: war, hatte…"]},
             {"p": ["Вторая форма прошедшего. В речи — Perfekt; в текстах, а также с ", {"t": "sein, haben и модальными", "b": true}, " — Präteritum: ", {"t": "wollte, konnte, musste, sollte", "b": true}, ":"]},
-            {"example": ["Ich ", {"t": "war", "b": true}, " krank. — «я был болен». · Ich ", {"t": "hatte", "b": true}, " keine Zeit. — «у меня не было времени»."]},
+            {"example": [
+              "Ich ", {"t": "war", "hit": true}, " krank. · Ich ", {"t": "hatte", "hit": true}, " keine Zeit."
+            ], "gloss": ["«я был болен» · «у меня не было времени»."]},
             {"tiny": ["Достаточно узнавать; активно — в основном war/hatte/модальные."]},
             {"chips": [{"label": "Формы и граница", "detail": "praeteritum"}]}
           ]
@@ -441,6 +507,8 @@
           "cards": [
             {
               "id": "weil",
+              "level": "A1",
+              "kind": "связь",
               "search": "weil because потому что subordinate verb end придаточное",
               "blocks": [
                 {"h": ["weil — потому что"]},
@@ -450,6 +518,8 @@
             },
             {
               "id": "dass",
+              "level": "A2",
+              "kind": "связь",
               "search": "dass that что ich glaube denke hoffe sage subordinate",
               "blocks": [
                 {"h": ["dass — что"]},
@@ -459,6 +529,8 @@
             },
             {
               "id": "wenn-als",
+              "level": "A2",
+              "kind": "связь",
               "search": "wenn if when если когда condition repeated als subordinate",
               "blocks": [
                 {"h": ["wenn — если / когда"]},
@@ -469,6 +541,8 @@
             },
             {
               "id": "obwohl",
+              "level": "A2",
+              "kind": "связь",
               "search": "obwohl although хотя subordinate verb end trotzdem",
               "blocks": [
                 {"h": ["obwohl — хотя"]},
@@ -478,6 +552,8 @@
             },
             {
               "id": "ob",
+              "level": "A2",
+              "kind": "связь",
               "search": "ob whether ли indirect question indirekte frage",
               "blocks": [
                 {"h": ["ob — ли"]},
@@ -486,11 +562,15 @@
             },
             {
               "id": "konnektoren",
+              "level": "A1",
+              "kind": "связь",
               "search": "und aber denn oder sondern coordinating conjunctions coordinators verb second не отправляют глагол в конец",
               "blocks": [
                 {"h": ["Не отправляют глагол в конец"]},
                 {"p": [{"t": "und, aber, denn, oder, sondern", "b": true}]},
-                {"example": ["Ich bleibe zu Hause, ", {"t": "denn ich bin müde.", "b": true}]},
+                {"example": [
+                  "Ich bleibe zu Hause, ", {"t": "denn", "hit": true}, " ich bin müde."
+                ], "gloss": ["denn ≈ потому что, но порядок — как после und"]},
                 {"chips": [{"label": "weil vs denn", "detail": "coordinators"}]}
               ]
             }
@@ -501,25 +581,37 @@
           "cards": [
             {
               "id": "um-zu-damit",
+              "level": "A2",
+              "kind": "связь",
               "search": "um zu damit purpose цель чтобы infinitive subject same different",
               "blocks": [
                 {"h": ["um … zu / damit — чтобы"]},
-                {"example": ["Ich lerne Deutsch, ", {"t": "um in Berlin zu arbeiten.", "b": true}, " — субъект тот же.", {"br": true}, "Ich erkläre es langsam, ", {"t": "damit du alles verstehst.", "b": true}, " — субъекты разные."]},
+                {"example": [
+                  "Ich lerne Deutsch, ", {"t": "um in Berlin zu arbeiten.", "hit": true}, {"br": true},
+                  "Ich erkläre es langsam, ", {"t": "damit du alles verstehst.", "hit": true}
+                ], "gloss": ["— субъект тот же.", {"br": true}, "— субъекты разные."]},
                 {"chips": [{"label": "Как выбрать?", "detail": "um-damit"}]}
               ]
             },
             {
               "id": "relativsatz",
+              "level": "B1",
+              "kind": "связь",
               "search": "relative clause relativsatz der das den dem dessen deren который относительные",
               "blocks": [
                 {"h": ["Относительное придаточное"]},
-                {"example": ["Das ist der Mann, ", {"t": "der hier arbeitet.", "b": true}, {"br": true}, "Das ist der Mann, ", {"t": "den ich kenne.", "b": true}]},
+                {"example": [
+                  "Das ist der Mann, ", {"t": "der", "hit": true}, " hier arbeitet.", {"br": true},
+                  "Das ist der Mann, ", {"t": "den", "hit": true}, " ich kenne."
+                ], "gloss": ["der — сам действует (Wer?)", {"br": true}, "den — над ним действие (Wen?)"]},
                 {"tiny": ["Genitiv: der Mann, ", {"t": "dessen", "b": true}, " Auto… (чей; ж.р./мн.ч. — ", {"t": "deren", "b": true}, ")"]},
             {"chips": [{"label": "Как выбрать der/den/dem?", "detail": "relative"}]}
               ]
             },
             {
               "id": "verknuepfungen",
+              "level": "B1",
+              "kind": "связь",
               "search": "deshalb trotzdem allerdings außerdem währenddessen связки поэтому тем не менее впрочем кроме того тем временем",
               "blocks": [
                 {"h": ["Связующие наречия"]},
@@ -531,7 +623,9 @@
                   {"label": ["außerdem — ", {"t": "кроме того", "b": true}], "detail": "linking-adverbs", "neutral": true},
                   {"label": ["währenddessen — ", {"t": "тем временем", "b": true}], "detail": "linking-adverbs", "neutral": true}
                 ]},
-                {"example": ["Es regnete. ", {"t": "Deshalb", "b": true}, " blieben wir zu Hause. · ", {"t": "Trotzdem", "b": true}, " ging er spazieren."]},
+                {"example": [
+                  "Es regnete. ", {"t": "Deshalb", "hit": true}, " blieben wir zu Hause. · ", {"t": "Trotzdem", "hit": true}, " ging er spazieren."
+                ], "gloss": ["Deshalb ≈ поэтому · Trotzdem ≈ несмотря на это"]},
                 {"chips": [{"label": "Чем отличаются от союзов?", "detail": "linking-adverbs"}]}
               ]
             }
@@ -545,6 +639,8 @@
       "cards": [
         {
           "id": "verb-endungen",
+          "level": "A1",
+          "kind": "формы",
           "search": "sein haben спряжение окончание глагола настоящее время ich du er sie wir ihr",
           "blocks": [
             {"h": ["Глагол: окончания"]},
@@ -565,6 +661,8 @@
         },
         {
           "id": "dativ-plural",
+          "level": "A2",
+          "kind": "формы",
           "search": "dativ plural n kindern freunden существительное множественное",
           "blocks": [
             {"h": ["Dativ Plural"]},
@@ -574,6 +672,8 @@
         },
         {
           "id": "plural",
+          "level": "A1",
+          "kind": "формы",
           "search": "plural множественное число умлаут frauen stühle kinder autos",
           "blocks": [
             {"h": ["Plural: ставка по роду"]},
@@ -588,6 +688,8 @@
         },
         {
           "id": "genitiv-s",
+          "level": "A2",
+          "kind": "формы",
           "search": "genitiv s es vaters noun endings",
           "blocks": [
             {"h": ["Genitiv: -s / -es"]},
@@ -597,6 +699,8 @@
         },
         {
           "id": "n-deklination",
+          "level": "B1",
+          "kind": "формы",
           "search": "n-deklination student studenten weak nouns",
           "blocks": [
             {"h": ["N-Deklination"]},
@@ -607,6 +711,8 @@
         },
         {
           "id": "adjektive",
+          "level": "A2",
+          "kind": "формы",
           "search": "adjective endings прилагательные der ein guter guten gutem окончания",
           "blocks": [
             {"h": ["Прилагательные: не учи вслепую"]},
@@ -617,6 +723,8 @@
         },
         {
           "id": "komparativ",
+          "level": "A2",
+          "kind": "формы",
           "search": "komparativ superlativ schneller am schnellsten больше лучше сравнение степень als",
           "blocks": [
             {"h": ["Сравнение: -er / am -sten"]},

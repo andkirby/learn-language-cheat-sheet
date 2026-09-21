@@ -139,12 +139,13 @@
 
     // Target-language text gets lang="@@TARGET_LANG@@" (screen-reader pronunciation + the
     // serif study voice from base.css). Whole containers that carry only
-    // target-language text (examples, answers, declension tables) are marked directly;
-    // otherwise the fragments are: bold in .example/.answer, italics in
-    // .detail-block, formula slots without Cyrillic.
+    // target-language text (examples incl. pair sources, answers, declension
+    // tables) are marked directly; otherwise the fragments are: bold in
+    // .example/.answer (hits included), italics in .detail-block, formula
+    // slots without Cyrillic. Pair glosses stay in the UI voice.
     const TARGET_LANG = '@@TARGET_LANG@@';
     function markTargetLang(root) {
-      root.querySelectorAll('.example, .answer, .table-scroll').forEach(el => {
+      root.querySelectorAll('.example, .answer, .table-scroll, .pair-src').forEach(el => {
         if (!/[а-яё]/i.test(el.textContent)) el.lang = TARGET_LANG;
       });
       root.querySelectorAll('.example b, .answer b, .detail-block i, .formula .slot').forEach(el => {

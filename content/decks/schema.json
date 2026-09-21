@@ -75,6 +75,7 @@
             "b": {"type": "boolean"},
             "i": {"type": "boolean"},
             "s": {"type": "boolean"},
+            "hit": {"type": "boolean", "description": "bold + .hit highlight: the form this card teaches"},
             "br": {"type": "boolean"}
           },
           "anyOf": [{"required": ["t"]}, {"required": ["br"]}]
@@ -86,7 +87,13 @@
         {"type": "object", "required": ["h"], "additionalProperties": false, "properties": {"h": {"$ref": "#/definitions/runs"}}},
         {"type": "object", "required": ["p"], "additionalProperties": false, "properties": {"p": {"$ref": "#/definitions/runs"}}},
         {"type": "object", "required": ["tiny"], "additionalProperties": false, "properties": {"tiny": {"$ref": "#/definitions/runs"}}},
-        {"type": "object", "required": ["example"], "additionalProperties": false, "properties": {"example": {"$ref": "#/definitions/runs"}}},
+        {
+          "type": "object", "required": ["example"], "additionalProperties": false,
+          "properties": {
+            "example": {"$ref": "#/definitions/runs"},
+            "gloss": {"$ref": "#/definitions/runs", "description": "optional short audience-language deciding hint; renders the pair layout (.example.pair)"}
+          }
+        },
         {
           "type": "object", "required": ["formula"], "additionalProperties": false,
           "properties": {
@@ -173,6 +180,8 @@
         "search": {"type": "string"},
         "id": {"type": "string", "pattern": "^[a-z0-9](?:[a-z0-9-]{0,30}[a-z0-9])$", "description": "anchor slug; the page anchor is <section-id>-<slug> — stable, renaming breaks shared links"},
         "_note": {"type": "string"},
+        "level": {"enum": ["A1", "A2", "B1"], "description": "optional badge: CEFR level of the topic"},
+        "kind": {"type": "string", "minLength": 1, "maxLength": 40, "description": "optional badge: what the card gives you (recommended vocabulary: формы / употребление / порядок / время / связь / триггер → падеж)"},
         "blocks": {"type": "array", "minItems": 1, "items": {"$ref": "#/definitions/block"}},
         "case_grid": {
           "type": "array", "minItems": 1,

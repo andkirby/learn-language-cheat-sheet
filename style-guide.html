@@ -114,7 +114,7 @@
       <a href="#hub">Hub (landing)</a>
       <a href="#roles">Class roles</a>
       <a href="#rules">Do / don’t</a>
-      <a href="#research">Proposed (research)</a>
+      <a href="#research">Research</a>
     </nav>
 
     <h2 class="sg-part">Foundations</h2>
@@ -297,7 +297,7 @@
               <tbody>
                 <tr><td><code>h</code></td><td><code>&lt;h3&gt;</code></td><td>card title</td></tr>
                 <tr><td><code>p</code> / <code>tiny</code></td><td><code>&lt;p&gt;</code> / <code>&lt;p class="tiny"&gt;</code></td><td>runs: strings or <code>{t, b, i, s, br}</code></td></tr>
-                <tr><td><code>example</code></td><td><code>&lt;div class="example"&gt;</code></td><td>bold marks the pattern-carrying words</td></tr>
+                <tr><td><code>example</code></td><td><code>&lt;div class="example"&gt;</code></td><td>optional <code>gloss</code> → <code>.example.pair</code> (hint under a hairline); runs may carry <code>hit</code> (bold + highlight)</td></tr>
                 <tr><td><code>formula</code></td><td><code>&lt;div class="formula"&gt;</code></td><td>slots + <code>{arrow}</code> items; slot <code>role</code>: verb/end/sub</td></tr>
                 <tr><td><code>table</code></td><td><code>&lt;div class="table-scroll"&gt;&lt;table&gt;</code></td><td>cell object <code>{hot: …}</code> → <code>td.hot</code></td></tr>
                 <tr><td><code>chips</code></td><td><code>&lt;div class="chips"&gt;</code></td><td>needs label + known detail key; <code>neutral: true</code> variant</td></tr>
@@ -307,7 +307,9 @@
             </table>
           </div>
           <p>Special card shape: <code>case_grid</code> renders <code>&lt;div class="case-grid cheat-card"&gt;</code> of
-            <code>.tap.case</code> buttons. Practice is its own section built by <code>practice_html</code> (see #practice).
+            <code>.tap.case</code> buttons. Optional card-root <code>level</code>/<code>kind</code> render the
+            <code>.badges</code> row under the title (never on case-grid cards). Practice is its own section built by
+            <code>practice_html</code> (see #practice).
             The validator (<code>tools/deck_validate.py</code>) gates all of this; the committed page must match the deck
             (<code>build_pages.py &lt;deck&gt; --check</code> exits 0).</p>
         </div>
@@ -320,15 +322,19 @@
       <div class="cards two">
         <article class="cheat-card" data-search=" specimen card">
           <h3>Главное: V2</h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">порядок</span></div>
           <div class="formula"><span class="slot">Позиция 1</span><span class="arrow">→</span><span class="slot verb">глагол</span><span class="arrow">→</span><span class="slot">остальное</span></div>
-          <div class="example"><b lang="de">Heute gehe</b> <span lang="de">ich in den Laden.</span></div>
+          <div class="example pair">
+            <div class="pair-src" lang="de">Ich <b class="hit">gehe</b> heute in den Laden.<br>Heute <b class="hit">gehe</b> ich in den Laden.</div>
+            <div class="pair-gloss">спрягаемый глагол — всегда на второй позиции, даже когда предложение начинается не с подлежащего</div>
+          </div>
           <div class="chips"><button class="tap" type="button" data-detail="v2-demo">Что значит “позиция 2”?</button></div>
         </article>
         <article class="cheat-card">
           <h3>Быстрый смысл</h3>
           <p><b>Dat.</b> часто = получатель: <i>даю кому?</i></p>
           <div class="example"><b lang="de">Ich gebe dem Mann das Buch.</b></div>
-          <p class="sg-anno">Real specimen from <code>de-ru.json</code>. Grid: <code>.cards.two</code> → 2 columns ≥ 720px.</p>
+          <p class="sg-anno">Real specimens from <code>de-ru.json</code>. Grid: <code>.cards.two</code> → 2 columns ≥ 720px.</p>
         </article>
       </div>
       <details class="sg-doc">
@@ -338,6 +344,14 @@
             Everything deeper is a <code>.tap</code> chip into a <code>DETAILS</code> entry. Examples ≤ 2 lines; bold marks
             pattern-carrying words. Card content feeds search automatically via <code>textContent</code>; anything that must be
             findable but isn't visible goes into <code>data-search</code>.</p>
+          <p><strong>Badges.</strong> Optional card-root <code>level</code> (A1/A2/B1) and <code>kind</code> (what the card gives
+            you — формы / употребление / порядок / время / связь / условное / триггер) render the <code>.badges</code> row under
+            the title. The build validator enforces the level enum and a 1–40 char kind, and rejects both on case-grid cards.
+            Every badge carries a text label — never information by color alone.</p>
+          <p><strong>Pairs.</strong> An example block with an optional <code>gloss</code> (runs) renders as
+            <code>.example.pair</code>: the target-language <code>.pair-src</code> line takes the study voice and
+            <code>.hit</code> marks the form the card teaches; the audience-language <code>.pair-gloss</code> stays in the UI
+            voice under a hairline. Glosses follow the gloss policy (SITE_PLAN_GUIDE §6): deciding hints, not translations.</p>
         </div>
       </details>
     </section>
@@ -550,9 +564,10 @@
             <tr><td><code>.search-row</code>, <code>.search-wrap</code>, <code>.search</code>, <code>.search-icon</code>, <code>.clear-search</code></td><td>Search field row; wrapping frame; the input; decorative ⌕; clear button (hidden until query)</td></tr>
             <tr><td><code>.lang-menu</code>, <code>.lang-pop</code>, <code>.lang-group</code>, <code>.cur</code>, <code>.soon</code></td><td>Topbar language control: «Язык обучения» links + «Язык объяснений» state in one native <code>&lt;details&gt;</code> popover</td></tr>
             <tr><td><code>.cheat-card</code></td><td>Atomic reference unit; searchable via <code>data-search</code></td></tr>
+            <tr><td><code>.badges</code>, <code>.badge</code> <code>.level/.kind</code></td><td>Card metadata row under the title: CEFR level + what the card gives you (deck fields <code>level</code>/<code>kind</code>)</td></tr>
             <tr><td><code>.cards</code> + <code>.two/.three</code></td><td>Card grid and its density columns (layout layer)</td></tr>
             <tr><td><code>.tap</code> / <code>.neutral</code> / <code>.case</code></td><td>Tappable chip: opens detail dialog / secondary / 44px case tile</td></tr>
-            <tr><td><code>.example</code></td><td>Example line(s); may carry <code>lang</code> wholesale when pure target-language</td></tr>
+            <tr><td><code>.example</code>, <code>.pair-src</code>, <code>.pair-gloss</code>, <code>.hit</code></td><td>Example line(s); may carry <code>lang</code> wholesale when pure target-language; with a gloss → pair layout (hint under a hairline); <code>.hit</code> = the taught form</td></tr>
             <tr><td><code>.formula</code> + <code>.slot</code> <code>.verb/.end/.sub</code>, <code>.arrow</code></td><td>Sentence-position diagram; slot color = grammatical role</td></tr>
             <tr><td><code>.table-scroll</code>, <code>td.hot</code></td><td>Scrollable table; <code>.hot</code> = the form that changes across cases</td></tr>
             <tr><td><code>.case-grid</code>, <code>.case-box</code>, <code>.case-q</code>, <code>.case-hint</code></td><td>Case tiles (DE page only); question word + Russian hint</td></tr>
@@ -573,8 +588,9 @@
         <summary>What is deliberately NOT in base.css</summary>
         <div class="sg-doc-body">
           <p>The landing hero and <code>.lang-card</code> live inline in <code>index.html</code> (hub-only components), and each
-            language page owns nothing beyond the shared stylesheet. The <code>ux-*</code> components in
-            <code>research/ui-improved-example.html</code> are research proposals — see #research below.</p>
+            language page owns nothing beyond the shared stylesheet. The card badges and example pairs above started as
+            page-local <code>ux-*</code> proposals in <code>research/ui-improved-example.html</code>; adoption promoted them to
+            base.css (see #research for what is still deferred).</p>
         </div>
       </details>
     </section>
@@ -604,11 +620,14 @@
     </section>
 
     <section class="sg-block" id="research">
-      <h2>Proposed components <span class="section-badge">research — not in base.css</span></h2>
-      <p class="sg-why">Three candidate patterns from <code>research/ui-design-inspiration.md</code> are prototyped on real deck content in <code>research/ui-improved-example.html</code>: card metadata badges (level/type), highlighted example + gloss pairs, and a per-topic practice exit. None of them exist in base.css or the generator yet.</p>
-      <div class="sg-note">Adoption route for any of them: deck-schema fields + validator → base.css component + generator block →
-        <code>.design/decisions.md</code> entry → both language pages in the same commit. The practice exit additionally needs a
-        plan revision first (adjacent to D-03).</div>
+      <h2>Research origin &amp; deferred proposals <span class="section-badge">research</span></h2>
+      <p class="sg-why">The badges and example+gloss pairs above were researched from external references
+        (<code>research/ui-design-inspiration.md</code>) and prototyped on real deck content in
+        <code>research/ui-improved-example.html</code>, then adopted into base.css and both decks. The third prototype pattern —
+        a per-topic practice exit («Повторить раздел →») — is <strong>deferred</strong>: practice is still one shared card, and
+        per-topic mapping needs a plan revision first (adjacent to D-03).</p>
+      <div class="sg-note">Adoption route for the deferred pattern when revisited: deck-schema practice→section mapping +
+        plan revision → base.css/generator → <code>.design/decisions.md</code> entry → both language pages in the same commit.</div>
     </section>
 
     <div class="footer">Style guide · rendered by <code>assets/base.css</code> · contract: <code>.design/DESIGN_SYSTEM.md</code></div>

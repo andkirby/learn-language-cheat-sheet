@@ -76,8 +76,8 @@ deck-level integration checks, not a second copy of that contract:
   hardcode `../` anywhere.
 - Keep `TARGET_LANG` behavior (generator-managed): it sets `lang` attributes
   (screen-reader pronunciation + the serif study voice) on pure-target
-  `.example`/`.answer`/`.table-scroll` containers and on bold/italic/
-  Cyrillic-free slot fragments.
+  `.example`/`.answer`/`.table-scroll`/`.pair-src` containers and on bold/italic/
+  Cyrillic-free slot fragments; pair glosses stay in the UI voice.
 - Section ids stay lowercase-English slugs; **never reuse another language's
   ids unless the sections match** — anchors are per-page anyway.
 - One `details` entry per chip; keys kebab-case; explanation in the audience

@@ -220,6 +220,15 @@ section { margin-top: 28px; }
 }
 .cheat-card h3 { margin: 0 0 8px; font-size: 1rem; letter-spacing: -.015em; }
 .cheat-card p { margin: 6px 0; }
+/* Card badges: level + kind metadata row for at-a-glance scanning. Text
+   labels on every badge — never information by color alone. */
+.badges { display: flex; flex-wrap: wrap; gap: 6px; margin: -2px 0 6px; }
+.badge {
+  display: inline-flex; align-items: center; padding: 2px 9px; border-radius: 999px;
+  font-size: .68rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+}
+.badge.level { background: var(--accent-soft); color: var(--on-accent-soft); }
+.badge.kind { background: var(--surface-2); color: var(--muted); border: 1px solid var(--line); }
 /* Deep-link landing (card anchors): accent ring fades into the resting shadow.
    Same accent as :focus-visible — one "you are here" color. CSS-only, so
    no-JS visits land highlighted too; reduced-motion is neutralized globally. */
@@ -242,6 +251,13 @@ section { margin-top: 28px; }
 .tiny { font-size: .78rem; color: var(--muted); }
 .example { margin-top: 9px; padding: 10px 11px; background: var(--surface-2); border-radius: 12px; font-size: .92rem; }
 .example b { font-weight: 800; }
+/* Example + deciding-hint pair: the target-language line and its Russian
+   hint read as one unit; .hit marks the form the card teaches. The gloss
+   keeps --muted on --surface-2 — the same pairing the shipped th uses. */
+.example.pair { padding: 10px 11px 9px; }
+.pair-src { margin: 0; }
+.pair-gloss { margin-top: 7px; padding-top: 7px; border-top: 1px solid var(--line); font-size: .78rem; color: var(--muted); }
+.example .hit { padding: 0 4px; border-radius: 6px; background: var(--accent-soft); color: var(--on-accent-soft); font-weight: 800; }
 .arrow { color: var(--muted); padding: 0 3px; }
 
 .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 9px; }
