@@ -779,7 +779,7 @@
       "title": "Множественное число", "lead": "+s по умолчанию, но есть правила и исключения.",
       "blocks": [
         {"detail": {"label": "Правила", "runs": ["+s по умолчанию · после -s/-sh/-ch/-x/-o часто +es (boxes, tomatoes) · согласная+y → ies (cities), но гласная+y → просто +s (days, boys)."]}},
-        {"detail": {"label": "-f → -ves", "runs": ["Часто: knife → knives, leaf → leaves, wolf → wolves. Но не всегда: roofs, chiefs."]}},
+        {"detail": {"label": "-f/-fe → -ves", "runs": ["Часто: knife → knives, leaf → leaves, wolf → wolves. Но не всегда: roofs, chiefs."]}},
         {"detail": {"label": "Исключения", "runs": ["man–men · woman–women · child–children · foot–feet · tooth–teeth · mouse–mice · person–people."]}},
         {"detail": {"label": "Не меняются", "runs": ["fish, sheep, aircraft."]}},
         {"detail": {"label": "Только исчисляемые", "runs": ["Множественное число образуют исчисляемые: water, advice, information числа не имеют (см. Исчисляемое / нет)."]}}

@@ -891,12 +891,12 @@
       "blocks": [
         {"detail": {"label": "Feminin", "runs": ["Почти всегда ", {"t": "-en/-n", "b": true}, ": die Frau → Frauen. На -ung/-heit/-keit/-schaft/-ion → ", {"t": "-en", "b": true}, ": Zeitungen, Möglichkeiten."]}},
         {"detail": {"label": "Maskulin", "runs": ["Часто ", {"t": "-e", "b": true}, ", многие с умлаутом: Tische, ", {"t": "Stühle", "i": true}, ", ", {"t": "Männer", "i": true}, "."]}},
-        {"detail": {"label": "Neutrum", "runs": ["Часто ", {"t": "-er", "b": true}, ", много с умлаутом: Kinder, ", {"t": "Bücher", "i": true}, ", ", {"t": "Häuser", "i": true}, "."]}},
+        {"detail": {"label": "Neutrum", "runs": ["Часто ", {"t": "-er", "b": true}, ", многие с умлаутом: Kinder, ", {"t": "Bücher", "i": true}, ", ", {"t": "Häuser", "i": true}, "."]}},
         {"detail": {"label": "Заимствования", "runs": ["Короткие и иностранные слова → ", {"t": "-s", "b": true}, ": Autos, Handys, Parks."]}},
         {"detail": {"label": "Без изменения", "runs": ["На -er/-el/-en и -chen/-lein: Lehrer → Lehrer, Fenster → Fenster, Mädchen → Mädchen; иногда только умлаут: ", {"t": "Äpfel", "i": true}, ", ", {"t": "Vögel", "i": true}, "."]}},
-        {"detail": {"label": "Составные слова", "runs": ["Plural — у последнего корня: das ", {"t": "Wörter", "b": true}, "buch → die Wörter", {"t": "bücher", "b": true}, "."]}},
+        {"detail": {"label": "Составные слова", "runs": ["Plural — у последнего корня: das Wörter", {"t": "buch", "b": true}, " → die Wörter", {"t": "bücher", "b": true}, "."]}},
         {"detail": {"label": "Предел", "runs": ["Единого правила нет: ставка по роду покрывает большинство слов, но форму конкретного слова при сомнении проверяй в словаре. В Dativ Plural существительное почти всегда получает ещё ", {"t": "-n", "b": true}, " — см. карточку Dativ Plural."]}},
-        {"detail": {"label": "Практика", "runs": ["Не знаешь род — не угадаешь и plural: сначала карточка der/die/das."]}}
+        {"detail": {"label": "Практика", "runs": ["Не знаешь род — не угадаешь и множественное число: сначала карточку «Определённый артикль»."]}}
       ]
     },
     "n-decl": {

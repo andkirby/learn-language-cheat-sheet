@@ -141,7 +141,7 @@ evidence in the content audit.
 | DE-21 | How do I command or request? | `#order` | du/ihr/Sie forms; sein exception; du vowel change and -t/-d +e in dialog |
 | DE-22 | Präteritum — what is it and when? | `#verbs` | Recognition: war/hatte/modals + regular -te; spoken-Perfekt vs written boundary; recognition-level → glossed examples |
 | DE-23 | Comparative and superlative? | `#extras` | -er / am -sten, umlaut group, gut/viel/gern irregulars; than = als |
-| DE-24 | How is the plural formed? Five ending patterns, guessed by gender | `#extras` | Feminin → -en/-n, Maskulin → -e, Neutrum → -er (umlaut group), unchanged -er/-el/-en, loanwords → -s; «no single rule» limit; Dativ-Plural cross-reference |
+| DE-24 | How is the plural formed? Five ending patterns, guessed by gender | `#extras` | Feminin → -en/-n, Maskulin → -e, Neutrum → -er (umlaut group), unchanged -er/-el/-en, loanwords → -s; «no single rule» limit; Dativ-Plural cross-reference; suffix groups (-ung/-heit/-keit…), -chen/-lein and compounds in the `plural` dialog |
 
 ## Acceptance and maintenance
 

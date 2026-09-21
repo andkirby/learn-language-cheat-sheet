@@ -566,6 +566,17 @@ Gate impact: Coverage stays **PASS** — DE 24/24, EN 20/20 required topics
 remainder, EN-G07) — DE-G05 fully decided, no open piece remains. Baseline
 Accuracy/Teaching NOT RUN.
 
+Independent two-reviewer pass after the commit (content/linguistic +
+docs/process, both read-only): no P1 — all 16 German example pairs and the
+English rules verified correct, `--check` gates re-confirmed. Fixed same
+day: 1×P2 (compound-nouns example bolded the first root in the singular but
+the plural marker in the plural — now bolds the last root on both sides,
+matching the block's own rule) and 5×P3 (dead cross-reference
+«карточка der/die/das» → «карточку „Определённый артикль“»; lowercase Latin
+«plural» in RU text → «множественное число»; «много/многие с умлаутом»
+drift unified; EN dialog label «-f → -ves» → «-f/-fe → -ves»; DE-24 plan row
+under-promised the shipped dialog depth — depth clause appended).
+
 ## Next full review record
 
 Append a dated record; preserve previous evidence. Include:
