@@ -66,6 +66,7 @@ is now the active frontier.
 | Candidate | Source | Lean |
 | --- | --- | --- |
 | DE verb + preposition pairs (warten auf, denken an…) | DE-G06 | Small pairs card;RU-preposition interference is the hook |
+| DE demonstratives: dieser family (declines like der-words; RU «этот») | DE-G11 | One card in `#forms` next to the article tables; welcher- same pattern in dialog |
 | DE plural formation (−e/¨-er/−s/−n + umlaut) | DE-G05 | **Shipped 2026-09-21 as DE-24** — gender-based five-pattern card + `plural` dialog, «нет одного правила» limit |
 | EN relative clauses (who/which/that) | EN-G05 | One card; object-relative omission in dialog |
 | EN question tags (…, isn't it?) | new | RU «не так ли?» is the trap; tail copies the auxiliary |
