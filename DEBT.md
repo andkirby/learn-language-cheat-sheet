@@ -6,7 +6,7 @@ an explicit decision to drop it. Do not silently delete rows.
 
 | ID | Debt | Owner of decision/evidence | Act when |
 | --- | --- | --- | --- |
-| D-01 | All four content gates NOT RUN for both languages; the 2026-09-11 page changes are author-reviewed only | `CONTENT_AUDIT.md` (review records) | An independent review session runs |
+| D-01 | All four content gates NOT RUN for both languages; the 2026-09-11 page changes are author-reviewed only. When it runs, the independent pass must also walk the **plan→syllabus direction** (ROADMAP Tier 3 «Inventory-completeness audits»): each plan's inventory vs a named level syllabus + a top-function-word frequency list — the vector that would have caught the 2026-09-21 dieser gap | `CONTENT_AUDIT.md` (review records) | An independent review session runs |
 | D-02 | Baseline reference comparison unresolved: DE-G01–06 and EN-G01–08 candidate topics have no Required/Deferred/Excluded decision | `CONTENT_AUDIT.md` (open scope questions) | A language's scope or content expands |
 | D-03 | Practice pool + shuffle (replay value) — currently excluded by the three-item practice contract | `de/ru/SITE_PLAN.md` + `en/ru/SITE_PLAN.md` (DE-X05/EN-X05) | Practice is reopened as a product topic |
 | D-04 | ~~Mechanical content preflight~~ Largely closed 2026-09-11: `tools/build_pages.py` `validate()` now enforces chip↔dialog bijection, unique ids, view integrity, practice shape and data-search token visibility (inflection-tolerant) on every build and `--check` run | no separate `content_check.py` needed unless checks must run without rendering | — |

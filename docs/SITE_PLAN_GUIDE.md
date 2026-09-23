@@ -76,7 +76,13 @@ future authors from repeatedly reopening settled scope.
 - Which Russian-language interference problems deserve first-class treatment?
 - Does every required topic answer one of those questions?
 - Has the inventory been compared with a named level-appropriate syllabus and
-  an authoritative grammar reference?
+  an authoritative grammar reference? Record the answer in the plan: name
+  the syllabus and map every checklist item to a topic ID or an explicit
+  Excluded row — an unmapped item is an unmade decision. This comparison is
+  also the plan→syllabus direction of a full review pass (see ROADMAP
+  Tier 3 «Inventory-completeness audits»: it would catch high-frequency
+  words with no footprint in the deck's own text, like dieser before
+  DE-25).
 - Are newly discovered topics decided explicitly instead of silently omitted?
 
 Give every required topic a stable language-prefixed ID. Use one row per

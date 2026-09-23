@@ -76,6 +76,23 @@ is now the active frontier.
 
 ## Tier 3 — product-level (explicit owner decision, pre-scoped here)
 
+- **Inventory-completeness audits** (from the 2026-09-21 dieser
+  retrospective: the probe loop is reactive — every recent topic came from a
+  user probe, and dieser had zero in-page footprint, so all
+  internal-consistency checks were blind to it). Three cheap pieces, no new
+  tooling: (a) per-target **named-syllabus mapping** recorded in each plan —
+  §5 of `docs/SITE_PLAN_GUIDE.md` already asks the question, plans must
+  carry the answer as a checklist-item → topic-ID/Excluded table; one-shot
+  retrofit audit for the existing de/en plans (Goethe Start Deutsch 1/2+B1
+  list for DE; the BC A1–B2 slice already in `research/britishcouncil.md`
+  for EN); (b) **top-100 function-word frequency sweep** of the target
+  language vs deck coverage (search tokens + card text) — catches exactly
+  the high-frequency-no-footprint class like dieser; stdlib script or a
+  manual table; (c) **plan→syllabus as the third review direction** in the
+  full pass (D-01) — today the pass walks page→plan and plan→page only.
+  For the multi-audience matrix: the checklist is per-target (shared), the
+  interference traps stay per-audience; audience №1's audited inventory is
+  the seed for the rest, never copied blindly.
 - **Practice pool + shuffle** (D-03): replay value vs the three-item contract.
 - **Phase 3 audience**: `de-en` deck (content-as-data machinery is ready;
   landing registry flips EN from «скоро»).
