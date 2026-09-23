@@ -184,7 +184,7 @@
               "id": "ein-words",
               "level": "A1",
               "kind": "формы",
-              "search": "ein eine einen indefinite kein mein dein possessiv притяжательные",
+              "search": "ein eine einen indefinite kein mein dein possessiv притяжательные Ihr Ihre Ваш вежливое",
               "blocks": [
                 {"h": ["ein / kein / mein…"]},
                 {"table": {
@@ -887,6 +887,7 @@
       "title": "Притяжательные", "lead": "mein, dein, sein, ihr, unser, euer, ihr, Ihr",
       "blocks": [
         {"detail": {"label": "Значения", "runs": ["мой, твой, его, её, наш, ваш, их, Ваш."]}},
+        {"detail": {"label": "Ihr — от Sie", "runs": ["Основа — по владельцу: du → dein (твой) · Sie → ", {"t": "Ihr", "b": true}, " (Ваш, вежливое — с большой буквы) · sie → ihr (её/их). Окончание — из таблицы, по роду и падежу: die Adresse (Fem., Nom.) → ", {"t": "deine / Ihre Adresse", "b": true}, " · das Auto → dein / Ihr Auto · den Bruder (Akk.) → deinen / Ihren Bruder."]}},
         {"detail": {"label": "Модель", "runs": ["Склоняются как ein-слова. Поэтому: mein Bruder → meinen Bruder → meinem Bruder → meines Bruders. То же с любой основой: dein Bruder → deinen Bruder → deinem Bruder."]}},
         {"detail": {"label": "Ловушка euer", "runs": [{"t": "euer", "b": true}, " теряет e перед окончанием: mit ", {"t": "eurem", "b": true}, " Bruder (не euerm) · ", {"t": "eure", "b": true}, " Schwester."]}}
       ]

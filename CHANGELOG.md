@@ -4,6 +4,15 @@ One entry per user-visible change, newest first. UI rationale lives in
 `.design/decisions.md`, content review evidence in `CONTENT_AUDIT.md`.
 Append the entry in the same commit that ships the change.
 
+## 2026-09-23
+
+- **New (German)**: the «Притяжательные» dialog (card «ein / kein /
+  mein…») now shows how a possessive is built — the stem follows the
+  owner (du → dein · Sie → Ihr, вежливое, с большой буквы · sie → ihr,
+  её/их), and the ending comes from the ein-word table (die Adresse →
+  deine / Ihre Adresse). Searching «Ihre», «Ihr», «Ваш» now surfaces the
+  card. `CACHE_VERSION` v23.
+
 ## 2026-09-21
 
 - **New (German)**: demonstratives unit (DE-25, plan + deck) — the

@@ -67,6 +67,7 @@ language plan or close it with evidence here.
 | DE-G09 | German | Modal particles (Modalpartikeln): doch, mal, denn, ja, schon, gar, wohl (+ eben/halt/etwa) | User probe 2026-09-13: absent from the deck (denn appears only as coordinator, schon only as adverb in the Perfekt example); Russian encodes the same nuances (же/ведь/ну/уж/разве), so the transfer gap is real at A2–B1 — but a curated high-frequency set must not drift into the excluded particle-dictionary territory (DE-X02) | **Decided 2026-09-13: Required** → promoted to the plan as DE-17 (bounded set, decision-equivalents only) and implemented the same day — see the DE-17 record below |
 | DE-G10 | German | Linking adverbs: deshalb, trotzdem, allerdings, außerdem, währenddessen | User request 2026-09-13 (meanwhile/nevertheless question); closed class, function-level meanings are stable — not phrasebook territory within a bounded set (DE-X02) | **Decided 2026-09-13: Required** → promoted as DE-18, implemented same day |
 | DE-G11 | German | Demonstratives: dieser/diese/dieses (RU «этот») — and the dieser-vs-der choice | User probe 2026-09-21 («dieser — этот, где можно найти это?»): absent from the deck entirely (checked deck, page, plan, ROADMAP). dieser declines exactly on the deck's own definite-article pattern (dies- + der-word endings), so the morphology is already taught — the missing pieces are the word family itself and the RU «этот/тот» mapping (dieser covers both); natural home is `#forms` next to the article tables; welcher- shares the same pattern | **Decided 2026-09-21: Required** → promoted as DE-25 and implemented same day (card in `#forms` next to the article tables + `dieser` dialog: model, «этот/тот» collapse, welcher- pattern, dieser-vs-der and das in «это»-phrases, adjective-endings cross-reference) |
+| DE-G12 | German | Polite possessive: building Ihr/Ihre from Sie (RU «Ваш») | User probe 2026-09-23 («как строить Ihre — не нашёл в шпоре»): the pieces exist (DE-05 stem list names Ihr; `possessives` dialog maps meanings; ein-words table gives endings) but no text states that capital-I Ihr is the possessive of polite Sie — the owner→stem step stays implicit. User constraint: the usage sentence that triggered the question must not ship verbatim; teach the construction itself | **Decided 2026-09-23: Required** (bounded depth within DE-05, standing ADD rules) → `possessives` dialog gained the owner→stem block the same day |
 | EN-G09 | English | Flavour words: just, actually, still, even, though | User request 2026-09-13 (EN mirror of DE-17); includes the *actually* ≠ «актуально» false friend | **Decided 2026-09-13: Required** → promoted as EN-17, implemented same day |
 | EN-G10 | English | Linking connectors: but/however, so/therefore, meanwhile, nevertheless, although/despite | User request 2026-09-13 (meanwhile/nevertheless question); function-level meanings are stable, not too contextual for a lookup card | **Decided 2026-09-13: Required** → promoted as EN-18, implemented same day |
 | EN-G01 | English | be questions/negatives and there is/are | Required depth and placement | **Decided + closed:** the be/modal question half shipped 2026-09-13 (C-14); there is/are + be-negatives → EN-19 shipped same day |
@@ -608,6 +609,36 @@ Gate impact: Coverage stays **PASS** — DE 25/25, EN 20/20 required topics
 (DE inventory extended and covered in the same change). Baseline still
 **FAIL** (open: DE-G06, DE-G07, DE-G08, EN-G02, EN-G04, EN-G05, EN-G06
 remainder, EN-G07). Accuracy/Teaching NOT RUN.
+
+## 2026-09-23 — DE-05 depth: polite Ihr construction (DE-G12 decided)
+
+User probe: «Я пытаюсь понять как использовать строить Ihre и не нашёл в
+шпоре». The declension mechanics were on-page (DE-05 table + «Модель»
+block), but the owner→stem chain — Sie → Ihr (вежливое) versus sie → ihr
+(её/их) versus du → dein — was never stated, so the polite form could
+not be assembled from the sheet. User constraint recorded: the sentence
+that triggered the question stays out of the deck; the block teaches the
+construction.
+
+- `possessives` dialog: new block «Ihr — от Sie» — du → dein ·
+  Sie → Ihr (Ваш, с большой буквы) · sie → ihr (её/их), then the
+  ein-word ending by gender/case: die Adresse (Fem., Nom.) → deine /
+  Ihre Adresse · das Auto → dein / Ihr Auto · den Bruder (Akk.) →
+  deinen / Ihren Bruder.
+- `ein-words` search keywords extended with Ihr, Ihre, Ваш, вежливое —
+  searching the polite form now surfaces the card.
+
+Verified: JSON valid; `--check` (both decks) exit 0; scoped runtime smoke
+(localhost:8931, stale-SW reset): search «Ihre» leaves `forms-ein-words`
+visible, the chip opens the dialog with all four new-block assertions
+passing, console clean. Offline reload, theme cycle, redirect and
+practice checks: **NOT RUN** this pass (content-only change inside an
+existing dialog slot).
+
+Gate impact: none — DE-05 was already Required and covered; this
+deepens an accepted topic. Coverage stays **PASS** (DE 25/25, EN
+20/20). Baseline still **FAIL** (open: DE-G06, DE-G07, DE-G08, EN-G02,
+EN-G04, EN-G05, EN-G06 remainder, EN-G07). Accuracy/Teaching NOT RUN.
 
 ## Next full review record
 
