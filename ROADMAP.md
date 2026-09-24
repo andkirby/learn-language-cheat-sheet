@@ -37,13 +37,14 @@ density, or assessment-like structure.
 **ASK the owner** when it changes product intent: practice redesign (D-03),
 new target language or audience, view/navigation restructure, audio.
 
-## Where the decks stand (2026-09-21, post-Tier-1 + DE-24/25)
+## Where the decks stand (2026-09-24, post-Tier-2)
 
-25 (DE) and 20 (EN) required topics, Coverage PASS, search hygiene gated by
-the generator. The A1 core landed 2026-09-13 (Tier 1 below); DE plural
-formation followed 2026-09-21 as DE-24. The remaining honest gaps are the
-Tier-2 list: verb+preposition pairs (DE), relative clauses and question tags
-(EN), plus the small EN reference items.
+28 (DE) and 26 (EN) required topics, Coverage PASS, search hygiene gated by
+the generator. All candidate scope gaps are decided (no Open rows in
+CONTENT_AUDIT); the remaining Baseline conjunct is the sourced level
+placement (C-03/D-02 reference comparison). Tier 2 shipped 2026-09-24
+(below); what is deliberately NOT here: reported speech (deferred, B1+
+series), question tags (deferred, small-on-demand), vocabulary/audio.
 
 ## Tier 1 — shipped 2026-09-13 (DE-19–23, EN-19/20, EN-05 always; sw v17)
 
@@ -61,19 +62,19 @@ is now the active frontier.
 | DE comparatives/superlatives | DE-G05 | `#extras` | -er/-am -sten, umlaut group, gut/besser/am besten, viel/mehr/am meisten |
 | EN Present Continuous + always (irritation) | EN-G08 | `#tenses` | One-liner on the PC card + dialog block; closes the long-pending decision — recommended Required |
 
-## Tier 2 — bounded extensions (lean-add when Tier 1 lands)
+## Tier 2 — shipped 2026-09-24 (DE-26–28, EN-21–23, EN-25–26; sw v27); two rows deferred
 
 | Candidate | Source | Lean |
 | --- | --- | --- |
-| DE verb + preposition pairs (warten auf, denken an…) | DE-G06 | Small pairs card;RU-preposition interference is the hook |
+| DE verb + preposition pairs (warten auf, denken an…) | DE-G06 | **Shipped 2026-09-24 as DE-26** — pairs card + `verb-preps` dialog (per-pair case tags, sich-recognition) |
 | DE demonstratives: dieser family (declines like der-words; RU «этот») | DE-G11 | **Shipped 2026-09-21 as DE-25** — card in `#forms` next to the article tables + `dieser` dialog (welcher- pattern, dieser-vs-der, das in «это»-phrases) |
 | DE plural formation (−e/¨-er/−s/−n + umlaut) | DE-G05 | **Shipped 2026-09-21 as DE-24** — gender-based five-pattern card + `plural` dialog, «нет одного правила» limit |
-| EN relative clauses (who/which/that) | EN-G05 | One card; object-relative omission in dialog |
-| EN question tags (…, isn't it?) | new | RU «не так ли?» is the trap; tail copies the auxiliary |
-| EN numbers/dates/time | EN-G07 | Defer-leaning: more lookup than grammar; small card ok |
-| EN reported speech basics | EN-G06 | Defer-leaning: B1+ density; backshift is a series, not a card |
-| DE weder…noch / sowohl…als auch | new | Defer-leaning: B1 connector pair, only if Tier 1 lands clean |
-| EN contrast linkers: while/whereas, on the other hand | EN-G12 | Defer-leaning: two-clause contrast + register pair; small dialog extension to EN-18 if learner need emerges |
+| EN relative clauses (who/which/that) | EN-G05 | **Shipped 2026-09-24 as EN-23** — card + `relatives` dialog (whose/where, object-that omission) |
+| EN question tags (…, isn't it?) | new | **Deferred** — small-on-demand; not yet requested by learner evidence |
+| EN numbers/dates/time | EN-G07 | **Shipped 2026-09-24 as EN-26** — ordinals + dates card + `numbers-dates` dialog |
+| EN reported speech basics | EN-G06 | **Deferred** (recorded in the EN-G06 row) — backshift is a series, not a card; reconsider when the supported level expands |
+| DE weder…noch / sowohl…als auch | new | **Deferred** — B1 connector pair; reconsider with the next German connector need |
+| EN contrast linkers: while/whereas, on the other hand | EN-G12 | **Shipped 2026-09-24 as EN-25** — bounded card in `#order` + `contrast-linkers` dialog |
 
 ## Tier 3 — product-level (explicit owner decision, pre-scoped here)
 

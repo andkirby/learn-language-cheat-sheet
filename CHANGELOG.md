@@ -6,6 +6,19 @@ UI rationale lives in
 `.design/decisions.md`, content review evidence in `CONTENT_AUDIT.md`.
 Append the entry in the same commit that ships the change.
 
+## 2026-09-24 (content)
+
+- **New (both languages, Tier 2)**: German verb+preposition pairs (warten
+  auf, denken an… — case comes from the preposition), the der/ein/kein
+  choice (professions without an article), and seit vs vor (duration with
+  Präsens vs a past point — not like the English Perfect). English:
+  negation (don't/never/no — double-negative trap), Present Perfect
+  Continuous (recognition), relative clauses (who/which/that, whose,
+  object-that omission), imperative (base form, Let's), while/whereas/on
+  the other hand, and numbers and dates (ordinals, dates, decades).
+  Inventories: DE 28, EN 26 topics — no open scope questions remain.
+  `CACHE_VERSION` v27.
+
 ## 2026-09-24 (style)
 
 - **Changed**: dialog commentary no longer runs into the sentence as one

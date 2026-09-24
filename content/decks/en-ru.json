@@ -267,6 +267,20 @@
           ]
         },
         {
+          "id": "contrast-linkers",
+          "level": "B1",
+          "kind": "связь",
+          "search": "while whereas on the other hand тогда как с другой стороны контраст",
+          "blocks": [
+            {"h": ["while / whereas / on the other hand"]},
+            {"p": ["Контраст двух фактов сразу: ", {"t": "while", "b": true}, " (ещё и «пока»), ", {"t": "whereas", "b": true}, " (формальнее), ", {"t": "on the other hand", "b": true}, " (с другой стороны)."]},
+            {"example": [
+              "I drink tea, ", {"t": "whereas", "hit": true}, " my wife prefers coffee. · ", {"t": "On the other hand", "hit": true}, ", it's cheaper."
+            ], "gloss": ["while/whereas ≈ тогда как · on the other hand ≈ с другой стороны"]},
+            {"chips": [{"label": "while — тоже «пока»", "detail": "contrast-linkers"}]}
+          ]
+        },
+        {
           "id": "there-is",
           "level": "A1",
           "kind": "употребление",
@@ -394,6 +408,21 @@
             {"example": ["I ", {"t": "was cooking", "b": true}, " when he ", {"t": "called", "b": true}, ". · They ", {"t": "were sleeping", "b": true}, "."]},
             {"chips": [{"label": "vs Past Simple", "detail": "past-continuous"}]}
           ]
+        },
+        {
+          "id": "pp-continuous",
+          "level": "B1",
+          "kind": "время",
+          "search": "present perfect continuous been уже делаю час процесс свежий след",
+          "blocks": [
+            {"h": ["Present Perfect Continuous"]},
+            {"formula": [{"slot": "have / has been"}, {"arrow": "+"}, {"slot": "V-ing", "role": "end"}]},
+            {"p": ["Делаю это ", {"t": "уже какое-то время", "b": true}, " (до сих пор) — или только что закончил, и след виден:"]},
+            {"example": [
+              "I ", {"t": "have been waiting", "hit": true}, " for an hour. · You look tired — ", {"t": "have you been running", "hit": true}, "?"
+            ], "gloss": ["«жду уже час» — русский Present + «уже» = английский PPC"]},
+            {"chips": [{"label": "vs Present Perfect", "detail": "pp-continuous"}]}
+          ]
         }
       ]
     },
@@ -457,6 +486,48 @@
               {"t": "I enjoy reading.", "b": true}, " · ", {"t": "I want to read.", "b": true}
             ]},
             {"chips": [{"label": "Список частых глаголов", "detail": "gerund-infinitive"}]}
+          ]
+        },
+        {
+          "id": "relatives",
+          "level": "A2",
+          "kind": "связь",
+          "search": "relative clauses who which that который люди предметы вещи",
+          "blocks": [
+            {"h": ["Relative clauses: who / which / that"]},
+            {"p": [{"t": "который", "b": true}, ": ", {"t": "who", "b": true}, " — люди · ", {"t": "which", "b": true}, " — предметы · ", {"t": "that", "b": true}, " — и то и другое."]},
+            {"example": [
+              "The man ", {"t": "who", "hit": true}, " lives next door is 90. · The book ", {"t": "that", "hit": true}, " I read was great."
+            ], "gloss": ["who — люди · which — вещи · that — универсальный"]},
+            {"chips": [{"label": "whose, where и пропуск that", "detail": "relatives"}]}
+          ]
+        },
+        {
+          "id": "negation",
+          "level": "A1",
+          "kind": "формы",
+          "search": "don't doesn't didn't never no отрицание никогда никакой",
+          "blocks": [
+            {"h": ["Отрицание: don't / never / no"]},
+            {"p": [{"t": "don't / doesn't / didn't", "b": true}, " + базовая форма · ", {"t": "never", "b": true}, " вместо not · ", {"t": "no", "b": true}, " + существительное."]},
+            {"example": [
+              "I ", {"t": "don't", "hit": true}, " smoke. · I have ", {"t": "never", "hit": true}, " been to Rome. · I have ", {"t": "no", "hit": true}, " money."
+            ], "gloss": ["never — УЖЕ отрицание: второй not не добавляем"]},
+            {"chips": [{"label": "Двойное отрицание — ловушка", "detail": "negation"}]}
+          ]
+        },
+        {
+          "id": "imperative",
+          "level": "A1",
+          "kind": "формы",
+          "search": "imperative повелительное don't let's please базовая форма команда просьба",
+          "blocks": [
+            {"h": ["Imperative: базовая форма"]},
+            {"p": [{"t": "Open!", "b": true}, " · ", {"t": "Please open", "b": true}, " the window (без to) · ", {"t": "Don't open", "b": true}, " it. · ", {"t": "Let's go", "b": true}, "."]},
+            {"example": [
+              {"t": "Please sit down", "hit": true}, ". · ", {"t": "Let's not argue", "hit": true}, "."
+            ], "gloss": ["подлежащего нет — просто базовая форма; Let's not = отрицание"]},
+            {"chips": [{"label": "Let's и вежливость", "detail": "imperative"}]}
           ]
         }
       ]
@@ -573,6 +644,20 @@
               {"t": "good — better — the best", "b": true}
             ]},
             {"chips": [{"label": "Правила и исключения", "detail": "comparative"}]}
+          ]
+        },
+        {
+          "id": "numbers-dates",
+          "level": "A1",
+          "kind": "формы",
+          "search": "ordinal 1st 2nd 3rd fifth twelfth даты годы май число",
+          "blocks": [
+            {"h": ["Числа и даты: 1st, 2nd, 3rd"]},
+            {"p": ["Порядковые: ", {"t": "1st first · 2nd second · 3rd third · 5th fifth · 12th twelfth", "b": true}, " — fifth и twelfth меняют написание."]},
+            {"example": [
+              "on ", {"t": "5 May", "hit": true}, " · on ", {"t": "the 5th of May", "hit": true}, " · ", {"t": "in the 1990s", "hit": true}, "."
+            ], "gloss": ["дата — on, год и месяц — in · десятилетие: the + -s"]},
+            {"chips": [{"label": "Как читать годы", "detail": "numbers-dates"}]}
           ]
         }
       ]
@@ -716,6 +801,55 @@
         {"detail": {"label": "Два параллельных", "runs": ["I ", {"t": "was reading", "i": true}, " while she ", {"t": "was sleeping", "i": true}, ". — оба процесса (см. meanwhile)."]}},
         {"detail": {"label": "Русский аспект", "runs": ["«готовил» (процесс) → was cooking · «приготовил» (результат) → cooked. Выбор — как вид глагола."]}},
         {"detail": {"label": "Не для фактов", "runs": ["Последовательность событий — Past Simple: I came home, saw the letter and read it."]}}
+      ]
+    },
+    "negation": {
+      "title": "Отрицание: разбор", "lead": "Одно отрицание на предложение — главное отличие от русского.",
+      "blocks": [
+        {"detail": {"label": "Ловушка", "runs": ["«Я никогда не был в Риме» → ", {"t": "I have never been to Rome", "i": true}, " — never УЖЕ отрицание, второй ", {"t": "not", "i": true}, " не добавляем."]}},
+        {"detail": {"label": "no vs not any", "runs": [{"t": "I have no money", "i": true}, " = ", {"t": "I don't have any money", "i": true}, " — «нет денег»; no + существительное короче."]}},
+        {"detail": {"label": "Порядок", "runs": [{"t": "I don't smoke", "i": true}, " · ", {"t": "He doesn't smoke", "i": true}, " · ", {"t": "I didn't smoke", "i": true}, " — вспомогательный + not, смысловой в базовой форме."]}},
+        {"detail": {"label": "never = наречие", "runs": [{"t": "I never drink coffee", "i": true}, " — перед смысловым глаголом, как другие наречия частоты (см. «Всегда / Обычно / Никогда»)."]}}
+      ]
+    },
+    "pp-continuous": {
+      "title": "Perfect vs Perfect Continuous", "lead": "Результат или процесс? since/for работают в обоих.",
+      "blocks": [
+        {"detail": {"label": "Результат vs процесс", "runs": [{"t": "I've painted the wall", "i": true}, " — стена покрашена (результат) · ", {"t": "I've been painting all day", "i": true}, " — весь день красил (процесс, может, и не закончил)."]}},
+        {"detail": {"label": "Как в русском", "runs": [{"t": "I've been waiting for an hour", "i": true}, " — «жду уже час»: русское настоящее + «уже» = английский PPC."]}},
+        {"detail": {"label": "Исключение", "runs": [{"t": "know, want, like", "i": true}, " — состояния без -ing даже здесь: ", {"t": "I've known him for years", "i": true}, "."]}}
+      ]
+    },
+    "relatives": {
+      "title": "Relative clauses: разбор", "lead": "Слово — по типу существительного, глагол — сразу за ним.",
+      "blocks": [
+        {"detail": {"label": "whose / where", "runs": [{"t": "the man whose dog barks", "i": true}, " — «чей пёс лает» · ", {"t": "the city where I live", "i": true}, " — «город, где я живу»."]}},
+        {"detail": {"label": "that можно опустить", "runs": [{"t": "The book (that) I read", "i": true}, " — опускается, если дальше подлежащее. ", {"t": "The book that helps", "i": true}, " — после that подлежащее, не опускается."]}},
+        {"detail": {"label": "Согласование", "runs": [{"t": "people who are", "i": true}, " (мн.ч.) · ", {"t": "the person who is", "i": true}, " — глагол следует за существительным."]}}
+      ]
+    },
+    "imperative": {
+      "title": "Imperative: разбор", "lead": "Подлежащего нет — просто базовая форма.",
+      "blocks": [
+        {"detail": {"label": "Let's", "runs": [{"t": "Let's go", "i": true}, " — «пойдём» (предложение себе и собеседнику) · ", {"t": "Let's not argue", "i": true}, " — отрицание."]}},
+        {"detail": {"label": "Вежливо", "runs": [{"t": "Please sit down", "i": true}, " · ", {"t": "Could you open the window", "i": true}, "? — could смягчает (см. Модальные)."]}},
+        {"detail": {"label": "Инструкции", "runs": [{"t": "Press the button. Add salt", "i": true}, " — рецепты и указания целиком в императиве."]}}
+      ]
+    },
+    "contrast-linkers": {
+      "title": "while / whereas: разбор", "lead": "Соединяют два факта в одном предложении — запятая перед ними.",
+      "blocks": [
+        {"detail": {"label": "while — двулико", "runs": [{"t": "I cook, while he watches TV", "i": true}, " — «тогда как» (контраст) · ", {"t": "While I cooked, he watched TV", "i": true}, " — «пока» (время). Смысл по контексту."]}},
+        {"detail": {"label": "whereas", "runs": [{"t": "She is tall, whereas her sister is short", "i": true}, " — «тогда как»: формальный контраст."]}},
+        {"detail": {"label": "on the other hand", "runs": ["Отдельным предложением: The flat is small. ", {"t": "On the other hand", "i": true}, ", it's cheap. — «с другой стороны»."]}}
+      ]
+    },
+    "numbers-dates": {
+      "title": "Даты и годы: разбор", "lead": "Дата — всегда on, год и месяц — in.",
+      "blocks": [
+        {"detail": {"label": "on vs in", "runs": [{"t": "on 5 May", "i": true}, " (дата) · ", {"t": "in 2026", "i": true}, " (год) · ", {"t": "in May", "i": true}, " (месяц) — см. Время: in/on/at."]}},
+        {"detail": {"label": "Годы", "runs": [{"t": "2026 → twenty twenty-six", "i": true}, " · ", {"t": "the 1990s → the nineties", "i": true}, " — десятилетие с the."]}},
+        {"detail": {"label": "Орфография", "runs": [{"t": "five → fifth", "i": true}, " (не «fiveth») · ", {"t": "twelve → twelfth", "i": true}, " · ", {"t": "nine → ninth", "i": true}, " (e выпадает)."]}}
       ]
     },
     "a-an": {

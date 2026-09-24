@@ -12,13 +12,13 @@ Deferred or Excluded decision to the relevant
 procedure is [content validation](docs/CONTENT_VALIDATION.md); plan authors use
 [the SITE_PLAN guide](docs/SITE_PLAN_GUIDE.md).
 
-Current overall status: Baseline **FAIL** for both languages; Coverage
-**PASS** for both languages (16/16 topics each after the 2026-09-13 findings
-sweep); Accuracy and Teaching **NOT RUN** pending an independent
-reference-grounded pass. The 2026-09-11 full reviewer pass (record below)
-inspected both decks, both generated pages and all practice/search metadata.
-Runtime/browser gates are a separate AGENTS.md checklist; a scoped smoke test
-is recorded in the 2026-09-13 entry.
+Current overall status: **all candidate scope gaps are decided** (DE-G01–G13,
+EN-G01–G12 — the ledger has no Open rows); Baseline **FAIL** remains only on
+the unsourced-level-placement conjunct (C-03/D-02 reference comparison).
+Coverage **PASS**: DE 28/28, EN 26/26 required topics after the 2026-09-24
+Tier-2 batch. Accuracy and Teaching **NOT RUN** pending an independent
+reference-grounded pass (D-01). Runtime/browser gates are a separate
+AGENTS.md checklist; scoped smoke tests are recorded per batch.
 
 ## 2026-09-10 — Initial documentation review
 
@@ -61,9 +61,9 @@ language plan or close it with evidence here.
 | DE-G03 | German | Imperative | Include, defer or exclude | **Decided 2026-09-13: Required** → promoted as DE-21, shipped same day (du/ihr/Sie + sein exception; du vowel-change and -t/-d limits in dialog) |
 | DE-G04 | German | Perfekt formation/auxiliary choice and Präteritum usage | Required depth and tense boundary | **Decided 2026-09-13 (split):** Perfekt bracket + auxiliary choice shipped earlier (DE-07); Präteritum → promoted as DE-22 recognition-level, shipped same day; the tense boundary now on-page |
 | DE-G05 | German | Plural formation, comparison and adjective endings without an article | Split into reviewable decisions | **Decided:** comparison → DE-23 shipped 2026-09-13; adjective endings without an article covered by the `adjectives` dialog; plural formation → **Required** 2026-09-21, promoted as DE-24 and shipped same day (gender-based five-pattern card + `plural` dialog in `#extras`, «no single rule» limit) |
-| DE-G06 | German | Verb-governed cases and reflexive verbs | Required depth and placement | Open — reconfirmed 2026-09-11 @ `b75c890`: helfen+Dativ and six geben-class verbs appear in dialogs/practice; no systematic unit; reflexives absent |
-| DE-G07 | German | der vs ein vs kein choice (known/specific vs new, professions without article, kein as noun negation) | Retrieval question 2 arguably promises usage choice, not only form; needs an accepted depth and placement decision | Open (2026-09-11 page review, example-sweep session) |
-| DE-G08 | German | seit vs vor («живу здесь два года» vs «переехал два года назад») | Textbook Russian-interference time-preposition trap; include/defer decision needed | Open (2026-09-11 page review, example-sweep session) |
+| DE-G06 | German | Verb-governed cases and reflexive verbs | Required depth and placement | **Decided 2026-09-24: Required** → promoted as DE-26, shipped same day (verb+preposition pairs, case from the preposition; sich-reflexives recognition; systematic reflexive lists deferred with the deck) |
+| DE-G07 | German | der vs ein vs kein choice (known/specific vs new, professions without article, kein as noun negation) | Retrieval question 2 arguably promises usage choice, not only form; needs an accepted depth and placement decision | **Decided 2026-09-24: Required** → promoted as DE-27, shipped same day (known/one-of-many/negation + professions without an article) |
+| DE-G08 | German | seit vs vor («живу здесь два года» vs «переехал два года назад») | Textbook Russian-interference time-preposition trap; include/defer decision needed | **Decided 2026-09-24: Required** → promoted as DE-28, shipped same day (seit + Präsens contrast with the English PP, vor + past event) |
 | DE-G09 | German | Modal particles (Modalpartikeln): doch, mal, denn, ja, schon, gar, wohl (+ eben/halt/etwa) | User probe 2026-09-13: absent from the deck (denn appears only as coordinator, schon only as adverb in the Perfekt example); Russian encodes the same nuances (же/ведь/ну/уж/разве), so the transfer gap is real at A2–B1 — but a curated high-frequency set must not drift into the excluded particle-dictionary territory (DE-X02) | **Decided 2026-09-13: Required** → promoted to the plan as DE-17 (bounded set, decision-equivalents only) and implemented the same day — see the DE-17 record below |
 | DE-G10 | German | Linking adverbs: deshalb, trotzdem, allerdings, außerdem, währenddessen | User request 2026-09-13 (meanwhile/nevertheless question); closed class, function-level meanings are stable — not phrasebook territory within a bounded set (DE-X02) | **Decided 2026-09-13: Required** → promoted as DE-18, implemented same day |
 | DE-G11 | German | Demonstratives: dieser/diese/dieses (RU «этот») — and the dieser-vs-der choice | User probe 2026-09-21 («dieser — этот, где можно найти это?»): absent from the deck entirely (checked deck, page, plan, ROADMAP). dieser declines exactly on the deck's own definite-article pattern (dies- + der-word endings), so the morphology is already taught — the missing pieces are the word family itself and the RU «этот/тот» mapping (dieser covers both); natural home is `#forms` next to the article tables; welcher- shares the same pattern | **Decided 2026-09-21: Required** → promoted as DE-25 and implemented same day (card in `#forms` next to the article tables + `dieser` dialog: model, «этот/тот» collapse, welcher- pattern, dieser-vs-der and das in «это»-phrases, adjective-endings cross-reference) |
@@ -72,14 +72,14 @@ language plan or close it with evidence here.
 | EN-G09 | English | Flavour words: just, actually, still, even, though | User request 2026-09-13 (EN mirror of DE-17); includes the *actually* ≠ «актуально» false friend | **Decided 2026-09-13: Required** → promoted as EN-17, implemented same day |
 | EN-G10 | English | Linking connectors: but/however, so/therefore, meanwhile, nevertheless, although/despite | User request 2026-09-13 (meanwhile/nevertheless question); function-level meanings are stable, not too contextual for a lookup card | **Decided 2026-09-13: Required** → promoted as EN-18, implemented same day |
 | EN-G11 | English | Correction pair after negation: not X, but Y («не X, а Y») and not only … but also («не только …, но и») | Same user probe 2026-09-24, EN mirror of DE-G13: the linkers card (EN-18) covered but/however etc. but no within-sentence correction pattern. Sources: Cambridge Grammar (Conjunctions: contrasting — not…but), British Council LearnEnglish (contrasting ideas); inversion after fronted not only is B2 → out of scope (EN-X03) | **Decided 2026-09-24: Required** (bounded depth within EN-18, standing ADD rules) → linkers card gained the chip + pattern example pair, new `not-but` dialog (both patterns, plain-but boundary, within-sentence position note) — same day |
-| EN-G12 | English | Contrast linkers while/whereas and on the other hand | Completeness sweep 2026-09-24 (DE-G13/EN-G11 session): the contrast family is otherwise covered (but/however, nevertheless, although/despite); two-clause contrast (while/whereas) and the register pair on the other hand are absent | Open — defer-leaning: B1, candidate Tier-2 dialog extension to EN-18; decide on learner need |
+| EN-G12 | English | Contrast linkers while/whereas and on the other hand | Completeness sweep 2026-09-24 (DE-G13/EN-G11 session): the contrast family is otherwise covered (but/however, nevertheless, although/despite); two-clause contrast (while/whereas) and the register pair on the other hand are absent | **Decided 2026-09-24: Required** → promoted as EN-25, shipped same day (while dual-use, whereas, on the other hand as a bounded card in `#order`) |
 | EN-G01 | English | be questions/negatives and there is/are | Required depth and placement | **Decided + closed:** the be/modal question half shipped 2026-09-13 (C-14); there is/are + be-negatives → EN-19 shipped same day |
-| EN-G02 | English | Negation beyond modal prohibitions | Required depth and placement | Open — only scattered basics (doesn't/don't + any, never/rarely; there isn't in EN-19) |
+| EN-G02 | English | Negation beyond modal prohibitions | Required depth and placement | **Decided 2026-09-24: Required** → promoted as EN-21, shipped same day (do-support negatives, never without not — double-negative trap, no vs not any) |
 | EN-G03 | English | Past Continuous and narrative tense contrasts | Include, defer or exclude | **Decided 2026-09-13: Required** → promoted as EN-20, shipped same day (background-vs-event contrast, Russian-aspect mapping in dialog) |
-| EN-G04 | English | Present Perfect with duration and continuous aspect | Required tense boundary | Open — reconfirmed 2026-09-11 @ `b75c890`: since/for duration limit present on card/dialog; continuous aspect absent |
-| EN-G05 | English | Relative clauses | Include, defer or exclude | Open — reconfirmed 2026-09-11 @ `b75c890`: absent |
-| EN-G06 | English | Imperative, basic linking words and reported speech | Split into reviewable decisions | Open — reconfirmed 2026-09-11 @ `b75c890`: all three absent |
-| EN-G07 | English | Dedicated numbers/date/time reference | Include, defer or exclude; earlier information architecture implied coverage without defining it | Open — reconfirmed 2026-09-11 @ `b75c890`: absent (time prepositions cover only in/on/at) |
+| EN-G04 | English | Present Perfect with duration and continuous aspect | Required tense boundary | **Decided 2026-09-24: split** — duration (since/for) shipped earlier in EN-06; continuous aspect → EN-22 PPC recognition card shipped same day (state-verb exception in dialog) |
+| EN-G05 | English | Relative clauses | Include, defer or exclude | **Decided 2026-09-24: Required** → promoted as EN-23, shipped same day (who/which/that, whose/where, object-that omission, antecedent agreement) |
+| EN-G06 | English | Imperative, basic linking words and reported speech | Split into reviewable decisions | **Decided 2026-09-24 (split):** linking → shipped earlier as EN-18; imperative → EN-24 shipped same day; reported speech → **Deferred** (backshift is a multi-card series with B1+ density; reconsider when the supported level expands) |
+| EN-G07 | English | Dedicated numbers/date/time reference | Include, defer or exclude; earlier information architecture implied coverage without defining it | **Decided 2026-09-24: Required** → promoted as EN-26, shipped same day (ordinals with spelling traps, dates on 5 May / on the 5th of May, years and decades) |
 | EN-G08 | English | Present Continuous with `always` for irritation/complaint ("He's always losing his keys") | Required/Deferred/Excluded decision; usage verified against `research/englishpage.md` (EnglishPage, "Repetition and Irritation with Always") | **Decided 2026-09-13: Required** → folded into EN-05 acceptance depth; shipped same day (card hint + dialog block) |
 
 ## Findings and follow-up
@@ -704,6 +704,52 @@ interleaved paradigm commentary stays inline by design. Recognition-level
 translation glosses (Passiv, double infinitive) now sit in the comment
 line — same gloss text, better decodability. `--check` gates green after
 the sweep; all other gates NOT RUN (presentation-only).
+
+## 2026-09-24 — Scope completion: Tier-2 batch (DE-26–28, EN-21–26); no open scope rows
+
+Protocol §5 changed-unit record. Author: ZCode session; scope per the
+owner-approved ROADMAP standing rules (Tier 2 lean-adds) plus the owner's
+«let's review such issues and fix them all» directive for the remaining open
+questions. Plan first: inventory rows DE-26–28 and EN-21–26, IA rows (Падежи,
+Формы; Артикли и слова, Времена, Порядок, Глаголы) in both SITE_PLANs.
+
+Changed units (all in current deck conventions: anchor slug, level/kind
+badges, hit-highlighting, gloss pairs):
+
+| Unit | Change |
+| --- | --- |
+| DE-26 `preps` card + `verb-preps` dialog | verb+preposition pairs (warten auf, denken an, sich freuen auf/über, sich interessieren für, teilnehmen an); case from the preposition (Wen?-trick); sich-reflexives recognition |
+| DE-27 `forms` card + `article-choice` dialog | der/ein/kein three-way choice (first-mention pair ein→der Hund); professions without an article |
+| DE-28 `preps` card + `seit-vor` dialog | seit + Dativ with Präsens (not PP — English contrast in dialog) vs vor + Dativ with a past event; Dativ-plural -n visible (seit zwei Jahren, cross-ref DE-15) |
+| EN-21 `verbs` card + `negation` dialog | don't/doesn't/didn't + base; never without not (double-negative trap vs «никогда не»); no vs not any; never as a frequency adverb |
+| EN-22 `tenses` card + `pp-continuous` dialog | PPC recognition: have/has been + V-ing; result-vs-process pair; Russian «уже» mapping; state-verb exception |
+| EN-23 `verbs` card + `relatives` dialog | who/which/that by noun type; whose/where; object-that omission; antecedent agreement |
+| EN-24 `verbs` card + `imperative` dialog | base form without subject; please + base (no to); Don't + V1; Let's / Let's not; Could-you politeness cross-ref |
+| EN-25 `order` card + `contrast-linkers` dialog | while (time AND contrast), whereas, on the other hand register pair (EN-G12) |
+| EN-26 `nouns` card + `numbers-dates` dialog | ordinals with spelling traps (fifth/twelfth/ninth), on 5 May / on the 5th of May, years and decades (ordinal registered in `grammar_terms_common`) |
+| `sw.js` | CACHE_VERSION v26 → v27 |
+
+Unit-quality self-review (author level; the formal Accuracy gate stays NOT
+RUN, D-01): forms checked against contemporary standard usage —
+warten auf + Akk, freuen auf (future) vs über (past/present), seit zwei
+Jahren (Dativ plural -n, DE-15 cross-ref), PPC state-verb exclusion, that-
+omission only before a subject, Let's not. Cross-references verified real:
+DE-15 (Dativ plural), DE-25 (dieser sibling), EN-06 (PP duration), EN-18
+(linking), EN-20 (meanwhile/past continuous), EN-12 (time preps), modals
+(could-you). No unmapped content added.
+
+Verified: JSON valid ×3; `--check` ×2 and `--check-shell` exit 0; runtime
+smoke — DE search warten/известный/с тех пор and EN search никогда/свежий/
+который/повелительное/тогда как/порядковые surface the new cards; verb-preps
+/seit-vor/negation/pp-continuous dialogs open with expected content; anchors
+preps-verb-praep and preps-seit-vor present; no console errors.
+
+Gate impact: **no Open scope rows remain** (DE-G01–G13 and EN-G01–G12 all
+decided; reported speech recorded as Deferred with a reconsideration
+trigger). Baseline FAIL narrows to the unsourced-level-placement conjunct
+(C-03/D-02 reference comparison) — topic inventory, exclusions and decisions
+are complete. Coverage PASS maintained: DE 28/28, EN 26/26. Accuracy and
+Teaching NOT RUN (D-01).
 
 ## Next full review record
 

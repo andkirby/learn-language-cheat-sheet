@@ -69,10 +69,10 @@ footer-linked practice view:
 
 | View | Stable anchor | Required topics |
 | --- | --- | --- |
-| Артикли и слова | `#articles` | EN-01–02, EN-13–15 (`#pronouns`, `#nouns`) |
-| Времена | `#tenses` | EN-05–07, EN-20 |
-| Порядок | `#order` | EN-03–04, EN-17–19 |
-| Глаголы | `#verbs` | EN-08–10, EN-16 (`#conditionals`) |
+| Артикли и слова | `#articles` | EN-01–02, EN-13–15, EN-26 (`#pronouns`, `#nouns`) |
+| Времена | `#tenses` | EN-05–07, EN-20, EN-22 |
+| Порядок | `#order` | EN-03–04, EN-17–19, EN-25 |
+| Глаголы | `#verbs` | EN-08–10, EN-16 (`#conditionals`), EN-21, EN-23–24 |
 | Предлоги | `#preps` | EN-11–12 |
 | Повтор | `#practice` | Practice contract below; footer link only |
 
@@ -143,6 +143,12 @@ evidence in the content audit.
 | EN-18 | Which connector links the sentences? but/however, so/therefore, meanwhile, nevertheless, although/despite | `#order` | Core connectors with Russian equivalents; *despite* + noun vs *although* + clause rule; after a negation *not X, but Y* = «не X, а Y» and *not only … but also* = «не только …, но и» in the linkers dialog (EN-G11); bounded set (EN-X02) |
 | EN-19 | there is or there are? | `#order` | is/are choice, negatives and questions without do (be, not do-support); There's vs It's; was/were |
 | EN-20 | Past Continuous — when? | `#tenses` | was/were + V-ing as background vs Past Simple event; parallel actions; Russian-aspect mapping |
+| EN-21 | How do I negate? | `#verbs` | don't/doesn't/didn't + base form; never without not (double-negative trap vs Russian «никогда не»); no + noun vs not any |
+| EN-22 | Present Perfect Continuous — when? | `#tenses` | Recognition: have/has been + V-ing = duration up to now or fresh evidence; vs Present Perfect result; state verbs without -ing |
+| EN-23 | Relative clauses: who / which / that? | `#verbs` | Choice by noun type; whose/where; object-that omission; verb agrees with the antecedent |
+| EN-24 | Imperative? | `#verbs` | Base form without a subject; please + base (no to); Don't + V1; Let's / Let's not |
+| EN-25 | while / whereas / on the other hand? | `#order` | Two-clause contrast: while (also time), whereas (formal), on the other hand (register pair); bounded set |
+| EN-26 | Numbers and dates? | `#nouns` | Ordinals (first/second/third; fifth/twelfth/ninth spelling), dates on 5 May / on the 5th of May, years and decades |
 
 ## Acceptance and maintenance
 

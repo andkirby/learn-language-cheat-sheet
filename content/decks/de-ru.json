@@ -174,6 +174,21 @@
                 ]},
                 {"chips": [{"label": "Склонение и welcher", "detail": "dieser"}]}
               ]
+            },
+            {
+              "id": "artikelwahl",
+              "level": "A1",
+              "kind": "употребление",
+              "search": "der ein kein выбор впервые известный профессия артикль",
+              "blocks": [
+                {"h": ["der, ein или kein?"]},
+                {"p": [{"t": "der", "b": true}, " — конкретный, известный · ", {"t": "ein", "b": true}, " — один из многих, впервые · ", {"t": "kein", "b": true}, " — отрицание."]},
+                {"example": [
+                  "Das ist ", {"t": "ein", "hit": true}, " Hund. ", {"t": "Der", "hit": true}, " Hund ist groß. · Das ist ", {"t": "kein", "hit": true}, " Hund."
+                ], "gloss": ["впервые → ein · та самая → der · отрицание → kein"]},
+                {"tiny": ["Профессия — без артикля, как в русском: Ich bin Lehrer. · Sie ist Ärztin."]},
+                {"chips": [{"label": "Второе упоминание", "detail": "article-choice"}]}
+              ]
             }
           ]
         },
@@ -314,6 +329,43 @@
             {"p": [{"t": "wegen, trotz, während, statt, innerhalb, außerhalb", "b": true}]},
             {"example": ["wegen ", {"t": "des Wetters", "b": true}]},
             {"tiny": ["В разговорной речи некоторые из них встречаются и с Dativ, но в норме учи Genitiv."]}
+          ]
+        },
+        {
+          "id": "verb-praep",
+          "level": "A2",
+          "kind": "триггер → падеж",
+          "search": "warten auf denken an freuen sich teilnehmen глагол предлог ждать думать участвовать",
+          "blocks": [
+            {"h": ["Глагол + предлог"]},
+            {"p": ["Русский предлог не совпадает: ", {"t": "ждать кого-то", "b": true}, " → warten ", {"t": "auf", "b": true}, ", ", {"t": "думать о чём-то", "b": true}, " → denken ", {"t": "an", "b": true}, "."]},
+            {"example": [
+              "Ich warte ", {"t": "auf", "hit": true}, " den Bus. · Er denkt ", {"t": "an", "hit": true}, " die Prüfung."
+            ], "gloss": ["падеж — от предлога: auf → Akkusativ (Wen? — den Bus)"]},
+            {"chips": [
+              {"label": ["warten ", {"t": "auf", "b": true}], "detail": "verb-preps", "neutral": true},
+              {"label": ["denken ", {"t": "an", "b": true}], "detail": "verb-preps", "neutral": true},
+              {"label": ["sich freuen ", {"t": "auf/über", "b": true}], "detail": "verb-preps", "neutral": true},
+              {"label": ["sich interessieren ", {"t": "für", "b": true}], "detail": "verb-preps", "neutral": true},
+              {"label": ["teilnehmen ", {"t": "an", "b": true}], "detail": "verb-preps", "neutral": true},
+              {"label": "Вопрос-подсказка и sich", "detail": "verb-preps"}
+            ]}
+          ]
+        },
+        {
+          "id": "seit-vor",
+          "level": "A2",
+          "kind": "употребление",
+          "search": "seit vor уже с тех пор назад два года живу",
+          "blocks": [
+            {"h": ["seit или vor?"]},
+            {"p": [{"t": "seit", "b": true}, " + Dativ — «уже, с тех пор» (до сих пор): ", {"t": "Ich wohne seit einem Jahr hier", "b": true}, "."]},
+            {"p": [{"t": "vor", "b": true}, " + Dativ — «тому назад» (точка в прошлом): ", {"t": "Ich kam vor einem Jahr", "b": true}, "."]},
+            {"example": [
+              "Ich wohne ", {"t": "seit", "hit": true}, " zwei Jahren hier. · Ich bin ", {"t": "vor", "hit": true}, " zwei Jahren umgezogen."
+            ], "gloss": ["seit = до сих пор + Präsens · vor = назад + прошедшее"]},
+            {"tiny": ["seit стоит с настоящим временем (Präsens), не с Perfekt."]},
+            {"chips": [{"label": "Почему не Perfekt?", "detail": "seit-vor"}]}
           ]
         }
       ]
@@ -840,6 +892,31 @@
         {"detail": {"label": "Умлаут", "runs": [{"t": "kurz → kürzer", "i": true}, " · ", {"t": "alt → älter", "i": true}, " · ", {"t": "groß → größer", "i": true}], "comment": ["обычно односложные."]}},
         {"detail": {"label": "than = als", "runs": ["größer ", {"t": "als", "i": true}, " ich. — «чем я». В сравнении — всегда als (равенство — so … wie)."]}},
         {"detail": {"label": "am -sten", "runs": ["Суперлатив-наречие: Er läuft ", {"t": "am schnellsten", "i": true}, ". С артиклем: der beste Film."]}}
+      ]
+    },
+    "article-choice": {
+      "title": "der vs ein: впервые или уже известно", "lead": "Первый раз — ein; дальше — der.",
+      "blocks": [
+        {"detail": {"label": "Пара", "runs": [{"t": "Ein Hund", "i": true}, " läuft durch den Park. ", {"t": "Der Hund", "i": true}, " trägt einen Ball. — «какая-то собака» → «та самая собака»."]}},
+        {"detail": {"label": "Профессия", "runs": [{"t": "Ich bin Lehrer", "i": true}, " · ", {"t": "Sie ist Ärztin", "i": true}, " — как в русском, без артикля."]}},
+        {"detail": {"label": "kein", "runs": [{"t": "Das ist kein Hund", "i": true}, ", ", {"t": "sondern ein Wolf", "i": true}, ". — отрицание того самого ein."]}}
+      ]
+    },
+    "verb-preps": {
+      "title": "Глагол + предлог: разбор", "lead": "Падеж — от предлога; вопрос помогает вспомнить пару.",
+      "blocks": [
+        {"detail": {"label": "Подсказка вопросом", "runs": ["Auf ", {"t": "wen", "i": true}, " wartest du? (Wen? = Akkusativ) — предлог auf требует Akk., поэтому ", {"t": "den Bus", "i": true}, "."]}},
+        {"detail": {"label": "Частые пары", "runs": ["warten ", {"t": "auf + Akk", "i": true}, " (ждать) · denken ", {"t": "an + Akk", "i": true}, " (думать о) · sich erinnern ", {"t": "an + Akk", "i": true}, " (помнить о) · teilnehmen ", {"t": "an + Dat", "i": true}, " (участвовать в) · sich interessieren ", {"t": "für + Akk", "i": true}, " (интересоваться)."]}},
+        {"detail": {"label": "sich freuen", "runs": [{"t": "Ich freue mich auf die Reise", "i": true}, " — предвкушаю (будущее) · ", {"t": "Ich freue mich über das Geschenk", "i": true}, " — радуюсь уже случившемуся."]}},
+        {"detail": {"label": "sich", "runs": ["Возвратное местоимение: ", {"t": "Ich freue mich", "i": true}, ", ", {"t": "du freust dich", "i": true}, " — глагол «отражается» в местоимении. Пока достаточно узнавать."]}}
+      ]
+    },
+    "seit-vor": {
+      "title": "seit: почему настоящее?", "lead": "«Живу здесь два года» — по-немецки в настоящем времени.",
+      "blocks": [
+        {"detail": {"label": "seit = до сих пор", "runs": [{"t": "Ich wohne seit zwei Jahren hier", "i": true}, ". — Präsens + Dativ (zwei Jahr", {"t": "en", "i": true}, "! — см. Dativ Plural). Русское «живу» тоже настоящее."]}},
+        {"detail": {"label": "vor = назад", "runs": [{"t": "Ich bin vor zwei Jahren umgezogen", "i": true}, ". — «переехал два года назад»: точка в прошлом + прошедшее время."]}},
+        {"detail": {"label": "Не как в английском", "runs": ["English: I have lived here for two years (Perfect). Немецкий — ", {"t": "Präsens", "i": true}, ": ", {"t": "Ich wohne hier seit zwei Jahren", "i": true}, "."]}}
       ]
     },
     "nominativ": {
