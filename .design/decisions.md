@@ -442,3 +442,30 @@ Decisions:
 Rollout: both decks + both pages in one commit; sw v21; style-guide specimens,
 block-registry table and class-roles table updated; `content/decks/schema.json`
 is the editor contract.
+
+## 2026-09-24 — Dialog blocks: the label is the only block-level child
+
+User-reported rendering defect (2026-09-24, weil/denn + sondern dialogs):
+`.detail-block b { display: block }` was meant to stack the Russian label
+above the text, but it hit **every** `<b>` — bold runs mid-sentence
+(*…, denn ich **bin** müde.*) each broke onto their own line, and the new
+sondern/not-but content is full of bold target-language runs. The old
+contract assumed detail blocks carry emphasis only as *italics*, which no
+longer holds.
+
+1. **Markup:** the generator (`tools/deck_blocks.py`) now emits the label as
+   `<b class="detail-label">…</b>`; content runs are unchanged.
+2. **CSS:** the rule narrows to `.detail-block .detail-label` — the label
+   keeps its block + margin; bold/strike/italic runs flow inline. Visual
+   output for label-only blocks is byte-identical in layout.
+3. **`markTargetLang` covers the runs it was missing:** fragments in detail
+   blocks are now `.detail-block b:not(.detail-label), .detail-block i,
+   .detail-block s` (Cyrillic-free guard unchanged) — German/English bold and
+   strike runs get the study voice + pronunciation; the label never does, even
+   when it is a bare Latin term (weil, denn, meanwhile).
+4. **Style guide** updated: specimens carry the class, the class-roles row and
+   the marking-rules text name `.detail-label`; the DETAILS description states
+   "only the label is block-level".
+
+Rollout: generator + base.css + both regenerated pages + style-guide in one
+commit; sw v24 → v25.

@@ -181,7 +181,7 @@ def _detail_text(block):
 
 def _detail_html(block):
     d = block["detail"]
-    return f"<div class=\"detail-block\"><b>{esc(d['label'])}</b>{runs_html(d['runs'])}</div>"
+    return f"<div class=\"detail-block\"><b class=\"detail-label\">{esc(d['label'])}</b>{runs_html(d['runs'])}</div>"
 
 
 BLOCKS = {

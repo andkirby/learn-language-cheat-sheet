@@ -32,6 +32,7 @@ scheduled implementation.
 | 13 | P3 | No Open Graph/Twitter meta — blank messenger/Telegram previews. | og/twitter tags added; `og:image` needs an absolute URL after deploy (README). |
 | 14 | P3 | No print stylesheet; `.ios-tip` dead CSS. | Print styles added; dead rule removed. |
 | 15 | P3 | Install button did not react to `appinstalled` (stayed after install). | Handler hides the button. |
+| 16 | P2 | User-reported 2026-09-24 (weil/denn + sondern dialogs): `.detail-block b { display: block }` — written for the Russian label — hit **every** `<b>` in a dialog block, so bold runs mid-sentence (*…, denn ich **bin** müde.*) each broke onto their own line and the period wrapped alone. Latent since the first dialogs (they only used italics inline); became prominent once the sondern/not-but content shipped bold target-language runs. | Label is now the only block-level child: generator emits `<b class="detail-label">`, CSS narrowed to `.detail-block .detail-label`; `markTargetLang` additionally covers bold/strike runs (not the label). Details in `.design/decisions.md` 2026-09-24. |
 
 ## Working correctly (verified, no change needed)
 

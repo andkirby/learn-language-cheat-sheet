@@ -333,7 +333,7 @@ dialog::backdrop { background: var(--backdrop); }
 .sheet .lead { color: var(--muted); margin: 5px 0 12px; }
 .close-sheet { width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface); cursor: pointer; font-size: 1.2rem; }
 .detail-block { margin-top: 11px; padding: 11px; background: var(--surface-2); border-radius: 12px; }
-.detail-block b { display: block; margin-bottom: 4px; }
+.detail-block .detail-label { display: block; margin-bottom: 4px; }
 
 .footer { color: var(--muted); font-size: .78rem; text-align: center; padding: 28px 0 10px; }
 

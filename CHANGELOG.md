@@ -4,6 +4,15 @@ One entry per user-visible change, newest first. UI rationale lives in
 `.design/decisions.md`, content review evidence in `CONTENT_AUDIT.md`.
 Append the entry in the same commit that ships the change.
 
+## 2026-09-24 (fix)
+
+- **Fixed**: в диалогах жирные слова посреди предложения (например *bin* в
+  «Ich bleibe, denn ich **bin** müde.») уезжали на отдельную строку — блочным
+  делался каждый `<b>` блока, а не только его подзаголовок. Теперь метка
+  блока — единственный блочный элемент (`.detail-label`), весь текст течёт
+  одной строкой, а немецкие/английские жирные и зачёркнутые фрагменты
+  в диалогах получили произношение и шрифт учебного голоса.
+
 ## 2026-09-24
 
 - **New (German)**: карточка «Не отправляют глагол в конец» получила пару
