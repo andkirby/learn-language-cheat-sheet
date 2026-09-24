@@ -1,40 +1,43 @@
 # Changelog
 
-One entry per user-visible change, newest first. UI rationale lives in
+One entry per user-visible change, newest first. Entries are written in
+English; target-language examples and Russian glosses stay as authored.
+UI rationale lives in
 `.design/decisions.md`, content review evidence in `CONTENT_AUDIT.md`.
 Append the entry in the same commit that ships the change.
 
 ## 2026-09-24 (style)
 
-- **Changed**: в диалогах комментарий к примеру больше не сливается с
-  предложением в одну строку — отделимые пояснения («После denn остаётся
-  обычный V2.», переводы, разборы ошибок) переехали в отдельную приглушённую
-  строку под текстом, как подсказки у примеров на карточках. Затронуто
-  30 немецких и 11 английских блоков; там, где пояснение вплетено в текст
-  парадигмы, оно намеренно осталось на месте.
+- **Changed**: dialog commentary no longer runs into the sentence as one
+  undifferentiated line — separable explanations («После denn остаётся
+  обычный V2.», translations, error breakdowns) moved to their own muted
+  line under the text, like the example glosses on cards. 30 German and
+  11 English blocks affected; commentary woven into paradigm lines stays
+  inline by design.
 
 ## 2026-09-24 (fix)
 
-- **Fixed**: в диалогах жирные слова посреди предложения (например *bin* в
-  «Ich bleibe, denn ich **bin** müde.») уезжали на отдельную строку — блочным
-  делался каждый `<b>` блока, а не только его подзаголовок. Теперь метка
-  блока — единственный блочный элемент (`.detail-label`), весь текст течёт
-  одной строкой, а немецкие/английские жирные и зачёркнутые фрагменты
-  в диалогах получили произношение и шрифт учебного голоса.
+- **Fixed**: bold words mid-sentence in dialogs (e.g. *bin* in
+  «Ich bleibe, denn ich **bin** müde.») each broke onto their own line —
+  every `<b>` inside a detail block was made block-level, not just its
+  label. The label is now the only block-level child (`.detail-label`),
+  text flows as one line, and bold/strike target-language fragments in
+  dialogs gained the study voice and screen-reader pronunciation.
 
 ## 2026-09-24
 
-- **New (German)**: карточка «Не отправляют глагол в конец» получила пару
-  **nicht/kein …, sondern …** = «не A, а B» (*Sie kommt nicht aus
-  Bukarest, sondern aus Deva.*) и диалог «sondern vs aber»: после
-  отрицания — sondern (исправление), простой контраст — aber (с
-  разбором ошибки *Er mag keinen Fisch, aber Fleisch*), паттерн
-  *nicht nur …, sondern auch* и заметка про порядок слов. Диалог
-  отрицания теперь называет это «а» = sondern.
-- **New (English)**: карточка связок получила шаблоны **not X, but Y** =
-  «не X, а Y» и **not only … but also** = «не только …, но и» с диалогом
-  «not …, but»: оба шаблона, граница с обычным but и заметка, что это
-  конструкции внутри предложения, а не связки вроде however.
+- **New (German)**: the «Не отправляют глагол в конец» card gained the
+  **nicht/kein …, sondern …** = «не A, а B» pair (*Sie kommt nicht aus
+  Bukarest, sondern aus Deva.*) and a «sondern vs aber» dialog: after a
+  negation — sondern (correction), plain contrast — aber (with the
+  *Er mag keinen Fisch, aber Fleisch* error breakdown), the
+  *nicht nur …, sondern auch* pattern, and a word-order note. The negation
+  dialog now names that «а» = sondern.
+- **New (English)**: the linkers card gained the **not X, but Y** =
+  «не X, а Y» and **not only … but also** = «не только …, но и» patterns
+  with a «not …, but» dialog: both patterns, the plain-but boundary, and
+  a note that these constructions live inside the sentence, unlike
+  however-style linkers.
 
 ## 2026-09-23
 
