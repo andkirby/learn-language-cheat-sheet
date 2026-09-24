@@ -678,25 +678,25 @@
         {"detail": {"label": "just", "runs": ["I've ", {"t": "just", "i": true}, " eaten. — «только что» (см. Present Perfect) · Just kidding! — «просто шучу»."]}},
         {"detail": {"label": "actually", "runs": [{"t": "Actually", "i": true}, ", I don't know. — «вообще-то / на самом деле». Не «актуально»! Актуальный = relevant."]}},
         {"detail": {"label": "still", "runs": ["I ", {"t": "still", "i": true}, " live here. — «всё ещё»: продолжается до сих пор. В вопросах/отрицаниях часто yet (см. Perfect)."]}},
-        {"detail": {"label": "even", "runs": [{"t": "Even", "i": true}, " a child can do it. — «даже»: усиление перед тем словом, которое удивляет."]}},
+        {"detail": {"label": "even", "runs": [{"t": "Even", "i": true}, " a child can do it."], "comment": ["«даже»: усиление перед тем словом, которое удивляет."]}},
         {"detail": {"label": "though", "runs": ["It's expensive. I like it, ", {"t": "though", "i": true}, ". — «впрочем/правда» в конце фразы. В начале — союз: Though it's expensive… (= хотя)."]}}
       ]
     },
     "linking-words": {
       "title": "Связки: разбор", "lead": "however, therefore, meanwhile начинают новое предложение — после них запятая.",
       "blocks": [
-        {"detail": {"label": "but / however", "runs": ["It was raining. ", {"t": "However", "i": true}, ", we went out. — то же «но», только формальнее и отдельным предложением."]}},
+        {"detail": {"label": "but / however", "runs": ["It was raining. ", {"t": "However", "i": true}, ", we went out."], "comment": ["то же «но», только формальнее и отдельным предложением."]}},
         {"detail": {"label": "so / therefore", "runs": ["I was tired, ", {"t": "so", "i": true}, " I slept. — «поэтому». ", {"t": "Therefore", "i": true}, " — то же, формальнее."]}},
-        {"detail": {"label": "meanwhile", "runs": ["I cooked. ", {"t": "Meanwhile", "i": true}, ", he watched TV. — «тем временем»: два события одновременно."]}},
-        {"detail": {"label": "nevertheless", "runs": ["The task was hard. ", {"t": "Nevertheless", "i": true}, ", she finished it. — «тем не менее»: уступка."]}},
+        {"detail": {"label": "meanwhile", "runs": ["I cooked. ", {"t": "Meanwhile", "i": true}, ", he watched TV."], "comment": ["«тем временем»: два события одновременно."]}},
+        {"detail": {"label": "nevertheless", "runs": ["The task was hard. ", {"t": "Nevertheless", "i": true}, ", she finished it."], "comment": ["«тем не менее»: уступка."]}},
         {"detail": {"label": "despite vs although", "runs": [{"t": "Despite", "i": true}, " the rain ✓ · ", {"t": "Despite it was raining", "s": true}, " ✗ → ", {"t": "Although it was raining", "i": true}, " ✓. Despite + существительное/-ing; although + подлежащее и глагол."]}}
       ]
     },
     "not-but": {
       "title": "not …, but / not only … but also", "lead": "После отрицания: «не X, а Y» — not X, but Y; «не только…, но и» — not only … but also.",
       "blocks": [
-        {"detail": {"label": "not …, but", "runs": ["The meeting is ", {"t": "not on Monday, but on Tuesday", "i": true}, ". — «не в понедельник, а во вторник»: отрицаем один вариант и исправляем на другой."]}},
-        {"detail": {"label": "not only … but also", "runs": ["She is ", {"t": "not only smart but also kind", "i": true}, ". — «не только умная, но и добрая»."]}},
+        {"detail": {"label": "not …, but", "runs": ["The meeting is ", {"t": "not on Monday, but on Tuesday", "i": true}, "."], "comment": ["«не в понедельник, а во вторник»: отрицаем один вариант и исправляем на другой."]}},
+        {"detail": {"label": "not only … but also", "runs": ["She is ", {"t": "not only smart but also kind", "i": true}, "."], "comment": ["«не только умная, но и добрая»."]}},
         {"detail": {"label": "просто but", "runs": ["Ничего не исправляется, а просто противопоставляется — обычный ", {"t": "but", "i": true}, ": It was raining, ", {"t": "but", "i": true}, " we went out. — «но»."]}},
         {"detail": {"label": "Позиция", "runs": ["Обе конструкции стоят внутри предложения — это не связки вроде however, которые начинают новое предложение."]}}
       ]
@@ -712,7 +712,7 @@
     "past-continuous": {
       "title": "Past Continuous vs Past Simple", "lead": "Длинный процесс — was/were + -ing; событие — Past Simple.",
       "blocks": [
-        {"detail": {"label": "Фон + событие", "runs": ["I ", {"t": "was cooking", "i": true}, " when he ", {"t": "called", "i": true}, ". — «готовил (в процессе), когда он позвонил»."]}},
+        {"detail": {"label": "Фон + событие", "runs": ["I ", {"t": "was cooking", "i": true}, " when he ", {"t": "called", "i": true}, "."], "comment": ["«готовил (в процессе), когда он позвонил»."]}},
         {"detail": {"label": "Два параллельных", "runs": ["I ", {"t": "was reading", "i": true}, " while she ", {"t": "was sleeping", "i": true}, ". — оба процесса (см. meanwhile)."]}},
         {"detail": {"label": "Русский аспект", "runs": ["«готовил» (процесс) → was cooking · «приготовил» (результат) → cooked. Выбор — как вид глагола."]}},
         {"detail": {"label": "Не для фактов", "runs": ["Последовательность событий — Past Simple: I came home, saw the letter and read it."]}}
@@ -751,7 +751,7 @@
       "title": "my или mine", "lead": "my + существительное, mine — само по себе.",
       "blocks": [
         {"detail": {"label": "Сравни", "runs": [{"t": "my", "i": true}, " book = the book is ", {"t": "mine", "i": true}, "."]}},
-        {"detail": {"label": "Ещё", "runs": ["a friend of mine — «один из моих друзей»."]}}
+        {"detail": {"label": "Ещё", "runs": ["a friend of mine"], "comment": ["«один из моих друзей»."]}}
       ]
     },
     "reflexive": {
@@ -765,7 +765,7 @@
       "title": "Чем отличается от русского", "lead": "В русском роли задают окончания, в английском — позиция.",
       "blocks": [
         {"detail": {"label": "Русский", "runs": ["«Машу любит Ваня» — падежи спасают порядок."]}},
-        {"detail": {"label": "Английский", "runs": ["«Masha loves Vanya» — кто первый, тот и субъект. Переставил — поменял смысл."]}}
+        {"detail": {"label": "Английский", "runs": ["«Masha loves Vanya»"], "comment": ["кто первый, тот и субъект. Переставил — поменял смысл."]}}
       ]
     },
     "do-questions": {
@@ -796,7 +796,7 @@
     "present-continuous": {
       "title": "Simple vs Continuous", "lead": "Факт/привычка против процесса сейчас.",
       "blocks": [
-        {"detail": {"label": "Simple", "runs": ["I work at Google (работаю вообще)."]}},
+        {"detail": {"label": "Simple", "runs": ["I work at Google"], "comment": ["(работаю вообще)."]}},
         {"detail": {"label": "Continuous", "runs": ["I'm working now (в процессе). am/is/are + V-ing."]}},
         {"detail": {"label": "Не с continuous", "runs": ["know, like, want, need — состояния, обычно Simple."]}},
         {"detail": {"label": "always = раздражение", "runs": [{"t": "He's always losing his keys", "i": true}, ". — не «прямо сейчас»: привычка, которая бесит (маркеры now/Look! не нужны)."]}}
@@ -856,7 +856,7 @@
       "title": "Пассив", "lead": "be (в нужном времени) + V3.",
       "blocks": [
         {"detail": {"label": "Времена", "runs": ["is built (сейчас) · was built (прошлое) · will be built (будущее) · has been built (perfect)."]}},
-        {"detail": {"label": "Кем/чем", "runs": ["The house was built ", {"t": "by the workers", "b": true}, ". — рабочими (кем построили)."]}}
+        {"detail": {"label": "Кем/чем", "runs": ["The house was built ", {"t": "by the workers", "b": true}, "."], "comment": ["рабочими (кем построили)."]}}
       ]
     },
     "gerund-infinitive": {

@@ -136,7 +136,8 @@
             whole <code>.example</code> / <code>.answer</code> / <code>.table-scroll</code> containers are marked when they
             contain no Cyrillic; otherwise the fragments are marked — bold in <code>.example</code>/<code>.answer</code>,
             bold/strike/italic runs in <code>.detail-block</code> (the Cyrillic-bearing <code>.detail-label</code> excluded),
-            and formula slots without Cyrillic individually.</p>
+            and formula slots without Cyrillic individually. Pair glosses and <code>.detail-comment</code> lines always
+            stay in the UI voice.</p>
           <p><code>lang</code> does two jobs: the serif study voice (<code>[lang]</code> selector in base.css) and screen-reader
             pronunciation. Never apply it to Russian text — that would flip the explanation into the study voice and mispronounce it.</p>
           <p>Stacks (no external fonts): <code>--font-ui</code> = system sans;
@@ -477,7 +478,9 @@
           <p><code>DETAILS[key] = {title, lead, body}</code>; body is pre-rendered from the deck's
             <code>details[key].blocks</code> as a run of <code>.detail-block</code> divs
             (<code>&lt;b class="detail-label"&gt;</code>label<code>&lt;/b&gt;</code> + runs; only the label is block-level,
-            runs flow inline and take <code>lang</code>). Backdrop close relies on
+            runs flow inline and take <code>lang</code>; a trailing audience-language commentary sits in the optional
+            <code>comment</code> runs field and renders as its own muted <code>.detail-comment</code> line).
+            Backdrop close relies on
             <code>event.target === dialog</code>. The install button reuses this dialog for its iOS/generic how-to
             (<code>INSTALL</code> object).</p>
         </div>
@@ -575,7 +578,7 @@
             <tr><td><code>.case-grid</code>, <code>.case-box</code>, <code>.case-q</code>, <code>.case-hint</code></td><td>Case tiles (DE page only); question word + Russian hint</td></tr>
             <tr><td><code>.notice</code> / <code>.warning</code></td><td>Info callout / caveat callout</td></tr>
             <tr><td><code>.practice-q</code>, <code>.answer</code>, <code>.reveal</code></td><td>Self-check block; hidden answer; toggle control</td></tr>
-            <tr><td><code>dialog</code>, <code>.sheet</code>, <code>.grab</code>, <code>.sheet-head</code>, <code>.close-sheet</code>, <code>.detail-block</code>, <code>.detail-label</code>, <code>.lead</code></td><td>Bottom sheet and its parts (label = the only block-level child); body blocks from <code>DETAILS</code></td></tr>
+            <tr><td><code>dialog</code>, <code>.sheet</code>, <code>.grab</code>, <code>.sheet-head</code>, <code>.close-sheet</code>, <code>.detail-block</code>, <code>.detail-label</code>, <code>.detail-comment</code>, <code>.lead</code></td><td>Bottom sheet and its parts (label = the only block-level child; comment = muted trailing line); body blocks from <code>DETAILS</code></td></tr>
             <tr><td><code>.bottom-nav</code>, <code>.nav-item</code>, <code>data-view</code></td><td>View switcher; active destination; section→view membership</td></tr>
             <tr><td><code>.section-head</code>, <code>.section-badge</code>, <code>.intro</code></td><td>Section header (inner <code>&lt;div&gt;</code> + optional badge), the noscript/plain intro line</td></tr>
             <tr><td><code>.no-results</code></td><td>Zero-match panel during search</td></tr>
@@ -673,7 +676,7 @@
     // Specimen dialogs + the reveal toggle, mirroring the pages. Entries are
     // the real de-ru deck details.
     const DETAILS = {
-      'v2-demo': {title:'Что такое V2', lead:'Глагол стоит во второй синтаксической позиции, не обязательно вторым словом.', body:`<div class="detail-block"><b class="detail-label">1 позиция может быть длинной</b><i lang="de">Heute Morgen um acht</i> gehe ich zur Arbeit. Вся группа “Heute Morgen um acht” занимает позицию 1.</div><div class="detail-block"><b class="detail-label">Потом</b>сразу идёт спрягаемый глагол.</div>`},
+      'v2-demo': {title:'Что такое V2', lead:'Глагол стоит во второй синтаксической позиции, не обязательно вторым словом.', body:`<div class="detail-block"><b class="detail-label">1 позиция может быть длинной</b><i lang="de">Heute Morgen um acht</i> gehe ich zur Arbeit.<p class="detail-comment">Вся группа “Heute Morgen um acht” занимает позицию 1.</p></div><div class="detail-block"><b class="detail-label">Потом</b>сразу идёт спрягаемый глагол.</div>`},
       'lookup-help': {title:'Как пользоваться', lead:'Триггер → форма → позиция.', body:`<div class="detail-block"><b class="detail-label">Схема</b>Найди триггер — падежный вопрос, предлог, союз или глагольную конструкцию, — потом смотри нужную форму и позицию глагола.</div><div class="detail-block"><b class="detail-label">Поиск</b>Ищи сразу: <i lang="de">wem</i>, <i lang="de">weil</i>, <i lang="de">Perfekt</i> — или по-русски. Поиск проверяет все разделы сразу.</div>`}
     };
     const dialog = document.getElementById('detailDialog');

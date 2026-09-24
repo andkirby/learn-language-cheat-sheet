@@ -157,7 +157,7 @@
             "detail": {
               "type": "object", "required": ["label", "runs"],
               "additionalProperties": false,
-              "properties": {"label": {"type": "string"}, "runs": {"$ref": "#/definitions/runs"}}
+              "properties": {"label": {"type": "string"}, "runs": {"$ref": "#/definitions/runs"}, "comment": {"$ref": "#/definitions/runs"}}
             }
           }
         }
@@ -311,7 +311,7 @@
           "items": {
             "type": "object", "required": ["label", "runs"],
             "additionalProperties": false,
-            "properties": {"label": {"type": "string"}, "runs": {"$ref": "#/definitions/runs"}}
+            "properties": {"label": {"type": "string"}, "runs": {"$ref": "#/definitions/runs"}, "comment": {"$ref": "#/definitions/runs"}}
           }
         }
       }

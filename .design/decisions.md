@@ -469,3 +469,27 @@ longer holds.
 
 Rollout: generator + base.css + both regenerated pages + style-guide in one
 commit; sw v24 → v25.
+
+## 2026-09-24 — Dialog commentary gets its own muted line (`.detail-comment`)
+
+User follow-up to the label fix, same day: inside a detail block the German
+sentence and the Russian commentary rendered as one undifferentiated line
+(*Ich bleibe, denn ich **bin** müde. После denn остаётся обычный V2.*).
+Comments needed a distinct style.
+
+1. **Data model:** the `detail` block gains an optional `comment` runs field
+   (schema: both definitions; validator checks it like `runs`, search-index
+   text includes it). Same pattern as the cards' `example`/`gloss` pairing.
+2. **Markup/CSS:** the generator renders it as `<p class="detail-comment">`
+   under the runs — `.78rem`, `--muted`, no hairline (blocks are compact).
+   UI voice, never `lang`-marked.
+3. **Content sweep, not a style stub:** 30 DE + 11 EN blocks with a
+   separable trailing commentary (mostly the « — » tails) moved their tail
+   into `comment` — including the translation glosses of the recognition-level
+   Passiv/double-infinitive units, which strengthens the §6 gloss policy.
+   Blocks where Russian is interleaved mid-text (paradigm lines like
+   «Как ein: kein Auto · …») deliberately keep it inline — there the
+   commentary IS the body text; splitting would butcher the paradigms.
+
+Rollout: both decks + schema + generator + base.css + both pages +
+style-guide in one commit; sw v25 → v26.

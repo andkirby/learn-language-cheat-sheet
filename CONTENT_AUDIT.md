@@ -695,6 +695,16 @@ this deepens accepted topics. Coverage stays **PASS** (DE 25/EN 20
 topics). Baseline still **FAIL** (open: DE-G06, DE-G07, DE-G08, EN-G02,
 EN-G04, EN-G05, EN-G06 remainder, EN-G07). Accuracy/Teaching NOT RUN.
 
+Presentation follow-up, same day (user-reported, two rendering records in
+`UI_AUDIT.md` #16 + `.design/decisions.md` 2026-09-24 entries — not a
+content-semantics change): dialog commentary moved into a separate
+`comment` field rendered as a muted line. 30 DE + 11 EN blocks with a
+separable « — »-tail were restructured verbatim (no wording changes);
+interleaved paradigm commentary stays inline by design. Recognition-level
+translation glosses (Passiv, double infinitive) now sit in the comment
+line — same gloss text, better decodability. `--check` gates green after
+the sweep; all other gates NOT RUN (presentation-only).
+
 ## Next full review record
 
 Append a dated record; preserve previous evidence. Include:

@@ -172,16 +172,23 @@ def _chips_html(block):
 
 def _detail_check(block, where, chk):
     chk.check_runs(block["detail"].get("runs", []), f"{where}.detail.runs")
+    chk.check_runs(block["detail"].get("comment", []), f"{where}.detail.comment")
 
 
 def _detail_text(block):
     d = block["detail"]
-    return [d["label"], runs_text(d["runs"])]
+    text = [d["label"], runs_text(d["runs"])]
+    if "comment" in d:
+        text.append(runs_text(d["comment"]))
+    return text
 
 
 def _detail_html(block):
     d = block["detail"]
-    return f"<div class=\"detail-block\"><b class=\"detail-label\">{esc(d['label'])}</b>{runs_html(d['runs'])}</div>"
+    html = f"<div class=\"detail-block\"><b class=\"detail-label\">{esc(d['label'])}</b>{runs_html(d['runs'])}"
+    if "comment" in d:
+        html += f"<p class=\"detail-comment\">{runs_html(d['comment'])}</p>"
+    return html + "</div>"
 
 
 BLOCKS = {
