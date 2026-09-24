@@ -140,7 +140,7 @@ evidence in the content audit.
 | EN-15 | How are comparative and superlative forms built? | `#nouns` | Core patterns, spelling limits and high-frequency irregulars |
 | EN-16 | Which conditional expresses a fact, real future, unreal present or unreal past? | `#conditionals` | Types 0–2 core; Type 3 recognition; meaning and form for every shown type |
 | EN-17 | Which flavour word carries the tone? just, actually, still, even, though | `#order` | High-frequency set with Russian decision-equivalents; the *actually* ≠ «актуально» false friend named; bounded set (EN-X02) |
-| EN-18 | Which connector links the sentences? but/however, so/therefore, meanwhile, nevertheless, although/despite | `#order` | Core connectors with Russian equivalents; *despite* + noun vs *although* + clause rule; bounded set (EN-X02) |
+| EN-18 | Which connector links the sentences? but/however, so/therefore, meanwhile, nevertheless, although/despite | `#order` | Core connectors with Russian equivalents; *despite* + noun vs *although* + clause rule; after a negation *not X, but Y* = «не X, а Y» and *not only … but also* = «не только …, но и» in the linkers dialog (EN-G11); bounded set (EN-X02) |
 | EN-19 | there is or there are? | `#order` | is/are choice, negatives and questions without do (be, not do-support); There's vs It's; was/were |
 | EN-20 | Past Continuous — when? | `#tenses` | was/were + V-ing as background vs Past Simple event; parallel actions; Russian-aspect mapping |
 

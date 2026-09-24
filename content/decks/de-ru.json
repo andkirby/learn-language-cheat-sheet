@@ -577,14 +577,20 @@
               "id": "konnektoren",
               "level": "A1",
               "kind": "связь",
-              "search": "und aber denn oder sondern coordinating conjunctions coordinators verb second не отправляют глагол в конец",
+              "search": "und aber denn oder sondern coordinating conjunctions coordinators verb second не отправляют глагол в конец sondern vs aber nicht sondern не а исправление не только но и",
               "blocks": [
                 {"h": ["Не отправляют глагол в конец"]},
                 {"p": [{"t": "und, aber, denn, oder, sondern", "b": true}]},
                 {"example": [
                   "Ich bleibe zu Hause, ", {"t": "denn", "hit": true}, " ich bin müde."
                 ], "gloss": ["denn ≈ потому что, но порядок — как после und"]},
-                {"chips": [{"label": "weil vs denn", "detail": "coordinators"}]}
+                {"example": [
+                  "Sie kommt ", {"t": "nicht", "b": true}, " aus Bukarest, ", {"t": "sondern", "hit": true}, " aus Deva."
+                ], "gloss": ["«не из Бухареста, а из Девы»: после nicht/kein второй вариант вводит sondern"]},
+                {"chips": [
+                  {"label": "weil vs denn", "detail": "coordinators"},
+                  {"label": "sondern vs aber", "detail": "sondern"}
+                ]}
               ]
             }
           ]
@@ -805,7 +811,7 @@
       "title": "nicht: позиция", "lead": "Обычно перед тем, что остаётся; перед словом — когда отрицаешь именно его.",
       "blocks": [
         {"detail": {"label": "Перед остатком", "runs": ["Ich komme ", {"t": "nicht", "b": true}, ". · Ich gehe heute ", {"t": "nicht", "b": true}, " ins Kino. — не в самом конце, а перед тем, что осталось в предложении."]}},
-        {"detail": {"label": "Перед словом", "runs": ["Ich komme ", {"t": "nicht", "b": true}, " heute, sondern morgen. — «не сегодня»: отрицаешь обстоятельство, а не приход."]}},
+        {"detail": {"label": "Перед словом", "runs": ["Ich komme ", {"t": "nicht", "b": true}, " heute, sondern morgen. — «не сегодня»: отрицаешь обстоятельство, а не приход. Этот «а» — sondern: он стоит только после отрицания."]}},
         {"detail": {"label": "kein склоняется", "runs": ["Как ein: kein Auto · keine Zeit · ", {"t": "keinen", "i": true}, " Mann (Akk.) · keinem Kind (Dat.)."]}},
         {"detail": {"label": "Разница", "runs": [{"t": "kein", "i": true}, " Auto = вообще нет машины · ", {"t": "nicht", "i": true}, " mein Auto = машина есть, но не моя."]}}
       ]
@@ -1029,6 +1035,16 @@
       "blocks": [
         {"detail": {"label": "weil", "runs": ["Ich bleibe, weil ich müde ", {"t": "bin", "b": true}, "."]}},
         {"detail": {"label": "denn", "runs": ["Ich bleibe, denn ich ", {"t": "bin", "b": true}, " müde. После denn остаётся обычный V2."]}}
+      ]
+    },
+    "sondern": {
+      "title": "sondern vs aber", "lead": "После отрицания (nicht, kein) второй вариант вводит sondern — «не A, а B». Простой контраст без исправления — aber.",
+      "blocks": [
+        {"detail": {"label": "sondern — исправление", "runs": ["Sie kommt ", {"t": "nicht", "b": true}, " aus Bukarest, ", {"t": "sondern", "i": true}, " aus Deva. — «не из Бухареста, а из Девы»: сначала отрицаем, потом исправляем на другой вариант."]}},
+        {"detail": {"label": "aber — просто «но»", "runs": ["Sie kommt aus Bukarest, ", {"t": "aber", "i": true}, " sie lebt in Deva. — оба факта верны, ничего не исправляется. Ошибка: ", {"t": "Er mag keinen Fisch, aber Fleisch", "s": true}, " → ", {"t": "…, sondern Fleisch", "i": true}, " («не рыбу, а мясо»)."]}},
+        {"detail": {"label": "nicht nur …, sondern auch", "runs": ["Er spricht ", {"t": "nicht nur", "b": true}, " Deutsch, ", {"t": "sondern auch", "i": true}, " Russisch. — «не только по-немецки, но и по-русски»."]}},
+        {"detail": {"label": "Порядок слов", "runs": ["sondern и aber — союзы позиции 0, как und: за ними обычный порядок. …, sondern sie ", {"t": "lebt", "b": true}, " in Deva."]}},
+        {"detail": {"label": "По-русски", "runs": ["Оба союза звучат как «а/но», поэтому выбор виден только в немецком: есть ", {"t": "nicht/kein", "i": true}, " перед исправляемым — берём sondern."]}}
       ]
     },
     "um-damit": {

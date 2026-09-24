@@ -68,8 +68,11 @@ language plan or close it with evidence here.
 | DE-G10 | German | Linking adverbs: deshalb, trotzdem, allerdings, außerdem, währenddessen | User request 2026-09-13 (meanwhile/nevertheless question); closed class, function-level meanings are stable — not phrasebook territory within a bounded set (DE-X02) | **Decided 2026-09-13: Required** → promoted as DE-18, implemented same day |
 | DE-G11 | German | Demonstratives: dieser/diese/dieses (RU «этот») — and the dieser-vs-der choice | User probe 2026-09-21 («dieser — этот, где можно найти это?»): absent from the deck entirely (checked deck, page, plan, ROADMAP). dieser declines exactly on the deck's own definite-article pattern (dies- + der-word endings), so the morphology is already taught — the missing pieces are the word family itself and the RU «этот/тот» mapping (dieser covers both); natural home is `#forms` next to the article tables; welcher- shares the same pattern | **Decided 2026-09-21: Required** → promoted as DE-25 and implemented same day (card in `#forms` next to the article tables + `dieser` dialog: model, «этот/тот» collapse, welcher- pattern, dieser-vs-der and das in «это»-phrases, adjective-endings cross-reference) |
 | DE-G12 | German | Polite possessive: building Ihr/Ihre from Sie (RU «Ваш») | User probe 2026-09-23 («как строить Ihre — не нашёл в шпоре»): the pieces exist (DE-05 stem list names Ihr; `possessives` dialog maps meanings; ein-words table gives endings) but no text states that capital-I Ihr is the possessive of polite Sie — the owner→stem step stays implicit. User constraint: the usage sentence that triggered the question must not ship verbatim; teach the construction itself | **Decided 2026-09-23: Required** (bounded depth within DE-05, standing ADD rules) → `possessives` dialog gained the owner→stem block the same day |
+| DE-G13 | German | sondern vs aber: the correction pair after negation (nicht/kein …, sondern = «не A, а B») and nicht nur …, sondern auch | User probe 2026-09-24 (external agent advice to memorize «nicht A, sondern B = не A, а B» vs «aber = но»): sondern was listed among coordinators (DE-08) and appeared once inside a negation example, but the choice rule versus aber was never stated; RU «а» covers both functions, so the confusion is real. Sources: Olesen Tuition (error example *keinen Fisch, aber Fleisch* → sondern), YourDailyGerman, BBC Bitesize | **Decided 2026-09-24: Required** (bounded depth within DE-08, standing ADD rules) → konnektoren card gained the sondern example pair + «sondern vs aber» chip, new `sondern` dialog (correction vs plain contrast, error pair, nicht nur …, sondern auch, position-0 order), `negation` dialog names the «а» = sondern link — same day |
 | EN-G09 | English | Flavour words: just, actually, still, even, though | User request 2026-09-13 (EN mirror of DE-17); includes the *actually* ≠ «актуально» false friend | **Decided 2026-09-13: Required** → promoted as EN-17, implemented same day |
 | EN-G10 | English | Linking connectors: but/however, so/therefore, meanwhile, nevertheless, although/despite | User request 2026-09-13 (meanwhile/nevertheless question); function-level meanings are stable, not too contextual for a lookup card | **Decided 2026-09-13: Required** → promoted as EN-18, implemented same day |
+| EN-G11 | English | Correction pair after negation: not X, but Y («не X, а Y») and not only … but also («не только …, но и») | Same user probe 2026-09-24, EN mirror of DE-G13: the linkers card (EN-18) covered but/however etc. but no within-sentence correction pattern. Sources: Cambridge Grammar (Conjunctions: contrasting — not…but), British Council LearnEnglish (contrasting ideas); inversion after fronted not only is B2 → out of scope (EN-X03) | **Decided 2026-09-24: Required** (bounded depth within EN-18, standing ADD rules) → linkers card gained the chip + pattern example pair, new `not-but` dialog (both patterns, plain-but boundary, within-sentence position note) — same day |
+| EN-G12 | English | Contrast linkers while/whereas and on the other hand | Completeness sweep 2026-09-24 (DE-G13/EN-G11 session): the contrast family is otherwise covered (but/however, nevertheless, although/despite); two-clause contrast (while/whereas) and the register pair on the other hand are absent | Open — defer-leaning: B1, candidate Tier-2 dialog extension to EN-18; decide on learner need |
 | EN-G01 | English | be questions/negatives and there is/are | Required depth and placement | **Decided + closed:** the be/modal question half shipped 2026-09-13 (C-14); there is/are + be-negatives → EN-19 shipped same day |
 | EN-G02 | English | Negation beyond modal prohibitions | Required depth and placement | Open — only scattered basics (doesn't/don't + any, never/rarely; there isn't in EN-19) |
 | EN-G03 | English | Past Continuous and narrative tense contrasts | Include, defer or exclude | **Decided 2026-09-13: Required** → promoted as EN-20, shipped same day (background-vs-event contrast, Russian-aspect mapping in dialog) |
@@ -638,6 +641,58 @@ existing dialog slot).
 Gate impact: none — DE-05 was already Required and covered; this
 deepens an accepted topic. Coverage stays **PASS** (DE 25/25, EN
 20/20). Baseline still **FAIL** (open: DE-G06, DE-G07, DE-G08, EN-G02,
+EN-G04, EN-G05, EN-G06 remainder, EN-G07). Accuracy/Teaching NOT RUN.
+
+## 2026-09-24 — Correction pairs: sondern vs aber (DE-08), not … but (EN-18) (DE-G13, EN-G11 decided)
+
+External agent advice to the user («sondern = не A, а B после отрицания;
+aber = просто но») prompted a both-language coverage check. Finding: the
+DE deck listed sondern among coordinators and used it once inside a
+negation example without ever stating the choice rule versus aber; the EN
+deck had no *not X, but Y* / *not only … but also* pattern at all. The
+correction pair is the same learner problem on both pages — Russian «а»
+covers both the plain-contrast and the correction reading, so the
+distinction must be carried by the target language. Sources: Olesen
+Tuition (aber-vs-sondern, *keinen Fisch, aber Fleisch* error example),
+YourDailyGerman (sondern), BBC Bitesize (coordinating conjunction
+examples), Cambridge Grammar (Conjunctions: contrasting — not…but, not
+only…but also), British Council LearnEnglish (contrasting ideas).
+Completeness verdict: the contrast family is otherwise covered on both
+pages (DE: coordinators + DE-18 adverbs deshalb/trotzdem/allerdings; EN:
+but/however, nevertheless, although/despite) — the correction pair was
+the genuine gap on both. Remaining contrast linkers (EN while/whereas,
+on the other hand) filed as EN-G12, defer-leaning.
+
+- DE-08 `konnektoren` card: second example pair *Sie kommt nicht aus
+  Bukarest, sondern aus Deva.* with deciding-hint gloss; new
+  «sondern vs aber» chip; search keywords extended.
+- DE new `sondern` dialog: correction (sondern) vs plain contrast
+  (aber) with the error pair, *nicht nur …, sondern auch*, position-0
+  word-order note, and the RU «а/но» collision note.
+- DE `negation` dialog: «Перед словом» block now names the «а» =
+  sondern link after its existing example.
+- EN-18 `linkers` card: new chip *not (only) … but* + second example
+  pair (*not on Monday, but on Tuesday* · *not only smart but also
+  kind*) with glosses; search keywords extended.
+- EN new `not-but` dialog: both patterns, the plain-but boundary, and
+  the within-sentence position note (vs sentence-starting however).
+- Plans revised first (DE-08 and EN-18 acceptance depth); ROADMAP
+  gains the EN-G12 Tier-2 candidate.
+
+Verified: JSON valid; `--check` (both decks) exit 0 including the
+search-hygiene gate — tokens *nur/auch/correction* were rejected by the
+gate because dialogs are not card-visible, and were trimmed rather than
+exempted (C-13 discipline); scoped runtime smoke (localhost:8931,
+stale-SW reset): search «sondern» keeps only `clauses-konnektoren`
+visible and «not only» only `order-linkers`, both new chips open their
+dialogs with all blocks present, console clean, ~390px no horizontal
+overflow on either page, dark-mode dialog renders correctly.
+Offline reload, theme cycle, redirect and practice checks: **NOT RUN**
+this pass (content-only change inside existing card/dialog slots).
+
+Gate impact: none — DE-08/EN-18 were already Required and covered;
+this deepens accepted topics. Coverage stays **PASS** (DE 25/EN 20
+topics). Baseline still **FAIL** (open: DE-G06, DE-G07, DE-G08, EN-G02,
 EN-G04, EN-G05, EN-G06 remainder, EN-G07). Accuracy/Teaching NOT RUN.
 
 ## Next full review record

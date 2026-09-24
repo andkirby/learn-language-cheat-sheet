@@ -73,6 +73,7 @@ is now the active frontier.
 | EN numbers/dates/time | EN-G07 | Defer-leaning: more lookup than grammar; small card ok |
 | EN reported speech basics | EN-G06 | Defer-leaning: B1+ density; backshift is a series, not a card |
 | DE weder…noch / sowohl…als auch | new | Defer-leaning: B1 connector pair, only if Tier 1 lands clean |
+| EN contrast linkers: while/whereas, on the other hand | EN-G12 | Defer-leaning: two-clause contrast + register pair; small dialog extension to EN-18 if learner need emerges |
 
 ## Tier 3 — product-level (explicit owner decision, pre-scoped here)
 

@@ -244,12 +244,13 @@
           "id": "linkers",
           "level": "B1",
           "kind": "связь",
-          "search": "however therefore meanwhile nevertheless although despite but связки однако тем не менее тем временем несмотря поэтому",
+          "search": "however therefore meanwhile nevertheless although despite but связки однако тем не менее тем временем несмотря поэтому not only but also не только но и не а",
           "blocks": [
             {"h": ["Связки: however, so, although…"]},
             {"p": ["Соединяют предложения — контраст, причина, время, уступка:"]},
             {"chips": [
               {"label": ["but / however — ", {"t": "но / однако", "b": true}], "detail": "linking-words", "neutral": true},
+              {"label": ["not (only) … but — ", {"t": "не…, а / не только…, но и", "b": true}], "detail": "not-but", "neutral": true},
               {"label": ["so / therefore — ", {"t": "поэтому", "b": true}], "detail": "linking-words", "neutral": true},
               {"label": ["meanwhile — ", {"t": "тем временем", "b": true}], "detail": "linking-words", "neutral": true},
               {"label": ["nevertheless — ", {"t": "тем не менее", "b": true}], "detail": "linking-words", "neutral": true},
@@ -259,6 +260,9 @@
             {"example": [
               "It was raining. ", {"t": "However", "hit": true}, ", we went out. · ", {"t": "Although", "hit": true}, " it rained, we went out."
             ], "gloss": ["However ≈ однако · Although ≈ хотя"]},
+            {"example": [
+              "The meeting is ", {"t": "not", "hit": true}, " on Monday, ", {"t": "but", "hit": true}, " on Tuesday. · She is ", {"t": "not only", "hit": true}, " smart ", {"t": "but also", "hit": true}, " kind."
+            ], "gloss": ["«не в понедельник, а во вторник» · «не только умная, но и добрая»"]},
             {"chips": [{"label": "despite или although?", "detail": "linking-words"}]}
           ]
         },
@@ -686,6 +690,15 @@
         {"detail": {"label": "meanwhile", "runs": ["I cooked. ", {"t": "Meanwhile", "i": true}, ", he watched TV. — «тем временем»: два события одновременно."]}},
         {"detail": {"label": "nevertheless", "runs": ["The task was hard. ", {"t": "Nevertheless", "i": true}, ", she finished it. — «тем не менее»: уступка."]}},
         {"detail": {"label": "despite vs although", "runs": [{"t": "Despite", "i": true}, " the rain ✓ · ", {"t": "Despite it was raining", "s": true}, " ✗ → ", {"t": "Although it was raining", "i": true}, " ✓. Despite + существительное/-ing; although + подлежащее и глагол."]}}
+      ]
+    },
+    "not-but": {
+      "title": "not …, but / not only … but also", "lead": "После отрицания: «не X, а Y» — not X, but Y; «не только…, но и» — not only … but also.",
+      "blocks": [
+        {"detail": {"label": "not …, but", "runs": ["The meeting is ", {"t": "not on Monday, but on Tuesday", "i": true}, ". — «не в понедельник, а во вторник»: отрицаем один вариант и исправляем на другой."]}},
+        {"detail": {"label": "not only … but also", "runs": ["She is ", {"t": "not only smart but also kind", "i": true}, ". — «не только умная, но и добрая»."]}},
+        {"detail": {"label": "просто but", "runs": ["Ничего не исправляется, а просто противопоставляется — обычный ", {"t": "but", "i": true}, ": It was raining, ", {"t": "but", "i": true}, " we went out. — «но»."]}},
+        {"detail": {"label": "Позиция", "runs": ["Обе конструкции стоят внутри предложения — это не связки вроде however, которые начинают новое предложение."]}}
       ]
     },
     "there-is": {

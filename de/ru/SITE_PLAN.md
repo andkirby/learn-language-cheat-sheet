@@ -125,7 +125,7 @@ evidence in the content audit.
 | DE-05 | Which possessive and ending? mein, dein, sein, ihr, unser, euer, ihr, Ihr | `#forms` | Stems and case/gender/plural pattern plus examples |
 | DE-06 | Where is the finite verb in statements, yes/no questions, W-questions and inversion? | `#order` | Core position patterns and contrasting examples |
 | DE-07 | How does the verb bracket work with modal, perfect and separable constructions? | `#verbs` | Formula and natural example per construction |
-| DE-08 | Which conjunction changes word order? Subordinators and coordinators | `#clauses` | Verb-final rule, non-verb-final contrast and examples |
+| DE-08 | Which conjunction changes word order? Subordinators and coordinators | `#clauses` | Verb-final rule, non-verb-final contrast and examples; after negation the correction pair takes *sondern* («не A, а B»), plain contrast takes *aber*, *nicht nur …, sondern auch* in the coordinators dialog (DE-G13) |
 | DE-09 | Where do time, cause, manner and place phrases tend to go? | `#order` | TeKaMoLo as a default with an explicit limitation |
 | DE-10 | How do relative clauses work? | `#clauses` | Rule, pronoun role and example with sufficient dialog detail |
 | DE-11 | um … zu or damit? | `#clauses` | Same-subject decision and a contrasting pair |

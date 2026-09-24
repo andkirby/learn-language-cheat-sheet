@@ -4,6 +4,20 @@ One entry per user-visible change, newest first. UI rationale lives in
 `.design/decisions.md`, content review evidence in `CONTENT_AUDIT.md`.
 Append the entry in the same commit that ships the change.
 
+## 2026-09-24
+
+- **New (German)**: карточка «Не отправляют глагол в конец» получила пару
+  **nicht/kein …, sondern …** = «не A, а B» (*Sie kommt nicht aus
+  Bukarest, sondern aus Deva.*) и диалог «sondern vs aber»: после
+  отрицания — sondern (исправление), простой контраст — aber (с
+  разбором ошибки *Er mag keinen Fisch, aber Fleisch*), паттерн
+  *nicht nur …, sondern auch* и заметка про порядок слов. Диалог
+  отрицания теперь называет это «а» = sondern.
+- **New (English)**: карточка связок получила шаблоны **not X, but Y** =
+  «не X, а Y» и **not only … but also** = «не только …, но и» с диалогом
+  «not …, but»: оба шаблона, граница с обычным but и заметка, что это
+  конструкции внутри предложения, а не связки вроде however.
+
 ## 2026-09-23
 
 - **New (German)**: the «Притяжательные» dialog (card «ein / kein /
