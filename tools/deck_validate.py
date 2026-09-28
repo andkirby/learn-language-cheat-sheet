@@ -3,9 +3,10 @@
 validate(deck, site) returns a flat error list (empty = deck is
 buildable). Covers meta completeness, view/section/card shape via the
 block registry (deck_blocks), dialog reference integrity, practice and
-help shape, id uniqueness, UI strings, and the site.json registry —
-including the search-index hygiene gate (data-search tokens must be
-learner-visible or exempted as grammar terminology in site.json).
+help shape (incl. the practice card's search tokens), id uniqueness, UI
+strings, and the site.json registry — including the search-index hygiene
+gate (data-search tokens must be learner-visible or exempted as grammar
+terminology in site.json).
 """
 import re
 
@@ -148,8 +149,15 @@ class _Checker:
         else:
             self.check_blocks(card["blocks"], where)
         # Search-index hygiene (see the _grammar_terms note above).
-        words = set(_WORD_RE.findall(_norm(_card_visible_text(card))))
-        for token in str(card.get("search", "")).split():
+        self.check_search_tokens(card.get("search"), _card_visible_text(card), where)
+
+    def check_search_tokens(self, search, visible_text, where):
+        """Every data-search token must be learner-visible in visible_text,
+        exempted as grammar terminology in site.json, or written in the
+        searcher's own script (configured per audience). Runs on card search
+        strings and on the practice card's search attribute alike."""
+        words = set(_WORD_RE.findall(_norm(visible_text)))
+        for token in str(search or "").split():
             t = _norm(token)
             if t in self.grammar_terms or len(t) < 3:
                 continue
@@ -235,6 +243,14 @@ def _validate_content(deck, site, errors):
     for i, item in enumerate(practice.get("items", [])):
         chk.check_runs(item.get("q", []), f"practice.items[{i}].q")
         chk.check_runs(item.get("answer", []), f"practice.items[{i}].answer")
+    # The practice card renders like any card and carries data-search the same
+    # way; hold its tokens to the same visibility gate. Visible corpus: the
+    # practice section head (heading + sub) plus the items themselves.
+    practice_visible = " ".join(
+        [str(practice.get("heading", "")), str(practice.get("sub", ""))]
+        + [runs_text(item.get("q", [])) + " " + runs_text(item.get("answer", []))
+           for item in practice.get("items", [])])
+    chk.check_search_tokens(practice.get("search"), practice_visible, "practice")
 
     help_btn = deck.get("help")
     if help_btn:

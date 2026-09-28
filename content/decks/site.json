@@ -1,5 +1,5 @@
 {
-  "_readme": "Site language registry: learning targets and, per target, the available explanation audiences. Read by tools/build_pages.py to render the header language menu on every deck page; mirrored by hand in index.html (DECKS + the lang-menu markup). Update both when adding a language or audience. Labels are language-proper names (Deutsch, Русский) — audience-language UI strings (group headers, «скоро») live in each deck's strings. script: the audience's writing system (cyrillic/latin) — cyrillic audiences get the search-token exemption and script-heuristic target tagging; latin (or an absent key) stays strict and tags only explicit bold/hit markup (see tools/deck_validate.py and page_template.html). grammar_terms: search-index exemptions — grammar TERMINOLOGY that may sit in data-search without being visible on the card (the searcher's own script and inflections are handled by the validator itself). grammar_terms_common applies to every target; a target's own grammar_terms apply only to its decks. Keep both lists to terms the decks actually use — an unused exemption can mask a real keyword mistake in another deck.",
+  "_readme": "Site language registry: learning targets and, per target, the available explanation audiences. Read by tools/build_pages.py to render the header language menu on every deck page; mirrored by hand in index.html (DECKS + the lang-menu markup). Update both when adding a language or audience. Labels are language-proper names (Deutsch, Русский) — audience-language UI strings (group headers, «скоро») live in each deck's strings. script: the audience's writing system (cyrillic/latin) — cyrillic audiences get the search-token exemption and script-heuristic target tagging; latin (or an absent key) stays strict and tags only explicit bold/hit markup (see tools/deck_validate.py and page_template.html). grammar_terms: search-index exemptions — grammar TERMINOLOGY and the practice card's shared intent words (practice, quiz, test, üben) that may sit in data-search without being visible on the card (the searcher's own script and inflections are handled by the validator itself). grammar_terms_common applies to every target; a target's own grammar_terms apply only to its decks. Keep both lists to terms the decks actually use — an unused exemption can mask a real keyword mistake in another deck.",
   "targets": [
     {
       "id": "de",
@@ -43,6 +43,7 @@
         "satzklammer",
         "superlativ",
         "temporal",
+        "test",
         "trennbare",
         "verben",
         "wechselpräpositionen"
@@ -63,7 +64,10 @@
           "script": "latin"
         }
       ],
-      "grammar_terms": []
+      "grammar_terms": [
+        "test",
+        "üben"
+      ]
     }
   ],
   "grammar_terms_common": [
@@ -172,6 +176,8 @@
     "irregular",
     "not",
     "yes",
-    "ordinal"
+    "ordinal",
+    "practice",
+    "quiz"
   ]
 }

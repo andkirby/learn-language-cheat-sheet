@@ -509,3 +509,17 @@ one localized `search_results` string per deck. The nav's grammar cues remain
 visual prompts but are hidden from screen readers, leaving the destination
 name as the link label. Both generated pages and the style guide follow the
 same contract. Service-worker cache: v28.
+
+## 2026-09-28 — Section badges speak one language per deck (audience-variant review fix)
+
+The en-de section badges mixed registers: «Articles», «Pronouns»,
+«Prepositions», «Nouns» (English) beside «Wortstellung», «Zeiten»,
+«Verben», «If-Sätze» (German) on the same page. Convention for the deck
+family: section badges follow the page's explanation (UI) language, and a
+target-language term stays where it is the term of art — de-en keeps
+«4 Fälle»/«Nebensätze» beside English labels like «Word order»; en-de now
+names all eight badges in German (Artikel, Pronomen, Wortstellung, Zeiten,
+Verben, Präpositionen, Nomen, If-Sätze). Section ids, card anchors and the
+topic skeleton are untouched — deck copy edited in the deck JSON, pages
+regenerated. No shared component change; the service-worker cache bump rides
+the same review-fix commit.
