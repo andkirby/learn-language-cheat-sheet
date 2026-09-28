@@ -259,13 +259,14 @@
     },
     "strings": {
       "type": "object",
-      "required": ["search_placeholder", "search_aria", "clear_aria", "install_label", "close_aria", "nav_aria", "no_results", "noscript_notice", "noscript_intro", "theme", "reveal_show", "reveal_hide", "install_ios", "install_generic", "footer_all", "footer_install", "footer_plan"],
+      "required": ["search_placeholder", "search_aria", "clear_aria", "search_results", "install_label", "close_aria", "nav_aria", "no_results", "noscript_notice", "noscript_intro", "theme", "reveal_show", "reveal_hide", "install_ios", "install_generic", "footer_all", "footer_install", "footer_plan"],
       "additionalProperties": false,
       "properties": {
         "_note": {"type": "string"},
         "search_placeholder": {"type": "string"},
         "search_aria": {"type": "string"},
         "clear_aria": {"type": "string"},
+        "search_results": {"type": "string"},
         "install_label": {"type": "string"},
         "close_aria": {"type": "string"},
         "nav_aria": {"type": "string"},

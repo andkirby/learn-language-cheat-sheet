@@ -85,3 +85,24 @@ Deferred (second pass): `lang="de"`/`lang="en"` on target-language examples
 Search is now global across views while `body.searching` is set (matching
 sections from other views become visible; clearing restores the active
 view). Print expands all views; noscript shows the full stacked deck.
+
+---
+
+## 2026-09-28 — Readability and navigation pass
+
+In-app browser review of the landing at narrow-panel width and both deck
+pages at narrow-panel and desktop widths found small secondary explanations
+and nav labels. Search showed cards from all views while the prior view stayed
+visibly selected.
+
+- Increased supporting text sizes across cards, examples, tables, landing
+  language cards and the bottom nav in the shared type scale.
+- Added a visible, announced search result count and cleared the nav selection
+  while cross-view results are shown; clearing search restores the prior view.
+- Removed decorative grammar cues from screen-reader nav labels.
+
+Verified in the browser: EN search shows a count and no selected nav item;
+DE search filters across views, and clearing restores the selected view.
+Both generated-page checks pass. The landing, DE and EN pages loaded with
+the preview server stopped after their first load. A measured 390px overflow
+check and a full keyboard/screen-reader pass were not run in this pass.

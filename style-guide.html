@@ -238,7 +238,8 @@
         <div class="sg-doc-body">
           <p><strong>Search.</strong> Cards match on <code>card.textContent + data-search</code> (lowercased substring). While
             searching, <code>body.searching</code> is set (the noscript intro hides), matching sections from <em>every</em> view
-            stack into one result list, <code>#noResults</code> shows at zero matches, and clearing restores the active view.
+            stack into one result list, <code>#searchSummary</code> reports the card count, <code>#noResults</code> shows at zero matches, and clearing restores the active view.
+            The bottom nav has no active selection during cross-view results.
             Search never destroys dialog or answer state. <code>data-search</code> is a designed surface: deck authors put the
             hidden keywords there (forms, Russian prompts) — findings C-11–13 came from treating it as an afterthought.</p>
           <p><strong>Language menu.</strong> Native <code>&lt;details&gt;</code> keeps it functional without JS; JS adds light
@@ -489,14 +490,14 @@
 
     <section class="sg-block" id="nav">
       <h2>Bottom nav &amp; views</h2>
-      <p class="sg-why">Five view destinations; the selected view is the nav truth (<code>aria-current</code>), no scrollspy. Sections carry <code>data-view</code>; legacy anchors open the section’s view first. While <code>body.searching</code> is set, matching sections from every view are shown stacked. Shown here as a static specimen (<code>.sg-nav</code> override).</p>
+      <p class="sg-why">Five view destinations; the selected view is the nav truth (<code>aria-current</code>), no scrollspy. The grammar cues are decorative for screen readers. Sections carry <code>data-view</code>; legacy anchors open the section’s view first. While <code>body.searching</code> is set, matching sections from every view are shown stacked and the nav selection clears. Shown here as a static specimen (<code>.sg-nav</code> override).</p>
       <div class="sg-demo">
         <nav class="bottom-nav sg-nav" aria-label="Specimen">
-          <a class="nav-item active" href="#nav" data-nav="cases" aria-current="true"><span class="ico">A/D</span><span>Падежи</span></a>
-          <a class="nav-item" href="#nav" data-nav="forms"><span class="ico">der</span><span>Формы</span></a>
-          <a class="nav-item" href="#nav" data-nav="order"><span class="ico">V2</span><span>Порядок</span></a>
-          <a class="nav-item" href="#nav" data-nav="clauses"><span class="ico">weil</span><span>Придат.</span></a>
-          <a class="nav-item" href="#nav" data-nav="practice"><span class="ico">?</span><span>Повтор</span></a>
+          <a class="nav-item active" href="#nav" data-nav="cases" aria-current="true"><span class="ico" aria-hidden="true">A/D</span><span>Падежи</span></a>
+          <a class="nav-item" href="#nav" data-nav="forms"><span class="ico" aria-hidden="true">der</span><span>Формы</span></a>
+          <a class="nav-item" href="#nav" data-nav="order"><span class="ico" aria-hidden="true">V2</span><span>Порядок</span></a>
+          <a class="nav-item" href="#nav" data-nav="clauses"><span class="ico" aria-hidden="true">weil</span><span>Придат.</span></a>
+          <a class="nav-item" href="#nav" data-nav="practice"><span class="ico" aria-hidden="true">?</span><span>Повтор</span></a>
         </nav>
       </div>
       <p class="sg-anno">Real pages: fixed to the bottom, respects <code>env(safe-area-inset-bottom)</code>. Views/destinations/legacy anchors are owned by each language plan, not by this contract.</p>
@@ -581,7 +582,7 @@
             <tr><td><code>dialog</code>, <code>.sheet</code>, <code>.grab</code>, <code>.sheet-head</code>, <code>.close-sheet</code>, <code>.detail-block</code>, <code>.detail-label</code>, <code>.detail-comment</code>, <code>.lead</code></td><td>Bottom sheet and its parts (label = the only block-level child; comment = muted trailing line); body blocks from <code>DETAILS</code></td></tr>
             <tr><td><code>.bottom-nav</code>, <code>.nav-item</code>, <code>data-view</code></td><td>View switcher; active destination; section→view membership</td></tr>
             <tr><td><code>.section-head</code>, <code>.section-badge</code>, <code>.intro</code></td><td>Section header (inner <code>&lt;div&gt;</code> + optional badge), the noscript/plain intro line</td></tr>
-            <tr><td><code>.no-results</code></td><td>Zero-match panel during search</td></tr>
+            <tr><td><code>.search-summary</code>, <code>.no-results</code></td><td>Search count and zero-match panel</td></tr>
             <tr><td><code>.hero</code>, <code>.lang-grid</code>, <code>.lang-card</code>, <code>.lang-mark</code></td><td>Landing-only (inline in <code>index.html</code>): always-dark hero; language cards; their marks</td></tr>
             <tr><td><code>.muted</code>, <code>.tiny</code>, <code>.footer</code></td><td>Utility tail: secondary text / small print / page footer</td></tr>
             <tr><td><code>[lang]</code></td><td>Target-language text → serif study voice (set by <code>markTargetLang</code>)</td></tr>

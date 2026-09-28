@@ -493,3 +493,19 @@ Comments needed a distinct style.
 
 Rollout: both decks + schema + generator + base.css + both pages +
 style-guide in one commit; sw v25 → v26.
+
+## 2026-09-28 — Readability and cross-view search state
+
+The first layer of each card stays compact, but explanatory notes, glosses,
+table text and navigation labels now use a more readable type scale. The
+shared `base.css` owns these sizes in both themes; the landing's own language
+card copy follows the same scale. No new colors or fonts were introduced.
+
+Search already showed cards from every view. A visible, announced result count
+now makes that scope clear, and the bottom-nav selection clears during search
+because no single view owns the result list. Clearing search restores the
+previous view and its selection. The source is the shared page template plus
+one localized `search_results` string per deck. The nav's grammar cues remain
+visual prompts but are hidden from screen readers, leaving the destination
+name as the link label. Both generated pages and the style guide follow the
+same contract. Service-worker cache: v28.

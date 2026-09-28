@@ -161,7 +161,7 @@ def render(deck, deck_path, site):
     for i, view in enumerate(deck["views"]):
         active = ' class="nav-item active" aria-current="true"' if i == 0 else ' class="nav-item"'
         nav_items.append(f"    <a{active} href=\"#{escq(view['id'])}\" data-nav=\"{escq(view['id'])}\">"
-                         f"<span class=\"ico\">{esc(view['ico'])}</span><span>{esc(view['label'])}</span></a>")
+                         f"<span class=\"ico\" aria-hidden=\"true\">{esc(view['ico'])}</span><span>{esc(view['label'])}</span></a>")
 
     details_js = {}
     for key, entry in deck["details"].items():
@@ -196,6 +196,7 @@ def render(deck, deck_path, site):
         "@@SEARCH_PLACEHOLDER@@": escq(strings["search_placeholder"]),
         "@@SEARCH_ARIA@@": escq(strings["search_aria"]),
         "@@CLEAR_ARIA@@": escq(strings["clear_aria"]),
+        "@@SEARCH_RESULTS@@": js(strings["search_results"]),
         "@@NOSCRIPT_NOTICE@@": esc(strings["noscript_notice"]),
         "@@NOSCRIPT_INTRO@@": runs_html(strings["noscript_intro"]),
         "@@HELP_BUTTON@@": _help_button_html(deck.get("help")),

@@ -83,6 +83,7 @@
   </noscript>
 
   <main>
+    <p id="searchSummary" class="search-summary" role="status" aria-live="polite" hidden></p>
     <div id="noResults" class="no-results">@@NO_RESULTS@@</div>
 
 @@SECTIONS@@
@@ -201,6 +202,8 @@
     const cards = [...document.querySelectorAll('.cheat-card')];
     const sections = [...document.querySelectorAll('section[data-section]')];
     const noResults = document.getElementById('noResults');
+    const searchSummary = document.getElementById('searchSummary');
+    const searchResultsLabel = @@SEARCH_RESULTS@@;
 
     function applySearch() {
       const q = search.value.trim().toLowerCase();
@@ -220,7 +223,10 @@
         section.style.display = visible ? '' : 'none';
       });
       if (!q) setView(currentView); // re-apply the active view
+      else navItems.forEach(item => item.removeAttribute('aria-current'));
       updateHitLabels(q);
+      searchSummary.hidden = !q;
+      searchSummary.textContent = q ? `${searchResultsLabel}: ${shown}` : '';
       noResults.style.display = q && shown === 0 ? 'block' : 'none';
     }
     search.addEventListener('input', applySearch);

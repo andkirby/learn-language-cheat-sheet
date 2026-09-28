@@ -62,6 +62,9 @@ Rules:
   containers wholesale; otherwise bold in `.example`/`.answer`, italics in
   `.detail-block`, and Cyrillic-free formula slots. The serif is the
   "studied language" signal — never apply it to Russian text.
+- Supporting explanations, table text and bottom-nav labels stay readable at
+  phone size; reserve the smallest sizes for compact badges and incidental
+  metadata. Body copy uses a 1.52 line height.
 
 ## Theming (auto + manual)
 
@@ -104,7 +107,7 @@ Rules:
 | `.notice` / `.warning` | Callouts. Accent = info, warn tokens = caveat. |
 | `.answer` + `.reveal` | Show/hide practice answer; `aria-expanded`/`aria-controls` required; visible without JS (noscript unhides). |
 | `dialog` bottom sheet | One shared `#detailDialog`; title/lead set from `DETAILS`; closes via ×, Escape, backdrop tap (`event.target === dialog`). |
-| `.bottom-nav` | View switcher. Active item = selected view, gets `.active` **and** `aria-current="true"`; a tap clears an active search, updates the hash and scrolls to top. |
+| `.bottom-nav` | View switcher. Active item = selected view, gets `.active` **and** `aria-current="true"`; decorative grammar cues are hidden from screen readers. During search, selection styling and `aria-current` clear because results span views. A tap clears search, updates the hash and scrolls to top. |
 | `section[data-view]` | View membership. JS hides non-active views via the `hidden` attribute; search unhides matching sections across views; noscript and print show everything stacked. |
 | `.theme-btn` | 44px topbar icon button; cycles/persists the theme (see Theming). |
 | `.icon-btn` | 44px topbar icon button (shares `.theme-btn` styling); the (i) usage button opens the shared dialog via `data-detail="lookup-help"`; carries `#start`; hidden on noscript pages, which keep a plain `.intro` line. |
@@ -117,8 +120,9 @@ Rules:
   Never remove without replacement.
 - Search (`body.searching`): the help row hides; cards/sections with no
   match hide — **across all views** (matching sections from other views
-  become visible stacked); `#noResults` appears at 0 matches; clearing
-  restores the active view. Search must never destroy dialog or answer state.
+  become visible stacked); `#searchSummary` reports the card count and
+  `#noResults` appears at 0 matches. Clearing restores the active view and
+  its nav state. Search must never destroy dialog or answer state.
 - `prefers-reduced-motion`: smooth scroll and all transitions off.
 
 ## Accessibility baseline

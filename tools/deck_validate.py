@@ -252,7 +252,7 @@ def _validate_content(deck, site, errors):
 def _validate_strings(deck, errors):
     strings = deck.get("strings", {})
     # footer_practice is optional: decks whose footer has no practice link omit it.
-    for s in ("search_placeholder", "search_aria", "clear_aria", "install_label",
+    for s in ("search_placeholder", "search_aria", "clear_aria", "search_results", "install_label",
               "close_aria", "nav_aria", "no_results", "noscript_notice",
               "reveal_show", "reveal_hide", "footer_all",
               "footer_install", "footer_plan"):

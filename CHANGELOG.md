@@ -6,6 +6,16 @@ UI rationale lives in
 `.design/decisions.md`, content review evidence in `CONTENT_AUDIT.md`.
 Append the entry in the same commit that ships the change.
 
+## 2026-09-28 (design)
+
+- **Improved readability:** larger supporting text in cards, examples, tables,
+  language cards and bottom navigation, with more breathing room between lines.
+- **Clearer search:** both decks show the number of matching cards. While
+  results span views, the bottom nav no longer suggests one view is selected;
+  clearing search restores the selected view.
+- **Clearer screen-reader navigation:** decorative grammar cues in the bottom
+  nav no longer repeat before the destination names.
+
 ## 2026-09-24 (content)
 
 - **New (both languages, Tier 2)**: German verb+preposition pairs (warten

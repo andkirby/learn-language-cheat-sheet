@@ -83,6 +83,7 @@
   </noscript>
 
   <main>
+    <p id="searchSummary" class="search-summary" role="status" aria-live="polite" hidden></p>
     <div id="noResults" class="no-results">Ничего не найдено. Попробуй “present”, “the”, “if”, “must”, “did”.</div>
 
     <section id="articles" data-section data-view="articles">
@@ -499,11 +500,11 @@
   </main>
 
   <nav class="bottom-nav" aria-label="Основная навигация">
-    <a class="nav-item active" aria-current="true" href="#articles" data-nav="articles"><span class="ico">a/the</span><span>Артикли</span></a>
-    <a class="nav-item" href="#tenses" data-nav="tenses"><span class="ico">V+s</span><span>Времена</span></a>
-    <a class="nav-item" href="#order" data-nav="order"><span class="ico">SVO</span><span>Порядок</span></a>
-    <a class="nav-item" href="#verbs" data-nav="verbs"><span class="ico">can</span><span>Глаголы</span></a>
-    <a class="nav-item" href="#preps" data-nav="preps"><span class="ico">in/on</span><span>Предлоги</span></a>
+    <a class="nav-item active" aria-current="true" href="#articles" data-nav="articles"><span class="ico" aria-hidden="true">a/the</span><span>Артикли</span></a>
+    <a class="nav-item" href="#tenses" data-nav="tenses"><span class="ico" aria-hidden="true">V+s</span><span>Времена</span></a>
+    <a class="nav-item" href="#order" data-nav="order"><span class="ico" aria-hidden="true">SVO</span><span>Порядок</span></a>
+    <a class="nav-item" href="#verbs" data-nav="verbs"><span class="ico" aria-hidden="true">can</span><span>Глаголы</span></a>
+    <a class="nav-item" href="#preps" data-nav="preps"><span class="ico" aria-hidden="true">in/on</span><span>Предлоги</span></a>
   </nav>
 
   <dialog id="detailDialog" aria-labelledby="detailTitle">
@@ -833,6 +834,8 @@
     const cards = [...document.querySelectorAll('.cheat-card')];
     const sections = [...document.querySelectorAll('section[data-section]')];
     const noResults = document.getElementById('noResults');
+    const searchSummary = document.getElementById('searchSummary');
+    const searchResultsLabel = "Найдено карточек";
 
     function applySearch() {
       const q = search.value.trim().toLowerCase();
@@ -852,7 +855,10 @@
         section.style.display = visible ? '' : 'none';
       });
       if (!q) setView(currentView); // re-apply the active view
+      else navItems.forEach(item => item.removeAttribute('aria-current'));
       updateHitLabels(q);
+      searchSummary.hidden = !q;
+      searchSummary.textContent = q ? `${searchResultsLabel}: ${shown}` : '';
       noResults.style.display = q && shown === 0 ? 'block' : 'none';
     }
     search.addEventListener('input', applySearch);
