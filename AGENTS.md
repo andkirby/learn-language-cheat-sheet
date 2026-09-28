@@ -46,7 +46,7 @@ update both when adding a language or audience.
 
 | Question | Read this first |
 | --- | --- |
-| How to add a new language | `docs/ADD_LANGUAGE.md` |
+| How to add a new language or audience variant (a translation) | `docs/ADD_LANGUAGE.md` |
 | How to author or revise a language plan | `docs/SITE_PLAN_GUIDE.md` |
 | Accepted language scope, exclusions and topic inventory | `de/ru/SITE_PLAN.md` / `en/ru/SITE_PLAN.md` |
 | How content is validated | `docs/CONTENT_VALIDATION.md` |

@@ -1,11 +1,12 @@
-# Playbook: adding a new language cheatsheet
+# Playbook: adding a new language or audience-variant cheatsheet
 
 ## Responsibility
 
-This playbook owns the repository procedure for adding a language: create its
-self-contained folder, implement the accepted plan, connect shared site
-surfaces, validate and ship. It does not own language scope, shared UI rules,
-content-review rules or deployment policy; it links to those owners.
+This playbook owns the repository procedure for adding a language or an
+audience variant (a new deck): create its self-contained folder, implement
+the accepted plan, connect shared site surfaces, validate and ship. It does
+not own language scope, shared UI rules, content-review rules or deployment
+policy; it links to those owners.
 
 A deck is the pairing **(target language × audience language)**, e.g.
 `de-ru` = German explained in Russian. It lives as
@@ -19,12 +20,74 @@ docs) lives at the repo root.
 > stubs kept for old URLs and installed PWAs). A new deck is authored as JSON,
 > not copied from HTML.
 
+## Principles (every deck, every pair)
+
+A deck is **(target language × audience language)**. The target supplies the
+grammar facts; the audience supplies the pedagogy. These hold for every new
+deck — they are what "translation" means here:
+
+- **Adapt, don't translate.** The deck is organized by first-language
+  interference, not by grammar logistics: the same topic gets a different
+  lead, different contrasts and different predicted errors per audience
+  (German cases = mapping onto the Russian case system in `de-ru`; building
+  the concept from the I/me remnant in a `de-en` deck). A monolingual
+  native-speaker reference (`de-de`, `en-en`) is **not** a master source —
+  it organizes by form, overlaps ~40%, and self-pairs are out of product
+  scope. Source model and the 5-language cross-product: [ROADMAP.md](../ROADMAP.md).
+- **Plan first.** The audience gets its own `SITE_PLAN.md` (step 0) before
+  any deck JSON exists: topic inventory, retrieval questions, accepted
+  depth, exclusions — re-derived for the new audience, not copied.
+- **The audience language is the explanation language.** UI strings,
+  dialogs, glosses and search hints are written in the audience language;
+  target-language terms stay in the target language. The gloss contract
+  lives in each language plan's content contract.
+- **Bounded units.** One card + one dialog per topic; the simplification
+  limit is stated on the card; practice maps to plan topics. The standing
+  scope rules in [ROADMAP.md](../ROADMAP.md) decide what may be added
+  without asking the owner.
+- **The gates are the contract.** `--check` (page↔deck drift + search
+  hygiene), `--check-shell` (landing + sw vs the registry) and content
+  validation decide acceptance; the generated page is committed, never
+  hand-edited.
+
+## Audience variants (translating an existing target)
+
+When the target language already has a deck (e.g. `de-ru` exists, adding
+`de-en`), steps 1–6 below apply with these differences:
+
+1. **Re-scope, don't re-cover.** Start from the target's existing
+   `SITE_PLAN` inventory as the skeleton and re-derive every acceptance
+   decision for the new audience: what is obvious there, what is a trap
+   there, which examples carry the point. A section/topic missing a reason
+   to exist for this audience is a deferral candidate, not filler.
+2. **Second audience of a target = core-extraction trigger.** Per the
+   source model ([ROADMAP.md](../ROADMAP.md)), when the second audience of
+   a target ships, extract the per-target invariant core (paradigm tables,
+   canonical examples) shared by the paired decks instead of duplicating
+   it — the boundary is cut from the real pair, not speculated.
+3. **UI strings flip language.** The `strings` block, dialogs, glosses and
+   practice wording are authored in the audience language; deck structure
+   (views, sections, block types) mirrors the sibling deck 1:1. Card `id`
+   slugs are per-page (hard rule 7) — keep them stable within the deck
+   after shipping.
+4. **Search hints are audience words.** A Latin-script audience has no
+   script exemption (strict mode): every `data-search` token must be
+   card-visible or registered in the target's `grammar_terms`. Intent
+   words of the previous audience disappear entirely.
+5. **Registry and shells are checked, not trusted.** Step 4 is identical,
+   plus: drop `"soon"` (or add the audience) and set `"script"`;
+   `--check-shell` fails loudly if the landing `DECKS` map or the
+   `APP_SHELL` drifts from the registry.
+6. **Full review.** An audience variant is a new deck: content validation
+   runs in full for it (step 5), same as a new language.
+
 ## 0. Establish the content target
 
 Before adapting a page, answer [the SITE_PLAN guide](SITE_PLAN_GUIDE.md) and
-prepare the accepted content target. Record stable topic IDs, Russian
-learner questions, required depth, view ownership, practice mapping and every
-accepted exclusion or deferral with its rationale and reconsideration trigger.
+prepare the accepted content target. Record stable topic IDs,
+audience-language learner questions, required depth, view ownership,
+practice mapping and every accepted exclusion or deferral with its
+rationale and reconsideration trigger.
 
 Compare the proposed inventory with named syllabus and grammar references
 using [content validation](CONTENT_VALIDATION.md). Sources, unresolved
