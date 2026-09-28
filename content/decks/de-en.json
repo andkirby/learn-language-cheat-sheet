@@ -400,8 +400,8 @@
           "search": "questions yes no wer was wann warum wie verb first v1 do support helper",
           "blocks": [
             {"h": ["Questions"]},
-            {"formula": [{"slot": "Kommst", "role": "verb"}, {"slot": "du heute?"}]},
-            {"formula": [{"slot": "Wann"}, {"slot": "kommst", "role": "verb"}, {"slot": "du?"}]},
+            {"formula": [{"slot": [{"t": "Kommst", "b": true}], "role": "verb"}, {"slot": [{"t": "du heute?", "b": true}]}]},
+            {"formula": [{"slot": [{"t": "Wann", "b": true}]}, {"slot": [{"t": "kommst", "b": true}], "role": "verb"}, {"slot": [{"t": "du?", "b": true}]}]},
             {"tiny": ["Yes/no → verb first: ", {"t": "Sprichst du Deutsch?", "b": true}, " — there is no do-support; no helper verb is inserted."]},
             {"tiny": ["W-question (wer, was, wann, warum, wie…) → question word + verb — exactly the English pattern."]}
           ]
@@ -452,7 +452,7 @@
           "search": "imperative command request komm geht kommen sie sein polite ruhig",
           "blocks": [
             {"h": ["Imperativ: commands & requests"]},
-            {"formula": [{"slot": "du → Komm!"}, {"arrow": "·"}, {"slot": "ihr → Geht!"}, {"arrow": "·"}, {"slot": "Sie → Kommen Sie!"}]},
+            {"formula": [{"slot": [{"t": "du → Komm!", "b": true}]}, {"arrow": "·"}, {"slot": [{"t": "ihr → Geht!", "b": true}]}, {"arrow": "·"}, {"slot": [{"t": "Sie → Kommen Sie!", "b": true}]}]},
             {"p": ["English has one command form for everybody; German picks the form by listener — polite ", {"t": "Sie", "b": true}, " stays inside the command."]},
             {"example": [{"t": "Kommen Sie", "b": true}, " bitte mit! · ", {"t": "Seien", "b": true}, " Sie ruhig!"]},
             {"tiny": ["sein is irregular here, just like English ", {"t": "be", "i": true}, "."]},
@@ -472,7 +472,7 @@
           "search": "modal verbs müssen können wollen sollen dürfen mögen infinitive bracket satzklammer",
           "blocks": [
             {"h": ["Modal verbs"]},
-            {"formula": [{"slot": "Heute"}, {"slot": "muss", "role": "verb"}, {"slot": "ich in den Laden"}, {"slot": "gehen", "role": "end"}]},
+            {"formula": [{"slot": [{"t": "Heute", "b": true}]}, {"slot": [{"t": "muss", "b": true}], "role": "verb"}, {"slot": [{"t": "ich in den Laden", "b": true}]}, {"slot": [{"t": "gehen", "b": true}], "role": "end"}]},
             {"p": ["The bracket: ", {"t": "muss", "b": true}, " opens it, the infinitive closes it — English keeps “must … go” together; German lets the two halves drift apart."]},
             {"tiny": ["The modals: ", {"t": "können, müssen, wollen, sollen, dürfen, mögen", "b": true}, "."]},
             {"chips": [{"label": "All six modals", "detail": "modal"}]}
@@ -485,7 +485,7 @@
           "search": "perfekt perfect haben sein partizip ii gegangen gemacht past motion",
           "blocks": [
             {"h": ["Perfekt"]},
-            {"formula": [{"slot": "Ich"}, {"slot": "habe", "role": "verb"}, {"slot": "das schon"}, {"slot": "gemacht", "role": "end"}]},
+            {"formula": [{"slot": [{"t": "Ich", "b": true}]}, {"slot": [{"t": "habe", "b": true}], "role": "verb"}, {"slot": [{"t": "das schon", "b": true}]}, {"slot": [{"t": "gemacht", "b": true}], "role": "end"}]},
             {"example": [
               "Ich ", {"t": "bin", "hit": true}, " nach Hause ", {"t": "gegangen", "hit": true}, "."
             ], "gloss": ["motion → sein (English reaches for “have” in every perfect)"]},
@@ -499,7 +499,7 @@
           "search": "trennbare separable verbs prefix bracket aufstehen uhr",
           "blocks": [
             {"h": ["Separable verbs"]},
-            {"formula": [{"slot": "Ich"}, {"slot": "stehe", "role": "verb"}, {"slot": "um 7 Uhr"}, {"slot": "auf", "role": "end"}]},
+            {"formula": [{"slot": [{"t": "Ich", "b": true}]}, {"slot": [{"t": "stehe", "b": true}], "role": "verb"}, {"slot": [{"t": "um 7 Uhr", "b": true}]}, {"slot": [{"t": "auf", "b": true}], "role": "end"}]},
             {"p": ["The prefix detaches and flies to the end of the bracket — English phrasal verbs keep their particle beside the verb (“I get up at 7”)."]},
             {"example": ["weil ich um 7 Uhr ", {"t": "aufstehe", "b": true}]},
             {"chips": [{"label": "Why whole again in the subordinate clause?", "detail": "separable"}]}
@@ -512,7 +512,7 @@
           "search": "passive passiv werden partizip ii gebaut voice",
           "blocks": [
             {"h": ["The passive (Passiv)"]},
-            {"formula": [{"slot": "Das Haus"}, {"slot": "wird", "role": "verb"}, {"slot": "2026"}, {"slot": "gebaut", "role": "end"}]},
+            {"formula": [{"slot": [{"t": "Das Haus", "b": true}]}, {"slot": [{"t": "wird", "b": true}], "role": "verb"}, {"slot": [{"t": "2026", "b": true}]}, {"slot": [{"t": "gebaut", "b": true}], "role": "end"}]},
             {"p": [{"t": "werden + Partizip II", "b": true}, " — English ", {"t": "be", "i": true}, " swaps for ", {"t": "werden", "b": true}, "."]},
             {"chips": [{"label": "The passive in two tenses", "detail": "passive"}]}
           ]
@@ -579,7 +579,7 @@
               "search": "weil because subordinate verb end clause",
               "blocks": [
                 {"h": ["weil — because"]},
-                {"formula": [{"slot": "weil", "role": "sub"}, {"slot": "ich heute arbeiten"}, {"slot": "muss", "role": "end"}]},
+                {"formula": [{"slot": [{"t": "weil", "b": true}], "role": "sub"}, {"slot": [{"t": "ich heute arbeiten", "b": true}]}, {"slot": [{"t": "muss", "b": true}], "role": "end"}]},
                 {"example": ["Ich komme nicht, ", {"t": "weil ich arbeiten muss.", "b": true}]},
                 {"tiny": ["English keeps its order after “because” — German sends the verb to the end: ", {"t": "weil ich muss arbeiten", "s": true}, " is the signature error."]}
               ]
@@ -806,7 +806,7 @@
           "search": "komparativ superlativ comparative superlative als than umlaut besser meisten schnellsten",
           "blocks": [
             {"h": ["Comparison: ", {"t": "-er", "b": true}, " / ", {"t": "am -sten", "b": true}]},
-            {"formula": [{"slot": "schnell"}, {"arrow": "→"}, {"slot": "schneller"}, {"arrow": "→"}, {"slot": "am schnellsten"}]},
+            {"formula": [{"slot": [{"t": "schnell", "b": true}]}, {"arrow": "→"}, {"slot": [{"t": "schneller", "b": true}]}, {"arrow": "→"}, {"slot": [{"t": "am schnellsten", "b": true}]}]},
             {"example": ["Heute ist es ", {"t": "wärmer", "b": true}, ". · Ich komme ", {"t": "später", "b": true}, " ", {"t": "als", "b": true}, " du."], "gloss": [{"t": "als", "b": true}, " = “than” · ", {"t": "wie", "b": true}, " only for “as … as”"]},
             {"tiny": ["The irregulars are English’s own: ", {"t": "gut – besser – am besten", "b": true}, " = good–better–the best · ", {"t": "viel – mehr – am meisten", "b": true}, " = much–more–the most · ", {"t": "gern – lieber", "b": true}, " = to like better."]},
             {"tiny": [{"t": "am", "b": true}, " = “at the”: ", {"t": "am schnellsten", "b": true}, " is literally “at the fastest” — English says just “the fastest”."]},
