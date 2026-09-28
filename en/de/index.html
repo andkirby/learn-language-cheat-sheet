@@ -1,0 +1,1059 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <!-- iOS standalone (Add to Home Screen): two WebKit viewport workarounds.
+       (1) Relaunch restores a stale zoom level and pinch-out is unavailable
+       there, so the scale is locked on iOS only (Safari itself ignores
+       maximum-scale, Android and desktop keep pinch-zoom entirely).
+       (2) A resumed standalone window can come back reporting a ~980px
+       viewport, which trips the 720px desktop breakpoint in base.css;
+       rewriting the meta forces WebKit to rebuild the real one. -->
+  <script>
+    if (/iphone|ipod/i.test(navigator.userAgent) || (/macintosh/i.test(navigator.userAgent) && navigator.maxTouchPoints > 1)) {
+      const viewportMeta = document.querySelector('meta[name="viewport"]');
+      const iOSViewport = 'width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover';
+      viewportMeta.setAttribute('content', iOSViewport);
+      if (navigator.standalone) {
+        const repairViewport = () => {
+          if (window.innerWidth > screen.width * 1.5) {
+            viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1');
+            setTimeout(() => viewportMeta.setAttribute('content', iOSViewport), 50);
+          }
+        };
+        window.addEventListener('pageshow', repairViewport);
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible') setTimeout(repairViewport, 0);
+        });
+      }
+    }
+  </script>
+  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#10131b" media="(prefers-color-scheme: dark)" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="EN Spickzettel" />
+  <meta name="description" content="Mobiler Spickzettel für englische Grammatik: Zeiten, Artikel, Wortstellung, Bedingungssätze, Präpositionen." />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./icons/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="./icons/icon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="./icons/icon-180.png" />
+  <meta property="og:title" content="Englische Grammatik – Spickzettel" />
+  <meta property="og:description" content="Englische Grammatik, ohne im Lehrbuch zu blättern: Zeiten, Artikel, Wortstellung, Bedingungssätze. A1–B1, offline." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://andkirby.github.io/learn-language-cheat-sheet/en/de/" />
+  <meta property="og:image" content="https://andkirby.github.io/learn-language-cheat-sheet/en/de/icons/icon-512.png" />
+  <meta name="twitter:card" content="summary" />
+  <title>Englische Grammatik – Spickzettel</title>
+  <link rel="stylesheet" href="../../assets/base.css" />
+  <!-- Generated from content/decks/en-de.json by tools/build_pages.py — do not edit by hand;
+       regenerate with: python3 tools/build_pages.py content/decks/en-de.json -->
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand-row">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">EN</div>
+          <div>Englisch-Spickzettel<small>DE → EN · A1–B1</small></div>
+        </div>
+        <button class="icon-btn" id="start" type="button" data-detail="lookup-help" aria-haspopup="dialog" aria-label="So geht’s" title="So geht’s"><span class="ico" aria-hidden="true">i</span></button><button class="theme-btn" id="themeBtn" type="button" aria-label="Design: automatisch">◐</button>
+        <button class="install-btn" id="installBtn" type="button">Installieren</button>
+      </div>
+      <div class="search-row">
+        <div class="search-wrap">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="search" class="search" type="search" autocomplete="off" enterkeyhint="search" placeholder="Suche: present, perfect, if, the…" aria-label="Spickzettel durchsuchen" />
+          <button id="clearSearch" class="clear-search" type="button" aria-label="Suche löschen" hidden>×</button>
+        </div>
+        <details class="lang-menu" id="langMenu"><summary aria-label="Lernsprache und Erklärungssprache">EN · DE</summary><div class="lang-pop"><div class="lang-group"><div class="lang-group-label">Lernsprache</div><a href="../../de/ru/">Deutsch</a><span class="cur">English</span></div><div class="lang-group"><div class="lang-group-label">Erklärungssprache</div><a href="../ru/">Русский</a><span class="cur">Deutsch</span></div></div></details>
+      </div>
+    </div>
+  </header>
+
+  <noscript>
+    <style>
+      .tap, .install-btn, .clear-search, .theme-btn, .icon-btn { display: none !important; }
+      .answer[hidden] { display: block; }
+    </style>
+    <div class="notice" style="margin:12px 16px 0">Suche, Details und die App-Installation brauchen JavaScript. Der ganze Spickzettel funktioniert unten auch ohne.</div>
+    <p class="intro" style="margin:10px 16px 0">Such <b>den Auslöser</b> (Signalwort, Artikel, Konnektor oder Modalverb) — dann die Form und die Wortstellung.</p>
+  </noscript>
+
+  <main>
+    <p id="searchSummary" class="search-summary" role="status" aria-live="polite" hidden></p>
+    <div id="noResults" class="no-results">Nichts gefunden. Versuch’s mit „present“, „perfect“, „if“, „the“, „did“.</div>
+
+    <section id="articles" data-section data-view="articles">
+      <div class="section-head"><div><h2>Artikel</h2><p>Hauptmarker: ist schon klar, wovon die Rede ist? Dann the.</p></div><span class="section-badge">Articles</span></div>
+      <div class="cards two">
+        <article class="cheat-card" id="articles-articles" data-search="article a an the artikel unbestimmter bestimmter genus">
+        <h3>a / an / the / —</h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Gebrauch</span></div>
+        <div class="formula"><span class="slot">a / an</span><span class="arrow">=</span><span class="slot">einer von vielen</span></div>
+        <div class="formula"><span class="slot sub">the</span><span class="arrow">=</span><span class="slot">genau dieser</span></div>
+        <div class="example pair">
+          <div class="pair-src">I have <b class="hit">a</b> car.<br><b class="hit">The</b> car is red.</div>
+          <div class="pair-gloss">Irgendein Auto.<br>Schon das bekannte Auto.</div>
+        </div>
+        <p class="tiny">Nur zwei Artikel, kein Genus: <b>the</b> bleibt immer the — kein der/die/das-Raten. Bestimmter vs. unbestimmter Artikel kennst du, aber die Grenzen interferieren in beide Richtungen: feste Wendungen ohne Artikel (<i>go to school</i>), Rollen nach be mit <b>a</b> (<i>I’m a teacher</i>).</p>
+        <div class="chips"><button class="tap" data-detail="a-an">a oder an?</button><button class="tap" data-detail="the-article">Wann the</button><button class="tap" data-detail="zero-article">Wann ohne Artikel</button></div>
+        </article>
+        <article class="cheat-card" id="articles-zero-article" data-search="zero article nullartikel school piano feste wendungen kopfschmerzen headache teacher">
+        <h3>Die Grenzen — in beide Richtungen</h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Gebrauch</span></div>
+        <p>Deutsch mit Artikel, Englisch mit Nullartikel in festen Wendungen:</p>
+        <div class="example pair">
+          <div class="pair-src">I go to <b class="hit">school</b>.<br>She plays <b class="hit">the</b> piano.</div>
+          <div class="pair-gloss">Rolle: zum Lernen — nicht „zum Gebäude“.<br>Instrument: immer mit the.</div>
+        </div>
+        <p>Und umgekehrt — Deutsch ohne Artikel, Englisch mit <b>a</b>:</p>
+        <div class="example pair">
+          <div class="pair-src">Ich bin Lehrer. → I’m <b class="hit">a</b> teacher.<br>Ich habe Kopfschmerzen. → I have <b class="hit">a</b> headache.</div>
+          <div class="pair-gloss">Rollen nach be und bei Beschwerden: a teacher, a headache.</div>
+        </div>
+        <div class="chips"><button class="tap" data-detail="school-exceptions">Schule, Bett, Krankenhaus</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="pronouns" data-section data-view="articles">
+      <div class="section-head"><div><h2>Pronomen</h2><p>Vier Formen pro Person — hier lebt der ganze Kasus, den Englisch noch hat.</p></div><span class="section-badge">Pronouns</span></div>
+      <article class="cheat-card" id="pronouns-pronouns" data-search="pronouns personal possessive possessiv subjekt objekt pronomen his him its mine you">
+        <h3>Pronomen: Subjekt · Objekt · Possessiv</h3>
+        <div class="badges"><span class="badge level">A1</span><span class="badge kind">Formen</span></div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Wer? (Subjekt)</th><th>Wen? (Objekt)</th><th>Wessen? (my…)</th><th>allein (mine)</th></tr></thead>
+            <tbody>
+              <tr><td>I</td><td>me</td><td>my</td><td class="hot">mine</td></tr>
+              <tr><td>you</td><td>you</td><td>your</td><td class="hot">yours</td></tr>
+              <tr><td>he</td><td class="hot">him</td><td>his</td><td>his</td></tr>
+              <tr><td>she</td><td class="hot">her</td><td>her</td><td class="hot">hers</td></tr>
+              <tr><td>it</td><td>it</td><td class="hot">its</td><td>—</td></tr>
+              <tr><td>we</td><td class="hot">us</td><td>our</td><td class="hot">ours</td></tr>
+              <tr><td>they</td><td class="hot">them</td><td>their</td><td class="hot">theirs</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="example">I saw <b>him</b> yesterday. · This is <b>his</b> car.</div>
+        <p class="tiny">my/mine ≈ mein/meins — die Doppelheit kennst du: <i>my car</i> · <i>The car is mine</i>. Fett = die Formen, auf denen es am häufigsten klemmt.</p>
+        <p class="tiny">Neu sind zwei Aufteilungen: sein deckt <b>his</b> UND <b>its</b> ab · ihr deckt <b>her</b> UND <b>their</b> ab. <b>You</b> heißt du, ihr und Sie; deutsch man → <b>you</b> (<i>One can…</i> klingt steif).</p>
+        <div class="chips"><button class="tap" data-detail="my-mine">my oder mine?</button><button class="tap" data-detail="reflexive">myself / yourself…</button></div>
+      </article>
+    </section>
+    <section id="order" data-section data-view="order">
+      <div class="section-head"><div><h2>Satzbau</h2><p>Englisch stellt nicht frei um — die Wortstellung trägt die Rolle.</p></div><span class="section-badge">Wortstellung</span></div>
+      <div class="cards two">
+        <article class="cheat-card" id="order-svo" data-search="svo word order wortstellung satzbau aussagesatz subjekt verb objekt reihenfolge betonung umstellen streng">
+        <h3>SVO — streng</h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Wortstellung</span></div>
+        <div class="formula"><span class="slot">Subjekt</span><span class="arrow">→</span><span class="slot verb">Verb</span><span class="arrow">→</span><span class="slot">Objekt</span></div>
+        <div class="example"><b>I love you.</b> Die Reihenfolge zeigt die Rollen: Subjekt → Verb → Objekt.<br><b>The dog bites the man.</b> ≠ <b>The man bites the dog.</b> — die Rollen tauschen, der Sinn kippt.</div>
+        <p class="tiny">Der Aussagesatz ist fest: Deutsch stellt für die Betonung frei um („Den Mann beißt der Hund“ — der Kasus rettet das); die englische Wortstellung hat nur die Position, der Satzbau lässt sich nicht drehen. Umstellen heißt hier: die Rollen tauschen.</p>
+        <div class="chips"><button class="tap" data-detail="svo">Warum das Englische so streng ist</button></div>
+        </article>
+        <article class="cheat-card" id="order-do-questions" data-search="do does did frage fragen hilfsverb grundform subjektfrage inversion question questions auxiliary">
+        <h3>Fragen: Do / Does / Did</h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Wortstellung</span></div>
+        <div class="formula"><span class="slot sub">Do</span><span class="slot">you</span><span class="slot verb">like</span><span class="slot">tea?</span></div>
+        <p>Englisch schiebt das Hilfsverb Do/Does/Did nach vorn; das Vollverb bleibt in der <b>Grundform</b> — nicht in der -s-Form.</p>
+        <div class="example"><b>Does she work?</b> Nicht: <s>Does she works?</s><br><b>Where do you live?</b></div>
+        <p class="tiny">be und Modals umgehen do — reine Umstellung wie im Deutschen: <b>Is she…? Can you…?</b> Subjektfrage: <b>Who lives here?</b> — ohne do, wie „Wer wohnt hier?“.</p>
+        <div class="chips"><button class="tap" data-detail="do-questions">So baust du Fragen — und wo du kalkst</button></div>
+        </article>
+        <article class="cheat-card" id="order-frequency" data-search="adverbs frequency häufigkeit häufigkeitsadverbien adverbien immer nie position mittelfeld always never">
+        <h3>Immer / Meistens / Nie</h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Wortstellung</span></div>
+        <p>Häufigkeitsadverbien — Adverbien wie always, never — stehen <b>vor dem Vollverb</b>, aber <b>nach be</b>. Der Platz ist fest, nicht frei wie im deutschen Mittelfeld.</p>
+        <div class="example"><b>I always drink</b> coffee. · <b>He is always late.</b><br>Nicht: <s>I go always</s> („Ich gehe immer…“ kalkt das Mittelfeld).</div>
+        <p class="tiny">Auch die deutsche V2-Gewohnheit kalkt: „Nie habe ich das gesehen“ → nicht <s>Never I have seen that</s>, sondern <b>I have never seen that</b> — Standardenglisch bleibt bei SVO.</p>
+        <div class="chips"><button class="tap" data-detail="frequency">Die Skala always → never</button></div>
+        </article>
+        <article class="cheat-card" id="order-mistakes" data-search="fehler typischer hilfsverb likes she inversion mistakes error">
+        <h3>Fehler №1: „Likes she tea?“</h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Wortstellung</span></div>
+        <div class="example pair">
+          <div class="pair-src"><s>Likes she tea?</s> → <b class="hit">Does she like tea?</b><br><s>Where you work?</s> → <b class="hit">Where do you work?</b></div>
+          <div class="pair-gloss">Der typische Kalk: „Mag sie Tee?“ kehrt nur das Verb. Englisch verlangt das Hilfsverb Do/Does/Did + Grundform.</div>
+        </div>
+        </article>
+        <article class="cheat-card" id="order-nuances" data-search="just actually still even though tönungswörter tönung tatsächlich sogar eben doch gerade noch aktuell falsche freunde">
+        <h3>Tönungswörter: just, actually…</h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Verwendung</span></div>
+        <p>Ein kurzes Wort trägt die Tönung. Vorsicht — falsche Freunde: <b>actually</b> ≠ „aktuell“, <b>even</b> ≠ „eben“.</p>
+        <div class="chips"><button class="tap neutral" data-detail="flavor-words">just — <b>gerade eben / bloß</b></button><button class="tap neutral" data-detail="flavor-words">actually — <b>tatsächlich</b></button><button class="tap neutral" data-detail="flavor-words">still — <b>immer noch</b></button><button class="tap neutral" data-detail="flavor-words">even — <b>sogar</b></button><button class="tap neutral" data-detail="flavor-words">though — <b>doch</b></button></div>
+        <div class="example pair">
+          <div class="pair-src">It's expensive. I like it, <b class="hit">though</b>. · <b class="hit">Even</b> a child can do it.</div>
+          <div class="pair-gloss">though ≈ „doch“ — am Satzende, diese Endposition hat das Deutsche nicht · even ≈ „sogar“</div>
+        </div>
+        <div class="chips"><button class="tap" data-detail="flavor-words">Alle fünf mit ihren Fallen</button></div>
+        </article>
+        <article class="cheat-card" id="order-linkers" data-search="however therefore meanwhile nevertheless although despite but so also falscher freund sondern konnektoren aber deshalb trotzdem obwohl währenddessen nicht nur auch komma">
+        <h3>Konnektoren: however, so, although…</h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Verbindung</span></div>
+        <p>Sie verbinden Sätze — Kontrast, Folge, Zeit, Zugeständnis. Falscher Freund: englisches <b>also</b> = „auch“; das deutsche „also“ heißt <b>so / therefore</b>.</p>
+        <div class="chips"><button class="tap neutral" data-detail="linking-words">but / however — <b>aber / jedoch</b></button><button class="tap neutral" data-detail="not-but">not (only) … but — <b>nicht…, sondern / nicht nur…, sondern auch</b></button><button class="tap neutral" data-detail="linking-words">so / therefore — <b>also / deshalb</b></button><button class="tap neutral" data-detail="linking-words">meanwhile — <b>währenddessen</b></button><button class="tap neutral" data-detail="linking-words">nevertheless — <b>trotzdem</b></button><button class="tap neutral" data-detail="linking-words">although / though — <b>obwohl</b></button><button class="tap neutral" data-detail="linking-words">despite — <b>trotz (+ Nomen)</b></button></div>
+        <div class="example pair">
+          <div class="pair-src">It was raining. <b class="hit">However</b>, we went out. · <b class="hit">Although</b> it rained, we went out.</div>
+          <div class="pair-gloss">however = das formellere „aber“, eigener Satz + Komma · although = „obwohl“</div>
+        </div>
+        <div class="example pair">
+          <div class="pair-src">The meeting is <b class="hit">not</b> on Monday, <b class="hit">but</b> on Tuesday. · She is <b class="hit">not only</b> smart <b class="hit">but also</b> kind.</div>
+          <div class="pair-gloss">„nicht am Montag, sondern am Dienstag“ · „nicht nur klug, sondern auch nett“</div>
+        </div>
+        <div class="chips"><button class="tap" data-detail="linking-words">despite oder although?</button></div>
+        </article>
+        <article class="cheat-card" id="order-contrast-linkers" data-search="while whereas on the other hand wohingegen zum anderen andererseits register kontrast zwei sätzen">
+        <h3>while / whereas / on the other hand</h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Verbindung</span></div>
+        <p>Kontrast zwischen zwei Sätzen: <b>while</b> (auch „während“ — Zeit), <b>whereas</b> (formell ≈ „wohingegen“), <b>on the other hand</b> („zum anderen / andererseits“). Die Wahl ist eine Registerfrage.</p>
+        <div class="example pair">
+          <div class="pair-src">I drink tea, <b class="hit">whereas</b> my wife prefers coffee. · <b class="hit">On the other hand</b>, it's cheaper.</div>
+          <div class="pair-gloss">while/whereas ≈ „wohingegen“ · on the other hand ≈ „zum anderen“</div>
+        </div>
+        <div class="chips"><button class="tap" data-detail="contrast-linkers">while — auch „während“</button></div>
+        </article>
+        <article class="cheat-card" id="order-there-is" data-search="there is are there&#x27;s it&#x27;s es gibt verneinung frage vorhanden">
+        <h3>there is / there are</h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Verwendung</span></div>
+        <p>= „es gibt / es ist vorhanden“. <b>There is</b> + eines oder Unzählbares, <b>There are</b> + mehrere — das Deutsche macht diesen Unterschied nicht:</p>
+        <div class="example pair">
+          <div class="pair-src"><b>There is</b> a shop nearby. · <b>There are</b> two shops.</div>
+          <div class="pair-gloss">„Es gibt“ deckt beides ab — der Kalk-Fehler: <s>There's many people</s></div>
+        </div>
+        <div class="chips"><button class="tap" data-detail="there-is">Verneinung, Frage und There's vs It's</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="tenses" data-section data-view="tenses">
+      <div class="section-head"><div><h2>Zeiten</h2><p>Erst die Bedeutung, dann die Form — Signalwörter sind nur Hinweise.</p></div><span class="section-badge">Zeiten</span></div>
+      <div class="cards two">
+        <article class="cheat-card" id="tenses-present-simple" data-search="present simple gewohnheit tatsachen fahrplan every day usually often marker">
+        <h3>Present Simple</h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Zeitform</span></div>
+        <div class="formula"><span class="slot">V</span><span class="arrow">+</span><span class="slot end">s (3. Person)</span></div>
+        <p>Gewohnheiten, Tatsachen, Fahrpläne. Marker: <b>every day, usually, often</b>. Nur die 3. Person Singular bekommt <b>-s</b> — wie das deutsche <b>-t</b> bei er/sie/es.</p>
+        <div class="example"><b>She works</b> every day.<br><b>He doesn't work</b> on Sundays.</div>
+        <div class="chips"><button class="tap" data-detail="present-simple">Wann und wie</button></div>
+        </article>
+        <article class="cheat-card" id="tenses-present-continuous" data-search="present continuous verlaufsform präsens jetzt gerade im moment now look listen verärgerung ing am is are">
+        <h3>Present Continuous</h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Zeitform</span></div>
+        <div class="formula"><span class="slot">am / is / are</span><span class="arrow">+</span><span class="slot end">V-ing</span></div>
+        <p>Jetzt / in dieser Zeitspanne. Das Deutsche hat keine Verlaufsform — „Ich arbeite“ deckt beides ab. Marker: <b>now, at the moment, Look!, Listen!</b>.</p>
+        <div class="example pair">
+          <div class="pair-src"><b>She works in a bank.</b> · <b>She's working</b> from home today.<br><b>Look! It's raining.</b></div>
+          <div class="pair-gloss">Fakt/Gewohnheit · gerade jetzt — das deutsche Präsens „sie arbeitet“ deckt beides ab</div>
+        </div>
+        <p class="tiny">Auch <b>He's always losing his keys.</b> — Continuous mit <b>always</b> = Verärgerung, nicht „jetzt“.</p>
+        <div class="chips"><button class="tap" data-detail="present-continuous">Simple vs Continuous</button></div>
+        </article>
+        <article class="cheat-card" id="tenses-past-simple" data-search="past simple vergangenheit präteritum perfekt abgeschlossen gestern yesterday unregelmäßig did">
+        <h3>Past Simple</h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Zeitform</span></div>
+        <div class="formula"><span class="slot">V2</span><span class="arrow">/</span><span class="slot">did + V1</span></div>
+        <p>Abgeschlossene Ereignisse der Vergangenheit. Marker: <b>yesterday, last week, in 2010, ago</b>. Die Form ist vertraut (Präteritum/Perfekt) — die Wahl kommt bei Perfect vs Past Simple.</p>
+        <div class="example pair">
+          <div class="pair-src"><b>I saw</b> him yesterday.<br><b>Did you see</b> him?</div>
+          <div class="pair-gloss">„Ich habe ihn gestern gesehen“ — gestern erzwingt die einfache Form</div>
+        </div>
+        <div class="chips"><button class="tap" data-detail="past-simple">Regelmäßig und unregelmäßig</button></div>
+        </article>
+        <article class="cheat-card" id="tenses-present-perfect" data-search="present perfect have has partizip ergebnis erfahrung bis jetzt gerade eben just already yet ever never recently">
+        <h3>Present Perfect</h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Zeitform</span></div>
+        <div class="formula"><span class="slot">have / has</span><span class="arrow">+</span><span class="slot end">V3</span></div>
+        <p>Ergebnis, das bis jetzt zählt / Erfahrung ohne Zeitangabe. Die Form ist das haben-Perfekt (have/has + Partizip II) — der Gebrauch ist enger. Marker: <b>just, already, yet, ever, never, recently</b>.</p>
+        <div class="example pair">
+          <div class="pair-src"><b>I have lost</b> my keys (ich komme nicht rein).<br><b>Have you ever been</b> to London?</div>
+          <div class="pair-gloss">„Ich habe sie gerade eben verloren“ — und sie sind immer noch weg</div>
+        </div>
+        <div class="chips"><button class="tap" data-detail="pp-vs-past">Gefahr №1: die Wahl</button></div>
+        </article>
+        <article class="cheat-card" id="tenses-pp-vs-past" data-search="present perfect past simple unterschied entscheidung wahl zeitangabe yesterday since for dauer punkt seit">
+        <h3>Perfect vs Past Simple</h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Zeitform</span></div>
+        <p>Die Entscheidung trifft die Bedeutung, nicht das Signalwort: Ergebnis/Erfahrung, die <b>jetzt</b> noch zählt → Perfect · abgeschlossene Tatsache → Past Simple. Gesprochenes Deutsch wählt Perfekt für beides — dieser Unterschied ist Gefahr №1.</p>
+        <div class="example pair">
+          <div class="pair-src"><b>I have seen</b> this film (ich kenne ihn jetzt).<br><b>I saw</b> it <b>yesterday</b>.</div>
+          <div class="pair-gloss">„Ich habe den Film gestern gesehen“ → I saw it yesterday — nicht I have seen it yesterday</div>
+        </div>
+        <p class="tiny">„Wurde eine Zeitangabe genannt?“ ist nur ein Hinweis: <b>I've lived here since 2020</b> (seit 2020 — Punkt, for two years — Dauer) — Zeit genannt, trotzdem Perfect.</p>
+        <div class="chips"><button class="tap" data-detail="pp-vs-past">Der Kalk in Paaren</button></div>
+        </article>
+        <article class="cheat-card" id="tenses-future" data-search="future will going to zukunft werden plan vorhersage spontan fahrplan zug fährt entscheidung">
+        <h3>Future: will / going to</h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Zeitform</span></div>
+        <div class="formula"><span class="slot">will + V1</span><span class="arrow">·</span><span class="slot">be going to + V1</span></div>
+        <p><b>will</b> ≈ werden: spontane Entscheidung oder Vorhersage für die Zukunft. <b>going to</b> hat kein deutsches Pendant: der vorher beschlossene Plan oder das absehbare Ereignis.</p>
+        <div class="example"><b>I'll help</b> you (spontan).<br><b>I'm going to visit</b> Paris (schon geplant).</div>
+        <p class="tiny">Der Fahrplan im Präsens klappt wie im Deutschen: <b>The train leaves at 6</b> ≈ „Der Zug fährt um 6“.</p>
+        <div class="chips"><button class="tap" data-detail="future">Wie du wählst</button></div>
+        </article>
+        <article class="cheat-card" id="tenses-past-continuous" data-search="past continuous was were verlauf hintergrund prozess ereignis parallel während while gerade als kochte">
+        <h3>Past Continuous</h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Zeitform</span></div>
+        <div class="formula"><span class="slot">was / were</span><span class="arrow">+</span><span class="slot end">V-ing</span></div>
+        <p>War im Prozess, als etwas geschah — der Hintergrund fürs Ereignis; zwei parallele Handlungen stehen beide im Past Continuous. Deutsch markiert den Verlauf mit „gerade“; while = „während“, dieselbe Doppelnutzung wie im Deutschen:</p>
+        <div class="example pair">
+          <div class="pair-src">I <b>was cooking</b> when he <b>called</b>. · They <b>were sleeping</b>.</div>
+          <div class="pair-gloss">„Ich kochte gerade, als er kam“ — gerade + Präteritum ≈ Past Continuous + Past Simple</div>
+        </div>
+        <div class="chips"><button class="tap" data-detail="past-continuous">vs Past Simple</button></div>
+        </article>
+        <article class="cheat-card" id="tenses-pp-continuous" data-search="present perfect continuous dauer bis jetzt frischer beweis seit zwei jahren recognition erkennen">
+        <h3>Present Perfect Continuous</h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Zeitform</span></div>
+        <div class="formula"><span class="slot">have / has been</span><span class="arrow">+</span><span class="slot end">V-ing</span></div>
+        <p>Recognition — erkennen genügt: Dauer bis jetzt oder ein frischer Beweis. Der seit-Satz ist die deutsche Falle:</p>
+        <div class="example pair">
+          <div class="pair-src">I <b class="hit">have been waiting</b> for an hour. · You look tired — <b class="hit">have you been running</b>?</div>
+          <div class="pair-gloss">„Ich wohne hier seit zwei Jahren“ → <b>I have been living here for two years</b>, nicht <s>I live here since two years</s></div>
+        </div>
+        <div class="chips"><button class="tap" data-detail="pp-continuous">vs Present Perfect</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="verbs" data-section data-view="verbs">
+      <div class="section-head"><div><h2>Verbkonstruktionen</h2><p>Modale, Passiv, V-ing vs to V, Verneinung, Relativsätze, Imperativ.</p></div><span class="section-badge">Verben</span></div>
+      <div class="cards two">
+        <article class="cheat-card" id="verbs-modals" data-search="modal can could must should may might have to müssen können dürfen sollen infinitiv grundform">
+        <h3>Modale: can, could, must, should…</h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Gebrauch</span></div>
+        <div class="formula"><span class="slot">modal</span><span class="arrow">+</span><span class="slot verb">V1 ohne to</span></div>
+        <p><b>can</b> — <i>können</i> · <b>must</b> — <i>müssen</i> · <b>should</b> — <i>sollen</i> · <b>may</b> — <i>dürfen</i> · <b>have to</b> — <i>müssen (äußere Regel)</i> · <b>might</b> — <i>könnte sein</i>.</p>
+        <div class="example">He must <b class="hit">be</b> tired. · You should <b class="hit">sleep</b> more.</div>
+        <p class="tiny">Wie im Deutschen: Modal + Infinitiv ohne zu — nach dem Modal steht die Grundform, nie <b>to</b>.</p>
+        <div class="chips"><button class="tap" data-detail="modals-en">Alle Bedeutungen</button></div>
+        </article>
+        <article class="cheat-card" id="verbs-mustnt" data-search="mustnt must not dont have to verboten verbot darf nicht pflicht erlaubt">
+        <h3>mustn't ≠ don't have to</h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Gebrauch</span></div>
+        <p><b>mustn't</b> = <i>darf nicht</i> (Verbot). <b>don't have to</b> = <i>muss nicht</i> (keine Pflicht).</p>
+        <div class="example pair">
+          <div class="pair-src"><b class="hit">You mustn't smoke</b> here.<br><b class="hit">You don't have to come</b> early.</div>
+          <div class="pair-gloss">Verbot — hier rauchen ist nicht erlaubt.<br>Keine Pflicht — früh kommen ist nicht nötig.</div>
+        </div>
+        <div class="chips"><button class="tap" data-detail="mustnt">Warum man sie verwechselt</button></div>
+        </article>
+        <article class="cheat-card" id="verbs-passive" data-search="passive passiv werden partizip be v3 von by hilfsverb">
+        <h3>Passiv</h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Formen</span></div>
+        <div class="formula"><span class="slot">be</span><span class="arrow">+</span><span class="slot end">V3</span></div>
+        <p><b>werden + Partizip II</b> wird zu <b>be + V3</b> — nur das Hilfsverb wechselt.</p>
+        <div class="example"><b class="hit">The house was built</b> in 1930.</div>
+        <p class="tiny"><b>built </b><b>by</b> the workers — nicht <s>from</s>: das deutsche <i>von</i> deckt of, from und by ab; der Agens steht im Passiv immer mit <b>by</b>.</p>
+        <div class="chips"><button class="tap" data-detail="passive-en">Zeiten und wer’s getan hat</button></div>
+        </article>
+        <article class="cheat-card" id="verbs-gerund-infinitive" data-search="gerund infinitive enjoy finish want decide stop ing to v verben liste aufhören anhalten">
+        <h3>V-ing oder to V?</h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Gebrauch</span></div>
+        <p><b>enjoy, finish, mind</b> + <b>V-ing</b> · <b>want, decide, hope</b> + <b>to V</b>.</p>
+        <div class="example">I enjoy <b class="hit">reading</b>. · I want <b class="hit">to read</b>.</div>
+        <p class="tiny"><b>stop smoking</b> — mit dem Rauchen aufhören ≠ <b>stop to smoke</b> — anhalten, um zu rauchen.</p>
+        <div class="chips"><button class="tap" data-detail="gerund-infinitive">Liste der häufigen Verben</button></div>
+        </article>
+        <article class="cheat-card" id="verbs-relatives" data-search="relative clauses who which that whose where personen sachen belebt komma">
+        <h3>Relative clauses: who / which / that</h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Verbindung</span></div>
+        <p><i>der/die/das</i> markieren Genus und Kasus — Englisch fragt nach <b>belebt oder Sache</b>:</p>
+        <div class="example pair">
+          <div class="pair-src">The man <b class="hit">who</b> lives next door is 90. · The book <b class="hit">that</b> I read was great.</div>
+          <div class="pair-gloss">who — Personen · which — Sachen · that — beides.</div>
+        </div>
+        <p class="tiny"><s>The man which…</s> ist der typische deutsche Kalk — das Entscheidungswort wählt nach Belebtheit, nicht nach Genus.</p>
+        <div class="chips"><button class="tap" data-detail="relatives">whose, where und das Komma</button></div>
+        </article>
+        <article class="cheat-card" id="verbs-negation" data-search="negation verneinung dont doesnt didnt never kein support grundform">
+        <h3>Verneinung: don't / never / no</h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Formen</span></div>
+        <p><b>don't / doesn't / didn't</b> + Grundform · <b>never</b> statt <b>not</b> · <b>no</b> + Nomen = kein (1:1).</p>
+        <div class="example">I <b class="hit">don't</b> smoke. · I have <b class="hit">never</b> been to Rome. · I have <b class="hit">no</b> money.</div>
+        <p class="tiny"><i>Ich sehe es nicht</i> → <b>I don't see it</b> — die Negation läuft übers Hilfsverb; Deutsch negiert das Verb direkt.</p>
+        <div class="chips"><button class="tap" data-detail="negation">do-support — die eigentliche Falle</button></div>
+        </article>
+        <article class="cheat-card" id="verbs-imperative" data-search="imperative imperativ befehl lets please grundform subjekt bitte">
+        <h3>Imperativ: eine Befehlsform für alle</h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Formen</span></div>
+        <p><i>Komm! · Kommt! · Kommen Sie!</i> → <b>Open!</b> — immer die Grundform, ohne Subjekt.</p>
+        <div class="example"><b class="hit">Please sit down</b>. · <b class="hit">Let's not argue</b>.</div>
+        <p class="tiny"><b>Bitte + Grundform</b> — die Bitte ohne <b>to</b> · nicht <s>Sit you down</s> — das deutsche <i>Sie</i> trägt das Pronomen mit, der englische Imperativ nicht.</p>
+        <div class="chips"><button class="tap" data-detail="imperative">Let's und Höflichkeit</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="preps" data-section data-view="preps">
+      <div class="section-head"><div><h2>Präpositionen</h2><p>in / on / at für Zeit und Ort — und feste Paare, die nicht wörtlich übersetzt werden.</p></div><span class="section-badge">Prepositions</span></div>
+      <div class="cards two">
+        <article class="cheat-card" id="preps-time" data-search="prepositions time zeit in on at am montag morgen abend uhrzeit nacht wochenende">
+        <h3>Zeit: <b>in / on / at</b></h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Signalwort → Präposition</span></div>
+        <div class="formula"><span class="slot sub"><b>in</b></span><span class="slot">Monate, Jahre, Tageszeiten</span><span class="slot sub"><b>on</b></span><span class="slot">Tage, Datum</span><span class="slot sub"><b>at</b></span><span class="slot">Uhrzeiten, night</span></div>
+        <div class="example pair">
+          <div class="pair-src">am Montag → <b class="hit">on Monday</b><br>am Morgen / am Abend → <b class="hit">in the morning</b> / <b class="hit">in the evening</b><br>in der Nacht → <b class="hit">at night</b></div>
+          <div class="pair-gloss">Deutsches „am“ entscheidet nicht — die Tagesart wählt das englische Wort.</div>
+        </div>
+        <p class="tiny">am Wochenende: <b>at the weekend</b> (BrE) / <b>on the weekend</b> (AmE).</p>
+        <div class="chips"><button class="tap" data-detail="time-preps">Komplette Übersicht</button></div>
+        </article>
+        <article class="cheat-card" id="preps-place" data-search="prepositions place ort in on at an wand bahnhof punkt oberfläche hause innen station">
+        <h3>Ort: <b>in / on / at</b></h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Signalwort → Präposition</span></div>
+        <div class="formula"><span class="slot sub"><b>in</b></span><span class="slot">innen, Großraum</span><span class="slot sub"><b>on</b></span><span class="slot">Oberfläche, Linie</span><span class="slot sub"><b>at</b></span><span class="slot">Punkt, Treffpunkt</span></div>
+        <div class="example pair">
+          <div class="pair-src"><b>in Berlin</b> — wie im Deutschen<br>an der Wand → <b class="hit">on the wall</b> · am Bahnhof → <b class="hit">at the station</b> · zu Hause → <b class="hit">at home</b></div>
+          <div class="pair-gloss">Deutsches „an“ heißt on UND at — frag: Oberfläche oder Punkt?</div>
+        </div>
+        <div class="chips"><button class="tap" data-detail="place-preps">Wie du sie nicht verwechselst</button></div>
+        </article>
+        <article class="cheat-card" id="preps-dependent" data-search="dependent prepositions feste paare verb warten denken abhängen teilnehmen freuen mathe wait think depend">
+        <h3>Feste Paare: <b>Verb + preposition</b></h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Signalwort → Präposition</span></div>
+        <p>Die englische Präposition passt fast nie zur deutschen — das Paar zusammen lernen:</p>
+        <div class="chips"><button class="tap neutral" data-detail="dependent-preps">warten auf → <b>wait for</b></button><button class="tap neutral" data-detail="dependent-preps">denken an → <b>think of</b></button><button class="tap neutral" data-detail="dependent-preps">sich freuen auf → <b>look forward to</b></button><button class="tap neutral" data-detail="dependent-preps">abhängen von → <b>depend on</b></button><button class="tap neutral" data-detail="dependent-preps">teilnehmen an → <b>take part in</b></button><button class="tap neutral" data-detail="dependent-preps">gut in Mathe → <b>good at</b></button></div>
+        <div class="example">abhängen von → <b class="hit">depend on</b> — nicht <s>depend of</s></div>
+        </article>
+      </div>
+    </section>
+    <section id="nouns" data-section data-view="articles">
+      <div class="section-head"><div><h2>Nomen: Zahl und Vergleich</h2><p>Plural, Zählbarkeit, Steigerung — hier ist Englisch regelmäßiger als Deutsch.</p></div><span class="section-badge">Nouns</span></div>
+      <div class="cards two">
+        <article class="cheat-card" id="nouns-plurals" data-search="plural nouns unregelmäßige irregular men children information knowledge software">
+        <h3>Plural: eine Regel</h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Formen</span></div>
+        <p>Eine -s-Regel statt fünf deutsche Muster (<i>Kind → Kinder</i>, <i>Haus → Häuser</i> → <i>house → houses</i>): meist <b>+s</b>; nach Zischlauten <b>+es</b>; Konsonant + y → <b>-ies</b>; oft -f/-fe → <b>-ves</b>.</p>
+        <div class="example">cats · boxes · cities · days · leaves<br>Unregelmäßig: <b>man–men, child–children, foot–feet, tooth–teeth</b></div>
+        <p class="tiny"><b>child/children</b> ist dieselbe Reliktform wie <i>Kind → Kinder</i> — Vokalwechsel, sofort wiedererkennbar.</p>
+        <p class="tiny">Die Kehrseite: Englisch macht Wörter unzählbar, die Deutsch zählt — <b>information, knowledge, advice, news, money, software</b> bleiben ohne -s: ✗ <s>informations</s>.</p>
+        <div class="chips"><button class="tap" data-detail="plurals">Regeln und Ausnahmen</button></div>
+        </article>
+        <article class="cheat-card" id="nouns-countable" data-search="countable uncountable much many few little zählbar viel viele advice news">
+        <h3>Zählbar oder nicht?</h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Gebrauch</span></div>
+        <p><b>many / few</b> + Zählbares · <b>much / little</b> + Unzählbares — die viel/viele-Entscheidung kennst du.</p>
+        <div class="example pair">
+          <div class="pair-src">much time · many friends · little money<br><b class="hit">advice, news, money</b></div>
+          <div class="pair-gloss">— stehen immer im Singular: kein -s, kein a.</div>
+        </div>
+        <div class="chips"><button class="tap" data-detail="countable">Unzählbares zählen</button></div>
+        </article>
+        <article class="cheat-card" id="nouns-some-any" data-search="some any etwas beliebig aussage frage verneinung angebot bitte">
+        <h3>some / any</h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Gebrauch</span></div>
+        <div class="formula"><span class="slot">some</span><span class="arrow">+</span><span class="slot">Aussage</span><span class="slot">any</span><span class="arrow">+</span><span class="slot end">Frage / Verneinung</span></div>
+        <div class="example pair">
+          <div class="pair-src"><b>I have some money.</b><br><b>Do you have any questions?</b> · <b>I don’t have any money.</b></div>
+          <div class="pair-gloss">some ≈ etwas (bejahend) · any ≈ irgendwelche.</div>
+        </div>
+        <p class="tiny">Die Teilzuordnung ist Neulernen: some im Angebot und in Bitten (<b>Can I have some water?</b>) · any = „beliebig“ in Aussagen (<b>Take any seat</b>).</p>
+        <div class="chips"><button class="tap" data-detail="some-any">Feinheiten</button></div>
+        </article>
+        <article class="cheat-card" id="nouns-comparative" data-search="comparative superlative steigerung komparativ als than as bigger more most better best">
+        <h3>Steigerung: Komparativ und Superlativ</h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Formen</span></div>
+        <div class="formula"><span class="slot">big — bigger — the biggest</span></div>
+        <p>Kurz: <b>-er / the -est</b> · Lang: <b>more / the most</b>. Deutsch <b>als</b> heißt einmal <b>than</b> (<b class="hit">bigger than</b>) und einmal <b>as … as</b> (<i>so groß wie</i>).</p>
+        <div class="example pair">
+          <div class="pair-src"><b>She is taller than</b> me.<br><b>good — better — the best</b> = gut — besser — am besten</div>
+          <div class="pair-gloss">✗ <s>bigger as</s> — der deutsche Kalk; Gleichheit immer <b>as … as</b>.</div>
+        </div>
+        <p class="tiny">Niemals doppelt: ✗ <s>more better</s> → <b>better</b>. Schreibung: <i>big → bigger</i> · <i>happy → happier</i> · <i>nice → nicer</i>.</p>
+        <div class="chips"><button class="tap" data-detail="comparative">Regeln und Ausnahmen</button></div>
+        </article>
+        <article class="cheat-card" id="nouns-numbers-dates" data-search="ordinal ordnungszahlen 1st 2nd 3rd fifth twelfth datum daten jahre jahrzehnt may">
+        <h3>Zahlen und Daten: 1st, 2nd, 3rd</h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Formen</span></div>
+        <p>Ordnungszahlen: <b>1st first · 2nd second · 3rd third · 5th fifth · 12th twelfth</b> — fifth und twelfth ändern die Schreibung.</p>
+        <div class="example pair">
+          <div class="pair-src">on <b class="hit">5 May</b> · on <b class="hit">the 5th of May</b> · <b class="hit">in the 1990s</b>.</div>
+          <div class="pair-gloss">Datum → on (am 5. Mai, ohne Punkt) · Jahr und Monat → in · Jahrzehnt: the + -s (die 90er).</div>
+        </div>
+        <p class="tiny">Jahre liest du paarweise wie im Deutschen: 1985 → <b>nineteen eighty-five</b> (neunzehnhundertfünfundachtzig).</p>
+        <div class="chips"><button class="tap" data-detail="numbers-dates">Jahre lesen</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="conditionals" data-section data-view="verbs">
+      <div class="section-head"><div><h2>Bedingungssätze</h2><p>Die Formel bleibt gleich: If + Bedingung, + Folge.</p></div><span class="section-badge">If-Sätze</span></div>
+      <div class="cards two">
+        <article class="cheat-card" id="conditionals-cond1" data-search="conditional type 1 first real future will zukunft wenn">
+        <h3>Type 1 — reale Zukunft</h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Bedingungssatz</span></div>
+        <div class="formula"><span class="slot sub">If + Present</span><span class="arrow">,</span><span class="slot verb">will + V1</span></div>
+        <div class="example pair">
+          <div class="pair-src"><b class="hit">If it rains, we will stay</b> at home.</div>
+          <div class="pair-gloss">Nach <b>if</b> steht kein will — will lebt im Hauptsatz.</div>
+        </div>
+        <p class="tiny"><i>Wenn es regnen wird…</i> — das Deutsche darf Futur im wenn-Satz, Englisch nicht: nicht <s>If it will rain</s>.</p>
+        <div class="chips"><button class="tap" data-detail="cond1">if oder when?</button></div>
+        </article>
+        <article class="cheat-card" id="conditionals-cond2" data-search="conditional type 2 second unreal would were konjunktiv hätte würde jetzt">
+        <h3>Type 2 — unrealistisch jetzt</h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Bedingungssatz</span></div>
+        <div class="formula"><span class="slot sub">If + Past</span><span class="arrow">,</span><span class="slot verb">would + V1</span></div>
+        <div class="example pair">
+          <div class="pair-src"><b class="hit">If I had time, I would help</b> you.<br>If I <b class="hit">were</b> you…</div>
+          <div class="pair-gloss">≈ Wenn ich Zeit hätte, würde ich helfen — strukturell Konjunktiv II.<br>were — für alle Personen.</div>
+        </div>
+        <div class="chips"><button class="tap" data-detail="cond2">Warum were?</button></div>
+        </article>
+        <article class="cheat-card" id="conditionals-cond0" data-search="conditional type 0 zero present gesetze regeln immer wenn">
+        <h3>Type 0 — immer so</h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Bedingungssatz</span></div>
+        <div class="formula"><span class="slot sub">If + Present</span><span class="arrow">,</span><span class="slot verb">Present</span></div>
+        <div class="example pair">
+          <div class="pair-src"><b class="hit">If you heat ice, it melts.</b></div>
+          <div class="pair-gloss">≈ Wenn man Eis erhitzt, schmilzt es — Gesetze, Regeln, immer-wenn-Zusammenhänge.</div>
+        </div>
+        <div class="chips"><button class="tap" data-detail="cond0">Wann 0 statt 1?</button></div>
+        </article>
+        <article class="cheat-card" id="conditionals-cond3" data-search="conditional type 3 third past regret unreal vergangenheit would have hätte">
+        <h3>Type 3 — unrealistische Vergangenheit</h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Bedingungssatz</span></div>
+        <div class="formula"><span class="slot sub">If + had V3</span><span class="arrow">,</span><span class="slot verb">would have V3</span></div>
+        <div class="example pair">
+          <div class="pair-src"><b class="hit">If I had known, I would have called.</b></div>
+          <div class="pair-gloss">≈ Wenn ich das gewusst hätte, hätte ich angerufen — Bedauern über die Vergangenheit.</div>
+        </div>
+        <p class="tiny">Für B1+ genügt Erkennen — der Bau entspricht dem deutschen hätte-Konjunktiv.</p>
+        </article>
+      </div>
+    </section>
+    <section id="practice" data-section data-view="practice">
+      <div class="section-head"><div><h2>Wiederholung</h2><p>Drei Fragen ohne extra „Lernmodus“.</p></div><span class="section-badge">30 sec</span></div>
+      <article class="cheat-card" data-search="practice quiz wiederholung üben test">
+        <div class="practice-q">
+          <b>1. Mag sie Tee? — Bild die Frage: ___ she ___ (like) tea?</b>
+          <div class="chips"><button class="tap neutral reveal" data-target="a1" aria-expanded="false" aria-controls="a1">Anzeigen</button></div>
+          <div class="answer" id="a1" hidden><b>Does she like</b> tea? — Englisch braucht Do/Does/Did + Grundform; <s>Likes she tea?</s> kehrt nur das Verb, wie das Deutsche.</div>
+        </div>
+        <div class="practice-q">
+          <b>2. Es regnet gerade. → It ___ (rain) now.</b>
+          <div class="chips"><button class="tap neutral reveal" data-target="a2" aria-expanded="false" aria-controls="a2">Anzeigen</button></div>
+          <div class="answer" id="a2" hidden><b>It’s raining</b> — Verlaufsform für „gerade jetzt“; <s>It rains now</s> überträgt das deutsche Präsens, das beides abdeckt.</div>
+        </div>
+        <div class="practice-q">
+          <b>3. Ich habe den Film gestern gesehen. → I ___ (see) the film yesterday.</b>
+          <div class="chips"><button class="tap neutral reveal" data-target="a3" aria-expanded="false" aria-controls="a3">Anzeigen</button></div>
+          <div class="answer" id="a3" hidden><b>saw</b> — Past Simple: „gestern“ ist abgeschlossen; <s>I have seen it yesterday</s> ist der Perfekt-Kalk. Ohne Zeitangabe wäre <b>I have seen</b> richtig (Perfect = Ergebnis jetzt).</div>
+        </div>
+      </article>
+    </section>
+    <div class="footer">Englisch-Spickzettel · <a href="../../">alle Spickzettel</a> · <a href="#practice">Wiederholung</a> · <span id="install-help">Installation: Android — Button „Installieren“ oder Browsermenü · iPhone — Teilen → Zum Home-Bildschirm</span> · Inhaltsplan: <code>en/de/SITE_PLAN.md</code></div>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Hauptnavigation">
+    <a class="nav-item active" aria-current="true" href="#articles" data-nav="articles"><span class="ico" aria-hidden="true">a/the</span><span>Artikel</span></a>
+    <a class="nav-item" href="#tenses" data-nav="tenses"><span class="ico" aria-hidden="true">V+s</span><span>Zeiten</span></a>
+    <a class="nav-item" href="#order" data-nav="order"><span class="ico" aria-hidden="true">SVO</span><span>Satzbau</span></a>
+    <a class="nav-item" href="#verbs" data-nav="verbs"><span class="ico" aria-hidden="true">can</span><span>Verben</span></a>
+    <a class="nav-item" href="#preps" data-nav="preps"><span class="ico" aria-hidden="true">in/on</span><span>Präpositionen</span></a>
+  </nav>
+
+  <dialog id="detailDialog" aria-labelledby="detailTitle">
+    <div class="sheet">
+      <div class="grab" aria-hidden="true"></div>
+      <div class="sheet-head">
+        <div><h2 id="detailTitle"></h2><p class="lead" id="detailLead"></p></div>
+        <button class="close-sheet" id="closeDialog" aria-label="Schließen" type="button">×</button>
+      </div>
+      <div id="detailBody"></div>
+    </div>
+  </dialog>
+
+  <script>
+    const DETAILS = {
+  "lookup-help": {
+    "title": "So geht’s",
+    "lead": "Auslöser → Form → Wortstellung.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Prinzip</b>Finde den Auslöser — Signalwort, Artikel, Konnektor oder Modalverb — und schau dann auf die passende Form und die Wortstellung.</div><div class=\"detail-block\"><b class=\"detail-label\">Suche</b>Such direkt: <i>present</i>, <i>the</i>, <i>must</i> — oder auf Deutsch. Die Suche prüft alle Bereiche gleichzeitig.</div><div class=\"detail-block\"><b class=\"detail-label\">Navigation</b>Fünf Bereiche unten; die Wiederholung verlinkt der Footer.</div>"
+  },
+  "a-an": {
+    "title": "a oder an",
+    "lead": "Entscheidend ist der erste Laut, nicht der Buchstabe.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Regel</b>a + Konsonant-Laut, an + Vokal-Laut: <i>a cat</i>, <i>an apple</i> — das Deutsche kennt keinen Wechsel: es bleibt immer <i>ein</i>.</div><div class=\"detail-block\"><b class=\"detail-label\">Laut-Fallen</b><i>an hour</i> (h stumm) · <i>a university</i> („ju-“) · <i>an MBA</i> („em-“).</div>"
+  },
+  "the-article": {
+    "title": "Wann the",
+    "lead": "Wenn klar ist, welches genau gemeint ist — Geschlecht spielt keine Rolle.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Signale</b>Zweite Erwähnung · im Kontext einzigartig (<i>the sun</i>, <i>the kitchen</i>) · Superlativ (<i>the best</i>).</div><div class=\"detail-block\"><b class=\"detail-label\">Beispiel</b>I bought <i>a</i> book. <i>The</i> book is interesting.<p class=\"detail-comment\">Erst irgendein Buch, dann das bekannte — dieselbe Bewegung wie im Deutschen.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Kein Genus</b>the bleibt immer the — kein der/die/das-Raten, auch nicht im Plural (<i>the car → the cars</i>).</div>"
+  },
+  "zero-article": {
+    "title": "Ohne Artikel",
+    "lead": "Verallgemeinerungen, Stoffe, feste Gruppen.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Verallgemeinern</b><i>Dogs are loyal</i> (Hunde im Allgemeinen) · <i>Coffee is expensive</i> (Kaffee als Stoff) — deutsch mit Artikel, englisch ohne.</div><div class=\"detail-block\"><b class=\"detail-label\">Feste Gruppen</b>Sprachen (<i>English</i>), Mahlzeiten (<i>at lunch</i>), Sport (<i>play football</i>), Personen- und Städtenamen.</div><div class=\"detail-block\"><b class=\"detail-label\">Aber</b>Instrument mit the: <i>play the piano</i> · Rolle nach be mit a/an: <i>I’m a teacher</i> (✗ deutsch „Ich bin Lehrer“).</div>"
+  },
+  "school-exceptions": {
+    "title": "Schule, Bett, Krankenhaus",
+    "lead": "Institution als Rolle — ohne Artikel; als Gebäude — mit the.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Rolle</b><i>go to school</i> (zum Lernen) · <i>go to bed</i> (zum Schlafen) · <i>in hospital</i> (als Patient, britisch; amerikanisch: <i>in the hospital</i>).</div><div class=\"detail-block\"><b class=\"detail-label\">Gebäude</b><i>go to the school</i> (z. B. zum Elternabend) · <i>meet at the hospital</i> (am Gebäude).</div><div class=\"detail-block\"><b class=\"detail-label\">Gleiche Logik</b><i>by car</i> („mit dem Auto“) · <i>at night</i> („in der Nacht“) — deutsche Artikel haben hier kein englisches Pendant.</div>"
+  },
+  "my-mine": {
+    "title": "my oder mine",
+    "lead": "my + Nomen, mine steht allein — wie mein/meins.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Vergleich</b><i>my</i> book = The book is <i>mine</i> — „mein Buch“ / „das Buch ist meins“.</div><div class=\"detail-block\"><b class=\"detail-label\">Typisch</b><i>a friend of mine</i><p class=\"detail-comment\">„ein Freund von mir“ — einer aus meiner Menge.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Genauso</b><i>yours, hers, ours, theirs</i> — nur <i>his</i> bleibt his, und <i>its</i> hat keine alleinige Form (✗ <s>The book is its</s>).</div>"
+  },
+  "reflexive": {
+    "title": "Reflexivpronomen",
+    "lead": "-self / -selves: die Handlung trifft den Täter selbst.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Formen</b>myself, yourself, himself, herself, itself, ourselves, yourselves, themselves.</div><div class=\"detail-block\"><b class=\"detail-label\">Beispiele</b><i>I hurt myself</i> („ich verletze mich“) · <i>Help yourself!</i> („Bedien dich!“)</div><div class=\"detail-block\"><b class=\"detail-label\">Nicht wie im Deutschen</b>Viele sich-Verben sind englisch nicht reflexiv: <i>sich freuen</i> → <i>I’m glad</i> · <i>sich erinnern</i> → <i>I remember</i> — kein -self.</div>"
+  },
+  "plurals": {
+    "title": "Plural: Regeln und Ausnahmen",
+    "lead": "+s als Standard, dazu Schreib- und Reliktregeln.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Schreibung</b>Standard <i>+s</i> · nach -s/-sh/-ch/-x/-o meist <i>+es</i> (boxes, tomatoes) · Konsonant + y → <i>-ies</i> (cities), Vokal + y → <i>+s</i> (days, boys).</div><div class=\"detail-block\"><b class=\"detail-label\">-f/-fe → -ves</b>Häufig: knife → knives, leaf → leaves, wolf → wolves. Aber nicht immer: roofs, chiefs.</div><div class=\"detail-block\"><b class=\"detail-label\">Unregelmäßige</b>man–men · woman–women · child–children · foot–feet · tooth–teeth · mouse–mice · person–people.</div><div class=\"detail-block\"><b class=\"detail-label\">Unverändert</b>fish, sheep, aircraft — wie deutsche Fremdwörter (der Computer → die Computer).</div><div class=\"detail-block\"><b class=\"detail-label\">Nur Zählbares</b>Den Plural gibt es nur für Zählbares: <i>water, information, advice</i> haben keinen — siehe Zählbar oder nicht?</div>"
+  },
+  "countable": {
+    "title": "Zählbarkeit",
+    "lead": "Die deutsche viel/viele-Frage entscheidet: zählbar → many/few, unzählbar → much/little.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Zählbar</b><i>many friends</i> (viele Freunde) · <i>a few books</i> · <i>few mistakes</i> (wenige).</div><div class=\"detail-block\"><b class=\"detail-label\">Unzählbar</b><i>much time</i> (viel Zeit) · <i>a little money</i> · <i>little news</i> (wenig).</div><div class=\"detail-block\"><b class=\"detail-label\">Zählbar machen</b><i>a piece of advice</i> („ein Rat“) · <i>a cup of coffee</i> · <i>two pieces of information</i>.</div><div class=\"detail-block\"><b class=\"detail-label\">Schein-Unzählbare</b><i>advice, information, news, money, knowledge, software</i> — kein -s, kein a; ✗ <s>informations</s>, ✗ <s>a news</s> · ✗ <s>How much people?</s> → <i>How many people?</i>.</div>"
+  },
+  "some-any": {
+    "title": "some / any",
+    "lead": "some in Aussagen, any in Fragen und Verneinungen — mit zwei Extras.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Basis</b><i>I have some money</i> (etwas Geld) · <i>Do you have any questions?</i> · <i>I don’t have any money</i> (kein Geld).</div><div class=\"detail-block\"><b class=\"detail-label\">any = beliebig</b>In Aussagen: <i>Take any seat</i> — „irgendeinen Platz, egal welchen“.</div><div class=\"detail-block\"><b class=\"detail-label\">some im Angebot</b>In Bitten und Angeboten steht some auch in Fragen: <i>Can I have some water?</i> — du erwartest Ja.</div><div class=\"detail-block\"><b class=\"detail-label\">Warum Neulernen</b>Deutsch deckt das mit etwas/einige/irgendwelche ab, ohne eine solche Aufteilung — die some/any-Zuordnung gibt es im Deutschen nicht.</div>"
+  },
+  "comparative": {
+    "title": "Steigerung: Regeln und Ausnahmen",
+    "lead": "Kurz → Suffix, lang → more/most; verglichen wird mit than.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Kurz</b>cheap – cheaper – the cheapest.</div><div class=\"detail-block\"><b class=\"detail-label\">Schreibung</b>Konsonant verdoppelt: <i>big → bigger</i> · -y → -ier: <i>happy → happier</i> · stummes -e fällt weg: <i>nice → nicer</i>.</div><div class=\"detail-block\"><b class=\"detail-label\">Lang</b>expensive – more expensive – the most expensive.</div><div class=\"detail-block\"><b class=\"detail-label\">Unregelmäßige</b><i>good–better–best</i> (gut–besser–am besten) · <i>bad–worse–worst</i> · <i>far–further–furthest</i> — das Trio deckt sich wörtlich mit dem Deutschen.</div><div class=\"detail-block\"><b class=\"detail-label\">als: zwei Bedeutungen</b>Vergleich: <i>bigger than</i> (größer als) · Gleichheit: <i>as big as</i> (so groß wie) — ✗ <s>bigger as</s> ist der deutsche Kalk.</div><div class=\"detail-block\"><b class=\"detail-label\">Formel</b>…er <b>than</b> · the …est / the most … — niemals doppelt: ✗ <s>more better</s>.</div>"
+  },
+  "numbers-dates": {
+    "title": "Daten und Jahre",
+    "lead": "Datum → on; Jahr und Monat → in; Jahrzehnte mit the + -s.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">on vs in</b><i>on 5 May</i> (Datum) · <i>in 2026</i> (Jahr) · <i>in May</i> (Monat) — siehe Zeit: in/on/at.</div><div class=\"detail-block\"><b class=\"detail-label\">Beide Datumsformen</b><i>on 5 May</i> (britisch, „5. Mai“ ohne Punkt) = <i>on the 5th of May</i> („am fünften Mai“).</div><div class=\"detail-block\"><b class=\"detail-label\">Jahre</b><i>1985 → nineteen eighty-five</i> · <i>2000 → two thousand</i> · <i>the 1990s → the nineties</i> („die 90er“).</div><div class=\"detail-block\"><b class=\"detail-label\">Schreib-Fallen</b><i>five → fifth</i> (nicht „fiveth“) · <i>twelve → twelfth</i> · <i>nine → ninth</i> (e fällt weg) — deutsch regulär: fünf → fünfte.</div>"
+  },
+  "svo": {
+    "title": "Warum der englische Satzbau so streng ist",
+    "lead": "Deutsch trägt die Rollen im Kasus, Englisch in der Position.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Deutsch</b>„Den Mann beißt der Hund“ bleibt verständlich — der Akkusativ „den“ zeigt, wer gebissen wird. Umstellen für die Betonung ist erlaubt.</div><div class=\"detail-block\"><b class=\"detail-label\">Englisch</b><b>The man bites the dog</b> ≠ <b>The dog bites the man</b> — gleiche Wörter, anderes Ereignis.<p class=\"detail-comment\">Wer vorn steht, ist das Subjekt. Für Betonung nutzt Englisch den Nachdruck beim Sprechen (Stress), nicht die Wortstellung.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Keine V2-Ausnahme</b>Auch nach vorangestelltem „Yesterday / Never / …“ bleibt das Subjekt beim Verb: <s>Never I have seen that</s> → <b>I have never seen that</b>.<p class=\"detail-comment\">Die literarische Form „Never have I…“ reicht erkennen — bilden musst du sie nicht.</p></div>"
+  },
+  "do-questions": {
+    "title": "Fragen bauen",
+    "lead": "Hilfsverb nach vorn, Vollverb in der Grundform — be und Modals dürfen allein.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Yes/No</b>Do/Does/Did + Subjekt + Grundform: <b>Does he work here?</b>.</div><div class=\"detail-block\"><b class=\"detail-label\">W-Frage</b>W-Wort + do/does/did: <b>Where did you go?</b>.</div><div class=\"detail-block\"><b class=\"detail-label\">be / Modals</b>Auch ohne do — reine Umstellung wie im Deutschen: <b>Is she…?</b> · <b>Can you…?</b> Do brauchen nur Vollverben.</div><div class=\"detail-block\"><b class=\"detail-label\">Subjektfrage</b><b>Who lives here?</b> — ohne do, wie „Wer wohnt hier?“: who ist bereits das Subjekt.</div><div class=\"detail-block\"><b class=\"detail-label\">Typische Kalkfehler</b><s>Likes she tea?</s> → <b>Does she like tea?</b> · <s>Did you saw</s> → <b>Did you see</b> — nach do steht immer die Grundform.</div>"
+  },
+  "frequency": {
+    "title": "Die Häufigkeitsskala",
+    "lead": "always → usually → often → sometimes → rarely → never.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Position</b>Vor dem Vollverb, nach be: He <b>is always</b> late. · I <b>always drive</b>.</div><div class=\"detail-block\"><b class=\"detail-label\">Die Extremskala</b><b>never</b> und <b>rarely</b> verneinen schon selbst: <b>I never drink coffee</b> = „Ich trinke nie Kaffee“ — ein zweites <b>not</b> kommt nicht dazu.</div><div class=\"detail-block\"><b class=\"detail-label\">Der V2-Kalk</b>„Nie habe ich das gesehen“ kalkt die deutsche Verbzweitstellung: <s>Never I have seen that</s> → <b>I have never seen that</b>.<p class=\"detail-comment\">Standardenglisch bleibt bei SVO; die literarische Form „Never have I…“ reicht erkennen.</p></div>"
+  },
+  "flavor-words": {
+    "title": "Tönungswörter: die fünf im Detail",
+    "lead": "Sie stehen wie Häufigkeitsadverbien: vor dem Vollverb, nach be.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">just</b>I've <b>just</b> eaten. — „gerade eben“ (Perfect-Marker) · <b>Just kidding!</b> — „nur zum Spaß“. Zwei Bedeutungen trennen: Zeit-Wörtchen vs. „lediglich“.</div><div class=\"detail-block\"><b class=\"detail-label\">actually</b><b>Actually</b>, I don't know. — „tatsächlich / eigentlich“. Nicht „aktuell“! aktuell = current.</div><div class=\"detail-block\"><b class=\"detail-label\">still</b>I <b>still</b> live here. — „immer noch“: läuft bis jetzt weiter. In Fragen/Verneinungen steht oft yet (siehe Perfect): <b>not yet</b> = „noch nicht“.</div><div class=\"detail-block\"><b class=\"detail-label\">even</b><b>Even</b> a child can do it. — „sogar“: Verstärkung direkt vor dem erstaunlichen Wort. Nicht „eben“!</div><div class=\"detail-block\"><b class=\"detail-label\">though</b>It's expensive. I like it, <b>though</b>. — „doch / allerdings“ am Satzende — diese Endposition hat das Deutsche nicht. Am Satzanfang ist though der Konnektor: <b>Though it's expensive…</b> (= obwohl).</div>"
+  },
+  "linking-words": {
+    "title": "Konnektoren: im Detail",
+    "lead": "however, therefore, meanwhile beginnen einen neuen Satz — dahinter ein Komma.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">but / however</b>It was raining. <b>However</b>, we went out.<p class=\"detail-comment\">„aber“: however ist die formellere Variante und steht als eigenes Wort am Satzanfang, mit Komma.</p></div><div class=\"detail-block\"><b class=\"detail-label\">so / therefore</b>I was tired, <b>so</b> I slept. — „also / deshalb“. <b>Therefore</b> — dasselbe, formeller.<p class=\"detail-comment\">Falscher Freund: englisches also = „auch“ (She also speaks German). Das deutsche „also“ übersetzt du mit so oder therefore.</p></div><div class=\"detail-block\"><b class=\"detail-label\">meanwhile</b>I cooked. <b>Meanwhile</b>, he watched TV.<p class=\"detail-comment\">„währenddessen“: zwei Dinge zur gleichen Zeit.</p></div><div class=\"detail-block\"><b class=\"detail-label\">nevertheless</b>The task was hard. <b>Nevertheless</b>, she finished it.<p class=\"detail-comment\">„trotzdem / nichtsdestotrotz“: räumt einen Einwand beiseite.</p></div><div class=\"detail-block\"><b class=\"detail-label\">despite vs although</b><b>Despite</b> the rain ✓ · <s>Despite it was raining</s> ✗ → <b>Although it was raining</b> ✓.<p class=\"detail-comment\">trotz + Nomen = despite + Nomen; obwohl + Satz = although + Satz — diese Aufteilung kennst du bereits.</p></div>"
+  },
+  "not-but": {
+    "title": "not …, but / not only … but also",
+    "lead": "Nach der Verneinung korrigiert but wie „sondern“: nicht X, but Y.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">not …, but</b>The meeting is <b>not on Monday, but on Tuesday</b>.<p class=\"detail-comment\">„nicht am Montag, sondern am Dienstag“: Ein Modell wird verneint und durch das andere ersetzt — genau der Job von sondern.</p></div><div class=\"detail-block\"><b class=\"detail-label\">not only … but also</b>She is <b>not only smart but also kind</b>.<p class=\"detail-comment\">„nicht nur klug, sondern auch nett“ — das Paar geht 1:1.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Einfaches but</b>Nichts wird korrigiert, nur gegenübergestellt — dann heißt but einfach „aber“: It was raining, <b>but</b> we went out.</div><div class=\"detail-block\"><b class=\"detail-label\">Position</b>Beide Konstruktionen stehen innerhalb des Satzes — anders als Konnektoren wie however, die einen neuen Satz beginnen.</div>"
+  },
+  "there-is": {
+    "title": "there is / there are",
+    "lead": "Ohne do: Is there…? There aren't… — das ist be.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Verneinung / Frage</b><b>There isn't</b> a shop here. · <b>There aren't</b> any shops. · <b>Is there</b> a shop nearby?</div><div class=\"detail-block\"><b class=\"detail-label\">Vergangenheit</b><b>There was</b> a shop. · <b>There were</b> two shops.</div><div class=\"detail-block\"><b class=\"detail-label\">There's vs It's</b><b>There's a problem</b> — „es gibt ein Problem“ (es existiert) · <b>It's a problem</b> — „das ist ein Problem“ (über das konkrete Ding).</div>"
+  },
+  "present-simple": {
+    "title": "Present Simple",
+    "lead": "Gewohnheiten, Fakten, Fahrpläne — und nur eine -s-Endung.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Form</b>Grundform; nur die 3. Person Singular hängt <b>-s/-es</b> an (watches, studies). Deutsch flektiert mehr Personen — die Idee der Kongruenz kennst du also.</div><div class=\"detail-block\"><b class=\"detail-label\">Verneinung / Frage</b><b>don't/doesn't</b> + Grundform: <b>She doesn't smoke</b> (siehe Fragen: Do / Does / Did).</div><div class=\"detail-block\"><b class=\"detail-label\">Marker</b>every day, usually, always, on Mondays, never — Hinweise, keine Beweise: Die Bedeutung (Gewohnheit vs. gerade jetzt) entscheidet.</div>"
+  },
+  "present-continuous": {
+    "title": "Simple vs Continuous",
+    "lead": "Fakt/Gewohnheit gegen den Prozess jetzt — ein deutsches Präsens deckt beides ab.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Simple</b><b>I work at Google</b>.<p class=\"detail-comment\">„Ich arbeite bei Google“ — im Allgemeinen, ein Fakt.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Continuous</b><b>I'm working from home this week</b>. am/is/are + V-ing.<p class=\"detail-comment\">„Diese Woche arbeite ich von zu Hause“ — im Verlauf um jetzt.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Ohne -ing</b><b>know, like, want, need</b> — Zustandsverben, meist Simple: <b>I want coffee</b>, nicht <s>I'm wanting coffee</s>.</div><div class=\"detail-block\"><b class=\"detail-label\">always = Verärgerung</b><b>He's always losing his keys</b>. — nicht „jetzt“: eine Gewohnheit, die nervt. Die Marker now/Look! fehlen absichtlich.</div>"
+  },
+  "past-simple": {
+    "title": "Regelmäßig und unregelmäßig",
+    "lead": "V2 gilt für alle Personen gleich — Deutsch flektiert hier mehr.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Regelmäßig</b>+ed: work → <b>worked</b>.</div><div class=\"detail-block\"><b class=\"detail-label\">Unregelmäßig</b>Müssen sitzen: go–went–gone, see–saw–seen, have–had–had.</div><div class=\"detail-block\"><b class=\"detail-label\">Frage / Verneinung</b><b>did</b> + Grundform: <b>Did you go?</b> · <b>I didn't go</b> — das Hilfsverb trägt die Vergangenheit, nicht das Verb.</div><div class=\"detail-block\"><b class=\"detail-label\">Beim Deutschen</b>Präteritum und Perfekt decken beide das Past Simple ab: „Ich sah ihn“ und „Ich habe ihn gesehen“ → <b>I saw him</b>. Gesprochenes Deutsch wählt das Perfekt — genau das ist der Kalk (siehe Perfect vs Past Simple).</div>"
+  },
+  "present-perfect": {
+    "title": "Present Perfect",
+    "lead": "Vergangenheit, die bis in das Jetzt zählt.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Kern</b>Ergebnis jetzt oder Erfahrung ohne Zeitangabe: <b>I've lost my keys</b> — sie sind immer noch weg.</div><div class=\"detail-block\"><b class=\"detail-label\">Marker</b>just, already, yet, ever, never, so far, recently.</div><div class=\"detail-block\"><b class=\"detail-label\">Form</b>have/has + V3 (dritte Form = Partizip II): <b>I have seen</b>.<p class=\"detail-comment\">Die Form ist das haben-Perfekt — aber nicht jedes deutsche Perfekt ist ein englisches Perfect: „Ich habe es gestern gesehen“ → <b>I saw it yesterday</b>.</p></div>"
+  },
+  "pp-vs-past": {
+    "title": "Perfect vs Past Simple",
+    "lead": "Entscheidet die Verbindung zum Jetzt — nicht ein Signalwort.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Past Simple</b>Abgeschlossene Tatsache: <b>I saw him yesterday / in 2020 / last week</b>.</div><div class=\"detail-block\"><b class=\"detail-label\">Perfect</b>Verbindung zum Jetzt — Ergebnis jetzt (<b>I have lost my keys</b> — ich komme nicht rein) oder Erfahrung ohne Zeit (<b>I have seen him</b> — ich kenne ihn).</div><div class=\"detail-block\"><b class=\"detail-label\">Wo „Zeit genannt?“ versagt</b>Dauer bis jetzt: <b>I have lived here since 2020 / for two years</b>. Offener Zeitraum: <b>Have you seen Anna today?</b> Marker sind Hinweise — die Bedeutung entscheidet.</div><div class=\"detail-block\"><b class=\"detail-label\">seit wird zweigeteilt</b>Punkt → <b>since</b> (<b>since 2020</b>), Dauer → <b>for</b> (<b>for two years</b>) — das deutsche „seit“ deckt beides ab; die Aufteilung ist Neustoff.</div>"
+  },
+  "future": {
+    "title": "will oder going to",
+    "lead": "Spontane Entscheidung gegen den vorher gefassten Plan.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">will</b>Im Sprechmoment entschieden oder Vorhersage: <b>I'll help you</b>. · <b>It will rain</b>.<p class=\"detail-comment\">werden ist das Konzeptpaar — aber der pauschale werden-Kalk für jede Zukunftsform ist der vorhersehbare Fehler: erst fragen — spontan oder geplant?</p></div><div class=\"detail-block\"><b class=\"detail-label\">going to</b>Vorher beschlossen oder absehbar: <b>I'm going to study tonight</b>. · Look at the clouds — <b>it's going to rain</b>.<p class=\"detail-comment\">Kein deutsches Pendant: Die Unterscheidung spontan vs. geplant ist Neustoff.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Fahrplan</b>Present Simple für feste Pläne: <b>The train leaves at 6</b> ≈ „Der Zug fährt um 6“ — überträgt sich direkt.</div>"
+  },
+  "past-continuous": {
+    "title": "Past Continuous vs Past Simple",
+    "lead": "Langer Prozess — was/were + -ing; Ereignis — Past Simple.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Hintergrund + Ereignis</b>I <b>was cooking</b> when he <b>called</b>.<p class=\"detail-comment\">„Ich kochte gerade, als er kam“: Das deutsche „gerade“ erledigt, was das englische -ing macht; der Nebensatz steht im Präteritum.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Zwei parallele Prozesse</b>I <b>was reading</b> while she <b>was sleeping</b>.<p class=\"detail-comment\">while = „während“ — dieselbe Zeit-und-Kontrast-Doppelnutzung wie im Deutschen (siehe while / whereas).</p></div><div class=\"detail-block\"><b class=\"detail-label\">Nicht für Fakten</b>Ereignisse in Reihenfolge stehen im Past Simple: <b>I came home, saw the letter and read it</b>.</div>"
+  },
+  "pp-continuous": {
+    "title": "Perfect vs Perfect Continuous",
+    "lead": "Ergebnis oder Prozess? since/for passen in beide.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Ergebnis vs Prozess</b><b>I've painted the wall</b> — die Wand ist fertig (Ergebnis) · <b>I've been painting all day</b> — den ganzen Tag am Streichen (Prozess, vielleicht unvollendet).</div><div class=\"detail-block\"><b class=\"detail-label\">Der seit-Satz</b>„Ich wohne hier seit zwei Jahren“ → <b>I have been living here for two years</b>, nicht <s>I live here since two years</s> (Doppelkalk: Präsens statt Perfect und since statt for).<p class=\"detail-comment\">Das deutsche Präsens + seit entspricht hier dem Present Perfect Continuous; die Dauer markiert for.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Ausnahme</b><b>know, want, like</b> — Zustände ohne -ing auch hier: <b>I've known him for years</b>.</div>"
+  },
+  "contrast-linkers": {
+    "title": "while / whereas: im Detail",
+    "lead": "Sie verbinden zwei Fakten in einem Satz — das Komma steht davor.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">while — zweigleisig</b><b>I drink tea, while he watches TV</b> — „wohingegen“ (Kontrast) · <b>While I cooked, he watched TV</b> — „während“ (Zeit). Der Kontext entscheidet.<p class=\"detail-comment\">Genau die Doppelnutzung des deutschen „während“ — hier musst du nichts umlernen; nur die Registerwahl bleibt.</p></div><div class=\"detail-block\"><b class=\"detail-label\">whereas</b><b>She is tall, whereas her sister is short</b> — „wohingegen“: der formelle Konnektor; in der Alltagssprache steht meist while.</div><div class=\"detail-block\"><b class=\"detail-label\">on the other hand</b>Steht als eigener Satz: The flat is small. <b>On the other hand</b>, it's cheap.<p class=\"detail-comment\">„zum anderen / andererseits“ — das Gegenstück zum ersten Argument.</p></div>"
+  },
+  "modals-en": {
+    "title": "Modale: Bedeutungen und Form",
+    "lead": "Nach dem Modal steht die Grundform — genau wie Modal + Infinitiv im Deutschen.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">can/could</b>Können, Bitte, Erlaubnis: <b>Can you help me?</b> · <b>Could you open the window?</b> — could ist die weichere Bitte.<p class=\"detail-comment\">≈ Kannst du mir helfen? · Könntest du das Fenster aufmachen?</p></div><div class=\"detail-block\"><b class=\"detail-label\">must</b>Notwendigkeit: <b>You must stop.</b> · Schluss: <b>He must be tired</b> — der Schluss auf die Wahrscheinlichkeit funktioniert im Deutschen genauso.<p class=\"detail-comment\">≈ Er muss müde sein.</p></div><div class=\"detail-block\"><b class=\"detail-label\">have to</b><b>must</b> kommt von innen (eigener Wille), <b>have to</b> von außen (Regel, Chef): <b>I have to wear a uniform.</b> — das Deutsche sagt beides <i>müssen</i>.</div><div class=\"detail-block\"><b class=\"detail-label\">should</b>Rat: <b>You should rest.</b> — <i>≈ Du solltest dich ausruhen</i>.</div><div class=\"detail-block\"><b class=\"detail-label\">may/might</b><b>may</b> — dürfen (Erlaubnis) · <b>may/might</b> — vielleicht: <b>It might rain.</b> — <i>≈ Es könnte regnen</i>.</div>"
+  },
+  "mustnt": {
+    "title": "mustn't vs don't have to",
+    "lead": "Beide klingen nach „nicht müssen“ — die Bedeutungen sind Gegensätze.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">mustn't</b>Verbot (= <i>darf nicht</i>): <b>You mustn't tell anyone.</b><p class=\"detail-comment\">≈ Du darfst es niemandem erzählen.</p></div><div class=\"detail-block\"><b class=\"detail-label\">don't have to</b>Keine Pflicht (= <i>muss nicht</i>): <b>You don't have to come early.</b><p class=\"detail-comment\">≈ Du musst nicht früh kommen — du kannst es aber.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Die Falle</b><i>muss nicht</i> sieht <b>must not</b> zum Verwechseln ähnlich — heißt aber das Gegenteil: <b>mustn't</b> verbietet, <b>don't have to</b> nimmt nur die Pflicht.<p class=\"detail-comment\">Der schärfste False Friend des Decks — beim Übersetzen erst fragen: Verbot oder keine Verpflichtung?</p></div>"
+  },
+  "passive-en": {
+    "title": "Passiv",
+    "lead": "werden + Partizip II wird zu be + V3 — nur das Hilfsverb wechselt.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Die gezeigten Zeiten</b><b>is built</b> · <b>was built</b> · <b>will be built</b> · <b>has been built</b> — <i>Das Haus wird gebaut</i> ≈ <b>The house is being built</b>.<p class=\"detail-comment\">Das Deck behauptet nur diese vier Zeiten — keine „alle Zeiten“-Garantie.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Wer hat’s getan?</b>Der Agens steht mit <b>by</b>: <b>The house was built by the workers.</b><p class=\"detail-comment\"><s>built from the workers</s> ist der Agens-Kalk: das deutsche <i>von</i> deckt of, from und by ab — im Passiv heißt er immer by.</p></div>"
+  },
+  "gerund-infinitive": {
+    "title": "V-ing vs to V",
+    "lead": "Das erste Verb entscheidet über den Schwanz.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">+ V-ing</b><b>enjoy, finish, mind, suggest, avoid, keep</b>: <b>I enjoy reading.</b><p class=\"detail-comment\">Das Deutsche hat kein Gerundium — <b>-ing</b> ist reiner Neustoff; <i>≈ Ich lese gern</i>.</p></div><div class=\"detail-block\"><b class=\"detail-label\">+ to V</b><b>want, decide, hope, plan, promise, need</b>: <b>I want to read.</b><p class=\"detail-comment\"><b>to</b> ist das deutsche <i>zu</i> (<i>wollen, … zu tun</i>).</p></div><div class=\"detail-block\"><b class=\"detail-label\">Bedeutung wechselt</b><b>stop smoking</b> — mit dem Rauchen aufhören · <b>stop to smoke</b> — anhalten, um zu rauchen.</div><div class=\"detail-block\"><b class=\"detail-label\">Die to-Falle</b><b>I look forward to seeing you.</b> — nach <b>look forward to</b> steht <b>-ing</b>.<p class=\"detail-comment\"><s>I look forward to see you</s> ist der Kalk aus <i>sich freuen, dich zu sehen</i> — hier ist <b>to</b> Präposition, kein Infinitiv-Marker.</p></div>"
+  },
+  "relatives": {
+    "title": "Relative clauses: who / which / that",
+    "lead": "Das Relativwort wählt nach Belebtheit — nicht nach Genus und Kasus.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">who / which / that</b><b>who</b> — Personen · <b>which</b> — Sachen · <b>that</b> — beides.<p class=\"detail-comment\"><s>The man which lives next door</s> ist der typische deutsche Kalk: <i>der/die/das</i> markieren Genus und Kasus, <b>who</b> markiert Person.</p></div><div class=\"detail-block\"><b class=\"detail-label\">whose / where</b><b>the man whose dog barks</b> — <i>≈ dessen Hund bellt</i> · <b>the city where I live</b> — <i>≈ die Stadt, in der ich wohne</i>.</div><div class=\"detail-block\"><b class=\"detail-label\">that darf weg</b><b>The book (that) I read was great.</b> — <b>that</b> fällt weg, wenn danach das Subjekt kommt; nach <b>that</b> + Subjekt bleibt es: <b>The book that helps</b>.<p class=\"detail-comment\">Das Deutsche lässt nie weg und setzt immer das Komma (<i>das Buch, das ich gelesen habe</i>) — der einschränkende englische Satz hat weder <b>that</b> nötig noch ein Komma.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Präposition hinten</b><b>the house I live in</b> — die Präposition bleibt am Ende; das Deutsche zieht sie vorn (<i>in dem ich wohne</i>).</div><div class=\"detail-block\"><b class=\"detail-label\">Kongruenz</b><b>people who are</b> (Plural) · <b>the person who is</b> — das Verb richtet sich nach dem Bezugswort.</div>"
+  },
+  "negation": {
+    "title": "Verneinung: don't / never / no",
+    "lead": "Deutsch negiert das Verb direkt — Englisch leitet die Verneinung über ein Hilfsverb.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">do-support</b><i>Ich sehe es nicht</i> → <b>I don't see it</b> — <b>don't / doesn't / didn't</b> + Grundform.<p class=\"detail-comment\"><s>I see not</s> ist der deutsche Kalk: das <b>not</b> steht direkt nach dem Hilfsverb — nicht im Mittelfeld wie das deutsche <i>nicht</i>.</p></div><div class=\"detail-block\"><b class=\"detail-label\">no = kein</b><b>I have no money</b> ≈ <i>Ich habe kein Geld</i> — 1:1. Gleichwertig: <b>I don't have any money</b>.</div><div class=\"detail-block\"><b class=\"detail-label\">never</b><b>I have never been to Rome</b> — <i>nie</i> ist bereits die ganze Verneinung; ein zweites <b>not</b> kommt nicht dazu.</div><div class=\"detail-block\"><b class=\"detail-label\">Position</b><b>I don't smoke</b> · <b>He doesn't smoke</b> · <b>I didn't smoke</b> — Hilfsverb + not, das Vollverb bleibt in der Grundform.</div><div class=\"detail-block\"><b class=\"detail-label\">never als Adverb</b><b>I never drink coffee</b> — vor dem Vollverb, wie andere Häufigkeitsadverbien (<b>I always drink coffee</b>).</div>"
+  },
+  "imperative": {
+    "title": "Imperativ: die eine Befehlsform",
+    "lead": "Grundform ohne Subjekt — für du, ihr und Sie gleichermaßen.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Die Sie-Falle</b><i>Setzen Sie sich</i> trägt das Pronomen mit — im Englischen fällt es weg: <b>Please sit down</b>.<p class=\"detail-comment\"><s>Sit you down please</s> ist die deutsche Sie-Gewohnheit — ein englischer Imperativ hat nie ein Subjekt.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Let's</b><b>Let's go</b> ≈ <i>Lass uns gehen</i> · Verneinung: <b>Let's not argue</b>.</div><div class=\"detail-block\"><b class=\"detail-label\">Höflich</b><b>Please open</b> the window — bitte + Grundform, ohne <b>to</b> · <b>Could you open the window?</b> — could macht die Bitte weicher (siehe Modale).</div><div class=\"detail-block\"><b class=\"detail-label\">Anleitungen</b><b>Press the button. Add salt.</b> — Rezepte und Anleitungen stehen komplett im Imperativ.</div>"
+  },
+  "cond0": {
+    "title": "Type 0",
+    "lead": "Wenn es immer so ist — beide Sätze im Present.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Formel</b>If + Present Simple, Present Simple.</div><div class=\"detail-block\"><b class=\"detail-label\">Sinn</b><b>If you heat ice, it melts</b> ≈ <i>Wenn man Eis erhitzt, schmilzt es</i> — Naturgesetze, Regeln, Anleitungen; derselbe Bau wie im Deutschen.</div><div class=\"detail-block\"><b class=\"detail-label\">vs Type 1</b>Type 1 ist eine konkrete Zukunft; Type 0 gilt <i>immer</i>. Für „immer wenn“ steht oft auch <b>when</b> (siehe Type 1).</div>"
+  },
+  "cond1": {
+    "title": "Type 1",
+    "lead": "Reale Bedingung für die Zukunft.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Formel</b>If + Present Simple, will + V1: <b>If it rains, we will stay at home.</b></div><div class=\"detail-block\"><b class=\"detail-label\">Hauptfehler</b><i>Wenn es regnen wird…</i> — das Deutsche erlaubt Futur im wenn-Satz, das Englische nicht: <s>If it will rain…</s> → <b>If it rains…</b></div><div class=\"detail-block\"><b class=\"detail-label\">Reihenfolge</b>Umgekehrt geht es auch — ohne Komma: <b>We will stay at home if it rains.</b></div><div class=\"detail-block\"><b class=\"detail-label\">if oder when?</b><b>If I have time</b> — falls (unsicher) · <b>When I have time</b> — wenn/immer wenn (sicher). Das deutsche <i>wenn</i> deckt beides ab — die Aufteilung ist Neulernen.</div>"
+  },
+  "cond2": {
+    "title": "Type 2",
+    "lead": "Unrealistisch jetzt — strukturell Konjunktiv II.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Formel</b>If + Past Simple, would + V1.</div><div class=\"detail-block\"><b class=\"detail-label\">Das deutsche Paar</b><b>If I had time, I would help you</b> ≈ <i>Wenn ich Zeit hätte, würde ich helfen</i> — derselbe Bau, nur andere Verbformen: <i>had ≈ hätte, would ≈ würde</i>.</div><div class=\"detail-block\"><b class=\"detail-label\">were für alle Personen</b><b>If I were you…</b> · <b>If she were here…</b> — <b>were</b> steht für alle Personen; die feste Irrealis-Form (<i>≈ wäre</i>).</div><div class=\"detail-block\"><b class=\"detail-label\">Sinn</b>Träume, Ratschläge, Unrealistisches: <b>If I had money, I would travel</b> — <i>≈ Hätte ich Geld, würde ich reisen</i>.</div>"
+  },
+  "time-preps": {
+    "title": "Zeit: in / on / at",
+    "lead": "Deutsches „am“ verteilt sich auf drei englische Wörter.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">in</b>Monate, Jahre, Jahreszeiten, Tageszeiten: <b>in July, in 2026, in the morning, in the evening</b> — am Morgen, am Abend.</div><div class=\"detail-block\"><b class=\"detail-label\">on</b>Tage und Daten: <b>on Monday, on 5 May, on my birthday</b> — am Montag.</div><div class=\"detail-block\"><b class=\"detail-label\">at</b>Zeitpunkte: <b>at 7 o'clock, at noon, at night</b> — um 7 Uhr, mittags, in der Nacht. Am Wochenende: <b>at the weekend</b> (BrE) / <b>on the weekend</b> (AmE).</div><div class=\"detail-block\"><b class=\"detail-label\">Merke</b>Das deutsche „am“ ist kein Anhaltspunkt: am Montag → <b>on</b> · am Morgen → <b>in</b> · am Wochenende → <b>at</b> (BrE).</div>"
+  },
+  "place-preps": {
+    "title": "Ort: in / on / at",
+    "lead": "Deutsches „an“ heißt on UND at — Oberfläche oder Punkt entscheidet.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">in</b>Im Inneren von etwas: <b>in the kitchen, in Berlin, in a car</b>.</div><div class=\"detail-block\"><b class=\"detail-label\">on</b>Oberfläche oder Linie: <b>on the table, on the wall, on the bus</b> — an der Wand, im Bus.</div><div class=\"detail-block\"><b class=\"detail-label\">at</b>Punkt oder Ereignis: <b>at the door, at school, at the party</b> — <b>at home</b> ≈ zu Hause.</div><div class=\"detail-block\"><b class=\"detail-label\">Die an-Frage</b>Bei „an“ erst fragen: Oberfläche? → <b>on</b> (an der Wand → <b>on the wall</b>). Punkt oder Treffpunkt? → <b>at</b> (am Bahnhof → <b>at the station</b>).</div>"
+  },
+  "dependent-preps": {
+    "title": "Feste Paare",
+    "lead": "Die Präposition mitlernen — nicht aus dem Deutschen herübertragen.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Die Paare</b>warten auf → <b>wait for</b> · denken an → <b>think of / about</b> · sich freuen auf → <b>look forward to</b> · abhängen von → <b>depend on</b> · teilnehmen an → <b>take part in</b> · interessiert sein an → <b>be interested in</b> · gut in → <b>good at</b></div><div class=\"detail-block\"><b class=\"detail-label\">Beispiele</b>Wait <b>for</b> me! · What do you think <b>of</b> it? · It depends <b>on</b> the weather. · She took part <b>in</b> the race. · I'm interested <b>in</b> history. · She's good <b>at</b> math. · We arrived <b>in</b> Berlin / <b>at</b> the station.</div><div class=\"detail-block\"><b class=\"detail-label\">Falle Nr. 1</b>Nach <b>look forward to</b> steht die -ing-Form — das „to“ ist hier eine Präposition (wie „auf“ in sich freuen auf): <b>I look forward to seeing you</b>, nicht <s>I look forward to see you</s>.</div>"
+  }
+};
+
+    // Theme: auto (OS) / light / dark — persisted per visitor.
+    const THEME_KEY = 'theme';
+    const THEME_UI = {
+  "auto": {
+    "icon": "◐",
+    "label": "Design: automatisch"
+  },
+  "light": {
+    "icon": "☀",
+    "label": "Design: hell"
+  },
+  "dark": {
+    "icon": "☾",
+    "label": "Design: dunkel"
+  }
+};
+    const themeBtn = document.getElementById('themeBtn');
+    const themeMetas = [...document.querySelectorAll('meta[name="theme-color"]')];
+    const themeMetaDefaults = themeMetas.map(m => m.content);
+    function applyTheme(mode) {
+      if (mode === 'auto') document.documentElement.removeAttribute('data-theme');
+      else document.documentElement.setAttribute('data-theme', mode);
+      themeBtn.textContent = THEME_UI[mode].icon;
+      themeBtn.setAttribute('aria-label', THEME_UI[mode].label);
+      themeBtn.title = THEME_UI[mode].label;
+      themeMetas.forEach((m, i) => {
+        m.content = mode === 'auto' ? themeMetaDefaults[i] : getComputedStyle(document.body).backgroundColor;
+      });
+    }
+    let themeMode = 'auto';
+    try { themeMode = localStorage.getItem(THEME_KEY) || 'auto'; } catch (e) {}
+    applyTheme(themeMode);
+    themeBtn.addEventListener('click', () => {
+      themeMode = themeMode === 'auto' ? 'light' : themeMode === 'light' ? 'dark' : 'auto';
+      try { localStorage.setItem(THEME_KEY, themeMode); } catch (e) {}
+      applyTheme(themeMode);
+    });
+
+    const dialog = document.getElementById('detailDialog');
+    const detailTitle = document.getElementById('detailTitle');
+    const detailLead = document.getElementById('detailLead');
+    const detailBody = document.getElementById('detailBody');
+
+    // Target-language text gets lang="en" (screen-reader pronunciation + the
+    // serif study voice from base.css). The tagging policy follows the
+    // audience's script (site.json registry, threaded through the generator):
+    //  - cyrillic audience: the script heuristic. Whole containers that carry
+    //    only target-language text (examples incl. pair sources, answers,
+    //    declension tables) are marked directly; otherwise the fragments are:
+    //    bold in .example/.answer (hits included), detail-block runs —
+    //    bold/strike/italic, the Cyrillic .detail-label excluded — and
+    //    formula slots without Cyrillic. Pair glosses stay in the UI voice.
+    //  - latin audience: explanations share the target's script, so no
+    //    script heuristic is safe. Only the explicit markup convention is
+    //    tagged — bold/hit runs are target text (examples, answers, detail
+    //    blocks, formula slots); prose, italic hints and glosses stay in the
+    //    audience voice. Deck copy must bold every target fragment that
+    //    needs the study voice. Tables/notice prose/plain slots have no
+    //    explicit target marking in the block schema and stay untagged.
+    const TARGET_LANG = 'en';
+    const AUDIENCE_SCRIPT = 'latin';
+    function markTargetLang(root) {
+      if (AUDIENCE_SCRIPT === 'cyrillic') {
+        root.querySelectorAll('.example, .answer, .table-scroll, .pair-src').forEach(el => {
+          if (!/[а-яё]/i.test(el.textContent)) el.lang = TARGET_LANG;
+        });
+        root.querySelectorAll('.example b, .answer b, .detail-block b:not(.detail-label), .detail-block i, .detail-block s, .formula .slot').forEach(el => {
+          if (!/[а-яё]/i.test(el.textContent)) el.lang = TARGET_LANG;
+        });
+      } else {
+        root.querySelectorAll('.example b, .answer b, .detail-block b:not(.detail-label), .formula .slot b').forEach(el => {
+          el.lang = TARGET_LANG;
+        });
+      }
+    }
+    markTargetLang(document);
+
+    document.addEventListener('click', (event) => {
+      const trigger = event.target.closest('[data-detail]');
+      if (trigger) {
+        const item = DETAILS[trigger.dataset.detail];
+        if (item) {
+          detailTitle.textContent = item.title;
+          detailLead.textContent = item.lead || '';
+          detailBody.innerHTML = item.body || '';
+          markTargetLang(detailBody);
+          dialog.showModal();
+        }
+      }
+      const reveal = event.target.closest('.reveal');
+      if (reveal) {
+        const answer = document.getElementById(reveal.dataset.target);
+        if (answer) {
+          answer.hidden = !answer.hidden;
+          reveal.textContent = answer.hidden ? 'Anzeigen' : 'Ausblenden';
+          reveal.setAttribute('aria-expanded', String(!answer.hidden));
+        }
+      }
+    });
+
+    document.getElementById('closeDialog').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+
+    // Language menu: light-dismiss (native <details> has none) + Escape.
+    const langMenu = document.getElementById('langMenu');
+    if (langMenu) {
+      document.addEventListener('click', (event) => {
+        if (langMenu.open && !langMenu.contains(event.target)) langMenu.open = false;
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && langMenu.open) langMenu.open = false;
+      });
+    }
+    // Remember what is being studied so the landing can greet the learner.
+    try { localStorage.setItem('target', TARGET_LANG); } catch (e) {}
+
+    const search = document.getElementById('search');
+    const clearSearch = document.getElementById('clearSearch');
+    const cards = [...document.querySelectorAll('.cheat-card')];
+    const sections = [...document.querySelectorAll('section[data-section]')];
+    const noResults = document.getElementById('noResults');
+    const searchSummary = document.getElementById('searchSummary');
+    const searchResultsLabel = "Gefundene Karten";
+
+    function applySearch() {
+      const q = search.value.trim().toLowerCase();
+      document.body.classList.toggle('searching', !!q);
+      clearSearch.hidden = !q;
+      let shown = 0;
+      cards.forEach(card => {
+        const hay = `${card.textContent} ${card.dataset.search || ''}`.toLowerCase();
+        const match = !q || hay.includes(q);
+        card.style.display = match ? '' : 'none';
+        if (match) shown++;
+      });
+      sections.forEach(section => {
+        if (!q) { section.style.display = ''; return; }
+        section.hidden = false; // search spans every view
+        const visible = [...section.querySelectorAll('.cheat-card')].some(c => c.style.display !== 'none');
+        section.style.display = visible ? '' : 'none';
+      });
+      if (!q) setView(currentView); // re-apply the active view
+      else navItems.forEach(item => item.removeAttribute('aria-current'));
+      updateHitLabels(q);
+      searchSummary.hidden = !q;
+      searchSummary.textContent = q ? `${searchResultsLabel}: ${shown}` : '';
+      noResults.style.display = q && shown === 0 ? 'block' : 'none';
+    }
+    search.addEventListener('input', applySearch);
+    clearSearch.addEventListener('click', () => { search.value = ''; applySearch(); search.focus(); });
+
+    // Views: the bottom nav switches discrete views; the selection is the truth
+    // (no scrollspy). Sections carry data-view; legacy anchors open the right
+    // view first, then scroll to the section.
+    const navItems = [...document.querySelectorAll('.nav-item')];
+    const viewSections = [...document.querySelectorAll('section[data-view]')];
+    let currentView = navItems[0].dataset.nav;
+    function setView(viewId) {
+      currentView = viewId;
+      viewSections.forEach(s => {
+        s.hidden = s.dataset.view !== viewId;
+        s.style.display = '';
+      });
+      navItems.forEach(item => {
+        const on = item.dataset.nav === viewId;
+        item.classList.toggle('active', on);
+        if (on) item.setAttribute('aria-current', 'true');
+        else item.removeAttribute('aria-current');
+      });
+    }
+    navItems.forEach(item => item.addEventListener('click', (event) => {
+      event.preventDefault();
+      const viewId = item.dataset.nav;
+      if (search.value) { search.value = ''; applySearch(); } // predictable destination
+      if (location.hash !== '#' + viewId) history.pushState(null, '', '#' + viewId);
+      setView(viewId);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }));
+    function onHash() {
+      const id = location.hash.slice(1);
+      const target = id ? document.getElementById(id) : null;
+      const hostSection = target && target.closest('section[data-view]');
+      const viewId = hostSection ? hostSection.dataset.view
+        : (navItems.some(n => n.dataset.nav === id) ? id : null);
+      if (!viewId) return; // unknown hash: keep the current view
+      setView(viewId);
+      if (target && hostSection && target !== hostSection) target.scrollIntoView();
+    }
+    window.addEventListener('hashchange', onHash);
+    if (location.hash) onHash(); else setView(currentView);
+
+    // Search hits: label each visible card with «view · section» and jump to
+    // the card in context on tap — clears the query, routes via the card
+    // anchor (view switch + scroll + :target flash). Labels are built from
+    // the deck's own nav/heading text, so no extra UI strings are needed.
+    const viewLabels = {};
+    navItems.forEach(item => {
+      const label = item.querySelector('span:not(.ico)'); // skip the glyph
+      viewLabels[item.dataset.nav] = (label || item).textContent.trim();
+    });
+    function updateHitLabels(q) {
+      document.querySelectorAll('.hit-jump').forEach(b => b.remove());
+      if (!q) return;
+      cards.forEach(card => {
+        if (card.style.display === 'none' || !card.id) return;
+        const sec = card.closest('section[data-view]');
+        const h2 = sec && sec.querySelector('h2');
+        if (!sec || !h2) return;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'hit-jump';
+        const view = document.createElement('span');
+        view.className = 'view';
+        view.textContent = viewLabels[sec.dataset.view] || sec.dataset.view;
+        const heading = h2.textContent.trim();
+        btn.appendChild(view);
+        if (view.textContent !== heading) btn.appendChild(document.createTextNode(' · ' + heading));
+        btn.appendChild(document.createTextNode(' ↗'));
+        btn.addEventListener('click', () => {
+          search.value = '';
+          applySearch();
+          if (location.hash === '#' + card.id) onHash();
+          else location.hash = '#' + card.id;
+        });
+        card.insertAdjacentElement('afterbegin', btn);
+      });
+    }
+
+    let deferredPrompt = null;
+    const installBtn = document.getElementById('installBtn');
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+    if (isIOS && !isStandalone) installBtn.hidden = false;
+    else installBtn.hidden = true;
+
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault();
+      deferredPrompt = event;
+      installBtn.hidden = false;
+    });
+
+    window.addEventListener('appinstalled', () => {
+      deferredPrompt = null;
+      installBtn.hidden = true;
+    });
+
+    const INSTALL = {
+  "ios": {
+    "title": "Installation auf dem iPhone",
+    "lead": "Safari zeigt den üblichen Install-Prompt nicht.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">1.</b>Öffne das Teilen-Menü (Share).</div><div class=\"detail-block\"><b class=\"detail-label\">2.</b>Wähl „Zum Home-Bildschirm“ (Add to Home Screen).</div><div class=\"detail-block\"><b class=\"detail-label\">3.</b>Bestätige mit „Hinzufügen“ (Add).</div>"
+  },
+  "generic": {
+    "title": "Installation auf dem Handy",
+    "lead": "Das ist eine PWA: Nach dem ersten Laden funktioniert sie auch offline.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Android / Chrome</b>Browsermenü → „App installieren“ / „Zum Startbildschirm hinzufügen“.</div><div class=\"detail-block\"><b class=\"detail-label\">iPhone / Safari</b>Teilen → „Zum Home-Bildschirm“.</div><div class=\"detail-block\"><b class=\"detail-label\">Wichtig</b>Für Installation und Offline-Cache die Seite über HTTPS (oder localhost) öffnen — nicht als lokale Datei aus der Dateien-App.</div>"
+  }
+};
+    installBtn.addEventListener('click', async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        await deferredPrompt.userChoice;
+        deferredPrompt = null;
+        installBtn.hidden = true;
+      } else if (isIOS) {
+        detailTitle.textContent = INSTALL.ios.title;
+        detailLead.textContent = INSTALL.ios.lead;
+        detailBody.innerHTML = INSTALL.ios.body;
+        dialog.showModal();
+      } else {
+        detailTitle.textContent = INSTALL.generic.title;
+        detailLead.textContent = INSTALL.generic.lead;
+        detailBody.innerHTML = INSTALL.generic.body;
+        dialog.showModal();
+      }
+    });
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('../../sw.js').catch(() => {}));
+    }
+  </script>
+</body>
+</html>

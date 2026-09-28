@@ -1,0 +1,1153 @@
+{
+  "_readme": "English cheat deck for German speakers. Rendered by tools/build_pages.py into en/de/index.html — edit this file, then regenerate (see AGENTS.md). Schema: schema.json. _note fields carry review provenance and are ignored by the generator. Scaffolded 2026-09-28 as a text copy of en-ru.json (audience-variant Phase 2b): meta, strings, help, views and practice re-derived for German speakers per en/de/SITE_PLAN.md; sections and DETAILS entries spliced from the frags-en-de-*.fragment author groups (deleted after the 2026-09-28 stitch).",
+  "meta": {
+    "deck": "en-de",
+    "target": "en",
+    "audience": "de",
+    "target_lang": "en",
+    "lang": "de",
+    "out": "en/de/index.html",
+    "site_base": "https://andkirby.github.io/learn-language-cheat-sheet/",
+    "site_path": "en/de/",
+    "brand_mark": "EN",
+    "brand_name": "Englisch-Spickzettel",
+    "brand_sub": "DE → EN · A1–B1",
+    "apple_title": "EN Spickzettel",
+    "title": "Englische Grammatik – Spickzettel",
+    "description": "Mobiler Spickzettel für englische Grammatik: Zeiten, Artikel, Wortstellung, Bedingungssätze, Präpositionen.",
+    "og_title": "Englische Grammatik – Spickzettel",
+    "og_description": "Englische Grammatik, ohne im Lehrbuch zu blättern: Zeiten, Artikel, Wortstellung, Bedingungssätze. A1–B1, offline.",
+    "plan_path": "en/de/SITE_PLAN.md"
+  },
+  "strings": {
+    "search_placeholder": "Suche: present, perfect, if, the…",
+    "search_aria": "Spickzettel durchsuchen",
+    "clear_aria": "Suche löschen",
+    "search_results": "Gefundene Karten",
+    "install_label": "Installieren",
+    "close_aria": "Schließen",
+    "nav_aria": "Hauptnavigation",
+    "no_results": "Nichts gefunden. Versuch’s mit „present“, „perfect“, „if“, „the“, „did“.",
+    "noscript_notice": "Suche, Details und die App-Installation brauchen JavaScript. Der ganze Spickzettel funktioniert unten auch ohne.",
+    "noscript_intro": [
+      "Such ",
+      {"t": "den Auslöser", "b": true},
+      " (Signalwort, Artikel, Konnektor oder Modalverb) — dann die Form und die Wortstellung."
+    ],
+    "theme": {
+      "auto": {"icon": "◐", "label": "Design: automatisch"},
+      "light": {"icon": "☀", "label": "Design: hell"},
+      "dark": {"icon": "☾", "label": "Design: dunkel"}
+    },
+    "reveal_show": "Anzeigen",
+    "reveal_hide": "Ausblenden",
+    "install_ios": {
+      "title": "Installation auf dem iPhone",
+      "lead": "Safari zeigt den üblichen Install-Prompt nicht.",
+      "blocks": [
+        {"label": "1.", "runs": ["Öffne das Teilen-Menü (Share)."]},
+        {"label": "2.", "runs": ["Wähl „Zum Home-Bildschirm“ (Add to Home Screen)."]},
+        {"label": "3.", "runs": ["Bestätige mit „Hinzufügen“ (Add)."]}
+      ]
+    },
+    "install_generic": {
+      "title": "Installation auf dem Handy",
+      "lead": "Das ist eine PWA: Nach dem ersten Laden funktioniert sie auch offline.",
+      "blocks": [
+        {"label": "Android / Chrome", "runs": ["Browsermenü → „App installieren“ / „Zum Startbildschirm hinzufügen“."]},
+        {"label": "iPhone / Safari", "runs": ["Teilen → „Zum Home-Bildschirm“."]},
+        {"label": "Wichtig", "runs": ["Für Installation und Offline-Cache die Seite über HTTPS (oder localhost) öffnen — nicht als lokale Datei aus der Dateien-App."]}
+      ]
+    },
+    "footer_all": "alle Spickzettel",
+    "footer_practice": "Wiederholung",
+    "footer_install": "Installation: Android — Button „Installieren“ oder Browsermenü · iPhone — Teilen → Zum Home-Bildschirm",
+    "footer_plan": "Inhaltsplan:",
+    "lang_menu_aria": "Lernsprache und Erklärungssprache",
+    "lang_group_target": "Lernsprache",
+    "lang_group_audience": "Erklärungssprache",
+    "lang_soon": "bald"
+  },
+  "help": {
+    "id": "start",
+    "ico": "i",
+    "label": "So geht’s",
+    "detail": "lookup-help"
+  },
+  "views": [
+    {"id": "articles", "ico": "a/the", "label": "Artikel"},
+    {"id": "tenses", "ico": "V+s", "label": "Zeiten"},
+    {"id": "order", "ico": "SVO", "label": "Satzbau"},
+    {"id": "verbs", "ico": "can", "label": "Verben"},
+    {"id": "preps", "ico": "in/on", "label": "Präpositionen"}
+  ],
+  "sections": [
+    {
+      "id": "articles", "view": "articles", "badge": "Articles",
+      "heading": "Artikel", "sub": "Hauptmarker: ist schon klar, wovon die Rede ist? Dann the.", "grid": "two",
+      "cards": [
+        {
+          "id": "articles",
+          "level": "A1",
+          "kind": "Gebrauch",
+          "search": "article a an the artikel unbestimmter bestimmter genus",
+          "blocks": [
+            {"h": ["a / an / the / —"]},
+            {"formula": [{"slot": "a / an"}, {"arrow": "="}, {"slot": "einer von vielen"}]},
+            {"formula": [{"slot": "the", "role": "sub"}, {"arrow": "="}, {"slot": "genau dieser"}]},
+            {"example": [
+              "I have ", {"t": "a", "hit": true}, " car.", {"br": true},
+              {"t": "The", "hit": true}, " car is red."
+            ], "gloss": ["Irgendein Auto.", {"br": true}, "Schon das bekannte Auto."]},
+            {"tiny": ["Nur zwei Artikel, kein Genus: ", {"t": "the", "b": true}, " bleibt immer the — kein der/die/das-Raten. Bestimmter vs. unbestimmter Artikel kennst du, aber die Grenzen interferieren in beide Richtungen: feste Wendungen ohne Artikel (", {"t": "go to school", "i": true}, "), Rollen nach be mit ", {"t": "a", "b": true}, " (", {"t": "I’m a teacher", "i": true}, ")."]},
+            {"chips": [
+              {"label": "a oder an?", "detail": "a-an"},
+              {"label": "Wann the", "detail": "the-article"},
+              {"label": "Wann ohne Artikel", "detail": "zero-article"}
+            ]}
+          ]
+        },
+        {
+          "id": "zero-article",
+          "level": "A2",
+          "kind": "Gebrauch",
+          "search": "zero article nullartikel school piano feste wendungen kopfschmerzen headache teacher",
+          "blocks": [
+            {"h": ["Die Grenzen — in beide Richtungen"]},
+            {"p": ["Deutsch mit Artikel, Englisch mit Nullartikel in festen Wendungen:"]},
+            {"example": [
+              "I go to ", {"t": "school", "hit": true}, ".", {"br": true},
+              "She plays ", {"t": "the", "hit": true}, " piano."
+            ], "gloss": ["Rolle: zum Lernen — nicht „zum Gebäude“.", {"br": true}, "Instrument: immer mit the."]},
+            {"p": ["Und umgekehrt — Deutsch ohne Artikel, Englisch mit ", {"t": "a", "b": true}, ":"]},
+            {"example": [
+              "Ich bin Lehrer. → I’m ", {"t": "a", "hit": true}, " teacher.", {"br": true},
+              "Ich habe Kopfschmerzen. → I have ", {"t": "a", "hit": true}, " headache."
+            ], "gloss": ["Rollen nach be und bei Beschwerden: a teacher, a headache."]},
+            {"chips": [{"label": "Schule, Bett, Krankenhaus", "detail": "school-exceptions"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pronouns", "view": "articles", "badge": "Pronouns",
+      "heading": "Pronomen", "sub": "Vier Formen pro Person — hier lebt der ganze Kasus, den Englisch noch hat.", "grid": null,
+      "cards": [
+        {
+          "id": "pronouns",
+          "level": "A1",
+          "kind": "Formen",
+          "search": "pronouns personal possessive possessiv subjekt objekt pronomen his him its mine you",
+          "blocks": [
+            {"h": ["Pronomen: Subjekt · Objekt · Possessiv"]},
+            {"table": {
+              "head": ["Wer? (Subjekt)", "Wen? (Objekt)", "Wessen? (my…)", "allein (mine)"],
+              "rows": [
+                ["I", "me", "my", {"hot": "mine"}],
+                ["you", "you", "your", {"hot": "yours"}],
+                ["he", {"hot": "him"}, "his", "his"],
+                ["she", {"hot": "her"}, "her", {"hot": "hers"}],
+                ["it", "it", {"hot": "its"}, "—"],
+                ["we", {"hot": "us"}, "our", {"hot": "ours"}],
+                ["they", {"hot": "them"}, "their", {"hot": "theirs"}]
+              ]
+            }},
+            {"example": ["I saw ", {"t": "him", "b": true}, " yesterday. · This is ", {"t": "his", "b": true}, " car."]},
+            {"tiny": ["my/mine ≈ mein/meins — die Doppelheit kennst du: ", {"t": "my car", "i": true}, " · ", {"t": "The car is mine", "i": true}, ". Fett = die Formen, auf denen es am häufigsten klemmt."]},
+            {"tiny": ["Neu sind zwei Aufteilungen: sein deckt ", {"t": "his", "b": true}, " UND ", {"t": "its", "b": true}, " ab · ihr deckt ", {"t": "her", "b": true}, " UND ", {"t": "their", "b": true}, " ab. ", {"t": "You", "b": true}, " heißt du, ihr und Sie; deutsch man → ", {"t": "you", "b": true}, " (", {"t": "One can…", "i": true}, " klingt steif)."]},
+            {"chips": [
+              {"label": "my oder mine?", "detail": "my-mine"},
+              {"label": "myself / yourself…", "detail": "reflexive"}
+            ]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "order", "view": "order", "badge": "Wortstellung",
+      "heading": "Satzbau", "sub": "Englisch stellt nicht frei um — die Wortstellung trägt die Rolle.", "grid": "two",
+      "cards": [
+        {
+          "id": "svo",
+          "level": "A1",
+          "kind": "Wortstellung",
+          "search": "svo word order wortstellung satzbau aussagesatz subjekt verb objekt reihenfolge betonung umstellen streng",
+          "blocks": [
+            {"h": ["SVO — streng"]},
+            {"formula": [{"slot": "Subjekt"}, {"arrow": "→"}, {"slot": "Verb", "role": "verb"}, {"arrow": "→"}, {"slot": "Objekt"}]},
+            {"example": [
+              {"t": "I love you.", "b": true}, " Die Reihenfolge zeigt die Rollen: Subjekt → Verb → Objekt.", {"br": true},
+              {"t": "The dog bites the man.", "b": true}, " ≠ ", {"t": "The man bites the dog.", "b": true}, " — die Rollen tauschen, der Sinn kippt."
+            ]},
+            {"tiny": ["Der Aussagesatz ist fest: Deutsch stellt für die Betonung frei um („Den Mann beißt der Hund“ — der Kasus rettet das); die englische Wortstellung hat nur die Position, der Satzbau lässt sich nicht drehen. Umstellen heißt hier: die Rollen tauschen."]},
+            {"chips": [{"label": "Warum das Englische so streng ist", "detail": "svo"}]}
+          ]
+        },
+        {
+          "id": "do-questions",
+          "level": "A1",
+          "kind": "Wortstellung",
+          "search": "do does did frage fragen hilfsverb grundform subjektfrage inversion question questions auxiliary",
+          "blocks": [
+            {"h": ["Fragen: Do / Does / Did"]},
+            {"formula": [{"slot": "Do", "role": "sub"}, {"slot": "you"}, {"slot": "like", "role": "verb"}, {"slot": "tea?"}]},
+            {"p": ["Englisch schiebt das Hilfsverb Do/Does/Did nach vorn; das Vollverb bleibt in der ", {"t": "Grundform", "b": true}, " — nicht in der -s-Form."]},
+            {"example": [
+              {"t": "Does she work?", "b": true}, " Nicht: ", {"t": "Does she works?", "s": true}, {"br": true},
+              {"t": "Where do you live?", "b": true}
+            ]},
+            {"tiny": ["be und Modals umgehen do — reine Umstellung wie im Deutschen: ", {"t": "Is she…? Can you…?", "b": true}, " Subjektfrage: ", {"t": "Who lives here?", "b": true}, " — ohne do, wie „Wer wohnt hier?“."]},
+            {"chips": [{"label": "So baust du Fragen — und wo du kalkst", "detail": "do-questions"}]}
+          ]
+        },
+        {
+          "id": "frequency",
+          "level": "A1",
+          "kind": "Wortstellung",
+          "search": "adverbs frequency häufigkeit häufigkeitsadverbien adverbien immer nie position mittelfeld always never",
+          "blocks": [
+            {"h": ["Immer / Meistens / Nie"]},
+            {"p": ["Häufigkeitsadverbien — Adverbien wie always, never — stehen ", {"t": "vor dem Vollverb", "b": true}, ", aber ", {"t": "nach be", "b": true}, ". Der Platz ist fest, nicht frei wie im deutschen Mittelfeld."]},
+            {"example": [
+              {"t": "I always drink", "b": true}, " coffee. · ", {"t": "He is always late.", "b": true}, {"br": true},
+              "Nicht: ", {"t": "I go always", "s": true}, " („Ich gehe immer…“ kalkt das Mittelfeld)."
+            ]},
+            {"tiny": ["Auch die deutsche V2-Gewohnheit kalkt: „Nie habe ich das gesehen“ → nicht ", {"t": "Never I have seen that", "s": true}, ", sondern ", {"t": "I have never seen that", "b": true}, " — Standardenglisch bleibt bei SVO."]},
+            {"chips": [{"label": "Die Skala always → never", "detail": "frequency"}]}
+          ]
+        },
+        {
+          "id": "mistakes",
+          "level": "A2",
+          "kind": "Wortstellung",
+          "search": "fehler typischer hilfsverb likes she inversion mistakes error",
+          "blocks": [
+            {"h": ["Fehler №1: „Likes she tea?“"]},
+            {"example": [
+              {"t": "Likes she tea?", "s": true}, " → ", {"t": "Does she like tea?", "hit": true}, {"br": true},
+              {"t": "Where you work?", "s": true}, " → ", {"t": "Where do you work?", "hit": true}
+            ], "gloss": ["Der typische Kalk: „Mag sie Tee?“ kehrt nur das Verb. Englisch verlangt das Hilfsverb Do/Does/Did + Grundform."]}
+          ]
+        },
+        {
+          "id": "nuances",
+          "level": "B1",
+          "kind": "Verwendung",
+          "search": "just actually still even though tönungswörter tönung tatsächlich sogar eben doch gerade noch aktuell falsche freunde",
+          "blocks": [
+            {"h": ["Tönungswörter: just, actually…"]},
+            {"p": ["Ein kurzes Wort trägt die Tönung. Vorsicht — falsche Freunde: ", {"t": "actually", "b": true}, " ≠ „aktuell“, ", {"t": "even", "b": true}, " ≠ „eben“."]},
+            {"chips": [
+              {"label": ["just — ", {"t": "gerade eben / bloß", "b": true}], "detail": "flavor-words", "neutral": true},
+              {"label": ["actually — ", {"t": "tatsächlich", "b": true}], "detail": "flavor-words", "neutral": true},
+              {"label": ["still — ", {"t": "immer noch", "b": true}], "detail": "flavor-words", "neutral": true},
+              {"label": ["even — ", {"t": "sogar", "b": true}], "detail": "flavor-words", "neutral": true},
+              {"label": ["though — ", {"t": "doch", "b": true}], "detail": "flavor-words", "neutral": true}
+            ]},
+            {"example": [
+              "It's expensive. I like it, ", {"t": "though", "hit": true}, ". · ", {"t": "Even", "hit": true}, " a child can do it."
+            ], "gloss": ["though ≈ „doch“ — am Satzende, diese Endposition hat das Deutsche nicht · even ≈ „sogar“"]},
+            {"chips": [{"label": "Alle fünf mit ihren Fallen", "detail": "flavor-words"}]}
+          ]
+        },
+        {
+          "id": "linkers",
+          "level": "B1",
+          "kind": "Verbindung",
+          "search": "however therefore meanwhile nevertheless although despite but so also falscher freund sondern konnektoren aber deshalb trotzdem obwohl währenddessen nicht nur auch komma",
+          "blocks": [
+            {"h": ["Konnektoren: however, so, although…"]},
+            {"p": ["Sie verbinden Sätze — Kontrast, Folge, Zeit, Zugeständnis. Falscher Freund: englisches ", {"t": "also", "b": true}, " = „auch“; das deutsche „also“ heißt ", {"t": "so / therefore", "b": true}, "."]},
+            {"chips": [
+              {"label": ["but / however — ", {"t": "aber / jedoch", "b": true}], "detail": "linking-words", "neutral": true},
+              {"label": ["not (only) … but — ", {"t": "nicht…, sondern / nicht nur…, sondern auch", "b": true}], "detail": "not-but", "neutral": true},
+              {"label": ["so / therefore — ", {"t": "also / deshalb", "b": true}], "detail": "linking-words", "neutral": true},
+              {"label": ["meanwhile — ", {"t": "währenddessen", "b": true}], "detail": "linking-words", "neutral": true},
+              {"label": ["nevertheless — ", {"t": "trotzdem", "b": true}], "detail": "linking-words", "neutral": true},
+              {"label": ["although / though — ", {"t": "obwohl", "b": true}], "detail": "linking-words", "neutral": true},
+              {"label": ["despite — ", {"t": "trotz (+ Nomen)", "b": true}], "detail": "linking-words", "neutral": true}
+            ]},
+            {"example": [
+              "It was raining. ", {"t": "However", "hit": true}, ", we went out. · ", {"t": "Although", "hit": true}, " it rained, we went out."
+            ], "gloss": ["however = das formellere „aber“, eigener Satz + Komma · although = „obwohl“"]},
+            {"example": [
+              "The meeting is ", {"t": "not", "hit": true}, " on Monday, ", {"t": "but", "hit": true}, " on Tuesday. · She is ", {"t": "not only", "hit": true}, " smart ", {"t": "but also", "hit": true}, " kind."
+            ], "gloss": ["„nicht am Montag, sondern am Dienstag“ · „nicht nur klug, sondern auch nett“"]},
+            {"chips": [{"label": "despite oder although?", "detail": "linking-words"}]}
+          ]
+        },
+        {
+          "id": "contrast-linkers",
+          "level": "B1",
+          "kind": "Verbindung",
+          "search": "while whereas on the other hand wohingegen zum anderen andererseits register kontrast zwei sätzen",
+          "blocks": [
+            {"h": ["while / whereas / on the other hand"]},
+            {"p": ["Kontrast zwischen zwei Sätzen: ", {"t": "while", "b": true}, " (auch „während“ — Zeit), ", {"t": "whereas", "b": true}, " (formell ≈ „wohingegen“), ", {"t": "on the other hand", "b": true}, " („zum anderen / andererseits“). Die Wahl ist eine Registerfrage."]},
+            {"example": [
+              "I drink tea, ", {"t": "whereas", "hit": true}, " my wife prefers coffee. · ", {"t": "On the other hand", "hit": true}, ", it's cheaper."
+            ], "gloss": ["while/whereas ≈ „wohingegen“ · on the other hand ≈ „zum anderen“"]},
+            {"chips": [{"label": "while — auch „während“", "detail": "contrast-linkers"}]}
+          ]
+        },
+        {
+          "id": "there-is",
+          "level": "A1",
+          "kind": "Verwendung",
+          "search": "there is are there's it's es gibt verneinung frage vorhanden",
+          "blocks": [
+            {"h": ["there is / there are"]},
+            {"p": ["= „es gibt / es ist vorhanden“. ", {"t": "There is", "b": true}, " + eines oder Unzählbares, ", {"t": "There are", "b": true}, " + mehrere — das Deutsche macht diesen Unterschied nicht:"]},
+            {"example": [{"t": "There is", "b": true}, " a shop nearby. · ", {"t": "There are", "b": true}, " two shops."], "gloss": ["„Es gibt“ deckt beides ab — der Kalk-Fehler: ", {"t": "There's many people", "s": true}]},
+            {"chips": [{"label": "Verneinung, Frage und There's vs It's", "detail": "there-is"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tenses", "view": "tenses", "badge": "Zeiten",
+      "heading": "Zeiten", "sub": "Erst die Bedeutung, dann die Form — Signalwörter sind nur Hinweise.", "grid": "two",
+      "cards": [
+        {
+          "id": "present-simple",
+          "level": "A1",
+          "kind": "Zeitform",
+          "search": "present simple gewohnheit tatsachen fahrplan every day usually often marker",
+          "blocks": [
+            {"h": ["Present Simple"]},
+            {"formula": [{"slot": "V"}, {"arrow": "+"}, {"slot": "s (3. Person)", "role": "end"}]},
+            {"p": ["Gewohnheiten, Tatsachen, Fahrpläne. Marker: ", {"t": "every day, usually, often", "b": true}, ". Nur die 3. Person Singular bekommt ", {"t": "-s", "b": true}, " — wie das deutsche ", {"t": "-t", "b": true}, " bei er/sie/es."]},
+            {"example": [
+              {"t": "She works", "b": true}, " every day.", {"br": true},
+              {"t": "He doesn't work", "b": true}, " on Sundays."
+            ]},
+            {"chips": [{"label": "Wann und wie", "detail": "present-simple"}]}
+          ]
+        },
+        {
+          "id": "present-continuous",
+          "level": "A1",
+          "kind": "Zeitform",
+          "search": "present continuous verlaufsform präsens jetzt gerade im moment now look listen verärgerung ing am is are",
+          "blocks": [
+            {"h": ["Present Continuous"]},
+            {"formula": [{"slot": "am / is / are"}, {"arrow": "+"}, {"slot": "V-ing", "role": "end"}]},
+            {"p": ["Jetzt / in dieser Zeitspanne. Das Deutsche hat keine Verlaufsform — „Ich arbeite“ deckt beides ab. Marker: ", {"t": "now, at the moment, Look!, Listen!", "b": true}, "."]},
+            {"example": [
+              {"t": "She works in a bank.", "b": true}, " · ", {"t": "She's working", "b": true}, " from home today.", {"br": true},
+              {"t": "Look! It's raining.", "b": true}
+            ], "gloss": ["Fakt/Gewohnheit · gerade jetzt — das deutsche Präsens „sie arbeitet“ deckt beides ab"]},
+            {"tiny": ["Auch ", {"t": "He's always losing his keys.", "b": true}, " — Continuous mit ", {"t": "always", "b": true}, " = Verärgerung, nicht „jetzt“."]},
+            {"chips": [{"label": "Simple vs Continuous", "detail": "present-continuous"}]}
+          ]
+        },
+        {
+          "id": "past-simple",
+          "level": "A2",
+          "kind": "Zeitform",
+          "search": "past simple vergangenheit präteritum perfekt abgeschlossen gestern yesterday unregelmäßig did",
+          "blocks": [
+            {"h": ["Past Simple"]},
+            {"formula": [{"slot": "V2"}, {"arrow": "/"}, {"slot": "did + V1"}]},
+            {"p": ["Abgeschlossene Ereignisse der Vergangenheit. Marker: ", {"t": "yesterday, last week, in 2010, ago", "b": true}, ". Die Form ist vertraut (Präteritum/Perfekt) — die Wahl kommt bei Perfect vs Past Simple."]},
+            {"example": [
+              {"t": "I saw", "b": true}, " him yesterday.", {"br": true},
+              {"t": "Did you see", "b": true}, " him?"
+            ], "gloss": ["„Ich habe ihn gestern gesehen“ — gestern erzwingt die einfache Form"]},
+            {"chips": [{"label": "Regelmäßig und unregelmäßig", "detail": "past-simple"}]}
+          ]
+        },
+        {
+          "id": "present-perfect",
+          "level": "A2",
+          "kind": "Zeitform",
+          "search": "present perfect have has partizip ergebnis erfahrung bis jetzt gerade eben just already yet ever never recently",
+          "blocks": [
+            {"h": ["Present Perfect"]},
+            {"formula": [{"slot": "have / has"}, {"arrow": "+"}, {"slot": "V3", "role": "end"}]},
+            {"p": ["Ergebnis, das bis jetzt zählt / Erfahrung ohne Zeitangabe. Die Form ist das haben-Perfekt (have/has + Partizip II) — der Gebrauch ist enger. Marker: ", {"t": "just, already, yet, ever, never, recently", "b": true}, "."]},
+            {"example": [
+              {"t": "I have lost", "b": true}, " my keys (ich komme nicht rein).", {"br": true},
+              {"t": "Have you ever been", "b": true}, " to London?"
+            ], "gloss": ["„Ich habe sie gerade eben verloren“ — und sie sind immer noch weg"]},
+            {"chips": [{"label": "Gefahr №1: die Wahl", "detail": "pp-vs-past"}]}
+          ]
+        },
+        {
+          "id": "pp-vs-past",
+          "level": "B1",
+          "kind": "Zeitform",
+          "_note": "EN-06: meaning-first — „Wurde eine Zeit genannt?“ ist nur ein Hinweis; das Gegenbeispiel since 2020 bleibt auf der Karte; das deutsche seit spaltet sich in since (Punkt) / for (Dauer).",
+          "search": "present perfect past simple unterschied entscheidung wahl zeitangabe yesterday since for dauer punkt seit",
+          "blocks": [
+            {"h": ["Perfect vs Past Simple"]},
+            {"p": ["Die Entscheidung trifft die Bedeutung, nicht das Signalwort: Ergebnis/Erfahrung, die ", {"t": "jetzt", "b": true}, " noch zählt → Perfect · abgeschlossene Tatsache → Past Simple. Gesprochenes Deutsch wählt Perfekt für beides — dieser Unterschied ist Gefahr №1."]},
+            {"example": [
+              {"t": "I have seen", "b": true}, " this film (ich kenne ihn jetzt).", {"br": true},
+              {"t": "I saw", "b": true}, " it ", {"t": "yesterday", "b": true}, "."
+            ], "gloss": ["„Ich habe den Film gestern gesehen“ → I saw it yesterday — nicht I have seen it yesterday"]},
+            {"tiny": ["„Wurde eine Zeitangabe genannt?“ ist nur ein Hinweis: ", {"t": "I've lived here since 2020", "b": true}, " (seit 2020 — Punkt, for two years — Dauer) — Zeit genannt, trotzdem Perfect."]},
+            {"chips": [{"label": "Der Kalk in Paaren", "detail": "pp-vs-past"}]}
+          ]
+        },
+        {
+          "id": "future",
+          "level": "A2",
+          "kind": "Zeitform",
+          "search": "future will going to zukunft werden plan vorhersage spontan fahrplan zug fährt entscheidung",
+          "blocks": [
+            {"h": ["Future: will / going to"]},
+            {"formula": [{"slot": "will + V1"}, {"arrow": "·"}, {"slot": "be going to + V1"}]},
+            {"p": [{"t": "will", "b": true}, " ≈ werden: spontane Entscheidung oder Vorhersage für die Zukunft. ", {"t": "going to", "b": true}, " hat kein deutsches Pendant: der vorher beschlossene Plan oder das absehbare Ereignis."]},
+            {"example": [
+              {"t": "I'll help", "b": true}, " you (spontan).", {"br": true},
+              {"t": "I'm going to visit", "b": true}, " Paris (schon geplant)."
+            ]},
+            {"tiny": ["Der Fahrplan im Präsens klappt wie im Deutschen: ", {"t": "The train leaves at 6", "b": true}, " ≈ „Der Zug fährt um 6“."]},
+            {"chips": [{"label": "Wie du wählst", "detail": "future"}]}
+          ]
+        },
+        {
+          "id": "past-continuous",
+          "level": "A2",
+          "kind": "Zeitform",
+          "search": "past continuous was were verlauf hintergrund prozess ereignis parallel während while gerade als kochte",
+          "blocks": [
+            {"h": ["Past Continuous"]},
+            {"formula": [{"slot": "was / were"}, {"arrow": "+"}, {"slot": "V-ing", "role": "end"}]},
+            {"p": ["War im Prozess, als etwas geschah — der Hintergrund fürs Ereignis; zwei parallele Handlungen stehen beide im Past Continuous. Deutsch markiert den Verlauf mit „gerade“; while = „während“, dieselbe Doppelnutzung wie im Deutschen:"]},
+            {"example": [
+              "I ", {"t": "was cooking", "b": true}, " when he ", {"t": "called", "b": true}, ". · They ", {"t": "were sleeping", "b": true}, "."
+            ], "gloss": ["„Ich kochte gerade, als er kam“ — gerade + Präteritum ≈ Past Continuous + Past Simple"]},
+            {"chips": [{"label": "vs Past Simple", "detail": "past-continuous"}]}
+          ]
+        },
+        {
+          "id": "pp-continuous",
+          "level": "B1",
+          "kind": "Zeitform",
+          "search": "present perfect continuous dauer bis jetzt frischer beweis seit zwei jahren recognition erkennen",
+          "blocks": [
+            {"h": ["Present Perfect Continuous"]},
+            {"formula": [{"slot": "have / has been"}, {"arrow": "+"}, {"slot": "V-ing", "role": "end"}]},
+            {"p": ["Recognition — erkennen genügt: Dauer bis jetzt oder ein frischer Beweis. Der seit-Satz ist die deutsche Falle:"]},
+            {"example": [
+              "I ", {"t": "have been waiting", "hit": true}, " for an hour. · You look tired — ", {"t": "have you been running", "hit": true}, "?"
+            ], "gloss": ["„Ich wohne hier seit zwei Jahren“ → ", {"t": "I have been living here for two years", "b": true}, ", nicht ", {"t": "I live here since two years", "s": true}]},
+            {"chips": [{"label": "vs Present Perfect", "detail": "pp-continuous"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "verbs", "view": "verbs", "badge": "Verben",
+      "heading": "Verbkonstruktionen", "sub": "Modale, Passiv, V-ing vs to V, Verneinung, Relativsätze, Imperativ.", "grid": "two",
+      "cards": [
+        {
+          "id": "modals",
+          "level": "A2",
+          "kind": "Gebrauch",
+          "search": "modal can could must should may might have to müssen können dürfen sollen infinitiv grundform",
+          "blocks": [
+            {"h": ["Modale: can, could, must, should…"]},
+            {"formula": [{"slot": "modal"}, {"arrow": "+"}, {"slot": "V1 ohne to", "role": "verb"}]},
+            {"p": [{"t": "can", "b": true}, " — ", {"t": "können", "i": true}, " · ", {"t": "must", "b": true}, " — ", {"t": "müssen", "i": true}, " · ", {"t": "should", "b": true}, " — ", {"t": "sollen", "i": true}, " · ", {"t": "may", "b": true}, " — ", {"t": "dürfen", "i": true}, " · ", {"t": "have to", "b": true}, " — ", {"t": "müssen (äußere Regel)", "i": true}, " · ", {"t": "might", "b": true}, " — ", {"t": "könnte sein", "i": true}, "."]},
+            {"example": [
+              {"t": "He must "}, {"t": "be", "hit": true}, " tired. · You should ", {"t": "sleep", "hit": true}, " more."
+            ]},
+            {"tiny": ["Wie im Deutschen: Modal + Infinitiv ohne zu — nach dem Modal steht die Grundform, nie ", {"t": "to", "b": true}, "."]},
+            {"chips": [{"label": "Alle Bedeutungen", "detail": "modals-en"}]}
+          ]
+        },
+        {
+          "id": "mustnt",
+          "level": "B1",
+          "kind": "Gebrauch",
+          "search": "mustnt must not dont have to verboten verbot darf nicht pflicht erlaubt",
+          "blocks": [
+            {"h": ["mustn't ≠ don't have to"]},
+            {"p": [{"t": "mustn't", "b": true}, " = ", {"t": "darf nicht", "i": true}, " (Verbot). ", {"t": "don't have to", "b": true}, " = ", {"t": "muss nicht", "i": true}, " (keine Pflicht)."]},
+            {"example": [
+              {"t": "You mustn't smoke", "hit": true}, " here.", {"br": true},
+              {"t": "You don't have to come", "hit": true}, " early."
+            ], "gloss": ["Verbot — hier rauchen ist nicht erlaubt.", {"br": true}, "Keine Pflicht — früh kommen ist nicht nötig."]},
+            {"chips": [{"label": "Warum man sie verwechselt", "detail": "mustnt"}]}
+          ]
+        },
+        {
+          "id": "passive",
+          "level": "B1",
+          "kind": "Formen",
+          "search": "passive passiv werden partizip be v3 von by hilfsverb",
+          "blocks": [
+            {"h": ["Passiv"]},
+            {"formula": [{"slot": "be"}, {"arrow": "+"}, {"slot": "V3", "role": "end"}]},
+            {"p": [{"t": "werden + Partizip II", "b": true}, " wird zu ", {"t": "be + V3", "b": true}, " — nur das Hilfsverb wechselt."]},
+            {"example": [
+              {"t": "The house was built", "hit": true}, " in 1930."
+            ]},
+            {"tiny": [{"t": "built ", "b": true}, {"t": "by", "b": true}, " the workers — nicht ", {"t": "from", "s": true}, ": das deutsche ", {"t": "von", "i": true}, " deckt of, from und by ab; der Agens steht im Passiv immer mit ", {"t": "by", "b": true}, "."]},
+            {"chips": [{"label": "Zeiten und wer’s getan hat", "detail": "passive-en"}]}
+          ]
+        },
+        {
+          "id": "gerund-infinitive",
+          "level": "B1",
+          "kind": "Gebrauch",
+          "search": "gerund infinitive enjoy finish want decide stop ing to v verben liste aufhören anhalten",
+          "blocks": [
+            {"h": ["V-ing oder to V?"]},
+            {"p": [{"t": "enjoy, finish, mind", "b": true}, " + ", {"t": "V-ing", "b": true}, " · ", {"t": "want, decide, hope", "b": true}, " + ", {"t": "to V", "b": true}, "."]},
+            {"example": [
+              {"t": "I enjoy "}, {"t": "reading", "hit": true}, ". · I want ", {"t": "to read", "hit": true}, "."
+            ]},
+            {"tiny": [{"t": "stop smoking", "b": true}, " — mit dem Rauchen aufhören ≠ ", {"t": "stop to smoke", "b": true}, " — anhalten, um zu rauchen."]},
+            {"chips": [{"label": "Liste der häufigen Verben", "detail": "gerund-infinitive"}]}
+          ]
+        },
+        {
+          "id": "relatives",
+          "level": "A2",
+          "kind": "Verbindung",
+          "search": "relative clauses who which that whose where personen sachen belebt komma",
+          "blocks": [
+            {"h": ["Relative clauses: who / which / that"]},
+            {"p": [{"t": "der/die/das", "i": true}, " markieren Genus und Kasus — Englisch fragt nach ", {"t": "belebt oder Sache", "b": true}, ":"]},
+            {"example": [
+              "The man ", {"t": "who", "hit": true}, " lives next door is 90. · The book ", {"t": "that", "hit": true}, " I read was great."
+            ], "gloss": ["who — Personen · which — Sachen · that — beides."]},
+            {"tiny": [{"t": "The man which…", "s": true}, " ist der typische deutsche Kalk — das Entscheidungswort wählt nach Belebtheit, nicht nach Genus."]},
+            {"chips": [{"label": "whose, where und das Komma", "detail": "relatives"}]}
+          ]
+        },
+        {
+          "id": "negation",
+          "level": "A1",
+          "kind": "Formen",
+          "search": "negation verneinung dont doesnt didnt never kein support grundform",
+          "blocks": [
+            {"h": ["Verneinung: don't / never / no"]},
+            {"p": [{"t": "don't / doesn't / didn't", "b": true}, " + Grundform · ", {"t": "never", "b": true}, " statt ", {"t": "not", "b": true}, " · ", {"t": "no", "b": true}, " + Nomen = kein (1:1)."]},
+            {"example": [
+              "I ", {"t": "don't", "hit": true}, " smoke. · I have ", {"t": "never", "hit": true}, " been to Rome. · I have ", {"t": "no", "hit": true}, " money."
+            ]},
+            {"tiny": [{"t": "Ich sehe es nicht", "i": true}, " → ", {"t": "I don't see it", "b": true}, " — die Negation läuft übers Hilfsverb; Deutsch negiert das Verb direkt."]},
+            {"chips": [{"label": "do-support — die eigentliche Falle", "detail": "negation"}]}
+          ]
+        },
+        {
+          "id": "imperative",
+          "level": "A1",
+          "kind": "Formen",
+          "search": "imperative imperativ befehl lets please grundform subjekt bitte",
+          "blocks": [
+            {"h": ["Imperativ: eine Befehlsform für alle"]},
+            {"p": [{"t": "Komm! · Kommt! · Kommen Sie!", "i": true}, " → ", {"t": "Open!", "b": true}, " — immer die Grundform, ohne Subjekt."]},
+            {"example": [
+              {"t": "Please sit down", "hit": true}, ". · ", {"t": "Let's not argue", "hit": true}, "."
+            ]},
+            {"tiny": [{"t": "Bitte + Grundform", "b": true}, " — die Bitte ohne ", {"t": "to", "b": true}, " · nicht ", {"t": "Sit you down", "s": true}, " — das deutsche ", {"t": "Sie", "i": true}, " trägt das Pronomen mit, der englische Imperativ nicht."]},
+            {"chips": [{"label": "Let's und Höflichkeit", "detail": "imperative"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preps", "view": "preps", "badge": "Prepositions",
+      "heading": "Präpositionen", "sub": "in / on / at für Zeit und Ort — und feste Paare, die nicht wörtlich übersetzt werden.", "grid": "two",
+      "cards": [
+        {
+          "id": "time",
+          "level": "A1",
+          "kind": "Signalwort → Präposition",
+          "search": "prepositions time zeit in on at am montag morgen abend uhrzeit nacht wochenende",
+          "blocks": [
+            {"h": ["Zeit: ", {"t": "in / on / at", "b": true}]},
+            {"formula": [
+              {"slot": [{"t": "in", "b": true}], "role": "sub"}, {"slot": "Monate, Jahre, Tageszeiten"},
+              {"slot": [{"t": "on", "b": true}], "role": "sub"}, {"slot": "Tage, Datum"},
+              {"slot": [{"t": "at", "b": true}], "role": "sub"}, {"slot": "Uhrzeiten, night"}
+            ]},
+            {"example": [
+              "am Montag → ", {"t": "on Monday", "hit": true}, {"br": true},
+              "am Morgen / am Abend → ", {"t": "in the morning", "hit": true}, " / ", {"t": "in the evening", "hit": true}, {"br": true},
+              "in der Nacht → ", {"t": "at night", "hit": true}
+            ], "gloss": ["Deutsches „am“ entscheidet nicht — die Tagesart wählt das englische Wort."]},
+            {"tiny": ["am Wochenende: ", {"t": "at the weekend", "b": true}, " (BrE) / ", {"t": "on the weekend", "b": true}, " (AmE)."]},
+            {"chips": [{"label": "Komplette Übersicht", "detail": "time-preps"}]}
+          ]
+        },
+        {
+          "id": "place",
+          "level": "A1",
+          "kind": "Signalwort → Präposition",
+          "search": "prepositions place ort in on at an wand bahnhof punkt oberfläche hause innen station",
+          "blocks": [
+            {"h": ["Ort: ", {"t": "in / on / at", "b": true}]},
+            {"formula": [
+              {"slot": [{"t": "in", "b": true}], "role": "sub"}, {"slot": "innen, Großraum"},
+              {"slot": [{"t": "on", "b": true}], "role": "sub"}, {"slot": "Oberfläche, Linie"},
+              {"slot": [{"t": "at", "b": true}], "role": "sub"}, {"slot": "Punkt, Treffpunkt"}
+            ]},
+            {"example": [
+              {"t": "in Berlin", "b": true}, " — wie im Deutschen", {"br": true},
+              "an der Wand → ", {"t": "on the wall", "hit": true}, " · am Bahnhof → ", {"t": "at the station", "hit": true}, " · zu Hause → ", {"t": "at home", "hit": true}
+            ], "gloss": ["Deutsches „an“ heißt on UND at — frag: Oberfläche oder Punkt?"]},
+            {"chips": [{"label": "Wie du sie nicht verwechselst", "detail": "place-preps"}]}
+          ]
+        },
+        {
+          "id": "dependent",
+          "level": "B1",
+          "kind": "Signalwort → Präposition",
+          "search": "dependent prepositions feste paare verb warten denken abhängen teilnehmen freuen mathe wait think depend",
+          "blocks": [
+            {"h": ["Feste Paare: ", {"t": "Verb + preposition", "b": true}]},
+            {"p": ["Die englische Präposition passt fast nie zur deutschen — das Paar zusammen lernen:"]},
+            {"chips": [
+              {"label": ["warten auf → ", {"t": "wait for", "b": true}], "detail": "dependent-preps", "neutral": true},
+              {"label": ["denken an → ", {"t": "think of", "b": true}], "detail": "dependent-preps", "neutral": true},
+              {"label": ["sich freuen auf → ", {"t": "look forward to", "b": true}], "detail": "dependent-preps", "neutral": true},
+              {"label": ["abhängen von → ", {"t": "depend on", "b": true}], "detail": "dependent-preps", "neutral": true},
+              {"label": ["teilnehmen an → ", {"t": "take part in", "b": true}], "detail": "dependent-preps", "neutral": true},
+              {"label": ["gut in Mathe → ", {"t": "good at", "b": true}], "detail": "dependent-preps", "neutral": true}
+            ]},
+            {"example": [
+              "abhängen von → ", {"t": "depend on", "hit": true}, " — nicht ", {"t": "depend of", "s": true}
+            ]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nouns", "view": "articles", "badge": "Nouns",
+      "heading": "Nomen: Zahl und Vergleich", "sub": "Plural, Zählbarkeit, Steigerung — hier ist Englisch regelmäßiger als Deutsch.", "grid": "two",
+      "cards": [
+        {
+          "id": "plurals",
+          "level": "A1",
+          "kind": "Formen",
+          "search": "plural nouns unregelmäßige irregular men children information knowledge software",
+          "blocks": [
+            {"h": ["Plural: eine Regel"]},
+            {"p": ["Eine -s-Regel statt fünf deutsche Muster (", {"t": "Kind → Kinder", "i": true}, ", ", {"t": "Haus → Häuser", "i": true}, " → ", {"t": "house → houses", "i": true}, "): meist ", {"t": "+s", "b": true}, "; nach Zischlauten ", {"t": "+es", "b": true}, "; Konsonant + y → ", {"t": "-ies", "b": true}, "; oft -f/-fe → ", {"t": "-ves", "b": true}, "."]},
+            {"example": [
+              "cats · boxes · cities · days · leaves", {"br": true},
+              "Unregelmäßig: ", {"t": "man–men, child–children, foot–feet, tooth–teeth", "b": true}
+            ]},
+            {"tiny": [{"t": "child/children", "b": true}, " ist dieselbe Reliktform wie ", {"t": "Kind → Kinder", "i": true}, " — Vokalwechsel, sofort wiedererkennbar."]},
+            {"tiny": ["Die Kehrseite: Englisch macht Wörter unzählbar, die Deutsch zählt — ", {"t": "information, knowledge, advice, news, money, software", "b": true}, " bleiben ohne -s: ✗ ", {"t": "informations", "s": true}, "."]},
+            {"chips": [{"label": "Regeln und Ausnahmen", "detail": "plurals"}]}
+          ]
+        },
+        {
+          "id": "countable",
+          "level": "A2",
+          "kind": "Gebrauch",
+          "search": "countable uncountable much many few little zählbar viel viele advice news",
+          "blocks": [
+            {"h": ["Zählbar oder nicht?"]},
+            {"p": [{"t": "many / few", "b": true}, " + Zählbares · ", {"t": "much / little", "b": true}, " + Unzählbares — die viel/viele-Entscheidung kennst du."]},
+            {"example": [
+              "much time · many friends · little money", {"br": true},
+              {"t": "advice, news, money", "hit": true}
+            ], "gloss": ["— stehen immer im Singular: kein -s, kein a."]},
+            {"chips": [{"label": "Unzählbares zählen", "detail": "countable"}]}
+          ]
+        },
+        {
+          "id": "some-any",
+          "level": "A2",
+          "kind": "Gebrauch",
+          "search": "some any etwas beliebig aussage frage verneinung angebot bitte",
+          "blocks": [
+            {"h": ["some / any"]},
+            {"formula": [{"slot": "some"}, {"arrow": "+"}, {"slot": "Aussage"}, {"slot": "any"}, {"arrow": "+"}, {"slot": "Frage / Verneinung", "role": "end"}]},
+            {"example": [
+              {"t": "I have some money.", "b": true}, {"br": true},
+              {"t": "Do you have any questions?", "b": true}, " · ", {"t": "I don’t have any money.", "b": true}
+            ], "gloss": ["some ≈ etwas (bejahend) · any ≈ irgendwelche."]},
+            {"tiny": ["Die Teilzuordnung ist Neulernen: some im Angebot und in Bitten (", {"t": "Can I have some water?", "b": true}, ") · any = „beliebig“ in Aussagen (", {"t": "Take any seat", "b": true}, ")."]},
+            {"chips": [{"label": "Feinheiten", "detail": "some-any"}]}
+          ]
+        },
+        {
+          "id": "comparative",
+          "level": "A2",
+          "kind": "Formen",
+          "search": "comparative superlative steigerung komparativ als than as bigger more most better best",
+          "blocks": [
+            {"h": ["Steigerung: Komparativ und Superlativ"]},
+            {"formula": [{"slot": "big — bigger — the biggest"}]},
+            {"p": ["Kurz: ", {"t": "-er / the -est", "b": true}, " · Lang: ", {"t": "more / the most", "b": true}, ". Deutsch ", {"t": "als", "b": true}, " heißt einmal ", {"t": "than", "b": true}, " (", {"t": "bigger than", "hit": true}, ") und einmal ", {"t": "as … as", "b": true}, " (", {"t": "so groß wie", "i": true}, ")."]},
+            {"example": [
+              {"t": "She is taller than", "b": true}, " me.", {"br": true},
+              {"t": "good — better — the best", "b": true}, " = gut — besser — am besten"
+            ], "gloss": ["✗ ", {"t": "bigger as", "s": true}, " — der deutsche Kalk; Gleichheit immer ", {"t": "as … as", "b": true}, "."]},
+            {"tiny": ["Niemals doppelt: ✗ ", {"t": "more better", "s": true}, " → ", {"t": "better", "b": true}, ". Schreibung: ", {"t": "big → bigger", "i": true}, " · ", {"t": "happy → happier", "i": true}, " · ", {"t": "nice → nicer", "i": true}, "."]},
+            {"chips": [{"label": "Regeln und Ausnahmen", "detail": "comparative"}]}
+          ]
+        },
+        {
+          "id": "numbers-dates",
+          "level": "A1",
+          "kind": "Formen",
+          "search": "ordinal ordnungszahlen 1st 2nd 3rd fifth twelfth datum daten jahre jahrzehnt may",
+          "blocks": [
+            {"h": ["Zahlen und Daten: 1st, 2nd, 3rd"]},
+            {"p": ["Ordnungszahlen: ", {"t": "1st first · 2nd second · 3rd third · 5th fifth · 12th twelfth", "b": true}, " — fifth und twelfth ändern die Schreibung."]},
+            {"example": [
+              "on ", {"t": "5 May", "hit": true}, " · on ", {"t": "the 5th of May", "hit": true}, " · ", {"t": "in the 1990s", "hit": true}, "."
+            ], "gloss": ["Datum → on (am 5. Mai, ohne Punkt) · Jahr und Monat → in · Jahrzehnt: the + -s (die 90er)."]},
+            {"tiny": ["Jahre liest du paarweise wie im Deutschen: 1985 → ", {"t": "nineteen eighty-five", "b": true}, " (neunzehnhundertfünfundachtzig)."]},
+            {"chips": [{"label": "Jahre lesen", "detail": "numbers-dates"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conditionals", "view": "verbs", "badge": "If-Sätze",
+      "heading": "Bedingungssätze", "sub": "Die Formel bleibt gleich: If + Bedingung, + Folge.", "grid": "two",
+      "cards": [
+        {
+          "id": "cond1",
+          "level": "A2",
+          "kind": "Bedingungssatz",
+          "search": "conditional type 1 first real future will zukunft wenn",
+          "blocks": [
+            {"h": ["Type 1 — reale Zukunft"]},
+            {"formula": [{"slot": "If + Present", "role": "sub"}, {"arrow": ","}, {"slot": "will + V1", "role": "verb"}]},
+            {"example": [
+              {"t": "If it rains, we will stay", "hit": true}, " at home."
+            ], "gloss": ["Nach ", {"t": "if", "b": true}, " steht kein will — will lebt im Hauptsatz."]},
+            {"tiny": [{"t": "Wenn es regnen wird…", "i": true}, " — das Deutsche darf Futur im wenn-Satz, Englisch nicht: nicht ", {"t": "If it will rain", "s": true}, "."]},
+            {"chips": [{"label": "if oder when?", "detail": "cond1"}]}
+          ]
+        },
+        {
+          "id": "cond2",
+          "level": "B1",
+          "kind": "Bedingungssatz",
+          "search": "conditional type 2 second unreal would were konjunktiv hätte würde jetzt",
+          "blocks": [
+            {"h": ["Type 2 — unrealistisch jetzt"]},
+            {"formula": [{"slot": "If + Past", "role": "sub"}, {"arrow": ","}, {"slot": "would + V1", "role": "verb"}]},
+            {"example": [
+              {"t": "If I had time, I would help", "hit": true}, " you.", {"br": true},
+              "If I ", {"t": "were", "hit": true}, " you…"
+            ], "gloss": ["≈ Wenn ich Zeit hätte, würde ich helfen — strukturell Konjunktiv II.", {"br": true}, "were — für alle Personen."]},
+            {"chips": [{"label": "Warum were?", "detail": "cond2"}]}
+          ]
+        },
+        {
+          "id": "cond0",
+          "level": "A2",
+          "kind": "Bedingungssatz",
+          "search": "conditional type 0 zero present gesetze regeln immer wenn",
+          "blocks": [
+            {"h": ["Type 0 — immer so"]},
+            {"formula": [{"slot": "If + Present", "role": "sub"}, {"arrow": ","}, {"slot": "Present", "role": "verb"}]},
+            {"example": [
+              {"t": "If you heat ice, it melts.", "hit": true}
+            ], "gloss": ["≈ Wenn man Eis erhitzt, schmilzt es — Gesetze, Regeln, immer-wenn-Zusammenhänge."]},
+            {"chips": [{"label": "Wann 0 statt 1?", "detail": "cond0"}]}
+          ]
+        },
+        {
+          "id": "cond3",
+          "level": "B1",
+          "kind": "Bedingungssatz",
+          "search": "conditional type 3 third past regret unreal vergangenheit would have hätte",
+          "blocks": [
+            {"h": ["Type 3 — unrealistische Vergangenheit"]},
+            {"formula": [{"slot": "If + had V3", "role": "sub"}, {"arrow": ","}, {"slot": "would have V3", "role": "verb"}]},
+            {"example": [
+              {"t": "If I had known, I would have called.", "hit": true}
+            ], "gloss": ["≈ Wenn ich das gewusst hätte, hätte ich angerufen — Bedauern über die Vergangenheit."]},
+            {"tiny": ["Für B1+ genügt Erkennen — der Bau entspricht dem deutschen hätte-Konjunktiv."]}
+          ]
+        }
+      ]
+    }
+  ],
+  "practice": {
+    "id": "practice", "view": "practice", "badge": "30 sec",
+    "heading": "Wiederholung", "sub": "Drei Fragen ohne extra „Lernmodus“.",
+    "search": "practice quiz wiederholung üben test",
+    "items": [
+      {
+        "_note": "EN-04: do-support — der deutsche Verb-Kalk (Mag sie Tee?).",
+        "q": [{"t": "1. Mag sie Tee? — Bild die Frage: ___ she ___ (like) tea?", "b": true}],
+        "answer": [{"t": "Does she like", "b": true}, " tea? — Englisch braucht Do/Does/Did + Grundform; ", {"t": "Likes she tea?", "s": true}, " kehrt nur das Verb, wie das Deutsche."]
+      },
+      {
+        "_note": "EN-05: Present Simple vs Present Continuous — das Deutsche hat keine Verlaufsform.",
+        "q": [{"t": "2. Es regnet gerade. → It ___ (rain) now.", "b": true}],
+        "answer": [{"t": "It’s raining", "b": true}, " — Verlaufsform für „gerade jetzt“; ", {"t": "It rains now", "s": true}, " überträgt das deutsche Präsens, das beides abdeckt."]
+      },
+      {
+        "_note": "EN-06: Past Simple vs Present Perfect — der Perfekt-Kalk, Gefahr Nr. 1.",
+        "q": [{"t": "3. Ich habe den Film gestern gesehen. → I ___ (see) the film yesterday.", "b": true}],
+        "answer": [{"t": "saw", "b": true}, " — Past Simple: „gestern“ ist abgeschlossen; ", {"t": "I have seen it yesterday", "s": true}, " ist der Perfekt-Kalk. Ohne Zeitangabe wäre ", {"t": "I have seen", "b": true}, " richtig (Perfect = Ergebnis jetzt)."]
+      }
+    ]
+  },
+  "details": {
+    "lookup-help": {
+      "title": "So geht’s", "lead": "Auslöser → Form → Wortstellung.",
+      "blocks": [
+        {"detail": {"label": "Prinzip", "runs": ["Finde den Auslöser — Signalwort, Artikel, Konnektor oder Modalverb — und schau dann auf die passende Form und die Wortstellung."]}},
+        {"detail": {"label": "Suche", "runs": ["Such direkt: ", {"t": "present", "i": true}, ", ", {"t": "the", "i": true}, ", ", {"t": "must", "i": true}, " — oder auf Deutsch. Die Suche prüft alle Bereiche gleichzeitig."]}},
+        {"detail": {"label": "Navigation", "runs": ["Fünf Bereiche unten; die Wiederholung verlinkt der Footer."]}}
+      ]
+    },
+        "a-an": {
+      "title": "a oder an", "lead": "Entscheidend ist der erste Laut, nicht der Buchstabe.",
+      "blocks": [
+        {"detail": {"label": "Regel", "runs": ["a + Konsonant-Laut, an + Vokal-Laut: ", {"t": "a cat", "i": true}, ", ", {"t": "an apple", "i": true}, " — das Deutsche kennt keinen Wechsel: es bleibt immer ", {"t": "ein", "i": true}, "."]}},
+        {"detail": {"label": "Laut-Fallen", "runs": [{"t": "an hour", "i": true}, " (h stumm) · ", {"t": "a university", "i": true}, " („ju-“) · ", {"t": "an MBA", "i": true}, " („em-“)."]}}
+      ]
+    },
+    "the-article": {
+      "title": "Wann the", "lead": "Wenn klar ist, welches genau gemeint ist — Geschlecht spielt keine Rolle.",
+      "blocks": [
+        {"detail": {"label": "Signale", "runs": ["Zweite Erwähnung · im Kontext einzigartig (", {"t": "the sun", "i": true}, ", ", {"t": "the kitchen", "i": true}, ") · Superlativ (", {"t": "the best", "i": true}, ")."]}},
+        {"detail": {"label": "Beispiel", "runs": ["I bought ", {"t": "a", "i": true}, " book. ", {"t": "The", "i": true}, " book is interesting."], "comment": ["Erst irgendein Buch, dann das bekannte — dieselbe Bewegung wie im Deutschen."]}},
+        {"detail": {"label": "Kein Genus", "runs": ["the bleibt immer the — kein der/die/das-Raten, auch nicht im Plural (", {"t": "the car → the cars", "i": true}, ")."]}}
+      ]
+    },
+    "zero-article": {
+      "title": "Ohne Artikel", "lead": "Verallgemeinerungen, Stoffe, feste Gruppen.",
+      "blocks": [
+        {"detail": {"label": "Verallgemeinern", "runs": [{"t": "Dogs are loyal", "i": true}, " (Hunde im Allgemeinen) · ", {"t": "Coffee is expensive", "i": true}, " (Kaffee als Stoff) — deutsch mit Artikel, englisch ohne."]}},
+        {"detail": {"label": "Feste Gruppen", "runs": ["Sprachen (", {"t": "English", "i": true}, "), Mahlzeiten (", {"t": "at lunch", "i": true}, "), Sport (", {"t": "play football", "i": true}, "), Personen- und Städtenamen."]}},
+        {"detail": {"label": "Aber", "runs": ["Instrument mit the: ", {"t": "play the piano", "i": true}, " · Rolle nach be mit a/an: ", {"t": "I’m a teacher", "i": true}, " (✗ deutsch „Ich bin Lehrer“)."]}}
+      ]
+    },
+    "school-exceptions": {
+      "title": "Schule, Bett, Krankenhaus", "lead": "Institution als Rolle — ohne Artikel; als Gebäude — mit the.",
+      "blocks": [
+        {"detail": {"label": "Rolle", "runs": [{"t": "go to school", "i": true}, " (zum Lernen) · ", {"t": "go to bed", "i": true}, " (zum Schlafen) · ", {"t": "in hospital", "i": true}, " (als Patient, britisch; amerikanisch: ", {"t": "in the hospital", "i": true}, ")."]}},
+        {"detail": {"label": "Gebäude", "runs": [{"t": "go to the school", "i": true}, " (z. B. zum Elternabend) · ", {"t": "meet at the hospital", "i": true}, " (am Gebäude)."]}},
+        {"detail": {"label": "Gleiche Logik", "runs": [{"t": "by car", "i": true}, " („mit dem Auto“) · ", {"t": "at night", "i": true}, " („in der Nacht“) — deutsche Artikel haben hier kein englisches Pendant."]}}
+      ]
+    },
+    "my-mine": {
+      "title": "my oder mine", "lead": "my + Nomen, mine steht allein — wie mein/meins.",
+      "blocks": [
+        {"detail": {"label": "Vergleich", "runs": [{"t": "my", "i": true}, " book = The book is ", {"t": "mine", "i": true}, " — „mein Buch“ / „das Buch ist meins“."]}},
+        {"detail": {"label": "Typisch", "runs": [{"t": "a friend of mine", "i": true}], "comment": ["„ein Freund von mir“ — einer aus meiner Menge."]}},
+        {"detail": {"label": "Genauso", "runs": [{"t": "yours, hers, ours, theirs", "i": true}, " — nur ", {"t": "his", "i": true}, " bleibt his, und ", {"t": "its", "i": true}, " hat keine alleinige Form (✗ ", {"t": "The book is its", "s": true}, ")."]}}
+      ]
+    },
+    "reflexive": {
+      "title": "Reflexivpronomen", "lead": "-self / -selves: die Handlung trifft den Täter selbst.",
+      "blocks": [
+        {"detail": {"label": "Formen", "runs": ["myself, yourself, himself, herself, itself, ourselves, yourselves, themselves."]}},
+        {"detail": {"label": "Beispiele", "runs": [{"t": "I hurt myself", "i": true}, " („ich verletze mich“) · ", {"t": "Help yourself!", "i": true}, " („Bedien dich!“)"]}},
+        {"detail": {"label": "Nicht wie im Deutschen", "runs": ["Viele sich-Verben sind englisch nicht reflexiv: ", {"t": "sich freuen", "i": true}, " → ", {"t": "I’m glad", "i": true}, " · ", {"t": "sich erinnern", "i": true}, " → ", {"t": "I remember", "i": true}, " — kein -self."]}}
+      ]
+    },
+    "plurals": {
+      "title": "Plural: Regeln und Ausnahmen", "lead": "+s als Standard, dazu Schreib- und Reliktregeln.",
+      "blocks": [
+        {"detail": {"label": "Schreibung", "runs": ["Standard ", {"t": "+s", "i": true}, " · nach -s/-sh/-ch/-x/-o meist ", {"t": "+es", "i": true}, " (boxes, tomatoes) · Konsonant + y → ", {"t": "-ies", "i": true}, " (cities), Vokal + y → ", {"t": "+s", "i": true}, " (days, boys)."]}},
+        {"detail": {"label": "-f/-fe → -ves", "runs": ["Häufig: knife → knives, leaf → leaves, wolf → wolves. Aber nicht immer: roofs, chiefs."]}},
+        {"detail": {"label": "Unregelmäßige", "runs": ["man–men · woman–women · child–children · foot–feet · tooth–teeth · mouse–mice · person–people."]}},
+        {"detail": {"label": "Unverändert", "runs": ["fish, sheep, aircraft — wie deutsche Fremdwörter (der Computer → die Computer)."]}},
+        {"detail": {"label": "Nur Zählbares", "runs": ["Den Plural gibt es nur für Zählbares: ", {"t": "water, information, advice", "i": true}, " haben keinen — siehe Zählbar oder nicht?"]}}
+      ]
+    },
+    "countable": {
+      "title": "Zählbarkeit", "lead": "Die deutsche viel/viele-Frage entscheidet: zählbar → many/few, unzählbar → much/little.",
+      "blocks": [
+        {"detail": {"label": "Zählbar", "runs": [{"t": "many friends", "i": true}, " (viele Freunde) · ", {"t": "a few books", "i": true}, " · ", {"t": "few mistakes", "i": true}, " (wenige)."]}},
+        {"detail": {"label": "Unzählbar", "runs": [{"t": "much time", "i": true}, " (viel Zeit) · ", {"t": "a little money", "i": true}, " · ", {"t": "little news", "i": true}, " (wenig)."]}},
+        {"detail": {"label": "Zählbar machen", "runs": [{"t": "a piece of advice", "i": true}, " („ein Rat“) · ", {"t": "a cup of coffee", "i": true}, " · ", {"t": "two pieces of information", "i": true}, "."]}},
+        {"detail": {"label": "Schein-Unzählbare", "runs": [{"t": "advice, information, news, money, knowledge, software", "i": true}, " — kein -s, kein a; ✗ ", {"t": "informations", "s": true}, ", ✗ ", {"t": "a news", "s": true}, " · ✗ ", {"t": "How much people?", "s": true}, " → ", {"t": "How many people?", "i": true}, "."]}}
+      ]
+    },
+    "some-any": {
+      "title": "some / any", "lead": "some in Aussagen, any in Fragen und Verneinungen — mit zwei Extras.",
+      "blocks": [
+        {"detail": {"label": "Basis", "runs": [{"t": "I have some money", "i": true}, " (etwas Geld) · ", {"t": "Do you have any questions?", "i": true}, " · ", {"t": "I don’t have any money", "i": true}, " (kein Geld)."]}},
+        {"detail": {"label": "any = beliebig", "runs": ["In Aussagen: ", {"t": "Take any seat", "i": true}, " — „irgendeinen Platz, egal welchen“."]}},
+        {"detail": {"label": "some im Angebot", "runs": ["In Bitten und Angeboten steht some auch in Fragen: ", {"t": "Can I have some water?", "i": true}, " — du erwartest Ja."]}},
+        {"detail": {"label": "Warum Neulernen", "runs": ["Deutsch deckt das mit etwas/einige/irgendwelche ab, ohne eine solche Aufteilung — die some/any-Zuordnung gibt es im Deutschen nicht."]}}
+      ]
+    },
+    "comparative": {
+      "title": "Steigerung: Regeln und Ausnahmen", "lead": "Kurz → Suffix, lang → more/most; verglichen wird mit than.",
+      "blocks": [
+        {"detail": {"label": "Kurz", "runs": ["cheap – cheaper – the cheapest."]}},
+        {"detail": {"label": "Schreibung", "runs": ["Konsonant verdoppelt: ", {"t": "big → bigger", "i": true}, " · -y → -ier: ", {"t": "happy → happier", "i": true}, " · stummes -e fällt weg: ", {"t": "nice → nicer", "i": true}, "."]}},
+        {"detail": {"label": "Lang", "runs": ["expensive – more expensive – the most expensive."]}},
+        {"detail": {"label": "Unregelmäßige", "runs": [{"t": "good–better–best", "i": true}, " (gut–besser–am besten) · ", {"t": "bad–worse–worst", "i": true}, " · ", {"t": "far–further–furthest", "i": true}, " — das Trio deckt sich wörtlich mit dem Deutschen."]}},
+        {"detail": {"label": "als: zwei Bedeutungen", "runs": ["Vergleich: ", {"t": "bigger than", "i": true}, " (größer als) · Gleichheit: ", {"t": "as big as", "i": true}, " (so groß wie) — ✗ ", {"t": "bigger as", "s": true}, " ist der deutsche Kalk."]}},
+        {"detail": {"label": "Formel", "runs": ["…er ", {"t": "than", "b": true}, " · the …est / the most … — niemals doppelt: ✗ ", {"t": "more better", "s": true}, "."]}}
+      ]
+    },
+    "numbers-dates": {
+      "title": "Daten und Jahre", "lead": "Datum → on; Jahr und Monat → in; Jahrzehnte mit the + -s.",
+      "blocks": [
+        {"detail": {"label": "on vs in", "runs": [{"t": "on 5 May", "i": true}, " (Datum) · ", {"t": "in 2026", "i": true}, " (Jahr) · ", {"t": "in May", "i": true}, " (Monat) — siehe Zeit: in/on/at."]}},
+        {"detail": {"label": "Beide Datumsformen", "runs": [{"t": "on 5 May", "i": true}, " (britisch, „5. Mai“ ohne Punkt) = ", {"t": "on the 5th of May", "i": true}, " („am fünften Mai“)."]}},
+        {"detail": {"label": "Jahre", "runs": [{"t": "1985 → nineteen eighty-five", "i": true}, " · ", {"t": "2000 → two thousand", "i": true}, " · ", {"t": "the 1990s → the nineties", "i": true}, " („die 90er“)."]}},
+        {"detail": {"label": "Schreib-Fallen", "runs": [{"t": "five → fifth", "i": true}, " (nicht „fiveth“) · ", {"t": "twelve → twelfth", "i": true}, " · ", {"t": "nine → ninth", "i": true}, " (e fällt weg) — deutsch regulär: fünf → fünfte."]}}
+      ]
+    },
+        "svo": {
+      "title": "Warum der englische Satzbau so streng ist", "lead": "Deutsch trägt die Rollen im Kasus, Englisch in der Position.",
+      "blocks": [
+        {"detail": {"label": "Deutsch", "runs": ["„Den Mann beißt der Hund“ bleibt verständlich — der Akkusativ „den“ zeigt, wer gebissen wird. Umstellen für die Betonung ist erlaubt."]}},
+        {"detail": {"label": "Englisch", "runs": [{"t": "The man bites the dog", "b": true}, " ≠ ", {"t": "The dog bites the man", "b": true}, " — gleiche Wörter, anderes Ereignis."], "comment": ["Wer vorn steht, ist das Subjekt. Für Betonung nutzt Englisch den Nachdruck beim Sprechen (Stress), nicht die Wortstellung."]}},
+        {"detail": {"label": "Keine V2-Ausnahme", "runs": ["Auch nach vorangestelltem „Yesterday / Never / …“ bleibt das Subjekt beim Verb: ", {"t": "Never I have seen that", "s": true}, " → ", {"t": "I have never seen that", "b": true}, "."], "comment": ["Die literarische Form „Never have I…“ reicht erkennen — bilden musst du sie nicht."]}}
+      ]
+    },
+    "do-questions": {
+      "title": "Fragen bauen", "lead": "Hilfsverb nach vorn, Vollverb in der Grundform — be und Modals dürfen allein.",
+      "blocks": [
+        {"detail": {"label": "Yes/No", "runs": ["Do/Does/Did + Subjekt + Grundform: ", {"t": "Does he work here?", "b": true}, "."]}},
+        {"detail": {"label": "W-Frage", "runs": ["W-Wort + do/does/did: ", {"t": "Where did you go?", "b": true}, "."]}},
+        {"detail": {"label": "be / Modals", "runs": ["Auch ohne do — reine Umstellung wie im Deutschen: ", {"t": "Is she…?", "b": true}, " · ", {"t": "Can you…?", "b": true}, " Do brauchen nur Vollverben."]}},
+        {"detail": {"label": "Subjektfrage", "runs": [{"t": "Who lives here?", "b": true}, " — ohne do, wie „Wer wohnt hier?“: who ist bereits das Subjekt."]}},
+        {"detail": {"label": "Typische Kalkfehler", "runs": [{"t": "Likes she tea?", "s": true}, " → ", {"t": "Does she like tea?", "b": true}, " · ", {"t": "Did you saw", "s": true}, " → ", {"t": "Did you see", "b": true}, " — nach do steht immer die Grundform."]}}
+      ]
+    },
+    "frequency": {
+      "title": "Die Häufigkeitsskala", "lead": "always → usually → often → sometimes → rarely → never.",
+      "blocks": [
+        {"detail": {"label": "Position", "runs": ["Vor dem Vollverb, nach be: He ", {"t": "is always", "b": true}, " late. · I ", {"t": "always drive", "b": true}, "."]}},
+        {"detail": {"label": "Die Extremskala", "runs": [{"t": "never", "b": true}, " und ", {"t": "rarely", "b": true}, " verneinen schon selbst: ", {"t": "I never drink coffee", "b": true}, " = „Ich trinke nie Kaffee“ — ein zweites ", {"t": "not", "b": true}, " kommt nicht dazu."]}},
+        {"detail": {"label": "Der V2-Kalk", "runs": ["„Nie habe ich das gesehen“ kalkt die deutsche Verbzweitstellung: ", {"t": "Never I have seen that", "s": true}, " → ", {"t": "I have never seen that", "b": true}, "."], "comment": ["Standardenglisch bleibt bei SVO; die literarische Form „Never have I…“ reicht erkennen."]}}
+      ]
+    },
+    "flavor-words": {
+      "title": "Tönungswörter: die fünf im Detail", "lead": "Sie stehen wie Häufigkeitsadverbien: vor dem Vollverb, nach be.",
+      "blocks": [
+        {"detail": {"label": "just", "runs": ["I've ", {"t": "just", "b": true}, " eaten. — „gerade eben“ (Perfect-Marker) · ", {"t": "Just kidding!", "b": true}, " — „nur zum Spaß“. Zwei Bedeutungen trennen: Zeit-Wörtchen vs. „lediglich“."]}},
+        {"detail": {"label": "actually", "runs": [{"t": "Actually", "b": true}, ", I don't know. — „tatsächlich / eigentlich“. Nicht „aktuell“! aktuell = current."]}},
+        {"detail": {"label": "still", "runs": ["I ", {"t": "still", "b": true}, " live here. — „immer noch“: läuft bis jetzt weiter. In Fragen/Verneinungen steht oft yet (siehe Perfect): ", {"t": "not yet", "b": true}, " = „noch nicht“."]}},
+        {"detail": {"label": "even", "runs": [{"t": "Even", "b": true}, " a child can do it. — „sogar“: Verstärkung direkt vor dem erstaunlichen Wort. Nicht „eben“!"]}},
+        {"detail": {"label": "though", "runs": ["It's expensive. I like it, ", {"t": "though", "b": true}, ". — „doch / allerdings“ am Satzende — diese Endposition hat das Deutsche nicht. Am Satzanfang ist though der Konnektor: ", {"t": "Though it's expensive…", "b": true}, " (= obwohl)."]}}
+      ]
+    },
+    "linking-words": {
+      "title": "Konnektoren: im Detail", "lead": "however, therefore, meanwhile beginnen einen neuen Satz — dahinter ein Komma.",
+      "blocks": [
+        {"detail": {"label": "but / however", "runs": ["It was raining. ", {"t": "However", "b": true}, ", we went out."], "comment": ["„aber“: however ist die formellere Variante und steht als eigenes Wort am Satzanfang, mit Komma."]}},
+        {"detail": {"label": "so / therefore", "runs": ["I was tired, ", {"t": "so", "b": true}, " I slept. — „also / deshalb“. ", {"t": "Therefore", "b": true}, " — dasselbe, formeller."], "comment": ["Falscher Freund: englisches also = „auch“ (She also speaks German). Das deutsche „also“ übersetzt du mit so oder therefore."]}},
+        {"detail": {"label": "meanwhile", "runs": ["I cooked. ", {"t": "Meanwhile", "b": true}, ", he watched TV."], "comment": ["„währenddessen“: zwei Dinge zur gleichen Zeit."]}},
+        {"detail": {"label": "nevertheless", "runs": ["The task was hard. ", {"t": "Nevertheless", "b": true}, ", she finished it."], "comment": ["„trotzdem / nichtsdestotrotz“: räumt einen Einwand beiseite."]}},
+        {"detail": {"label": "despite vs although", "runs": [{"t": "Despite", "b": true}, " the rain ✓ · ", {"t": "Despite it was raining", "s": true}, " ✗ → ", {"t": "Although it was raining", "b": true}, " ✓."], "comment": ["trotz + Nomen = despite + Nomen; obwohl + Satz = although + Satz — diese Aufteilung kennst du bereits."]}}
+      ]
+    },
+    "not-but": {
+      "title": "not …, but / not only … but also", "lead": "Nach der Verneinung korrigiert but wie „sondern“: nicht X, but Y.",
+      "blocks": [
+        {"detail": {"label": "not …, but", "runs": ["The meeting is ", {"t": "not on Monday, but on Tuesday", "b": true}, "."], "comment": ["„nicht am Montag, sondern am Dienstag“: Ein Modell wird verneint und durch das andere ersetzt — genau der Job von sondern."]}},
+        {"detail": {"label": "not only … but also", "runs": ["She is ", {"t": "not only smart but also kind", "b": true}, "."], "comment": ["„nicht nur klug, sondern auch nett“ — das Paar geht 1:1."]}},
+        {"detail": {"label": "Einfaches but", "runs": ["Nichts wird korrigiert, nur gegenübergestellt — dann heißt but einfach „aber“: It was raining, ", {"t": "but", "b": true}, " we went out."]}},
+        {"detail": {"label": "Position", "runs": ["Beide Konstruktionen stehen innerhalb des Satzes — anders als Konnektoren wie however, die einen neuen Satz beginnen."]}}
+      ]
+    },
+    "there-is": {
+      "title": "there is / there are", "lead": "Ohne do: Is there…? There aren't… — das ist be.",
+      "blocks": [
+        {"detail": {"label": "Verneinung / Frage", "runs": [{"t": "There isn't", "b": true}, " a shop here. · ", {"t": "There aren't", "b": true}, " any shops. · ", {"t": "Is there", "b": true}, " a shop nearby?"]}},
+        {"detail": {"label": "Vergangenheit", "runs": [{"t": "There was", "b": true}, " a shop. · ", {"t": "There were", "b": true}, " two shops."]}},
+        {"detail": {"label": "There's vs It's", "runs": [{"t": "There's a problem", "b": true}, " — „es gibt ein Problem“ (es existiert) · ", {"t": "It's a problem", "b": true}, " — „das ist ein Problem“ (über das konkrete Ding)."]}}
+      ]
+    },
+    "present-simple": {
+      "title": "Present Simple", "lead": "Gewohnheiten, Fakten, Fahrpläne — und nur eine -s-Endung.",
+      "blocks": [
+        {"detail": {"label": "Form", "runs": ["Grundform; nur die 3. Person Singular hängt ", {"t": "-s/-es", "b": true}, " an (watches, studies). Deutsch flektiert mehr Personen — die Idee der Kongruenz kennst du also."]}},
+        {"detail": {"label": "Verneinung / Frage", "runs": [{"t": "don't/doesn't", "b": true}, " + Grundform: ", {"t": "She doesn't smoke", "b": true}, " (siehe Fragen: Do / Does / Did)."]}},
+        {"detail": {"label": "Marker", "runs": ["every day, usually, always, on Mondays, never — Hinweise, keine Beweise: Die Bedeutung (Gewohnheit vs. gerade jetzt) entscheidet."]}}
+      ]
+    },
+    "present-continuous": {
+      "title": "Simple vs Continuous", "lead": "Fakt/Gewohnheit gegen den Prozess jetzt — ein deutsches Präsens deckt beides ab.",
+      "blocks": [
+        {"detail": {"label": "Simple", "runs": [{"t": "I work at Google", "b": true}, "."], "comment": ["„Ich arbeite bei Google“ — im Allgemeinen, ein Fakt."]}},
+        {"detail": {"label": "Continuous", "runs": [{"t": "I'm working from home this week", "b": true}, ". am/is/are + V-ing."], "comment": ["„Diese Woche arbeite ich von zu Hause“ — im Verlauf um jetzt."]}},
+        {"detail": {"label": "Ohne -ing", "runs": [{"t": "know, like, want, need", "b": true}, " — Zustandsverben, meist Simple: ", {"t": "I want coffee", "b": true}, ", nicht ", {"t": "I'm wanting coffee", "s": true}, "."]}},
+        {"detail": {"label": "always = Verärgerung", "runs": [{"t": "He's always losing his keys", "b": true}, ". — nicht „jetzt“: eine Gewohnheit, die nervt. Die Marker now/Look! fehlen absichtlich."]}}
+      ]
+    },
+    "past-simple": {
+      "title": "Regelmäßig und unregelmäßig", "lead": "V2 gilt für alle Personen gleich — Deutsch flektiert hier mehr.",
+      "blocks": [
+        {"detail": {"label": "Regelmäßig", "runs": ["+ed: work → ", {"t": "worked", "b": true}, "."]}},
+        {"detail": {"label": "Unregelmäßig", "runs": ["Müssen sitzen: go–went–gone, see–saw–seen, have–had–had."]}},
+        {"detail": {"label": "Frage / Verneinung", "runs": [{"t": "did", "b": true}, " + Grundform: ", {"t": "Did you go?", "b": true}, " · ", {"t": "I didn't go", "b": true}, " — das Hilfsverb trägt die Vergangenheit, nicht das Verb."]}},
+        {"detail": {"label": "Beim Deutschen", "runs": ["Präteritum und Perfekt decken beide das Past Simple ab: „Ich sah ihn“ und „Ich habe ihn gesehen“ → ", {"t": "I saw him", "b": true}, ". Gesprochenes Deutsch wählt das Perfekt — genau das ist der Kalk (siehe Perfect vs Past Simple)."]}}
+      ]
+    },
+    "present-perfect": {
+      "title": "Present Perfect", "lead": "Vergangenheit, die bis in das Jetzt zählt.",
+      "blocks": [
+        {"detail": {"label": "Kern", "runs": ["Ergebnis jetzt oder Erfahrung ohne Zeitangabe: ", {"t": "I've lost my keys", "b": true}, " — sie sind immer noch weg."]}},
+        {"detail": {"label": "Marker", "runs": ["just, already, yet, ever, never, so far, recently."]}},
+        {"detail": {"label": "Form", "runs": ["have/has + V3 (dritte Form = Partizip II): ", {"t": "I have seen", "b": true}, "."], "comment": ["Die Form ist das haben-Perfekt — aber nicht jedes deutsche Perfekt ist ein englisches Perfect: „Ich habe es gestern gesehen“ → ", {"t": "I saw it yesterday", "b": true}, "."]}}
+      ]
+    },
+    "pp-vs-past": {
+      "title": "Perfect vs Past Simple", "lead": "Entscheidet die Verbindung zum Jetzt — nicht ein Signalwort.",
+      "blocks": [
+        {"detail": {"label": "Past Simple", "runs": ["Abgeschlossene Tatsache: ", {"t": "I saw him yesterday / in 2020 / last week", "b": true}, "."]}},
+        {"detail": {"label": "Perfect", "runs": ["Verbindung zum Jetzt — Ergebnis jetzt (", {"t": "I have lost my keys", "b": true}, " — ich komme nicht rein) oder Erfahrung ohne Zeit (", {"t": "I have seen him", "b": true}, " — ich kenne ihn)."]}},
+        {"detail": {"label": "Wo „Zeit genannt?“ versagt", "runs": ["Dauer bis jetzt: ", {"t": "I have lived here since 2020 / for two years", "b": true}, ". Offener Zeitraum: ", {"t": "Have you seen Anna today?", "b": true}, " Marker sind Hinweise — die Bedeutung entscheidet."]}},
+        {"detail": {"label": "seit wird zweigeteilt", "runs": ["Punkt → ", {"t": "since", "b": true}, " (", {"t": "since 2020", "b": true}, "), Dauer → ", {"t": "for", "b": true}, " (", {"t": "for two years", "b": true}, ") — das deutsche „seit“ deckt beides ab; die Aufteilung ist Neustoff."]}}
+      ]
+    },
+    "future": {
+      "title": "will oder going to", "lead": "Spontane Entscheidung gegen den vorher gefassten Plan.",
+      "blocks": [
+        {"detail": {"label": "will", "runs": ["Im Sprechmoment entschieden oder Vorhersage: ", {"t": "I'll help you", "b": true}, ". · ", {"t": "It will rain", "b": true}, "."], "comment": ["werden ist das Konzeptpaar — aber der pauschale werden-Kalk für jede Zukunftsform ist der vorhersehbare Fehler: erst fragen — spontan oder geplant?"]}},
+        {"detail": {"label": "going to", "runs": ["Vorher beschlossen oder absehbar: ", {"t": "I'm going to study tonight", "b": true}, ". · Look at the clouds — ", {"t": "it's going to rain", "b": true}, "."], "comment": ["Kein deutsches Pendant: Die Unterscheidung spontan vs. geplant ist Neustoff."]}},
+        {"detail": {"label": "Fahrplan", "runs": ["Present Simple für feste Pläne: ", {"t": "The train leaves at 6", "b": true}, " ≈ „Der Zug fährt um 6“ — überträgt sich direkt."]}}
+      ]
+    },
+    "past-continuous": {
+      "title": "Past Continuous vs Past Simple", "lead": "Langer Prozess — was/were + -ing; Ereignis — Past Simple.",
+      "blocks": [
+        {"detail": {"label": "Hintergrund + Ereignis", "runs": ["I ", {"t": "was cooking", "b": true}, " when he ", {"t": "called", "b": true}, "."], "comment": ["„Ich kochte gerade, als er kam“: Das deutsche „gerade“ erledigt, was das englische -ing macht; der Nebensatz steht im Präteritum."]}},
+        {"detail": {"label": "Zwei parallele Prozesse", "runs": ["I ", {"t": "was reading", "b": true}, " while she ", {"t": "was sleeping", "b": true}, "."], "comment": ["while = „während“ — dieselbe Zeit-und-Kontrast-Doppelnutzung wie im Deutschen (siehe while / whereas)."]}},
+        {"detail": {"label": "Nicht für Fakten", "runs": ["Ereignisse in Reihenfolge stehen im Past Simple: ", {"t": "I came home, saw the letter and read it", "b": true}, "."]}}
+      ]
+    },
+    "pp-continuous": {
+      "title": "Perfect vs Perfect Continuous", "lead": "Ergebnis oder Prozess? since/for passen in beide.",
+      "blocks": [
+        {"detail": {"label": "Ergebnis vs Prozess", "runs": [{"t": "I've painted the wall", "b": true}, " — die Wand ist fertig (Ergebnis) · ", {"t": "I've been painting all day", "b": true}, " — den ganzen Tag am Streichen (Prozess, vielleicht unvollendet)."]}},
+        {"detail": {"label": "Der seit-Satz", "runs": ["„Ich wohne hier seit zwei Jahren“ → ", {"t": "I have been living here for two years", "b": true}, ", nicht ", {"t": "I live here since two years", "s": true}, " (Doppelkalk: Präsens statt Perfect und since statt for)."], "comment": ["Das deutsche Präsens + seit entspricht hier dem Present Perfect Continuous; die Dauer markiert for."]}},
+        {"detail": {"label": "Ausnahme", "runs": [{"t": "know, want, like", "b": true}, " — Zustände ohne -ing auch hier: ", {"t": "I've known him for years", "b": true}, "."]}}
+      ]
+    },
+    "contrast-linkers": {
+      "title": "while / whereas: im Detail", "lead": "Sie verbinden zwei Fakten in einem Satz — das Komma steht davor.",
+      "blocks": [
+        {"detail": {"label": "while — zweigleisig", "runs": [{"t": "I drink tea, while he watches TV", "b": true}, " — „wohingegen“ (Kontrast) · ", {"t": "While I cooked, he watched TV", "b": true}, " — „während“ (Zeit). Der Kontext entscheidet."], "comment": ["Genau die Doppelnutzung des deutschen „während“ — hier musst du nichts umlernen; nur die Registerwahl bleibt."]}},
+        {"detail": {"label": "whereas", "runs": [{"t": "She is tall, whereas her sister is short", "b": true}, " — „wohingegen“: der formelle Konnektor; in der Alltagssprache steht meist while."]}},
+        {"detail": {"label": "on the other hand", "runs": ["Steht als eigener Satz: The flat is small. ", {"t": "On the other hand", "b": true}, ", it's cheap."], "comment": ["„zum anderen / andererseits“ — das Gegenstück zum ersten Argument."]}}
+      ]
+    },
+        "modals-en": {
+      "title": "Modale: Bedeutungen und Form", "lead": "Nach dem Modal steht die Grundform — genau wie Modal + Infinitiv im Deutschen.",
+      "blocks": [
+        {"detail": {"label": "can/could", "runs": ["Können, Bitte, Erlaubnis: ", {"t": "Can you help me?", "b": true}, " · ", {"t": "Could you open the window?", "b": true}, " — could ist die weichere Bitte."], "comment": ["≈ Kannst du mir helfen? · Könntest du das Fenster aufmachen?"]}},
+        {"detail": {"label": "must", "runs": ["Notwendigkeit: ", {"t": "You must stop.", "b": true}, " · Schluss: ", {"t": "He must be tired", "b": true}, " — der Schluss auf die Wahrscheinlichkeit funktioniert im Deutschen genauso."], "comment": ["≈ Er muss müde sein."]}},
+        {"detail": {"label": "have to", "runs": [{"t": "must", "b": true}, " kommt von innen (eigener Wille), ", {"t": "have to", "b": true}, " von außen (Regel, Chef): ", {"t": "I have to wear a uniform.", "b": true}, " — das Deutsche sagt beides ", {"t": "müssen", "i": true}, "."]}},
+        {"detail": {"label": "should", "runs": ["Rat: ", {"t": "You should rest.", "b": true}, " — ", {"t": "≈ Du solltest dich ausruhen", "i": true}, "."]}},
+        {"detail": {"label": "may/might", "runs": [{"t": "may", "b": true}, " — dürfen (Erlaubnis) · ", {"t": "may/might", "b": true}, " — vielleicht: ", {"t": "It might rain.", "b": true}, " — ", {"t": "≈ Es könnte regnen", "i": true}, "."]}}
+      ]
+    },
+    "mustnt": {
+      "title": "mustn't vs don't have to", "lead": "Beide klingen nach „nicht müssen“ — die Bedeutungen sind Gegensätze.",
+      "blocks": [
+        {"detail": {"label": "mustn't", "runs": ["Verbot (= ", {"t": "darf nicht", "i": true}, "): ", {"t": "You mustn't tell anyone.", "b": true}], "comment": ["≈ Du darfst es niemandem erzählen."]}},
+        {"detail": {"label": "don't have to", "runs": ["Keine Pflicht (= ", {"t": "muss nicht", "i": true}, "): ", {"t": "You don't have to come early.", "b": true}], "comment": ["≈ Du musst nicht früh kommen — du kannst es aber."]}},
+        {"detail": {"label": "Die Falle", "runs": [{"t": "muss nicht", "i": true}, " sieht ", {"t": "must not", "b": true}, " zum Verwechseln ähnlich — heißt aber das Gegenteil: ", {"t": "mustn't", "b": true}, " verbietet, ", {"t": "don't have to", "b": true}, " nimmt nur die Pflicht."], "comment": ["Der schärfste False Friend des Decks — beim Übersetzen erst fragen: Verbot oder keine Verpflichtung?"]}}
+      ]
+    },
+    "passive-en": {
+      "title": "Passiv", "lead": "werden + Partizip II wird zu be + V3 — nur das Hilfsverb wechselt.",
+      "blocks": [
+        {"detail": {"label": "Die gezeigten Zeiten", "runs": [{"t": "is built", "b": true}, " · ", {"t": "was built", "b": true}, " · ", {"t": "will be built", "b": true}, " · ", {"t": "has been built", "b": true}, " — ", {"t": "Das Haus wird gebaut", "i": true}, " ≈ ", {"t": "The house is being built", "b": true}, "."], "comment": ["Das Deck behauptet nur diese vier Zeiten — keine „alle Zeiten“-Garantie."]}},
+        {"detail": {"label": "Wer hat’s getan?", "runs": ["Der Agens steht mit ", {"t": "by", "b": true}, ": ", {"t": "The house was built by the workers.", "b": true}], "comment": [{"t": "built from the workers", "s": true}, " ist der Agens-Kalk: das deutsche ", {"t": "von", "i": true}, " deckt of, from und by ab — im Passiv heißt er immer by."]}}
+      ]
+    },
+    "gerund-infinitive": {
+      "title": "V-ing vs to V", "lead": "Das erste Verb entscheidet über den Schwanz.",
+      "blocks": [
+        {"detail": {"label": "+ V-ing", "runs": [{"t": "enjoy, finish, mind, suggest, avoid, keep", "b": true}, ": ", {"t": "I enjoy reading.", "b": true}], "comment": ["Das Deutsche hat kein Gerundium — ", {"t": "-ing", "b": true}, " ist reiner Neustoff; ", {"t": "≈ Ich lese gern", "i": true}, "."]}},
+        {"detail": {"label": "+ to V", "runs": [{"t": "want, decide, hope, plan, promise, need", "b": true}, ": ", {"t": "I want to read.", "b": true}], "comment": [{"t": "to", "b": true}, " ist das deutsche ", {"t": "zu", "i": true}, " (", {"t": "wollen, … zu tun", "i": true}, ")."]}},
+        {"detail": {"label": "Bedeutung wechselt", "runs": [{"t": "stop smoking", "b": true}, " — mit dem Rauchen aufhören · ", {"t": "stop to smoke", "b": true}, " — anhalten, um zu rauchen."]}},
+        {"detail": {"label": "Die to-Falle", "runs": [{"t": "I look forward to seeing you.", "b": true}, " — nach ", {"t": "look forward to", "b": true}, " steht ", {"t": "-ing", "b": true}, "."], "comment": [{"t": "I look forward to see you", "s": true}, " ist der Kalk aus ", {"t": "sich freuen, dich zu sehen", "i": true}, " — hier ist ", {"t": "to", "b": true}, " Präposition, kein Infinitiv-Marker."]}}
+      ]
+    },
+    "relatives": {
+      "title": "Relative clauses: who / which / that", "lead": "Das Relativwort wählt nach Belebtheit — nicht nach Genus und Kasus.",
+      "blocks": [
+        {"detail": {"label": "who / which / that", "runs": [{"t": "who", "b": true}, " — Personen · ", {"t": "which", "b": true}, " — Sachen · ", {"t": "that", "b": true}, " — beides."], "comment": [{"t": "The man which lives next door", "s": true}, " ist der typische deutsche Kalk: ", {"t": "der/die/das", "i": true}, " markieren Genus und Kasus, ", {"t": "who", "b": true}, " markiert Person."]}},
+        {"detail": {"label": "whose / where", "runs": [{"t": "the man whose dog barks", "b": true}, " — ", {"t": "≈ dessen Hund bellt", "i": true}, " · ", {"t": "the city where I live", "b": true}, " — ", {"t": "≈ die Stadt, in der ich wohne", "i": true}, "."]}},
+        {"detail": {"label": "that darf weg", "runs": [{"t": "The book (that) I read was great.", "b": true}, " — ", {"t": "that", "b": true}, " fällt weg, wenn danach das Subjekt kommt; nach ", {"t": "that", "b": true}, " + Subjekt bleibt es: ", {"t": "The book that helps", "b": true}, "."], "comment": ["Das Deutsche lässt nie weg und setzt immer das Komma (", {"t": "das Buch, das ich gelesen habe", "i": true}, ") — der einschränkende englische Satz hat weder ", {"t": "that", "b": true}, " nötig noch ein Komma."]}},
+        {"detail": {"label": "Präposition hinten", "runs": [{"t": "the house I live in", "b": true}, " — die Präposition bleibt am Ende; das Deutsche zieht sie vorn (", {"t": "in dem ich wohne", "i": true}, ")."]}},
+        {"detail": {"label": "Kongruenz", "runs": [{"t": "people who are", "b": true}, " (Plural) · ", {"t": "the person who is", "b": true}, " — das Verb richtet sich nach dem Bezugswort."]}}
+      ]
+    },
+    "negation": {
+      "title": "Verneinung: don't / never / no", "lead": "Deutsch negiert das Verb direkt — Englisch leitet die Verneinung über ein Hilfsverb.",
+      "blocks": [
+        {"detail": {"label": "do-support", "runs": [{"t": "Ich sehe es nicht", "i": true}, " → ", {"t": "I don't see it", "b": true}, " — ", {"t": "don't / doesn't / didn't", "b": true}, " + Grundform."], "comment": [{"t": "I see not", "s": true}, " ist der deutsche Kalk: das ", {"t": "not", "b": true}, " steht direkt nach dem Hilfsverb — nicht im Mittelfeld wie das deutsche ", {"t": "nicht", "i": true}, "."]}},
+        {"detail": {"label": "no = kein", "runs": [{"t": "I have no money", "b": true}, " ≈ ", {"t": "Ich habe kein Geld", "i": true}, " — 1:1. Gleichwertig: ", {"t": "I don't have any money", "b": true}, "."]}},
+        {"detail": {"label": "never", "runs": [{"t": "I have never been to Rome", "b": true}, " — ", {"t": "nie", "i": true}, " ist bereits die ganze Verneinung; ein zweites ", {"t": "not", "b": true}, " kommt nicht dazu."]}},
+        {"detail": {"label": "Position", "runs": [{"t": "I don't smoke", "b": true}, " · ", {"t": "He doesn't smoke", "b": true}, " · ", {"t": "I didn't smoke", "b": true}, " — Hilfsverb + not, das Vollverb bleibt in der Grundform."]}},
+        {"detail": {"label": "never als Adverb", "runs": [{"t": "I never drink coffee", "b": true}, " — vor dem Vollverb, wie andere Häufigkeitsadverbien (", {"t": "I always drink coffee", "b": true}, ")."]}}
+      ]
+    },
+    "imperative": {
+      "title": "Imperativ: die eine Befehlsform", "lead": "Grundform ohne Subjekt — für du, ihr und Sie gleichermaßen.",
+      "blocks": [
+        {"detail": {"label": "Die Sie-Falle", "runs": [{"t": "Setzen Sie sich", "i": true}, " trägt das Pronomen mit — im Englischen fällt es weg: ", {"t": "Please sit down", "b": true}, "."], "comment": [{"t": "Sit you down please", "s": true}, " ist die deutsche Sie-Gewohnheit — ein englischer Imperativ hat nie ein Subjekt."]}},
+        {"detail": {"label": "Let's", "runs": [{"t": "Let's go", "b": true}, " ≈ ", {"t": "Lass uns gehen", "i": true}, " · Verneinung: ", {"t": "Let's not argue", "b": true}, "."]}},
+        {"detail": {"label": "Höflich", "runs": [{"t": "Please open", "b": true}, " the window — bitte + Grundform, ohne ", {"t": "to", "b": true}, " · ", {"t": "Could you open the window?", "b": true}, " — could macht die Bitte weicher (siehe Modale)."]}},
+        {"detail": {"label": "Anleitungen", "runs": [{"t": "Press the button. Add salt.", "b": true}, " — Rezepte und Anleitungen stehen komplett im Imperativ."]}}
+      ]
+    },
+    "cond0": {
+      "title": "Type 0", "lead": "Wenn es immer so ist — beide Sätze im Present.",
+      "blocks": [
+        {"detail": {"label": "Formel", "runs": ["If + Present Simple, Present Simple."]}},
+        {"detail": {"label": "Sinn", "runs": [{"t": "If you heat ice, it melts", "b": true}, " ≈ ", {"t": "Wenn man Eis erhitzt, schmilzt es", "i": true}, " — Naturgesetze, Regeln, Anleitungen; derselbe Bau wie im Deutschen."]}},
+        {"detail": {"label": "vs Type 1", "runs": ["Type 1 ist eine konkrete Zukunft; Type 0 gilt ", {"t": "immer", "i": true}, ". Für „immer wenn“ steht oft auch ", {"t": "when", "b": true}, " (siehe Type 1)."]}}
+      ]
+    },
+    "cond1": {
+      "title": "Type 1", "lead": "Reale Bedingung für die Zukunft.",
+      "blocks": [
+        {"detail": {"label": "Formel", "runs": ["If + Present Simple, will + V1: ", {"t": "If it rains, we will stay at home.", "b": true}]}},
+        {"detail": {"label": "Hauptfehler", "runs": [{"t": "Wenn es regnen wird…", "i": true}, " — das Deutsche erlaubt Futur im wenn-Satz, das Englische nicht: ", {"t": "If it will rain…", "s": true}, " → ", {"t": "If it rains…", "b": true}]}},
+        {"detail": {"label": "Reihenfolge", "runs": ["Umgekehrt geht es auch — ohne Komma: ", {"t": "We will stay at home if it rains.", "b": true}]}},
+        {"detail": {"label": "if oder when?", "runs": [{"t": "If I have time", "b": true}, " — falls (unsicher) · ", {"t": "When I have time", "b": true}, " — wenn/immer wenn (sicher). Das deutsche ", {"t": "wenn", "i": true}, " deckt beides ab — die Aufteilung ist Neulernen."]}}
+      ]
+    },
+    "cond2": {
+      "title": "Type 2", "lead": "Unrealistisch jetzt — strukturell Konjunktiv II.",
+      "blocks": [
+        {"detail": {"label": "Formel", "runs": ["If + Past Simple, would + V1."]}},
+        {"detail": {"label": "Das deutsche Paar", "runs": [{"t": "If I had time, I would help you", "b": true}, " ≈ ", {"t": "Wenn ich Zeit hätte, würde ich helfen", "i": true}, " — derselbe Bau, nur andere Verbformen: ", {"t": "had ≈ hätte, would ≈ würde", "i": true}, "."]}},
+        {"detail": {"label": "were für alle Personen", "runs": [{"t": "If I were you…", "b": true}, " · ", {"t": "If she were here…", "b": true}, " — ", {"t": "were", "b": true}, " steht für alle Personen; die feste Irrealis-Form (", {"t": "≈ wäre", "i": true}, ")."]}},
+        {"detail": {"label": "Sinn", "runs": ["Träume, Ratschläge, Unrealistisches: ", {"t": "If I had money, I would travel", "b": true}, " — ", {"t": "≈ Hätte ich Geld, würde ich reisen", "i": true}, "."]}}
+      ]
+    },
+        "time-preps": {
+      "title": "Zeit: in / on / at", "lead": "Deutsches „am“ verteilt sich auf drei englische Wörter.",
+      "blocks": [
+        {"detail": {"label": "in", "runs": ["Monate, Jahre, Jahreszeiten, Tageszeiten: ", {"t": "in July, in 2026, in the morning, in the evening", "b": true}, " — am Morgen, am Abend."]}},
+        {"detail": {"label": "on", "runs": ["Tage und Daten: ", {"t": "on Monday, on 5 May, on my birthday", "b": true}, " — am Montag."]}},
+        {"detail": {"label": "at", "runs": ["Zeitpunkte: ", {"t": "at 7 o'clock, at noon, at night", "b": true}, " — um 7 Uhr, mittags, in der Nacht. Am Wochenende: ", {"t": "at the weekend", "b": true}, " (BrE) / ", {"t": "on the weekend", "b": true}, " (AmE)."]}},
+        {"detail": {"label": "Merke", "runs": ["Das deutsche „am“ ist kein Anhaltspunkt: am Montag → ", {"t": "on", "b": true}, " · am Morgen → ", {"t": "in", "b": true}, " · am Wochenende → ", {"t": "at", "b": true}, " (BrE)."]}}
+      ]
+    },
+    "place-preps": {
+      "title": "Ort: in / on / at", "lead": "Deutsches „an“ heißt on UND at — Oberfläche oder Punkt entscheidet.",
+      "blocks": [
+        {"detail": {"label": "in", "runs": ["Im Inneren von etwas: ", {"t": "in the kitchen, in Berlin, in a car", "b": true}, "."]}},
+        {"detail": {"label": "on", "runs": ["Oberfläche oder Linie: ", {"t": "on the table, on the wall, on the bus", "b": true}, " — an der Wand, im Bus."]}},
+        {"detail": {"label": "at", "runs": ["Punkt oder Ereignis: ", {"t": "at the door, at school, at the party", "b": true}, " — ", {"t": "at home", "b": true}, " ≈ zu Hause."]}},
+        {"detail": {"label": "Die an-Frage", "runs": ["Bei „an“ erst fragen: Oberfläche? → ", {"t": "on", "b": true}, " (an der Wand → ", {"t": "on the wall", "b": true}, "). Punkt oder Treffpunkt? → ", {"t": "at", "b": true}, " (am Bahnhof → ", {"t": "at the station", "b": true}, ")."]}}
+      ]
+    },
+    "dependent-preps": {
+      "title": "Feste Paare", "lead": "Die Präposition mitlernen — nicht aus dem Deutschen herübertragen.",
+      "blocks": [
+        {"detail": {"label": "Die Paare", "runs": ["warten auf → ", {"t": "wait for", "b": true}, " · denken an → ", {"t": "think of / about", "b": true}, " · sich freuen auf → ", {"t": "look forward to", "b": true}, " · abhängen von → ", {"t": "depend on", "b": true}, " · teilnehmen an → ", {"t": "take part in", "b": true}, " · interessiert sein an → ", {"t": "be interested in", "b": true}, " · gut in → ", {"t": "good at", "b": true}]}},
+        {"detail": {"label": "Beispiele", "runs": ["Wait ", {"t": "for", "b": true}, " me! · What do you think ", {"t": "of", "b": true}, " it? · It depends ", {"t": "on", "b": true}, " the weather. · She took part ", {"t": "in", "b": true}, " the race. · I'm interested ", {"t": "in", "b": true}, " history. · She's good ", {"t": "at", "b": true}, " math. · We arrived ", {"t": "in", "b": true}, " Berlin / ", {"t": "at", "b": true}, " the station."]}},
+        {"detail": {"label": "Falle Nr. 1", "runs": ["Nach ", {"t": "look forward to", "b": true}, " steht die -ing-Form — das „to“ ist hier eine Präposition (wie „auf“ in sich freuen auf): ", {"t": "I look forward to seeing you", "b": true}, ", nicht ", {"t": "I look forward to see you", "s": true}, "."]}}
+      ]
+    }
+  }
+}

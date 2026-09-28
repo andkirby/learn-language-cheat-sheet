@@ -91,6 +91,7 @@
               <div class="lang-group-label">Язык объяснений</div>
               <span class="cur" data-audience-item="ru">Русский</span>
               <a href="./de/en/" data-audience-item="en">English</a>
+              <a href="./en/de/" data-audience-item="de">Deutsch</a>
             </div>
           </div>
         </details>
@@ -167,7 +168,7 @@
     // «Язык обучения» items are plain links (work without JS); «Язык объяснений»
     // is a preference — it rewrites card/menu hrefs and persists. Deck pages
     // remember the studied target ('target'), so the chip can greet with it.
-    const DECKS = { de: ['ru', 'en'], en: ['ru'] };
+    const DECKS = { de: ['ru', 'en'], en: ['ru', 'de'] };
     const LOCALE_KEY = 'locale';
     const TARGET_KEY = 'target';
     const langMenu = document.getElementById('langMenu');

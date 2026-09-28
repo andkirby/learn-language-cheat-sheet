@@ -58,10 +58,9 @@
           "script": "cyrillic"
         },
         {
-          "id": "en",
-          "label": "English",
-          "script": "latin",
-          "soon": true
+          "id": "de",
+          "label": "Deutsch",
+          "script": "latin"
         }
       ],
       "grammar_terms": []
