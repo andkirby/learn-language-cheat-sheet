@@ -48,6 +48,13 @@ Append the entry in the same commit that ships the change.
   paragraphs synced with the shipped state (Coverage PASS), the en-de
   audit record corrected (the interactive smoke ran clean), AGENTS.md
   structure line updated. `CACHE_VERSION` v34.
+- **Scope decision (core extraction)**: the three-sample trigger fired,
+  the boundary was measured on the real pairs — the shareable core is only
+  ~15 blocks per target (~8–9% of a deck, dialogs 0/83 identical) — so the
+  two-layer extraction is deferred with explicit re-triggers (third
+  audience, drift incident, or a large cross-audience fix) instead of
+  running now; until then every review diffs sibling
+  tables/formulas/examples (DEBT D-07, ROADMAP source model).
 
 ## 2026-09-28 (design)
 

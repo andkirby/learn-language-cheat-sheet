@@ -75,6 +75,11 @@ Check every content unit, including every table cell and hidden answer:
   `gloss` so it renders as a pair under the sentence, not as loose prose.
 - Formulas account for the constructions they claim to cover; cases,
   endings, spelling, person/number and tense are consistent throughout.
+- When the target has a sibling audience deck (e.g. `de-ru`/`de-en`), diff
+  the shared invariant content — tables, formulas and canonical examples
+  under identical card ids — across the pair before approving: the
+  duplicated blocks have no shared source (DEBT D-07) and may have drifted
+  apart silently.
 - Language variety, register and exceptions are identified when relevant.
 - A learner can tell when to use the pattern; cards remain concise and
   dialogs provide useful depth without contradicting the card.
