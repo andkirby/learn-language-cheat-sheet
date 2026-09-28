@@ -86,12 +86,14 @@ When the target language already has a deck (e.g. `de-ru` exists, adding
    script exemption (strict mode): every `data-search` token must be
    card-visible or registered in the target's `grammar_terms`. Intent
    words of the previous audience disappear entirely.
-5. **Code prerequisite for Latin×Latin pairs.** The page's target-language
-   tagging (`markTargetLang` in `tools/page_template.html`) treats every
-   non-Cyrillic fragment as target-language text. On a `de-en` page that
-   can tag English explanation fragments as German. Generalize it to
-   per-audience script — the same mechanism as the validator's `"script"`
-   key — before the first Latin×Latin pair ships.
+5. **Target-language tagging is script-aware.** `markTargetLang` in
+   `tools/page_template.html` follows the audience's registry `script`:
+   cyrillic audiences keep the script heuristic (anything without Cyrillic
+   is target text); latin audiences tag only the explicit markup convention
+   — bold/hit runs are target text, while prose, italic hints and glosses
+   stay in the audience voice. On a Latin pair, bold every target fragment
+   that needs the study voice (tables, plain formula slots and notice prose
+   have no explicit target marking and stay untagged).
 
 An audience variant is a new deck: run the full content review in step 5.
 
@@ -152,10 +154,14 @@ deck-level integration checks, not a second copy of that contract:
 - `meta.lang` = audience language (`<html lang>`), brand mark = target code.
   `meta.site_path` depth drives the `../../` prefix for root assets — don't
   hardcode `../` anywhere.
-- Keep `TARGET_LANG` behavior (generator-managed): it sets `lang` attributes
-  (screen-reader pronunciation + the serif study voice) on pure-target
-  `.example`/`.answer`/`.table-scroll`/`.pair-src` containers and on bold/italic/
-  Cyrillic-free slot fragments; pair glosses stay in the UI voice.
+- Keep `TARGET_LANG` behavior (generator-managed, per the audience's
+  registry `script`): cyrillic audiences set `lang` attributes (screen-reader
+  pronunciation + the serif study voice) on pure-target
+  `.example`/`.answer`/`.table-scroll`/`.pair-src` containers and on
+  bold/italic/Cyrillic-free slot fragments; latin audiences tag only
+  explicit bold/hit runs — explanation prose, italic hints, glosses and
+  unmarked tables/slots stay in the audience voice. Bold every target
+  fragment that needs the study voice.
 - Section ids stay lowercase-English slugs; **never reuse another language's
   ids unless the sections match** — anchors are per-page anyway.
 - One `details` entry per chip; keys kebab-case; explanation in the audience
@@ -182,8 +188,9 @@ an unregistered pair or one still marked `"soon"`.
 
 1. `content/decks/site.json`: add the audience to the target's entry (drop
    `"soon"` when its deck ships) — the header language menu on every deck
-   page regenerates from it. Set the audience's `"script"` (e.g. `"cyrillic"`
-   for Russian; omit for Latin-script audiences — absent key means strict,
+   page regenerates from it. Set the audience's `"script"` — `"cyrillic"`
+   for Russian, `"latin"` for Latin-script audiences (an absent key behaves
+   the same as `"latin"`: strict search and explicit-markup-only tagging —
    every search token must be on the card or in `grammar_terms`). If your
    target language has grammar terminology that belongs in `data-search`
    without appearing on a card, add those terms to the target's
