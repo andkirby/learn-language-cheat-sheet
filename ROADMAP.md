@@ -130,9 +130,10 @@ scope). Decision recorded from the brainstorm:
   positionally aligned blocks in shared cards, 28/179 (DE) and 32/168 (EN)
   are byte-identical, and the extractable content core — paradigm tables,
   formulas, canonical examples — is only ~15 blocks per target (~8–9% of a
-  deck; DE shares 4 of 4 content tables, EN 0 of 1 — some tables embed
-  audience-language labels and would need parameterization at extraction
-  time). Zero of the 83 dialogs are identical across pairs, so
+  deck; DE shares 4 of 4 content tables, EN 0 of 1 — extraction would need
+  three parameterization axes: audience-language table headers, audience-
+  language formula slots, and per-audience markup conventions). Zero of the
+  83 dialogs are identical across pairs, so
   adapt-don't-translate is holding. A core this thin does not pay for the
   two-layer machinery (schema extension + generator merge + validator
   rules) on the live build path at two audiences, so the extraction is

@@ -73,11 +73,15 @@ When the target language already has a deck (e.g. `de-ru` exists, adding
    decision for the new audience: what is obvious there, what is a trap
    there, which examples carry the point. A section/topic missing a reason
    to exist for this audience is a deferral candidate, not filler.
-2. **Second audience of a target = core-extraction trigger.** Per the
+2. **Second audience of a target = measure the core boundary.** Per the
    source model ([ROADMAP.md](../ROADMAP.md)), when the second audience of
-   a target ships, extract the per-target invariant core (paradigm tables,
-   canonical examples) shared by the paired decks instead of duplicating
-   it — the boundary is cut from the real pair, not speculated.
+   a target ships, measure the shared invariant content against the real
+   pair and record it — the 2026-09-28 precedent found the shareable core
+   at only ~8–9% of a deck (tables plus canonical examples; 0 of 83
+   dialogs identical), so the two-layer extraction is deferred unless a
+   re-trigger from [DEBT.md](../DEBT.md) D-07 fires. From then on, the
+   [CONTENT_VALIDATION.md](CONTENT_VALIDATION.md) §3 sibling-diff check
+   applies to every review.
 3. **Adapt the content and navigation.** Author `strings`, dialogs, glosses
    and practice in the audience language. Reuse the generated shell and block
    types; let the new plan decide its views and sections. Card `id` slugs are

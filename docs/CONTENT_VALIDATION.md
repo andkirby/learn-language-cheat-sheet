@@ -76,10 +76,14 @@ Check every content unit, including every table cell and hidden answer:
 - Formulas account for the constructions they claim to cover; cases,
   endings, spelling, person/number and tense are consistent throughout.
 - When the target has a sibling audience deck (e.g. `de-ru`/`de-en`), diff
-  the shared invariant content — tables, formulas and canonical examples
-  under identical card ids — across the pair before approving: the
-  duplicated blocks have no shared source (DEBT D-07) and may have drifted
-  apart silently.
+  the shared invariant content under identical card ids before approving,
+  anchored to the measured baseline (DEBT D-07): content tables must agree
+  cell-wise on the target-language data — label/header cells may be
+  localized (the EN pronouns-table precedent) — and shared formulas and
+  canonical examples must agree as target-language text once the per-audience
+  markup conventions differ. Wording, glosses and emphasis are per-audience
+  adaptation, not drift: flag only divergence of the target content itself,
+  so the check stays signal instead of noise.
 - Language variety, register and exceptions are identified when relevant.
 - A learner can tell when to use the pattern; cards remain concise and
   dialogs provide useful depth without contradicting the card.

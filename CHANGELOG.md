@@ -55,6 +55,13 @@ Append the entry in the same commit that ships the change.
   audience, drift incident, or a large cross-audience fix) instead of
   running now; until then every review diffs sibling
   tables/formulas/examples (DEBT D-07, ROADMAP source model).
+- **Review fixes (whole-work pass on the decision record)**: the
+  audience-variant playbook now teaches "measure the core boundary" at a
+  second audience instead of the old extract-now rule; the sibling-diff
+  check is anchored to the measured baseline (tables cell-wise on
+  target-language data, formulas as text once markup conventions differ)
+  so it stays signal instead of noise; the D-07 runbook gained the
+  `--check-siblings` step and the three parameterization axes.
 
 ## 2026-09-28 (design)
 
