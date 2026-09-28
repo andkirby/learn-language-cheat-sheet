@@ -37,14 +37,17 @@ density, or assessment-like structure.
 **ASK the owner** when it changes product intent: practice redesign (D-03),
 new target language or audience, view/navigation restructure, audio.
 
-## Where the decks stand (2026-09-24, post-Tier-2)
+## Where the decks stand (2026-09-28, post-Tier-2 + Phase-3 pair)
 
 28 (DE) and 26 (EN) required topics, Coverage PASS, search hygiene gated by
 the generator. All candidate scope gaps are decided (no Open rows in
 CONTENT_AUDIT); the remaining Baseline conjunct is the sourced level
-placement (C-03/D-02 reference comparison). Tier 2 shipped 2026-09-24
-(below); what is deliberately NOT here: reported speech (deferred, B1+
-series), question tags (deferred, small-on-demand), vocabulary/audio.
+placement (C-03/D-02 reference comparison). The audience matrix is live:
+four decks as of 2026-09-28 (`de-ru`, `en-ru`, plus the Phase-3 audience
+variants `de-en` and `en-de`) — same per-target inventories, every
+acceptance decision re-derived per audience (per-deck records in
+CONTENT_AUDIT). What is deliberately NOT here: reported speech (deferred,
+B1+ series), question tags (deferred, small-on-demand), vocabulary/audio.
 
 ## Tier 1 — shipped 2026-09-13 (DE-19–23, EN-19/20, EN-05 always; sw v17)
 
@@ -96,8 +99,11 @@ is now the active frontier.
   interference traps stay per-audience; audience №1's audited inventory is
   the seed for the rest, never copied blindly.
 - **Practice pool + shuffle** (D-03): replay value vs the three-item contract.
-- **Phase 3 audience**: `de-en` deck (content-as-data machinery is ready;
-  landing registry flips EN from «скоро»).
+- **Phase 3 audience pair — shipped 2026-09-28**: `de-en` (commit `ffe733b`,
+  page `de/en/`) and `en-de` (commit `a0a7a70`, page `en/de/`); the registry
+  now carries two live audiences per target (`de: [ru, en]`, `en: [ru, de]`).
+  The prerequisite automations shipped first (per-audience script/tagging,
+  `b15a882` + `9f2e8fd`).
 - **New target language** (uk: term exemptions already registry-based in
   `site.json`; the script check needs the generalization below).
 - Audio/pronunciation and course sequencing: reaffirmed **excluded**
@@ -116,10 +122,19 @@ scope). Decision recorded from the brainstorm:
   (paradigm tables, canonical examples, topic inventory) + per-audience
   overlay (retrieval questions, emphasis, glosses, selection); generator
   merges.
-- **Trigger (three-sample rule)**: extract the core only when a target gets
-  its second audience (de-en or de-uk), i.e. Phase 3a, cutting the boundary
-  from three real decks — not speculated at two.
-- Until then: `de-ru` / `en-ru` are the canonical per-target references.
+- **Trigger (three-sample rule) — MET for German**: the rule was to extract
+  the core when a target gets its second audience, cutting the boundary from
+  the real pair. German reached that state on 2026-09-28 (`de-ru` + `de-en`
+  both live), so the extraction of the per-target invariant core (paradigm
+  tables, canonical examples, topic inventory) for `de` is **NOW DUE** —
+  recorded as the explicitly due follow-up in [DEBT.md](DEBT.md) (D-07) and
+  deliberately **not** performed in the Phase-3 run. (English crossed the
+  same threshold the same day, `en-ru` + `en-de`; extraction runs per
+  target, `de` first.)
+- Until extraction: `de-ru` / `en-ru` remain the canonical per-target
+  references, and the invariant core is duplicated across each target's
+  paired decks — that duplication (and its drift risk) is exactly what
+  D-07 tracks.
 - Scaling notes: sw precache strategy needs revisiting past ~10 pages
   (cache landing + selected pair, lazy-cache the rest); content authoring —
   plan → ~30 cards + ~30 dialogs → gates → audit per pair — is the binding

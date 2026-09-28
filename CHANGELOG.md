@@ -6,6 +6,35 @@ UI rationale lives in
 `.design/decisions.md`, content review evidence in `CONTENT_AUDIT.md`.
 Append the entry in the same commit that ships the change.
 
+## 2026-09-28 (audience variants)
+
+- **New page (German, explained in English)**: `de/en/` — the German deck
+  re-derived for English speakers: all 28 topics re-angled (cases built from
+  the I → me remnant, der → den as the visible case marker, professions
+  drop the article — the opposite of English…), English UI, dialogs, glosses
+  and practice (DE-03/07/08), with its own PWA icons, manifest and plan.
+  Adapted, not translated — no Russian-audience wording was carried over.
+  `CACHE_VERSION` v30, v31 after the smoke fixes.
+- **New page (English, explained in German)**: `en/de/` — the English deck
+  re-derived for German speakers: all 26 topics re-angled (rigid SVO instead
+  of the free German order, do-support as the signature trap, muss nicht ≠
+  mustn't as the sharpest false friend, the Perfekt-Kalk as Gefahr №1…),
+  German UI (du-form) with English terms kept English, practice deliberately
+  remapped to EN-04/05/06. The registry's dead `en/en` self-pair placeholder
+  was replaced by the live German audience. `CACHE_VERSION` v32.
+- **New (shared)**: target-language tagging is per-audience — the page
+  script follows the registry `script` key: Cyrillic audiences keep the
+  script heuristic, Latin audiences (de-en, en-de) tag only explicit
+  bold/hit runs, so target-language study-voice fragments are bold in the
+  source and explanation prose stays in the audience voice. Latin×Latin
+  search stays strict by design: every search token must be card-visible or
+  registered in `site.json` (`grammar_terms`).
+- **Records**: CONTENT_AUDIT gained one per-deck record each — page↔deck
+  `--check` and `--check-shell` PASS, Coverage PASS (28/28 and 26/26),
+  Accuracy/Teaching NOT RUN per D-01. ROADMAP marks the Phase-3 pair shipped
+  and records the two-layer core extraction for the German target as now
+  due (DEBT D-07); AGENTS.md and README.md list the new URLs.
+
 ## 2026-09-28 (design)
 
 - **Improved readability:** larger supporting text in cards, examples, tables,

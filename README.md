@@ -16,13 +16,15 @@ NOT RUN. See [the content audit](CONTENT_AUDIT.md).
 Live: <https://andkirby.github.io/learn-language-cheat-sheet/>
 
 Deck pages live at `<target>/<audience>/`; the landing locale selector picks
-the audience (Русский today — the architecture is ready for more).
+the audience (Русский, English or Deutsch today).
 
 | URL | What |
 | --- | --- |
 | `/` | Landing — locale selector + language cards |
 | `/de/ru/` | Немецкий: падежи, артикли, порядок слов, придаточные |
 | `/en/ru/` | Английский: времена, артикли, вопросы, условные |
+| `/de/en/` | German explained in English: cases, articles, word order, clauses |
+| `/en/de/` | Englisch erklärt auf Deutsch: Zeiten, Artikel, Satzbau, Bedingungssätze |
 | `/deutsch/`, `/english/`, `/de/`, `/deutsch.html` | Legacy URLs — redirect stubs |
 
 ## Run locally

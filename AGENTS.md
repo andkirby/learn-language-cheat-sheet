@@ -131,8 +131,8 @@ python3 -m http.server 8931   # open http://127.0.0.1:8931/
 - Offline reload works after first load.
 - Live check after push:
   `https://andkirby.github.io/learn-language-cheat-sheet/`
-  (+ `/de/ru/`, `/en/ru/`; `/deutsch/`, `/english/`, `/de/`,
-  `/deutsch.html` redirect).
+  (+ `/de/ru/`, `/en/ru/`, `/de/en/`, `/en/de/`; `/deutsch/`, `/english/`,
+  `/de/`, `/deutsch.html` redirect).
 
 ## Regenerating icons
 
