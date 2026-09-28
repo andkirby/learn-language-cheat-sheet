@@ -2,7 +2,7 @@
 // Lives at the repo root; deck pages register it with '../../sw.js'
 // (the landing uses './sw.js').
 // After changing any page or asset, bump CACHE_VERSION (see AGENTS.md).
-const CACHE_VERSION = 'v29';
+const CACHE_VERSION = 'v30';
 const CACHE_NAME = `lang-cheat-${CACHE_VERSION}`;
 const APP_SHELL = [
   './',
@@ -16,6 +16,14 @@ const APP_SHELL = [
   './de/ru/icons/icon-192.png',
   './de/ru/icons/icon-512.png',
   './de/ru/icons/icon-512-maskable.png',
+  './de/en/',
+  './de/en/index.html',
+  './de/en/manifest.webmanifest',
+  './de/en/icons/favicon.svg',
+  './de/en/icons/icon-180.png',
+  './de/en/icons/icon-192.png',
+  './de/en/icons/icon-512.png',
+  './de/en/icons/icon-512-maskable.png',
   './en/ru/',
   './en/ru/index.html',
   './en/ru/manifest.webmanifest',

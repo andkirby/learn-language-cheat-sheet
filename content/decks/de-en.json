@@ -1,0 +1,1212 @@
+{
+  "_readme": "German cheat deck for English speakers. Rendered by tools/build_pages.py into de/en/index.html — edit this file, then regenerate (see AGENTS.md). Schema: schema.json. _note fields carry review provenance and are ignored by the generator. Scaffolded 2026-09-28 as a text copy of de-ru.json (audience-variant Phase 1b): meta, strings, help, views and practice re-derived for English speakers; sections and card-facing DETAILS entries spliced from the frags-de-en-*.fragment author groups (audience-variant Phase 1d).",
+  "meta": {
+    "deck": "de-en",
+    "target": "de",
+    "audience": "en",
+    "target_lang": "de",
+    "lang": "en",
+    "out": "de/en/index.html",
+    "site_base": "https://andkirby.github.io/learn-language-cheat-sheet/",
+    "site_path": "de/en/",
+    "brand_mark": "DE",
+    "brand_name": "German Cheat",
+    "brand_sub": "EN → DE · A1–B1",
+    "apple_title": "DE Cheat",
+    "title": "German Grammar Cheatsheet",
+    "description": "Mobile German grammar cheat sheet: cases, articles, word order, subordinate clauses and verb constructions.",
+    "og_title": "German Grammar Cheatsheet",
+    "og_description": "German grammar without paging through a textbook: cases, articles, word order, clauses. A1–B1, offline.",
+    "plan_path": "de/en/SITE_PLAN.md"
+  },
+  "strings": {
+    "_note": "footer_practice is deliberately absent, as on the German sibling deck: practice is already a bottom-navigation destination. Follow-up candidate, not a scaffold change.",
+    "search_placeholder": "Search: wem, weil, modal, Dativ…",
+    "search_aria": "Search the cheat sheet",
+    "clear_aria": "Clear search",
+    "search_results": "Cards found",
+    "install_label": "Install",
+    "close_aria": "Close",
+    "nav_aria": "Main navigation",
+    "no_results": "Nothing found. Try “wem”, “modal”, “weil”, “Dativ”, “Perfekt”.",
+    "noscript_notice": "Search, details and app install need JavaScript. All cheat-sheet content below works without it.",
+    "noscript_intro": [
+      "Look at the ",
+      {"t": "trigger", "b": true},
+      " — case, preposition, conjunction or verb construction — then at the form and the position."
+    ],
+    "theme": {
+      "auto": {"icon": "◐", "label": "Theme: system"},
+      "light": {"icon": "☀", "label": "Theme: light"},
+      "dark": {"icon": "☾", "label": "Theme: dark"}
+    },
+    "reveal_show": "Show",
+    "reveal_hide": "Hide",
+    "install_ios": {
+      "title": "Install on iPhone",
+      "lead": "Safari doesn’t show the standard install prompt.",
+      "blocks": [
+        {"label": "1.", "runs": ["Open the Share menu."]},
+        {"label": "2.", "runs": ["Choose Add to Home Screen."]},
+        {"label": "3.", "runs": ["Confirm with Add."]}
+      ]
+    },
+    "install_generic": {
+      "title": "Install on your phone",
+      "lead": "This is a PWA: after the first load it works offline too.",
+      "blocks": [
+        {"label": "Android / Chrome", "runs": ["Browser menu → Install app / Add to Home screen."]},
+        {"label": "iPhone / Safari", "runs": ["Share → Add to Home Screen."]},
+        {"label": "Important", "runs": ["Install and offline caching need the page opened over HTTPS (or localhost), not as a local file from the Files app."]}
+      ]
+    },
+    "footer_all": "all cheat sheets",
+    "footer_install": "Install: Android — the “Install” button or the browser menu · iPhone — Share → Add to Home Screen",
+    "footer_plan": "content plan:",
+    "lang_menu_aria": "Learning language and explanation language",
+    "lang_group_target": "Learning language",
+    "lang_group_audience": "Explanation language",
+    "lang_soon": "soon"
+  },
+  "help": {
+    "id": "start",
+    "ico": "i",
+    "label": "How to use",
+    "detail": "lookup-help"
+  },
+  "views": [
+    {"id": "cases", "ico": "A/D", "label": "Cases"},
+    {"id": "forms", "ico": "der", "label": "Forms"},
+    {"id": "order", "ico": "V2", "label": "Order"},
+    {"id": "clauses", "ico": "weil", "label": "Clauses"},
+    {"id": "practice", "ico": "?", "label": "Review"}
+  ],
+  "sections": [
+    {
+      "id": "cases", "view": "cases", "badge": "4 Fälle",
+      "heading": "Cases", "sub": "Question → role → form.",
+      "groups": [
+        {
+          "cards": [
+            {
+              "id": "faelle",
+              "search": "fälle cases nominativ akkusativ dativ genitiv wer wen wem wessen was",
+              "case_grid": [
+                {"detail": "nominativ", "label": [{"t": "Nominativ", "b": true}, {"br": true}, "Wer? Was?"]},
+                {"detail": "akkusativ", "label": [{"t": "Akkusativ", "b": true}, {"br": true}, "Wen? Was?"]},
+                {"detail": "dativ", "label": [{"t": "Dativ", "b": true}, {"br": true}, "Wem?"]},
+                {"detail": "genitiv", "label": [{"t": "Genitiv", "b": true}, {"br": true}, "Wessen?"]}
+              ]
+            }
+          ]
+        },
+        {
+          "grid": "two", "gap": true,
+          "cards": [
+            {
+              "id": "wo-wohin",
+              "level": "A1",
+              "kind": "trigger → case",
+              "search": "wo wohin wechselpräpositionen movement location direction into position akkusativ dativ",
+              "blocks": [
+                {"h": ["Wo? / Wohin?"]},
+                {"p": [{"t": "Wo?", "b": true}, " — where? (position, like English ", {"t": "in the house", "i": true}, ") → usually ", {"t": "Dativ", "b": true}, " with ", {"t": "Wechselpräpositionen", "b": true}, "."]},
+                {"p": [{"t": "Wohin?", "b": true}, " — where to? (direction, like English ", {"t": "into the house", "i": true}, ") → usually ", {"t": "Akkusativ", "b": true}, "."]},
+                {"example": [{"t": "Ich bin in der Schule (Wo?).", "b": true}, {"br": true}, {"t": "Ich gehe in die Schule (Wohin?).", "b": true}]},
+                {"chips": [{"label": "When does this rule apply?", "detail": "wo-wohin"}]}
+              ]
+            },
+            {
+              "id": "objects",
+              "level": "A1",
+              "kind": "usage",
+              "search": "direct indirect object receiver akkusativ dativ geben whom give",
+              "blocks": [
+                {"h": ["The quick meaning"]},
+                {"p": [{"t": "Akk.", "b": true}, " mostly = the direct object: ", {"t": "I see — whom?", "i": true}]},
+                {"p": [{"t": "Dat.", "b": true}, " mostly = the receiver: ", {"t": "I give — to whom?", "i": true}]},
+                {"example": [
+                  "Ich gebe ", {"t": "dem Mann", "hit": true}, " ", {"t": "das Buch", "hit": true}, "."
+                ], "gloss": ["dem Mann = Dat. · das Buch = Akk."]},
+                {"chips": [{"label": "Two objects", "detail": "objects"}]}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "forms", "view": "forms", "badge": "Formen",
+      "heading": "Articles and pronouns", "sub": "The main forms that actually change.",
+      "groups": [
+        {
+          "cards": [
+            {
+              "id": "artikel",
+              "level": "A1",
+              "kind": "forms",
+              "search": "the der die das den dem des definite article artikel case",
+              "blocks": [
+                {"h": ["Definite article — ", {"t": "der / die / das", "b": true}]},
+                {"table": {
+                  "head": ["", "Mask.", "Neut.", "Fem.", "Plural"],
+                  "rows": [
+                    ["Nom.", "der", "das", "die", "die"],
+                    ["Akk.", {"hot": "den"}, "das", "die", "die"],
+                    ["Dat.", {"hot": "dem"}, {"hot": "dem"}, {"hot": "der"}, {"hot": "den"}],
+                    ["Gen.", "des", "des", "der", "der"]
+                  ]
+                }},
+                {"example": [{"t": "Der Mann", "b": true}, " kommt.", {"br": true}, "Ich sehe ", {"t": "den", "b": true}, " Mann · mit ", {"t": "dem", "b": true}, " Mann"]},
+                {"tiny": ["English “the” never changes shape — German’s does: the ending is the case marker in action. Bold = the traps of this level: masculine Akkusativ and the whole Dativ column. Genitiv changes too, but A1–B1 needs it less."]},
+                {"tiny": ["Gender is not logic — ", {"t": "die Brücke", "b": true}, " is not “she”: learn every noun with its article. Genitiv and Dativ plural also change the noun (", {"t": "des Mannes", "b": true}, " · ", {"t": "den Kindern", "b": true}, ") — see Endings and changes."]}
+              ]
+            },
+            {
+              "id": "dieser", "level": "A1", "kind": "forms",
+              "search": "dieser diese dieses this that demonstrative pronoun",
+              "blocks": [
+                {"h": [{"t": "dieser / diese / dieses", "b": true}]},
+                {"p": ["English splits near/far — ", {"t": "this", "i": true}, " vs ", {"t": "that", "i": true}, " — German uses one demonstrative for both. It declines like the article: ", {"t": "dies-", "b": true}, " + the der/die/das endings."]},
+                {"example": [
+                  {"t": "dieser", "b": true}, " Mann · ", {"t": "diese", "b": true}, " Frau · ", {"t": "dieses", "b": true}, " Kind", {"br": true},
+                  "Ich nehme ", {"t": "diesen", "b": true}, " Bus. · ", {"t": "Das", "b": true}, " ist schön."
+                ], "gloss": [{"t": "dieser", "b": true}, " = this and that · ", {"t": "Das ist schön.", "b": true}, " ≈ “That’s nice.”"]},
+                {"chips": [{"label": "Declension and welcher", "detail": "dieser"}]}
+              ]
+            },
+            {
+              "id": "artikelwahl",
+              "level": "A1",
+              "kind": "usage",
+              "search": "der ein kein article choice first mention known profession negation",
+              "blocks": [
+                {"h": [{"t": "der", "b": true}, ", ", {"t": "ein", "b": true}, " or ", {"t": "kein", "b": true}, "?"]},
+                {"p": [{"t": "der", "b": true}, " — known, already mentioned · ", {"t": "ein", "b": true}, " — one of many, first mention · ", {"t": "kein", "b": true}, " — negation (“no”)."]},
+                {"example": [
+                  "Das ist ", {"t": "ein", "hit": true}, " Hund. ", {"t": "Der", "hit": true}, " Hund ist groß. · Das ist ", {"t": "kein", "hit": true}, " Hund."
+                ], "gloss": ["first mention → ein · the one we both mean → der · negation → kein"]},
+                {"tiny": ["Professions drop the article — the opposite of English: ", {"t": "Ich bin Lehrer", "b": true}, " = “I’m a teacher.” Not: ", {"t": "Ich bin ein Lehrer", "s": true}, "."]},
+                {"chips": [{"label": "Second mention", "detail": "article-choice"}]}
+              ]
+            }
+          ]
+        },
+        {
+          "grid": "two", "gap": true,
+          "cards": [
+            {
+              "id": "ein-words",
+              "level": "A1",
+              "kind": "forms",
+              "search": "ein eine einen indefinite kein mein dein sein ihr unser euer possessive possessiv endings",
+              "blocks": [
+                {"h": [{"t": "ein / kein / mein…", "b": true}]},
+                {"p": ["English possessives never change (my father, with my father) — German adds the ein-word endings: ", {"t": "mein", "b": true}, " Vater → ", {"t": "meinen", "b": true}, " Vater."]},
+                {"table": {
+                  "head": ["", "Mask.", "Neut.", "Fem.", "Plural*"],
+                  "rows": [
+                    ["Nom.", "mein", "mein", "meine", "meine"],
+                    ["Akk.", {"hot": "meinen"}, "mein", "meine", "meine"],
+                    ["Dat.", {"hot": "meinem"}, {"hot": "meinem"}, {"hot": "meiner"}, {"hot": "meinen"}],
+                    ["Gen.", "meines", "meines", "meiner", "meiner"]
+                  ]
+                }},
+                {"example": ["Ich habe ", {"t": "einen", "b": true}, " Bruder und ", {"t": "eine", "b": true}, " Schwester.", {"br": true}, "mit ", {"t": "meinem", "b": true}, " Bruder · mit ", {"t": "meiner", "b": true}, " Schwester"]},
+                {"tiny": ["Bold = the traps of this level: masculine Akkusativ and the whole Dativ column. Genitiv changes too, but A1–B1 needs it less."]},
+                {"tiny": ["* ", {"t": "ein", "i": true}, " has no plural. The ", {"t": "mein", "i": true}, " column is the model for all of them: ", {"t": "kein, dein, sein, ihr, unser, euer", "i": true}, " take these endings on the same stem."]},
+                {"chips": [
+                  {"label": "mein / dein / sein / ihr…", "detail": "possessives"},
+                  {"label": "Why meinen?", "detail": "why-ein-endings"},
+                  {"label": "Why mit ihrem Bruder?", "detail": "ihrem"}
+                ]}
+              ]
+            },
+            {
+              "id": "negation",
+              "level": "A1",
+              "kind": "usage",
+              "search": "nicht kein negation not no dont where",
+              "blocks": [
+                {"h": [{"t": "nicht", "b": true}, " or ", {"t": "kein", "b": true}, "?"]},
+                {"p": [{"t": "kein", "b": true}, " = English “no” + noun — it replaces ein: ", {"t": "kein Geld, keine Zeit", "b": true}, "."]},
+                {"p": [{"t": "nicht", "b": true}, " = “not” — everything else (verbs, adjectives, pronouns): the all-purpose negation."]},
+                {"example": ["Ich habe ", {"t": "kein", "b": true}, " Auto. · Ich schlafe ", {"t": "nicht", "b": true}, "."], "gloss": [{"t": "kein Auto", "b": true}, " = “no car” · ", {"t": "Ich schlafe nicht", "b": true}, " = “I don’t sleep” — no helper verb"]},
+                {"tiny": ["German has no do-support: the verb itself is negated — never rebuild “don’t” with a helper verb."]},
+                {"chips": [{"label": "Where does nicht go?", "detail": "negation"}]}
+              ]
+            },
+            {
+              "id": "pronomen",
+              "level": "A1",
+              "kind": "forms",
+              "search": "personal pronouns ich mich mir du dich dir ihn ihm uns euch ihnen you",
+              "blocks": [
+                {"h": ["Personal pronouns"]},
+                {"p": ["You already own this: ", {"t": "I → me", "i": true}, ", ", {"t": "he → him", "i": true}, ". German has three forms — and splits English “him” in two."]},
+                {"table": {
+                  "head": ["Nom.", "Akk.", "Dat."],
+                  "rows": [
+                    ["ich", "mich", {"hot": "mir"}],
+                    ["du", "dich", {"hot": "dir"}],
+                    ["er", "ihn", {"hot": "ihm"}],
+                    ["sie", "sie", {"hot": "ihr"}],
+                    ["es", "es", {"hot": "ihm"}],
+                    ["wir", "uns", "uns"],
+                    ["ihr", "euch", "euch"],
+                    ["sie/Sie", "sie/Sie", {"hot": "ihnen/Ihnen"}]
+                  ]
+                }},
+                {"example": ["Kennst du ", {"t": "ihn", "b": true}, "? — Ich helfe ", {"t": "ihm", "b": true}, "."], "gloss": [{"t": "ihn", "b": true}, " = Akk. (direct object) · ", {"t": "ihm", "b": true}, " = Dat. (the “to him” role)"]},
+                {"tiny": ["Bold = the Dativ forms that differ from Akkusativ (uns and euch stay the same)."]},
+                {"tiny": ["English has one you; German has three: ", {"t": "du", "b": true}, " · ", {"t": "ihr", "b": true}, " · polite ", {"t": "Sie", "b": true}, " (capital, written like “they” — no English counterpart)."]},
+                {"chips": [{"label": "How to remember them fast", "detail": "pronouns"}]}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preps", "view": "cases", "badge": "Präpositionen",
+      "heading": "Prepositions", "sub": "The preposition often decides the case outright.", "grid": "two",
+      "cards": [
+        {
+          "id": "praep-akk", "level": "A1", "kind": "trigger → case",
+          "search": "akkusativ prepositions durch für gegen ohne um",
+          "blocks": [
+            {"h": ["Always Akkusativ"]},
+            {"chips": [
+              {"label": "durch", "detail": "prep-akk", "neutral": true},
+              {"label": "für", "detail": "prep-akk", "neutral": true},
+              {"label": "gegen", "detail": "prep-akk", "neutral": true},
+              {"label": "ohne", "detail": "prep-akk", "neutral": true},
+              {"label": "um", "detail": "prep-akk", "neutral": true}
+            ]},
+            {"example": [
+              "für ", {"t": "den", "hit": true}, " Mann · ohne ", {"t": "mich", "hit": true}
+            ], "gloss": ["the case comes with the preposition — no meaning question needed"]}
+          ]
+        },
+        {
+          "id": "praep-dat", "level": "A1", "kind": "trigger → case",
+          "search": "dativ prepositions aus bei mit nach seit von zu",
+          "blocks": [
+            {"h": ["Always Dativ"]},
+            {"chips": [
+              {"label": "aus", "detail": "prep-dat", "neutral": true},
+              {"label": "bei", "detail": "prep-dat", "neutral": true},
+              {"label": "mit", "detail": "prep-dat", "neutral": true},
+              {"label": "nach", "detail": "prep-dat", "neutral": true},
+              {"label": "seit", "detail": "prep-dat", "neutral": true},
+              {"label": "von", "detail": "prep-dat", "neutral": true},
+              {"label": "zu", "detail": "prep-dat", "neutral": true}
+            ]},
+            {"example": [
+              "mit ", {"t": "meinem", "hit": true}, " Bruder · zu ", {"t": "der", "hit": true}, " Arbeit → zur Arbeit"
+            ], "gloss": ["the case comes with the preposition — no meaning question needed"]}
+          ]
+        },
+        {
+          "id": "wechsel", "level": "A2", "kind": "trigger → case",
+          "search": "wechselpräpositionen an auf hinter in neben über unter vor zwischen wo wohin two-way",
+          "blocks": [
+            {"h": ["Two cases: Wo? / Wohin?"]},
+            {"p": [{"t": "an, auf, hinter, in, neben, über, unter, vor, zwischen", "b": true}]},
+            {"example": ["auf ", {"t": "dem", "b": true}, " Tisch (Wo?)", {"br": true}, "auf ", {"t": "den", "b": true}, " Tisch (Wohin?)"]},
+            {"chips": [{"label": "The main caveat", "detail": "two-way"}]}
+          ]
+        },
+        {
+          "id": "praep-gen", "level": "B1", "kind": "trigger → case",
+          "search": "genitiv prepositions wegen trotz während statt innerhalb außerhalb",
+          "blocks": [
+            {"h": ["Often Genitiv"]},
+            {"p": [{"t": "wegen, trotz, während, statt, innerhalb, außerhalb", "b": true}]},
+            {"example": ["wegen ", {"t": "des Wetters", "b": true}]},
+            {"tiny": ["In speech some of these also take Dativ, but the norm to learn is Genitiv."]}
+          ]
+        },
+        {
+          "id": "verb-praep", "level": "A2", "kind": "trigger → case",
+          "search": "warten auf denken an freuen sich teilnehmen verb preposition wait think",
+          "blocks": [
+            {"h": ["Verb + preposition"]},
+            {"p": ["The preposition almost never matches English: ", {"t": "wait for", "i": true}, " → warten ", {"t": "auf", "b": true}, ", ", {"t": "think about", "i": true}, " → denken ", {"t": "an", "b": true}, "."]},
+            {"example": [
+              "Ich warte ", {"t": "auf", "hit": true}, " den Bus. · Er denkt ", {"t": "an", "hit": true}, " die Prüfung."
+            ], "gloss": ["the case comes from the preposition: auf → Akkusativ (ask Wen? — den Bus)"]},
+            {"chips": [
+              {"label": ["warten ", {"t": "auf", "b": true}], "detail": "verb-preps", "neutral": true},
+              {"label": ["denken ", {"t": "an", "b": true}], "detail": "verb-preps", "neutral": true},
+              {"label": ["sich freuen ", {"t": "auf/über", "b": true}], "detail": "verb-preps", "neutral": true},
+              {"label": ["sich interessieren ", {"t": "für", "b": true}], "detail": "verb-preps", "neutral": true},
+              {"label": ["teilnehmen ", {"t": "an", "b": true}], "detail": "verb-preps", "neutral": true},
+              {"label": "The question trick and sich", "detail": "verb-preps"}
+            ]}
+          ]
+        },
+        {
+          "id": "seit-vor", "level": "A2", "kind": "usage",
+          "search": "seit vor since for ago duration present perfect",
+          "blocks": [
+            {"h": ["seit or vor?"]},
+            {"p": [{"t": "seit", "b": true}, " + Dativ — duration up to now (", {"t": "for/since", "i": true}, "): ", {"t": "Ich wohne seit einem Jahr hier", "b": true}, "."]},
+            {"p": [{"t": "vor", "b": true}, " + Dativ — a point in the past (", {"t": "ago", "i": true}, "): ", {"t": "Ich kam vor einem Jahr", "b": true}, "."]},
+            {"example": [
+              "Ich wohne ", {"t": "seit", "hit": true}, " zwei Jahren hier. · Ich bin ", {"t": "vor", "hit": true}, " zwei Jahren umgezogen."
+            ], "gloss": ["seit = still going on → present · vor = finished point → past"]},
+            {"tiny": ["seit stands in the present tense (", {"t": "Präsens", "i": true}, ") — English ", {"t": "I have lived here for two years", "i": true}, " is ", {"t": "Ich wohne seit zwei Jahren hier", "b": true}, "."]},
+            {"chips": [{"label": "Why not the Perfekt?", "detail": "seit-vor"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "order", "view": "order", "badge": "Word order",
+      "heading": "Word order", "sub": "Find the finite verb first.", "grid": "two",
+      "cards": [
+        {
+          "id": "v2",
+          "level": "A1",
+          "kind": "position",
+          "search": "hauptsatz main clause statements verb second v2 position 2 word order heute subject",
+          "blocks": [
+            {"h": ["Statements: verb in slot 2 (V2)"]},
+            {"formula": [{"slot": "Position 1"}, {"arrow": "→"}, {"slot": "verb", "role": "verb"}, {"arrow": "→"}, {"slot": "everything else"}]},
+            {"example": [
+              "Ich ", {"t": "gehe", "hit": true}, " heute in den Laden.", {"br": true},
+              "Heute ", {"t": "gehe", "hit": true}, " ich in den Laden."
+            ], "gloss": ["The finite verb always takes slot 2 — when something else opens, the subject slips behind the verb."]},
+            {"chips": [{"label": "What does “slot 2” mean?", "detail": "v2"}]}
+          ]
+        },
+        {
+          "id": "inversion",
+          "level": "A2",
+          "kind": "position",
+          "search": "inversion fronted adverbs heute dann deshalb position 1 subject verb",
+          "blocks": [
+            {"h": ["If the sentence starts with Heute / Dann / Deshalb…"]},
+            {"p": ["…the fronted element takes slot 1 and the subject moves ", {"t": "behind the verb", "i": true}, "."]},
+            {"example": [{"t": "Heute muss ich", "b": true}, " arbeiten.", {"br": true}, "Not: ", {"t": "Heute ich muss…", "s": true}]},
+            {"tiny": ["English keeps “Today I must work” together; German keeps the verb in slot 2 and lets the subject fall behind."]}
+          ]
+        },
+        {
+          "id": "w-fragen",
+          "level": "A1",
+          "kind": "position",
+          "search": "questions yes no wer was wann warum wie verb first v1 do support helper",
+          "blocks": [
+            {"h": ["Questions"]},
+            {"formula": [{"slot": "Kommst", "role": "verb"}, {"slot": "du heute?"}]},
+            {"formula": [{"slot": "Wann"}, {"slot": "kommst", "role": "verb"}, {"slot": "du?"}]},
+            {"tiny": ["Yes/no → verb first: ", {"t": "Sprichst du Deutsch?", "b": true}, " — there is no do-support; no helper verb is inserted."]},
+            {"tiny": ["W-question (wer, was, wann, warum, wie…) → question word + verb — exactly the English pattern."]}
+          ]
+        },
+        {
+          "id": "tekamolo",
+          "level": "A2",
+          "kind": "position",
+          "search": "tekamolo temporal kausal modal lokal order adverbs time cause manner place",
+          "blocks": [
+            {"h": ["TeKaMoLo"]},
+            {"p": [{"t": "Te", "b": true}, "mporal (when) → ", {"t": "Ka", "b": true}, "usal (why) → ", {"t": "Mo", "b": true}, "dal (how) → ", {"t": "Lo", "b": true}, "kal (where)"]},
+            {"example": [
+              "Ich fahre ", {"t": "heute", "b": true}, " ", {"t": "wegen der Arbeit", "b": true}, " ", {"t": "mit dem Zug", "b": true}, " ", {"t": "nach Berlin", "b": true}, "."
+            ]},
+            {"p": ["English puts time last — and with motion verbs, place before manner: “I’m going to Berlin by train today”. German leads with time and ends with place."]},
+            {"tiny": ["A safe default, not a law: emphasis and context can promote time or cause to slot 1."]},
+            {"chips": [{"label": "Is it a hard rule?", "detail": "tekamolo"}]}
+          ]
+        },
+        {
+          "id": "partikeln",
+          "level": "B1",
+          "kind": "usage",
+          "search": "modalpartikeln particles tone doch mal denn ja schon gar wohl just actually probably",
+          "blocks": [
+            {"h": ["Particles: doch, mal, denn…"]},
+            {"p": ["No literal translation — each one carries ", {"t": "tone", "i": true}, ". English does this with intonation and small adverbs; learn the pairs:"]},
+            {"chips": [
+              {"label": "doch — actually / on the contrary", "detail": "particles", "neutral": true},
+              {"label": "mal — just (a nudge)", "detail": "particles", "neutral": true},
+              {"label": "denn — then / so (in questions)", "detail": "particles", "neutral": true},
+              {"label": "ja — after all / you know", "detail": "particles", "neutral": true},
+              {"label": "schon — I suppose", "detail": "particles", "neutral": true},
+              {"label": "gar — at all (with nicht)", "detail": "particles", "neutral": true},
+              {"label": "wohl — probably", "detail": "particles", "neutral": true}
+            ]},
+            {"example": [
+              "Komm ", {"t": "mal", "hit": true}, " her! · Das ist ", {"t": "ja", "hit": true}, " klar! · Wie heißt ", {"t": "denn", "hit": true}, " du?"
+            ], "gloss": ["mal ≈ just · ja ≈ after all · denn ≈ then (question)"]},
+            {"chips": [{"label": "Breakdown and position", "detail": "particles"}]}
+          ]
+        },
+        {
+          "id": "imperativ",
+          "level": "A1",
+          "kind": "forms",
+          "search": "imperative command request komm geht kommen sie sein polite ruhig",
+          "blocks": [
+            {"h": ["Imperativ: commands & requests"]},
+            {"formula": [{"slot": "du → Komm!"}, {"arrow": "·"}, {"slot": "ihr → Geht!"}, {"arrow": "·"}, {"slot": "Sie → Kommen Sie!"}]},
+            {"p": ["English has one command form for everybody; German picks the form by listener — polite ", {"t": "Sie", "b": true}, " stays inside the command."]},
+            {"example": [{"t": "Kommen Sie", "b": true}, " bitte mit! · ", {"t": "Seien", "b": true}, " Sie ruhig!"]},
+            {"tiny": ["sein is irregular here, just like English ", {"t": "be", "i": true}, "."]},
+            {"chips": [{"label": "du-form: the details", "detail": "imperative"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "verbs", "view": "order", "badge": "Verb bracket",
+      "heading": "The verb bracket", "sub": "Part of the verb often lives at the end.", "grid": "two",
+      "cards": [
+        {
+          "id": "modalverben",
+          "level": "A1",
+          "kind": "forms",
+          "search": "modal verbs müssen können wollen sollen dürfen mögen infinitive bracket satzklammer",
+          "blocks": [
+            {"h": ["Modal verbs"]},
+            {"formula": [{"slot": "Heute"}, {"slot": "muss", "role": "verb"}, {"slot": "ich in den Laden"}, {"slot": "gehen", "role": "end"}]},
+            {"p": ["The bracket: ", {"t": "muss", "b": true}, " opens it, the infinitive closes it — English keeps “must … go” together; German lets the two halves drift apart."]},
+            {"tiny": ["The modals: ", {"t": "können, müssen, wollen, sollen, dürfen, mögen", "b": true}, "."]},
+            {"chips": [{"label": "All six modals", "detail": "modal"}]}
+          ]
+        },
+        {
+          "id": "perfekt",
+          "level": "A1",
+          "kind": "forms",
+          "search": "perfekt perfect haben sein partizip ii gegangen gemacht past motion",
+          "blocks": [
+            {"h": ["Perfekt"]},
+            {"formula": [{"slot": "Ich"}, {"slot": "habe", "role": "verb"}, {"slot": "das schon"}, {"slot": "gemacht", "role": "end"}]},
+            {"example": [
+              "Ich ", {"t": "bin", "hit": true}, " nach Hause ", {"t": "gegangen", "hit": true}, "."
+            ], "gloss": ["motion → sein (English reaches for “have” in every perfect)"]},
+            {"chips": [{"label": "haben or sein?", "detail": "perfekt"}]}
+          ]
+        },
+        {
+          "id": "trennbare",
+          "level": "A2",
+          "kind": "forms",
+          "search": "trennbare separable verbs prefix bracket aufstehen uhr",
+          "blocks": [
+            {"h": ["Separable verbs"]},
+            {"formula": [{"slot": "Ich"}, {"slot": "stehe", "role": "verb"}, {"slot": "um 7 Uhr"}, {"slot": "auf", "role": "end"}]},
+            {"p": ["The prefix detaches and flies to the end of the bracket — English phrasal verbs keep their particle beside the verb (“I get up at 7”)."]},
+            {"example": ["weil ich um 7 Uhr ", {"t": "aufstehe", "b": true}]},
+            {"chips": [{"label": "Why whole again in the subordinate clause?", "detail": "separable"}]}
+          ]
+        },
+        {
+          "id": "passiv",
+          "level": "B1",
+          "kind": "forms",
+          "search": "passive passiv werden partizip ii gebaut voice",
+          "blocks": [
+            {"h": ["The passive (Passiv)"]},
+            {"formula": [{"slot": "Das Haus"}, {"slot": "wird", "role": "verb"}, {"slot": "2026"}, {"slot": "gebaut", "role": "end"}]},
+            {"p": [{"t": "werden + Partizip II", "b": true}, " — English ", {"t": "be", "i": true}, " swaps for ", {"t": "werden", "b": true}, "."]},
+            {"chips": [{"label": "The passive in two tenses", "detail": "passive"}]}
+          ]
+        },
+        {
+          "id": "konjunktiv2",
+          "level": "B1",
+          "kind": "forms",
+          "search": "konjunktiv ii würde would wurde unreal conditional polite wäre hätte könnte sollte",
+          "blocks": [
+            {"h": ["Konjunktiv II"]},
+            {"p": [{"t": "würde + Infinitiv", "b": true}, " — German ", {"t": "would", "i": true}, " + infinitive; frequent direct forms: ", {"t": "wäre, hätte, könnte, möchte, müsste, sollte", "b": true}, "."]},
+            {"example": [
+              "Wenn ich Zeit ", {"t": "hätte", "hit": true}, ", ", {"t": "würde", "hit": true}, " ich reisen.", {"br": true},
+              {"t": "Könnten Sie", "hit": true}, " mir helfen?"
+            ], "gloss": ["— unreal now.", {"br": true}, "— polite request."]},
+            {"tiny": ["Spelling: ", {"t": "würde", "b": true}, " (“would”) is not ", {"t": "wurde", "b": true}, " (“became”)."]},
+            {"chips": [{"label": "When and why", "detail": "konjunktiv2"}]}
+          ]
+        },
+        {
+          "id": "doppelinfinitiv",
+          "level": "B1",
+          "kind": "position",
+          "search": "doppelinfinitiv ersatzinfinitiv double infinitive modal perfect haben arbeiten müssen",
+          "blocks": [
+            {"h": ["Perfekt with a modal: two infinitives"]},
+            {"p": ["Instead of Partizip II — ", {"t": "Infinitiv + Infinitiv", "b": true}, "."]},
+            {"example": [
+              "Ich ", {"t": "habe arbeiten müssen", "hit": true}, ". Not “gemusst”."
+            ], "gloss": ["≈ I had to work."]},
+            {"tiny": ["Recognizing it is enough — producing it comes later."]},
+            {"chips": [{"label": "The parse", "detail": "double-infinitive"}]}
+          ]
+        },
+        {
+          "id": "praeteritum",
+          "level": "A2",
+          "kind": "forms",
+          "search": "präteritum war hatte wollte konnte musste sollte simple past written spoken",
+          "blocks": [
+            {"h": ["Präteritum: war, hatte…"]},
+            {"p": ["The second past tense. Spoken German prefers Perfekt; written German — and always ", {"t": "sein, haben", "b": true}, " and the modals — uses Präteritum: ", {"t": "wollte, konnte, musste, sollte", "b": true}, ":"]},
+            {"example": [
+              "Ich ", {"t": "war", "hit": true}, " krank. · Ich ", {"t": "hatte", "hit": true}, " keine Zeit."
+            ], "gloss": ["war ≈ was · hatte ≈ had"]},
+            {"tiny": ["One German tense covers two English ones: ", {"t": "Ich habe gegessen", "b": true}, " is the spoken “I ate” — not “I have eaten”."]},
+            {"chips": [{"label": "Forms and the boundary", "detail": "praeteritum"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clauses", "view": "clauses", "badge": "Nebensätze",
+      "heading": "Subordinate clauses", "sub": "Conjunction first, conjugated verb to the end.",
+      "groups": [
+        {
+          "grid": "two",
+          "cards": [
+            {
+              "id": "weil",
+              "level": "A1",
+              "kind": "linking",
+              "search": "weil because subordinate verb end clause",
+              "blocks": [
+                {"h": ["weil — because"]},
+                {"formula": [{"slot": "weil", "role": "sub"}, {"slot": "ich heute arbeiten"}, {"slot": "muss", "role": "end"}]},
+                {"example": ["Ich komme nicht, ", {"t": "weil ich arbeiten muss.", "b": true}]},
+                {"tiny": ["English keeps its order after “because” — German sends the verb to the end: ", {"t": "weil ich muss arbeiten", "s": true}, " is the signature error."]}
+              ]
+            },
+            {
+              "id": "dass",
+              "level": "A2",
+              "kind": "linking",
+              "search": "dass that subordinate believe think hope say know dropped clause",
+              "blocks": [
+                {"h": ["dass — that"]},
+                {"example": ["Ich glaube, ", {"t": "dass er heute kommt.", "b": true}]},
+                {"tiny": ["Typical after ", {"t": "glauben, denken, hoffen, sagen, wissen", "i": true}, " (believe, think, hope, say, know) — and unlike English “that”, dass is never dropped."]}
+              ]
+            },
+            {
+              "id": "wenn-als",
+              "level": "A2",
+              "kind": "linking",
+              "search": "wenn if when condition repeated als subordinate",
+              "blocks": [
+                {"h": ["wenn — if / when"]},
+                {"example": [{"t": "Wenn ich Zeit habe,", "b": true}, " komme ich."]},
+                {"p": ["If the wenn-clause comes first, the main verb follows the comma — not the subject: ", {"t": "…, komme ich.", "b": true}]},
+                {"chips": [{"label": "wenn vs als", "detail": "wenn-als"}]}
+              ]
+            },
+            {
+              "id": "obwohl",
+              "level": "A2",
+              "kind": "linking",
+              "search": "obwohl although though subordinate verb end trotzdem",
+              "blocks": [
+                {"h": ["obwohl — although / though"]},
+                {"example": ["Er geht spazieren, ", {"t": "obwohl es regnet.", "b": true}]},
+                {"chips": [{"label": "obwohl vs trotzdem", "detail": "obwohl"}]}
+              ]
+            },
+            {
+              "id": "ob",
+              "level": "A2",
+              "kind": "linking",
+              "search": "ob whether if embedded indirect question wenn",
+              "blocks": [
+                {"h": ["ob — if / whether"]},
+                {"example": ["Ich weiß nicht, ", {"t": "ob er kommt.", "b": true}], "gloss": ["English “if” here = “whether” — an embedded yes/no question."]},
+                {"tiny": ["A condition “if” → ", {"t": "wenn", "b": true}, ": …, wenn es regnet."]}
+              ]
+            },
+            {
+              "id": "konnektoren",
+              "level": "A1",
+              "kind": "linking",
+              "search": "und aber denn oder sondern coordinating conjunctions verb second correction",
+              "blocks": [
+                {"h": ["Don’t send the verb to the end"]},
+                {"p": [{"t": "und, aber, denn, oder, sondern", "b": true}]},
+                {"example": [
+                  "Ich bleibe zu Hause, ", {"t": "denn", "hit": true}, " ich bin müde."
+                ], "gloss": ["denn ≈ “because”, but the order stays as after ", {"t": "und", "i": true}]},
+                {"example": [
+                  "Sie kommt ", {"t": "nicht", "b": true}, " aus Bukarest, ", {"t": "sondern", "hit": true}, " aus Deva."
+                ], "gloss": ["“not from Bucharest, but from Deva”: the correction after nicht/kein takes sondern."]},
+                {"chips": [
+                  {"label": "weil vs denn", "detail": "coordinators"},
+                  {"label": "sondern vs aber", "detail": "sondern"}
+                ]}
+              ]
+            }
+          ]
+        },
+        {
+          "grid": "two", "gap": true,
+          "cards": [
+            {
+              "id": "um-zu-damit",
+              "level": "A2",
+              "kind": "linking",
+              "search": "um zu damit purpose infinitive subject same different separable",
+              "blocks": [
+                {"h": ["um … zu / damit — in order to / so that"]},
+                {"example": [
+                  "Ich lerne Deutsch, ", {"t": "um in Berlin zu arbeiten.", "hit": true}, {"br": true},
+                  "Ich erkläre es langsam, ", {"t": "damit du alles verstehst.", "hit": true}
+                ], "gloss": ["≈ in order to — same subject.", {"br": true}, "≈ so that — different subjects."]},
+                {"chips": [{"label": "How to choose?", "detail": "um-damit"}]}
+              ]
+            },
+            {
+              "id": "relativsatz",
+              "level": "B1",
+              "kind": "linking",
+              "search": "relative clause relativsatz der das den dessen deren whose pronoun drop",
+              "blocks": [
+                {"h": ["Relative clauses"]},
+                {"example": [
+                  "Das ist der Mann, ", {"t": "der", "hit": true}, " hier arbeitet.", {"br": true},
+                  "Das ist der Mann, ", {"t": "den", "hit": true}, " ich kenne."
+                ], "gloss": ["der — he’s the one doing it (Wer?)", {"br": true}, "den — he’s the one I know (Wen?)"]},
+                {"tiny": ["Genitiv: der Mann, ", {"t": "dessen", "b": true}, " Auto… (“whose”; fem./plural — ", {"t": "deren", "b": true}, ")"]},
+                {"tiny": ["English may drop the pronoun (the man I know) — German never does, and the clause’s verb goes last."]},
+                {"chips": [{"label": "How to choose der/den/dem?", "detail": "relative"}]}
+              ]
+            },
+            {
+              "id": "verknuepfungen",
+              "level": "B1",
+              "kind": "linking",
+              "search": "deshalb trotzdem allerdings außerdem währenddessen linking adverbs therefore nevertheless however besides meanwhile position inversion",
+              "blocks": [
+                {"h": ["Linking adverbs"]},
+                {"p": ["Not conjunctions: they take ", {"t": "position 1", "b": true}, ", then the verb (see V2):"]},
+                {"chips": [
+                  {"label": ["deshalb — ", {"t": "so / therefore", "b": true}], "detail": "linking-adverbs", "neutral": true},
+                  {"label": ["trotzdem — ", {"t": "nevertheless / even so", "b": true}], "detail": "linking-adverbs", "neutral": true},
+                  {"label": ["allerdings — ", {"t": "though / however", "b": true}], "detail": "linking-adverbs", "neutral": true},
+                  {"label": ["außerdem — ", {"t": "besides", "b": true}], "detail": "linking-adverbs", "neutral": true},
+                  {"label": ["währenddessen — ", {"t": "meanwhile", "b": true}], "detail": "linking-adverbs", "neutral": true}
+                ]},
+                {"example": [
+                  "Es regnete. ", {"t": "Deshalb", "hit": true}, " blieben wir zu Hause. · ", {"t": "Trotzdem", "hit": true}, " ging er spazieren."
+                ], "gloss": ["Deshalb ≈ so · Trotzdem ≈ even so"]},
+                {"tiny": ["English keeps subject + verb after “therefore” — German inverts: ", {"t": "Deshalb wir blieben…", "s": true}]}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "extras", "view": "forms", "badge": "Endungen",
+      "heading": "Endings and changes", "sub": "Small rules that often break an otherwise correct form.", "grid": "two",
+      "cards": [
+        {
+          "id": "verb-endungen",
+          "level": "A1",
+          "kind": "forms",
+          "search": "sein haben verb endings present ich du er wir ihr sie arbeiten arbeitest",
+          "blocks": [
+            {"h": ["Verb endings"]},
+            {"table": {
+              "head": ["", "spielen", "sein", "haben"],
+              "rows": [
+                ["ich", {"hot": "spiele"}, "bin", "habe"],
+                ["du", {"hot": "spielst"}, "bist", "hast"],
+                ["er/sie/es", {"hot": "spielt"}, "ist", "hat"],
+                ["wir", "spielen", "sind", "haben"],
+                ["ihr", {"hot": "spielt"}, "seid", "habt"],
+                ["sie/Sie", "spielen", "sind", "haben"]
+              ]
+            }},
+            {"tiny": ["Stem + ending: -e, -st, -t (ich/du/er). German conjugates every verb the way English only conjugates be — the table is new, the idea isn’t."]},
+            {"tiny": ["English “you work” ends like “I work” — that’s the trap: not ", {"t": "du arbeite", "s": true}, " but ", {"t": "du arbeitest", "b": true}, "."]},
+            {"chips": [{"label": "Vowel change and -t/-d", "detail": "conjugation"}]}
+          ]
+        },
+        {
+          "id": "dativ-plural",
+          "level": "A2",
+          "kind": "forms",
+          "search": "dativ plural noun den kindern freunden",
+          "blocks": [
+            {"h": [{"t": "Dativ", "b": true}, " plural: the noun changes too"]},
+            {"p": ["English nouns never change — German adds a second signal: with ", {"t": "den", "b": true}, " (Dativ plural) the noun usually takes ", {"t": "-n", "b": true}, " as well, unless it’s already there."]},
+            {"example": ["mit ", {"t": "den Kindern", "b": true}, " · mit ", {"t": "meinen Freunden", "b": true}]}
+          ]
+        },
+        {
+          "id": "plural",
+          "level": "A1",
+          "kind": "forms",
+          "search": "plural gender umlaut frauen stühle kinder autos loanwords english five patterns",
+          "blocks": [
+            {"h": ["Plural: gender picks the ending"]},
+            {"p": ["English adds -s and is done — German has five patterns and no single rule: fem → ", {"t": "-en/-n", "b": true}, ", mask → ", {"t": "-e", "b": true}, ", neut → ", {"t": "-er", "b": true}, " (often with umlaut); words already ending in -er/-el/-en usually stay unchanged."]},
+            {"example": [
+              "die Frau → die ", {"t": "Frauen", "b": true}, " · der Stuhl → die ", {"t": "Stühle", "b": true}, {"br": true},
+              "das Kind → die ", {"t": "Kinder", "b": true}, " · das Auto → die ", {"t": "Autos", "b": true}
+            ]},
+            {"tiny": ["You own relics of exactly this: child/children and foot/feet are the same vowel-change idea as ", {"t": "Kind → Kinder", "b": true}, "; ", {"t": "Lehrer", "b": true}, " stays unchanged, like “sheep”; loanwords take -s, just like English."]},
+            {"tiny": ["No single rule: the gender bet covers most words, but when in doubt, check the dictionary form of the word."]},
+            {"chips": [{"label": "All five patterns", "detail": "plural"}]}
+          ]
+        },
+        {
+          "id": "genitiv-s",
+          "level": "A2",
+          "kind": "forms",
+          "search": "genitiv possessive vaters hauses english 's",
+          "blocks": [
+            {"h": [{"t": "Genitiv: -s / -es", "b": true}]},
+            {"p": ["Maskulin/neutrum nouns often take ", {"t": "-s/-es", "b": true}, " — the English ’s in German clothing: ", {"t": "des Vaters", "b": true}, " = the father’s."]},
+            {"example": ["das Auto ", {"t": "des Vaters", "b": true}, {"br": true}, "die Farbe ", {"t": "des Hauses", "b": true}]}
+          ]
+        },
+        {
+          "id": "n-deklination",
+          "level": "B1",
+          "kind": "forms",
+          "search": "n-deklination weak nouns masculine student studenten",
+          "blocks": [
+            {"h": [{"t": "N-Deklination", "b": true}, " (weak nouns)"]},
+            {"p": ["A group of masculine nouns takes ", {"t": "-n/-en", "b": true}, " in every case except Nominativ singular — nothing in English prepares you for it: only ", {"t": "der Student", "b": true}, " stays short, everywhere else it’s ", {"t": "den/dem/des Studenten", "b": true}, "."]},
+            {"example": ["der ", {"t": "Student", "b": true}, " → den/dem/des ", {"t": "Studenten", "b": true}]},
+            {"chips": [{"label": "Common words", "detail": "n-decl"}]}
+          ]
+        },
+        {
+          "id": "adjektive",
+          "level": "A2",
+          "kind": "forms",
+          "search": "adjective endings der-words ein-words guter guten",
+          "blocks": [
+            {"h": ["Adjectives: don’t learn them blind"]},
+            {"p": ["English adjectives never change — German endings are pure new territory. The shortcut: after ", {"t": "der-words", "b": true}, " the article already shows gender and case, so the adjective mostly just echoes ", {"t": "-e/-en", "b": true}, "; after ", {"t": "ein-words", "b": true}, " it carries more (see the dialog)."]},
+            {"example": ["der gut", {"t": "e", "b": true}, " Mann · mit dem gut", {"t": "en", "b": true}, " Mann"]},
+            {"chips": [{"label": "The short model", "detail": "adjectives"}]}
+          ]
+        },
+        {
+          "id": "komparativ",
+          "level": "A2",
+          "kind": "forms",
+          "search": "komparativ superlativ comparative superlative als than umlaut besser meisten schnellsten",
+          "blocks": [
+            {"h": ["Comparison: ", {"t": "-er", "b": true}, " / ", {"t": "am -sten", "b": true}]},
+            {"formula": [{"slot": "schnell"}, {"arrow": "→"}, {"slot": "schneller"}, {"arrow": "→"}, {"slot": "am schnellsten"}]},
+            {"example": ["Heute ist es ", {"t": "wärmer", "b": true}, ". · Ich komme ", {"t": "später", "b": true}, " ", {"t": "als", "b": true}, " du."], "gloss": [{"t": "als", "b": true}, " = “than” · ", {"t": "wie", "b": true}, " only for “as … as”"]},
+            {"tiny": ["The irregulars are English’s own: ", {"t": "gut – besser – am besten", "b": true}, " = good–better–the best · ", {"t": "viel – mehr – am meisten", "b": true}, " = much–more–the most · ", {"t": "gern – lieber", "b": true}, " = to like better."]},
+            {"tiny": [{"t": "am", "b": true}, " = “at the”: ", {"t": "am schnellsten", "b": true}, " is literally “at the fastest” — English says just “the fastest”."]},
+            {"chips": [{"label": "Umlaut and details", "detail": "comparative"}]}
+          ]
+        }
+      ]
+    }
+  ],
+  "practice": {
+    "id": "practice", "view": "practice", "badge": "30 sec",
+    "heading": "Quick review", "sub": "Three questions, no separate “lesson mode”.",
+    "search": "practice quiz review test",
+    "items": [
+      {
+        "_note": "Case shape after the verb: helfen takes a Dativ object where English help takes a bare object (plan practice item 1, DE-03).",
+        "q": [{"t": "1. Ich helfe ___ Mann.", "b": true}, " “I help the man.” Which article goes in the gap?"],
+        "answer": ["Dativ: helfen takes a Dativ object — English “help” takes a bare object and never changes “the”. Wem helfe ich? → ", {"t": "dem Mann", "b": true}, " (der → dem); with an indefinite article ", {"t": "einem Mann", "b": true}, "."]
+      },
+      {
+        "_note": "Fronted adverb + V2 + verb bracket (plan practice item 2, DE-07).",
+        "q": [{"t": "2. Heute ___ ich in den Laden gehen.", "b": true}, " Where does ", {"t": "müssen", "i": true}, " go?"],
+        "answer": [{"t": "Heute muss ich in den Laden gehen.", "b": true}, " English keeps subject and verb together (“Today I must go to the shop”); German keeps the finite verb in slot 2 and pushes the infinitive to the end. Subject-first order also works: ", {"t": "Ich muss heute in den Laden gehen.", "b": true}]
+      },
+      {
+        "_note": "Subordinate clause: finite verb last, where because changes nothing in English (plan practice item 3, DE-08).",
+        "q": [{"t": "3. …, weil ich heute arbeiten ___", "b": true}, " (“…because I have to work today”)"],
+        "answer": [{"t": "weil ich heute arbeiten muss", "b": true}, " — weil sends the finite verb to the end; English “because” changes nothing, so ", {"t": "weil ich muss arbeiten", "s": true}, " is the predictable trap. To keep the English order, use the coordinator ", {"t": "denn", "b": true}, ": Ich bleibe zu Hause, denn ich muss heute arbeiten."]
+      }
+    ]
+  },
+  "details": {
+    "lookup-help": {
+      "title": "How to use", "lead": "Trigger → form → position.",
+      "blocks": [
+        {"detail": {"label": "How it works", "runs": ["Find the trigger — a case question, a preposition, a conjunction or a verb construction — then check the form and the verb position."]}},
+        {"detail": {"label": "Search", "runs": ["Search straight away: ", {"t": "wem", "i": true}, ", ", {"t": "weil", "i": true}, ", ", {"t": "Perfekt", "i": true}, " — or in English. Search covers all sections at once."]}},
+        {"detail": {"label": "Navigation", "runs": ["Five views at the bottom; Review is a short check of the main traps."]}}
+      ]
+    },
+    "verb-preps": {
+      "title": "Verb + preposition: the pairs", "lead": "The case comes from the preposition; the question trick helps you recall the pair.",
+      "blocks": [
+        {"detail": {"label": "The question trick", "runs": ["Auf ", {"t": "wen", "b": true}, " wartest du? (Wen? = Akkusativ) — so auf takes Akkusativ, and that is why it is ", {"t": "den Bus", "b": true}, "."]}},
+        {"detail": {"label": "Common pairs", "runs": ["warten ", {"t": "auf + Akk", "b": true}, " (", {"t": "wait for", "i": true}, ") · denken ", {"t": "an + Akk", "b": true}, " (", {"t": "think about", "i": true}, ") · sich erinnern ", {"t": "an + Akk", "b": true}, " (", {"t": "remember", "i": true}, ") · teilnehmen ", {"t": "an + Dat", "b": true}, " (", {"t": "take part in", "i": true}, ") · sich interessieren ", {"t": "für + Akk", "b": true}, " (", {"t": "be interested in", "i": true}, ")."]}},
+        {"detail": {"label": "sich freuen", "runs": [{"t": "Ich freue mich auf die Reise", "b": true}, " — looking forward (still to come) · ", {"t": "Ich freue mich über das Geschenk", "b": true}, " — pleased about (already here)."]}},
+        {"detail": {"label": "sich", "runs": ["A reflexive pronoun — English has no equivalent (", {"t": "I look forward", "i": true}, ": no reflexive): ", {"t": "Ich freue mich", "b": true}, ", ", {"t": "du freust dich", "b": true}, ". For now, recognizing it is enough."]}}
+      ]
+    },
+    "seit-vor": {
+      "title": "seit: why the present?", "lead": "“I have lived here for two years” is present tense in German.",
+      "blocks": [
+        {"detail": {"label": "seit = up to now", "runs": [{"t": "Ich wohne seit zwei Jahren hier", "b": true}, " — present + Dativ (zwei Jahr", {"t": "en", "b": true}, "! — see the Dativ plural card). English needs the Present Perfect here; German keeps the present."]}},
+        {"detail": {"label": "vor = ago", "runs": [{"t": "Ich bin vor zwei Jahren umgezogen", "b": true}, " — ", {"t": "I moved two years ago", "i": true}, ": a finished point in the past + past tense."]}},
+        {"detail": {"label": "for and since", "runs": ["seit covers both English words: duration — ", {"t": "seit zwei Jahren", "b": true}, " (", {"t": "for two years", "i": true}, ") — and a starting point — ", {"t": "seit 2020", "b": true}, " (", {"t": "since 2020", "i": true}, ")."]}},
+        {"detail": {"label": "Not like English", "runs": ["English: ", {"t": "I have lived here for two years", "i": true}, " (Present Perfect). German: present — ", {"t": "Ich wohne hier seit zwei Jahren", "b": true}, ". Don’t rebuild the English perfect as Perfekt after seit."]}}
+      ]
+    },
+    "nominativ": {
+      "title": "Nominativ", "lead": "Wer? Was? — the doer, the dictionary form.",
+      "blocks": [
+        {"detail": {"label": "Usually", "runs": ["The subject — the one doing or being something. English shows it by position (", {"t": "I see the man", "i": true}, ") or pronoun shape (", {"t": "I", "i": true}, ", ", {"t": "he", "i": true}, "); German writes it on the article."]}},
+        {"detail": {"label": "Example", "runs": [{"t": "Der Mann", "b": true}, " arbeitet."], "comment": ["Wer arbeitet? — Who works? The doer stands in the Nominativ."]}}
+      ]
+    },
+    "akkusativ": {
+      "title": "Akkusativ", "lead": "Wen? Was? — the direct object.",
+      "blocks": [
+        {"detail": {"label": "Usually", "runs": ["The direct object of the action — in English only the pronoun changes shape (", {"t": "I see him", "i": true}, ", never ", {"t": "I see he", "s": true}, "); German changes the article instead."]}},
+        {"detail": {"label": "Example", "runs": ["Ich sehe ", {"t": "den Mann", "b": true}, "."], "comment": ["Wen sehe ich? — Whom do I see?"]}},
+        {"detail": {"label": "The visible change", "runs": ["Only masculine: ", {"t": "der → den", "b": true}, ", ", {"t": "ein → einen", "b": true}, ". English ", {"t": "the", "i": true}, " never changes shape — this ending is the case marker made visible."]}}
+      ]
+    },
+    "dativ": {
+      "title": "Dativ", "lead": "Wem? — the receiver, English “to/for him”.",
+      "blocks": [
+        {"detail": {"label": "Usually", "runs": ["The receiver — the role English marks with ", {"t": "to/for", "i": true}, ": ", {"t": "Ich helfe dem Mann", "b": true}, "."], "comment": ["Wem helfe ich? — German helfen takes a Dativ object where English help takes a bare object."]}},
+        {"detail": {"label": "Remember", "runs": [{"t": "mit, bei, nach, seit, von, zu, aus", "b": true}, " → Dativ."]}}
+      ]
+    },
+    "genitiv": {
+      "title": "Genitiv", "lead": "Wessen? — whose, the possessive ’s.",
+      "blocks": [
+        {"detail": {"label": "Usually", "runs": ["Belonging or connection — the job English gives to the possessive ’s."]}},
+        {"detail": {"label": "Example", "runs": ["Das Auto ", {"t": "des Mannes", "b": true}, "."], "comment": ["des Mannes ≈ the man’s — English’s other case remnant does the same work."]}},
+        {"detail": {"label": "Form", "runs": ["Masculine/neuter: ", {"t": "des", "b": true}, " + a noun that usually takes ", {"t": "-s/-es", "b": true}, " (", {"t": "des Mannes", "b": true}, ") — the same -s as the English possessive."]}}
+      ]
+    },
+    "wo-wohin": {
+      "title": "Wo? / Wohin?", "lead": "The rule behind the two-way prepositions (Wechselpräpositionen).",
+      "blocks": [
+        {"detail": {"label": "Wo? → Dativ", "runs": ["Position — nothing crosses the boundary: ", {"t": "Ich bin in der Schule", "b": true}, " (", {"t": "in the school", "i": true}, ")."]}},
+        {"detail": {"label": "Wohin? → Akkusativ", "runs": ["Direction — the position changes across the boundary: ", {"t": "Ich gehe in die Schule", "b": true}, " (", {"t": "into the school", "i": true}, ")."]}},
+        {"detail": {"label": "Important", "runs": ["Not every movement automatically means Akkusativ. Ask: does the position cross the boundary the preposition draws? ", {"t": "Ich jogge im Park", "b": true}, " (moving inside — Dativ) · ", {"t": "Ich jogge in den Park", "b": true}, " (entering the park — Akkusativ)."]}}
+      ]
+    },
+    "objects": {
+      "title": "Two objects", "lead": "Some verbs take both at once: to whom (Dativ) + what (Akkusativ).",
+      "blocks": [
+        {"detail": {"label": "These verbs", "runs": [{"t": "geben, schenken, zeigen, bringen, sagen, erklären…", "b": true}]}},
+        {"detail": {"label": "geben", "runs": [{"t": "Ich gebe dem Kind", "b": true}, " (Wem? Dativ) ", {"t": "das Buch", "b": true}, " (Was? Akkusativ)."], "comment": ["I give the child the book — English double-object verbs keep the same two roles; German marks them on the articles."]}},
+        {"detail": {"label": "The pattern", "runs": ["Receiver → Dativ, thing handed over → Akkusativ. And where English me/him covers both roles, German splits them: ihn (Akkusativ) vs ihm (Dativ)."]}}
+      ]
+    },
+    "prep-akk": {
+      "title": "Akkusativ prepositions", "lead": "durch, für, gegen, ohne, um",
+      "blocks": [
+        {"detail": {"label": "Examples", "runs": ["für ", {"t": "den Mann", "b": true}, " · ohne ", {"t": "mich", "b": true}, " · durch ", {"t": "die Stadt", "b": true}, "."]}},
+        {"detail": {"label": "In practice", "runs": ["See one of these prepositions — the case is already decided; don’t look for a meaning question. English trains the same habit: depend on, wait for — an arbitrary pair to memorize."]}}
+      ]
+    },
+    "prep-dat": {
+      "title": "Dativ prepositions", "lead": "aus, bei, mit, nach, seit, von, zu",
+      "blocks": [
+        {"detail": {"label": "Examples", "runs": ["mit ", {"t": "meinem Bruder", "b": true}, " · bei ", {"t": "der Arbeit", "b": true}, " · nach ", {"t": "Berlin", "b": true}, "."]}},
+        {"detail": {"label": "Contractions", "runs": ["zu dem → ", {"t": "zum", "b": true}, ", zu der → ", {"t": "zur", "b": true}, ", von dem → ", {"t": "vom", "b": true}, "."]}}
+      ]
+    },
+    "two-way": {
+      "title": "Wechselpräpositionen", "lead": "an, auf, hinter, in, neben, über, unter, vor, zwischen",
+      "blocks": [
+        {"detail": {"label": "Dativ", "runs": ["Wo? — position: Das Buch liegt ", {"t": "auf dem Tisch", "b": true}, " (", {"t": "on the table", "i": true}, ")."]}},
+        {"detail": {"label": "Akkusativ", "runs": ["Wohin? — the position changes: Ich lege das Buch ", {"t": "auf den Tisch", "b": true}, " (", {"t": "onto the table", "i": true}, ")."]}},
+        {"detail": {"label": "Same split as in / into", "runs": ["English already makes it: ", {"t": "in the house", "i": true}, " (position) vs ", {"t": "walk into the house", "i": true}, " (direction). In German the case rides on the question — never on feel."]}}
+      ]
+    },
+    "dieser": {
+      "title": "dieser: declension",
+      "lead": "dies- steps in for der/die/das — the endings are the same ones.",
+      "blocks": [
+        {"detail": {"label": "The model", "runs": ["Nominativ: ", {"t": "dieser / diese / dieses", "i": true}, " (der/die/das) · Akkusativ: ", {"t": "diesen", "i": true}, " / diese / dieses (den/die/das) · Dativ: ", {"t": "diesem / dieser / diesen", "i": true}, " (dem/der/den)."]}},
+        {"detail": {"label": "this or that?", "runs": ["German doesn’t split by distance: ", {"t": "dieser", "b": true}, " covers both — Dieser Tisch = this table or that table. Standalone “that is …” statements use ", {"t": "das", "b": true}, ": ", {"t": "Das ist schön.", "i": true}, " (≈ “That’s nice.”) — never dieser."]}},
+        {"detail": {"label": "welcher", "runs": ["Same pattern: ", {"t": "welch-", "b": true}, " → welcher/welche/welches (“which?”). The answer repeats it: ", {"t": "Welcher Bus? — Dieser Bus.", "i": true}, " (≈ “Which bus? — This bus.”)"]}},
+        {"detail": {"label": "dieser or der?", "runs": [{"t": "dieser", "b": true}, " points at one specific thing (“that one there”); ", {"t": "der", "b": true}, " is the neutral reference: ", {"t": "Der Mann dort.", "i": true}]}},
+        {"detail": {"label": "Adjectives", "runs": ["After dieser an adjective takes the same -e/-en as after der-words — see the Adjectives card in Endings and changes."]}}
+      ]
+    },
+    "article-choice": {
+      "title": "der or ein: first mention or already known",
+      "lead": "First time ein — after that der.",
+      "blocks": [
+        {"detail": {"label": "The pair", "runs": [{"t": "Ein Hund", "i": true}, " läuft durch den Park. ", {"t": "Der Hund", "i": true}, " trägt einen Ball."], "comment": ["“Some dog” → “the dog we both know” — exactly English a → the."]}},
+        {"detail": {"label": "Professions", "runs": [{"t": "Ich bin Lehrer", "i": true}, " · ", {"t": "Sie ist Ärztin", "i": true}, " — no article, the opposite of English “I’m a teacher.”"], "comment": [{"t": "Ich bin ein Lehrer", "s": true}, " is the predictable error."]}},
+        {"detail": {"label": "kein", "runs": [{"t": "Das ist kein Hund", "i": true}, ", ", {"t": "sondern ein Wolf", "i": true}, " — the negation of that same ein."]}}
+      ]
+    },
+    "possessives": {
+      "title": "Possessives",
+      "lead": "mein, dein, sein, ihr, unser, euer, ihr, Ihr",
+      "blocks": [
+        {"detail": {"label": "Meanings", "runs": ["mein = my · dein = your · sein = his (or its) · ihr = her or their · unser = our · euer = your (plural) · ", {"t": "Ihr", "b": true}, " = your (polite)."]}},
+        {"detail": {"label": "The owner gives the stem", "runs": ["du → dein · sie (she) → ihr · Sie (polite) → ", {"t": "Ihr", "b": true}, ", with a capital. Small ihr does double duty — her and their; context decides."]}},
+        {"detail": {"label": "The ending comes from the table", "runs": ["All of them decline like ein-words: mein Bruder → ", {"t": "meinen", "b": true}, " → ", {"t": "meinem", "b": true}, " → meines Bruders; any stem works: dein Bruder → ", {"t": "deinen", "b": true}, " Bruder."]}},
+        {"detail": {"label": "sein = his or its", "runs": [{"t": "sein Bruder", "i": true}, " (his brother) · ", {"t": "sein Auto", "i": true}, " (his car / its engine) — German has no separate “its”."]}},
+        {"detail": {"label": "The euer trap", "runs": [{"t": "euer", "b": true}, " drops its e before an ending: mit ", {"t": "eurem", "b": true}, " Bruder (not euerm) · ", {"t": "eure", "b": true}, " Schwester."]}}
+      ]
+    },
+    "why-ein-endings": {
+      "title": "Why meinen / meinem?",
+      "lead": "The endings are the article’s: den → meinen, dem → meinem, der → meiner.",
+      "blocks": [
+        {"detail": {"label": "The key", "runs": ["Same endings as the definite article. Compare: den Mann → ", {"t": "meinen", "i": true}, " Mann · dem Mann → ", {"t": "meinem", "i": true}, " Mann · der Frau → ", {"t": "meiner", "i": true}, " Frau."]}},
+        {"detail": {"label": "Where there is no ending", "runs": ["Only three cells: Nominativ m/n and Akkusativ n — ", {"t": "ein Mann, ein Kind", "i": true}, ". The bare form, like der/das in the article table."]}},
+        {"detail": {"label": "Akkusativ", "runs": ["Only masculine changes visibly: der → ", {"t": "den", "i": true}, ", mein → ", {"t": "meinen", "i": true}, ". Fem./neut./plural look like the Nominativ."]}},
+        {"detail": {"label": "Dativ", "runs": ["Everything takes an ending: m/n → ", {"t": "-em", "i": true}, ", f → ", {"t": "-er", "i": true}, ", plural → ", {"t": "-en", "i": true}, " (+ -n on the noun)."]}}
+      ]
+    },
+    "ihrem": {
+      "title": "Why ihrem?",
+      "lead": "ihr + the Dativ ending.",
+      "blocks": [
+        {"detail": {"label": "Masculine / neuter, Dativ", "runs": ["ihr + -em = ", {"t": "ihrem", "b": true}, "."]}},
+        {"detail": {"label": "Examples", "runs": ["mit ", {"t": "ihrem Bruder", "b": true}, " · mit ", {"t": "ihrem Kind", "b": true}, "."]}},
+        {"detail": {"label": "But", "runs": ["Feminine: mit ", {"t": "ihrer Mutter", "b": true}, ". Plural: mit ", {"t": "ihren Freunden", "b": true}, "."]}}
+      ]
+    },
+    "negation": {
+      "title": "nicht: placement",
+      "lead": "Usually before what remains; right before a word only when you negate that exact word.",
+      "blocks": [
+        {"detail": {"label": "Before the rest", "runs": ["Ich komme ", {"t": "nicht", "b": true}, ". · Ich gehe heute ", {"t": "nicht", "b": true}, " ins Kino."], "comment": ["Not pinned to the end — it sits before what’s left of the sentence. Sentence-final only when nothing follows."]}},
+        {"detail": {"label": "Before the word", "runs": ["Ich komme ", {"t": "nicht", "b": true}, " heute, sondern morgen."], "comment": ["“Not today”: you negate the time, not the coming. That “but” is sondern — it only follows a negation."]}},
+        {"detail": {"label": "kein declines", "runs": ["Like ein: kein Auto · keine Zeit · ", {"t": "keinen", "i": true}, " Mann (Akk.) · keinem Kind (Dat.)."]}},
+        {"detail": {"label": "The difference", "runs": [{"t": "kein", "i": true}, " Auto = no car at all · ", {"t": "nicht", "i": true}, " mein Auto = a car exists, just not mine."]}}
+      ]
+    },
+    "pronouns": {
+      "title": "Personal pronouns",
+      "lead": "Learn the important ones as triplets: Nominativ–Akkusativ–Dativ.",
+      "blocks": [
+        {"detail": {"label": "Triplets", "runs": ["ich–mich–mir · du–dich–dir · er–ihn–ihm · ", {"t": "sie–sie–ihr", "b": true}, " (she) · es–es–ihm."], "comment": ["English “him” splits in two: ihn (direct object) vs ihm (the “to him” role)."]}},
+        {"detail": {"label": "Plural", "runs": ["wir–uns–uns · ihr–euch–euch · ", {"t": "sie–sie–ihnen", "b": true}, " (they) · ", {"t": "Sie–Sie–Ihnen", "b": true}, " (polite you — capital, no English counterpart)."]}},
+        {"detail": {"label": "Genitiv", "runs": ["No personal-pronoun Genitiv here — the forms are rare (statt meiner…) and beyond A1–B1."]}}
+      ]
+    },
+    "conjugation": {
+      "title": "Conjugation: details",
+      "lead": "Stem + ending — but strong verbs change their vowel.",
+      "blocks": [
+        {"detail": {"label": "-t/-d stems", "runs": ["arbeiten → du ", {"t": "arbeitest", "i": true}], "comment": ["An -e- is inserted between the -t/-d stem and -st/-t."]}},
+        {"detail": {"label": "Vowel change", "runs": [{"t": "lesen", "i": true}, " → du ", {"t": "liest", "i": true}, " · ", {"t": "fahren", "i": true}, " → du ", {"t": "fährst", "i": true}, ", er ", {"t": "fährt", "i": true}, " (a → ä)."], "comment": ["Only du and er change."]}},
+        {"detail": {"label": "sein / haben", "runs": ["Irregular as whole words: ", {"t": "bin, bist, ist…", "i": true}, " · ", {"t": "habe, hast, hat…", "i": true}], "comment": ["Learn them as a table — English be, only busier."]}},
+        {"detail": {"label": "wir / ihr / Sie", "runs": ["wir = infinitive · ihr = stem + ", {"t": "-t", "i": true}, " · sie/Sie = infinitive"], "comment": ["Never change."]}}
+      ]
+    },
+    "plural": {
+      "title": "Plural: the five patterns",
+      "lead": "Gender places the bet; the dictionary gives the answer.",
+      "blocks": [
+        {"detail": {"label": "Feminine", "runs": ["Almost always ", {"t": "-en/-n", "b": true}, ": die Frau → Frauen. Nouns in -ung/-heit/-keit/-schaft/-ion → ", {"t": "-en", "b": true}, ": Zeitungen, Möglichkeiten."]}},
+        {"detail": {"label": "Masculine", "runs": ["Often ", {"t": "-e", "b": true}, ", many with umlaut: Tische, ", {"t": "Stühle", "i": true}, ", ", {"t": "Männer", "i": true}, "."]}},
+        {"detail": {"label": "Neuter", "runs": ["Often ", {"t": "-er", "b": true}, ", many with umlaut: Kinder, ", {"t": "Bücher", "i": true}, ", ", {"t": "Häuser", "i": true}, " — the same vowel-change idea as English child/children, foot/feet."]}},
+        {"detail": {"label": "Loanwords", "runs": ["Short and borrowed words → ", {"t": "-s", "b": true}, ", just like English: Autos, Handys, Parks."]}},
+        {"detail": {"label": "No change", "runs": ["Words in -er/-el/-en and -chen/-lein stay as they are (like “sheep”): Lehrer → Lehrer, Fenster → Fenster, Mädchen → Mädchen; sometimes only the vowel moves: ", {"t": "Äpfel", "i": true}, ", ", {"t": "Vögel", "i": true}, "."]}},
+        {"detail": {"label": "Compounds", "runs": ["The plural sits on the last element: das Wörter", {"t": "buch", "b": true}, " → die Wörter", {"t": "bücher", "b": true}, "."]}},
+        {"detail": {"label": "The limit", "runs": ["No single rule: the gender bet covers most words, but check the dictionary when in doubt. In Dativ plural the noun almost always adds ", {"t": "-n", "b": true}, " as well — see the Dativ plural card."]}},
+        {"detail": {"label": "In practice", "runs": ["No gender, no plural: if you don’t know the article, start with the Definite article card."]}}
+      ]
+    },
+    "n-decl": {
+      "title": "N-Deklination",
+      "lead": "The common weak masculine nouns.",
+      "blocks": [
+        {"detail": {"label": "Common words", "runs": ["Student, Mensch, Junge, Kunde, Kollege, Herr (special form Herrn)."]}},
+        {"detail": {"label": "The model", "runs": ["der Student, but den/dem/des Studenten — an ", {"t": "-n/-en", "i": true}, " everywhere except Nominativ singular."]}}
+      ]
+    },
+    "adjectives": {
+      "title": "Adjective endings",
+      "lead": "First ask: does the article already show gender and case?",
+      "blocks": [
+        {"detail": {"label": "After der-words", "runs": ["Mostly -e or -en — the article has done the work, the adjective echoes it: ", {"t": "der gute Mann, den guten Mann, dem guten Mann", "i": true}, "."]}},
+        {"detail": {"label": "After ein-words", "runs": ["When the article shows nothing, the adjective steps in: ", {"t": "ein guter Mann, ein gutes Kind", "i": true}, ". But: ", {"t": "einen guten Mann, einem guten Mann", "i": true}, "."]}},
+        {"detail": {"label": "No article", "runs": ["The adjective carries the grammar itself: ", {"t": "guter Wein, mit gutem Wein", "i": true}, "."]}},
+        {"detail": {"label": "Scope", "runs": ["This is the compact model, not the full declension table — enough to choose between -e and -en in the common cases."]}}
+      ]
+    },
+    "comparative": {
+      "title": "Comparison: details",
+      "lead": "Short adjectives often take an umlaut: kurz → kürzer.",
+      "blocks": [
+        {"detail": {"label": "Umlaut", "runs": [{"t": "kurz → kürzer", "i": true}, " · ", {"t": "alt → älter", "i": true}, " · ", {"t": "groß → größer", "i": true}], "comment": ["Usually one-syllable words. English keeps this only as a fossil (foot/feet); German still uses it live."]}},
+        {"detail": {"label": "than = als", "runs": ["größer ", {"t": "als", "i": true}, " ich — “bigger than me”. Comparisons always use als; equality is ", {"t": "so … wie", "i": true}, " (as … as)."]}},
+        {"detail": {"label": "am -sten", "runs": ["The adverb superlative: Er läuft ", {"t": "am schnellsten", "i": true}, " — literally “at the fastest”. With an article: der beste Film."]}}
+      ]
+    },
+    "v2": {
+      "title": "What “slot 2” means", "lead": "The verb owns the sentence’s second position — not necessarily the second word.",
+      "blocks": [
+        {"detail": {"label": "Slot 1 can be a whole phrase", "runs": [{"t": "Heute Morgen um acht", "i": true}, " gehe ich zur Arbeit."], "comment": ["The whole group “Heute Morgen um acht” fills slot 1 — the verb still comes next."]}},
+        {"detail": {"label": "Then the verb, immediately", "runs": ["Nothing can cut in between slot 1 and the finite verb."]}},
+        {"detail": {"label": "Compared with English", "runs": ["English never moves the verb (“Today I work at home”); German answers a fronted adverb with inversion: ", {"t": "Heute arbeite ich zu Hause", "i": true}, "."]}}
+      ]
+    },
+    "tekamolo": {
+      "title": "TeKaMoLo", "lead": "A useful order for the middle field — not an iron law.",
+      "blocks": [
+        {"detail": {"label": "The base order", "runs": ["Temporal (when) → Kausal (why) → Modal (how) → Lokal (where): ", {"t": "Ich fahre heute wegen des Wetters mit dem Bus zur Arbeit", "i": true}, "."], "comment": ["English reshuffles the same facts: “Because of the weather, I’m taking the bus to work today” — time comes last."]}},
+        {"detail": {"label": "The predicted error", "runs": [{"t": "Ich fahre nach Berlin heute", "s": true}, " → ", {"t": "Ich fahre heute nach Berlin", "i": true}, "."], "comment": ["Calquing the English order — place before time — is the classic English-speaker slip."]}},
+        {"detail": {"label": "Why it is not a law", "runs": ["Emphasis, pronouns and definiteness can reorder the middle field. Treat TeKaMoLo as the safe default while you are unsure."]}}
+      ]
+    },
+    "particles": {
+      "title": "Particles: breakdown", "lead": "Mid-field position — usually right after the verb or the subject.",
+      "blocks": [
+        {"detail": {"label": "doch", "runs": ["Es ist ", {"t": "doch", "i": true}, " spät."], "comment": ["“But it is late, you know”: pushes back against what the other person knows or has just said."]}},
+        {"detail": {"label": "ja", "runs": ["Das ist ", {"t": "ja", "i": true}, " klar."], "comment": ["“That’s clear, after all”: obvious to both of you — no proof needed."]}},
+        {"detail": {"label": "denn", "runs": ["Questions only: Wie heißt ", {"t": "denn", "i": true}, " du?"], "comment": ["“So what’s your name, then?”: friendly interest, not “why”. Not the conjunction denn — that one lives in Clauses."]}},
+        {"detail": {"label": "mal", "runs": ["Komm ", {"t": "mal", "i": true}, " her!"], "comment": ["“Come here a sec”: softens a request into a nudge."]}},
+        {"detail": {"label": "schon / gar", "runs": ["Das stimmt ", {"t": "schon", "i": true}, ". · Das ist ", {"t": "gar", "i": true}, " nicht schwer."], "comment": ["“True, I suppose” (concession) · “not hard at all” (intensifier — almost always with nicht)."]}},
+        {"detail": {"label": "wohl", "runs": ["Er kommt ", {"t": "wohl", "i": true}, " später."], "comment": ["“probably”: a cautious guess, no certainty."]}},
+        {"detail": {"label": "Position", "runs": ["Mid-field: Ich habe ", {"t": "doch", "i": true}, " nichts gesagt."], "comment": ["After the finite verb or the subject, before the rest — English carries the same nuance with stress: “I did NOT say anything.”"]}}
+      ]
+    },
+    "imperative": {
+      "title": "du-form: the details", "lead": "du-form → drop -st and drop du.",
+      "blocks": [
+        {"detail": {"label": "The du rule", "runs": [{"t": "du kommst", "i": true}, " → ", {"t": "Komm!", "i": true}, " · ", {"t": "du machst", "i": true}, " → ", {"t": "Mach!", "i": true}, "."]}},
+        {"detail": {"label": "e→i stays, umlaut goes", "runs": [{"t": "du gibst", "i": true}, " → ", {"t": "Gib!", "i": true}, " · ", {"t": "du liest", "i": true}, " → ", {"t": "Lies!", "i": true}, " · ", {"t": "du fährst", "i": true}, " → ", {"t": "Fahr!", "i": true}], "comment": ["The vowel change survives; the umlaut disappears in the command."]}},
+        {"detail": {"label": "-t/-d stems", "runs": [{"t": "du wartest", "i": true}, " → ", {"t": "Warte!", "i": true}], "comment": ["Insert -e-. Pure form learning — English has no parallel here."]}},
+        {"detail": {"label": "sein", "runs": [{"t": "Sei ruhig!", "i": true}, " · ", {"t": "Seid ruhig!", "i": true}, " · ", {"t": "Seien Sie ruhig!", "i": true}], "comment": ["The exception — and the form you will actually use with strangers: “Be quiet, please.”"]}},
+        {"detail": {"label": "ihr / Sie", "runs": ["ihr-form without ihr: ", {"t": "Geht!", "i": true}, " · verb + Sie: ", {"t": "Kommen Sie bitte!", "i": true}, "."], "comment": ["Sie keeps its place after the verb — a command shape English simply does not have."]}}
+      ]
+    },
+    "modal": {
+      "title": "Modal verbs", "lead": "können, müssen, wollen, sollen, dürfen, mögen — the bracket construction.",
+      "blocks": [
+        {"detail": {"label": "Main clause", "runs": ["Ich ", {"t": "muss", "b": true}, " heute ", {"t": "arbeiten", "b": true}, "."], "comment": ["The finite modal takes slot 2, the infinitive goes last. English keeps “must work” adjacent; German spreads the bracket."]}},
+        {"detail": {"label": "Subordinate clause", "runs": ["…, weil ich heute arbeiten ", {"t": "muss", "b": true}], "comment": ["Both halves drift to the end — the conjugated modal is the very last word."]}}
+      ]
+    },
+    "perfekt": {
+      "title": "Perfekt", "lead": "haben or sein + Partizip II — the everyday spoken past.",
+      "blocks": [
+        {"detail": {"label": "haben", "runs": ["Most verbs: ", {"t": "Ich habe gearbeitet", "i": true}, "."], "comment": ["This renders English “I worked” — the simple past — not “I have worked”."]}},
+        {"detail": {"label": "sein", "runs": ["Motion or a change of state with no direct object: ", {"t": "Ich bin gegangen", "i": true}, ". ", {"t": "Er ist eingeschlafen", "i": true}, "."], "comment": ["English has no such split — “have” everywhere — so the auxiliary is a real decision each time."]}},
+        {"detail": {"label": "Learn these whole", "runs": [{"t": "ist geblieben", "i": true}, " (bleiben), ", {"t": "ist passiert", "i": true}, " (passieren) — sein; but ", {"t": "hat getanzt", "i": true}, " (tanzen) — haben, motion or not."]}}
+      ]
+    },
+    "separable": {
+      "title": "Separable verbs", "lead": "aufstehen, einkaufen, anrufen… the prefix leaves home.",
+      "blocks": [
+        {"detail": {"label": "Main clause", "runs": ["Ich ", {"t": "rufe", "b": true}, " dich später ", {"t": "an", "b": true}, "."], "comment": ["Conjugated stem in slot 2, prefix at the end — the mirror image of English “I’ll call you later”."]}},
+        {"detail": {"label": "Infinitive / subordinate clause", "runs": ["anrufen; …, weil ich dich später ", {"t": "anrufe", "b": true}, "."], "comment": ["Nothing takes slot 2, so the verb stays whole and goes to the end."]}},
+        {"detail": {"label": "Perfekt", "runs": [{"t": "angerufen", "i": true}], "comment": ["ge- slips in between prefix and stem."]}}
+      ]
+    },
+    "passive": {
+      "title": "The passive in two tenses", "lead": "werden + Partizip II — and the state reading that English “is built” hides.",
+      "blocks": [
+        {"detail": {"label": "Present: the event", "runs": ["Das Haus ", {"t": "wird gebaut", "b": true}, "."], "comment": ["“The house is being built” — construction is happening. German reserves werden for the event."]}},
+        {"detail": {"label": "The state", "runs": ["Das Haus ", {"t": "ist gebaut", "i": true}, "."], "comment": ["The building is finished — a result with no event. Recognize it; werden is the productive form."]}},
+        {"detail": {"label": "The agent", "runs": ["Das Haus wird ", {"t": "von einem Architekten", "i": true}, " gebaut."], "comment": ["“by an architect” = ", {"t": "von", "i": true}, " + Dativ."]}},
+        {"detail": {"label": "Perfekt Passiv — recognition", "runs": ["Das Haus ", {"t": "ist gebaut worden", "i": true}, "."], "comment": ["≈ “The house has been built.” Understand it; do not build it yet."]}}
+      ]
+    },
+    "konjunktiv2": {
+      "title": "Konjunktiv II", "lead": "The unreal, the polite, the advised.",
+      "blocks": [
+        {"detail": {"label": "würde + Infinitiv", "runs": ["Works for most verbs: Wenn ich Zeit hätte, ", {"t": "würde ich mehr lesen", "i": true}, "."], "comment": ["Structurally the English conditional: “If I had time, I would read more.”"]}},
+        {"detail": {"label": "würde with sein / haben", "runs": [{"t": "Wenn ich Zeit hätte…", "i": true}, ", ", {"t": "wäre", "i": true}, " ich froh — not ", {"t": "würde sein", "s": true}, "."], "comment": ["The English habit “if I would have” has no German license: use the direct forms ", {"t": "hätte", "i": true}, " and ", {"t": "wäre", "i": true}, "."]}},
+        {"detail": {"label": "Direct forms", "runs": [{"t": "wäre, hätte, könnte, möchte, müsste, sollte", "i": true}, " — learn them as words: Ich ", {"t": "wäre", "i": true}, " froh. Du ", {"t": "solltest", "i": true}, " schlafen."], "comment": [{"t": "möchte", "i": true}, " = “I would like” — the most useful of all."]}},
+        {"detail": {"label": "When", "runs": ["Unreal conditions, polite requests (", {"t": "Könnten Sie…?", "i": true}, "), wishes (", {"t": "Ich hätte gern…", "i": true}, "), advice (", {"t": "Du solltest…", "i": true}, ")."]}}
+      ]
+    },
+    "double-infinitive": {
+      "title": "Two infinitives", "lead": "Perfekt with a modal — German keeps the modal, English swapped it for had to.",
+      "blocks": [
+        {"detail": {"label": "The form", "runs": ["haben + Infinitiv + Infinitiv: Ich habe lange ", {"t": "arbeiten müssen", "i": true}, "."], "comment": ["≈ “I had to work for a long time.” English solved the past modal with a new word — ", {"t": "must", "i": true}, " → ", {"t": "had to", "i": true}, "; German keeps müssen and swaps its participle for an infinitive (not ", {"t": "gemusst", "i": true}, ")."]}},
+        {"detail": {"label": "In the subordinate clause", "runs": ["…, weil ich lange ", {"t": "habe arbeiten müssen", "i": true}, "."], "comment": ["“…that I had to work for a long time”; haben jumps in front of the two infinitives."]}},
+        {"detail": {"label": "Level", "runs": ["Recognizing the construction is enough — you will produce it later."]}}
+      ]
+    },
+    "praeteritum": {
+      "title": "Präteritum: forms", "lead": "Modals, sein and haben keep Präteritum almost always — even in speech.",
+      "blocks": [
+        {"detail": {"label": "Ready-made forms", "runs": [{"t": "war, hatte, wollte, konnte, musste, sollte, durfte", "i": true}], "comment": ["Learn as a list — they map straight onto was / had / wanted to / could / had to / should."]}},
+        {"detail": {"label": "Regular verbs", "runs": ["stem + ", {"t": "-te", "i": true}, ": ", {"t": "machte, spielte, arbeitete", "i": true}, ". 1st and 3rd person look alike."], "comment": ["Understand these; in speech they sound bookish — say ", {"t": "Ich habe gearbeitet", "i": true}, " instead."]}},
+        {"detail": {"label": "The Perfekt boundary", "runs": ["Speech: ", {"t": "Ich bin gegangen", "i": true}, ". Writing: ", {"t": "Er ging", "i": true}, "."], "comment": ["But Perfekt never renders English “have eaten” — ", {"t": "Ich habe gegessen", "i": true}, " is simply “I ate”. And modals + sein/haben stay Präteritum even in speech: ", {"t": "Ich musste arbeiten", "i": true}, " (see Two infinitives)."]}}
+      ]
+    },
+    "wenn-als": {
+      "title": "wenn vs als", "lead": "English “when” covers both — German splits it.",
+      "blocks": [
+        {"detail": {"label": "als", "runs": ["One specific time in the past: ", {"t": "Als ich ein Kind war…", "b": true}], "comment": ["≈ “when I was a child” — one occasion, closed and gone."]}},
+        {"detail": {"label": "wenn", "runs": ["Repeated or future “when”, and “if”: ", {"t": "Wenn ich Zeit habe, komme ich.", "b": true}], "comment": ["≈ “when(ever) I have time, I’ll come.”"]}},
+        {"detail": {"label": "English “if”", "runs": ["Condition → ", {"t": "wenn", "b": true}, ": Ich komme, ", {"t": "wenn ich Zeit habe.", "b": true}, " · Reported yes/no question → ", {"t": "ob", "b": true}, ": Ich weiß nicht, ", {"t": "ob er kommt.", "b": true}], "comment": ["English “if” covers both jobs; German splits them — wenn vs ob."]}}
+      ]
+    },
+    "obwohl": {
+      "title": "obwohl vs trotzdem", "lead": "Both give a contrast, but they build the sentence differently.",
+      "blocks": [
+        {"detail": {"label": "obwohl", "runs": ["Conjunction → verb to the end: ", {"t": "obwohl es regnet.", "b": true}]}},
+        {"detail": {"label": "trotzdem", "runs": ["Adverb in the main clause → V2: Es regnet. ", {"t": "Trotzdem gehe", "b": true}, " ich raus."], "comment": ["The same line English draws between “nevertheless” and “although”."]}}
+      ]
+    },
+    "coordinators": {
+      "title": "weil vs denn", "lead": "Both = “because”, but the word order is different.",
+      "blocks": [
+        {"detail": {"label": "weil", "runs": ["Ich bleibe, weil ich müde ", {"t": "bin", "b": true}, "."]}},
+        {"detail": {"label": "denn", "runs": ["Ich bleibe, denn ich ", {"t": "bin", "b": true}, " müde."], "comment": ["After denn the normal order stays — like after ", {"t": "und", "i": true}, "."]}}
+      ]
+    },
+    "sondern": {
+      "title": "sondern vs aber", "lead": "After a negation (nicht, kein) the correction takes sondern — “not A, but B”. A plain contrast without a correction — aber.",
+      "blocks": [
+        {"detail": {"label": "sondern — the correction", "runs": ["Sie kommt ", {"t": "nicht", "b": true}, " aus Bukarest, ", {"t": "sondern", "b": true}, " aus Deva."], "comment": ["“not from Bucharest but from Deva”: first negate, then correct to the other option."]}},
+        {"detail": {"label": "aber — plain “but”", "runs": ["Sie kommt aus Bukarest, ", {"t": "aber", "b": true}, " sie lebt in Deva."], "comment": ["Both facts stand; nothing is corrected. Error: ", {"t": "Er mag keinen Fisch, aber Fleisch", "s": true}, " → ", {"t": "…, sondern Fleisch", "b": true}, " (“not fish but meat”)."]}},
+        {"detail": {"label": "nicht nur …, sondern auch", "runs": ["Er spricht ", {"t": "nicht nur", "b": true}, " Deutsch, ", {"t": "sondern auch", "b": true}, " Englisch."], "comment": ["“not only German but also English.”"]}},
+        {"detail": {"label": "Word order", "runs": ["Both sit in position 0 like ", {"t": "und", "i": true}, " — normal word order follows: …, sondern sie ", {"t": "lebt", "b": true}, " in Deva."]}},
+        {"detail": {"label": "The trigger", "runs": ["English “but” covers both jobs too. The German trigger: a ", {"t": "nicht", "i": true}, " / ", {"t": "kein", "i": true}, " in front of the corrected part → sondern."], "comment": ["“not A, but B” → sondern; plain “but” → aber."]}}
+      ]
+    },
+    "um-damit": {
+      "title": "um … zu vs damit", "lead": "English makes the same split: in order to vs so that.",
+      "blocks": [
+        {"detail": {"label": "um … zu", "runs": ["Same subject on both sides: Ich lerne, ", {"t": "um in Deutschland zu arbeiten.", "b": true}], "comment": ["≈ “I’m learning in order to work in Germany.”"]}},
+        {"detail": {"label": "damit", "runs": ["A full subordinate clause — the subjects differ: Ich spreche langsam, ", {"t": "damit du mich verstehst.", "b": true}], "comment": ["≈ “I speak slowly so that you understand me.”"]}},
+        {"detail": {"label": "zu with separable verbs", "runs": [{"t": "aufstehen", "i": true}, " → ", {"t": "aufzustehen", "b": true}], "comment": ["The prefix jumps in front of zu: “Es ist schwer, früh ", {"t": "aufzustehen", "i": true}, "” ≈ “It’s hard to get up early.”"]}}
+      ]
+    },
+    "relative": {
+      "title": "Relative clauses", "lead": "The relative pronoun is the definite article in disguise: gender and number from the noun, case from its role inside the clause.",
+      "blocks": [
+        {"detail": {"label": "Nominativ inside", "runs": ["Der Mann, ", {"t": "der", "b": true}, " hier arbeitet…"], "comment": ["The pronoun is the subject: Wer arbeitet? — der."]}},
+        {"detail": {"label": "Akkusativ inside", "runs": ["Der Mann, ", {"t": "den", "b": true}, " ich kenne…"], "comment": ["The pronoun is the object: Wen kenne ich? — den."]}},
+        {"detail": {"label": "Dativ inside", "runs": ["Der Mann, ", {"t": "dem", "b": true}, " ich helfe…"], "comment": ["The receiver: Wem helfe ich? — dem."]}},
+        {"detail": {"label": "Genitiv inside", "runs": ["Der Mann, ", {"t": "dessen", "b": true}, " Auto dort steht, …"], "comment": ["“whose” (masc./neut.); ", {"t": "deren", "i": true}, " for fem./plural."]}}
+      ]
+    },
+    "linking-adverbs": {
+      "title": "Linking adverbs: the details", "lead": "Position 1, verb right after: Deshalb blieben wir…",
+      "blocks": [
+        {"detail": {"label": "deshalb / deswegen", "runs": ["Ich war müde, ", {"t": "deshalb", "b": true}, " schlief ich sofort."], "comment": ["“so / that’s why”: the cause stands in the first sentence."]}},
+        {"detail": {"label": "trotzdem vs obwohl", "runs": ["Es regnete. ", {"t": "Trotzdem", "b": true}, " ging er raus. — adverb, position 1. · …, ", {"t": "obwohl", "b": true}, " es regnete. — conjunction, verb to the end."], "comment": ["The same line English draws between “nevertheless” and “although”. “Trotzdem, dass…” is colloquial; standard is obwohl."]}},
+        {"detail": {"label": "allerdings", "runs": ["Das Essen war gut. ", {"t": "Allerdings", "b": true}, " war es teuer."], "comment": ["“though / however”: a soft contrast."]}},
+        {"detail": {"label": "außerdem", "runs": ["Er ist müde. ", {"t": "Außerdem", "b": true}, " hat er Kopfschmerzen."], "comment": ["“besides”: one more thing on the pile."]}},
+        {"detail": {"label": "währenddessen", "runs": ["Ich koche. ", {"t": "Währenddessen", "b": true}, " sieht er fern."], "comment": ["“meanwhile”: at the same time."]}},
+        {"detail": {"label": "Position", "runs": ["Position 1 — like ", {"t": "Heute", "i": true}, " / ", {"t": "Dann", "i": true}, " in V2. Compare the conjunction ", {"t": "denn", "i": true}, ": normal order after it — see weil vs denn."]}}
+      ]
+    }
+  }
+}

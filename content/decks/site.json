@@ -13,8 +13,7 @@
         {
           "id": "en",
           "label": "English",
-          "script": "latin",
-          "soon": true
+          "script": "latin"
         }
       ],
       "grammar_terms": [
