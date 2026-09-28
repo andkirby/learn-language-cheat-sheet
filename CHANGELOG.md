@@ -18,7 +18,7 @@ Append the entry in the same commit that ships the change.
 - **New page (English, explained in German)**: `en/de/` — the English deck
   re-derived for German speakers: all 26 topics re-angled (rigid SVO instead
   of the free German order, do-support as the signature trap, muss nicht ≠
-  mustn't as the sharpest false friend, the Perfekt-Kalk as Gefahr №1…),
+  mustn't as the sharpest false friend, the Perfekt-Kalk as Gefahr Nr. 1…),
   German UI (du-form) with English terms kept English, practice deliberately
   remapped to EN-04/05/06. The registry's dead `en/en` self-pair placeholder
   was replaced by the live German audience. `CACHE_VERSION` v32.
@@ -34,6 +34,20 @@ Append the entry in the same commit that ships the change.
   Accuracy/Teaching NOT RUN per D-01. ROADMAP marks the Phase-3 pair shipped
   and records the two-layer core extraction for the German target as now
   due (DEBT D-07); AGENTS.md and README.md list the new URLs.
+- **Review round (both new pages)**: fixes from the independent deck
+  reviews — en-de section badges normalized to German (Artikel, Pronomen,
+  Wortstellung, Zeiten, Verben, Präpositionen, Nomen, If-Sätze), «№1» →
+  «Nr. 1», the particle example corrected to the natural «Wie heißt du
+  denn?», the Präteritum dialog's gloss list completed (durfte → was
+  allowed to), the dieser dialog's neutral-der example fixed, the EN-02
+  you two / you guys hint added, the passive dialog now claims exactly
+  its five tenses, and the search-token gate now also covers practice
+  cards. `CACHE_VERSION` v33.
+- **Follow-up nits (same day, after a whole-work review)**: «sein Auto»
+  gloss corrected to “his car / its car”, both new plans' status
+  paragraphs synced with the shipped state (Coverage PASS), the en-de
+  audit record corrected (the interactive smoke ran clean), AGENTS.md
+  structure line updated. `CACHE_VERSION` v34.
 
 ## 2026-09-28 (design)
 

@@ -960,7 +960,7 @@
         {"detail": {"label": "Meanings", "runs": ["mein = my · dein = your · sein = his (or its) · ihr = her or their · unser = our · euer = your (plural) · ", {"t": "Ihr", "b": true}, " = your (polite)."]}},
         {"detail": {"label": "The owner gives the stem", "runs": ["du → dein · sie (she) → ihr · Sie (polite) → ", {"t": "Ihr", "b": true}, ", with a capital. Small ihr does double duty — her and their; context decides."]}},
         {"detail": {"label": "The ending comes from the table", "runs": ["All of them decline like ein-words: mein Bruder → ", {"t": "meinen", "b": true}, " → ", {"t": "meinem", "b": true}, " → meines Bruders; any stem works: dein Bruder → ", {"t": "deinen", "b": true}, " Bruder."]}},
-        {"detail": {"label": "sein = his or its", "runs": [{"t": "sein Bruder", "b": true}, " (his brother) · ", {"t": "sein Auto", "b": true}, " (his car / its engine) — German has no separate “its”."]}},
+        {"detail": {"label": "sein = his or its", "runs": [{"t": "sein Bruder", "b": true}, " (his brother) · ", {"t": "sein Auto", "b": true}, " (his car / its car) — German has no separate “its”."]}},
         {"detail": {"label": "The euer trap", "runs": [{"t": "euer", "b": true}, " drops its e before an ending: mit ", {"t": "eurem", "b": true}, " Bruder (not euerm) · ", {"t": "eure", "b": true}, " Schwester."]}}
       ]
     },

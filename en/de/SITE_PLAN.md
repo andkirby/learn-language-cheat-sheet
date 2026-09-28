@@ -26,10 +26,11 @@ des Geschwisters, damit publikumsübergreifende Referenzen lesbar bleiben;
 nach dem Shipment sind sie für immer stabil (harte Regel 7).
 
 Status: Dieser Plan ist das akzeptierte Inhaltsziel für das `en-de`-Publikum.
-Deck-JSON, Seite und Icons existieren noch nicht — das Deck wird in der
-nächsten Phase gegen diesen Plan erstellt; nichts hier behauptet
-Seitenabdeckung. Alle vier Inhalts-Gates sind für dieses Publikum NOT RUN.
-Der per-Target-Basiskonjunkt (Syllabus- und Referenzvergleich, C-03/D-02)
+Deck-JSON, Seite und Icons sind am 2026-09-28 erschienen (Commit a0a7a70);
+der interaktive Runtime-Smoke lief fehlerfrei. Coverage ist PASS (26/26
+Pflichtzeilen, siehe CONTENT_AUDIT.md §5). Accuracy und Teaching sind pro
+D-01 NOT RUN — ein Ganzwerk-Review fand keine Fehler, ersetzt aber nicht
+das referenzgestützte Gate. Der per-Target-Basiskonjunkt (Syllabus- und Referenzvergleich, C-03/D-02)
 wird mit `en/ru/` geteilt; pro ROADMAP Tier 3 wird er einmal pro Target
 erledigt und von seinen Publika geerbt, während die Interferenzfallen pro
 Publikum neu abgeleitet werden — diese Neuableitung ist, was dieser Plan

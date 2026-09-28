@@ -896,10 +896,10 @@ ids — counted mechanically, anchor uniqueness enforced by the build gate):
 | EN-03 | `svo` + `frequency` cards + `svo`/`frequency` dialogs | free German reordering becomes rigid SVO — position alone carries the roles; the Mittelfeld kalk (✗ *I go always*) and the V2 kalk (✗ *Never I have seen*) are named |
 | EN-04 | `do-questions` card + `do-questions` dialog + `mistakes` card | do-support is the deck's most alien mechanic (✗ *Likes she tea?* ← *Mag sie Tee?*); be/modals invert like German; subject questions transfer |
 | EN-05 | `present-simple` + `present-continuous` cards + `present-simple`/`present-continuous` dialogs | only the 3rd-person -s is new; the Verlaufsform is pure new material — *Ich arbeite* covers both; PC + always irritation kept |
-| EN-06 | `past-simple` + `present-perfect` + `pp-vs-past` cards + `past-simple`/`present-perfect`/`pp-vs-past` dialogs | the Perfekt-Kalk is Gefahr №1 (✗ *I have seen it yesterday* ← *Ich habe den Film gestern gesehen*); meaning-first rule kept; the *since 2020* counterexample stays on the card; seit splits into since/for |
+| EN-06 | `past-simple` + `present-perfect` + `pp-vs-past` cards + `past-simple`/`present-perfect`/`pp-vs-past` dialogs | the Perfekt-Kalk is Gefahr Nr. 1 (✗ *I have seen it yesterday* ← *Ich habe den Film gestern gesehen*); meaning-first rule kept; the *since 2020* counterexample stays on the card; seit splits into since/for |
 | EN-07 | `future` card + `future` dialog | will ≈ werden, but the pauschale werden-Kalk is the named error; *going to* has no German pendant (Neustoff); the Fahrplan present transfers |
 | EN-08 | `modals` + `mustnt` cards + `modals-en`/`mustnt` dialogs | the modal paradigm maps directly; **muss nicht ≠ mustn't** recorded as the deck's sharpest false friend; der müssen-Schluss transfers |
-| EN-09 | `passive` card + `passive-en` dialog | werden + Partizip II → be + V3 is an auxiliary swap; von covers of/from/by — the ✗ *built from the workers* agent kalk; only the four shown tenses claimed |
+| EN-09 | `passive` card + `passive-en` dialog | werden + Partizip II → be + V3 is an auxiliary swap; von covers of/from/by — the ✗ *built from the workers* agent kalk; only the five shown tenses claimed |
 | EN-10 | `gerund-infinitive` card + `gerund-infinitive` dialog | German has no Gerundium — V-ing is Neustoff; *stop smoking* vs *stop to smoke* meaning change; look forward to + -ing (✗ Kalk aus *sich freuen, dich zu sehen*) |
 | EN-11 | `time` + `place` cards + `time-preps`/`place-preps` dialogs | German *am* distributes over in/on/at; *an* means on AND at (Oberfläche oder Punkt?); am Wochenende BrE/AmE split |
 | EN-12 | `dependent` card + `dependent-preps` dialog | German speakers already train fixed verb pairs — but the English preposition almost never matches 1:1 |
@@ -956,6 +956,15 @@ Verified (re-run for this record at HEAD `a0a7a70`, tree clean):
   commits, so no shipping-phase interactive pass is evidenced here either;
   the interactive checklist (console, search, dialogs, theme, offline,
   390px) remains to be run for this page.
+
+Correction (2026-09-28, after the whole-work review): the interactive
+browser smoke for this page DID run in the shipping workflow and passed
+clean — console empty; German search with restore-on-clear; all 40 detail
+dialogs opened via chips and closed via ×, Escape and backdrop; practice
+reveal; nav `aria-current` per view; theme cycle + persistence; 390px
+overflow-free; offline reload from the primed cache. The page shipped
+with no smoke-fix commits, which this record misread as absence of a
+pass; the NOT RUN claim above is superseded by this note.
 
 Gate verdicts: Baseline **FAIL** — the per-target conjunct (C-03/D-02) is
 shared with the English target and still outstanding; inventory and

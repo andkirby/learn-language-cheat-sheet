@@ -36,7 +36,7 @@ DEBT.md             deferred work with owners and triggers
 CHANGELOG.md        user-visible changes, newest first
 ```
 
-Deck pages live at `<target>/<audience>/` (`de/ru/`, later `de/en/`…) so sibling
+Deck pages live at `<target>/<audience>/` (`de/ru/`, `de/en/`, `en/ru/`, `en/de/`) so sibling
 audiences share a target. Every page's header shows one combined language
 menu («Язык обучения» + «Язык объяснений») driven by `content/decks/site.json`
 on deck pages and mirrored by hand in `index.html` (DECKS + the menu markup) —

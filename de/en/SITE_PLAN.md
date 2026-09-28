@@ -23,9 +23,11 @@ card `id` slugs reuse the sibling's skeleton so cross-audience references stay
 legible; once shipped they are stable forever (hard rule 7).
 
 Status: this plan is the accepted content target for the `de-en` audience.
-The deck JSON, page and icons do not exist yet — the deck is authored against
-this plan in the next phase, so nothing here claims page coverage. All four
-content gates are NOT RUN for this audience. The per-target baseline conjunct
+The deck JSON, page and icons shipped 2026-09-28 (commit ffe733b); the
+interactive runtime smoke ran clean. Coverage is PASS (28/28 required rows;
+see CONTENT_AUDIT.md §5). Accuracy and Teaching are NOT RUN per D-01 — a
+whole-work linguistic review found no errors but is not the reference-cited
+gate. The per-target baseline conjunct
 (named-syllabus and reference comparison, C-03/D-02) is shared with `de/ru/`;
 per ROADMAP Tier 3 it is done once per target and inherited by its audiences,
 while the interference traps are re-derived per audience — that re-derivation
