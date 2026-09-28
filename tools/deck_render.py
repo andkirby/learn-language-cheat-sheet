@@ -9,6 +9,7 @@ import pathlib
 
 from deck_blocks import BLOCKS, HTML_ORDER
 from deck_html import esc, escq, js, runs_html
+from deck_validate import audience_script
 
 
 def block_html(block):
@@ -214,6 +215,9 @@ def render(deck, deck_path, site):
         "@@DETAILS@@": js(details_js),
         "@@THEME_UI@@": js(strings["theme"]),
         "@@TARGET_LANG@@": escq(meta["target_lang"]),
+        # Picks markTargetLang's tagging policy in page_template.html; the
+        # validator reads the same registry key for search exemptions.
+        "@@AUDIENCE_SCRIPT@@": escq(audience_script(site, meta["target"], meta["audience"]) or ""),
         "@@REVEAL_SHOW@@": strings["reveal_show"],
         "@@REVEAL_HIDE@@": strings["reveal_hide"],
         "@@INSTALL@@": js({"ios": dialog_js(strings["install_ios"]),

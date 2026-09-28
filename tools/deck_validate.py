@@ -15,18 +15,24 @@ _UMAP = str.maketrans({"ä": "a", "ö": "o", "ü": "u", "ß": "ss"})
 # word chars incl. Cyrillic (для видимого текста) — letter-runs split on punctuation/slashes
 _WORD_RE = re.compile(r"[a-zà-ÿ0-9а-яёіґїє]+")
 
-# Audience-script exemptions, configured per audience in site.json ("script").
-# A data-search token in the searcher's own script may legitimately differ
-# from the card wording. Absent or unknown script = no exemption (strict),
-# so Latin-script audiences get no free pass.
-_SCRIPTS = {"cyrillic": re.compile(r"[\u0400-\u04FF]")}
+# Audience scripts, configured per audience in site.json ("script").
+# "cyrillic" grants the search-index exemption: a data-search token in the
+# searcher's own script may legitimately differ from the card wording.
+# "latin" grants none — same-script search stays strict by design (DEBT.md) —
+# it is listed so the registry key is validated and deck_render can share
+# this lookup for the page's target-language tagging policy.
+# Absent or unknown script = no exemption (strict).
+_SCRIPTS = {"cyrillic": re.compile(r"[\u0400-\u04FF]"), "latin": None}
 
 
-def _audience_script(site, target_id, audience_id):
+def audience_script(site, target_id, audience_id):
+    """The audience's "script" id from site.json (None when unset) — one
+    lookup shared by the validator (search exemption, via _SCRIPTS) and the
+    renderer (the page's target-language tagging policy)."""
     own = next((t for t in site.get("targets", []) if t.get("id") == target_id), None)
     aud = next((a for a in (own or {}).get("audiences", [])
                 if a.get("id") == audience_id), None)
-    return _SCRIPTS.get((aud or {}).get("script"))
+    return (aud or {}).get("script")
 
 
 # Card anchor slugs: latin grammar terms only — Cyrillic slugs percent-encode
@@ -184,7 +190,7 @@ def _validate_content(deck, site, errors):
     meta = deck.get("meta", {})
     details = deck.get("details", {})
     chk = _Checker(errors, details, _grammar_terms(site, meta.get("target")),
-                   _audience_script(site, meta.get("target"), meta.get("audience")))
+                   _SCRIPTS.get(audience_script(site, meta.get("target"), meta.get("audience"))))
 
     views = deck.get("views", [])
     view_ids = [v.get("id") for v in views]

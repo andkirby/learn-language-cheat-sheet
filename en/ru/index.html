@@ -771,20 +771,36 @@
     const detailBody = document.getElementById('detailBody');
 
     // Target-language text gets lang="en" (screen-reader pronunciation + the
-    // serif study voice from base.css). Whole containers that carry only
-    // target-language text (examples incl. pair sources, answers, declension
-    // tables) are marked directly; otherwise the fragments are: bold in
-    // .example/.answer (hits included), detail-block runs — bold/strike/italic,
-    // the Cyrillic .detail-label excluded — and formula slots without
-    // Cyrillic. Pair glosses stay in the UI voice.
+    // serif study voice from base.css). The tagging policy follows the
+    // audience's script (site.json registry, threaded through the generator):
+    //  - cyrillic audience: the script heuristic. Whole containers that carry
+    //    only target-language text (examples incl. pair sources, answers,
+    //    declension tables) are marked directly; otherwise the fragments are:
+    //    bold in .example/.answer (hits included), detail-block runs —
+    //    bold/strike/italic, the Cyrillic .detail-label excluded — and
+    //    formula slots without Cyrillic. Pair glosses stay in the UI voice.
+    //  - latin audience: explanations share the target's script, so no
+    //    script heuristic is safe. Only the explicit markup convention is
+    //    tagged — bold/hit runs are target text (examples, answers, detail
+    //    blocks, formula slots); prose, italic hints and glosses stay in the
+    //    audience voice. Deck copy must bold every target fragment that
+    //    needs the study voice. Tables/notice prose/plain slots have no
+    //    explicit target marking in the block schema and stay untagged.
     const TARGET_LANG = 'en';
+    const AUDIENCE_SCRIPT = 'cyrillic';
     function markTargetLang(root) {
-      root.querySelectorAll('.example, .answer, .table-scroll, .pair-src').forEach(el => {
-        if (!/[а-яё]/i.test(el.textContent)) el.lang = TARGET_LANG;
-      });
-      root.querySelectorAll('.example b, .answer b, .detail-block b:not(.detail-label), .detail-block i, .detail-block s, .formula .slot').forEach(el => {
-        if (!/[а-яё]/i.test(el.textContent)) el.lang = TARGET_LANG;
-      });
+      if (AUDIENCE_SCRIPT === 'cyrillic') {
+        root.querySelectorAll('.example, .answer, .table-scroll, .pair-src').forEach(el => {
+          if (!/[а-яё]/i.test(el.textContent)) el.lang = TARGET_LANG;
+        });
+        root.querySelectorAll('.example b, .answer b, .detail-block b:not(.detail-label), .detail-block i, .detail-block s, .formula .slot').forEach(el => {
+          if (!/[а-яё]/i.test(el.textContent)) el.lang = TARGET_LANG;
+        });
+      } else {
+        root.querySelectorAll('.example b, .answer b, .detail-block b:not(.detail-label), .formula .slot b').forEach(el => {
+          el.lang = TARGET_LANG;
+        });
+      }
     }
     markTargetLang(document);
 
