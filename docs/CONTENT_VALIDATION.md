@@ -1,7 +1,9 @@
 # Content validation protocol
 
 Purpose: establish whether the selected grammar content is accurate, useful
-and sufficiently covered for Russian-speaking A1–B1 learners. This is a
+and sufficiently covered for the deck's audience — Russian-speaking A1–B1
+learners today; new audiences generalize this protocol when they ship (see
+[ADD_LANGUAGE.md](ADD_LANGUAGE.md), audience variants). This is a
 focused reference, not a complete course or a claim of CEFR certification.
 UI checks in `AGENTS.md` remain a separate gate.
 
@@ -67,7 +69,7 @@ Check every content unit, including every table cell and hidden answer:
   counterexample to shortcuts or absolute wording. Keep necessary caveats
   visible wherever a standalone card would otherwise teach a false rule.
 - Examples are natural, demonstrate the stated rule and agree with the
-  Russian explanation. Translations preserve the relevant meaning. Every
+  audience-language explanation. Translations preserve the relevant meaning. Every
   example is decodable by the intended learner; recognition-level examples
   carry a short gloss (comprehension access) — attach it as the example's
   `gloss` so it renders as a pair under the sentence, not as loose prose.

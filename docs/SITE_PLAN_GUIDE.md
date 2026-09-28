@@ -55,7 +55,7 @@ Never describe a target as implemented merely because it appears in the plan.
 - Which standard or regional variety is the default?
 - How are other common varieties handled?
 - Which terminology remains in the target language?
-- What must Russian explanations and translations preserve?
+- What must audience-language explanations and translations preserve?
 - Which register differences or learner-interference traps need labels?
 
 ### 4. Boundary and exclusions
@@ -73,7 +73,7 @@ future authors from repeatedly reopening settled scope.
 ### 5. Retrieval questions and coverage
 
 - What are the five to seven highest-value questions the learner asks?
-- Which Russian-language interference problems deserve first-class treatment?
+- Which first-language interference problems deserve first-class treatment?
 - Does every required topic answer one of those questions?
 - Has the inventory been compared with a named level-appropriate syllabus and
   an authoritative grammar reference? Record the answer in the plan: name
@@ -104,7 +104,7 @@ reviewable topic rather than one row for an entire grammar domain.
 ### 7. Information architecture and retrieval
 
 - Which view and stable anchor owns each topic?
-- Can a learner find it through navigation and likely Russian and
+- Can a learner find it through navigation and likely audience-language and
   target-language search terms?
 - Which legacy anchors must remain stable?
 - Are related topics grouped by learner question rather than textbook order?
