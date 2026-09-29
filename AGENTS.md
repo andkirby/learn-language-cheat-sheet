@@ -127,7 +127,7 @@ python3 -m http.server 8931   # open http://127.0.0.1:8931/
   anchors (`#preps` on DE, `#nouns`/`#conditionals` on EN) open the right
   view and scroll to the section.
 - Search filters cards across all views and restores the active view on
-  clear; dialogs close via ×, Escape, backdrop; practice reveal works.
+  clear; dialogs close via ×, Escape, backdrop.
 - Offline reload works after first load.
 - Live check after push:
   `https://andkirby.github.io/learn-language-cheat-sheet/`

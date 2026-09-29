@@ -61,7 +61,7 @@ Never describe a target as implemented merely because it appears in the plan.
 ### 4. Boundary and exclusions
 
 - Which content categories are in scope: grammar, pronunciation, vocabulary,
-  spelling, usage, practice or assessment?
+  spelling, usage or assessment?
 - Which level range is productive, recognition-only or excluded?
 - Is the page selective or comprehensive within that boundary?
 - Which tempting adjacent topics are deliberately excluded or deferred?
@@ -117,7 +117,6 @@ language-specific view map, anchors and exceptions.
 - Which high-risk topic IDs are exercised?
 - Does each item provide enough context for one defensible answer?
 - Are accepted alternatives and explanations defined?
-- Is practice clearly a retrieval aid rather than evidence of full coverage?
 
 ### 9. Acceptance and maintenance
 
@@ -136,7 +135,7 @@ must contain, in this order:
 3. durable scope boundary with deferred and excluded decisions;
 4. primary retrieval questions;
 5. language-specific information architecture and stable anchors;
-6. content-unit and practice requirements;
+6. content-unit requirements;
 7. required-topic inventory with stable IDs, planned surface and acceptance
    depth;
 8. maintenance triggers and links to validation evidence.
@@ -152,7 +151,6 @@ A plan is decision-sufficient when:
 - every accepted topic has an ID, learner question, depth and surface;
 - adjacent categories and known candidate topics are required, deferred or
   excluded with rationale and reconsideration triggers;
-- practice maps to named topic IDs;
 - no shared contract or review evidence is duplicated;
 - the baseline gate in `CONTENT_VALIDATION.md` has a recorded result.
 

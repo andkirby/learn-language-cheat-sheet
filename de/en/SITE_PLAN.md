@@ -6,7 +6,7 @@ This file owns the accepted product intent, German content target, durable
 scope decisions and language-specific information architecture for
 `de/en/index.html` — German explained in English. It is the audience-variant
 plan re-derived from the German canonical plan
-([de/ru/SITE_PLAN.md](../ru/SITE_PLAN.md)); topic IDs DE-01–28, the five views
+([de/ru/SITE_PLAN.md](../ru/SITE_PLAN.md)); topic IDs DE-01–28, the four views
 and the section skeleton are frozen from there, while every retrieval
 question, interference story and acceptance decision below is re-derived for
 English speakers. Use [the authoring guide](../../docs/SITE_PLAN_GUIDE.md)

@@ -48,10 +48,10 @@ product boundary as well as the reference comparison.
 When page inspection is within the task's allowed scope:
 
 1. Map every required topic to actual section + card title, `DETAILS` keys,
-   table and practice identifiers as applicable. A section anchor alone is
+   table identifiers as applicable. A section anchor alone is
    not sufficient evidence of coverage.
-2. Inventory every actual rule, table, formula, example, translation, dialog
-   and practice answer, including content outside the plan. Map it back to
+2. Inventory every actual rule, table, formula, example, translation and
+   dialog, including content outside the plan. Map it back to
    a topic or record a scope discrepancy.
 3. Assign coverage: unverified, missing, partial, covered, or excluded.
    Use covered only when the agreed depth is present; excluded needs the

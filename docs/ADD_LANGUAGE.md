@@ -55,7 +55,7 @@ rules define what "translation" means here:
   target-language terms stay in the target language. The gloss contract
   lives in each language plan's content contract.
 - **Bounded units.** One card + one dialog per topic; the simplification
-  limit is stated on the card; practice maps to plan topics. The standing
+  limit is stated on the card. The standing
   scope rules in [ROADMAP.md](../ROADMAP.md) decide what may be added
   without asking the owner.
 - **The gates are the contract.** `--check` (page↔deck drift + search
@@ -86,8 +86,8 @@ When the target language already has a deck (e.g. `de-ru` exists, adding
    `python3 tools/build_pages.py <deck> --check-siblings` (exits 1 on
    table-row drift) and judge the listed divergences per
    [CONTENT_VALIDATION.md](CONTENT_VALIDATION.md) §3.
-3. **Adapt the content and navigation.** Author `strings`, dialogs, glosses
-   and practice in the audience language. Reuse the generated shell and block
+3. **Adapt the content and navigation.** Author `strings`, dialogs and glosses
+   in the audience language. Reuse the generated shell and block
    types; let the new plan decide its views and sections. Card `id` slugs are
    per-page (hard rule 7) — keep them stable after shipping.
 4. **Search hints are audience words.** A Latin-script audience has no
@@ -110,7 +110,7 @@ An audience variant is a new deck: run the full content review in step 5.
 Before adapting a page, answer [the SITE_PLAN guide](SITE_PLAN_GUIDE.md) and
 prepare the accepted content target. Record stable topic IDs,
 audience-language learner questions, required depth, view ownership,
-practice mapping and every accepted exclusion or deferral with its
+and every accepted exclusion or deferral with its
 rationale and reconsideration trigger.
 
 Compare the proposed inventory with named syllabus and grammar references
@@ -175,8 +175,8 @@ deck-level integration checks, not a second copy of that contract:
 - One `details` entry per chip; keys kebab-case; explanation in the audience
   language, target-language terms stay in the target language.
 - Every section carries the plan's `view`; bottom-navigation destinations and
-  legacy-anchor routing match the plan (a deck may keep `practice` as its own
-  nav destination, like `de-ru`, or footer-only, like `en-ru`).
+  legacy-anchor routing match the plan (the practice view was removed from
+  all decks on 2026-09-29 — DEBT D-03; destinations follow the plan).
 - Every card gets `search` with audience-language + target-language keywords
   and an `id` — a short latin grammar-term slug (`[a-z0-9-]`, 2–32 chars; no
   Cyrillic, which percent-encodes into unreadable URLs). The generator
@@ -248,7 +248,7 @@ python3 -m http.server 8931
 - 390px: no horizontal page overflow; tables scroll inside `.table-scroll`.
 - Theme toggle cycles auto/light/dark and survives reload.
 - Search filters/restores across all views; dialogs open/close (×, Escape,
-  backdrop); practice reveal works.
+  backdrop).
 - View switching: each nav tap shows its view (active item =
   `aria-current`); a legacy anchor like `#preps` opens the right view and
   scrolls to the section; tapping a nav item clears an active search.
