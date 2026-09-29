@@ -21,6 +21,9 @@ sibling decks card by card (identical card ids are the skeleton contract):
 Dialogs (details) are audience-language prose by design — 0 of 83 were
 identical across the shipped pairs — and stay out of the comparison.
 """
+import json
+
+
 def _cards(deck):
     out = {}
 
