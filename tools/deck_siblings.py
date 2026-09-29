@@ -12,17 +12,15 @@ sibling decks card by card (identical card ids are the skeleton contract):
   the head row may be localized (the en-ru/en-de pronouns precedent) and
   is reported, not judged. Row drift exits 1: this is the hard invariant.
 - formulas and examples are compared on normalized target text (markup
-  conventions stripped: b/i/s/hit/br dropped, runs unwrapped) and
-  REPORTED as byte-identical, markup-only, or divergent. Divergence is a
-  reviewer judgment call (audience adaptation vs drift — see
-  CONTENT_VALIDATION.md §3 and DEBT.md D-07) and does not fail the gate.
+  conventions stripped: bold/italic/strike/hit/br dropped, runs unwrapped)
+  and REPORTED when their normalized text diverges, with block-count
+  mismatches listed as well. Divergence is a reviewer judgment call
+  (audience adaptation vs drift — see CONTENT_VALIDATION.md §3 and
+  DEBT.md D-07) and does not fail the gate.
 
 Dialogs (details) are audience-language prose by design — 0 of 83 were
 identical across the shipped pairs — and stay out of the comparison.
 """
-import json
-
-
 def _cards(deck):
     out = {}
 
@@ -110,6 +108,11 @@ def check_siblings(site, root):
             for card_id in shared:
                 kinds_a, kinds_b = _by_kind(cards_a[card_id]), _by_kind(cards_b[card_id])
                 for kind in ("table", "formula", "example"):
+                    count_a, count_b = len(kinds_a.get(kind, [])), len(kinds_b.get(kind, []))
+                    if count_a != count_b:
+                        report.append(
+                            f"  ~ {card_id}/{kind}: block count differs — "
+                            f"{count_a} vs {count_b}")
                     for index, (block_a, block_b) in enumerate(
                             zip(kinds_a.get(kind, []), kinds_b.get(kind, []))):
                         label = f"{card_id}/{kind}#{index + 1}"
@@ -123,6 +126,10 @@ def check_siblings(site, root):
                         if text_a == text_b:
                             continue
                         if kind == "table":
+                            if len(text_a) != len(text_b):
+                                problems.append(
+                                    f"{pair}: table row count drift in {label}: "
+                                    f"{len(text_a)} rows vs {len(text_b)}")
                             drifted = [
                                 (row_a, row_b)
                                 for row_a, row_b in zip(text_a, text_b)
@@ -133,12 +140,7 @@ def check_siblings(site, root):
                                     f"{pair}: table rows drift in {label}: "
                                     f"{drifted[0]}")
                             continue
-                        verdict = "divergent"
-                        if json.dumps(text_a, ensure_ascii=False) == json.dumps(
-                                text_b, ensure_ascii=False):
-                            verdict = "markup-only"
-                        snippet_a = str(text_a)[:70]
-                        snippet_b = str(text_b)[:70]
                         report.append(
-                            f"  ~ {label}: {verdict} — {snippet_a!r} vs {snippet_b!r}")
+                            f"  ~ {label}: divergent — {str(text_a)[:70]!r} vs "
+                            f"{str(text_b)[:70]!r}")
     return problems, report

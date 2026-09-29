@@ -99,7 +99,7 @@
               "I have ", {"t": "a", "hit": true}, " car.", {"br": true},
               {"t": "The", "hit": true}, " car is red."
             ], "gloss": ["Irgendein Auto.", {"br": true}, "Schon das bekannte Auto."]},
-            {"tiny": ["Nur zwei Artikel, kein Genus: ", {"t": "the", "b": true}, " bleibt immer the — kein der/die/das-Raten. Bestimmter vs. unbestimmter Artikel kennst du, aber die Grenzen interferieren in beide Richtungen: feste Wendungen ohne Artikel (", {"t": "go to school", "b": true}, "), Rollen nach be mit ", {"t": "a", "b": true}, " (", {"t": "I’m a teacher", "b": true}, ")."]},
+            {"tiny": ["Nur zwei Artikel, kein Genus: ", {"t": "the", "b": true}, " bleibt immer the — kein der/die/das-Raten. Bestimmter vs. unbestimmter Artikel kennst du, aber die Grenzen interferieren in beide Richtungen: feste Wendungen ohne Artikel (", {"t": "go to school", "b": true}, "), Rollen nach be mit ", {"t": "a", "b": true}, " (", {"t": "I'm a teacher", "b": true}, ")."]},
             {"chips": [
               {"label": "a oder an?", "detail": "a-an"},
               {"label": "Wann the", "detail": "the-article"},
@@ -121,7 +121,7 @@
             ], "gloss": ["Rolle: zum Lernen — nicht „zum Gebäude“.", {"br": true}, "Instrument: immer mit the."]},
             {"p": ["Und umgekehrt — Deutsch ohne Artikel, Englisch mit ", {"t": "a", "b": true}, ":"]},
             {"example": [
-              "Ich bin Lehrer. → I’m ", {"t": "a", "hit": true}, " teacher.", {"br": true},
+              "Ich bin Lehrer. → I'm ", {"t": "a", "hit": true}, " teacher.", {"br": true},
               "Ich habe Kopfschmerzen. → I have ", {"t": "a", "hit": true}, " headache."
             ], "gloss": ["Rollen nach be und bei Beschwerden: a teacher, a headache."]},
             {"chips": [{"label": "Schule, Bett, Krankenhaus", "detail": "school-exceptions"}]}
@@ -197,7 +197,7 @@
               {"t": "Where do you live?", "b": true}
             ]},
             {"tiny": ["be und Modals umgehen do — reine Umstellung wie im Deutschen: ", {"t": "Is she…? Can you…?", "b": true}, " Subjektfrage: ", {"t": "Who lives here?", "b": true}, " — ohne do, wie „Wer wohnt hier?“."]},
-            {"chips": [{"label": "So baust du Fragen — und wo du kalkst", "detail": "do-questions"}]}
+            {"chips": [{"label": "So baust du Fragen — und die typische Falle", "detail": "do-questions"}]}
           ]
         },
         {
@@ -783,7 +783,7 @@
       {
         "_note": "EN-05: Present Simple vs Present Continuous — das Deutsche hat keine Verlaufsform.",
         "q": [{"t": "2. Es regnet gerade. → It ___ (rain) now.", "b": true}],
-        "answer": [{"t": "It’s raining", "b": true}, " — Verlaufsform für „gerade jetzt“; ", {"t": "It rains now", "s": true}, " überträgt das deutsche Präsens, das beides abdeckt."]
+        "answer": [{"t": "It's raining", "b": true}, " — Verlaufsform für „gerade jetzt“; ", {"t": "It rains now", "s": true}, " überträgt das deutsche Präsens, das beides abdeckt."]
       },
       {
         "_note": "EN-06: Past Simple vs Present Perfect — der Perfekt-Fehler, Gefahr Nr. 1.",
@@ -821,7 +821,7 @@
       "blocks": [
         {"detail": {"label": "Verallgemeinern", "runs": [{"t": "Dogs are loyal", "b": true}, " (Hunde im Allgemeinen) · ", {"t": "Coffee is expensive", "b": true}, " (Kaffee als Stoff) — deutsch mit Artikel, englisch ohne."]}},
         {"detail": {"label": "Feste Gruppen", "runs": ["Sprachen (", {"t": "English", "b": true}, "), Mahlzeiten (", {"t": "at lunch", "b": true}, "), Sport (", {"t": "play football", "b": true}, "), Personen- und Städtenamen."]}},
-        {"detail": {"label": "Aber", "runs": ["Instrument mit the: ", {"t": "play the piano", "b": true}, " · Rolle nach be mit a/an: ", {"t": "I’m a teacher", "b": true}, " (✗ deutsch „Ich bin Lehrer“)."]}}
+        {"detail": {"label": "Aber", "runs": ["Instrument mit the: ", {"t": "play the piano", "b": true}, " · Rolle nach be mit a/an: ", {"t": "I'm a teacher", "b": true}, " (✗ deutsch „Ich bin Lehrer“)."]}}
       ]
     },
     "school-exceptions": {
@@ -845,7 +845,7 @@
       "blocks": [
         {"detail": {"label": "Formen", "runs": ["myself, yourself, himself, herself, itself, ourselves, yourselves, themselves."]}},
         {"detail": {"label": "Beispiele", "runs": [{"t": "I hurt myself", "b": true}, " („ich verletze mich“) · ", {"t": "Help yourself!", "b": true}, " („Bedien dich!“)"]}},
-        {"detail": {"label": "Nicht wie im Deutschen", "runs": ["Viele sich-Verben sind englisch nicht reflexiv: ", {"t": "sich freuen", "i": true}, " → ", {"t": "I’m glad", "b": true}, " · ", {"t": "sich erinnern", "i": true}, " → ", {"t": "I remember", "b": true}, " — kein -self."]}}
+        {"detail": {"label": "Nicht wie im Deutschen", "runs": ["Viele sich-Verben sind englisch nicht reflexiv: ", {"t": "sich freuen", "i": true}, " → ", {"t": "I'm glad", "b": true}, " · ", {"t": "sich erinnern", "i": true}, " → ", {"t": "I remember", "b": true}, " — kein -self."]}}
       ]
     },
     "plurals": {
@@ -870,7 +870,7 @@
     "some-any": {
       "title": "some / any", "lead": "some in Aussagen, any in Fragen und Verneinungen — mit zwei Extras.",
       "blocks": [
-        {"detail": {"label": "Basis", "runs": [{"t": "I have some money", "b": true}, " (etwas Geld) · ", {"t": "Do you have any questions?", "b": true}, " · ", {"t": "I don’t have any money", "b": true}, " (kein Geld)."]}},
+        {"detail": {"label": "Basis", "runs": [{"t": "I have some money", "b": true}, " (etwas Geld) · ", {"t": "Do you have any questions?", "b": true}, " · ", {"t": "I don't have any money", "b": true}, " (kein Geld)."]}},
         {"detail": {"label": "any = beliebig", "runs": ["In Aussagen: ", {"t": "Take any seat", "b": true}, " — „irgendeinen Platz, egal welchen“."]}},
         {"detail": {"label": "some im Angebot", "runs": ["In Bitten und Angeboten steht some auch in Fragen: ", {"t": "Can I have some water?", "b": true}, " — du erwartest Ja."]}},
         {"detail": {"label": "Warum Neulernen", "runs": ["Deutsch deckt das mit etwas/einige/irgendwelche ab, ohne eine solche Aufteilung — die some/any-Zuordnung gibt es im Deutschen nicht."]}}
@@ -1022,7 +1022,7 @@
       "title": "Perfect vs Perfect Continuous", "lead": "Ergebnis oder Prozess? since/for passen in beide.",
       "blocks": [
         {"detail": {"label": "Ergebnis vs Prozess", "runs": [{"t": "I've painted the wall", "b": true}, " — die Wand ist fertig (Ergebnis) · ", {"t": "I've been painting all day", "b": true}, " — den ganzen Tag am Streichen (Prozess, vielleicht unvollendet)."]}},
-        {"detail": {"label": "Der seit-Satz", "runs": ["„Ich wohne hier seit zwei Jahren“ → ", {"t": "I have been living here for two years", "b": true}, ", nicht ", {"t": "I live here since two years", "s": true}, " (Doppelkalk: Präsens statt Perfect und since statt for)."], "comment": ["Das deutsche Präsens + seit entspricht hier dem Present Perfect Continuous; die Dauer markiert for."]}},
+        {"detail": {"label": "Der seit-Satz", "runs": ["„Ich wohne hier seit zwei Jahren“ → ", {"t": "I have been living here for two years", "b": true}, ", nicht ", {"t": "I live here since two years", "s": true}, " (doppelter Fehler: Präsens statt Perfect und since statt for)."], "comment": ["Das deutsche Präsens + seit entspricht hier dem Present Perfect Continuous; die Dauer markiert for."]}},
         {"detail": {"label": "Ausnahme", "runs": [{"t": "know, want, like", "b": true}, " — Zustände ohne -ing auch hier: ", {"t": "I've known him for years", "b": true}, "."]}}
       ]
     },

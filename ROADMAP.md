@@ -133,7 +133,7 @@ scope). Decision recorded from the brainstorm:
   (`tools/build_pages.py <deck> --check-siblings` — markup stripped, runs
   unwrapped): the content core — tables, formulas, canonical examples —
   is 54/179 (30%, DE) and 61/168 (36%, EN) of aligned blocks, of which 47
-  and 37 are content-identical today (~26% and ~22% of a deck). The
+  and 38 are content-identical today (~26% and ~23% of a deck). The
   honest deferral grounds are therefore NOT thinness: the core is real
   but NOT verbatim — extracting it needs four parameterization axes
   (audience-language formula slots — several formulas are entirely

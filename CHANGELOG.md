@@ -25,7 +25,7 @@ Append the entry in the same commit that ships the change.
   «~15 blocks / 8–9%» headline measured markup conventions, not shared
   content. Re-measured with the content lens: the core is 54/179 (DE)
   and 61/168 (EN) aligned blocks — roughly a quarter to a third of a
-  deck — with 47/37 content-identical and the rest separated by
+  deck — with 47/38 content-identical and the rest separated by
   audience-language labels, localized headers and markup. The deferral
   stands, on machinery cost (four parameterization axes) and a low
   observed drift rate, not on thinness; ROADMAP and DEBT D-07 restated.
