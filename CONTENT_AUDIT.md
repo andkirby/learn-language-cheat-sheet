@@ -893,14 +893,14 @@ ids — counted mechanically, anchor uniqueness enforced by the build gate):
 | --- | --- | --- |
 | EN-01 | `articles` + `zero-article` cards + `a-an`/`the-article`/`zero-article`/`school-exceptions` dialogs | the choice transfers (the/a ≈ der/die/das/ein, no Genus to memorize); the boundaries interfere both ways (*go to school*; Ich bin Lehrer → I'm **a** teacher); a/an sound rule is new |
 | EN-02 | `pronouns` card + `my-mine`/`reflexive` dialogs | the case concept is only recognized, not built (I/me as the surviving Kasus); *you* covers du/ihr/Sie; sein → his AND its, ihr → her AND their are new splits |
-| EN-03 | `svo` + `frequency` cards + `svo`/`frequency` dialogs | free German reordering becomes rigid SVO — position alone carries the roles; the Mittelfeld kalk (✗ *I go always*) and the V2 kalk (✗ *Never I have seen*) are named |
+| EN-03 | `svo` + `frequency` cards + `svo`/`frequency` dialogs | free German reordering becomes rigid SVO — position alone carries the roles; the Mittelfeld calque (✗ *I go always*) and the V2 calque (✗ *Never I have seen*) are named |
 | EN-04 | `do-questions` card + `do-questions` dialog + `mistakes` card | do-support is the deck's most alien mechanic (✗ *Likes she tea?* ← *Mag sie Tee?*); be/modals invert like German; subject questions transfer |
 | EN-05 | `present-simple` + `present-continuous` cards + `present-simple`/`present-continuous` dialogs | only the 3rd-person -s is new; the Verlaufsform is pure new material — *Ich arbeite* covers both; PC + always irritation kept |
-| EN-06 | `past-simple` + `present-perfect` + `pp-vs-past` cards + `past-simple`/`present-perfect`/`pp-vs-past` dialogs | the Perfekt-Kalk is Gefahr Nr. 1 (✗ *I have seen it yesterday* ← *Ich habe den Film gestern gesehen*); meaning-first rule kept; the *since 2020* counterexample stays on the card; seit splits into since/for |
-| EN-07 | `future` card + `future` dialog | will ≈ werden, but the pauschale werden-Kalk is the named error; *going to* has no German pendant (Neustoff); the Fahrplan present transfers |
+| EN-06 | `past-simple` + `present-perfect` + `pp-vs-past` cards + `past-simple`/`present-perfect`/`pp-vs-past` dialogs | the Perfekt calque is Gefahr Nr. 1 (✗ *I have seen it yesterday* ← *Ich habe den Film gestern gesehen*); meaning-first rule kept; the *since 2020* counterexample stays on the card; seit splits into since/for |
+| EN-07 | `future` card + `future` dialog | will ≈ werden, but the pauschale werden calque is the named error; *going to* has no German pendant (new material); the Fahrplan present transfers |
 | EN-08 | `modals` + `mustnt` cards + `modals-en`/`mustnt` dialogs | the modal paradigm maps directly; **muss nicht ≠ mustn't** recorded as the deck's sharpest false friend; der müssen-Schluss transfers |
-| EN-09 | `passive` card + `passive-en` dialog | werden + Partizip II → be + V3 is an auxiliary swap; von covers of/from/by — the ✗ *built from the workers* agent kalk; only the five shown tenses claimed |
-| EN-10 | `gerund-infinitive` card + `gerund-infinitive` dialog | German has no Gerundium — V-ing is Neustoff; *stop smoking* vs *stop to smoke* meaning change; look forward to + -ing (✗ Kalk aus *sich freuen, dich zu sehen*) |
+| EN-09 | `passive` card + `passive-en` dialog | werden + Partizip II → be + V3 is an auxiliary swap; von covers of/from/by — the ✗ *built from the workers* agent calque; only the five shown tenses claimed |
+| EN-10 | `gerund-infinitive` card + `gerund-infinitive` dialog | German has no Gerundium — V-ing is new material; *stop smoking* vs *stop to smoke* meaning change; look forward to + -ing (✗ calque of *sich freuen, dich zu sehen*) |
 | EN-11 | `time` + `place` cards + `time-preps`/`place-preps` dialogs | German *am* distributes over in/on/at; *an* means on AND at (Oberfläche oder Punkt?); am Wochenende BrE/AmE split |
 | EN-12 | `dependent` card + `dependent-preps` dialog | German speakers already train fixed verb pairs — but the English preposition almost never matches 1:1 |
 | EN-13 | `plurals` card + `plurals` dialog | ONE -s rule against five German patterns; child/children as the recognizable relic; false uncountables (*Informationen* → information, Knowledges → knowledge) |
@@ -909,10 +909,10 @@ ids — counted mechanically, anchor uniqueness enforced by the build gate):
 | EN-16 | `cond0`–`cond3` cards + `cond0`/`cond1`/`cond2` dialogs | Type 2 is structurally Konjunktiv II (had ≈ hätte, would ≈ würde; were for all persons); no will after *if* — German allows Futur im wenn-Satz, English doesn't; wenn covers if AND when |
 | EN-17 | `nuances` card + `flavor-words` dialog | the false-friend zone condensed: actually ≠ aktuell, even ≠ eben; just has two meanings; sentence-final though is a position German lacks |
 | EN-18 | `linkers` card + `linking-words`/`not-but` dialogs | **also ≠ also** (deutsches also = so/therefore); despite/although = trotz/obwohl — the split transfers; the sondern pair (not X, but Y) goes 1:1 |
-| EN-19 | `there-is` card + `there-is` dialog | *es gibt* covers is AND are — ✗ *There's many people* is the kalk; negatives/questions without do; There's vs It's |
+| EN-19 | `there-is` card + `there-is` dialog | *es gibt* covers is AND are — ✗ *There's many people* is the calque; negatives/questions without do; There's vs It's |
 | EN-20 | `past-continuous` card + `past-continuous` dialog | German marks the Verlauf with *gerade* — gerade + Präteritum ≈ PC + Past Simple; while = während, the same dual use (transfer) |
 | EN-21 | `negation` card + `negation` dialog | do-support in negation (✗ *I see not*); no = kein 1:1; never already negates like nie — the en-ru double-negative trap (russisch «никогда не») was dropped: no German analogue |
-| EN-22 | `pp-continuous` card + `pp-continuous` dialog | recognition level; the seit-Satz double kalk (✗ *I live here since two years* ← *Ich wohne hier seit zwei Jahren*) |
+| EN-22 | `pp-continuous` card + `pp-continuous` dialog | recognition level; the seit-Satz double calque (✗ *I live here since two years* ← *Ich wohne hier seit zwei Jahren*) |
 | EN-23 | `relatives` card + `relatives` dialog | der/die/das mark Genus/Kasus, the English relative marks animacy (✗ *The man which…*); that-omission and comma rules — German never drops and always commas; preposition stranding |
 | EN-24 | `imperative` card + `imperative` dialog | one command form where German has three; the Sie-pronoun habit → ✗ *Sit you down please*; Let's ≈ Lass uns |
 | EN-25 | `contrast-linkers` card + `contrast-linkers` dialog | while = während — the deck's lightest transfer; the remaining decision is register (whereas ≈ wohingegen, on the other hand) |
@@ -927,7 +927,7 @@ three practice items mapped to EN-04, EN-05 and EN-06 — deliberately
 shifted from the sibling's EN-01/04/06 per the plan: the article choice is
 familiar to German speakers, so the three items exercise the systematic
 top interferences instead (do-support, the missing Verlaufsform, the
-Perfekt-Kalk). Each item's German prompt carries its interference story
+Perfekt calque). Each item's German prompt carries its interference story
 (*Mag sie Tee?*, *Es regnet gerade*, *Ich habe den Film gestern gesehen*).
 
 Verified (re-run for this record at HEAD `a0a7a70`, tree clean):

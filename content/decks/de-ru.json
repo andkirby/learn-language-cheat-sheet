@@ -443,7 +443,7 @@
               {"label": ["wohl — ", {"t": "наверное", "b": true}], "detail": "particles", "neutral": true}
             ]},
             {"example": [
-              "Komm ", {"t": "mal", "hit": true}, " her! · Das ist ", {"t": "ja", "hit": true}, " klar! · Wie heißt ", {"t": "denn", "hit": true}, " du?"
+              "Komm ", {"t": "mal", "hit": true}, " her! · Das ist ", {"t": "ja", "hit": true}, " klar! · Wie heißt du ", {"t": "denn", "hit": true}, "?"
             ], "gloss": ["mal ≈ -ка · ja ≈ ведь · denn ≈ же"]},
             {"chips": [{"label": "Разбор и позиция", "detail": "particles"}]}
           ]
@@ -1041,7 +1041,7 @@
       "blocks": [
         {"detail": {"label": "doch", "runs": ["Es ist ", {"t": "doch", "i": true}, " spät. — «ведь уже поздно»: ссылаешься на то, что собеседник знает или сам говорит."]}},
         {"detail": {"label": "ja", "runs": ["Das ist ", {"t": "ja", "i": true}, " klar. — «это ведь ясно»: очевидно для обоих, доказывать не нужно."]}},
-        {"detail": {"label": "denn", "runs": ["Только в вопросах: Wie heißt ", {"t": "denn", "i": true}, " du? — «а как же тебя зовут»: живой интерес, не «зачем». Не путай с союзом denn — тот тоже есть, см. Придаточные."]}},
+        {"detail": {"label": "denn", "runs": ["Только в вопросах: Wie heißt du ", {"t": "denn", "i": true}, "? — «а как же тебя зовут»: живой интерес, не «зачем». Не путай с союзом denn — тот тоже есть, см. Придаточные."]}},
         {"detail": {"label": "mal", "runs": ["Komm ", {"t": "mal", "i": true}, " her! — смягчает просьбу: «ну подойди»."]}},
         {"detail": {"label": "schon / gar", "runs": ["Das stimmt ", {"t": "schon", "i": true}, ". — «ладно, уж правда» (уступка) · Das ist ", {"t": "gar", "i": true}, " nicht schwer. — «вообще не сложно» (усиление, чаще всего с nicht)"]}},
         {"detail": {"label": "wohl", "runs": ["Er kommt ", {"t": "wohl", "i": true}, " später. — «наверное»: осторожное предположение, без уверенности."]}},

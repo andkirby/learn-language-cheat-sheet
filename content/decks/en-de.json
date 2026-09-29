@@ -210,9 +210,9 @@
             {"p": ["Häufigkeitsadverbien — Adverbien wie always, never — stehen ", {"t": "vor dem Vollverb", "b": true}, ", aber ", {"t": "nach be", "b": true}, ". Der Platz ist fest, nicht frei wie im deutschen Mittelfeld."]},
             {"example": [
               {"t": "I always drink", "b": true}, " coffee. · ", {"t": "He is always late.", "b": true}, {"br": true},
-              "Nicht: ", {"t": "I go always", "s": true}, " („Ich gehe immer…“ kalkt das Mittelfeld)."
+              "Nicht: ", {"t": "I go always", "s": true}, " („Ich gehe immer…“ überträgt das Mittelfeld wörtlich)."
             ]},
-            {"tiny": ["Auch die deutsche V2-Gewohnheit kalkt: „Nie habe ich das gesehen“ → nicht ", {"t": "Never I have seen that", "s": true}, ", sondern ", {"t": "I have never seen that", "b": true}, " — Standardenglisch bleibt bei SVO."]},
+            {"tiny": ["Auch die deutsche V2-Gewohnheit überträgt wörtlich: „Nie habe ich das gesehen“ → nicht ", {"t": "Never I have seen that", "s": true}, ", sondern ", {"t": "I have never seen that", "b": true}, " — Standardenglisch bleibt bei SVO."]},
             {"chips": [{"label": "Die Skala always → never", "detail": "frequency"}]}
           ]
         },
@@ -226,7 +226,7 @@
             {"example": [
               {"t": "Likes she tea?", "s": true}, " → ", {"t": "Does she like tea?", "hit": true}, {"br": true},
               {"t": "Where you work?", "s": true}, " → ", {"t": "Where do you work?", "hit": true}
-            ], "gloss": ["Der typische Kalk: „Mag sie Tee?“ kehrt nur das Verb. Englisch verlangt das Hilfsverb Do/Does/Did + Grundform."]}
+            ], "gloss": ["Der typische deutsche Fehler: „Mag sie Tee?“ kehrt nur das Verb. Englisch verlangt das Hilfsverb Do/Does/Did + Grundform."]}
           ]
         },
         {
@@ -298,7 +298,7 @@
           "blocks": [
             {"h": ["there is / there are"]},
             {"p": ["= „es gibt / es ist vorhanden“. ", {"t": "There is", "b": true}, " + eines oder Unzählbares, ", {"t": "There are", "b": true}, " + mehrere — das Deutsche macht diesen Unterschied nicht:"]},
-            {"example": [{"t": "There is", "b": true}, " a shop nearby. · ", {"t": "There are", "b": true}, " two shops."], "gloss": ["„Es gibt“ deckt beides ab — der Kalk-Fehler: ", {"t": "There's many people", "s": true}]},
+            {"example": [{"t": "There is", "b": true}, " a shop nearby. · ", {"t": "There are", "b": true}, " two shops."], "gloss": ["„Es gibt“ deckt beides ab — der typische Fehler: ", {"t": "There's many people", "s": true}]},
             {"chips": [{"label": "Verneinung, Frage und There's vs It's", "detail": "there-is"}]}
           ]
         }
@@ -387,7 +387,7 @@
               {"t": "I saw", "b": true}, " it ", {"t": "yesterday", "b": true}, "."
             ], "gloss": ["„Ich habe den Film gestern gesehen“ → I saw it yesterday — nicht I have seen it yesterday"]},
             {"tiny": ["„Wurde eine Zeitangabe genannt?“ ist nur ein Hinweis: ", {"t": "I've lived here since 2020", "b": true}, " (seit 2020 — Punkt, for two years — Dauer) — Zeit genannt, trotzdem Perfect."]},
-            {"chips": [{"label": "Der Kalk in Paaren", "detail": "pp-vs-past"}]}
+            {"chips": [{"label": "Die Perfekt-Falle", "detail": "pp-vs-past"}]}
           ]
         },
         {
@@ -516,7 +516,7 @@
             {"example": [
               "The man ", {"t": "who", "hit": true}, " lives next door is 90. · The book ", {"t": "that", "hit": true}, " I read was great."
             ], "gloss": ["who — Personen · which — Sachen · that — beides."]},
-            {"tiny": [{"t": "The man which…", "s": true}, " ist der typische deutsche Kalk — das Entscheidungswort wählt nach Belebtheit, nicht nach Genus."]},
+            {"tiny": [{"t": "The man which…", "s": true}, " ist der typische deutsche Fehler — das Entscheidungswort wählt nach Belebtheit, nicht nach Genus."]},
             {"chips": [{"label": "whose, where und das Komma", "detail": "relatives"}]}
           ]
         },
@@ -665,7 +665,7 @@
             {"formula": [{"slot": "some"}, {"arrow": "+"}, {"slot": "Aussage"}, {"slot": "any"}, {"arrow": "+"}, {"slot": "Frage / Verneinung", "role": "end"}]},
             {"example": [
               {"t": "I have some money.", "b": true}, {"br": true},
-              {"t": "Do you have any questions?", "b": true}, " · ", {"t": "I don’t have any money.", "b": true}
+              {"t": "Do you have any questions?", "b": true}, " · ", {"t": "I don't have any money.", "b": true}
             ], "gloss": ["some ≈ etwas (bejahend) · any ≈ irgendwelche."]},
             {"tiny": ["Die Teilzuordnung ist Neulernen: some im Angebot und in Bitten (", {"t": "Can I have some water?", "b": true}, ") · any = „beliebig“ in Aussagen (", {"t": "Take any seat", "b": true}, ")."]},
             {"chips": [{"label": "Feinheiten", "detail": "some-any"}]}
@@ -683,7 +683,7 @@
             {"example": [
               {"t": "She is taller than", "b": true}, " me.", {"br": true},
               {"t": "good — better — the best", "b": true}, " = gut — besser — am besten"
-            ], "gloss": ["✗ ", {"t": "bigger as", "s": true}, " — der deutsche Kalk; Gleichheit immer ", {"t": "as … as", "b": true}, "."]},
+            ], "gloss": ["✗ ", {"t": "bigger as", "s": true}, " — der typische deutsche Fehler; Gleichheit immer ", {"t": "as … as", "b": true}, "."]},
             {"tiny": ["Niemals doppelt: ✗ ", {"t": "more better", "s": true}, " → ", {"t": "better", "b": true}, ". Schreibung: ", {"t": "big → bigger", "b": true}, " · ", {"t": "happy → happier", "b": true}, " · ", {"t": "nice → nicer", "b": true}, "."]},
             {"chips": [{"label": "Regeln und Ausnahmen", "detail": "comparative"}]}
           ]
@@ -776,7 +776,7 @@
     "search": "practice quiz wiederholung üben test",
     "items": [
       {
-        "_note": "EN-04: do-support — der deutsche Verb-Kalk (Mag sie Tee?).",
+        "_note": "EN-04: do-support — der deutsche Verb-Fehler (Mag sie Tee?).",
         "q": [{"t": "1. Mag sie Tee? — Bild die Frage: ___ she ___ (like) tea?", "b": true}],
         "answer": [{"t": "Does she like", "b": true}, " tea? — Englisch braucht Do/Does/Did + Grundform; ", {"t": "Likes she tea?", "s": true}, " kehrt nur das Verb, wie das Deutsche."]
       },
@@ -786,9 +786,9 @@
         "answer": [{"t": "It’s raining", "b": true}, " — Verlaufsform für „gerade jetzt“; ", {"t": "It rains now", "s": true}, " überträgt das deutsche Präsens, das beides abdeckt."]
       },
       {
-        "_note": "EN-06: Past Simple vs Present Perfect — der Perfekt-Kalk, Gefahr Nr. 1.",
+        "_note": "EN-06: Past Simple vs Present Perfect — der Perfekt-Fehler, Gefahr Nr. 1.",
         "q": [{"t": "3. Ich habe den Film gestern gesehen. → I ___ (see) the film yesterday.", "b": true}],
-        "answer": [{"t": "saw", "b": true}, " — Past Simple: „gestern“ ist abgeschlossen; ", {"t": "I have seen it yesterday", "s": true}, " ist der Perfekt-Kalk. Ohne Zeitangabe wäre ", {"t": "I have seen", "b": true}, " richtig (Perfect = Ergebnis jetzt)."]
+        "answer": [{"t": "saw", "b": true}, " — Past Simple: „gestern“ ist abgeschlossen; ", {"t": "I have seen it yesterday", "s": true}, " ist der Perfekt-Fehler. Ohne Zeitangabe wäre ", {"t": "I have seen", "b": true}, " richtig (Perfect = Ergebnis jetzt)."]
       }
     ]
   },
@@ -883,7 +883,7 @@
         {"detail": {"label": "Schreibung", "runs": ["Konsonant verdoppelt: ", {"t": "big → bigger", "b": true}, " · -y → -ier: ", {"t": "happy → happier", "b": true}, " · stummes -e fällt weg: ", {"t": "nice → nicer", "b": true}, "."]}},
         {"detail": {"label": "Lang", "runs": ["expensive – more expensive – the most expensive."]}},
         {"detail": {"label": "Unregelmäßige", "runs": [{"t": "good–better–best", "b": true}, " (gut–besser–am besten) · ", {"t": "bad–worse–worst", "b": true}, " · ", {"t": "far–further–furthest", "b": true}, " — das Trio deckt sich wörtlich mit dem Deutschen."]}},
-        {"detail": {"label": "als: zwei Bedeutungen", "runs": ["Vergleich: ", {"t": "bigger than", "b": true}, " (größer als) · Gleichheit: ", {"t": "as big as", "b": true}, " (so groß wie) — ✗ ", {"t": "bigger as", "s": true}, " ist der deutsche Kalk."]}},
+        {"detail": {"label": "als: zwei Bedeutungen", "runs": ["Vergleich: ", {"t": "bigger than", "b": true}, " (größer als) · Gleichheit: ", {"t": "as big as", "b": true}, " (so groß wie) — ✗ ", {"t": "bigger as", "s": true}, " ist der typische deutsche Fehler."]}},
         {"detail": {"label": "Formel", "runs": ["…er ", {"t": "than", "b": true}, " · the …est / the most … — niemals doppelt: ✗ ", {"t": "more better", "s": true}, "."]}}
       ]
     },
@@ -911,7 +911,7 @@
         {"detail": {"label": "W-Frage", "runs": ["W-Wort + do/does/did: ", {"t": "Where did you go?", "b": true}, "."]}},
         {"detail": {"label": "be / Modals", "runs": ["Auch ohne do — reine Umstellung wie im Deutschen: ", {"t": "Is she…?", "b": true}, " · ", {"t": "Can you…?", "b": true}, " Do brauchen nur Vollverben."]}},
         {"detail": {"label": "Subjektfrage", "runs": [{"t": "Who lives here?", "b": true}, " — ohne do, wie „Wer wohnt hier?“: who ist bereits das Subjekt."]}},
-        {"detail": {"label": "Typische Kalkfehler", "runs": [{"t": "Likes she tea?", "s": true}, " → ", {"t": "Does she like tea?", "b": true}, " · ", {"t": "Did you saw", "s": true}, " → ", {"t": "Did you see", "b": true}, " — nach do steht immer die Grundform."]}}
+        {"detail": {"label": "Typische Fehler", "runs": [{"t": "Likes she tea?", "s": true}, " → ", {"t": "Does she like tea?", "b": true}, " · ", {"t": "Did you saw", "s": true}, " → ", {"t": "Did you see", "b": true}, " — nach do steht immer die Grundform."]}}
       ]
     },
     "frequency": {
@@ -919,7 +919,7 @@
       "blocks": [
         {"detail": {"label": "Position", "runs": ["Vor dem Vollverb, nach be: He ", {"t": "is always", "b": true}, " late. · I ", {"t": "always drive", "b": true}, "."]}},
         {"detail": {"label": "Die Extremskala", "runs": [{"t": "never", "b": true}, " und ", {"t": "rarely", "b": true}, " verneinen schon selbst: ", {"t": "I never drink coffee", "b": true}, " = „Ich trinke nie Kaffee“ — ein zweites ", {"t": "not", "b": true}, " kommt nicht dazu."]}},
-        {"detail": {"label": "Der V2-Kalk", "runs": ["„Nie habe ich das gesehen“ kalkt die deutsche Verbzweitstellung: ", {"t": "Never I have seen that", "s": true}, " → ", {"t": "I have never seen that", "b": true}, "."], "comment": ["Standardenglisch bleibt bei SVO; die literarische Form „Never have I…“ reicht erkennen."]}}
+        {"detail": {"label": "Der V2-Fehler", "runs": ["„Nie habe ich das gesehen“ überträgt die deutsche Verbzweitstellung wörtlich: ", {"t": "Never I have seen that", "s": true}, " → ", {"t": "I have never seen that", "b": true}, "."], "comment": ["Standardenglisch bleibt bei SVO; die literarische Form „Never have I…“ reicht erkennen."]}}
       ]
     },
     "flavor-words": {
@@ -982,7 +982,7 @@
         {"detail": {"label": "Regelmäßig", "runs": ["+ed: work → ", {"t": "worked", "b": true}, "."]}},
         {"detail": {"label": "Unregelmäßig", "runs": ["Müssen sitzen: go–went–gone, see–saw–seen, have–had–had."]}},
         {"detail": {"label": "Frage / Verneinung", "runs": [{"t": "did", "b": true}, " + Grundform: ", {"t": "Did you go?", "b": true}, " · ", {"t": "I didn't go", "b": true}, " — das Hilfsverb trägt die Vergangenheit, nicht das Verb."]}},
-        {"detail": {"label": "Beim Deutschen", "runs": ["Präteritum und Perfekt decken beide das Past Simple ab: „Ich sah ihn“ und „Ich habe ihn gesehen“ → ", {"t": "I saw him", "b": true}, ". Gesprochenes Deutsch wählt das Perfekt — genau das ist der Kalk (siehe Perfect vs Past Simple)."]}}
+        {"detail": {"label": "Beim Deutschen", "runs": ["Präteritum und Perfekt decken beide das Past Simple ab: „Ich sah ihn“ und „Ich habe ihn gesehen“ → ", {"t": "I saw him", "b": true}, ". Gesprochenes Deutsch wählt das Perfekt — genau das ist die typische Falle (siehe Perfect vs Past Simple)."]}}
       ]
     },
     "present-perfect": {
@@ -999,14 +999,14 @@
         {"detail": {"label": "Past Simple", "runs": ["Abgeschlossene Tatsache: ", {"t": "I saw him yesterday / in 2020 / last week", "b": true}, "."]}},
         {"detail": {"label": "Perfect", "runs": ["Verbindung zum Jetzt — Ergebnis jetzt (", {"t": "I have lost my keys", "b": true}, " — ich komme nicht rein) oder Erfahrung ohne Zeit (", {"t": "I have seen him", "b": true}, " — ich kenne ihn)."]}},
         {"detail": {"label": "Wo „Zeit genannt?“ versagt", "runs": ["Dauer bis jetzt: ", {"t": "I have lived here since 2020 / for two years", "b": true}, ". Offener Zeitraum: ", {"t": "Have you seen Anna today?", "b": true}, " Marker sind Hinweise — die Bedeutung entscheidet."]}},
-        {"detail": {"label": "seit wird zweigeteilt", "runs": ["Punkt → ", {"t": "since", "b": true}, " (", {"t": "since 2020", "b": true}, "), Dauer → ", {"t": "for", "b": true}, " (", {"t": "for two years", "b": true}, ") — das deutsche „seit“ deckt beides ab; die Aufteilung ist Neustoff."]}}
+        {"detail": {"label": "seit wird zweigeteilt", "runs": ["Punkt → ", {"t": "since", "b": true}, " (", {"t": "since 2020", "b": true}, "), Dauer → ", {"t": "for", "b": true}, " (", {"t": "for two years", "b": true}, ") — das deutsche „seit“ deckt beides ab; die Aufteilung ist komplett neu."]}}
       ]
     },
     "future": {
       "title": "will oder going to", "lead": "Spontane Entscheidung gegen den vorher gefassten Plan.",
       "blocks": [
-        {"detail": {"label": "will", "runs": ["Im Sprechmoment entschieden oder Vorhersage: ", {"t": "I'll help you", "b": true}, ". · ", {"t": "It will rain", "b": true}, "."], "comment": ["werden ist das Konzeptpaar — aber der pauschale werden-Kalk für jede Zukunftsform ist der vorhersehbare Fehler: erst fragen — spontan oder geplant?"]}},
-        {"detail": {"label": "going to", "runs": ["Vorher beschlossen oder absehbar: ", {"t": "I'm going to study tonight", "b": true}, ". · Look at the clouds — ", {"t": "it's going to rain", "b": true}, "."], "comment": ["Kein deutsches Pendant: Die Unterscheidung spontan vs. geplant ist Neustoff."]}},
+        {"detail": {"label": "will", "runs": ["Im Sprechmoment entschieden oder Vorhersage: ", {"t": "I'll help you", "b": true}, ". · ", {"t": "It will rain", "b": true}, "."], "comment": ["werden ist das Konzeptpaar — aber das pauschale werden für jede Zukunftsform ist der vorhersehbare Fehler: erst fragen — spontan oder geplant?"]}},
+        {"detail": {"label": "going to", "runs": ["Vorher beschlossen oder absehbar: ", {"t": "I'm going to study tonight", "b": true}, ". · Look at the clouds — ", {"t": "it's going to rain", "b": true}, "."], "comment": ["Kein deutsches Pendant: Die Unterscheidung spontan vs. geplant ist komplett neu."]}},
         {"detail": {"label": "Fahrplan", "runs": ["Present Simple für feste Pläne: ", {"t": "The train leaves at 6", "b": true}, " ≈ „Der Zug fährt um 6“ — überträgt sich direkt."]}}
       ]
     },
@@ -1056,22 +1056,22 @@
       "title": "Passiv", "lead": "werden + Partizip II wird zu be + V3 — nur das Hilfsverb wechselt.",
       "blocks": [
         {"detail": {"label": "Die gezeigten Zeiten", "runs": [{"t": "is built", "b": true}, " · ", {"t": "is being built", "b": true}, " · ", {"t": "was built", "b": true}, " · ", {"t": "will be built", "b": true}, " · ", {"t": "has been built", "b": true}, " — ", {"t": "Das Haus wird gebaut", "i": true}, " ≈ ", {"t": "The house is being built", "b": true}, "."], "comment": ["Das Deck behauptet nur diese fünf Zeiten — keine „alle Zeiten“-Garantie."]}},
-        {"detail": {"label": "Wer hat’s getan?", "runs": ["Der Agens steht mit ", {"t": "by", "b": true}, ": ", {"t": "The house was built by the workers.", "b": true}], "comment": [{"t": "built from the workers", "s": true}, " ist der Agens-Kalk: das deutsche ", {"t": "von", "i": true}, " deckt of, from und by ab — im Passiv heißt er immer by."]}}
+        {"detail": {"label": "Wer hat’s getan?", "runs": ["Der Agens steht mit ", {"t": "by", "b": true}, ": ", {"t": "The house was built by the workers.", "b": true}], "comment": [{"t": "built from the workers", "s": true}, " ist der typische deutsche Fehler: das deutsche ", {"t": "von", "i": true}, " deckt of, from und by ab — im Passiv heißt er immer by."]}}
       ]
     },
     "gerund-infinitive": {
       "title": "V-ing vs to V", "lead": "Das erste Verb entscheidet über den Schwanz.",
       "blocks": [
-        {"detail": {"label": "+ V-ing", "runs": [{"t": "enjoy, finish, mind, suggest, avoid, keep", "b": true}, ": ", {"t": "I enjoy reading.", "b": true}], "comment": ["Das Deutsche hat kein Gerundium — ", {"t": "-ing", "b": true}, " ist reiner Neustoff; ", {"t": "≈ Ich lese gern", "i": true}, "."]}},
+        {"detail": {"label": "+ V-ing", "runs": [{"t": "enjoy, finish, mind, suggest, avoid, keep", "b": true}, ": ", {"t": "I enjoy reading.", "b": true}], "comment": ["Das Deutsche hat kein Gerundium — ", {"t": "-ing", "b": true}, " ist komplett neu; ", {"t": "≈ Ich lese gern", "i": true}, "."]}},
         {"detail": {"label": "+ to V", "runs": [{"t": "want, decide, hope, plan, promise, need", "b": true}, ": ", {"t": "I want to read.", "b": true}], "comment": [{"t": "to", "b": true}, " ist das deutsche ", {"t": "zu", "i": true}, " (", {"t": "wollen, … zu tun", "i": true}, ")."]}},
         {"detail": {"label": "Bedeutung wechselt", "runs": [{"t": "stop smoking", "b": true}, " — mit dem Rauchen aufhören · ", {"t": "stop to smoke", "b": true}, " — anhalten, um zu rauchen."]}},
-        {"detail": {"label": "Die to-Falle", "runs": [{"t": "I look forward to seeing you.", "b": true}, " — nach ", {"t": "look forward to", "b": true}, " steht ", {"t": "-ing", "b": true}, "."], "comment": [{"t": "I look forward to see you", "s": true}, " ist der Kalk aus ", {"t": "sich freuen, dich zu sehen", "i": true}, " — hier ist ", {"t": "to", "b": true}, " Präposition, kein Infinitiv-Marker."]}}
+        {"detail": {"label": "Die to-Falle", "runs": [{"t": "I look forward to seeing you.", "b": true}, " — nach ", {"t": "look forward to", "b": true}, " steht ", {"t": "-ing", "b": true}, "."], "comment": [{"t": "I look forward to see you", "s": true}, " ist der typische Fehler aus ", {"t": "sich freuen, dich zu sehen", "i": true}, " — hier ist ", {"t": "to", "b": true}, " Präposition, kein Infinitiv-Marker."]}}
       ]
     },
     "relatives": {
       "title": "Relative clauses: who / which / that", "lead": "Das Relativwort wählt nach Belebtheit — nicht nach Genus und Kasus.",
       "blocks": [
-        {"detail": {"label": "who / which / that", "runs": [{"t": "who", "b": true}, " — Personen · ", {"t": "which", "b": true}, " — Sachen · ", {"t": "that", "b": true}, " — beides."], "comment": [{"t": "The man which lives next door", "s": true}, " ist der typische deutsche Kalk: ", {"t": "der/die/das", "i": true}, " markieren Genus und Kasus, ", {"t": "who", "b": true}, " markiert Person."]}},
+        {"detail": {"label": "who / which / that", "runs": [{"t": "who", "b": true}, " — Personen · ", {"t": "which", "b": true}, " — Sachen · ", {"t": "that", "b": true}, " — beides."], "comment": [{"t": "The man which lives next door", "s": true}, " ist der typische deutsche Fehler: ", {"t": "der/die/das", "i": true}, " markieren Genus und Kasus, ", {"t": "who", "b": true}, " markiert Person."]}},
         {"detail": {"label": "whose / where", "runs": [{"t": "the man whose dog barks", "b": true}, " — ", {"t": "≈ dessen Hund bellt", "i": true}, " · ", {"t": "the city where I live", "b": true}, " — ", {"t": "≈ die Stadt, in der ich wohne", "i": true}, "."]}},
         {"detail": {"label": "that darf weg", "runs": [{"t": "The book (that) I read was great.", "b": true}, " — ", {"t": "that", "b": true}, " fällt weg, wenn danach das Subjekt kommt; nach ", {"t": "that", "b": true}, " + Subjekt bleibt es: ", {"t": "The book that helps", "b": true}, "."], "comment": ["Das Deutsche lässt nie weg und setzt immer das Komma (", {"t": "das Buch, das ich gelesen habe", "i": true}, ") — der einschränkende englische Satz hat weder ", {"t": "that", "b": true}, " nötig noch ein Komma."]}},
         {"detail": {"label": "Präposition hinten", "runs": [{"t": "the house I live in", "b": true}, " — die Präposition bleibt am Ende; das Deutsche zieht sie vorn (", {"t": "in dem ich wohne", "i": true}, ")."]}},
@@ -1081,7 +1081,7 @@
     "negation": {
       "title": "Verneinung: don't / never / no", "lead": "Deutsch negiert das Verb direkt — Englisch leitet die Verneinung über ein Hilfsverb.",
       "blocks": [
-        {"detail": {"label": "do-support", "runs": [{"t": "Ich sehe es nicht", "i": true}, " → ", {"t": "I don't see it", "b": true}, " — ", {"t": "don't / doesn't / didn't", "b": true}, " + Grundform."], "comment": [{"t": "I see not", "s": true}, " ist der deutsche Kalk: das ", {"t": "not", "b": true}, " steht direkt nach dem Hilfsverb — nicht im Mittelfeld wie das deutsche ", {"t": "nicht", "i": true}, "."]}},
+        {"detail": {"label": "do-support", "runs": [{"t": "Ich sehe es nicht", "i": true}, " → ", {"t": "I don't see it", "b": true}, " — ", {"t": "don't / doesn't / didn't", "b": true}, " + Grundform."], "comment": [{"t": "I see not", "s": true}, " ist der typische deutsche Fehler: das ", {"t": "not", "b": true}, " steht direkt nach dem Hilfsverb — nicht im Mittelfeld wie das deutsche ", {"t": "nicht", "i": true}, "."]}},
         {"detail": {"label": "no = kein", "runs": [{"t": "I have no money", "b": true}, " ≈ ", {"t": "Ich habe kein Geld", "i": true}, " — 1:1. Gleichwertig: ", {"t": "I don't have any money", "b": true}, "."]}},
         {"detail": {"label": "never", "runs": [{"t": "I have never been to Rome", "b": true}, " — ", {"t": "nie", "i": true}, " ist bereits die ganze Verneinung; ein zweites ", {"t": "not", "b": true}, " kommt nicht dazu."]}},
         {"detail": {"label": "Position", "runs": [{"t": "I don't smoke", "b": true}, " · ", {"t": "He doesn't smoke", "b": true}, " · ", {"t": "I didn't smoke", "b": true}, " — Hilfsverb + not, das Vollverb bleibt in der Grundform."]}},
