@@ -21,7 +21,7 @@
   },
   "strings": {
     "search_placeholder": "Search: wem, weil, modal, Dativ…",
-    "search_aria": "Search the cheat sheet",
+    "search_aria": "Search the German cheat sheet",
     "clear_aria": "Clear search",
     "search_results": "Cards found",
     "install_label": "Install",
@@ -58,8 +58,10 @@
       ]
     },
     "footer_all": "all cheat sheets",
-    "footer_install": "Install: Android — the “Install” button or the browser menu · iPhone — Share → Add to Home Screen",
+    "footer_install": "Install: page menu (☰) → “Install” · iPhone — Share → Add to Home Screen",
     "footer_plan": "content plan:",
+    "menu_aria": "Menu: language, help, install",
+    "nudge_text": "Work offline — install the cheat sheet on your phone",
     "lang_menu_aria": "Learning language and explanation language",
     "lang_group_target": "Learning language",
     "lang_group_audience": "Explanation language",

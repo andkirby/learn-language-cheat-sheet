@@ -98,7 +98,7 @@
       <a href="#voices">Type voices</a>
       <a href="#tokens">Color tokens</a>
       <a href="#topbar">Topbar</a>
-      <a href="#searchrow">Search row</a>
+      <a href="#burger">Burger &amp; search</a>
       <a href="#helprow">Help row</a>
       <a href="#noscript">Noscript</a>
       <a href="#anatomy">Section anatomy</a>
@@ -178,52 +178,60 @@
     <h2 class="sg-part">Page chrome — exact <code>page_template.html</code> nesting</h2>
 
     <section class="sg-block" id="topbar">
-      <h2>Topbar &amp; brand row</h2>
-      <p class="sg-why">Sticky, blurred, one <code>.brand-row</code> inside <code>.topbar-inner</code>. The deck-page order is brand → (i) help → theme → install; the landing swaps (i)+install for the language menu.</p>
-      <div class="search-row" style="border:1px dashed var(--line);border-radius:12px;padding:10px">
-        <div class="brand">
-          <div class="brand-mark" aria-hidden="true">DE</div>
-          <div>German Cheat<small>RU → DE · A1–B1</small></div>
+      <h2>Topbar &amp; one-line header</h2>
+      <p class="sg-why">Sticky, blurred, one flex row at every width. Phones (≤719px): burger → search (with the language chip) → theme — brand, language menu, help and install live inside the burger popover. ≥720px: the burger hides, brand returns, and the whole header is inline: brand → search → lang menu → (i) help → theme → install. The landing keeps its own <code>.brand-row</code> (it is the selector page).</p>
+      <div style="border:1px dashed var(--line);border-radius:12px;padding:10px;display:flex;align-items:center;gap:10px">
+        <details class="app-menu">
+          <summary aria-label="Меню" tabindex="-1"><span aria-hidden="true">☰</span></summary>
+        </details>
+        <div class="search-wrap">
+          <span class="search-head" aria-hidden="true"><span class="search-chip">DE</span><span class="search-icon">⌕</span></span>
+          <input class="search" type="search" autocomplete="off" tabindex="-1" placeholder="Поиск: wem, weil, modal, Dativ…" aria-label="Поиск по немецкой шпаргалке" />
         </div>
-        <button class="icon-btn" type="button" tabindex="-1" aria-label="Как пользоваться" style="margin-left:auto"><span class="ico" aria-hidden="true">i</span></button>
         <button class="theme-btn" type="button" tabindex="-1" aria-label="Тема">◐</button>
-        <button class="install-btn" type="button" tabindex="-1">Установить</button>
       </div>
-      <p class="sg-anno">Deck-page brand row with real deck strings (<code>de-ru.json</code> → <code>de/ru/</code>). <code>.install-btn</code> shows only when installable (iOS Safari non-standalone, or <code>beforeinstallprompt</code>); <code>[hidden]</code> is the default.</p>
+      <p class="sg-anno">Deck-page phone header with real deck strings (<code>de-ru.json</code> → <code>de/ru/</code>). The burger popover specimen (identity + languages + help/install) lives in the burger section below.</p>
       <details class="sg-doc">
         <summary>Exact skeleton nesting &amp; control contracts</summary>
         <div class="sg-doc-body">
 <pre class="sg-code">&lt;header class="topbar"&gt;
   &lt;div class="topbar-inner"&gt;
-    &lt;div class="brand-row"&gt;
-      &lt;div class="brand"&gt;
-        &lt;div class="brand-mark" aria-hidden="true"&gt;DE&lt;/div&gt;
-        &lt;div&gt;German Cheat&lt;small&gt;RU → DE · A1–B1&lt;/small&gt;&lt;/div&gt;
-      &lt;/div&gt;
-      &lt;button class="icon-btn" …&gt;&lt;span class="ico"&gt;i&lt;/span&gt;&lt;/button&gt;
-      &lt;button class="theme-btn" id="themeBtn" …&gt;◐&lt;/button&gt;
-      &lt;button class="install-btn" id="installBtn" …&gt;Установить&lt;/button&gt;
-    &lt;/div&gt;
-    &lt;div class="search-row"&gt;…field + lang menu…&lt;/div&gt;
+    &lt;details class="app-menu"&gt;…identity + lang groups + help/install…&lt;/details&gt;
+    &lt;div class="brand"&gt;…mark + name + sub…&lt;/div&gt;          &lt;!-- ≥720px only --&gt;
+    &lt;div class="search-wrap"&gt;…chip + ⌕ + input + clear…&lt;/div&gt;
+    &lt;details class="lang-menu"&gt;…two groups…&lt;/details&gt;     &lt;!-- ≥720px only --&gt;
+    &lt;button class="icon-btn" …&gt;&lt;span class="ico"&gt;i&lt;/span&gt;&lt;/button&gt;  &lt;!-- ≥720px only --&gt;
+    &lt;button class="theme-btn" id="themeBtn" …&gt;◐&lt;/button&gt;
+    &lt;button class="install-btn" data-install hidden …&gt;Установить&lt;/button&gt;  &lt;!-- ≥720px only --&gt;
   &lt;/div&gt;
 &lt;/header&gt;</pre>
-          <p><code>.brand small</code> hides ≤ 460px so the install button never crowds the row. <code>.theme-btn</code> and
-            <code>.icon-btn</code> share one 44px style block. The theme cycle (авто → светлая → тёмная, persisted in
-            <code>localStorage.theme</code>, <code>theme-color</code> metas synced) is part of the shared contract — removing or
-            changing it is a contract change.</p>
+          <p>The phone/desktop swap is CSS-only over the same DOM: direct children of
+            <code>.topbar-inner</code> hide per breakpoint, so the landing (whose controls sit inside
+            <code>.brand-row</code>) is untouched. <code>.theme-btn</code> and <code>.icon-btn</code> share one 44px style
+            block. The theme cycle (авто → светлая → тёмная, persisted in <code>localStorage.theme</code>,
+            <code>theme-color</code> metas synced) is part of the shared contract — removing or changing it is a contract
+            change. <code>.install-btn</code> shows only when installable (iOS Safari non-standalone, or
+            <code>beforeinstallprompt</code>); <code>[hidden]</code> is the default and the JS drives every
+            <code>[data-install]</code> button.</p>
         </div>
       </details>
     </section>
 
-    <section class="sg-block" id="searchrow">
-      <h2>Search row &amp; language menu (deck pages)</h2>
-      <p class="sg-why">Field + audience switcher side by side. The <code>.lang-menu</code> combines both language choices in one topbar popover — <em>Язык обучения</em> (navigational links) and <em>Язык объяснений</em> (current + upcoming audiences); flat groups, never a submenu.</p>
-      <div class="search-row" style="border:1px dashed var(--line);border-radius:12px;padding:10px">
-        <div class="search-wrap">
-          <span class="search-icon" aria-hidden="true">⌕</span>
-          <input class="search" type="search" autocomplete="off" enterkeyhint="search" placeholder="Поиск: wem, weil, modal, Dativ…" aria-label="Поиск по шпаргалке" />
-          <button class="clear-search" type="button" aria-label="Очистить поиск" hidden>×</button>
-        </div>
+    <section class="sg-block" id="burger">
+      <h2>Burger (phones) &amp; language menu</h2>
+      <p class="sg-why">Both language choices in one popover — <em>Язык обучения</em> (navigational links) and <em>Язык объяснений</em> (current + upcoming audiences); flat groups, never a submenu. On phones the same groups sit inside the burger together with the page identity and the help/install rows (native <code>&lt;details&gt;</code>, so languages work without JS); on desktop the <code>.lang-menu</code> control shows them directly.</p>
+      <div style="border:1px dashed var(--line);border-radius:12px;padding:10px;display:flex;align-items:center;gap:10px">
+        <details class="app-menu" open>
+          <summary aria-label="Меню"><span aria-hidden="true">☰</span></summary>
+          <div class="lang-pop app-pop" style="position:static;margin-top:8px">
+            <div class="app-identity">German Cheat<small>RU → DE · A1–B1</small></div>
+            <div class="lang-group"><div class="lang-group-label">Язык обучения</div><span class="cur">Deutsch</span><a href="#" onclick="return false">English</a></div>
+            <div class="lang-group"><div class="lang-group-label">Язык объяснений</div><span class="cur">Русский</span><span class="soon">English — скоро</span></div>
+            <div class="app-sep" aria-hidden="true"></div>
+            <button class="menu-row" type="button" tabindex="-1"><span class="ico" aria-hidden="true">i</span>Как пользоваться</button>
+            <button class="menu-row" type="button" tabindex="-1">Установить</button>
+          </div>
+        </details>
         <details class="lang-menu">
           <summary aria-label="Язык обучения и язык объяснений">DE · RU</summary>
           <div class="lang-pop" style="position:static;margin-top:8px">
@@ -241,10 +249,14 @@
             The bottom nav has no active selection during cross-view results.
             Search never destroys dialog state. <code>data-search</code> is a designed surface: deck authors put the
             hidden keywords there (forms, Russian prompts) — findings C-11–13 came from treating it as an afterthought.</p>
-          <p><strong>Language menu.</strong> Native <code>&lt;details&gt;</code> keeps it functional without JS; JS adds light
-            dismiss and Escape. On deck pages it sits in the search row (the brand row can't fit it beside the install button at
-            390px); the landing has it in the brand row. Driven by <code>content/decks/site.json</code> on deck pages and mirrored
-            by hand in <code>index.html</code> — update both when adding a language or audience.</p>
+          <p><strong>Language chip.</strong> The persistent <code>.search-chip</code> (the deck's <code>brand_mark</code>)
+            answers "which deck am I in" even after typing — a placeholder would vanish. The input's
+            <code>aria-label</code> names the language for screen readers.</p>
+          <p><strong>Menus.</strong> Native <code>&lt;details&gt;</code> keeps them functional without JS; JS adds light
+            dismiss and Escape (one shared handler for <code>.app-menu</code> + <code>.lang-menu</code>). Driven by
+            <code>content/decks/site.json</code> on deck pages and mirrored by hand in <code>index.html</code> — update both
+            when adding a language or audience. The burger's help row is id-less: the desktop <code>.icon-btn</code> owns the
+            deck's help id (<code>#start</code>), which must stay unique in the DOM.</p>
         </div>
       </details>
     </section>
@@ -265,7 +277,7 @@
       <p class="sg-why">The whole deck must read with JS off: controls hide, and a notice + intro line replace the interactive chrome.</p>
 <pre class="sg-code">&lt;noscript&gt;
   &lt;style&gt;
-    .tap, .install-btn, .clear-search, .theme-btn, .icon-btn { display: none !important; }
+    .tap, .install-btn, .clear-search, .theme-btn, .icon-btn, .menu-row, .install-nudge { display: none !important; }
   &lt;/style&gt;
   &lt;div class="notice" style="margin:12px 16px 0"&gt;…@@NOSCRIPT_NOTICE@@…&lt;/div&gt;
   &lt;p class="intro" style="margin:10px 16px 0"&gt;…@@NOSCRIPT_INTRO@@…&lt;/p&gt;
@@ -532,9 +544,12 @@
             <tr><td><code>.topbar</code>, <code>.topbar-inner</code>, <code>.brand-row</code></td><td>Sticky blurred header; 980px content column; the one flex row of identity + controls</td></tr>
             <tr><td><code>.brand</code>, <code>.brand-mark</code>, <code>.brand small</code></td><td>Identity block; square mark; sub-line hidden ≤ 460px</td></tr>
             <tr><td><code>.install-btn</code></td><td>Install control; hidden unless installable (iOS non-standalone / <code>beforeinstallprompt</code>)</td></tr>
-            <tr><td><code>.theme-btn</code>, <code>.icon-btn</code> + <code>.ico</code></td><td>44px topbar icon buttons; theme cycle; the (i) usage button → <code>lookup-help</code> sheet, carries <code>#start</code></td></tr>
+            <tr><td><code>.theme-btn</code>, <code>.icon-btn</code> + <code>.ico</code></td><td>44px topbar icon buttons; theme cycle; the (i) usage button → <code>lookup-help</code> sheet, carries <code>#start</code> (deck pages: ≥720px only)</td></tr>
             <tr><td><code>.search-row</code>, <code>.search-wrap</code>, <code>.search</code>, <code>.search-icon</code>, <code>.clear-search</code></td><td>Search field row; wrapping frame; the input; decorative ⌕; clear button (hidden until query)</td></tr>
-            <tr><td><code>.lang-menu</code>, <code>.lang-pop</code>, <code>.lang-group</code>, <code>.cur</code>, <code>.soon</code></td><td>Topbar language control: «Язык обучения» links + «Язык объяснений» state in one native <code>&lt;details&gt;</code> popover</td></tr>
+            <tr><td><code>.app-menu</code>, <code>.app-identity</code>, <code>.app-sep</code>, <code>.menu-row</code></td><td>Phone burger (native <code>&lt;details&gt;</code>): identity line + the language groups + help/install rows; hidden ≥720px</td></tr>
+            <tr><td><code>.search-wrap</code>, <code>.search-head</code>, <code>.search-chip</code>, <code>.search</code>, <code>.clear-search</code></td><td>Search field; persistent target-language chip + ⌕ lead the input; custom clear ✕ while typing</td></tr>
+            <tr><td><code>.lang-menu</code>, <code>.lang-pop</code>, <code>.lang-group</code>, <code>.cur</code>, <code>.soon</code></td><td>Language control: «Язык обучения» links + «Язык объяснений» state in one native <code>&lt;details&gt;</code> popover (deck pages: inline ≥720px, inside the burger on phones; landing: brand row)</td></tr>
+            <tr><td><code>.install-nudge</code>, <code>.nudge-text</code>, <code>.nudge-close</code></td><td>One-time install prompt above the bottom nav (browser tabs only, flag set when shown)</td></tr>
             <tr><td><code>.cheat-card</code></td><td>Atomic reference unit; searchable via <code>data-search</code></td></tr>
             <tr><td><code>.badges</code>, <code>.badge</code> <code>.level/.kind</code></td><td>Card metadata row under the title: CEFR level + what the card gives you (deck fields <code>level</code>/<code>kind</code>)</td></tr>
             <tr><td><code>.cards</code> + <code>.two/.three</code></td><td>Card grid and its density columns (layout layer)</td></tr>

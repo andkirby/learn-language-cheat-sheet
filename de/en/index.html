@@ -54,28 +54,26 @@
 <body>
   <header class="topbar">
     <div class="topbar-inner">
-      <div class="brand-row">
-        <div class="brand">
-          <div class="brand-mark" aria-hidden="true">DE</div>
-          <div>German Cheat<small>EN → DE · A1–B1</small></div>
-        </div>
-        <button class="icon-btn" id="start" type="button" data-detail="lookup-help" aria-haspopup="dialog" aria-label="How to use" title="How to use"><span class="ico" aria-hidden="true">i</span></button><button class="theme-btn" id="themeBtn" type="button" aria-label="Theme: system">◐</button>
-        <button class="install-btn" id="installBtn" type="button">Install</button>
+      <details class="app-menu"><summary aria-label="Menu: language, help, install"><span aria-hidden="true">☰</span></summary><div class="lang-pop app-pop"><div class="app-identity">German Cheat<small>EN → DE · A1–B1</small></div><div class="lang-group"><div class="lang-group-label">Learning language</div><span class="cur">Deutsch</span><a href="../../en/ru/">English</a></div><div class="lang-group"><div class="lang-group-label">Explanation language</div><a href="../ru/">Русский</a><span class="cur">English</span></div><div class="app-sep" aria-hidden="true"></div><button class="menu-row" type="button" data-detail="lookup-help"><span class="ico" aria-hidden="true">i</span>How to use</button><button class="menu-row" type="button" data-install hidden>Install</button></div></details>
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">DE</div>
+        <div>German Cheat<small>EN → DE · A1–B1</small></div>
       </div>
-      <div class="search-row">
-        <div class="search-wrap">
-          <span class="search-icon" aria-hidden="true">⌕</span>
-          <input id="search" class="search" type="search" autocomplete="off" enterkeyhint="search" placeholder="Search: wem, weil, modal, Dativ…" aria-label="Search the cheat sheet" />
-          <button id="clearSearch" class="clear-search" type="button" aria-label="Clear search" hidden>×</button>
-        </div>
-        <details class="lang-menu" id="langMenu"><summary aria-label="Learning language and explanation language">DE · EN</summary><div class="lang-pop"><div class="lang-group"><div class="lang-group-label">Learning language</div><span class="cur">Deutsch</span><a href="../../en/ru/">English</a></div><div class="lang-group"><div class="lang-group-label">Explanation language</div><a href="../ru/">Русский</a><span class="cur">English</span></div></div></details>
+      <div class="search-wrap">
+        <span class="search-head" aria-hidden="true"><span class="search-chip">DE</span><span class="search-icon">⌕</span></span>
+        <input id="search" class="search" type="search" autocomplete="off" enterkeyhint="search" placeholder="Search: wem, weil, modal, Dativ…" aria-label="Search the German cheat sheet" />
+        <button id="clearSearch" class="clear-search" type="button" aria-label="Clear search" hidden>×</button>
       </div>
+      <details class="lang-menu" id="langMenu"><summary aria-label="Learning language and explanation language">DE · EN</summary><div class="lang-pop"><div class="lang-group"><div class="lang-group-label">Learning language</div><span class="cur">Deutsch</span><a href="../../en/ru/">English</a></div><div class="lang-group"><div class="lang-group-label">Explanation language</div><a href="../ru/">Русский</a><span class="cur">English</span></div></div></details>
+      <button class="icon-btn" id="start" type="button" data-detail="lookup-help" aria-haspopup="dialog" aria-label="How to use" title="How to use"><span class="ico" aria-hidden="true">i</span></button>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Theme: system">◐</button>
+      <button class="install-btn" type="button" data-install hidden>Install</button>
     </div>
   </header>
 
   <noscript>
     <style>
-      .tap, .install-btn, .clear-search, .theme-btn, .icon-btn { display: none !important; }
+      .tap, .install-btn, .clear-search, .theme-btn, .icon-btn, .menu-row, .install-nudge { display: none !important; }
     </style>
     <div class="notice" style="margin:12px 16px 0">Search, details and app install need JavaScript. All cheat-sheet content below works without it.</div>
     <p class="intro" style="margin:10px 16px 0">Look at the <b>trigger</b> — case, preposition, conjunction or verb construction — then at the form and the position.</p>
@@ -566,7 +564,7 @@
         </article>
       </div>
     </section>
-    <div class="footer">German Cheat · <a href="../../">all cheat sheets</a> · <span id="install-help">Install: Android — the “Install” button or the browser menu · iPhone — Share → Add to Home Screen</span> · content plan: <code>de/en/SITE_PLAN.md</code></div>
+    <div class="footer">German Cheat · <a href="../../">all cheat sheets</a> · <span id="install-help">Install: page menu (☰) → “Install” · iPhone — Share → Add to Home Screen</span> · content plan: <code>de/en/SITE_PLAN.md</code></div>
   </main>
 
   <nav class="bottom-nav" aria-label="Main navigation">
@@ -575,6 +573,12 @@
     <a class="nav-item" href="#order" data-nav="order"><span class="ico" aria-hidden="true">V2</span><span>Order</span></a>
     <a class="nav-item" href="#clauses" data-nav="clauses"><span class="ico" aria-hidden="true">weil</span><span>Clauses</span></a>
   </nav>
+
+  <div id="installNudge" class="install-nudge" role="status" hidden>
+    <span class="nudge-text">Work offline — install the cheat sheet on your phone</span>
+    <button class="tap neutral" type="button" data-install>Install</button>
+    <button class="nudge-close" type="button" aria-label="Close">×</button>
+  </div>
 
   <dialog id="detailDialog" aria-labelledby="detailTitle">
     <div class="sheet">
@@ -897,16 +901,17 @@
       if (event.target === dialog) dialog.close();
     });
 
-    // Language menu: light-dismiss (native <details> has none) + Escape.
-    const langMenu = document.getElementById('langMenu');
-    if (langMenu) {
-      document.addEventListener('click', (event) => {
-        if (langMenu.open && !langMenu.contains(event.target)) langMenu.open = false;
+    // Topbar popovers (burger on phones, language menu on desktop): light
+    // dismiss (native <details> has none) + Escape.
+    const menus = [...document.querySelectorAll('details.app-menu, details.lang-menu')];
+    document.addEventListener('click', (event) => {
+      menus.forEach(menu => {
+        if (menu.open && !menu.contains(event.target)) menu.open = false;
       });
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && langMenu.open) langMenu.open = false;
-      });
-    }
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') menus.forEach(menu => { if (menu.open) menu.open = false; });
+    });
     // Remember what is being studied so the landing can greet the learner.
     try { localStorage.setItem('target', TARGET_LANG); } catch (e) {}
 
@@ -1023,21 +1028,44 @@
     }
 
     let deferredPrompt = null;
-    const installBtn = document.getElementById('installBtn');
+    const installBtns = [...document.querySelectorAll('[data-install]')];
     const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-    if (isIOS && !isStandalone) installBtn.hidden = false;
-    else installBtn.hidden = true;
+    const showInstall = (eligible) => installBtns.forEach((btn) => { btn.hidden = !eligible; });
+    if (isIOS && !isStandalone) showInstall(true); // iOS Safari never fires beforeinstallprompt
+    else showInstall(false);
+
+    // Install nudge: browser tab only, once per visitor — showing it writes
+    // the flag, so a dismissal and a later visit both stay quiet. The delay
+    // keeps it off bounce visits; a hidden tab defers to the next focus.
+    const nudge = document.getElementById('installNudge');
+    const NUDGE_KEY = 'installNudge';
+    nudge.querySelector('.nudge-close').addEventListener('click', () => { nudge.hidden = true; });
+    function maybeShowNudge() {
+      if (isStandalone) return;
+      try {
+        if (localStorage.getItem(NUDGE_KEY) === '1') return;
+        localStorage.setItem(NUDGE_KEY, '1');
+      } catch (e) { return; } // storage unavailable: never nag
+      nudge.hidden = false;
+    }
+    setTimeout(() => {
+      if (document.visibilityState === 'visible') maybeShowNudge();
+      else document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') maybeShowNudge();
+      }, { once: true });
+    }, 25000);
 
     window.addEventListener('beforeinstallprompt', (event) => {
       event.preventDefault();
       deferredPrompt = event;
-      installBtn.hidden = false;
+      showInstall(true);
     });
 
     window.addEventListener('appinstalled', () => {
       deferredPrompt = null;
-      installBtn.hidden = true;
+      showInstall(false);
+      nudge.hidden = true;
     });
 
     const INSTALL = {
@@ -1052,12 +1080,13 @@
     "body": "<div class=\"detail-block\"><b class=\"detail-label\">Android / Chrome</b>Browser menu → Install app / Add to Home screen.</div><div class=\"detail-block\"><b class=\"detail-label\">iPhone / Safari</b>Share → Add to Home Screen.</div><div class=\"detail-block\"><b class=\"detail-label\">Important</b>Install and offline caching need the page opened over HTTPS (or localhost), not as a local file from the Files app.</div>"
   }
 };
-    installBtn.addEventListener('click', async () => {
+    installBtns.forEach((btn) => btn.addEventListener('click', async () => {
+      nudge.hidden = true;
       if (deferredPrompt) {
         deferredPrompt.prompt();
         await deferredPrompt.userChoice;
         deferredPrompt = null;
-        installBtn.hidden = true;
+        showInstall(false);
       } else if (isIOS) {
         detailTitle.textContent = INSTALL.ios.title;
         detailLead.textContent = INSTALL.ios.lead;
@@ -1069,7 +1098,7 @@
         detailBody.innerHTML = INSTALL.generic.body;
         dialog.showModal();
       }
-    });
+    }));
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => navigator.serviceWorker.register('../../sw.js').catch(() => {}));

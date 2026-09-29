@@ -104,7 +104,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 116px; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 body {
   margin: 0;
   background: var(--bg);
@@ -134,19 +134,22 @@ a { color: inherit; }
   border-bottom: 1px solid var(--line);
 }
 .topbar-inner, main { width: min(100%, 980px); margin: 0 auto; }
-.topbar-inner { padding: 12px 16px 10px; }
+.topbar-inner { display: flex; align-items: center; gap: 10px; padding: 10px 16px; }
 .brand-row { display: flex; align-items: center; gap: 10px; }
 .brand {
   display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1;
   font-weight: 800; letter-spacing: -.02em;
 }
+/* Deck pages: the brand is one item in the one-line header (search takes the
+   flex room); the landing keeps .brand flex:1 inside its own .brand-row. */
+.topbar-inner > .brand { flex: 0 1 auto; }
 .brand-mark {
   width: 36px; height: 36px; border-radius: 11px;
   display: grid; place-items: center; background: var(--text); color: var(--bg); font-weight: 900;
 }
 .brand small { display: block; color: var(--muted); font-weight: 600; font-size: .78rem; letter-spacing: 0; }
-/* The audience code lives in the header [RU] chip; the sub line would wrap
-   once the install button crowds the brand row on phones. */
+/* Landing only: the brand sub line would wrap once the language menu + theme
+   crowd the brand row on phones (deck pages hide the whole brand block). */
 @media (max-width: 460px) { .brand small { display: none; } }
 .install-btn {
   min-height: 44px; padding: 0 14px; border: 1px solid var(--line); border-radius: 12px;
@@ -189,15 +192,46 @@ a { color: inherit; }
 .lang-pop a:hover, .lang-pop a:active, .lang-pop button:not(:disabled):hover { background: var(--surface-2); }
 .lang-pop .cur { background: var(--accent-soft); color: var(--on-accent-soft); font-weight: 800; cursor: default; }
 .lang-pop .soon { color: var(--muted); cursor: default; }
-/* Search row: field + audience locale switcher side by side. */
-.search-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+/* Burger (deck pages, phones): a native <details> so the language groups
+   keep working without JS; JS only adds light dismiss. Carries the page
+   identity (the brand block leaves the one-line header), the same two
+   language groups as the desktop menu, and the help/install rows. */
+.app-menu { position: relative; flex: 0 0 auto; }
+.app-menu summary {
+  width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 12px;
+  background: var(--surface); cursor: pointer; font-size: 1.15rem; line-height: 1;
+  display: grid; place-items: center; list-style: none;
+}
+.app-menu summary::-webkit-details-marker { display: none; }
+.app-menu .lang-pop { left: 0; right: auto; min-width: 250px; }
+.app-identity { padding: 10px 11px 8px; font-weight: 800; letter-spacing: -.02em; }
+.app-identity small { display: block; color: var(--muted); font-weight: 600; font-size: .78rem; letter-spacing: 0; }
+.app-sep { border-top: 1px solid var(--line); margin: 5px 0; }
+.menu-row {
+  display: flex; align-items: center; gap: 9px; width: 100%; text-align: left;
+  padding: 10px 11px; border: 0; border-radius: 9px; background: none;
+  font: inherit; font-size: .88rem; color: var(--text); cursor: pointer;
+}
+.menu-row:hover { background: var(--surface-2); }
+.menu-row[hidden] { display: none; }
+.menu-row .ico { font-family: var(--font-study); font-style: italic; font-size: 1.05rem; }
+/* Search field: the target-language chip (persistent "which deck am I in"
+   marker — a placeholder would vanish on typing) + the ⌕ glyph, then input. */
 .search-wrap { position: relative; flex: 1; min-width: 0; }
+.search-head {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  display: flex; align-items: center; gap: 7px; pointer-events: none;
+}
+.search-icon { color: var(--muted); }
+.search-chip {
+  padding: 3px 7px; border-radius: 8px; background: var(--surface-2);
+  color: var(--muted); font-size: .78rem; font-weight: 900; letter-spacing: .05em;
+}
 .search {
   width: 100%; min-height: 46px; border: 1px solid var(--line); border-radius: 14px;
-  background: var(--surface); color: var(--text); padding: 0 44px 0 42px; box-shadow: 0 3px 12px rgba(23,32,51,.04);
+  background: var(--surface); color: var(--text); padding: 0 44px 0 78px; box-shadow: 0 3px 12px rgba(23,32,51,.04);
 }
 .search::-webkit-search-cancel-button, .search::-webkit-search-decoration { -webkit-appearance: none; appearance: none; }
-.search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
 .clear-search {
   position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px;
   border: 0; border-radius: 10px; background: transparent; cursor: pointer; color: var(--muted); font-size: 1.2rem;
@@ -301,10 +335,28 @@ td.hot { font-weight: 850; color: var(--on-accent-soft); }
 /* While searching, results come first: hide the noscript intro line. */
 body.searching .intro { display: none; }
 
+/* One-time install nudge (browser tabs only): floats above the bottom nav,
+   never blocking content; dismissed or auto-quiet after install. */
+.install-nudge {
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 10px); z-index: 35;
+  width: min(100% - 24px, 560px);
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 10px 10px 14px;
+  border: 1px solid var(--line); border-radius: 16px;
+  background: var(--surface); box-shadow: var(--shadow);
+}
+.install-nudge[hidden] { display: none; }
+.nudge-text { flex: 1; font-size: .88rem; font-weight: 600; }
+.nudge-close {
+  width: 36px; height: 36px; border: 0; border-radius: 9px; background: transparent;
+  color: var(--muted); font-size: 1.2rem; cursor: pointer; flex: 0 0 auto;
+}
+
 .bottom-nav {
   position: fixed; left: 50%; transform: translateX(-50%); bottom: 0; z-index: 30;
   width: min(100%, 980px); height: calc(var(--nav-h) + env(safe-area-inset-bottom));
-  display: grid; grid-template-columns: repeat(5,1fr); align-items: start; padding: 8px 8px env(safe-area-inset-bottom);
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); align-items: start; padding: 8px 8px env(safe-area-inset-bottom);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
   background: color-mix(in srgb, var(--surface) 94%, transparent);
@@ -336,8 +388,20 @@ dialog::backdrop { background: var(--backdrop); }
 
 .footer { color: var(--muted); font-size: .78rem; text-align: center; padding: 28px 0 10px; }
 
+/* One-line topbar at every width. Phones: burger + search + theme — brand,
+   language menu, help and install live in the burger popover. ≥720px: the
+   burger hides and the full header is inline. The landing keeps its own
+   .brand-row composition (it is the selector page), so the swap targets
+   only direct children of the deck header. */
+@media (max-width: 719.98px) {
+  .topbar-inner > .brand,
+  .topbar-inner > .lang-menu,
+  .topbar-inner > .icon-btn,
+  .topbar-inner > .install-btn { display: none; }
+}
 @media (min-width: 720px) {
   .topbar-inner { padding-left: 24px; padding-right: 24px; }
+  .topbar-inner > .app-menu { display: none; }
   main { padding-left: 24px; padding-right: 24px; }
   .cards.two { grid-template-columns: repeat(2, minmax(0,1fr)); }
   .cards.three { grid-template-columns: repeat(3, minmax(0,1fr)); }
@@ -346,7 +410,7 @@ dialog::backdrop { background: var(--backdrop); }
 }
 
 @media print {
-  .topbar, .bottom-nav, .chips, .no-results, dialog { display: none !important; }
+  .topbar, .bottom-nav, .chips, .no-results, dialog, .app-menu, .install-nudge { display: none !important; }
   body { padding: 0; background: #fff; color: #000; }
   .cheat-card { break-inside: avoid; box-shadow: none; }
   .table-scroll { overflow: visible; }

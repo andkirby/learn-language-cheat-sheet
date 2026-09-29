@@ -21,7 +21,7 @@
   },
   "strings": {
     "search_placeholder": "Поиск: wem, weil, modal, Dativ…",
-    "search_aria": "Поиск по шпаргалке",
+    "search_aria": "Поиск по немецкой шпаргалке",
     "clear_aria": "Очистить поиск",
     "search_results": "Найдено карточек",
     "install_label": "Установить",
@@ -58,8 +58,10 @@
       ]
     },
     "footer_all": "все шпаргалки",
-    "footer_install": "Установка: Android — кнопка «Установить» или меню браузера · iPhone — Share → Add to Home Screen",
+    "footer_install": "Установка: меню страницы (☰) → «Установить» · iPhone — Share → Add to Home Screen",
     "footer_plan": "план контента:",
+    "menu_aria": "Меню: язык, справка, установка",
+    "nudge_text": "Работайте офлайн — установите шпаргалку на телефон",
     "lang_menu_aria": "Язык обучения и язык объяснений",
     "lang_group_target": "Язык обучения",
     "lang_group_audience": "Язык объяснений",

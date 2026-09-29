@@ -257,7 +257,7 @@ def _validate_strings(deck, errors):
     for s in ("search_placeholder", "search_aria", "clear_aria", "search_results", "install_label",
               "close_aria", "nav_aria", "no_results", "noscript_notice",
               "footer_all",
-              "footer_install", "footer_plan"):
+              "footer_install", "footer_plan", "menu_aria", "nudge_text"):
         if not strings.get(s):
             errors.append(f"strings.{s} is required")
     _check_runs(errors, strings.get("noscript_intro", []), "strings.noscript_intro")

@@ -86,8 +86,13 @@ Rules:
 - Grid/flex children that contain wide content (tables) must be allowed to
   shrink: `.cards > * { min-width: 0 }` — tables scroll inside
   `.table-scroll`, never the page.
-- `scroll-padding-top: 116px` keeps anchored sections clear of the sticky
-  topbar.
+- `scroll-padding-top: 72px` keeps anchored sections clear of the sticky
+  one-line topbar.
+- Deck topbar is ONE flex row at every width. Phones (≤719px): burger →
+  search (language chip inside the field) → theme; brand, language menu,
+  help and install live in the burger popover. ≥720px: the burger hides
+  and the header is inline (brand → search → lang menu → help → theme →
+  install). The landing keeps its own `.brand-row` composition.
 - Bottom nav is fixed, 4–5 **view destinations**, respects
   `env(safe-area-inset-bottom)`. A tap switches the visible view (sections
   carry `data-view`); there is no scrollspy — the selected view is the nav
@@ -109,8 +114,11 @@ Rules:
 | `.bottom-nav` | View switcher. Active item = selected view, gets `.active` **and** `aria-current="true"`; decorative grammar cues are hidden from screen readers. During search, selection styling and `aria-current` clear because results span views. A tap clears search, updates the hash and scrolls to top. |
 | `section[data-view]` | View membership. JS hides non-active views via the `hidden` attribute; search unhides matching sections across views; noscript and print show everything stacked. |
 | `.theme-btn` | 44px topbar icon button; cycles/persists the theme (see Theming). |
-| `.icon-btn` | 44px topbar icon button (shares `.theme-btn` styling); the (i) usage button opens the shared dialog via `data-detail="lookup-help"`; carries `#start`; hidden on noscript pages, which keep a plain `.intro` line. |
-| `.lang-menu` | Topbar language control (native `<details>`, works without JS): one popover, two flat labeled groups — «Язык обучения» (targets, navigational links, from `content/decks/site.json`) and «Язык объяснений» (audiences; `.cur` = current, `.soon` = no deck yet). Landing: brand row; deck pages: search row (brand row can't fit it beside the install button at 390px). JS adds light dismiss + Escape. Never a submenu — both choices are visible state. |
+| `.icon-btn` | 44px topbar icon button (shares `.theme-btn` styling); the (i) usage button opens the shared dialog via `data-detail="lookup-help"`; carries `#start`; deck pages: ≥720px only (phones get an id-less row inside the burger, so the id stays unique); hidden on noscript pages, which keep a plain `.intro` line. |
+| `.app-menu` | Phone burger (native `<details>`, works without JS; hidden ≥720px): identity line (brand name + sub, which leave the one-line header), the same two language groups as `.lang-menu`, then help + install rows (`.menu-row`; the help row is id-less on purpose). JS adds light dismiss + Escape for both menus. |
+| `.search-chip` | Persistent target-language mark (the deck's `brand_mark`) leading the search field — "which deck am I in" survives typing, unlike a placeholder; the input's `aria-label` names the language for screen readers. |
+| `.lang-menu` | Topbar language control (native `<details>`, works without JS): one popover, two flat labeled groups — «Язык обучения» (targets, navigational links, from `content/decks/site.json`) and «Язык объяснений» (audiences; `.cur` = current, `.soon` = no deck yet). Deck pages: inline ≥720px, inside the burger on phones; landing: brand row. JS adds light dismiss + Escape. Never a submenu — both choices are visible state. |
+| `.install-nudge` | One-time install prompt above the bottom nav: browser tab only, shown after a ~25s dwell, `localStorage.installNudge` written when shown (once per visitor, ever); hidden in standalone and noscript. |
 | `.lang-card` (landing only) | Whole-card link to a language folder: mark + name + topics + `→`; hover accent border. |
 
 ## Interaction states & feedback

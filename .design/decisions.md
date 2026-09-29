@@ -523,3 +523,34 @@ Verben, Präpositionen, Nomen, If-Sätze). Section ids, card anchors and the
 topic skeleton are untouched — deck copy edited in the deck JSON, pages
 regenerated. No shared component change; the service-worker cache bump rides
 the same review-fix commit.
+
+## 2026-09-29 — One-line header: burger takes brand, languages, help and install
+
+The deck-page topbar is one flex row at every width. On phones it is
+burger → search → theme; the brand block, the language menu, help (i)
+and the install button move into a native `<details>` burger popover
+(languages keep working without JS; JS adds light-dismiss + Escape).
+≥720px the burger hides and the full header is inline — the two-row
+mobile header and the stacked desktop header collapse into the same
+one-row DOM, swapped by CSS on direct children of `.topbar-inner` so the
+landing's own `.brand-row` is untouched.
+
+The search field carries a persistent target-language chip (the deck's
+brand mark) instead of relying on the placeholder: the chip survives
+typing, which a placeholder cannot, and in a standalone PWA with no
+address bar it is the only on-screen identity left once the brand block
+moved into the burger. The input's aria-label names the language for
+screen readers.
+
+The practice removal (separate commit, 936378f) freed a bottom-nav slot;
+the nav grid is now auto-fit (DE decks 4 destinations, EN decks 5). A
+bottom-nav search button was considered and rejected: search is already
+sticky and always visible, and a sixth slot would break the EN nav at
+390px. Install gains a one-time nudge: browser tabs only, after a ~25s
+dwell, shown once ever (`localStorage.installNudge` written when shown);
+install itself lives in the burger on phones, stays inline on desktop,
+and every `[data-install]` button shares one handler.
+`scroll-padding-top` drops 116px → 72px for the shorter header. Landing
+header unchanged by design (language choice is the hub's primary
+action); landing footer's install hint reworded for the new placement.
+Service-worker cache: v39.

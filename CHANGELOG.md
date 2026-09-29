@@ -6,6 +6,24 @@ UI rationale lives in
 `.design/decisions.md`, content review evidence in `CONTENT_AUDIT.md`.
 Append the entry in the same commit that ships the change.
 
+## 2026-09-29 (one-line header + practice removed)
+
+- **Practice view removed** from all four decks (plans DE-D01/EN-D01,
+  DEBT D-03): three static questions had no replay value, so the view,
+  its footer links and its search-token exemptions are gone; practice
+  returns only as a designed pool/shuffle surface. DE decks now navigate
+  with four destinations, EN keep five.
+- **One-line header**: phones get burger → search → theme; brand,
+  languages, help and install live in the burger popover (still usable
+  without JavaScript). ≥720px the whole header is inline on one row. The
+  search field carries a persistent DE/EN chip that survives typing.
+- **Install nudge**: a quiet one-time prompt appears for browser-tab
+  visitors after ~25 seconds (never in the installed app, never twice);
+  on phones the install button itself lives in the burger.
+- Sweep: help-dialog navigation copy, footer install hints, scroll
+  anchor offsets and the design-system/style-guide specimens follow.
+  Service-worker cache: v38 (practice removal), v39 (header).
+
 ## 2026-09-29 (sibling-drift gate + scope correction)
 
 - **New gate**: `build_pages.py --check-siblings` diffs each target's

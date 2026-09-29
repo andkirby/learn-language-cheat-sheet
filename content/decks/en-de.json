@@ -21,7 +21,7 @@
   },
   "strings": {
     "search_placeholder": "Suche: present, perfect, if, the…",
-    "search_aria": "Spickzettel durchsuchen",
+    "search_aria": "Suche im englischen Spickzettel",
     "clear_aria": "Suche löschen",
     "search_results": "Gefundene Karten",
     "install_label": "Installieren",
@@ -58,8 +58,10 @@
       ]
     },
     "footer_all": "alle Spickzettel",
-    "footer_install": "Installation: Android — Button „Installieren“ oder Browsermenü · iPhone — Teilen → Zum Home-Bildschirm",
+    "footer_install": "Installation: Seitenmenü (☰) → „Installieren“ · iPhone — Teilen → Zum Home-Bildschirm",
     "footer_plan": "Inhaltsplan:",
+    "menu_aria": "Menü: Sprache, Hilfe, Installation",
+    "nudge_text": "Arbeite offline — installiere den Spickzettel auf dem Telefon",
     "lang_menu_aria": "Lernsprache und Erklärungssprache",
     "lang_group_target": "Lernsprache",
     "lang_group_audience": "Erklärungssprache",

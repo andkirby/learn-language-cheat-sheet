@@ -233,7 +233,7 @@
     },
     "strings": {
       "type": "object",
-      "required": ["search_placeholder", "search_aria", "clear_aria", "search_results", "install_label", "close_aria", "nav_aria", "no_results", "noscript_notice", "noscript_intro", "theme", "install_ios", "install_generic", "footer_all", "footer_install", "footer_plan"],
+      "required": ["search_placeholder", "search_aria", "clear_aria", "search_results", "install_label", "close_aria", "nav_aria", "no_results", "noscript_notice", "noscript_intro", "theme", "install_ios", "install_generic", "footer_all", "footer_install", "footer_plan", "menu_aria", "nudge_text"],
       "additionalProperties": false,
       "properties": {
         "_note": {"type": "string"},
@@ -262,6 +262,8 @@
         "footer_install": {"type": "string"},
         "footer_plan": {"type": "string"},
         "lang_menu_aria": {"type": "string", "description": "header language menu — summary aria-label"},
+        "menu_aria": {"type": "string", "description": "mobile burger summary aria-label"},
+        "nudge_text": {"type": "string", "description": "one-time install nudge text"},
         "lang_group_target": {"type": "string", "description": "menu group header: learning language"},
         "lang_group_audience": {"type": "string", "description": "menu group header: explanation language"},
         "lang_soon": {"type": "string", "description": "marker for audiences without a deck yet"}

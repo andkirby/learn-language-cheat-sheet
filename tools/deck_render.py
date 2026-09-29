@@ -96,7 +96,9 @@ def _help_button_html(help_btn):
             f"<span class=\"ico\" aria-hidden=\"true\">{esc(help_btn['ico'])}</span></button>")
 
 
-def _lang_menu_html(deck, site):
+def _lang_groups_html(deck, site):
+    """The two flat language groups («Язык обучения» / «Язык объяснений»),
+    shared by the desktop lang-menu popover and the mobile burger."""
     meta, strings = deck["meta"], deck["strings"]
     targets = site["targets"]
     cur_target = next(t for t in targets if t["id"] == meta["target"])
@@ -118,12 +120,41 @@ def _lang_menu_html(deck, site):
             a_items.append(f"<span class=\"soon\">{esc(a['label'])} — {esc(strings['lang_soon'])}</span>")
         else:
             a_items.append(f"<a href=\"../{escq(a['id'])}/\">{esc(a['label'])}</a>")
+    return (f"<div class=\"lang-group\"><div class=\"lang-group-label\">{esc(strings['lang_group_target'])}</div>{''.join(t_items)}</div>"
+            f"<div class=\"lang-group\"><div class=\"lang-group-label\">{esc(strings['lang_group_audience'])}</div>{''.join(a_items)}</div>")
+
+
+def _lang_menu_html(deck, site):
+    """Desktop language control: one popover, two groups. Phones get the same
+    groups inside the burger (_app_menu_html) and this control is hidden."""
+    meta, strings = deck["meta"], deck["strings"]
     return (f"<details class=\"lang-menu\" id=\"langMenu\">"
             f"<summary aria-label=\"{escq(strings['lang_menu_aria'])}\">"
             f"{esc(meta['target'].upper())} · {esc(meta['audience'].upper())}</summary>"
-            f"<div class=\"lang-pop\">"
-            f"<div class=\"lang-group\"><div class=\"lang-group-label\">{esc(strings['lang_group_target'])}</div>{''.join(t_items)}</div>"
-            f"<div class=\"lang-group\"><div class=\"lang-group-label\">{esc(strings['lang_group_audience'])}</div>{''.join(a_items)}</div>"
+            f"<div class=\"lang-pop\">{_lang_groups_html(deck, site)}</div></details>")
+
+
+def _app_menu_html(deck, site):
+    """Mobile burger (phones only; hidden ≥720px): a native <details> so the
+    language groups keep working without JS — JS only adds light dismiss.
+    Carries the page identity (the brand block leaves the one-line header),
+    the same language groups as the desktop menu, and the help/install rows.
+    The help row is id-less on purpose: the desktop button owns the deck's
+    help id (#start), which must stay unique in the DOM."""
+    meta, strings = deck["meta"], deck["strings"]
+    help_btn = deck.get("help")
+    help_row = ""
+    if help_btn:
+        help_row = (f"<button class=\"menu-row\" type=\"button\" data-detail=\"{escq(help_btn['detail'])}\">"
+                    f"<span class=\"ico\" aria-hidden=\"true\">{esc(help_btn['ico'])}</span>{esc(help_btn['label'])}</button>")
+    install_row = f"<button class=\"menu-row\" type=\"button\" data-install hidden>{esc(strings['install_label'])}</button>"
+    return (f"<details class=\"app-menu\">"
+            f"<summary aria-label=\"{escq(strings['menu_aria'])}\"><span aria-hidden=\"true\">☰</span></summary>"
+            f"<div class=\"lang-pop app-pop\">"
+            f"<div class=\"app-identity\">{esc(meta['brand_name'])}<small>{esc(meta['brand_sub'])}</small></div>"
+            f"{_lang_groups_html(deck, site)}"
+            f"<div class=\"app-sep\" aria-hidden=\"true\"></div>"
+            f"{help_row}{install_row}"
             f"</div></details>")
 
 
@@ -180,8 +211,10 @@ def render(deck, deck_path, site):
         "@@NOSCRIPT_NOTICE@@": esc(strings["noscript_notice"]),
         "@@NOSCRIPT_INTRO@@": runs_html(strings["noscript_intro"]),
         "@@HELP_BUTTON@@": _help_button_html(deck.get("help")),
+        "@@APP_MENU@@": _app_menu_html(deck, site),
         "@@LANG_MENU@@": _lang_menu_html(deck, site),
         "@@NO_RESULTS@@": esc(strings["no_results"]),
+        "@@NUDGE_TEXT@@": esc(strings["nudge_text"]),
         "@@SECTIONS@@": sections_html.rstrip("\n"),
         "@@FOOTER_ALL@@": esc(strings["footer_all"]),
         "@@FOOTER_INSTALL@@": esc(strings["footer_install"]),
