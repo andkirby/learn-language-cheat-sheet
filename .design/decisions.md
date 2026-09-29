@@ -532,8 +532,12 @@ and the install button move into a native `<details>` burger popover
 (languages keep working without JS; JS adds light-dismiss + Escape).
 ≥720px the burger hides and the full header is inline — the two-row
 mobile header and the stacked desktop header collapse into the same
-one-row DOM, swapped by CSS on direct children of `.topbar-inner` so the
-landing's own `.brand-row` is untouched.
+one-row DOM, swapped by CSS on direct children of `.topbar-inner`. The
+landing's controls and their behavior are untouched; because its
+`.brand-row` now sits inside a flex header, it becomes a full-width flex
+item (`.topbar-inner > .brand-row { flex: 1 1 auto }`) so `.brand`'s
+flex:1 still pushes the language menu + theme to the right edge — same
+look as before, different box mechanics.
 
 The search field carries a persistent target-language chip (the deck's
 brand mark) instead of relying on the placeholder: the chip survives
@@ -549,8 +553,10 @@ sticky and always visible, and a sixth slot would break the EN nav at
 390px. Install gains a one-time nudge: browser tabs only, after a ~25s
 dwell, shown once ever (`localStorage.installNudge` written when shown);
 install itself lives in the burger on phones, stays inline on desktop,
-and every `[data-install]` button shares one handler.
-`scroll-padding-top` drops 116px → 72px for the shorter header. Landing
-header unchanged by design (language choice is the hub's primary
-action); landing footer's install hint reworded for the new placement.
-Service-worker cache: v39.
+and every `[data-install]` button shares one handler (visibility wiring
+covers the header buttons only — the nudge's own button shows with the
+nudge, so browsers without `beforeinstallprompt` still get a working
+install action). `scroll-padding-top` drops 116px → 72px for the shorter
+header. Landing header keeps its composition and look (language choice
+is the hub's primary action); landing footer's install hint reworded for
+the new placement. Service-worker cache: v40.

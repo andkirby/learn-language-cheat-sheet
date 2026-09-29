@@ -852,14 +852,14 @@
     // serif study voice from base.css). The tagging policy follows the
     // audience's script (site.json registry, threaded through the generator):
     //  - cyrillic audience: the script heuristic. Whole containers that carry
-    //    only target-language text (examples incl. pair sources, answers,
+    //    only target-language text (examples incl. pair sources,
     //    declension tables) are marked directly; otherwise the fragments are:
-    //    bold in .example/.answer (hits included), detail-block runs —
+    //    bold in .example (hits included), detail-block runs —
     //    bold/strike/italic, the Cyrillic .detail-label excluded — and
     //    formula slots without Cyrillic. Pair glosses stay in the UI voice.
     //  - latin audience: explanations share the target's script, so no
     //    script heuristic is safe. Only the explicit markup convention is
-    //    tagged — bold/hit runs are target text (examples, answers, detail
+    //    tagged — bold/hit runs are target text (examples, detail
     //    blocks, formula slots); prose, italic hints and glosses stay in the
     //    audience voice. Deck copy must bold every target fragment that
     //    needs the study voice. Tables/notice prose/plain slots have no
@@ -868,14 +868,14 @@
     const AUDIENCE_SCRIPT = 'latin';
     function markTargetLang(root) {
       if (AUDIENCE_SCRIPT === 'cyrillic') {
-        root.querySelectorAll('.example, .answer, .table-scroll, .pair-src').forEach(el => {
+        root.querySelectorAll('.example, .table-scroll, .pair-src').forEach(el => {
           if (!/[а-яё]/i.test(el.textContent)) el.lang = TARGET_LANG;
         });
-        root.querySelectorAll('.example b, .answer b, .detail-block b:not(.detail-label), .detail-block i, .detail-block s, .formula .slot').forEach(el => {
+        root.querySelectorAll('.example b, .detail-block b:not(.detail-label), .detail-block i, .detail-block s, .formula .slot').forEach(el => {
           if (!/[а-яё]/i.test(el.textContent)) el.lang = TARGET_LANG;
         });
       } else {
-        root.querySelectorAll('.example b, .answer b, .detail-block b:not(.detail-label), .formula .slot b').forEach(el => {
+        root.querySelectorAll('.example b, .detail-block b:not(.detail-label), .formula .slot b').forEach(el => {
           el.lang = TARGET_LANG;
         });
       }
@@ -1028,7 +1028,11 @@
     }
 
     let deferredPrompt = null;
-    const installBtns = [...document.querySelectorAll('[data-install]')];
+    // Visibility wiring covers the header buttons only; the nudge's own
+    // button shows with the nudge — browsers without beforeinstallprompt
+    // (Firefox, desktop Safari) still get a working install action.
+    const installTargets = [...document.querySelectorAll('[data-install]')];
+    const installBtns = installTargets.filter((btn) => !btn.closest('.install-nudge'));
     const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
     const showInstall = (eligible) => installBtns.forEach((btn) => { btn.hidden = !eligible; });
@@ -1080,7 +1084,7 @@
     "body": "<div class=\"detail-block\"><b class=\"detail-label\">Android / Chrome</b>Browser menu → Install app / Add to Home screen.</div><div class=\"detail-block\"><b class=\"detail-label\">iPhone / Safari</b>Share → Add to Home Screen.</div><div class=\"detail-block\"><b class=\"detail-label\">Important</b>Install and offline caching need the page opened over HTTPS (or localhost), not as a local file from the Files app.</div>"
   }
 };
-    installBtns.forEach((btn) => btn.addEventListener('click', async () => {
+    installTargets.forEach((btn) => btn.addEventListener('click', async () => {
       nudge.hidden = true;
       if (deferredPrompt) {
         deferredPrompt.prompt();
@@ -1103,146 +1107,6 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => navigator.serviceWorker.register('../../sw.js').catch(() => {}));
     }
-  </script>
-
-  <!-- Layout lab (preview-only, never production): ?layout=bento|sidebar|spread
-       activates an experimental page composition for this tab session
-       (sessionStorage — visitors without the param never enter the lab).
-       Variant CSS lives in assets/layouts.css and is loaded only while the
-       lab is active, so the production page ships zero extra bytes. A layout
-       that gets adopted graduates into assets/base.css; the rest is deleted
-       (see .design/decisions.md). -->
-  <script>
-    (function () {
-      const LAB_KEY = 'layoutLab';
-      const LAYOUTS = ['bento', 'sidebar', 'spread'];
-      let layout = null;
-      try { layout = sessionStorage.getItem(LAB_KEY); } catch (e) {}
-      const requested = new URLSearchParams(location.search).get('layout');
-      if (requested !== null) {
-        layout = LAYOUTS.includes(requested) ? requested : 'stack';
-        try { sessionStorage.setItem(LAB_KEY, layout); } catch (e) {}
-      }
-      if (layout === null) return; // production path: nothing stored, nothing to do
-
-      document.documentElement.dataset.layoutLab = '';
-      const labStyle = document.createElement('link');
-      labStyle.rel = 'stylesheet';
-      labStyle.href = '../../assets/layouts.css';
-      document.head.appendChild(labStyle);
-
-      // Editorial spread: the first card of every section is its featured rule.
-      document.querySelectorAll('section[data-section]').forEach(sec => {
-        const lead = sec.querySelector('.cheat-card');
-        if (lead) lead.classList.add('spread-lead');
-      });
-
-      function buildRail() {
-        if (document.querySelector('.layout-rail')) return;
-        const rail = document.createElement('aside');
-        rail.className = 'layout-rail';
-        rail.setAttribute('aria-label', 'Views');
-        document.querySelectorAll('.nav-item').forEach(item => {
-          const viewId = item.dataset.nav;
-          const group = document.createElement('div');
-          group.className = 'rail-group';
-          const view = document.createElement('a');
-          view.className = 'rail-view';
-          view.href = '#' + viewId;
-          view.dataset.railView = viewId;
-          const label = item.querySelector('span:not(.ico)');
-          view.textContent = (label || item).textContent.trim();
-          group.appendChild(view);
-          document.querySelectorAll('section[data-view="' + viewId + '"]').forEach(sec => {
-            const h2 = sec.querySelector('h2');
-            if (!h2) return;
-            const link = document.createElement('a');
-            link.className = 'rail-link';
-            link.href = '#' + sec.id;
-            link.textContent = h2.textContent.trim();
-            group.appendChild(link);
-          });
-          rail.appendChild(group);
-        });
-        document.body.prepend(rail);
-      }
-      function removeRail() {
-        const rail = document.querySelector('.layout-rail');
-        if (rail) rail.remove();
-      }
-      // Rail active state follows the view switcher: wrap the page's own
-      // setView so every switch path (nav, search clear, hash) stays in sync.
-      if (typeof window.setView === 'function') {
-        const baseSetView = window.setView;
-        window.setView = function (viewId) {
-          baseSetView(viewId);
-          document.querySelectorAll('.rail-view').forEach(a => {
-            const on = a.dataset.railView === viewId;
-            a.classList.toggle('active', on);
-            if (on) a.setAttribute('aria-current', 'true');
-            else a.removeAttribute('aria-current');
-          });
-        };
-      }
-
-      const dock = document.createElement('div');
-      dock.className = 'lab-dock';
-      dock.setAttribute('role', 'group');
-      dock.setAttribute('aria-label', 'Layout lab');
-      ['bento', 'sidebar', 'spread', 'stack'].forEach(name => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'lab-btn';
-        btn.dataset.lab = name;
-        btn.textContent = name[0].toUpperCase() + name.slice(1);
-        dock.appendChild(btn);
-      });
-      const exit = document.createElement('button');
-      exit.type = 'button';
-      exit.className = 'lab-exit';
-      exit.dataset.labExit = '';
-      exit.setAttribute('aria-label', 'Exit layout lab');
-      exit.textContent = '×';
-      dock.appendChild(exit);
-      dock.addEventListener('click', (event) => {
-        if (event.target.closest('[data-lab-exit]')) {
-          try { sessionStorage.removeItem(LAB_KEY); } catch (e) {}
-          location.replace(location.pathname + location.hash);
-          return;
-        }
-        const btn = event.target.closest('[data-lab]');
-        if (!btn) return;
-        const next = btn.dataset.lab;
-        try { sessionStorage.setItem(LAB_KEY, next); } catch (e) {}
-        if (LAYOUTS.includes(next)) {
-          document.documentElement.dataset.layout = next;
-          if (next === 'sidebar') buildRail(); else removeRail();
-        } else {
-          delete document.documentElement.dataset.layout;
-          removeRail();
-        }
-        syncDock();
-      });
-      function syncDock() {
-        const current = document.documentElement.dataset.layout || 'stack';
-        dock.querySelectorAll('[data-lab]').forEach(btn => {
-          const on = btn.dataset.lab === current;
-          btn.classList.toggle('active', on);
-          btn.setAttribute('aria-pressed', String(on));
-        });
-      }
-      document.body.appendChild(dock);
-
-      if (LAYOUTS.includes(layout)) {
-        document.documentElement.dataset.layout = layout;
-        if (layout === 'sidebar') buildRail();
-      }
-      syncDock();
-      // The page's initial setView ran before the wrap: resync the rail once.
-      if (document.querySelector('.layout-rail') && typeof window.setView === 'function') {
-        window.setView(currentView);
-      }
-    })();
   </script>
 </body>
 </html>

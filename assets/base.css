@@ -143,6 +143,9 @@ a { color: inherit; }
 /* Deck pages: the brand is one item in the one-line header (search takes the
    flex room); the landing keeps .brand flex:1 inside its own .brand-row. */
 .topbar-inner > .brand { flex: 0 1 auto; }
+/* Landing only: its .brand-row is a flex item now — let it fill the row so
+   .brand's flex:1 still pushes the language menu + theme to the right. */
+.topbar-inner > .brand-row { flex: 1 1 auto; }
 .brand-mark {
   width: 36px; height: 36px; border-radius: 11px;
   display: grid; place-items: center; background: var(--text); color: var(--bg); font-weight: 900;

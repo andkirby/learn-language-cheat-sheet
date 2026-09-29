@@ -196,6 +196,9 @@ def _validate_meta(deck, errors):
 def _validate_content(deck, site, errors):
     """Views, sections, cards, help, details and id uniqueness."""
     meta = deck.get("meta", {})
+    if "practice" in deck:
+        errors.append("practice: blocks are no longer supported (removed 2026-09-29, "
+                      "DEBT D-03) — delete the practice key from the deck")
     details = deck.get("details", {})
     chk = _Checker(errors, details, _grammar_terms(site, meta.get("target")),
                    _SCRIPTS.get(audience_script(site, meta.get("target"), meta.get("audience"))))
@@ -253,7 +256,10 @@ def _validate_content(deck, site, errors):
 
 def _validate_strings(deck, errors):
     strings = deck.get("strings", {})
-    # footer_practice is optional: decks whose footer has no practice link omit it.
+    for s in ("reveal_show", "reveal_hide", "footer_practice"):
+        if s in strings:
+            errors.append(f"strings.{s}: retired with the practice view (2026-09-29, "
+                          f"DEBT D-03) — remove the key from the deck")
     for s in ("search_placeholder", "search_aria", "clear_aria", "search_results", "install_label",
               "close_aria", "nav_aria", "no_results", "noscript_notice",
               "footer_all",

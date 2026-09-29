@@ -86,11 +86,12 @@ Check every content unit, including every table cell and hidden answer:
 - Language variety, register and exceptions are identified when relevant.
 - A learner can tell when to use the pattern; cards remain concise and
   dialogs provide useful depth without contradicting the card.
-- Practice has sufficient context, correct answers and explanations, and
-  accepts valid alternatives. Map each item to topic IDs. Three learner
-  exercises are a UI choice, not full validation coverage.
+- If on-page practice returns (removed 2026-09-29, DEBT D-03), it needs
+  sufficient context, correct answers and explanations accepting valid
+  alternatives, each item mapped to topic IDs. Learner exercises are a UI
+  choice, not full validation coverage.
 
-Review probes may live in the audit rather than increasing on-page practice.
+Review probes live in the audit rather than on the page.
 Use a separate reviewer from the content author for the linguistic pass;
 record who reviewed it and which material they inspected. Automated checks
 can establish structural coverage, not certify naturalness or correctness.
@@ -106,7 +107,7 @@ probe + expected result + observed result, findings and verdict.
 | Baseline | All candidate gaps decided; levels/depth justified by sources; every required topic inventoried; exclusions have rationale and reconsideration triggers |
 | Coverage | Every required topic covered; all actual content mapped back to scope; no unexplained omissions |
 | Accuracy | Every actual content unit reviewed; no unresolved wrong rules, misleading shortcuts, incorrect examples/translations or answers |
-| Teaching | Triggers and relevant limits clear; examples and practice support the rule; card/dialog consistency checked |
+| Teaching | Triggers and relevant limits clear; examples support the rule; card/dialog consistency checked |
 
 Use PASS, FAIL, or NOT RUN for each gate. Partial inspection is NOT RUN for
 the full gate, with reviewed items listed separately. Overall PASS requires

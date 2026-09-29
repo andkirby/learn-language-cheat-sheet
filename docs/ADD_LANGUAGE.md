@@ -185,9 +185,9 @@ deck-level integration checks, not a second copy of that contract:
   breaks every shared link to that card.
 - Register `'../../sw.js'`; manifest `./manifest.webmanifest`; og:url/og:image
   absolute: `https://andkirby.github.io/learn-language-cheat-sheet/<target>/<audience>/…`.
-- Practice implements the plan's topic mapping; the generator wires `.reveal`,
-  `aria-expanded` and `aria-controls`. Review all answers; learner exercises
-  do not replace validation of every rule, table and example.
+- On-page practice was removed on 2026-09-29 (plans DE-D01/EN-D01, DEBT
+  D-03); audit probes provide the exercise coverage. Review every rule,
+  table and example against the plan regardless.
 
 ## 4. Wire into the site
 

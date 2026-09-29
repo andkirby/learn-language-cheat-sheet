@@ -23,6 +23,16 @@ Append the entry in the same commit that ships the change.
 - Sweep: help-dialog navigation copy, footer install hints, scroll
   anchor offsets and the design-system/style-guide specimens follow.
   Service-worker cache: v38 (practice removal), v39 (header).
+- **Fixes from the whole-work review**: a concurrent experiment had
+  leaked a WIP stylesheet into the service-worker `APP_SHELL` and a
+  layout-lab script into the shared template — both reverted (the stale
+  precache entry would have broken the SW install in production);
+  `--check-shell` now fails when an `APP_SHELL` URL is missing from the
+  tree, the validator rejects retired `practice`/`footer_practice`/
+  `reveal_*` data instead of ignoring it, the install nudge keeps its
+  own button on browsers without `beforeinstallprompt`, and the landing
+  header keeps its full-width row inside the new flex header.
+  `CACHE_VERSION` v40.
 
 ## 2026-09-29 (sibling-drift gate + scope correction)
 

@@ -46,12 +46,23 @@ def check_landing(site, index_path):
     return errors
 
 
-def check_sw(site, sw_path):
+def check_sw(site, sw_path, root=None):
     errors = []
     m = _SHELL_RE.search(sw_path.read_text(encoding="utf-8"))
     if not m:
         return ["sw.js: APP_SHELL list not found"]
-    shell = set(_SHELL_STRINGS_RE.findall(m.group(1)))
+    shell = sorted(set(_SHELL_STRINGS_RE.findall(m.group(1))))
+    # Every precached URL must exist in the tree: cache.addAll() rejects the
+    # whole install on any non-200, so one stale entry silently kills the
+    # service worker (offline mode + install UX) for everyone.
+    for entry in shell:
+        rel = entry[2:] if entry.startswith("./") else entry
+        if not rel or root is None:
+            continue
+        path = root / rel
+        target = path / "index.html" if rel.endswith("/") else path
+        if not target.exists():
+            errors.append(f"sw.js APP_SHELL lists {entry} but {target} is not in the tree")
     for t, auds in _live_pairs(site).items():
         for a in auds:
             base = f"./{t}/{a}/"
@@ -65,5 +76,5 @@ def check_shell(site, root):
     """Both hand-mirrored shells vs the registry. Returns an error list."""
     errors = []
     errors += check_landing(site, root / "index.html")
-    errors += check_sw(site, root / "sw.js")
+    errors += check_sw(site, root / "sw.js", root)
     return errors

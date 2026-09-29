@@ -114,9 +114,10 @@ language-specific view map, anchors and exceptions.
 
 ### 8. Practice
 
-- Which high-risk topic IDs are exercised?
-- Does each item provide enough context for one defensible answer?
-- Are accepted alternatives and explanations defined?
+On-page practice was removed on 2026-09-29 (plans DE-D01/EN-D01, DEBT
+D-03). If a rebuilt practice is accepted, define it here: which high-risk
+topic IDs it exercises, whether each item gives enough context for one
+defensible answer, and which alternatives it accepts.
 
 ### 9. Acceptance and maintenance
 
