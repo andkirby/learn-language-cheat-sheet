@@ -294,11 +294,6 @@ td.hot { font-weight: 850; color: var(--on-accent-soft); }
 .notice { border-left: 4px solid var(--accent); background: var(--accent-soft); padding: 10px 12px; border-radius: 10px; font-size: .92rem; }
 .warning { border-left-color: var(--warn-line); background: var(--notice-warn-bg); }
 
-.practice-q { padding: 12px 0; border-bottom: 1px solid var(--line); }
-.practice-q:last-child { border-bottom: 0; }
-.answer { margin-top: 8px; padding: 9px 10px; border-radius: 10px; background: var(--ok-soft); color: var(--ok); font-weight: 700; }
-.answer[hidden] { display: none; }
-
 .no-results { display: none; margin: 24px 0; padding: 18px; border: 1px dashed var(--line); border-radius: var(--radius); text-align: center; color: var(--muted); }
 .search-summary { margin: 2px 2px 14px; color: var(--muted); font-size: .92rem; font-weight: 700; }
 .search-summary[hidden] { display: none; }
@@ -356,7 +351,6 @@ dialog::backdrop { background: var(--backdrop); }
   .cheat-card { break-inside: avoid; box-shadow: none; }
   .table-scroll { overflow: visible; }
   table { min-width: 0; }
-  .answer[hidden] { display: block; }
   section[data-view] { display: block !important; } /* print the whole deck */
 }
 

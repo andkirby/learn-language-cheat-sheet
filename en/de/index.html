@@ -76,7 +76,6 @@
   <noscript>
     <style>
       .tap, .install-btn, .clear-search, .theme-btn, .icon-btn { display: none !important; }
-      .answer[hidden] { display: block; }
     </style>
     <div class="notice" style="margin:12px 16px 0">Suche, Details und die App-Installation brauchen JavaScript. Der ganze Spickzettel funktioniert unten auch ohne.</div>
     <p class="intro" style="margin:10px 16px 0">Such <b>den Auslöser</b> (Signalwort, Artikel, Konnektor oder Modalverb) — dann die Form und die Wortstellung.</p>
@@ -521,27 +520,7 @@
         </article>
       </div>
     </section>
-    <section id="practice" data-section data-view="practice">
-      <div class="section-head"><div><h2>Wiederholung</h2><p>Drei Fragen ohne extra „Lernmodus“.</p></div><span class="section-badge">30 sec</span></div>
-      <article class="cheat-card" data-search="practice quiz wiederholung üben test">
-        <div class="practice-q">
-          <b>1. Mag sie Tee? — Bild die Frage: ___ she ___ (like) tea?</b>
-          <div class="chips"><button class="tap neutral reveal" data-target="a1" aria-expanded="false" aria-controls="a1">Anzeigen</button></div>
-          <div class="answer" id="a1" hidden><b>Does she like</b> tea? — Englisch braucht Do/Does/Did + Grundform; <s>Likes she tea?</s> kehrt nur das Verb, wie das Deutsche.</div>
-        </div>
-        <div class="practice-q">
-          <b>2. Es regnet gerade. → It ___ (rain) now.</b>
-          <div class="chips"><button class="tap neutral reveal" data-target="a2" aria-expanded="false" aria-controls="a2">Anzeigen</button></div>
-          <div class="answer" id="a2" hidden><b>It's raining</b> — Verlaufsform für „gerade jetzt“; <s>It rains now</s> überträgt das deutsche Präsens, das beides abdeckt.</div>
-        </div>
-        <div class="practice-q">
-          <b>3. Ich habe den Film gestern gesehen. → I ___ (see) the film yesterday.</b>
-          <div class="chips"><button class="tap neutral reveal" data-target="a3" aria-expanded="false" aria-controls="a3">Anzeigen</button></div>
-          <div class="answer" id="a3" hidden><b>saw</b> — Past Simple: „gestern“ ist abgeschlossen; <s>I have seen it yesterday</s> ist der Perfekt-Fehler. Ohne Zeitangabe wäre <b>I have seen</b> richtig (Perfect = Ergebnis jetzt).</div>
-        </div>
-      </article>
-    </section>
-    <div class="footer">Englisch-Spickzettel · <a href="../../">alle Spickzettel</a> · <a href="#practice">Wiederholung</a> · <span id="install-help">Installation: Android — Button „Installieren“ oder Browsermenü · iPhone — Teilen → Zum Home-Bildschirm</span> · Inhaltsplan: <code>en/de/SITE_PLAN.md</code></div>
+    <div class="footer">Englisch-Spickzettel · <a href="../../">alle Spickzettel</a> · <span id="install-help">Installation: Android — Button „Installieren“ oder Browsermenü · iPhone — Teilen → Zum Home-Bildschirm</span> · Inhaltsplan: <code>en/de/SITE_PLAN.md</code></div>
   </main>
 
   <nav class="bottom-nav" aria-label="Hauptnavigation">
@@ -568,7 +547,7 @@
   "lookup-help": {
     "title": "So geht’s",
     "lead": "Auslöser → Form → Wortstellung.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Prinzip</b>Finde den Auslöser — Signalwort, Artikel, Konnektor oder Modalverb — und schau dann auf die passende Form und die Wortstellung.</div><div class=\"detail-block\"><b class=\"detail-label\">Suche</b>Such direkt: <b>present</b>, <b>the</b>, <b>must</b> — oder auf Deutsch. Die Suche prüft alle Bereiche gleichzeitig.</div><div class=\"detail-block\"><b class=\"detail-label\">Navigation</b>Fünf Bereiche unten; die Wiederholung verlinkt der Footer.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Prinzip</b>Finde den Auslöser — Signalwort, Artikel, Konnektor oder Modalverb — und schau dann auf die passende Form und die Wortstellung.</div><div class=\"detail-block\"><b class=\"detail-label\">Suche</b>Such direkt: <b>present</b>, <b>the</b>, <b>must</b> — oder auf Deutsch. Die Suche prüft alle Bereiche gleichzeitig.</div><div class=\"detail-block\"><b class=\"detail-label\">Navigation</b>Fünf Bereiche unten.</div>"
   },
   "a-an": {
     "title": "a oder an",
@@ -861,15 +840,6 @@
           dialog.showModal();
         }
       }
-      const reveal = event.target.closest('.reveal');
-      if (reveal) {
-        const answer = document.getElementById(reveal.dataset.target);
-        if (answer) {
-          answer.hidden = !answer.hidden;
-          reveal.textContent = answer.hidden ? 'Anzeigen' : 'Ausblenden';
-          reveal.setAttribute('aria-expanded', String(!answer.hidden));
-        }
-      }
     });
 
     document.getElementById('closeDialog').addEventListener('click', () => dialog.close());
@@ -1054,6 +1024,146 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => navigator.serviceWorker.register('../../sw.js').catch(() => {}));
     }
+  </script>
+
+  <!-- Layout lab (preview-only, never production): ?layout=bento|sidebar|spread
+       activates an experimental page composition for this tab session
+       (sessionStorage — visitors without the param never enter the lab).
+       Variant CSS lives in assets/layouts.css and is loaded only while the
+       lab is active, so the production page ships zero extra bytes. A layout
+       that gets adopted graduates into assets/base.css; the rest is deleted
+       (see .design/decisions.md). -->
+  <script>
+    (function () {
+      const LAB_KEY = 'layoutLab';
+      const LAYOUTS = ['bento', 'sidebar', 'spread'];
+      let layout = null;
+      try { layout = sessionStorage.getItem(LAB_KEY); } catch (e) {}
+      const requested = new URLSearchParams(location.search).get('layout');
+      if (requested !== null) {
+        layout = LAYOUTS.includes(requested) ? requested : 'stack';
+        try { sessionStorage.setItem(LAB_KEY, layout); } catch (e) {}
+      }
+      if (layout === null) return; // production path: nothing stored, nothing to do
+
+      document.documentElement.dataset.layoutLab = '';
+      const labStyle = document.createElement('link');
+      labStyle.rel = 'stylesheet';
+      labStyle.href = '../../assets/layouts.css';
+      document.head.appendChild(labStyle);
+
+      // Editorial spread: the first card of every section is its featured rule.
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const lead = sec.querySelector('.cheat-card');
+        if (lead) lead.classList.add('spread-lead');
+      });
+
+      function buildRail() {
+        if (document.querySelector('.layout-rail')) return;
+        const rail = document.createElement('aside');
+        rail.className = 'layout-rail';
+        rail.setAttribute('aria-label', 'Views');
+        document.querySelectorAll('.nav-item').forEach(item => {
+          const viewId = item.dataset.nav;
+          const group = document.createElement('div');
+          group.className = 'rail-group';
+          const view = document.createElement('a');
+          view.className = 'rail-view';
+          view.href = '#' + viewId;
+          view.dataset.railView = viewId;
+          const label = item.querySelector('span:not(.ico)');
+          view.textContent = (label || item).textContent.trim();
+          group.appendChild(view);
+          document.querySelectorAll('section[data-view="' + viewId + '"]').forEach(sec => {
+            const h2 = sec.querySelector('h2');
+            if (!h2) return;
+            const link = document.createElement('a');
+            link.className = 'rail-link';
+            link.href = '#' + sec.id;
+            link.textContent = h2.textContent.trim();
+            group.appendChild(link);
+          });
+          rail.appendChild(group);
+        });
+        document.body.prepend(rail);
+      }
+      function removeRail() {
+        const rail = document.querySelector('.layout-rail');
+        if (rail) rail.remove();
+      }
+      // Rail active state follows the view switcher: wrap the page's own
+      // setView so every switch path (nav, search clear, hash) stays in sync.
+      if (typeof window.setView === 'function') {
+        const baseSetView = window.setView;
+        window.setView = function (viewId) {
+          baseSetView(viewId);
+          document.querySelectorAll('.rail-view').forEach(a => {
+            const on = a.dataset.railView === viewId;
+            a.classList.toggle('active', on);
+            if (on) a.setAttribute('aria-current', 'true');
+            else a.removeAttribute('aria-current');
+          });
+        };
+      }
+
+      const dock = document.createElement('div');
+      dock.className = 'lab-dock';
+      dock.setAttribute('role', 'group');
+      dock.setAttribute('aria-label', 'Layout lab');
+      ['bento', 'sidebar', 'spread', 'stack'].forEach(name => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'lab-btn';
+        btn.dataset.lab = name;
+        btn.textContent = name[0].toUpperCase() + name.slice(1);
+        dock.appendChild(btn);
+      });
+      const exit = document.createElement('button');
+      exit.type = 'button';
+      exit.className = 'lab-exit';
+      exit.dataset.labExit = '';
+      exit.setAttribute('aria-label', 'Exit layout lab');
+      exit.textContent = '×';
+      dock.appendChild(exit);
+      dock.addEventListener('click', (event) => {
+        if (event.target.closest('[data-lab-exit]')) {
+          try { sessionStorage.removeItem(LAB_KEY); } catch (e) {}
+          location.replace(location.pathname + location.hash);
+          return;
+        }
+        const btn = event.target.closest('[data-lab]');
+        if (!btn) return;
+        const next = btn.dataset.lab;
+        try { sessionStorage.setItem(LAB_KEY, next); } catch (e) {}
+        if (LAYOUTS.includes(next)) {
+          document.documentElement.dataset.layout = next;
+          if (next === 'sidebar') buildRail(); else removeRail();
+        } else {
+          delete document.documentElement.dataset.layout;
+          removeRail();
+        }
+        syncDock();
+      });
+      function syncDock() {
+        const current = document.documentElement.dataset.layout || 'stack';
+        dock.querySelectorAll('[data-lab]').forEach(btn => {
+          const on = btn.dataset.lab === current;
+          btn.classList.toggle('active', on);
+          btn.setAttribute('aria-pressed', String(on));
+        });
+      }
+      document.body.appendChild(dock);
+
+      if (LAYOUTS.includes(layout)) {
+        document.documentElement.dataset.layout = layout;
+        if (layout === 'sidebar') buildRail();
+      }
+      syncDock();
+      // The page's initial setView ran before the wrap: resync the rail once.
+      if (document.querySelector('.layout-rail') && typeof window.setView === 'function') {
+        window.setView(currentView);
+      }
+    })();
   </script>
 </body>
 </html>

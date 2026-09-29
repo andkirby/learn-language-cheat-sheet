@@ -44,9 +44,15 @@ topic is implied by a heading, search keyword or content found on the page.
 | EN-X02 | Thematic vocabulary, phrasebook material and a comprehensive dictionary | These require different retrieval and maintenance models | The product expands beyond grammar lookup |
 | EN-X03 | Exhaustive British, American and regional comparison | Neutral international examples are sufficient for the target | A variety difference changes a taught decision or repeated learner need emerges |
 | EN-X04 | Exhaustive exceptions and productive B2+ grammar | Density must serve the stated A1–B1 audience | The supported level expands or a reference review shows an A1–B1 dependency |
-| EN-X05 | Course sequencing, mastery scoring and CEFR certification | Three practice items support retrieval; they are not an assessment system | The product adopts progress or assessment semantics |
+| EN-X05 | Course sequencing, mastery scoring and CEFR certification | The deck is a lookup reference, not a course; progress or assessment semantics are out of scope | The product adopts progress or assessment semantics |
 
-There are no accepted deferred topics. Unresolved candidate gaps are findings
+One topic is accepted as deferred:
+
+| Decision | Deferred content | Rationale | Reconsider when |
+| --- | --- | --- | --- |
+| EN-D01 | The «Быстрый повтор» practice view (three static reveal questions, `#practice`) | Three static items have no replay value; practice returns only as a designed surface with pool/shuffle mechanics (DEBT D-03). The content removed on 2026-09-29 stays recoverable in git history. | A practice design with replay value is accepted (the D-03 trigger) |
+
+Unresolved candidate gaps are findings
 in `CONTENT_AUDIT.md`, not silent exclusions or plan commitments.
 
 ## Primary retrieval questions
@@ -64,8 +70,7 @@ Signal words support a tense decision; they never replace meaning and context.
 
 ## Information architecture
 
-The page is a lookup deck with five bottom-navigation destinations and one
-footer-linked practice view:
+The page is a lookup deck with five bottom-navigation destinations:
 
 | View | Stable anchor | Required topics |
 | --- | --- | --- |
@@ -74,7 +79,6 @@ footer-linked practice view:
 | Порядок | `#order` | EN-03–04, EN-17–19, EN-25 |
 | Глаголы | `#verbs` | EN-08–10, EN-16 (`#conditionals`), EN-21, EN-23–24 |
 | Предлоги | `#preps` | EN-11–12 |
-| Повтор | `#practice` | Practice contract below; footer link only |
 
 `#start`, `#pronouns`, `#nouns`, `#conditionals` and `#install-help` are
 stable legacy or direct anchors. A direct anchor opens the owning view before
@@ -82,7 +86,7 @@ scrolling. Search covers all views and restores the selected view when
 cleared. Install help remains a dialog plus footer line rather than a content
 section.
 
-## Content and practice contract
+## Content contract
 
 The shared card, dialog, search, navigation and accessibility mechanics are
 defined in the design system. English content adds these requirements:
@@ -110,9 +114,6 @@ defined in the design system. English content adds these requirements:
   translations preserve the relevant distinction rather than forcing a
   literal translation.
 - Search metadata includes likely Russian questions and English terms.
-- Practice has three contextualized items mapped to EN-01, EN-04 and EN-06.
-  Answers explain the choice and identify valid alternatives. Audit probes
-  provide broader validation without bloating learner practice.
 
 ## Required content inventory
 

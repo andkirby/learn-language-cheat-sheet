@@ -20,7 +20,6 @@
     "plan_path": "de/en/SITE_PLAN.md"
   },
   "strings": {
-    "_note": "footer_practice is deliberately absent, as on the German sibling deck: practice is already a bottom-navigation destination. Follow-up candidate, not a scaffold change.",
     "search_placeholder": "Search: wem, weil, modal, Dativ…",
     "search_aria": "Search the cheat sheet",
     "clear_aria": "Clear search",
@@ -40,8 +39,6 @@
       "light": {"icon": "☀", "label": "Theme: light"},
       "dark": {"icon": "☾", "label": "Theme: dark"}
     },
-    "reveal_show": "Show",
-    "reveal_hide": "Hide",
     "install_ios": {
       "title": "Install on iPhone",
       "lead": "Safari doesn’t show the standard install prompt.",
@@ -78,8 +75,7 @@
     {"id": "cases", "ico": "A/D", "label": "Cases"},
     {"id": "forms", "ico": "der", "label": "Forms"},
     {"id": "order", "ico": "V2", "label": "Order"},
-    {"id": "clauses", "ico": "weil", "label": "Clauses"},
-    {"id": "practice", "ico": "?", "label": "Review"}
+    {"id": "clauses", "ico": "weil", "label": "Clauses"}
   ],
   "sections": [
     {
@@ -816,35 +812,13 @@
       ]
     }
   ],
-  "practice": {
-    "id": "practice", "view": "practice", "badge": "30 sec",
-    "heading": "Quick review", "sub": "Three questions, no separate “lesson mode”.",
-    "search": "practice quiz review test",
-    "items": [
-      {
-        "_note": "Case shape after the verb: helfen takes a Dativ object where English help takes a bare object (plan practice item 1, DE-03).",
-        "q": [{"t": "1. Ich helfe ___ Mann.", "b": true}, " “I help the man.” Which article goes in the gap?"],
-        "answer": ["Dativ: helfen takes a Dativ object — English “help” takes a bare object and never changes “the”. Wem helfe ich? → ", {"t": "dem Mann", "b": true}, " (der → dem); with an indefinite article ", {"t": "einem Mann", "b": true}, "."]
-      },
-      {
-        "_note": "Fronted adverb + V2 + verb bracket (plan practice item 2, DE-07).",
-        "q": [{"t": "2. Heute ___ ich in den Laden gehen.", "b": true}, " Where does ", {"t": "müssen", "b": true}, " go?"],
-        "answer": [{"t": "Heute muss ich in den Laden gehen.", "b": true}, " English keeps subject and verb together (“Today I must go to the shop”); German keeps the finite verb in slot 2 and pushes the infinitive to the end. Subject-first order also works: ", {"t": "Ich muss heute in den Laden gehen.", "b": true}]
-      },
-      {
-        "_note": "Subordinate clause: finite verb last, where because changes nothing in English (plan practice item 3, DE-08).",
-        "q": [{"t": "3. …, weil ich heute arbeiten ___", "b": true}, " (“…because I have to work today”)"],
-        "answer": [{"t": "weil ich heute arbeiten muss", "b": true}, " — weil sends the finite verb to the end; English “because” changes nothing, so ", {"t": "weil ich muss arbeiten", "s": true}, " is the predictable trap. To keep the English order, use the coordinator ", {"t": "denn", "b": true}, ": Ich bleibe zu Hause, denn ich muss heute arbeiten."]
-      }
-    ]
-  },
   "details": {
     "lookup-help": {
       "title": "How to use", "lead": "Trigger → form → position.",
       "blocks": [
         {"detail": {"label": "How it works", "runs": ["Find the trigger — a case question, a preposition, a conjunction or a verb construction — then check the form and the verb position."]}},
         {"detail": {"label": "Search", "runs": ["Search straight away: ", {"t": "wem", "b": true}, ", ", {"t": "weil", "b": true}, ", ", {"t": "Perfekt", "b": true}, " — or in English. Search covers all sections at once."]}},
-        {"detail": {"label": "Navigation", "runs": ["Five views at the bottom; Review is a short check of the main traps."]}}
+        {"detail": {"label": "Navigation", "runs": ["Four views at the bottom: cases, forms, word order, subordinate clauses."]}}
       ]
     },
     "verb-preps": {

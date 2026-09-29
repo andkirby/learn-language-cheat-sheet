@@ -3,7 +3,7 @@
   "title": "Language cheat deck",
   "description": "One (target language × audience language) cheatsheet. Rendered by tools/build_pages.py into a static page; the header language menu comes from the sibling site.json registry. _note / _readme fields carry provenance and are ignored.",
   "type": "object",
-  "required": ["meta", "strings", "views", "sections", "practice", "details"],
+  "required": ["meta", "strings", "views", "sections", "details"],
   "additionalProperties": false,
   "properties": {
     "_readme": {"type": "string"},
@@ -52,7 +52,6 @@
       }
     },
     "sections": {"type": "array", "items": {"$ref": "#/definitions/section"}},
-    "practice": {"$ref": "#/definitions/practice"},
     "details": {
       "type": "object",
       "minProperties": 1,
@@ -222,31 +221,6 @@
       },
       "oneOf": [{"required": ["cards"]}, {"required": ["groups"]}]
     },
-    "practice": {
-      "type": "object",
-      "required": ["id", "view", "heading", "sub", "search", "items"],
-      "additionalProperties": false,
-      "properties": {
-        "id": {"type": "string"},
-        "view": {"type": "string"},
-        "badge": {"type": "string"},
-        "heading": {"type": "string"},
-        "sub": {"type": "string"},
-        "search": {"type": "string"},
-        "items": {
-          "type": "array", "minItems": 1,
-          "items": {
-            "type": "object", "required": ["q", "answer"],
-            "additionalProperties": false,
-            "properties": {
-              "_note": {"type": "string"},
-              "q": {"$ref": "#/definitions/runs"},
-              "answer": {"$ref": "#/definitions/runs"}
-            }
-          }
-        }
-      }
-    },
     "detailEntry": {
       "type": "object",
       "required": ["title", "lead", "blocks"],
@@ -259,7 +233,7 @@
     },
     "strings": {
       "type": "object",
-      "required": ["search_placeholder", "search_aria", "clear_aria", "search_results", "install_label", "close_aria", "nav_aria", "no_results", "noscript_notice", "noscript_intro", "theme", "reveal_show", "reveal_hide", "install_ios", "install_generic", "footer_all", "footer_install", "footer_plan"],
+      "required": ["search_placeholder", "search_aria", "clear_aria", "search_results", "install_label", "close_aria", "nav_aria", "no_results", "noscript_notice", "noscript_intro", "theme", "install_ios", "install_generic", "footer_all", "footer_install", "footer_plan"],
       "additionalProperties": false,
       "properties": {
         "_note": {"type": "string"},
@@ -282,12 +256,9 @@
             "dark": {"$ref": "#/definitions/themeMode"}
           }
         },
-        "reveal_show": {"type": "string"},
-        "reveal_hide": {"type": "string"},
         "install_ios": {"$ref": "#/definitions/installDialog"},
         "install_generic": {"$ref": "#/definitions/installDialog"},
         "footer_all": {"type": "string"},
-        "footer_practice": {"type": "string", "description": "optional: omit when the footer has no practice link"},
         "footer_install": {"type": "string"},
         "footer_plan": {"type": "string"},
         "lang_menu_aria": {"type": "string", "description": "header language menu — summary aria-label"},

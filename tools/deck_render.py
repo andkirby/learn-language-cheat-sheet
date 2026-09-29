@@ -1,6 +1,6 @@
 """Deck JSON → the committed HTML page. Stdlib only.
 
-render(deck, deck_path, site) assembles sections/cards/practice via the
+render(deck, deck_path, site) assembles sections/cards via the
 block registry (deck_blocks), substitutes the @@TOKENS@@ of the sibling
 page_template.html skeleton, and returns the page as a string. Block
 markup comes from the registry; everything here is page-level assembly.
@@ -83,22 +83,6 @@ def section_html(sec):
     return head + body + "    </section>\n"
 
 
-def practice_html(practice, strings):
-    out = [f"    <section id=\"{escq(practice['id'])}\" data-section data-view=\"{escq(practice['view'])}\">\n",
-           _section_head(practice),
-           f"      <article class=\"cheat-card\" data-search=\"{escq(practice['search'])}\">\n"]
-    for i, item in enumerate(practice["items"], start=1):
-        out.append("        <div class=\"practice-q\">\n")
-        out.append(f"          {runs_html(item['q'])}\n")
-        out.append(f"          <div class=\"chips\"><button class=\"tap neutral reveal\" data-target=\"a{i}\" "
-                   f"aria-expanded=\"false\" aria-controls=\"a{i}\">{esc(strings['reveal_show'])}</button></div>\n")
-        out.append(f"          <div class=\"answer\" id=\"a{i}\" hidden>{runs_html(item['answer'])}</div>\n")
-        out.append("        </div>\n")
-    out.append("      </article>\n")
-    out.append("    </section>\n")
-    return "".join(out)
-
-
 # The page skeleton lives in the sibling file so template edits diff as HTML.
 PAGE = (pathlib.Path(__file__).resolve().parent / "page_template.html").read_text(encoding="utf-8")
 
@@ -156,7 +140,7 @@ def render(deck, deck_path, site):
     # for site-root assets (base.css, sw.js, the landing link).
     root = "../" * meta["site_path"].count("/")
 
-    sections_html = "".join(section_html(s) for s in deck["sections"]) + practice_html(deck["practice"], strings)
+    sections_html = "".join(section_html(s) for s in deck["sections"])
 
     nav_items = []
     for i, view in enumerate(deck["views"]):
@@ -171,11 +155,6 @@ def render(deck, deck_path, site):
             "lead": entry["lead"],
             "body": "".join(block_html(b) for b in entry["blocks"]),
         }
-
-    footer_practice = ""
-    if strings.get("footer_practice"):
-        footer_practice = (f' · <a href="#{escq(deck["practice"]["id"])}">'
-                           f'{esc(strings["footer_practice"])}</a>')
 
     tokens = {
         "@@DECK_PATH@@": deck_path,
@@ -204,7 +183,6 @@ def render(deck, deck_path, site):
         "@@LANG_MENU@@": _lang_menu_html(deck, site),
         "@@NO_RESULTS@@": esc(strings["no_results"]),
         "@@SECTIONS@@": sections_html.rstrip("\n"),
-        "@@FOOTER_PRACTICE@@": footer_practice,
         "@@FOOTER_ALL@@": esc(strings["footer_all"]),
         "@@FOOTER_INSTALL@@": esc(strings["footer_install"]),
         "@@FOOTER_PLAN@@": esc(strings["footer_plan"]),
@@ -218,8 +196,6 @@ def render(deck, deck_path, site):
         # Picks markTargetLang's tagging policy in page_template.html; the
         # validator reads the same registry key for search exemptions.
         "@@AUDIENCE_SCRIPT@@": escq(audience_script(site, meta["target"], meta["audience"]) or ""),
-        "@@REVEAL_SHOW@@": strings["reveal_show"],
-        "@@REVEAL_HIDE@@": strings["reveal_hide"],
         "@@INSTALL@@": js({"ios": dialog_js(strings["install_ios"]),
                            "generic": dialog_js(strings["install_generic"])}),
     }

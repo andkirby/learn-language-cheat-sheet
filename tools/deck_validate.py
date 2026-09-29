@@ -2,8 +2,8 @@
 
 validate(deck, site) returns a flat error list (empty = deck is
 buildable). Covers meta completeness, view/section/card shape via the
-block registry (deck_blocks), dialog reference integrity, practice and
-help shape (incl. the practice card's search tokens), id uniqueness, UI
+block registry (deck_blocks), dialog reference integrity and help
+shape, id uniqueness, UI
 strings, and the site.json registry — including the search-index hygiene
 gate (data-search tokens must be learner-visible or exempted as grammar
 terminology in site.json).
@@ -154,8 +154,8 @@ class _Checker:
     def check_search_tokens(self, search, visible_text, where):
         """Every data-search token must be learner-visible in visible_text,
         exempted as grammar terminology in site.json, or written in the
-        searcher's own script (configured per audience). Runs on card search
-        strings and on the practice card's search attribute alike."""
+        searcher's own script (configured per audience). Runs on every
+        card's search string."""
         words = set(_WORD_RE.findall(_norm(visible_text)))
         for token in str(search or "").split():
             t = _norm(token)
@@ -194,7 +194,7 @@ def _validate_meta(deck, errors):
 
 
 def _validate_content(deck, site, errors):
-    """Views, sections, cards, practice, help, details and id uniqueness."""
+    """Views, sections, cards, help, details and id uniqueness."""
     meta = deck.get("meta", {})
     details = deck.get("details", {})
     chk = _Checker(errors, details, _grammar_terms(site, meta.get("target")),
@@ -232,26 +232,6 @@ def _validate_content(deck, site, errors):
                     if card.get("id"):
                         card_anchors.append(f"{sec['id']}-{card['id']}")
 
-    practice = deck.get("practice", {})
-    section_ids.append(practice.get("id"))
-    # practice.view is its own anchor-only view (not a bottom-nav destination);
-    # it only needs to be a non-empty slug.
-    if not practice.get("view"):
-        errors.append("practice.view required")
-    if not practice.get("items"):
-        errors.append("practice.items required")
-    for i, item in enumerate(practice.get("items", [])):
-        chk.check_runs(item.get("q", []), f"practice.items[{i}].q")
-        chk.check_runs(item.get("answer", []), f"practice.items[{i}].answer")
-    # The practice card renders like any card and carries data-search the same
-    # way; hold its tokens to the same visibility gate. Visible corpus: the
-    # practice section head (heading + sub) plus the items themselves.
-    practice_visible = " ".join(
-        [str(practice.get("heading", "")), str(practice.get("sub", ""))]
-        + [runs_text(item.get("q", [])) + " " + runs_text(item.get("answer", []))
-           for item in practice.get("items", [])])
-    chk.check_search_tokens(practice.get("search"), practice_visible, "practice")
-
     help_btn = deck.get("help")
     if help_btn:
         section_ids.append(help_btn.get("id"))
@@ -268,7 +248,7 @@ def _validate_content(deck, site, errors):
 
     all_anchor_ids = [i for i in section_ids if i] + card_anchors
     if len(all_anchor_ids) != len(set(all_anchor_ids)):
-        errors.append(f"ids are not unique across sections/practice/help/cards: {all_anchor_ids}")
+        errors.append(f"ids are not unique across sections/help/cards: {all_anchor_ids}")
 
 
 def _validate_strings(deck, errors):
@@ -276,7 +256,7 @@ def _validate_strings(deck, errors):
     # footer_practice is optional: decks whose footer has no practice link omit it.
     for s in ("search_placeholder", "search_aria", "clear_aria", "search_results", "install_label",
               "close_aria", "nav_aria", "no_results", "noscript_notice",
-              "reveal_show", "reveal_hide", "footer_all",
+              "footer_all",
               "footer_install", "footer_plan"):
         if not strings.get(s):
             errors.append(f"strings.{s} is required")

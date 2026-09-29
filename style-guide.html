@@ -108,7 +108,6 @@
       <a href="#formula">Formulas</a>
       <a href="#cases">Case grid</a>
       <a href="#notices">Notices</a>
-      <a href="#practice">Practice</a>
       <a href="#dialog">Bottom sheet</a>
       <a href="#nav">Bottom nav &amp; views</a>
       <a href="#hub">Hub (landing)</a>
@@ -133,8 +132,8 @@
         <summary>Marking rules, fonts, and what must never take the serif</summary>
         <div class="sg-doc-body">
           <p>Pages set <code>lang</code> via <code>markTargetLang</code> in the page script (see <code>page_template.html</code>):
-            whole <code>.example</code> / <code>.answer</code> / <code>.table-scroll</code> containers are marked when they
-            contain no Cyrillic; otherwise the fragments are marked — bold in <code>.example</code>/<code>.answer</code>,
+            whole <code>.example</code> / <code>.table-scroll</code> containers are marked when they
+            contain no Cyrillic; otherwise the fragments are marked — bold in <code>.example</code>,
             bold/strike/italic runs in <code>.detail-block</code> (the Cyrillic-bearing <code>.detail-label</code> excluded),
             and formula slots without Cyrillic individually. Pair glosses and <code>.detail-comment</code> lines always
             stay in the UI voice.</p>
@@ -159,7 +158,7 @@
         <div class="sg-swatch"><div class="chip" style="background:var(--accent)"></div><div class="lbl"><b>--accent</b> · focus, info</div></div>
         <div class="sg-swatch"><div class="chip" style="background:var(--accent-soft)"></div><div class="lbl"><b>--accent-soft</b> · chips, active nav</div></div>
         <div class="sg-swatch"><div class="chip" style="background:var(--on-accent-soft)"></div><div class="lbl"><b>--on-accent-soft</b> · on accent-soft, <code>td.hot</code></div></div>
-        <div class="sg-swatch"><div class="chip" style="background:var(--ok)"></div><div class="lbl"><b>--ok / --ok-soft</b> · verb slots, answers</div></div>
+        <div class="sg-swatch"><div class="chip" style="background:var(--ok)"></div><div class="lbl"><b>--ok / --ok-soft</b> · verb slots</div></div>
         <div class="sg-swatch"><div class="chip" style="background:var(--warn)"></div><div class="lbl"><b>--warn / --warn-soft</b> · end-of-sentence slots</div></div>
         <div class="sg-swatch"><div class="chip" style="background:var(--hero-1)"></div><div class="lbl"><b>--hero-1/-2…</b> · landing hero only</div></div>
       </div>
@@ -240,7 +239,7 @@
             searching, <code>body.searching</code> is set (the noscript intro hides), matching sections from <em>every</em> view
             stack into one result list, <code>#searchSummary</code> reports the card count, <code>#noResults</code> shows at zero matches, and clearing restores the active view.
             The bottom nav has no active selection during cross-view results.
-            Search never destroys dialog or answer state. <code>data-search</code> is a designed surface: deck authors put the
+            Search never destroys dialog state. <code>data-search</code> is a designed surface: deck authors put the
             hidden keywords there (forms, Russian prompts) — findings C-11–13 came from treating it as an afterthought.</p>
           <p><strong>Language menu.</strong> Native <code>&lt;details&gt;</code> keeps it functional without JS; JS adds light
             dismiss and Escape. On deck pages it sits in the search row (the brand row can't fit it beside the install button at
@@ -263,11 +262,10 @@
 
     <section class="sg-block" id="noscript">
       <h2>Noscript block</h2>
-      <p class="sg-why">The whole deck must read with JS off: controls hide, answers unhide, and a notice + intro line replace the interactive chrome.</p>
+      <p class="sg-why">The whole deck must read with JS off: controls hide, and a notice + intro line replace the interactive chrome.</p>
 <pre class="sg-code">&lt;noscript&gt;
   &lt;style&gt;
     .tap, .install-btn, .clear-search, .theme-btn, .icon-btn { display: none !important; }
-    .answer[hidden] { display: block; }
   &lt;/style&gt;
   &lt;div class="notice" style="margin:12px 16px 0"&gt;…@@NOSCRIPT_NOTICE@@…&lt;/div&gt;
   &lt;p class="intro" style="margin:10px 16px 0"&gt;…@@NOSCRIPT_INTRO@@…&lt;/p&gt;
@@ -311,8 +309,7 @@
           </div>
           <p>Special card shape: <code>case_grid</code> renders <code>&lt;div class="case-grid cheat-card"&gt;</code> of
             <code>.tap.case</code> buttons. Optional card-root <code>level</code>/<code>kind</code> render the
-            <code>.badges</code> row under the title (never on case-grid cards). Practice is its own section built by
-            <code>practice_html</code> (see #practice).
+            <code>.badges</code> row under the title (never on case-grid cards).
             The validator (<code>tools/deck_validate.py</code>) gates all of this; the committed page must match the deck
             (<code>build_pages.py &lt;deck&gt; --check</code> exits 0).</p>
         </div>
@@ -361,7 +358,7 @@
 
     <section class="sg-block" id="chips">
       <h2>Tappable chips</h2>
-      <p class="sg-why">The only button styles on language pages. Open a <code>DETAILS</code> dialog or reveal an answer. Visual min-height 40px with <code>::after</code> hit-area expansion to ≥ 46px — density without missed taps.</p>
+      <p class="sg-why">The only button styles on language pages. Open a <code>DETAILS</code> dialog. Visual min-height 40px with <code>::after</code> hit-area expansion to ≥ 46px — density without missed taps.</p>
       <div class="chips">
         <button class="tap" type="button" data-detail="v2-demo">detail chip</button>
         <button class="tap neutral" type="button">neutral chip</button>
@@ -427,36 +424,6 @@
       <div class="notice warning" style="margin-top:8px">После <span lang="de">weil</span> спрягаемый глагол уходит в конец.</div>
     </section>
 
-    <section class="sg-block" id="practice">
-      <h2>Practice &amp; answers</h2>
-      <p class="sg-why">Show-answer pattern with honest ARIA (<code>aria-expanded</code>/<code>aria-controls</code>); answers are visible without JS (noscript unhides them).</p>
-      <article class="cheat-card">
-        <div class="practice-q">
-          <b>1. Ich helfe ___ Mann.</b> Какой падеж?
-          <div class="chips"><button class="tap neutral reveal" type="button" data-target="sg-a1" aria-expanded="false" aria-controls="sg-a1">Показать</button></div>
-          <div class="answer" id="sg-a1" hidden><span lang="de">Dativ</span> → <span lang="de">Wem?</span> → <b lang="de">dem Mann</b>.</div>
-        </div>
-      </article>
-      <details class="sg-doc">
-        <summary>Exact practice section nesting</summary>
-        <div class="sg-doc-body">
-<pre class="sg-code">&lt;section id="practice" data-section data-view="practice"&gt;
-  &lt;div class="section-head"&gt;…&lt;/div&gt;
-  &lt;article class="cheat-card" data-search="practice quiz повтор тест"&gt;
-    &lt;div class="practice-q"&gt;
-      &lt;b&gt;1. …&lt;/b&gt; Вопрос?
-      &lt;div class="chips"&gt;&lt;button class="tap neutral reveal" data-target="a1"
-        aria-expanded="false" aria-controls="a1"&gt;Показать&lt;/button&gt;&lt;/div&gt;
-      &lt;div class="answer" id="a1" hidden&gt;…&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/article&gt;
-&lt;/section&gt;</pre>
-          <p>Answer ids are positional (<code>a1</code>, <code>a2</code>…) — one shared card per deck today. Per-topic practice
-            mapping would be a plan + schema change first (see #research).</p>
-        </div>
-      </details>
-    </section>
-
     <h2 class="sg-part">Overlays &amp; navigation</h2>
 
     <section class="sg-block" id="dialog">
@@ -490,14 +457,13 @@
 
     <section class="sg-block" id="nav">
       <h2>Bottom nav &amp; views</h2>
-      <p class="sg-why">Five view destinations; the selected view is the nav truth (<code>aria-current</code>), no scrollspy. The grammar cues are decorative for screen readers. Sections carry <code>data-view</code>; legacy anchors open the section’s view first. While <code>body.searching</code> is set, matching sections from every view are shown stacked and the nav selection clears. Shown here as a static specimen (<code>.sg-nav</code> override).</p>
+      <p class="sg-why">Per-deck view destinations (four on DE decks, five on EN decks); the selected view is the nav truth (<code>aria-current</code>), no scrollspy. The grammar cues are decorative for screen readers. Sections carry <code>data-view</code>; legacy anchors open the section’s view first. While <code>body.searching</code> is set, matching sections from every view are shown stacked and the nav selection clears. Shown here as a static specimen (<code>.sg-nav</code> override).</p>
       <div class="sg-demo">
         <nav class="bottom-nav sg-nav" aria-label="Specimen">
           <a class="nav-item active" href="#nav" data-nav="cases" aria-current="true"><span class="ico" aria-hidden="true">A/D</span><span>Падежи</span></a>
           <a class="nav-item" href="#nav" data-nav="forms"><span class="ico" aria-hidden="true">der</span><span>Формы</span></a>
           <a class="nav-item" href="#nav" data-nav="order"><span class="ico" aria-hidden="true">V2</span><span>Порядок</span></a>
           <a class="nav-item" href="#nav" data-nav="clauses"><span class="ico" aria-hidden="true">weil</span><span>Придат.</span></a>
-          <a class="nav-item" href="#nav" data-nav="practice"><span class="ico" aria-hidden="true">?</span><span>Повтор</span></a>
         </nav>
       </div>
       <p class="sg-anno">Real pages: fixed to the bottom, respects <code>env(safe-area-inset-bottom)</code>. Views/destinations/legacy anchors are owned by each language plan, not by this contract.</p>
@@ -578,7 +544,6 @@
             <tr><td><code>.table-scroll</code>, <code>td.hot</code></td><td>Scrollable table; <code>.hot</code> = the form that changes across cases</td></tr>
             <tr><td><code>.case-grid</code>, <code>.case-box</code>, <code>.case-q</code>, <code>.case-hint</code></td><td>Case tiles (DE page only); question word + Russian hint</td></tr>
             <tr><td><code>.notice</code> / <code>.warning</code></td><td>Info callout / caveat callout</td></tr>
-            <tr><td><code>.practice-q</code>, <code>.answer</code>, <code>.reveal</code></td><td>Self-check block; hidden answer; toggle control</td></tr>
             <tr><td><code>dialog</code>, <code>.sheet</code>, <code>.grab</code>, <code>.sheet-head</code>, <code>.close-sheet</code>, <code>.detail-block</code>, <code>.detail-label</code>, <code>.detail-comment</code>, <code>.lead</code></td><td>Bottom sheet and its parts (label = the only block-level child; comment = muted trailing line); body blocks from <code>DETAILS</code></td></tr>
             <tr><td><code>.bottom-nav</code>, <code>.nav-item</code>, <code>data-view</code></td><td>View switcher; active destination; section→view membership</td></tr>
             <tr><td><code>.section-head</code>, <code>.section-badge</code>, <code>.intro</code></td><td>Section header (inner <code>&lt;div&gt;</code> + optional badge), the noscript/plain intro line</td></tr>
@@ -630,10 +595,10 @@
       <p class="sg-why">The badges and example+gloss pairs above were researched from external references
         (<code>research/ui-design-inspiration.md</code>) and prototyped on real deck content in
         <code>research/ui-improved-example.html</code>, then adopted into base.css and both decks. The third prototype pattern —
-        a per-topic practice exit («Повторить раздел →») — is <strong>deferred</strong>: practice is still one shared card, and
-        per-topic mapping needs a plan revision first (adjacent to D-03).</p>
-      <div class="sg-note">Adoption route for the deferred pattern when revisited: deck-schema practice→section mapping +
-        plan revision → base.css/generator → <code>.design/decisions.md</code> entry → both language pages in the same commit.</div>
+        a per-topic practice exit («Повторить раздел →») — is moot for now: the shared practice view was removed on
+        2026-09-29 (DEBT D-03, plans DE-D01/EN-D01); the pattern returns only with a rebuilt practice surface.</p>
+      <div class="sg-note">Adoption route when practice is rebuilt (D-03): plan revision → schema/render mechanics →
+        base.css/generator → <code>.design/decisions.md</code> entry → all language pages in the same commit.</div>
     </section>
 
     <div class="footer">Style guide · rendered by <code>assets/base.css</code> · contract: <code>.design/DESIGN_SYSTEM.md</code></div>
@@ -674,7 +639,7 @@
       applyTheme(themeMode);
     });
 
-    // Specimen dialogs + the reveal toggle, mirroring the pages. Entries are
+    // Specimen dialogs, mirroring the pages. Entries are
     // the real de-ru deck details.
     const DETAILS = {
       'v2-demo': {title:'Что такое V2', lead:'Глагол стоит во второй синтаксической позиции, не обязательно вторым словом.', body:`<div class="detail-block"><b class="detail-label">1 позиция может быть длинной</b><i lang="de">Heute Morgen um acht</i> gehe ich zur Arbeit.<p class="detail-comment">Вся группа “Heute Morgen um acht” занимает позицию 1.</p></div><div class="detail-block"><b class="detail-label">Потом</b>сразу идёт спрягаемый глагол.</div>`},
@@ -689,15 +654,6 @@
         document.getElementById('detailLead').textContent = item.lead;
         document.getElementById('detailBody').innerHTML = item.body;
         dialog.showModal();
-      }
-      const reveal = event.target.closest('.reveal');
-      if (reveal) {
-        const answer = document.getElementById(reveal.dataset.target);
-        if (answer) {
-          answer.hidden = !answer.hidden;
-          reveal.textContent = answer.hidden ? 'Показать' : 'Скрыть';
-          reveal.setAttribute('aria-expanded', String(!answer.hidden));
-        }
       }
     });
     document.getElementById('closeDialog').addEventListener('click', () => dialog.close());

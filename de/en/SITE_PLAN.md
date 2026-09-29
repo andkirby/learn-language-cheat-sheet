@@ -40,7 +40,7 @@ A1–B1 learners. It should make common grammar decisions retrievable in one to
 three taps, remain concise on the first layer, install as a PWA and work
 offline after the first successful load.
 
-The interface language is English: UI strings, dialogs, practice and search
+The interface language is English: UI strings, dialogs and search
 hints are written in English; German terms stay German. The deck addresses the
 learner directly as "you" (plain instructional register, contractions
 welcome). German examples keep their natural du-register — du/Sie is taught
@@ -71,14 +71,20 @@ re-checked for this audience — the re-derivation changed none of them.
 | DE-X02 | Thematic vocabulary, phrasebook material and a comprehensive dictionary or conjugator | These require different retrieval and maintenance models | The product expands beyond grammar lookup |
 | DE-X03 | Exhaustive exceptions and productive B2+ grammar | Density must serve the stated A1–B1 audience | The supported level expands or a reference review shows an A1–B1 dependency |
 | DE-X04 | Systematic Austrian, Swiss and dialect comparison | Standard German is the default and regional comparison would dominate the deck | Repeated learner need or correctness risk justifies a labeled exception |
-| DE-X05 | Course sequencing, mastery scoring and CEFR certification | Three practice items support retrieval; they are not an assessment system | The product adopts progress or assessment semantics |
+| DE-X05 | Course sequencing, mastery scoring and CEFR certification | The deck is a lookup reference, not a course; progress or assessment semantics are out of scope | The product adopts progress or assessment semantics |
 
 There are no accepted deferred topics: every DE-01–28 topic re-derived with a
 live English-interference story. The topics that came closest to deferral are
 DE-11 and DE-12, because English already owns their decision structure
 (*in order to / so that*; *If I had …, I would*) — they stay required because
 the German forms and the deciding contrasts still have to be taught; their
-rows say what is obvious instead. Unresolved candidate gaps for this audience
+rows say what is obvious instead. One topic is accepted as deferred:
+
+| Decision | Deferred content | Rationale | Reconsider when |
+| --- | --- | --- | --- |
+| DE-D01 | The «Quick review» practice view (three static reveal questions, `#practice`) | Three static items have no replay value; practice returns only as a designed surface with pool/shuffle mechanics (DEBT D-03). The content removed on 2026-09-29 stays recoverable in git history. | A practice design with replay value is accepted (the D-03 trigger) |
+
+Unresolved candidate gaps for this audience
 are findings in `CONTENT_AUDIT.md`, not silent exclusions or plan commitments.
 
 ## Primary retrieval questions
@@ -102,10 +108,9 @@ marks on pronouns (I → me) or word position.
 
 ## Information architecture
 
-The page is a lookup deck with five view destinations, the German sibling's
+The page is a lookup deck with four view destinations, the German sibling's
 skeleton with English view labels (short nav forms: Cases, Forms, Order,
-Clauses, Review). Practice stays a bottom-navigation destination, as on
-`de/ru/`.
+Clauses).
 
 | View | Stable anchor | Required topics |
 | --- | --- | --- |
@@ -113,7 +118,6 @@ Clauses, Review). Practice stays a bottom-navigation destination, as on
 | Forms | `#forms` | DE-03–05, DE-20, DE-25, DE-27; DE-15–16, DE-19, DE-23–24 (`#extras`) |
 | Verbs & word order | `#order` | DE-06–07, DE-09, DE-12–14, DE-21, DE-22 (`#verbs`), DE-17 |
 | Subordinate clauses | `#clauses` | DE-08, DE-10–11, DE-18 |
-| Review | `#practice` | Practice contract below |
 
 The section skeleton is the sibling's seven sections (`cases`, `forms`,
 `preps`, `order`, `verbs`, `clauses`, `extras`). `#start`, `#preps`, `#extras`,
@@ -123,7 +127,7 @@ direct anchor opens the owning view before scrolling. Search covers all views
 and restores the selected view when cleared. Install help remains a dialog
 plus footer line rather than a content section.
 
-## Content and practice contract
+## Content contract
 
 The shared card, dialog, search, navigation and accessibility mechanics are
 defined in the design system. German-for-English-speakers content adds these
@@ -160,14 +164,6 @@ requirements:
   registered in `site.json` (`grammar_terms[de]` for German terms,
   `grammar_terms_common` for English terms); the build gate enforces this on
   every `--check`.
-- Practice has three contextualized items mapped to DE-03, DE-07 and DE-08 —
-  the sibling's mapping, re-derived and kept: together the three items
-  exercise the highest-risk decisions for English speakers (case shape after
-  the verb — der → dem; the fronted adverb with V2 and the verb bracket;
-  verb-final after weil). Each item's wording carries its English
-  interference story (helfen takes a Dativ object where English *help* takes
-  a bare object). Answers explain the choice and identify valid alternatives.
-  Audit probes provide broader validation without bloating learner practice.
 
 ## Required content inventory
 

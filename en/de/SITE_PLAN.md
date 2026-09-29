@@ -8,7 +8,7 @@ Informationsarchitektur für `en/de/index.html` — Englisch erklärt auf
 Deutsch. Sie ist die Publikums-Variante, neu abgeleitet aus dem englischen
 kanonischen Plan ([en/ru/SITE_PLAN.md](../ru/SITE_PLAN.md)); Themen-IDs
 EN-01–26, die Views und das Abschnitts-Skelett sind von dort eingefroren
-(Practice ist dort Footer-only, kein Navigationsziel), während jede
+(Practice ist dort inzwischen entfernt — Deferred EN-D01), während jede
 Retrieval-Frage, jede Interferenzgeschichte und jede Abnahmeentscheidung
 unten für deutschsprachige Lernende neu abgeleitet ist. Zum Revidieren gilt
 [der Autoren-Guide](../../docs/SITE_PLAN_GUIDE.md).
@@ -44,11 +44,11 @@ ein bis drei Taps abrufbar sein, die erste Ebene knapp bleiben; Installation
 als PWA und Offline-Funktion nach dem ersten erfolgreichen Laden gehören zum
 Produkt.
 
-Die Erklärsprache ist Deutsch: UI-Strings, Dialoge, Practice und
+Die Erklärsprache ist Deutsch: UI-Strings, Dialoge und
 Suchhinweise sind auf Deutsch geschrieben; englische Termini (Past Simple,
 Present Perfect, Continuous) bleiben Englisch. Das Deck duzt durchgehend
 (du-Form, direktes Anweisungsregister, Kontraktionen willkommen) — konsistent
-in UI, Dialogen, Practice und Suchhinweisen. Englische Beispiele sind
+in UI, Dialogen und Suchhinweisen. Englische Beispiele sind
 registerneutral: Englisch hat kein Sie, und die du/ihr/Sie-Kollision in
 *you* ist gelehrter Inhalt (EN-02), nicht die Stimme des Decks.
 
@@ -83,7 +83,7 @@ nachgeprüft — die Neuableitung hat keinen von ihnen geändert.
 | EN-X02 | Thematischer Wortschatz, Phrasebook-Material und ein umfassendes Wörterbuch; dazu False-Friend-Listen als Vokabelstoff | Andere Retrieval- und Wartungsmodelle; die grammatiktragenden False Friends (also, actually, even) leben als Entscheidungshinweise in EN-17/18 | Das Produkt über Grammatik-Lookup hinauswächst |
 | EN-X03 | Erschöpfender britisch/amerikanischer und regionaler Vergleich | Neutrale internationale Beispiele genügen für das Ziel | Ein Varietätsunterschied eine gelehrte Entscheidung ändert oder wiederholter Lernbedarf entsteht |
 | EN-X04 | Erschöpfende Ausnahmen und produktive B2+-Grammatik | Dichte muss der genannten A1–B1-Zielgruppe dienen | Das unterstützte Niveau wächst oder ein Referenzvergleich eine A1–B1-Abhängigkeit zeigt |
-| EN-X05 | Kurs-Sequenzierung, Mastery-Scoring und CEFR-Zertifizierung | Drei Practice-Aufgaben unterstützen Retrieval; sie sind kein Assessment-System | Das Produkt Fortschritts- oder Assessment-Semantik annimmt |
+| EN-X05 | Kurs-Sequenzierung, Mastery-Scoring und CEFR-Zertifizierung | Das Deck ist eine Lookup-Referenz, kein Kurs; Fortschritts- oder Assessment-Semantik sind außerhalb des Scopes | Das Produkt Fortschritts- oder Assessment-Semantik annimmt |
 
 Es gibt keine akzeptierten Deferred-Themen: jedes Thema EN-01–26 ist mit
 einer lebendigen Deutsch-Interferenzgeschichte neu abgeleitet. Am nächsten an
@@ -93,7 +93,13 @@ Deutsch drei hat, und *while* nutzt dieselbe Zeit-und-Kontrast-Doppelnutzung
 wie *während*; sie bleiben Required, weil die englischen Formen und Grenzen
 trotzdem zu lehren sind (die Subjekt-Falle im Sie-Befehl; die
 Registerentscheidung whereas vs while); ihre Zeilen sagen, was offensichtlich
-ist. Unaufgelöste Kandidaten-Lücken für dieses Publikum sind Findings in
+ist. Ein Thema ist als Deferred akzeptiert:
+
+| Entscheidung | Ausgesetzter Inhalt | Begründung | Wieder aufnehmen, wenn |
+| --- | --- | --- | --- |
+| EN-D01 | Die Wiederholungsansicht „Wiederholung“ (drei statische Reveal-Fragen, `#practice`) | Drei statische Aufgaben haben keinen Wiederholungswert; Practice kehrt nur als gestaltete Oberfläche mit Pool-/Shuffle-Mechanik zurück (DEBT D-03). Der am 2026-09-29 entfernte Inhalt bleibt in der Git-History wiederherstellbar. | Ein Practice-Design mit Wiederholungswert akzeptiert wird (der D-03-Auslöser) |
+
+Unaufgelöste Kandidaten-Lücken für dieses Publikum sind Findings in
 `CONTENT_AUDIT.md`, keine stillen Ausschlüsse oder Plan-Zusagen.
 
 ## Primäre Retrieval-Fragen
@@ -122,11 +128,9 @@ Zeiten, Hilfsverben und Wortstellung.
 
 ## Informationsarchitektur
 
-Die Seite ist ein Lookup-Deck mit fünf Bottom-Navigation-Zielen und einer nur
-über den Footer verlinkten Wiederholungsansicht — das Skelett des en-ru
-Geschwisters mit deutschen View-Beschriftungen (kurze Nav-Formen: Artikel,
-Zeiten, Satzbau, Verben, Präpositionen). Practice bleibt wie bei en-ru kein
-Navigationsziel.
+Die Seite ist ein Lookup-Deck mit fünf Bottom-Navigation-Zielen — das
+Skelett des en-ru Geschwisters mit deutschen View-Beschriftungen (kurze
+Nav-Formen: Artikel, Zeiten, Satzbau, Verben, Präpositionen).
 
 | View | Stabiler Anker | Erforderliche Themen |
 | --- | --- | --- |
@@ -135,7 +139,6 @@ Navigationsziel.
 | Satzbau | `#order` | EN-03–04, EN-17–19, EN-25 |
 | Verben | `#verbs` | EN-08–10, EN-16 (`#conditionals`), EN-21, EN-23–24 |
 | Präpositionen | `#preps` | EN-11–12 |
-| Wiederholung | `#practice` | Practice-Vertrag unten; nur Footer-Link |
 
 `#start`, `#pronouns`, `#nouns`, `#conditionals` und `#install-help` sind
 stabile direkte Anker (die Seite ist neu — nichts hier ist ein Legacy-Link,
@@ -144,7 +147,7 @@ aber die Anker behalten die Namen des Geschwisters). Ein direkter Anker
 stellt beim Leeren die gewählte View wieder her. Die Install-Hilfe bleibt
 Dialog plus Footer-Zeile statt Inhaltsabschnitt.
 
-## Content- und Practice-Vertrag
+## Content-Vertrag
 
 Die gemeinsamen Karten-, Dialog-, Such-, Navigations- und
 Barrierefreiheits-Mechaniken definiert das Design-System. Der Inhalt für
@@ -192,20 +195,6 @@ deutschsprachige Lernende ergänzt diese Anforderungen:
   (`grammar_terms_common` für englische Termini; `grammar_terms[en]` ist
   aktuell leer — deutsche Sucherwörter werden über die deutschen Glossen
   kartensichtbar); das Build-Gate erzwingt das bei jedem `--check`.
-- Practice hat drei kontextualisierte Aufgaben, gemappt auf EN-04, EN-05 und
-  EN-06 — das Geschwister-Mapping (EN-01, EN-04, EN-06) ist für dieses
-  Publikum neu abgeleitet und bewusst verschoben: Die Artikelwahl an sich ist
-  Deutschsprachigen vertraut — EN-01 bleibt dennoch eine echte Kartenfalle,
-  weil ihre Grenzen in beide Richtungen interferieren (Nullartikel-Wendungen
-  wie *go to school*, deutscher Nullartikel gegen englisches *a*: *Ich bin
-  Lehrer* → *I'm a teacher*) —, aber die drei Aufgaben üben die
-  systematischeren Top-Interferenzen — do-support (✗ *Likes she tea?*
-  ← *Mag sie Tee?*), die fehlende Verlaufsform (✗ *It rains now* ← *Es
-  regnet* deckt beides ab) und den Perfekt-Kalk (✗ *I have seen it
-  yesterday* ← *Ich habe den Film gestern gesehen*). Jede Aufgabenstellung
-  trägt ihre deutsche Interferenzgeschichte. Antworten erklären die Wahl und
-  identifizieren gültige Alternativen. Audit-Proben liefern breitere
-  Validierung, ohne die Lernpraxis aufzublähen.
 
 ## Erforderliches Inhaltsinventar
 

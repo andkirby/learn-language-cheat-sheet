@@ -20,7 +20,6 @@
     "plan_path": "de/ru/SITE_PLAN.md"
   },
   "strings": {
-    "_note": "footer_practice is deliberately absent: the hand-written German footer never had a practice link (the English deck does). Follow-up candidate, not a migration change.",
     "search_placeholder": "Поиск: wem, weil, modal, Dativ…",
     "search_aria": "Поиск по шпаргалке",
     "clear_aria": "Очистить поиск",
@@ -40,8 +39,6 @@
       "light": {"icon": "☀", "label": "Тема: светлая"},
       "dark": {"icon": "☾", "label": "Тема: тёмная"}
     },
-    "reveal_show": "Показать",
-    "reveal_hide": "Скрыть",
     "install_ios": {
       "title": "Установка на iPhone",
       "lead": "Safari не показывает стандартный install prompt.",
@@ -78,8 +75,7 @@
     {"id": "cases", "ico": "A/D", "label": "Падежи"},
     {"id": "forms", "ico": "der", "label": "Формы"},
     {"id": "order", "ico": "V2", "label": "Порядок"},
-    {"id": "clauses", "ico": "weil", "label": "Придат."},
-    {"id": "practice", "ico": "?", "label": "Повтор"}
+    {"id": "clauses", "ico": "weil", "label": "Придат."}
   ],
   "sections": [
     {
@@ -809,35 +805,13 @@
       ]
     }
   ],
-  "practice": {
-    "id": "practice", "view": "practice", "badge": "30 sec",
-    "heading": "Быстрый повтор", "sub": "Три вопроса без отдельного “режима урока”.",
-    "search": "practice quiz повтор тест",
-    "items": [
-      {
-        "_note": "Case after verb: helfen + Dativ (plan practice item 1).",
-        "q": [{"t": "1. Ich helfe ___ Mann.", "b": true}, " Какой падеж?"],
-        "answer": ["Dativ (helfen + Dat., Wem?): ", {"t": "dem Mann", "b": true}, " — der → dem; с неопределённым артиклем — ", {"t": "einem Mann", "b": true}, "."]
-      },
-      {
-        "_note": "Modal verb position: V2 + infinitive last (plan practice item 2).",
-        "q": [{"t": "2. Heute ___ ich in den Laden gehen.", "b": true}, " Где стоит ", {"t": "müssen", "i": true}, "?"],
-        "answer": [{"t": "Heute muss ich in den Laden gehen.", "b": true}, " Модальный глагол = V2, инфинитив = конец."]
-      },
-      {
-        "_note": "Subordinate clause: finite verb last (plan practice item 3).",
-        "q": [{"t": "3. weil ich heute arbeiten ___", "b": true}],
-        "answer": [{"t": "weil ich heute arbeiten muss", "b": true}, " — в придаточном спрягаемый глагол уходит в конец."]
-      }
-    ]
-  },
   "details": {
     "lookup-help": {
       "title": "Как пользоваться", "lead": "Триггер → форма → позиция.",
       "blocks": [
         {"detail": {"label": "Схема", "runs": ["Найди триггер — падежный вопрос, предлог, союз или глагольную конструкцию, — потом смотри нужную форму и позицию глагола."]}},
         {"detail": {"label": "Поиск", "runs": ["Ищи сразу: ", {"t": "wem", "i": true}, ", ", {"t": "weil", "i": true}, ", ", {"t": "Perfekt", "i": true}, " — или по-русски. Поиск проверяет все разделы сразу."]}},
-        {"detail": {"label": "Навигация", "runs": ["Пять разделов внизу; Повтор — короткая проверка главных ловушек."]}}
+        {"detail": {"label": "Навигация", "runs": ["Четыре раздела внизу: падежи, формы, порядок слов, придаточные."]}}
       ]
     },
     "linking-adverbs": {

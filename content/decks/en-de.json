@@ -39,8 +39,6 @@
       "light": {"icon": "☀", "label": "Design: hell"},
       "dark": {"icon": "☾", "label": "Design: dunkel"}
     },
-    "reveal_show": "Anzeigen",
-    "reveal_hide": "Ausblenden",
     "install_ios": {
       "title": "Installation auf dem iPhone",
       "lead": "Safari zeigt den üblichen Install-Prompt nicht.",
@@ -60,7 +58,6 @@
       ]
     },
     "footer_all": "alle Spickzettel",
-    "footer_practice": "Wiederholung",
     "footer_install": "Installation: Android — Button „Installieren“ oder Browsermenü · iPhone — Teilen → Zum Home-Bildschirm",
     "footer_plan": "Inhaltsplan:",
     "lang_menu_aria": "Lernsprache und Erklärungssprache",
@@ -770,35 +767,13 @@
       ]
     }
   ],
-  "practice": {
-    "id": "practice", "view": "practice", "badge": "30 sec",
-    "heading": "Wiederholung", "sub": "Drei Fragen ohne extra „Lernmodus“.",
-    "search": "practice quiz wiederholung üben test",
-    "items": [
-      {
-        "_note": "EN-04: do-support — der deutsche Verb-Fehler (Mag sie Tee?).",
-        "q": [{"t": "1. Mag sie Tee? — Bild die Frage: ___ she ___ (like) tea?", "b": true}],
-        "answer": [{"t": "Does she like", "b": true}, " tea? — Englisch braucht Do/Does/Did + Grundform; ", {"t": "Likes she tea?", "s": true}, " kehrt nur das Verb, wie das Deutsche."]
-      },
-      {
-        "_note": "EN-05: Present Simple vs Present Continuous — das Deutsche hat keine Verlaufsform.",
-        "q": [{"t": "2. Es regnet gerade. → It ___ (rain) now.", "b": true}],
-        "answer": [{"t": "It's raining", "b": true}, " — Verlaufsform für „gerade jetzt“; ", {"t": "It rains now", "s": true}, " überträgt das deutsche Präsens, das beides abdeckt."]
-      },
-      {
-        "_note": "EN-06: Past Simple vs Present Perfect — der Perfekt-Fehler, Gefahr Nr. 1.",
-        "q": [{"t": "3. Ich habe den Film gestern gesehen. → I ___ (see) the film yesterday.", "b": true}],
-        "answer": [{"t": "saw", "b": true}, " — Past Simple: „gestern“ ist abgeschlossen; ", {"t": "I have seen it yesterday", "s": true}, " ist der Perfekt-Fehler. Ohne Zeitangabe wäre ", {"t": "I have seen", "b": true}, " richtig (Perfect = Ergebnis jetzt)."]
-      }
-    ]
-  },
   "details": {
     "lookup-help": {
       "title": "So geht’s", "lead": "Auslöser → Form → Wortstellung.",
       "blocks": [
         {"detail": {"label": "Prinzip", "runs": ["Finde den Auslöser — Signalwort, Artikel, Konnektor oder Modalverb — und schau dann auf die passende Form und die Wortstellung."]}},
         {"detail": {"label": "Suche", "runs": ["Such direkt: ", {"t": "present", "b": true}, ", ", {"t": "the", "b": true}, ", ", {"t": "must", "b": true}, " — oder auf Deutsch. Die Suche prüft alle Bereiche gleichzeitig."]}},
-        {"detail": {"label": "Navigation", "runs": ["Fünf Bereiche unten; die Wiederholung verlinkt der Footer."]}}
+        {"detail": {"label": "Navigation", "runs": ["Fünf Bereiche unten."]}}
       ]
     },
         "a-an": {

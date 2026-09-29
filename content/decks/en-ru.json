@@ -39,8 +39,6 @@
       "light": {"icon": "☀", "label": "Тема: светлая"},
       "dark": {"icon": "☾", "label": "Тема: тёмная"}
     },
-    "reveal_show": "Показать",
-    "reveal_hide": "Скрыть",
     "install_ios": {
       "title": "Установка на iPhone",
       "lead": "Safari не показывает стандартный install prompt.",
@@ -60,7 +58,6 @@
       ]
     },
     "footer_all": "все шпаргалки",
-    "footer_practice": "Быстрый повтор",
     "footer_install": "Установка: Android — кнопка «Установить» или меню браузера · iPhone — Share → Add to Home Screen",
     "footer_plan": "план контента:",
     "lang_menu_aria": "Язык обучения и язык объяснений",
@@ -727,35 +724,13 @@
       ]
     }
   ],
-  "practice": {
-    "id": "practice", "view": "practice", "badge": "30 sec",
-    "heading": "Быстрый повтор", "sub": "Три вопроса без отдельного “режима урока”.",
-    "search": "practice quiz повтор тест",
-    "items": [
-      {
-        "_note": "EN-01: articles + instrument the.",
-        "q": [{"t": "1. She plays ___ piano very well.", "b": true}, " Какой артикль?"],
-        "answer": [{"t": "the", "b": true}, " — игра на инструменте: play the piano; сравни: play football — без артикля."]
-      },
-      {
-        "_note": "EN-06: past simple vs present perfect.",
-        "q": [{"t": "2. I ___ (see) this film yesterday.", "b": true}],
-        "answer": ["Past Simple: ", {"t": "saw", "b": true}, " — закрытый факт прошлого (вчера). yesterday — подсказка, решает смысл."]
-      },
-      {
-        "_note": "EN-04: do-questions.",
-        "q": [{"t": "3. Спроси, любит ли она чай: ___ she ___ (like) tea?", "b": true}],
-        "answer": [{"t": "Does she like", "b": true}, " tea? — Does + V1; в русском вопрос строится без вспомогательного глагола."]
-      }
-    ]
-  },
   "details": {
     "lookup-help": {
       "title": "Как пользоваться", "lead": "Маркер → форма → порядок слов.",
       "blocks": [
         {"detail": {"label": "Схема", "runs": ["Найди маркер — сигнальное слово, артикль, союз или модальный глагол, — потом смотри нужную форму и порядок слов."]}},
         {"detail": {"label": "Поиск", "runs": ["Ищи сразу: ", {"t": "present", "i": true}, ", ", {"t": "the", "i": true}, ", ", {"t": "must", "i": true}, " — или по-русски. Поиск проверяет все разделы сразу."]}},
-        {"detail": {"label": "Навигация", "runs": ["Пять разделов внизу; Повтор — в подвале страницы."]}}
+        {"detail": {"label": "Навигация", "runs": ["Пять разделов внизу."]}}
       ]
     },
     "flavor-words": {

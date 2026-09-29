@@ -22,6 +22,33 @@ pending an independent reference-grounded pass (D-01), now owed across all
 four live decks. Runtime/browser gates are a separate AGENTS.md checklist;
 scoped smoke tests are recorded per batch.
 
+## 2026-09-29 — Practice view removed (scope decision, plans DE-D01/EN-D01)
+
+- Decision owner: the site author, in the 2026-09-29 header-redesign
+  review (dad-verified brief). The three static reveal questions had no
+  replay value; practice returns only as a designed pool/shuffle surface
+  (DEBT D-03). Not a content-quality verdict on the three items — a
+  product-scope call, so it is recorded here as a verdict on scope, and
+  the removed content stays recoverable in git history.
+- Scope: all four decks (`de-ru`, `en-ru`, `de-en`, `en-de`). DE decks
+  drop their fifth nav destination (5→4 views); EN decks lose the
+  footer-only practice link. `#practice` anchors are gone by design
+  (unknown hashes degrade gracefully — accepted).
+- Machinery: `schema.json` (practice no longer required), `deck_render`
+  (`practice_html`, `@@FOOTER_PRACTICE@@`, reveal tokens removed),
+  `deck_validate` (practice shape checks retired; reveal strings off the
+  required list), `site.json` (the practice-card search-token exemptions
+  `practice`/`quiz`/`test`/`üben` pruned per its own hygiene rule).
+- Sweep: help-dialog nav copy corrected in all four decks («Четыре
+  раздела…» / «Пять разделов.» / "Four views…" / "Fünf Bereiche unten."),
+  `footer_practice` strings deleted, reveal strings deleted, plans
+  updated before pages (view tables, deferred entries DE-D01/EN-D01,
+  X05 rationales), DEBT D-03 rewritten / D-05 closed / D-08 note,
+  DESIGN_SYSTEM + style-guide specimens follow the removal.
+- Gates: `--check` ×4, `--check-siblings` ×2, `--check-shell` — all
+  green after regeneration. Accuracy/Teaching gates remain NOT RUN
+  (D-01) and are unaffected: no grammar content changed.
+
 ## 2026-09-10 — Initial documentation review
 
 - Reviewer: Codex (documentation author; not an independent linguistic

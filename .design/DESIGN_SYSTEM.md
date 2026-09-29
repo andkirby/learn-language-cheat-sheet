@@ -88,7 +88,7 @@ Rules:
   `.table-scroll`, never the page.
 - `scroll-padding-top: 116px` keeps anchored sections clear of the sticky
   topbar.
-- Bottom nav is fixed, 5 **view destinations**, respects
+- Bottom nav is fixed, 4–5 **view destinations**, respects
   `env(safe-area-inset-bottom)`. A tap switches the visible view (sections
   carry `data-view`); there is no scrollspy — the selected view is the nav
   truth. Each language plan owns its destinations, section membership and
@@ -100,12 +100,11 @@ Rules:
 | --- | --- |
 | `.cheat-card` | Atomic unit; content + optional `.chips`. Searchable via `data-search`. Must shrink (see layout). |
 | `.badges` + `.badge.level/.kind` | Card metadata row under the title, from deck fields `level` (A1/A2/B1) and `kind` (short label). Text on every badge — never color alone. Never on case-grid cards. |
-| `.tap` (chip) | Opens a `DETAILS` dialog entry or reveals an answer. Variants: `.neutral` (secondary), `.case` (44px). Visual min-height 40px + `::after` hit-area expansion to ≥46px. No other button styles. |
+| `.tap` (chip) | Opens a `DETAILS` dialog entry. Variants: `.neutral` (secondary), `.case` (44px). Visual min-height 40px + `::after` hit-area expansion to ≥46px. No other button styles. |
 | `.table-scroll` + `table` | Horizontal scroll container; `td.hot` marks case-changing forms via `--on-accent-soft`. |
 | `.formula` + `.slot` | Sentence-position diagram. Variants: `.verb` (ok tokens), `.end` (warn tokens), `.sub` (accent tokens). |
 | `.example` (+ `.pair-src`, `.pair-gloss`, `.hit`) | Example line(s); pure-target containers take the study voice. With a deck `gloss` → pair layout: hint under a hairline inside the same surface; `.hit` marks the taught form (accent pair, implies bold). |
 | `.notice` / `.warning` | Callouts. Accent = info, warn tokens = caveat. |
-| `.answer` + `.reveal` | Show/hide practice answer; `aria-expanded`/`aria-controls` required; visible without JS (noscript unhides). |
 | `dialog` bottom sheet | One shared `#detailDialog`; title/lead set from `DETAILS`; closes via ×, Escape, backdrop tap (`event.target === dialog`). |
 | `.bottom-nav` | View switcher. Active item = selected view, gets `.active` **and** `aria-current="true"`; decorative grammar cues are hidden from screen readers. During search, selection styling and `aria-current` clear because results span views. A tap clears search, updates the hash and scrolls to top. |
 | `section[data-view]` | View membership. JS hides non-active views via the `hidden` attribute; search unhides matching sections across views; noscript and print show everything stacked. |
@@ -122,7 +121,7 @@ Rules:
   match hide — **across all views** (matching sections from other views
   become visible stacked); `#searchSummary` reports the card count and
   `#noResults` appears at 0 matches. Clearing restores the active view and
-  its nav state. Search must never destroy dialog or answer state.
+  its nav state. Search must never destroy dialog state.
 - `prefers-reduced-motion`: smooth scroll and all transitions off.
 
 ## Accessibility baseline

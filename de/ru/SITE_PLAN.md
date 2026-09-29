@@ -45,9 +45,15 @@ topic is implied by a heading, search keyword or content found on the page.
 | DE-X02 | Thematic vocabulary, phrasebook material and a comprehensive dictionary or conjugator | These require different retrieval and maintenance models | The product expands beyond grammar lookup |
 | DE-X03 | Exhaustive exceptions and productive B2+ grammar | Density must serve the stated A1–B1 audience | The supported level expands or a reference review shows an A1–B1 dependency |
 | DE-X04 | Systematic Austrian, Swiss and dialect comparison | Standard German is the default and regional comparison would dominate the deck | Repeated learner need or correctness risk justifies a labeled exception |
-| DE-X05 | Course sequencing, mastery scoring and CEFR certification | Three practice items support retrieval; they are not an assessment system | The product adopts progress or assessment semantics |
+| DE-X05 | Course sequencing, mastery scoring and CEFR certification | The deck is a lookup reference, not a course; progress or assessment semantics are out of scope | The product adopts progress or assessment semantics |
 
-There are no accepted deferred topics. Unresolved candidate gaps are findings
+One topic is accepted as deferred:
+
+| Decision | Deferred content | Rationale | Reconsider when |
+| --- | --- | --- | --- |
+| DE-D01 | The «Быстрый повтор» practice view (three static reveal questions, `#practice`) | Three static items have no replay value; practice returns only as a designed surface with pool/shuffle mechanics (DEBT D-03). The content removed on 2026-09-29 stays recoverable in git history. | A practice design with replay value is accepted (the D-03 trigger) |
+
+Unresolved candidate gaps are findings
 in `CONTENT_AUDIT.md`, not silent exclusions or plan commitments.
 
 ## Primary retrieval questions
@@ -64,7 +70,7 @@ in `CONTENT_AUDIT.md`, not silent exclusions or plan commitments.
 
 ## Information architecture
 
-The page is a lookup deck with five view destinations:
+The page is a lookup deck with four view destinations:
 
 | View | Stable anchor | Required topics |
 | --- | --- | --- |
@@ -72,14 +78,13 @@ The page is a lookup deck with five view destinations:
 | Формы | `#forms` | DE-03–05, DE-20, DE-25, DE-27; DE-15–16, DE-19, DE-23–24 (`#extras`) |
 | Глагол и порядок | `#order` | DE-06–07, DE-09, DE-12–14, DE-21, DE-22 (`#verbs`), DE-17 |
 | Придаточные | `#clauses` | DE-08, DE-10–11, DE-18 |
-| Повтор | `#practice` | Practice contract below |
 
 `#start`, `#preps`, `#extras`, `#verbs` and `#install-help` are stable legacy
 or direct anchors. A direct anchor opens the owning view before scrolling.
 Search covers all views and restores the selected view when cleared. Install
 help remains a dialog plus footer line rather than a content section.
 
-## Content and practice contract
+## Content contract
 
 The shared card, dialog, search, navigation and accessibility mechanics are
 defined in the design system. German content adds these requirements:
@@ -105,9 +110,6 @@ defined in the design system. German content adds these requirements:
   translations preserve the grammatical distinction rather than forcing a
   literal translation.
 - Search metadata includes likely Russian questions and German terms.
-- Practice has three contextualized items mapped to DE-03, DE-07 and DE-08.
-  Answers explain the choice and identify valid alternatives. Audit probes
-  provide broader validation without bloating learner practice.
 
 ## Required content inventory
 
