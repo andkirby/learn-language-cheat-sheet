@@ -563,3 +563,39 @@ install action). `scroll-padding-top` drops 116px → 72px for the shorter
 header. Landing header keeps its composition and look (language choice
 is the hub's primary action); landing footer's install hint reworded for
 the new placement. Service-worker cache: v40.
+
+## 2026-09-29 — Layout lab: preview-only page compositions behind `?layout=`
+
+The deck page composition (Focused stack: bottom-nav views, one linear
+column) got three designed alternatives — **Bento workspace** (12-track
+mosaic, deterministic 7/5 brick spans, full rows for wide content, one
+ink anchor tile, chapter bands), **Study sidebar** (category strip under
+the topbar on phones; ≥1100px a fixed full-height rail beside a capped
+lesson sheet with sticky section heads) and **Editorial spread** (scotch
+rules, display headlines, featured `.spread-lead` panel, supporting
+topics as a numbered hairline index). All three were designed as
+independent directions (dad passes with web research), not reskins.
+
+Mechanism (the contract part):
+
+- The shared template carries a small lab bootstrap: `?layout=bento`
+  sets `html[data-layout]` for the **tab session only**
+  (`sessionStorage`, never `localStorage`), and lazy-loads
+  `assets/layouts.css`. Without the parameter nothing runs, nothing
+  loads, and the rendered page is byte-identical to production — the
+  lab ships zero extra bytes to visitors. A `Layout` dock (preview
+  chrome, only inside an active lab session) switches between the
+  variants and exits back to the clean URL.
+- Variant CSS lives in `assets/layouts.css`, scoped entirely under
+  `html[data-layout="…"]`, semantic tokens only, its own print resets.
+  It is deliberately **not** part of the base.css contract; the file
+  header and DEBT D-09 own the promotion rule: when a direction is
+  adopted, its rules graduate into `assets/base.css` (or the template)
+  and the rest of the file is deleted.
+- `assets/layouts.css` is precached in the APP_SHELL so offline preview
+  works and the shell stays all-200 (the earlier partial rollout broke
+  exactly this — see the v39 P0 fix).
+
+Known lab-only limitations: the sidebar rail's «Разделы» heading and the
+dock labels are hardcoded (not deck strings) — acceptable for a preview
+tool; if a variant is adopted these move into deck `strings`.

@@ -6,6 +6,20 @@ UI rationale lives in
 `.design/decisions.md`, content review evidence in `CONTENT_AUDIT.md`.
 Append the entry in the same commit that ships the change.
 
+## 2026-09-29 (layout lab preview: three page compositions)
+
+- **Preview-only layout lab** on the deck pages: open any deck with
+  `?layout=bento`, `?layout=sidebar` or `?layout=spread` (or switch
+  live from the small `Layout` dock that appears only inside a lab
+  session) to compare three fully designed page compositions against
+  the production stack — Bento workspace (varied tile mosaic), Study
+  sidebar (persistent category rail + lesson canvas on desktop,
+  category strip on phones) and Editorial spread (featured rule +
+  numbered hairline index). Production visitors are unaffected: no
+  parameter means no lab, no extra bytes, identical rendering. The
+  experiment and its promotion/removal path are recorded in
+  `.design/decisions.md` and DEBT D-09. `CACHE_VERSION` v42.
+
 ## 2026-09-29 (one-line header + practice removed)
 
 - **Practice view removed** from all four decks (plans DE-D01/EN-D01,

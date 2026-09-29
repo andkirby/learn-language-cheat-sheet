@@ -1,0 +1,841 @@
+/*
+ * Layout lab — experimental deck-page compositions.
+ * NOT part of the production contract: this stylesheet is loaded only while a
+ * lab session is active (?layout=bento|sidebar|spread, session-scoped in the
+ * page template), so the production page ships zero extra bytes and renders
+ * identically. Every rule is scoped under html[data-layout="…"] and may use
+ * only the semantic tokens from assets/base.css. When a direction is adopted
+ * its rules graduate into assets/base.css and the remainder is deleted —
+ * see .design/decisions.md (layout lab) and DEBT.md.
+ *
+ * Variants (designed as independent directions, not reskins of the stack):
+ *   bento   — 12-track mosaic per section; deterministic 7/5 brick spans,
+ *             full rows for wide content, ink anchor tile, chapter bands
+ *   sidebar — <1100px: category strip under the topbar + production stack;
+ *             ≥1100px: fixed full-height rail + capped lesson sheet
+ *   spread  — editorial spreads: scotch rules, display headlines, featured
+ *             lead panel, supporting topics as a numbered hairline index
+ *   stack   — the production composition (no attribute set; lab dock only)
+ */
+
+/* ---------- Lab dock: preview chrome, lab sessions only ---------- */
+
+html[data-layout-lab] .lab-dock {
+  position: fixed;
+  left: 12px;
+  bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 12px);
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 5px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+html[data-layout-lab] .lab-dock::before {
+  content: "Layout";
+  padding: 0 5px 0 8px;
+  font-size: .7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--muted);
+}
+html[data-layout-lab] .lab-btn {
+  position: relative;
+  min-height: 38px;
+  padding: 0 11px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: none;
+  cursor: pointer;
+  font-size: .8rem;
+  font-weight: 750;
+  color: var(--muted);
+}
+html[data-layout-lab] .lab-btn::after { content: ""; position: absolute; inset: -3px -4px; } /* ≥44px hit area */
+html[data-layout-lab] .lab-btn:hover { background: var(--surface-2); color: var(--text); }
+html[data-layout-lab] .lab-btn.active {
+  background: var(--accent-soft);
+  color: var(--on-accent-soft);
+  border-color: var(--tap-line);
+}
+html[data-layout-lab] .lab-exit {
+  position: relative;
+  width: 34px;
+  min-height: 38px;
+  border: 0;
+  border-radius: 9px;
+  background: none;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1;
+}
+html[data-layout-lab] .lab-exit::after { content: ""; position: absolute; inset: -3px; }
+html[data-layout-lab] .lab-exit:hover { background: var(--surface-2); color: var(--text); }
+
+/* ---------- Bento workspace =========================================
+   12-track mosaic per section. Deterministic spans (no dense reflow —
+   reading order stays DOM order): staggered 7/5 brick pairs, full rows
+   for the case index / bare table slabs / practice, seamless table
+   slabs, tinted rule tiles, one ink anchor tile per deck. */
+
+/* --- canvas, rhythm, chapter counters ------------------------------- */
+html[data-layout="bento"] {
+  --b-gap: 12px;
+  --b-r: calc(var(--radius) + 4px); /* 22px tile radius */
+}
+html[data-layout="bento"] .topbar-inner,
+html[data-layout="bento"] main { width: min(100%, 1120px); }
+html[data-layout="bento"] main { counter-reset: bento-chapter; }
+html[data-layout="bento"] section[data-section] { counter-increment: bento-chapter; }
+html[data-layout="bento"] section { margin-top: 24px; }
+html[data-layout="bento"] .footer { margin-top: 34px; }
+
+/* --- shared tile chrome (all widths) -------------------------------- */
+html[data-layout="bento"] .cheat-card {
+  border-radius: var(--b-r);
+  padding: 13px 14px;
+  box-shadow: 0 1px 2px rgba(23, 32, 51, .05);
+}
+html[data-layout="bento"] .cheat-card h3 {
+  margin: 0 0 7px;
+  font-size: 1.02rem;
+  letter-spacing: -.012em;
+}
+html[data-layout="bento"] .badges { gap: 5px; margin: -3px 0 7px; }
+html[data-layout="bento"] .badge { font-size: .68rem; padding: 2px 8px; }
+html[data-layout="bento"] .example { border-radius: 13px; font-size: .95rem; }
+html[data-layout="bento"] .notice { border-radius: 12px; }
+
+/* Keycap chips instead of pills — workspace control surface */
+html[data-layout="bento"] .tap {
+  border-radius: 11px;
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--tap-line) 70%, transparent);
+}
+html[data-layout="bento"] .tap.neutral {
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--line) 85%, transparent);
+}
+html[data-layout="bento"] .tap:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+/* --- rule tiles: sentence-frame diagrams get their own weight ------- */
+html[data-layout="bento"] .cheat-card:has(.formula) {
+  background: color-mix(in srgb, var(--accent-soft) 60%, var(--surface));
+  border-color: color-mix(in srgb, var(--tap-line) 70%, var(--line));
+}
+html[data-layout="bento"] .formula {
+  margin: 10px 0 6px;
+  padding: 9px 11px;
+  background: var(--surface-2);
+  border-radius: 13px;
+}
+html[data-layout="bento"] .formula .slot {
+  background: var(--surface);
+  padding: 6px 9px;
+  border-radius: 10px;
+}
+html[data-layout="bento"] .formula .slot.verb { background: var(--ok-soft); }
+html[data-layout="bento"] .formula .slot.end { background: var(--warn-soft); }
+html[data-layout="bento"] .formula .slot.sub { background: var(--accent-soft); }
+
+/* --- data slabs: tables go seamless, edge-to-edge ------------------- */
+html[data-layout="bento"] .cheat-card:has(.table-scroll) {
+  padding: 0;
+  overflow: hidden;
+}
+html[data-layout="bento"] .cheat-card:has(.table-scroll) > * { margin-inline: 16px; }
+html[data-layout="bento"] .cheat-card:has(.table-scroll) > h3 { padding-top: 14px; }
+html[data-layout="bento"] .cheat-card:has(.table-scroll) > .table-scroll {
+  margin: 10px 0;
+  border-inline: 0;
+  border-radius: 0;
+}
+html[data-layout="bento"] .cheat-card:has(.table-scroll) > .table-scroll:last-child { margin-bottom: 0; }
+html[data-layout="bento"] .cheat-card:has(.table-scroll) > :last-child { margin-bottom: 14px; }
+
+/* --- anchor tile: the case index is the one high-contrast tile ------ */
+html[data-layout="bento"] .case-grid.cheat-card {
+  padding: 12px;
+  background: linear-gradient(140deg,
+    color-mix(in srgb, var(--text) 96%, var(--accent)),
+    color-mix(in srgb, var(--text) 84%, var(--accent)));
+  color: var(--bg);
+  border-color: color-mix(in srgb, var(--text) 70%, transparent);
+  box-shadow: var(--shadow);
+}
+html[data-layout="bento"] .case-grid .tap.case {
+  min-height: 64px;
+  padding: 10px 14px;
+  border-radius: 15px;
+  text-align: left;
+  background: color-mix(in srgb, var(--bg) 10%, transparent);
+  border-color: color-mix(in srgb, var(--bg) 26%, transparent);
+  color: var(--bg);
+  box-shadow: none;
+}
+html[data-layout="bento"] .case-grid .tap.case b { display: block; font-size: 1.18rem; }
+html[data-layout="bento"] .case-grid > .hit-jump { color: var(--bg); opacity: .75; }
+html[data-layout="bento"] .case-grid > .hit-jump .view { color: var(--bg); }
+
+/* --- practice surface (ready for the rebuilt practice view, D-03) --- */
+html[data-layout="bento"] .cheat-card:has(> .practice-q) {
+  background: color-mix(in srgb, var(--ok-soft) 40%, var(--surface));
+  border-color: color-mix(in srgb, var(--ok) 28%, var(--line));
+}
+html[data-layout="bento"] .tap.reveal {
+  background: var(--ok-soft);
+  color: var(--ok);
+  border-color: color-mix(in srgb, var(--ok) 30%, var(--line));
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--ok) 22%, transparent);
+}
+html[data-layout="bento"] .answer {
+  margin-top: 9px;
+  padding: 10px 12px;
+  border-left: 3px solid var(--ok);
+  background: var(--ok-soft);
+  border-radius: 10px;
+}
+
+/* --- chapter bands: section heads join the composition -------------- */
+html[data-layout="bento"] .section-head {
+  align-items: center;
+  margin: 0 -16px 12px; /* full-bleed band on phones (main padding is 16) */
+  padding: 13px 16px 11px;
+  background: linear-gradient(120deg,
+    color-mix(in srgb, var(--accent-soft) 65%, var(--surface)),
+    color-mix(in srgb, var(--accent-soft) 18%, var(--surface)));
+}
+html[data-layout="bento"] .section-head > div { min-width: 0; }
+html[data-layout="bento"] .section-head h2 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 1.28rem;
+  letter-spacing: -.028em;
+}
+html[data-layout="bento"] .section-head h2::before {
+  content: counter(bento-chapter, decimal-leading-zero);
+  flex: none;
+  padding: 3px 8px;
+  border-radius: 9px;
+  background: var(--accent-soft);
+  color: var(--on-accent-soft);
+  font-size: .76rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+html[data-layout="bento"] .section-head p { margin-top: 2px; font-size: .88rem; }
+html[data-layout="bento"] .section-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--tap-line);
+  background: var(--surface);
+  color: var(--on-accent-soft);
+  font-weight: 800;
+  font-size: .72rem;
+  letter-spacing: .04em;
+}
+
+/* --- mosaic (>=720): section grid + wrapper sub-grids ---------------- */
+@media (min-width: 720px) {
+  html[data-layout="bento"] section { margin-top: 36px; }
+
+  html[data-layout="bento"] section[data-view] {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: var(--b-gap);
+  }
+  html[data-layout="bento"] section[data-view] > * { min-width: 0; }
+  /* the hidden view guard MUST out-rank the grid rule above */
+  html[data-layout="bento"] section[data-view][hidden] { display: none; }
+
+  /* chapter tile (full row) */
+  html[data-layout="bento"] .section-head {
+    grid-column: 1 / -1;
+    margin: 0 0 2px;
+    padding: 15px 18px;
+    border: 1px solid var(--tap-line);
+    border-radius: var(--b-r);
+    box-shadow: 0 1px 2px rgba(23, 32, 51, .05);
+  }
+  html[data-layout="bento"] .section-head h2 { font-size: 1.42rem; }
+
+  /* bare section cards: slabs and the case index own their row,
+     the rest pair up */
+  html[data-layout="bento"] section[data-view] > article.cheat-card { grid-column: span 6; }
+  html[data-layout="bento"] section[data-view] > article.cheat-card:has(.table-scroll),
+  html[data-layout="bento"] section[data-view] > .case-grid.cheat-card { grid-column: 1 / -1; }
+
+  /* wrapper sub-grid on the same 12-track rhythm */
+  html[data-layout="bento"] section[data-view] > .cards {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: var(--b-gap);
+  }
+  html[data-layout="bento"] section[data-view] .cards > * { min-width: 0; }
+
+  /* staggered brick pairs: [7,5] [5,7] [7,5] … */
+  html[data-layout="bento"] .cards > article.cheat-card:nth-child(4n+1),
+  html[data-layout="bento"] .cards > article.cheat-card:nth-child(4n+4) { grid-column: span 7; }
+  html[data-layout="bento"] .cards > article.cheat-card:nth-child(4n+2),
+  html[data-layout="bento"] .cards > article.cheat-card:nth-child(4n+3) { grid-column: span 5; }
+  /* odd-count group ends on a full-width closer tile */
+  html[data-layout="bento"] .cards > article.cheat-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+  /* role overrides (after the positional rules on purpose):
+     in-wrapper tables become wide 7-track slabs (they scroll inside
+     .table-scroll below ~1000px — never the page); practice owns a row */
+  html[data-layout="bento"] .cards > article.cheat-card:has(.table-scroll) { grid-column: span 7; }
+  html[data-layout="bento"] .cards > article.cheat-card:has(> .practice-q) { grid-column: 1 / -1; }
+
+  /* search results mode: uniform result tiles, no brick pattern */
+  html[data-layout="bento"] body.searching section[data-view] { display: block; }
+  html[data-layout="bento"] body.searching section[data-view] > .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr));
+  }
+  html[data-layout="bento"] body.searching .cards > article.cheat-card,
+  html[data-layout="bento"] body.searching section[data-view] > article.cheat-card { grid-column: auto; }
+}
+
+/* --- print: back to the stacked document ---------------------------- */
+@media print {
+  html[data-layout="bento"] section[data-view],
+  html[data-layout="bento"] section[data-view] .cards { display: block !important; }
+  html[data-layout="bento"] .cards > article.cheat-card,
+  html[data-layout="bento"] section[data-view] > article.cheat-card,
+  html[data-layout="bento"] section[data-view] > .cards { grid-column: auto !important; }
+  html[data-layout="bento"] .section-head {
+    margin: 0 0 10px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: none !important;
+  }
+  html[data-layout="bento"] .case-grid.cheat-card {
+    background: none !important;
+    color: var(--text) !important;
+    border-color: var(--line) !important;
+    box-shadow: none !important;
+  }
+}
+
+/* ---------- Study sidebar ===========================================
+   Direction: "Persistent categories beside a focused lesson canvas."
+   <1100px: the rail becomes a sticky horizontal category strip under the
+   topbar; the production single column and bottom nav stay fully intact.
+   >=1100px: two-pane study app — fixed full-height category rail + a focused
+   lesson "sheet" (capped measure, sticky section heads). Rail is position:
+   fixed (not a grid column) so the topbar keeps working sticky behavior. */
+
+/* ===== Base (<1100px): reorder body so the strip sits under the topbar ===== */
+
+html[data-layout="sidebar"] body {
+  display: flex;
+  flex-direction: column;
+}
+html[data-layout="sidebar"] .topbar { order: -1; }
+html[data-layout="sidebar"] .layout-rail { order: 0; }
+html[data-layout="sidebar"] main { order: 1; min-width: 0; }
+
+/* topbar 67px + strip ~56px; anchors and scrollIntoView stop below both */
+html[data-layout="sidebar"] { scroll-padding-top: 128px; }
+
+/* Category strip: views as pills, their sections as lighter pills */
+html[data-layout="sidebar"] .layout-rail {
+  position: sticky;
+  top: 67px; /* measured topbar height (10+46+10+1); opaque bg masks drift */
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 8px 12px 9px;
+  overflow-x: auto;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 10px 18px -16px rgba(23, 32, 51, .55);
+  scrollbar-width: thin;
+  scrollbar-color: var(--grab) transparent;
+}
+html[data-layout="sidebar"] .rail-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 auto;
+  counter-reset: rail-sec;
+}
+html[data-layout="sidebar"] .rail-group + .rail-group {
+  padding-left: 10px;
+  border-left: 1px solid var(--line);
+}
+html[data-layout="sidebar"] .rail-view,
+html[data-layout="sidebar"] .rail-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 999px;
+}
+html[data-layout="sidebar"] .rail-view {
+  min-height: 38px;
+  padding: 0 12px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: .82rem;
+  font-weight: 800;
+}
+html[data-layout="sidebar"] .rail-link {
+  min-height: 36px;
+  padding: 0 11px;
+  counter-increment: rail-sec;
+  color: var(--muted);
+  font-size: .8rem;
+  font-weight: 700;
+}
+/* >=44px effective touch area without visual bulk (the .tap precedent) */
+html[data-layout="sidebar"] .rail-view::after,
+html[data-layout="sidebar"] .rail-link::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+}
+html[data-layout="sidebar"] .rail-view.active {
+  background: var(--accent-soft);
+  color: var(--on-accent-soft);
+  border-color: var(--tap-line);
+}
+html[data-layout="sidebar"] .rail-link:hover,
+html[data-layout="sidebar"] .rail-link:active {
+  background: var(--surface-2);
+  color: var(--text);
+}
+html[data-layout="sidebar"] .rail-view,
+html[data-layout="sidebar"] .rail-link {
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+
+/* ===== Two-pane study app (>=1100px) ===== */
+
+@media (min-width: 1100px) {
+  /* topbar 67px + sticky section head ~72px + cushion */
+  html[data-layout="sidebar"] { scroll-padding-top: 148px; }
+
+  html[data-layout="sidebar"] body {
+    display: block; /* undo the mobile flex ordering */
+    padding-left: 296px; /* the fixed rail's column */
+    padding-bottom: 12px; /* no bottom nav here */
+  }
+  html[data-layout="sidebar"] .bottom-nav { display: none; }
+
+  /* Rail: fixed full-height pane with its own scroll (DevDocs technique;
+     a grid column would kill the topbar's sticky behavior) */
+  html[data-layout="sidebar"] .layout-rail {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: 296px;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 16px 12px 88px; /* bottom room: lab dock floats here */
+    background: var(--surface);
+    border-right: 1px solid var(--line);
+    border-bottom: 0;
+    box-shadow: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--grab) transparent;
+  }
+  html[data-layout="sidebar"] .layout-rail::before {
+    content: "Разделы";
+    display: block;
+    padding: 4px 14px 12px;
+    font-size: .7rem;
+    font-weight: 800;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  html[data-layout="sidebar"] .rail-group { display: block; }
+  html[data-layout="sidebar"] .rail-group + .rail-group {
+    margin-top: 14px;
+    padding: 14px 0 0;
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+  html[data-layout="sidebar"] .rail-view,
+  html[data-layout="sidebar"] .rail-link {
+    display: flex;
+    white-space: normal;
+    border-radius: 12px;
+  }
+  /* View captions stick to the rail's top while it scrolls (unit headers) */
+  html[data-layout="sidebar"] .rail-view {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    gap: 9px;
+    min-height: 44px;
+    padding: 8px 12px;
+    background: var(--surface); /* opaque: links pass underneath cleanly */
+    color: var(--text);
+    font-size: .92rem;
+  }
+  html[data-layout="sidebar"] .rail-view:hover { background: var(--surface-2); }
+  html[data-layout="sidebar"] .rail-view.active {
+    background: var(--accent-soft);
+    color: var(--on-accent-soft);
+  }
+  html[data-layout="sidebar"] .rail-view.active::before {
+    content: "";
+    flex: 0 0 3px;
+    height: 16px;
+    border-radius: 2px;
+    background: var(--accent);
+  }
+  html[data-layout="sidebar"] .rail-view::after { content: none; } /* rows are 44px natively */
+  html[data-layout="sidebar"] .rail-link {
+    min-height: 44px;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 12px 6px 18px;
+    border-radius: 10px;
+    color: var(--muted);
+    font-size: .87rem;
+    font-weight: 650;
+  }
+  /* Numbered lessons within a view (Duolingo-style unit numbering) */
+  html[data-layout="sidebar"] .rail-link::before {
+    content: counter(rail-sec, decimal-leading-zero);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    min-width: 24px;
+    padding: 2px 5px;
+    border-radius: 7px;
+    background: var(--surface-2);
+    color: var(--muted);
+    font-size: .66rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+  }
+  html[data-layout="sidebar"] .rail-link::after { content: none; }
+  /* The active view's sections read in full strength (sibling selector) */
+  html[data-layout="sidebar"] .rail-view.active ~ .rail-link { color: var(--text); }
+  html[data-layout="sidebar"] .rail-view.active ~ .rail-link::before {
+    background: var(--accent-soft);
+    color: var(--on-accent-soft);
+  }
+  /* Optional scrollspy hook: JS may set aria-current on the current section */
+  html[data-layout="sidebar"] .rail-link[aria-current="true"] {
+    background: var(--surface-2);
+    color: var(--text);
+  }
+
+  /* Lesson canvas: a capped "sheet" floating on the app background */
+  html[data-layout="sidebar"] main {
+    width: min(calc(100% - 48px), 884px);
+    margin: 22px auto 12px; /* within the post-rail content box */
+    padding: 12px 28px 18px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+  }
+  /* Cards become wells on the paper (Stripe's muted-blocks technique);
+     inner wells (.example, th) keep their surface-2 layering */
+  html[data-layout="sidebar"] main .cheat-card { background: var(--bg); }
+
+  /* Sticky chapter heads: full-bleed inside the sheet, tucked 1px under
+     the topbar so no sliver shows between the two bars */
+  html[data-layout="sidebar"] main > section { margin-top: 30px; }
+  html[data-layout="sidebar"] main > section:first-of-type { margin-top: 10px; }
+  html[data-layout="sidebar"] .section-head {
+    position: sticky;
+    top: 66px;
+    z-index: 5;
+    margin: 0 -28px 14px;
+    padding: 11px 28px 10px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+  html[data-layout="sidebar"] .section-head h2 {
+    font-size: 1.34rem;
+    letter-spacing: -.03em;
+  }
+  html[data-layout="sidebar"] .footer {
+    margin-top: 26px;
+    padding: 14px 4px 4px;
+    border-top: 1px solid var(--line);
+  }
+}
+
+/* ===== Print: lab composition flattens back to the document ===== */
+
+@media print {
+  html[data-layout="sidebar"] body {
+    display: block;
+    padding: 0;
+  }
+  html[data-layout="sidebar"] .layout-rail { display: none !important; }
+  html[data-layout="sidebar"] main {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
+  }
+  html[data-layout="sidebar"] .section-head {
+    position: static;
+    margin: 0 0 11px;
+    padding: 0;
+    background: none;
+    border-bottom: 0;
+  }
+  html[data-layout="sidebar"] .cheat-card { background: var(--surface); }
+}
+
+/* ---------- Editorial spread ========================================
+   Featured rule + compact supporting index. Magazine anatomy: a scotch
+   rule (thick --text + hairline) opens each spread, accent index numeral,
+   clamp-scaled display headline, standfirst, folio badge; the lead rule
+   (.spread-lead, marked by the template's lab script) is a tinted opener
+   panel; supporting topics are a numbered hairline index with examples
+   as quiet spine-ruled side notes. */
+
+/* --- Spread counters: sections number 01…, supporting entries renumber
+       automatically (display:none sections/cards generate no box) --- */
+html[data-layout="spread"] main { counter-reset: spread; }
+html[data-layout="spread"] section[data-section] {
+  counter-increment: spread;
+  counter-reset: entry;
+  margin-top: clamp(48px, 9vw, 88px);
+}
+/* End-of-spread mark: small centered square, like an article fin mark */
+html[data-layout="spread"] section[data-section]::after {
+  content: "";
+  display: block;
+  grid-column: 1 / -1;
+  width: 7px; height: 7px;
+  background: var(--line);
+  margin: clamp(28px, 5vw, 44px) auto 0;
+}
+
+/* --- Keep the hidden attribute authoritative over author display rules
+       (view switching depends on it) --- */
+html[data-layout="spread"] section[data-view] { display: block; }
+html[data-layout="spread"] section[data-view][hidden] { display: none; }
+
+/* --- Section head = the spread's opener: scotch rule, index numeral,
+       display headline, standfirst, folio badge --- */
+html[data-layout="spread"] .section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  column-gap: 16px;
+  border-top: 2px solid var(--text);
+  padding-top: 4px;
+  margin-bottom: 20px;
+}
+html[data-layout="spread"] .section-head::before {
+  content: "";                 /* thin partner of the scotch rule */
+  grid-column: 1 / -1;
+  height: 1px;
+  background: var(--line);
+  margin-top: 3px;
+}
+html[data-layout="spread"] .section-head > div {
+  grid-column: 1;
+  min-width: 0;
+  padding-top: 10px;
+}
+html[data-layout="spread"] .section-head h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0;
+  font-size: clamp(1.9rem, 4.5vw + 1rem, 2.6rem);
+  line-height: 1.04;
+  letter-spacing: -.035em;
+  font-weight: 800;
+  text-wrap: balance;
+}
+html[data-layout="spread"] .section-head h2::before {
+  content: counter(spread, decimal-leading-zero);
+  flex: none;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+html[data-layout="spread"] .section-head p {   /* standfirst / deck */
+  margin: 10px 0 0;
+  max-width: 46ch;
+  font-size: .97rem;
+  line-height: 1.5;
+}
+html[data-layout="spread"] .section-badge {    /* folio, top right */
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: end;
+  padding-top: 8px;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+/* --- Featured rule: the section's first card, set as the opener panel --- */
+html[data-layout="spread"] .spread-lead {
+  margin: 0 0 20px;
+  padding: clamp(18px, 3vw, 26px) clamp(16px, 3.4vw, 28px);
+  border: 1px solid var(--tap-line);
+  border-top: 3px solid var(--accent);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--surface) 76%, var(--accent-soft));
+  box-shadow: none;
+}
+html[data-layout="spread"] .spread-lead h3 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.2vw + 1.1rem, 1.8rem);
+  line-height: 1.12;
+  letter-spacing: -.022em;
+  font-weight: 800;
+}
+html[data-layout="spread"] .spread-lead .badges { margin: 12px 0 4px; }
+html[data-layout="spread"] .spread-lead .example {
+  font-size: 1.06rem;
+  line-height: 1.55;
+  padding: 12px 14px;
+}
+html[data-layout="spread"] .spread-lead .example.pair { padding-bottom: 11px; }
+html[data-layout="spread"] .spread-lead .formula { font-size: 1.04rem; margin: 12px 0 6px; }
+html[data-layout="spread"] .spread-lead .tap { min-height: 44px; }
+html[data-layout="spread"] .spread-lead .tap.case { min-height: 52px; font-size: .95rem; }
+html[data-layout="spread"] .case-grid.spread-lead { gap: 12px 10px; }
+
+/* --- Supporting topics: no boxes — a numbered index separated by hairlines.
+       Wrappers collapse to a single quiet rhythm on narrow screens --- */
+html[data-layout="spread"] section .cards { display: grid; gap: 0; }
+html[data-layout="spread"] section .cheat-card { min-width: 0; }
+html[data-layout="spread"] section .cheat-card:not(.spread-lead) {
+  counter-increment: entry;
+  padding: 14px 0 2px;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  box-shadow: none;
+}
+html[data-layout="spread"] section .cheat-card:not(.spread-lead) h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 6px;
+  font-size: .98rem;
+  font-weight: 750;
+  letter-spacing: -.012em;
+}
+html[data-layout="spread"] section .cheat-card:not(.spread-lead) h3::before {
+  content: counter(entry, decimal-leading-zero);
+  flex: none;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+html[data-layout="spread"] section .cheat-card:not(.spread-lead) .badges { margin: 0 0 4px; gap: 5px; }
+html[data-layout="spread"] section .cheat-card:not(.spread-lead) .badge { font-size: .64rem; padding: 1px 7px; }
+html[data-layout="spread"] section .cheat-card:not(.spread-lead) p { margin: 5px 0; font-size: .92rem; }
+html[data-layout="spread"] section .cheat-card:not(.spread-lead) .tiny { font-size: .84rem; }
+html[data-layout="spread"] section .cheat-card:not(.spread-lead) .formula { font-size: .95rem; margin: 8px 0 2px; }
+/* Examples become quiet side notes: hairline spine, no well */
+html[data-layout="spread"] section .cheat-card:not(.spread-lead) .example {
+  margin-top: 8px;
+  padding: 2px 0 2px 12px;
+  background: transparent;
+  border-left: 2px solid var(--line);
+  border-radius: 0;
+  font-size: .95rem;
+}
+html[data-layout="spread"] section .cheat-card:not(.spread-lead) .chips { gap: 6px; margin-top: 8px; }
+html[data-layout="spread"] section .cheat-card:not(.spread-lead) .tap { font-size: .82rem; padding: 0 10px; }
+
+/* --- Around the spreads --- */
+html[data-layout="spread"] .search-summary {
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+html[data-layout="spread"] .footer {
+  margin-top: clamp(36px, 6vw, 56px);
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+/* --- Wide screens: opener on top, supporting index in two measure-bound
+       columns (row alignment keeps the hairlines level across columns) --- */
+@media (min-width: 760px) {
+  html[data-layout="spread"] section[data-view] {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(36px, 6vw, 68px);
+    row-gap: 20px;
+    align-items: start;
+  }
+  html[data-layout="spread"] section[data-view] > * { min-width: 0; }
+  html[data-layout="spread"] section[data-view] > .section-head {
+    grid-column: 1 / -1;
+    margin-bottom: 26px;
+  }
+  html[data-layout="spread"] .spread-lead {
+    grid-column: 1 / -1;
+    margin-bottom: 6px;      /* row-gap carries the rest */
+  }
+  html[data-layout="spread"] section .cards { display: contents; }
+}
+
+/* --- Print: stacks with the rest of the deck; drop panels, tints, marks --- */
+@media print {
+  html[data-layout="spread"] section[data-view] { display: block !important; }
+  html[data-layout="spread"] section .cards { display: block !important; }
+  html[data-layout="spread"] .cheat-card,
+  html[data-layout="spread"] .spread-lead {
+    grid-column: auto !important;
+    display: block !important;
+    margin: 0 0 10px !important;
+    padding: 0 !important;
+    background: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+  html[data-layout="spread"] section .cheat-card .example {
+    background: none !important;
+    border-left: 0 !important;
+    padding: 4px 0 !important;
+  }
+  html[data-layout="spread"] section[data-section] { margin-top: 22px !important; }
+  html[data-layout="spread"] section[data-section]::after { display: none !important; }
+  html[data-layout="spread"] .section-head { margin-bottom: 10px !important; }
+  html[data-layout="spread"] .section-head h2 { font-size: 1.35rem !important; }
+  html[data-layout="spread"] .spread-lead h3 { font-size: 1.15rem !important; }
+}
+
+/* ---------- Print: lab chrome always off ---------- */
+
+@media print {
+  html[data-layout-lab] .lab-dock { display: none !important; }
+}

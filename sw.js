@@ -2,12 +2,15 @@
 // Lives at the repo root; deck pages register it with '../../sw.js'
 // (the landing uses './sw.js').
 // After changing any page or asset, bump CACHE_VERSION (see AGENTS.md).
-const CACHE_VERSION = 'v41';
+const CACHE_VERSION = 'v42';
 const CACHE_NAME = `lang-cheat-${CACHE_VERSION}`;
 const APP_SHELL = [
   './',
   './index.html',
   './assets/base.css',
+  // Layout lab stylesheet: inert without an active lab session (?layout=);
+  // precached so offline preview works and the APP_SHELL stays all-200.
+  './assets/layouts.css',
   './de/ru/',
   './de/ru/index.html',
   './de/ru/manifest.webmanifest',
