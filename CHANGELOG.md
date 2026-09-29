@@ -6,6 +6,30 @@ UI rationale lives in
 `.design/decisions.md`, content review evidence in `CONTENT_AUDIT.md`.
 Append the entry in the same commit that ships the change.
 
+## 2026-09-29 (sibling-drift gate + scope correction)
+
+- **New gate**: `build_pages.py --check-siblings` diffs each target's
+  live audience decks — table-row drift exits 1 (head rows may be
+  localized), formula/example divergence is reported normalized (markup
+  stripped) for review judgment (CONTENT_VALIDATION §3). It exists
+  because a red-team review caught a real sibling divergence that prose
+  checklists had missed (next bullet).
+- **Content fixes**: the de-ru particle example now uses the natural
+  «Wie heißt du denn?» — yesterday's de-en fix had silently left the
+  Russian deck with the marked order in both the card and the dialog —
+  and en-de no longer coins «Kalk»/«kalkt»/«Neustoff» for calque/new
+  material (natural «typischer deutscher Fehler», «Falle», «komplett
+  neu» instead; the English audit rows say «calque»). `CACHE_VERSION`
+  v35.
+- **Scope correction (core extraction, DEBT D-07)**: the earlier
+  «~15 blocks / 8–9%» headline measured markup conventions, not shared
+  content. Re-measured with the content lens: the core is 54/179 (DE)
+  and 61/168 (EN) aligned blocks — roughly a quarter to a third of a
+  deck — with 47/37 content-identical and the rest separated by
+  audience-language labels, localized headers and markup. The deferral
+  stands, on machinery cost (four parameterization axes) and a low
+  observed drift rate, not on thinness; ROADMAP and DEBT D-07 restated.
+
 ## 2026-09-28 (audience variants)
 
 - **New page (German, explained in English)**: `de/en/` — the German deck

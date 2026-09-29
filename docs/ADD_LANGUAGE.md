@@ -76,12 +76,16 @@ When the target language already has a deck (e.g. `de-ru` exists, adding
 2. **Second audience of a target = measure the core boundary.** Per the
    source model ([ROADMAP.md](../ROADMAP.md)), when the second audience of
    a target ships, measure the shared invariant content against the real
-   pair and record it — the 2026-09-28 precedent found the shareable core
-   at only ~8–9% of a deck (tables plus canonical examples; 0 of 83
-   dialogs identical), so the two-layer extraction is deferred unless a
-   re-trigger from [DEBT.md](../DEBT.md) D-07 fires. From then on, the
-   [CONTENT_VALIDATION.md](CONTENT_VALIDATION.md) §3 sibling-diff check
-   applies to every review.
+   pair — the 2026-09-28 precedent (`--check-siblings`, markup stripped)
+   found the content core (tables, formulas, canonical examples) at
+   roughly a quarter to a third of a deck: real, but not verbatim, since
+   audience-language labels, localized headers and markup conventions sit
+   inside it. Extracting therefore needs parameterization machinery and is
+   deferred unless a re-trigger from [DEBT.md](../DEBT.md) D-07 fires.
+   From the second audience on, run
+   `python3 tools/build_pages.py <deck> --check-siblings` (exits 1 on
+   table-row drift) and judge the listed divergences per
+   [CONTENT_VALIDATION.md](CONTENT_VALIDATION.md) §3.
 3. **Adapt the content and navigation.** Author `strings`, dialogs, glosses
    and practice in the audience language. Reuse the generated shell and block
    types; let the new plan decide its views and sections. Card `id` slugs are

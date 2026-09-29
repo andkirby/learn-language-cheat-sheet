@@ -122,33 +122,41 @@ scope). Decision recorded from the brainstorm:
   (paradigm tables, canonical examples, topic inventory) + per-audience
   overlay (retrieval questions, emphasis, glosses, selection); generator
   merges.
-- **Trigger (three-sample rule) — MET, then MEASURED (2026-09-28)**: the
-  rule was to extract the core when a target gets its second audience,
-  cutting the boundary from the real pair. Both targets crossed that
-  threshold on 2026-09-28 (`de-ru` + `de-en`, `en-ru` + `en-de`), and the
-  boundary was then measured on the real pairs instead of assumed: of the
-  positionally aligned blocks in shared cards, 28/179 (DE) and 32/168 (EN)
-  are byte-identical, and the extractable content core — paradigm tables,
-  formulas, canonical examples — is only ~15 blocks per target (~8–9% of a
-  deck; DE shares 4 of 4 content tables, EN 0 of 1 — extraction would need
-  three parameterization axes: audience-language table headers, audience-
-  language formula slots, and per-audience markup conventions). Zero of the
-  83 dialogs are identical across pairs, so
-  adapt-don't-translate is holding. A core this thin does not pay for the
-  two-layer machinery (schema extension + generator merge + validator
-  rules) on the live build path at two audiences, so the extraction is
-  **DEFERRED WITH RE-TRIGGERS** ([DEBT.md](DEBT.md) D-07): re-evaluate when
-  (a) any target ships a third audience, (b) a drift incident between
-  sibling tables/examples is caught in review, or (c) a content fix must
-  be paid across audiences and is bigger than a one-liner. The full
-  extraction procedure (byte-identical rail, separate commit,
-  refactor-only review) is preserved verbatim in DEBT.md D-07.
+- **Trigger (three-sample rule) — MET, MEASURED TWICE, DEFERRED
+  (2026-09-28/29)**: the rule was to extract the core when a target gets
+  its second audience, cutting the boundary from the real pair. Both
+  targets crossed that threshold on 2026-09-28 (`de-ru` + `de-en`,
+  `en-ru` + `en-de`). The first measurement used a byte lens and
+  under-counted: 28/179 (DE) and 32/168 (EN) aligned blocks are
+  byte-identical, but that lens measures markup conventions, not shared
+  content. Re-measured with the executable baseline
+  (`tools/build_pages.py <deck> --check-siblings` — markup stripped, runs
+  unwrapped): the content core — tables, formulas, canonical examples —
+  is 54/179 (30%, DE) and 61/168 (36%, EN) of aligned blocks, of which 47
+  and 37 are content-identical today (~26% and ~22% of a deck). The
+  honest deferral grounds are therefore NOT thinness: the core is real
+  but NOT verbatim — extracting it needs four parameterization axes
+  (audience-language formula slots — several formulas are entirely
+  audience-labeled, e.g. the V2/SVO diagrams; localized table heads;
+  per-audience markup conventions; genuinely adapted examples — the EN
+  pair adapted ~40% of its shared examples). Zero of the 83 dialogs are
+  identical (dialog content is audience-language prose by design).
+  Against that machinery cost stands a low observed drift rate (two items
+  in the first day of real editing — one word-order pair, one apostrophe
+  — both one-line fixes, both now caught mechanically by
+  `--check-siblings`), so the extraction stays **DEFERRED WITH
+  RE-TRIGGERS** ([DEBT.md](DEBT.md) D-07): (a) any target plans or ships
+  a third audience, (b) a `--check-siblings` divergence is judged to be
+  drift rather than adaptation, or (c) a cross-audience content fix
+  bigger than a one-liner. The extraction procedure (byte-identical
+  rail, separate commit, refactor-only review) is preserved verbatim in
+  DEBT.md D-07.
 - Until extraction: `de-ru` / `en-ru` remain the canonical per-target
   references, and the invariant core is duplicated across each target's
-  paired decks. The drift risk this creates is guarded, not eliminated:
-  [CONTENT_VALIDATION.md](docs/CONTENT_VALIDATION.md) §3 requires a
-  sibling diff of shared tables, formulas and examples in every review,
-  and D-07 tracks the residual risk.
+  paired decks. The drift risk is mechanically guarded:
+  `--check-siblings` fails the build on table-row drift and lists
+  formula/example divergence for §3 judgment; D-07 tracks the residual
+  risk.
 - Scaling notes: sw precache strategy needs revisiting past ~10 pages
   (cache landing + selected pair, lazy-cache the rest); content authoring —
   plan → ~30 cards + ~30 dialogs → gates → audit per pair — is the binding

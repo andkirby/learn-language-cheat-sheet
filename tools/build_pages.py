@@ -20,6 +20,7 @@ import sys
 
 from deck_render import render
 from deck_validate import validate
+from deck_siblings import check_siblings
 from shell_check import check_shell
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -33,6 +34,10 @@ def main():
     ap.add_argument("--check-shell", action="store_true", dest="check_shell",
                     help="check the landing DECKS map and sw.js APP_SHELL against "
                          "the live pairs in site.json; exit 1 on drift")
+    ap.add_argument("--check-siblings", action="store_true", dest="check_siblings",
+                    help="diff the shared invariant content (tables/formulas/"
+                         "examples) across each target's live audience decks; "
+                         "exit 1 on table-row drift, report the rest")
     ap.add_argument("--out", help="output path (default: meta.out from the deck)")
     args = ap.parse_args()
 
@@ -52,6 +57,19 @@ def main():
                 print(f"  - {e}", file=sys.stderr)
             sys.exit(1)
         print(f"✓ landing and sw.js APP_SHELL match the live pairs in {site_path}")
+        return
+
+    if args.check_siblings:
+        problems, report = check_siblings(site, ROOT)
+        for line in report:
+            print(line)
+        if problems:
+            print("✗ sibling drift:", file=sys.stderr)
+            for problem in problems:
+                print(f"  - {problem}", file=sys.stderr)
+            sys.exit(1)
+        print("✓ no table-row drift across sibling decks — judge any listed "
+              "divergences (CONTENT_VALIDATION.md §3)")
         return
 
     errors = validate(deck, site)
