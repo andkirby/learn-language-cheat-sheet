@@ -1,0 +1,33 @@
+.DS_Store
+__pycache__/
+
+# ===== ↑ The above is synced from .gitignore (the "Sync from .gitignore" option only overwrites the above section) =====
+.git/
+.hg/
+.svn/
+node_modules/
+bower_components/
+jspm_packages/
+site-packages/
+venv/
+coverage/
+htmlcov/
+lcov-report/
+cmakefiles/
+cmake-build-*/
+bazel-*/
+pods/
+deriveddata/
+storybook-static/
+playwright-report/
+test-results/
+allure-results/
+allure-report/
+cdk.out/
+*.egg-info/
+*.dist-info/
+eggs/
+pip-wheel-metadata/
+wheels/
+# ----- ↑ The above are ZCode's default exclusion rules (please write custom rules below this line; they won't be synced/restored if changed) -----
+# Write your custom rules below (this hint can be deleted)
