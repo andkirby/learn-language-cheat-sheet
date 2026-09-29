@@ -217,22 +217,18 @@ a { color: inherit; }
 }
 .menu-row:hover { background: var(--surface-2); }
 .menu-row[hidden] { display: none; }
-.menu-row .ico { font-family: var(--font-study); font-style: italic; font-size: 1.05rem; }
 /* Search field: the target-language chip (persistent "which deck am I in"
-   marker — a placeholder would vanish on typing) + the ⌕ glyph, then input. */
+   marker — a placeholder would vanish on typing) leads the input. */
 .search-wrap { position: relative; flex: 1; min-width: 0; }
-.search-head {
-  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
-  display: flex; align-items: center; gap: 7px; pointer-events: none;
-}
-.search-icon { color: var(--muted); }
 .search-chip {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
   padding: 3px 7px; border-radius: 8px; background: var(--surface-2);
   color: var(--muted); font-size: .78rem; font-weight: 900; letter-spacing: .05em;
+  pointer-events: none;
 }
 .search {
   width: 100%; min-height: 46px; border: 1px solid var(--line); border-radius: 14px;
-  background: var(--surface); color: var(--text); padding: 0 44px 0 78px; box-shadow: 0 3px 12px rgba(23,32,51,.04);
+  background: var(--surface); color: var(--text); padding: 0 44px 0 58px; box-shadow: 0 3px 12px rgba(23,32,51,.04);
 }
 .search::-webkit-search-cancel-button, .search::-webkit-search-decoration { -webkit-appearance: none; appearance: none; }
 .clear-search {

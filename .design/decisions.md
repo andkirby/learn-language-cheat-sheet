@@ -544,7 +544,10 @@ brand mark) instead of relying on the placeholder: the chip survives
 typing, which a placeholder cannot, and in a standalone PWA with no
 address bar it is the only on-screen identity left once the brand block
 moved into the burger. The input's aria-label names the language for
-screen readers.
+screen readers. A same-day polish pass dropped the ⌕ glyph from the
+field — the chip alone marks it — and the burger's help row lost its
+serif-italic "i", which read as a stray letter beside the label rather
+than as an icon; the desktop (i) button keeps its glyph.
 
 The practice removal (separate commit, 936378f) freed a bottom-nav slot;
 the nav grid is now auto-fit (DE decks 4 destinations, EN decks 5). A

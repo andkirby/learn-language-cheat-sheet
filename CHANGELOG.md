@@ -33,6 +33,10 @@ Append the entry in the same commit that ships the change.
   own button on browsers without `beforeinstallprompt`, and the landing
   header keeps its full-width row inside the new flex header.
   `CACHE_VERSION` v40.
+- **Field/menu polish**: the ⌕ glyph left the search field (the DE/EN chip
+  alone marks it) and the burger's help row dropped its pseudo-italic "i" —
+  it read as a stray letter next to the label, not as an icon; the desktop
+  (i) button keeps its glyph. `CACHE_VERSION` v41.
 
 ## 2026-09-29 (sibling-drift gate + scope correction)
 

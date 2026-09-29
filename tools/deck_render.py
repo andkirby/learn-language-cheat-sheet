@@ -145,8 +145,10 @@ def _app_menu_html(deck, site):
     help_btn = deck.get("help")
     help_row = ""
     if help_btn:
+        # No icon glyph: the italic serif "i" read as a stray letter next to
+        # the label, not as an icon — the row speaks through its label.
         help_row = (f"<button class=\"menu-row\" type=\"button\" data-detail=\"{escq(help_btn['detail'])}\">"
-                    f"<span class=\"ico\" aria-hidden=\"true\">{esc(help_btn['ico'])}</span>{esc(help_btn['label'])}</button>")
+                    f"{esc(help_btn['label'])}</button>")
     install_row = f"<button class=\"menu-row\" type=\"button\" data-install hidden>{esc(strings['install_label'])}</button>"
     return (f"<details class=\"app-menu\">"
             f"<summary aria-label=\"{escq(strings['menu_aria'])}\"><span aria-hidden=\"true\">☰</span></summary>"

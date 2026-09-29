@@ -185,7 +185,7 @@
           <summary aria-label="Меню" tabindex="-1"><span aria-hidden="true">☰</span></summary>
         </details>
         <div class="search-wrap">
-          <span class="search-head" aria-hidden="true"><span class="search-chip">DE</span><span class="search-icon">⌕</span></span>
+          <span class="search-chip" aria-hidden="true">DE</span>
           <input class="search" type="search" autocomplete="off" tabindex="-1" placeholder="Поиск: wem, weil, modal, Dativ…" aria-label="Поиск по немецкой шпаргалке" />
         </div>
         <button class="theme-btn" type="button" tabindex="-1" aria-label="Тема">◐</button>
@@ -198,7 +198,7 @@
   &lt;div class="topbar-inner"&gt;
     &lt;details class="app-menu"&gt;…identity + lang groups + help/install…&lt;/details&gt;
     &lt;div class="brand"&gt;…mark + name + sub…&lt;/div&gt;          &lt;!-- ≥720px only --&gt;
-    &lt;div class="search-wrap"&gt;…chip + ⌕ + input + clear…&lt;/div&gt;
+    &lt;div class="search-wrap"&gt;…chip + input + clear…&lt;/div&gt;
     &lt;details class="lang-menu"&gt;…two groups…&lt;/details&gt;     &lt;!-- ≥720px only --&gt;
     &lt;button class="icon-btn" …&gt;&lt;span class="ico"&gt;i&lt;/span&gt;&lt;/button&gt;  &lt;!-- ≥720px only --&gt;
     &lt;button class="theme-btn" id="themeBtn" …&gt;◐&lt;/button&gt;
@@ -228,7 +228,7 @@
             <div class="lang-group"><div class="lang-group-label">Язык обучения</div><span class="cur">Deutsch</span><a href="#" onclick="return false">English</a></div>
             <div class="lang-group"><div class="lang-group-label">Язык объяснений</div><span class="cur">Русский</span><span class="soon">English — скоро</span></div>
             <div class="app-sep" aria-hidden="true"></div>
-            <button class="menu-row" type="button" tabindex="-1"><span class="ico" aria-hidden="true">i</span>Как пользоваться</button>
+            <button class="menu-row" type="button" tabindex="-1">Как пользоваться</button>
             <button class="menu-row" type="button" tabindex="-1">Установить</button>
           </div>
         </details>
@@ -545,9 +545,8 @@
             <tr><td><code>.brand</code>, <code>.brand-mark</code>, <code>.brand small</code></td><td>Identity block; square mark; sub-line hidden ≤ 460px</td></tr>
             <tr><td><code>.install-btn</code></td><td>Install control; hidden unless installable (iOS non-standalone / <code>beforeinstallprompt</code>)</td></tr>
             <tr><td><code>.theme-btn</code>, <code>.icon-btn</code> + <code>.ico</code></td><td>44px topbar icon buttons; theme cycle; the (i) usage button → <code>lookup-help</code> sheet, carries <code>#start</code> (deck pages: ≥720px only)</td></tr>
-            <tr><td><code>.search-row</code>, <code>.search-wrap</code>, <code>.search</code>, <code>.search-icon</code>, <code>.clear-search</code></td><td>Search field row; wrapping frame; the input; decorative ⌕; clear button (hidden until query)</td></tr>
             <tr><td><code>.app-menu</code>, <code>.app-identity</code>, <code>.app-sep</code>, <code>.menu-row</code></td><td>Phone burger (native <code>&lt;details&gt;</code>): identity line + the language groups + help/install rows; hidden ≥720px</td></tr>
-            <tr><td><code>.search-wrap</code>, <code>.search-head</code>, <code>.search-chip</code>, <code>.search</code>, <code>.clear-search</code></td><td>Search field; persistent target-language chip + ⌕ lead the input; custom clear ✕ while typing</td></tr>
+            <tr><td><code>.search-wrap</code>, <code>.search-chip</code>, <code>.search</code>, <code>.clear-search</code></td><td>Search field; persistent target-language chip leads the input; custom clear ✕ while typing</td></tr>
             <tr><td><code>.lang-menu</code>, <code>.lang-pop</code>, <code>.lang-group</code>, <code>.cur</code>, <code>.soon</code></td><td>Language control: «Язык обучения» links + «Язык объяснений» state in one native <code>&lt;details&gt;</code> popover (deck pages: inline ≥720px, inside the burger on phones; landing: brand row)</td></tr>
             <tr><td><code>.install-nudge</code>, <code>.nudge-text</code>, <code>.nudge-close</code></td><td>One-time install prompt above the bottom nav (browser tabs only, flag set when shown)</td></tr>
             <tr><td><code>.cheat-card</code></td><td>Atomic reference unit; searchable via <code>data-search</code></td></tr>
