@@ -599,3 +599,15 @@ Mechanism (the contract part):
 Known lab-only limitations: the sidebar rail's «Разделы» heading and the
 dock labels are hardcoded (not deck strings) — acceptable for a preview
 tool; if a variant is adopted these move into deck `strings`.
+
+## 2026-09-30 — Tables size to content (`min-width: min-content`, was 560px)
+
+`table` carried a fixed `min-width: 560px`, which forced every table —
+including short ones like the personal-pronoun paradigm (3 narrow columns)
+— to spread its columns across 560px and scroll horizontally even when the
+content fit its container. The floor is now `min-content`: with
+`white-space: nowrap` cells, columns size to their content; narrow tables
+fill the container (`width: 100%`) with no scrollbar, wide paradigms
+overflow `.table-scroll` exactly as before. Pure shared-stylesheet change,
+applies to every page and layout variant (base + lab). No new tokens; the
+"tables scroll inside `.table-scroll`, never the page" rule is unchanged.

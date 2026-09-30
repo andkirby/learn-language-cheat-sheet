@@ -6,6 +6,15 @@ UI rationale lives in
 `.design/decisions.md`, content review evidence in `CONTENT_AUDIT.md`.
 Append the entry in the same commit that ships the change.
 
+## 2026-09-30 (tables size to content)
+
+- **Tables no longer force a horizontal scrollbar when their content
+  fits.** The fixed `min-width: 560px` floor on `table` is now
+  `min-content`: short tables (e.g. the personal-pronoun paradigm)
+  fill their container, wide declension paradigms scroll inside
+  `.table-scroll` as before. Applies to every page and layout variant;
+  service-worker cache v43.
+
 ## 2026-09-29 (layout lab preview: three page compositions)
 
 - **Preview-only layout lab** on the deck pages: open any deck with

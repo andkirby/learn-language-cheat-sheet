@@ -309,7 +309,10 @@ section { margin-top: 28px; }
 .case-hint { color: var(--muted); font-size: .86rem; margin-top: 3px; }
 
 .table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; }
-table { width: 100%; border-collapse: collapse; min-width: 560px; background: var(--surface); font-size: .92rem; }
+/* min-content floor, not a fixed px floor: nowrap cells size columns to
+   their content, so short tables (ich/mich/mir) fill the container without
+   a pointless scrollbar while wide paradigms scroll as before. */
+table { width: 100%; border-collapse: collapse; min-width: min-content; background: var(--surface); font-size: .92rem; }
 th, td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
 th { background: var(--surface-2); font-size: .82rem; color: var(--muted); text-transform: uppercase; letter-spacing: .02em; }
 tr:last-child td { border-bottom: 0; }
