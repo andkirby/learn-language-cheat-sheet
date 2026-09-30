@@ -236,17 +236,16 @@
           "blocks": [
             {"h": ["Tönungswörter: just, actually…"]},
             {"p": ["Ein kurzes Wort trägt die Tönung. Vorsicht — falsche Freunde: ", {"t": "actually", "b": true}, " ≠ „aktuell“, ", {"t": "even", "b": true}, " ≠ „eben“."]},
-            {"chips": [
-              {"label": ["just — ", {"t": "gerade eben / bloß", "b": true}], "detail": "flavor-words", "neutral": true},
-              {"label": ["actually — ", {"t": "tatsächlich", "b": true}], "detail": "flavor-words", "neutral": true},
-              {"label": ["still — ", {"t": "immer noch", "b": true}], "detail": "flavor-words", "neutral": true},
-              {"label": ["even — ", {"t": "sogar", "b": true}], "detail": "flavor-words", "neutral": true},
-              {"label": ["though — ", {"t": "doch", "b": true}], "detail": "flavor-words", "neutral": true}
-            ]},
+                        {"legend": {"items": [
+              {"term": "just", "meaning": "gerade eben / bloß"},
+              {"term": "actually", "meaning": "tatsächlich"},
+              {"term": "still", "meaning": "immer noch"},
+              {"term": "even", "meaning": "sogar"},
+              {"term": "though", "meaning": "doch"}
+            ], "detail": "flavor-words", "label": "Alle fünf mit ihren Fallen"}},
             {"example": [
               "It's expensive. I like it, ", {"t": "though", "hit": true}, ". · ", {"t": "Even", "hit": true}, " a child can do it."
-            ], "gloss": ["though ≈ „doch“ — am Satzende, diese Endposition hat das Deutsche nicht · even ≈ „sogar“"]},
-            {"chips": [{"label": "Alle fünf mit ihren Fallen", "detail": "flavor-words"}]}
+            ], "gloss": ["though ≈ „doch“ — am Satzende, diese Endposition hat das Deutsche nicht · even ≈ „sogar“"]}
           ]
         },
         {
@@ -257,22 +256,23 @@
           "blocks": [
             {"h": ["Konnektoren: however, so, although…"]},
             {"p": ["Sie verbinden Sätze — Kontrast, Folge, Zeit, Zugeständnis. Falscher Freund: englisches ", {"t": "also", "b": true}, " = „auch“; das deutsche „also“ heißt ", {"t": "so / therefore", "b": true}, "."]},
-            {"chips": [
-              {"label": ["but / however — ", {"t": "aber / jedoch", "b": true}], "detail": "linking-words", "neutral": true},
-              {"label": ["not (only) … but — ", {"t": "nicht…, sondern / nicht nur…, sondern auch", "b": true}], "detail": "not-but", "neutral": true},
-              {"label": ["so / therefore — ", {"t": "also / deshalb", "b": true}], "detail": "linking-words", "neutral": true},
-              {"label": ["meanwhile — ", {"t": "währenddessen", "b": true}], "detail": "linking-words", "neutral": true},
-              {"label": ["nevertheless — ", {"t": "trotzdem", "b": true}], "detail": "linking-words", "neutral": true},
-              {"label": ["although / though — ", {"t": "obwohl", "b": true}], "detail": "linking-words", "neutral": true},
-              {"label": ["despite — ", {"t": "trotz (+ Nomen)", "b": true}], "detail": "linking-words", "neutral": true}
+                        {"legend": {"items": [
+              {"term": "but / however", "meaning": "aber / jedoch"},
+              {"term": "so / therefore", "meaning": "also / deshalb"},
+              {"term": "meanwhile", "meaning": "währenddessen"},
+              {"term": "nevertheless", "meaning": "trotzdem"},
+              {"term": "although / though", "meaning": "obwohl"},
+              {"term": "despite", "meaning": "trotz (+ Nomen)"}
+            ], "detail": "linking-words", "label": "despite oder although?"}},
+                        {"chips": [
+              {"label": ["not (only) … but — ", {"t": "nicht…, sondern / nicht nur…, sondern auch", "b": true}], "detail": "not-but", "neutral": true}
             ]},
             {"example": [
               "It was raining. ", {"t": "However", "hit": true}, ", we went out. · ", {"t": "Although", "hit": true}, " it rained, we went out."
             ], "gloss": ["however = das formellere „aber“, eigener Satz + Komma · although = „obwohl“"]},
             {"example": [
               "The meeting is ", {"t": "not", "hit": true}, " on Monday, ", {"t": "but", "hit": true}, " on Tuesday. · She is ", {"t": "not only", "hit": true}, " smart ", {"t": "but also", "hit": true}, " kind."
-            ], "gloss": ["„nicht am Montag, sondern am Dienstag“ · „nicht nur klug, sondern auch nett“"]},
-            {"chips": [{"label": "despite oder although?", "detail": "linking-words"}]}
+            ], "gloss": ["„nicht am Montag, sondern am Dienstag“ · „nicht nur klug, sondern auch nett“"]}
           ]
         },
         {
@@ -603,14 +603,14 @@
           "blocks": [
             {"h": ["Feste Paare: ", {"t": "Verb + preposition", "b": true}]},
             {"p": ["Die englische Präposition passt fast nie zur deutschen — das Paar zusammen lernen:"]},
-            {"chips": [
-              {"label": ["warten auf → ", {"t": "wait for", "b": true}], "detail": "dependent-preps", "neutral": true},
-              {"label": ["denken an → ", {"t": "think of", "b": true}], "detail": "dependent-preps", "neutral": true},
-              {"label": ["sich freuen auf → ", {"t": "look forward to", "b": true}], "detail": "dependent-preps", "neutral": true},
-              {"label": ["abhängen von → ", {"t": "depend on", "b": true}], "detail": "dependent-preps", "neutral": true},
-              {"label": ["teilnehmen an → ", {"t": "take part in", "b": true}], "detail": "dependent-preps", "neutral": true},
-              {"label": ["gut in Mathe → ", {"t": "good at", "b": true}], "detail": "dependent-preps", "neutral": true}
-            ]},
+                        {"legend": {"items": [
+              {"term": "warten auf", "meaning": "wait for"},
+              {"term": "denken an", "meaning": "think of"},
+              {"term": "sich freuen auf", "meaning": "look forward to"},
+              {"term": "abhängen von", "meaning": "depend on"},
+              {"term": "teilnehmen an", "meaning": "take part in"},
+              {"term": "gut in Mathe", "meaning": "good at"}
+            ], "detail": "dependent-preps", "label": "Alle sechs im Detail"}},
             {"example": [
               "abhängen von → ", {"t": "depend on", "hit": true}, " — nicht ", {"t": "depend of", "s": true}
             ]}

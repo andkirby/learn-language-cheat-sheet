@@ -144,6 +144,41 @@
           }
         },
         {
+          "type": "object", "required": ["legend"], "additionalProperties": false,
+          "description": "static term inventory one dialog explains (not tappable); detail+label are all-or-nothing and render the single entry button — a card may open each dialog at most once (enforced by the build)",
+          "properties": {
+            "legend": {
+              "type": "object", "required": ["items"],
+              "additionalProperties": false,
+              "allOf": [
+                {"if": {"required": ["detail"]}, "then": {"required": ["label"]}},
+                {"if": {"required": ["label"]}, "then": {"required": ["detail"]}}
+              ],
+              "properties": {
+                "items": {
+                  "type": "array", "minItems": 1,
+                  "items": {
+                    "oneOf": [
+                      {"type": "string", "minLength": 1},
+                      {"$ref": "#/definitions/runs"},
+                      {
+                        "type": "object", "required": ["term"],
+                        "additionalProperties": false,
+                        "properties": {
+                          "term": {"oneOf": [{"type": "string", "minLength": 1}, {"$ref": "#/definitions/runs"}]},
+                          "meaning": {"type": "string", "minLength": 1}
+                        }
+                      }
+                    ]
+                  }
+                },
+                "detail": {"type": "string"},
+                "label": {"type": "string", "minLength": 1}
+              }
+            }
+          }
+        },
+        {
           "type": "object", "required": ["notice"], "additionalProperties": false,
           "properties": {
             "notice": {"$ref": "#/definitions/runs"},

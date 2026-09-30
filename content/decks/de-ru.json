@@ -273,13 +273,7 @@
           "search": "akkusativ prepositions durch für gegen ohne um",
           "blocks": [
             {"h": ["Всегда Akkusativ"]},
-            {"chips": [
-              {"label": "durch", "detail": "prep-akk", "neutral": true},
-              {"label": "für", "detail": "prep-akk", "neutral": true},
-              {"label": "gegen", "detail": "prep-akk", "neutral": true},
-              {"label": "ohne", "detail": "prep-akk", "neutral": true},
-              {"label": "um", "detail": "prep-akk", "neutral": true}
-            ]},
+                        {"legend": {"items": ["durch", "für", "gegen", "ohne", "um"], "detail": "prep-akk", "label": "Разбор"}},
             {"example": [
               "für ", {"t": "den", "hit": true}, " Mann · ohne ", {"t": "mich", "hit": true}
             ], "gloss": ["падеж уже задан предлогом — смысловой вопрос не нужен"]}
@@ -292,15 +286,7 @@
           "search": "dativ prepositions aus bei mit nach seit von zu",
           "blocks": [
             {"h": ["Всегда Dativ"]},
-            {"chips": [
-              {"label": "aus", "detail": "prep-dat", "neutral": true},
-              {"label": "bei", "detail": "prep-dat", "neutral": true},
-              {"label": "mit", "detail": "prep-dat", "neutral": true},
-              {"label": "nach", "detail": "prep-dat", "neutral": true},
-              {"label": "seit", "detail": "prep-dat", "neutral": true},
-              {"label": "von", "detail": "prep-dat", "neutral": true},
-              {"label": "zu", "detail": "prep-dat", "neutral": true}
-            ]},
+                        {"legend": {"items": ["aus", "bei", "mit", "nach", "seit", "von", "zu"], "detail": "prep-dat", "label": "Разбор"}},
             {"example": [
               "mit ", {"t": "meinem", "hit": true}, " Bruder · zu ", {"t": "der", "hit": true}, " Arbeit → zur Arbeit"
             ], "gloss": ["падеж уже задан предлогом — смысловой вопрос не нужен"]}
@@ -341,14 +327,13 @@
             {"example": [
               "Ich warte ", {"t": "auf", "hit": true}, " den Bus. · Er denkt ", {"t": "an", "hit": true}, " die Prüfung."
             ], "gloss": ["падеж — от предлога: auf → Akkusativ (Wen? — den Bus)"]},
-            {"chips": [
-              {"label": ["warten ", {"t": "auf", "b": true}], "detail": "verb-preps", "neutral": true},
-              {"label": ["denken ", {"t": "an", "b": true}], "detail": "verb-preps", "neutral": true},
-              {"label": ["sich freuen ", {"t": "auf/über", "b": true}], "detail": "verb-preps", "neutral": true},
-              {"label": ["sich interessieren ", {"t": "für", "b": true}], "detail": "verb-preps", "neutral": true},
-              {"label": ["teilnehmen ", {"t": "an", "b": true}], "detail": "verb-preps", "neutral": true},
-              {"label": "Вопрос-подсказка и sich", "detail": "verb-preps"}
-            ]}
+                        {"legend": {"items": [
+              {"term": ["warten ", {"t": "auf", "b": true}]},
+              {"term": ["denken ", {"t": "an", "b": true}]},
+              {"term": ["sich freuen ", {"t": "auf/über", "b": true}]},
+              {"term": ["sich interessieren ", {"t": "für", "b": true}]},
+              {"term": ["teilnehmen ", {"t": "an", "b": true}]}
+            ], "detail": "verb-preps", "label": "Вопрос-подсказка и sich"}}
           ]
         },
         {
@@ -431,19 +416,18 @@
           "blocks": [
             {"h": ["Частицы: doch, mal, denn…"]},
             {"p": ["Не переводятся дословно — задают ", {"t": "оттенок", "b": true}, ". Учить парами с русским:"]},
-            {"chips": [
-              {"label": ["doch — ", {"t": "ведь / же", "b": true}], "detail": "particles", "neutral": true},
-              {"label": ["mal — ", {"t": "ну, -ка", "b": true}], "detail": "particles", "neutral": true},
-              {"label": ["denn — ", {"t": "же / разве", "b": true}], "detail": "particles", "neutral": true},
-              {"label": ["ja — ", {"t": "ведь", "b": true}], "detail": "particles", "neutral": true},
-              {"label": ["schon — ", {"t": "уж", "b": true}], "detail": "particles", "neutral": true},
-              {"label": ["gar — ", {"t": "вообще", "b": true}], "detail": "particles", "neutral": true},
-              {"label": ["wohl — ", {"t": "наверное", "b": true}], "detail": "particles", "neutral": true}
-            ]},
+                        {"legend": {"items": [
+              {"term": "doch", "meaning": "ведь / же"},
+              {"term": "mal", "meaning": "ну, -ка"},
+              {"term": "denn", "meaning": "же / разве"},
+              {"term": "ja", "meaning": "ведь"},
+              {"term": "schon", "meaning": "уж"},
+              {"term": "gar", "meaning": "вообще"},
+              {"term": "wohl", "meaning": "наверное"}
+            ], "detail": "particles", "label": "Разбор и позиция"}},
             {"example": [
               "Komm ", {"t": "mal", "hit": true}, " her! · Das ist ", {"t": "ja", "hit": true}, " klar! · Wie heißt du ", {"t": "denn", "hit": true}, "?"
-            ], "gloss": ["mal ≈ -ка · ja ≈ ведь · denn ≈ же"]},
-            {"chips": [{"label": "Разбор и позиция", "detail": "particles"}]}
+            ], "gloss": ["mal ≈ -ка · ja ≈ ведь · denn ≈ же"]}
           ]
         },
         {
@@ -686,17 +670,16 @@
               "blocks": [
                 {"h": ["Связующие наречия"]},
                 {"p": ["Не союзы: занимают ", {"t": "позицию 1", "b": true}, ", дальше глагол (см. V2):"]},
-                {"chips": [
-                  {"label": ["deshalb — ", {"t": "поэтому", "b": true}], "detail": "linking-adverbs", "neutral": true},
-                  {"label": ["trotzdem — ", {"t": "тем не менее", "b": true}], "detail": "linking-adverbs", "neutral": true},
-                  {"label": ["allerdings — ", {"t": "впрочем / однако", "b": true}], "detail": "linking-adverbs", "neutral": true},
-                  {"label": ["außerdem — ", {"t": "кроме того", "b": true}], "detail": "linking-adverbs", "neutral": true},
-                  {"label": ["währenddessen — ", {"t": "тем временем", "b": true}], "detail": "linking-adverbs", "neutral": true}
-                ]},
+                                {"legend": {"items": [
+                  {"term": "deshalb", "meaning": "поэтому"},
+                  {"term": "trotzdem", "meaning": "тем не менее"},
+                  {"term": "allerdings", "meaning": "впрочем / однако"},
+                  {"term": "außerdem", "meaning": "кроме того"},
+                  {"term": "währenddessen", "meaning": "тем временем"}
+                ], "detail": "linking-adverbs", "label": "Чем отличаются от союзов?"}},
                 {"example": [
                   "Es regnete. ", {"t": "Deshalb", "hit": true}, " blieben wir zu Hause. · ", {"t": "Trotzdem", "hit": true}, " ging er spazieren."
-                ], "gloss": ["Deshalb ≈ поэтому · Trotzdem ≈ несмотря на это"]},
-                {"chips": [{"label": "Чем отличаются от союзов?", "detail": "linking-adverbs"}]}
+                ], "gloss": ["Deshalb ≈ поэтому · Trotzdem ≈ несмотря на это"]}
               ]
             }
           ]

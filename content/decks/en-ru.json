@@ -227,17 +227,16 @@
           "blocks": [
             {"h": ["Слова-оттенки: just, actually…"]},
             {"p": ["Один слог меняет тон фразы. Русские соответствия:"]},
-            {"chips": [
-              {"label": ["just — ", {"t": "просто / как раз", "b": true}], "detail": "flavor-words", "neutral": true},
-              {"label": ["actually — ", {"t": "вообще-то", "b": true}], "detail": "flavor-words", "neutral": true},
-              {"label": ["still — ", {"t": "всё ещё", "b": true}], "detail": "flavor-words", "neutral": true},
-              {"label": ["even — ", {"t": "даже", "b": true}], "detail": "flavor-words", "neutral": true},
-              {"label": ["though — ", {"t": "впрочем", "b": true}], "detail": "flavor-words", "neutral": true}
-            ]},
+                        {"legend": {"items": [
+              {"term": "just", "meaning": "просто / как раз"},
+              {"term": "actually", "meaning": "вообще-то"},
+              {"term": "still", "meaning": "всё ещё"},
+              {"term": "even", "meaning": "даже"},
+              {"term": "though", "meaning": "впрочем"}
+            ], "detail": "flavor-words", "label": "Разбор и ловушки"}},
             {"example": [
               "It's expensive. I like it, ", {"t": "though", "hit": true}, ". · ", {"t": "Even", "hit": true}, " a child can do it."
-            ], "gloss": ["though ≈ всё же / впрочем · even ≈ даже"]},
-            {"chips": [{"label": "Разбор и ловушки", "detail": "flavor-words"}]}
+            ], "gloss": ["though ≈ всё же / впрочем · even ≈ даже"]}
           ]
         },
         {
@@ -248,22 +247,23 @@
           "blocks": [
             {"h": ["Связки: however, so, although…"]},
             {"p": ["Соединяют предложения — контраст, причина, время, уступка:"]},
-            {"chips": [
-              {"label": ["but / however — ", {"t": "но / однако", "b": true}], "detail": "linking-words", "neutral": true},
-              {"label": ["not (only) … but — ", {"t": "не…, а / не только…, но и", "b": true}], "detail": "not-but", "neutral": true},
-              {"label": ["so / therefore — ", {"t": "поэтому", "b": true}], "detail": "linking-words", "neutral": true},
-              {"label": ["meanwhile — ", {"t": "тем временем", "b": true}], "detail": "linking-words", "neutral": true},
-              {"label": ["nevertheless — ", {"t": "тем не менее", "b": true}], "detail": "linking-words", "neutral": true},
-              {"label": ["although / though — ", {"t": "хотя", "b": true}], "detail": "linking-words", "neutral": true},
-              {"label": ["despite — ", {"t": "несмотря на", "b": true}], "detail": "linking-words", "neutral": true}
+                        {"legend": {"items": [
+              {"term": "but / however", "meaning": "но / однако"},
+              {"term": "so / therefore", "meaning": "поэтому"},
+              {"term": "meanwhile", "meaning": "тем временем"},
+              {"term": "nevertheless", "meaning": "тем не менее"},
+              {"term": "although / though", "meaning": "хотя"},
+              {"term": "despite", "meaning": "несмотря на"}
+            ], "detail": "linking-words", "label": "despite или although?"}},
+                        {"chips": [
+              {"label": ["not (only) … but — ", {"t": "не…, а / не только…, но и", "b": true}], "detail": "not-but", "neutral": true}
             ]},
             {"example": [
               "It was raining. ", {"t": "However", "hit": true}, ", we went out. · ", {"t": "Although", "hit": true}, " it rained, we went out."
             ], "gloss": ["However ≈ однако · Although ≈ хотя"]},
             {"example": [
               "The meeting is ", {"t": "not", "hit": true}, " on Monday, ", {"t": "but", "hit": true}, " on Tuesday. · She is ", {"t": "not only", "hit": true}, " smart ", {"t": "but also", "hit": true}, " kind."
-            ], "gloss": ["«не в понедельник, а во вторник» · «не только умная, но и добрая»"]},
-            {"chips": [{"label": "despite или although?", "detail": "linking-words"}]}
+            ], "gloss": ["«не в понедельник, а во вторник» · «не только умная, но и добрая»"]}
           ]
         },
         {
@@ -568,14 +568,7 @@
           "blocks": [
             {"h": ["Предлоги-ловушки"]},
             {"p": ["Русский предлог ≠ английский. Учить парами:"]},
-            {"chips": [
-              {"label": ["depend ", {"t": "on", "b": true}], "detail": "dependent-preps", "neutral": true},
-              {"label": ["interested ", {"t": "in", "b": true}], "detail": "dependent-preps", "neutral": true},
-              {"label": ["listen ", {"t": "to", "b": true}], "detail": "dependent-preps", "neutral": true},
-              {"label": ["afraid ", {"t": "of", "b": true}], "detail": "dependent-preps", "neutral": true},
-              {"label": ["good ", {"t": "at", "b": true}], "detail": "dependent-preps", "neutral": true},
-              {"label": ["wait ", {"t": "for", "b": true}], "detail": "dependent-preps", "neutral": true}
-            ]},
+                        {"legend": {"items": ["depend on", "interested in", "listen to", "afraid of", "good at", "wait for"], "detail": "dependent-preps", "label": "Разбор"}},
             {"example": ["Зависит ", {"t": "от", "b": true}, " → depend ", {"t": "on", "b": true}, " (не from!)"]}
           ]
         }

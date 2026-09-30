@@ -104,6 +104,7 @@
       <a href="#anatomy">Section anatomy</a>
       <a href="#card">Cards</a>
       <a href="#chips">Chips</a>
+      <a href="#legend">Legend</a>
       <a href="#tables">Tables</a>
       <a href="#formula">Formulas</a>
       <a href="#cases">Case grid</a>
@@ -303,7 +304,7 @@
         <div class="sg-doc-body">
           <p>Each card is a list of blocks; the registry (<code>tools/deck_blocks.py</code>) owns each type's markup, and one
             block per card wins. <strong>Visual order is fixed by <code>HTML_ORDER</code>, not JSON order:</strong>
-            <code>h → p → tiny → example → formula → table → chips → notice → detail</code>.</p>
+            <code>h → p → tiny → example → formula → table → chips → legend → notice → detail</code>.</p>
           <div class="table-scroll">
             <table class="roles">
               <thead><tr><th>Deck key</th><th>Markup</th><th>Notes</th></tr></thead>
@@ -313,7 +314,8 @@
                 <tr><td><code>example</code></td><td><code>&lt;div class="example"&gt;</code></td><td>optional <code>gloss</code> → <code>.example.pair</code> (hint under a hairline); runs may carry <code>hit</code> (bold + highlight)</td></tr>
                 <tr><td><code>formula</code></td><td><code>&lt;div class="formula"&gt;</code></td><td>slots + <code>{arrow}</code> items; slot <code>role</code>: verb/end/sub</td></tr>
                 <tr><td><code>table</code></td><td><code>&lt;div class="table-scroll"&gt;&lt;table&gt;</code></td><td>cell object <code>{hot: …}</code> → <code>td.hot</code></td></tr>
-                <tr><td><code>chips</code></td><td><code>&lt;div class="chips"&gt;</code></td><td>needs label + known detail key; <code>neutral: true</code> variant</td></tr>
+                <tr><td><code>chips</code></td><td><code>&lt;div class="chips"&gt;</code></td><td>needs label + known detail key; <code>neutral: true</code> variant; a menu only — each chip opens a <em>different</em> dialog (validator enforces)</td></tr>
+                <tr><td><code>legend</code></td><td><code>&lt;div class="legend"&gt;</code></td><td>static inventory, not tappable; items: string | runs | <code>{term, meaning}</code>; optional <code>detail</code>+<code>label</code> (all-or-nothing) render the one entry button</td></tr>
                 <tr><td><code>notice</code></td><td><code>&lt;div class="notice"&gt;</code></td><td><code>warning: true</code> → <code>.notice.warning</code></td></tr>
                 <tr><td><code>detail</code></td><td><code>&lt;div class="detail-block"&gt;</code></td><td>dialog body blocks only (in <code>details</code>)</td></tr>
               </tbody>
@@ -377,6 +379,24 @@
         <button class="tap case" type="button"><strong>Nominativ</strong><br>Wer?</button>
       </div>
       <p class="sg-anno"><code>.tap</code> primary · <code>.tap.neutral</code> secondary · <code>.tap.case</code> 44px case tile. No other button styles.</p>
+    </section>
+
+    <section class="sg-block" id="legend">
+      <h2>Legend</h2>
+      <p class="sg-why">Static term inventory one dialog explains — pairs, vocab strips. Not tappable: no button chrome, and it survives print and noscript (<code>.chips</code> hide in both). One dialog gets one entry button.</p>
+      <div class="legend">
+        <span class="legend-item"><b>doch</b><span class="legend-mean"> — ведь / же</span></span>
+        <span class="legend-item"><b>mal</b><span class="legend-mean"> — ну, -ка</span></span>
+        <span class="legend-item"><b>denn</b><span class="legend-mean"> — же / разве</span></span>
+        <span class="legend-item"><b>wohl</b><span class="legend-mean"> — наверное</span></span>
+      </div>
+      <div class="legend">
+        <span class="legend-item"><b>durch</b></span>
+        <span class="legend-item"><b>für</b></span>
+        <span class="legend-item"><b>gegen</b></span>
+      </div>
+      <div class="chips"><button class="tap" type="button" data-detail="v2-demo">Разбор и позиция</button></div>
+      <p class="sg-anno">item = <code>"term"</code> | runs | <code>{term, meaning}</code> — term bold, meaning muted, <code>·</code> separators. Optional <code>detail</code>+<code>label</code> (all-or-nothing) render one <code>.tap</code> entry. The validator errors when more than one button on a card opens the same dialog.</p>
     </section>
 
     <section class="sg-block" id="tables">

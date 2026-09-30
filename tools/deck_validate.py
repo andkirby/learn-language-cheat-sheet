@@ -148,8 +148,28 @@ class _Checker:
                 self.check_runs(c.get("label", []), f"{where}.case_grid[{j}].label")
         else:
             self.check_blocks(card["blocks"], where)
+            self._check_dialog_entries(card["blocks"], where)
         # Search-index hygiene (see the _grammar_terms note above).
         self.check_search_tokens(card.get("search"), _card_visible_text(card), where)
+
+    def _check_dialog_entries(self, blocks, where):
+        """One dialog, one visible entry button: a chips row is a menu only
+        when its buttons open different dialogs; an inventory one dialog
+        explains belongs in a legend block (which carries the single entry)."""
+        entries = {}
+        for i, block in enumerate(blocks):
+            if "chips" in block:
+                for chip in block["chips"]:
+                    entries[chip["detail"]] = entries.get(chip["detail"], 0) + 1
+            if "legend" in block:
+                d = block["legend"].get("detail")
+                if d:
+                    entries[d] = entries.get(d, 0) + 1
+        for key, n in sorted(entries.items()):
+            if n > 1:
+                self.errors.append(
+                    f"{where}: {n} entry buttons open dialog {key!r} — one dialog "
+                    f"gets one entry; move the inventory into a legend block")
 
     def check_search_tokens(self, search, visible_text, where):
         """Every data-search token must be learner-visible in visible_text,

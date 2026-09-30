@@ -1,7 +1,7 @@
 """The deck block registry — the single source of block-type knowledge.
 
 Each BlockDef entry owns three concerns for one block type (h, p, tiny,
-example, notice, formula, table, chips, detail):
+example, notice, formula, table, chips, legend, detail):
   check — shape validation (called with the deck validator's checker)
   text  — the learner-visible words (feeds the search-index gate)
   html  — the card markup
@@ -156,6 +156,80 @@ def _chips_check(block, where, chk):
             chk.errors.append(f"{where}.chips: unknown detail key {chip['detail']!r}")
 
 
+def _legend_check(block, where, chk):
+    leg = block["legend"]
+    items = leg.get("items")
+    if not isinstance(items, list) or not items:
+        chk.errors.append(f"{where}.legend.items must be a non-empty list")
+        return
+    for j, item in enumerate(items):
+        if isinstance(item, str):
+            if not item.strip():
+                chk.errors.append(f"{where}.legend.items[{j}]: empty term")
+        elif isinstance(item, list):
+            chk.check_runs(item, f"{where}.legend.items[{j}]")
+        elif isinstance(item, dict):
+            term = item.get("term")
+            if isinstance(term, str):
+                if not term.strip():
+                    chk.errors.append(f"{where}.legend.items[{j}].term: empty")
+            elif isinstance(term, list):
+                chk.check_runs(term, f"{where}.legend.items[{j}].term")
+            else:
+                chk.errors.append(f"{where}.legend.items[{j}]: needs 'term' (string or runs)")
+            if "meaning" in item and (not isinstance(item["meaning"], str) or not item["meaning"].strip()):
+                chk.errors.append(f"{where}.legend.items[{j}].meaning: must be a non-empty string")
+        else:
+            chk.errors.append(f"{where}.legend.items[{j}]: must be a string, runs or {{term, meaning}}")
+    has_detail, has_label = "detail" in leg, "label" in leg
+    if has_detail != has_label:
+        chk.errors.append(f"{where}.legend: detail and label are all-or-nothing")
+    elif has_detail and leg["detail"] not in chk.details:
+        chk.errors.append(f"{where}.legend: unknown detail key {leg['detail']!r}")
+
+
+def _legend_text(block):
+    leg = block["legend"]
+    parts = []
+    for item in leg["items"]:
+        if isinstance(item, str):
+            parts.append(item)
+        elif isinstance(item, list):
+            parts.append(runs_text(item))
+        else:
+            term = item["term"]
+            parts.append(term if isinstance(term, str) else runs_text(term))
+            if "meaning" in item:
+                parts.append(item["meaning"])
+    if "label" in leg:
+        parts.append(leg["label"])
+    return parts
+
+
+def _legend_item_html(item):
+    if isinstance(item, str):
+        return f"<span class=\"legend-item\"><b>{esc(item)}</b></span>"
+    if isinstance(item, list):
+        return f"<span class=\"legend-item\">{runs_html(item)}</span>"
+    term = (esc(item["term"]) if isinstance(item["term"], str)
+            else runs_html(item["term"]))
+    mean = (f"<span class=\"legend-mean\"> — {esc(item['meaning'])}</span>"
+            if "meaning" in item else "")
+    return f"<span class=\"legend-item\"><b>{term}</b>{mean}</span>"
+
+
+def _legend_html(block):
+    leg = block["legend"]
+    html = ("<div class=\"legend\">"
+            + "".join(_legend_item_html(item) for item in leg["items"])
+            + "</div>\n")
+    if "label" in leg:
+        html += ("        <div class=\"chips\">"
+                 f"<button class=\"tap\" data-detail=\"{escq(leg['detail'])}\">{esc(leg['label'])}</button>"
+                 "</div>\n")
+    return html
+
+
 def _chips_text(block):
     return [chip["label"] if isinstance(chip["label"], str) else runs_text(chip["label"])
             for chip in block["chips"]]
@@ -200,6 +274,7 @@ BLOCKS = {
     "formula": BlockDef(_formula_check, _formula_text, _formula_html),
     "table": BlockDef(_table_check, _table_text, _table_html),
     "chips": BlockDef(_chips_check, _chips_text, _chips_html),
+    "legend": BlockDef(_legend_check, _legend_text, _legend_html),
     "detail": BlockDef(_detail_check, _detail_text, _detail_html),
 }
 BLOCK_KEYS = set(BLOCKS)
@@ -207,5 +282,5 @@ BLOCK_KEYS = set(BLOCKS)
 # Traversal orders mirror the historical key checks so even pathological
 # multi-key blocks behave exactly as before (visible-text assembly order,
 # block_html's first-match pick).
-TEXT_ORDER = ("h", "p", "tiny", "example", "notice", "formula", "table", "chips", "detail")
-HTML_ORDER = ("h", "p", "tiny", "example", "formula", "table", "chips", "notice", "detail")
+TEXT_ORDER = ("h", "p", "tiny", "example", "notice", "formula", "table", "chips", "legend", "detail")
+HTML_ORDER = ("h", "p", "tiny", "example", "formula", "table", "chips", "legend", "notice", "detail")

@@ -274,13 +274,7 @@
           "search": "akkusativ prepositions durch für gegen ohne um",
           "blocks": [
             {"h": ["Always Akkusativ"]},
-            {"chips": [
-              {"label": "durch", "detail": "prep-akk", "neutral": true},
-              {"label": "für", "detail": "prep-akk", "neutral": true},
-              {"label": "gegen", "detail": "prep-akk", "neutral": true},
-              {"label": "ohne", "detail": "prep-akk", "neutral": true},
-              {"label": "um", "detail": "prep-akk", "neutral": true}
-            ]},
+                        {"legend": {"items": ["durch", "für", "gegen", "ohne", "um"], "detail": "prep-akk", "label": "Breakdown"}},
             {"example": [
               "für ", {"t": "den", "hit": true}, " Mann · ohne ", {"t": "mich", "hit": true}
             ], "gloss": ["the case comes with the preposition — no meaning question needed"]}
@@ -291,15 +285,7 @@
           "search": "dativ prepositions aus bei mit nach seit von zu",
           "blocks": [
             {"h": ["Always Dativ"]},
-            {"chips": [
-              {"label": "aus", "detail": "prep-dat", "neutral": true},
-              {"label": "bei", "detail": "prep-dat", "neutral": true},
-              {"label": "mit", "detail": "prep-dat", "neutral": true},
-              {"label": "nach", "detail": "prep-dat", "neutral": true},
-              {"label": "seit", "detail": "prep-dat", "neutral": true},
-              {"label": "von", "detail": "prep-dat", "neutral": true},
-              {"label": "zu", "detail": "prep-dat", "neutral": true}
-            ]},
+                        {"legend": {"items": ["aus", "bei", "mit", "nach", "seit", "von", "zu"], "detail": "prep-dat", "label": "Breakdown"}},
             {"example": [
               "mit ", {"t": "meinem", "hit": true}, " Bruder · zu ", {"t": "der", "hit": true}, " Arbeit → zur Arbeit"
             ], "gloss": ["the case comes with the preposition — no meaning question needed"]}
@@ -334,14 +320,13 @@
             {"example": [
               "Ich warte ", {"t": "auf", "hit": true}, " den Bus. · Er denkt ", {"t": "an", "hit": true}, " die Prüfung."
             ], "gloss": ["the case comes from the preposition: auf → Akkusativ (ask Wen? — den Bus)"]},
-            {"chips": [
-              {"label": ["warten ", {"t": "auf", "b": true}], "detail": "verb-preps", "neutral": true},
-              {"label": ["denken ", {"t": "an", "b": true}], "detail": "verb-preps", "neutral": true},
-              {"label": ["sich freuen ", {"t": "auf/über", "b": true}], "detail": "verb-preps", "neutral": true},
-              {"label": ["sich interessieren ", {"t": "für", "b": true}], "detail": "verb-preps", "neutral": true},
-              {"label": ["teilnehmen ", {"t": "an", "b": true}], "detail": "verb-preps", "neutral": true},
-              {"label": "The question trick and sich", "detail": "verb-preps"}
-            ]}
+                        {"legend": {"items": [
+              {"term": ["warten ", {"t": "auf", "b": true}]},
+              {"term": ["denken ", {"t": "an", "b": true}]},
+              {"term": ["sich freuen ", {"t": "auf/über", "b": true}]},
+              {"term": ["sich interessieren ", {"t": "für", "b": true}]},
+              {"term": ["teilnehmen ", {"t": "an", "b": true}]}
+            ], "detail": "verb-preps", "label": "The question trick and sich"}}
           ]
         },
         {
@@ -428,19 +413,18 @@
           "blocks": [
             {"h": ["Particles: doch, mal, denn…"]},
             {"p": ["No literal translation — each one carries ", {"t": "tone", "i": true}, ". English does this with intonation and small adverbs; learn the pairs:"]},
-            {"chips": [
-              {"label": "doch — actually / on the contrary", "detail": "particles", "neutral": true},
-              {"label": "mal — just (a nudge)", "detail": "particles", "neutral": true},
-              {"label": "denn — then / so (in questions)", "detail": "particles", "neutral": true},
-              {"label": "ja — after all / you know", "detail": "particles", "neutral": true},
-              {"label": "schon — I suppose", "detail": "particles", "neutral": true},
-              {"label": "gar — at all (with nicht)", "detail": "particles", "neutral": true},
-              {"label": "wohl — probably", "detail": "particles", "neutral": true}
-            ]},
+                        {"legend": {"items": [
+              {"term": "doch", "meaning": "actually / on the contrary"},
+              {"term": "mal", "meaning": "just (a nudge)"},
+              {"term": "denn", "meaning": "then / so (in questions)"},
+              {"term": "ja", "meaning": "after all / you know"},
+              {"term": "schon", "meaning": "I suppose"},
+              {"term": "gar", "meaning": "at all (with nicht)"},
+              {"term": "wohl", "meaning": "probably"}
+            ], "detail": "particles", "label": "Breakdown and position"}},
             {"example": [
               "Komm ", {"t": "mal", "hit": true}, " her! · Das ist ", {"t": "ja", "hit": true}, " klar! · Wie heißt du ", {"t": "denn", "hit": true}, "?"
-            ], "gloss": ["mal ≈ just · ja ≈ after all · denn ≈ then (question)"]},
-            {"chips": [{"label": "Breakdown and position", "detail": "particles"}]}
+            ], "gloss": ["mal ≈ just · ja ≈ after all · denn ≈ then (question)"]}
           ]
         },
         {
@@ -690,13 +674,13 @@
               "blocks": [
                 {"h": ["Linking adverbs"]},
                 {"p": ["Not conjunctions: they take ", {"t": "position 1", "b": true}, ", then the verb (see V2):"]},
-                {"chips": [
-                  {"label": ["deshalb — ", {"t": "so / therefore", "b": true}], "detail": "linking-adverbs", "neutral": true},
-                  {"label": ["trotzdem — ", {"t": "nevertheless / even so", "b": true}], "detail": "linking-adverbs", "neutral": true},
-                  {"label": ["allerdings — ", {"t": "though / however", "b": true}], "detail": "linking-adverbs", "neutral": true},
-                  {"label": ["außerdem — ", {"t": "besides", "b": true}], "detail": "linking-adverbs", "neutral": true},
-                  {"label": ["währenddessen — ", {"t": "meanwhile", "b": true}], "detail": "linking-adverbs", "neutral": true}
-                ]},
+                                {"legend": {"items": [
+                  {"term": "deshalb", "meaning": "so / therefore"},
+                  {"term": "trotzdem", "meaning": "nevertheless / even so"},
+                  {"term": "allerdings", "meaning": "though / however"},
+                  {"term": "außerdem", "meaning": "besides"},
+                  {"term": "währenddessen", "meaning": "meanwhile"}
+                ], "detail": "linking-adverbs", "label": "How do they differ from conjunctions?"}},
                 {"example": [
                   "Es regnete. ", {"t": "Deshalb", "hit": true}, " blieben wir zu Hause. · ", {"t": "Trotzdem", "hit": true}, " ging er spazieren."
                 ], "gloss": ["Deshalb ≈ so · Trotzdem ≈ even so"]},

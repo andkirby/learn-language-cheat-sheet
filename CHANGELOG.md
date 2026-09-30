@@ -6,6 +6,19 @@ UI rationale lives in
 `.design/decisions.md`, content review evidence in `CONTENT_AUDIT.md`.
 Append the entry in the same commit that ships the change.
 
+## 2026-09-30 (one dialog, one entry button)
+
+- **Cards no longer show a stack of buttons that all open the same
+  dialog.** Term inventories (particles, linking adverbs, flavor words,
+  linkers, preposition strips, verb+preposition pairs) now render as a
+  static `.legend` line — bold term, muted meaning — with a single
+  «Разбор…» entry button instead of up to eight duplicate buttons. All
+  four language pages affected (16 cards). Side effect: the inventories
+  are now visible in print and without JavaScript, where chip rows were
+  hidden. A new `legend` block type is available to deck authors; the
+  build rejects any card that still opens one dialog from more than one
+  button.
+
 ## 2026-09-30 (tables size to content)
 
 - **Tables no longer force a horizontal scrollbar when their content

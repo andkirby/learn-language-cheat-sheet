@@ -611,3 +611,26 @@ fill the container (`width: 100%`) with no scrollbar, wide paradigms
 overflow `.table-scroll` exactly as before. Pure shared-stylesheet change,
 applies to every page and layout variant (base + lab). No new tokens; the
 "tables scroll inside `.table-scroll`, never the page" rule is unchanged.
+
+## 2026-09-30 — `.legend`: one dialog, one entry button (static term inventories)
+
+Card blocks whose chip row all opened the same `DETAILS` dialog rendered as N
+duplicate buttons: the particles card had eight buttons (seven translated
+pair chips + a primary «Разбор и позиция») opening one dialog, the «Связующие
+наречия» card six. The chip labels were the content, not a menu, so the
+button chrome read as noise — and because `.chips` hide in print and
+noscript, the inventories were invisible in both.
+
+Rule (now build-enforced in `deck_validate`): **one dialog, one visible entry
+button per card.** A `.chips` row is a menu only when its buttons open
+different dialogs (the `not-but` chip on the EN linkers card stays a chip).
+An inventory one dialog explains belongs in the new `legend` block — static
+items (string | runs | `{term, meaning}`), term bold as the scan anchor,
+meaning muted, `·` separators; optional all-or-nothing `detail`+`label`
+render the single `.tap` entry. Converted 16 cards across all four decks
+(DE/EN particles, EN flavor words + linkers, DE linking adverbs, prep
+strips ×2, verb+preposition ×2, EN dependent preps ×2).
+
+Not done, deliberately: no `[lang]` study voice on legend terms (chips never
+had it; the legend mirrors chips' typographic treatment), and case_grid cards
+are outside the one-entry rule (their tiles open per-case dialogs, not one).
