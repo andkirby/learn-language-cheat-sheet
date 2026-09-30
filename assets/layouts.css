@@ -90,10 +90,20 @@ html[data-layout="bento"] {
 }
 html[data-layout="bento"] .topbar-inner,
 html[data-layout="bento"] main { width: min(100%, 1120px); }
-html[data-layout="bento"] main { counter-reset: bento-chapter; }
+/* Section rhythm lives on the container gap, not on section margins:
+   gap skips the first child, so a view starts at the page inset (18px)
+   instead of padding + margin stacked (54px). */
+html[data-layout="bento"] main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  counter-reset: bento-chapter;
+}
+html[data-layout="bento"] section { margin-top: 0; }
 html[data-layout="bento"] section[data-section] { counter-increment: bento-chapter; }
-html[data-layout="bento"] section { margin-top: 24px; }
-html[data-layout="bento"] .footer { margin-top: 34px; }
+html[data-layout="bento"] .search-summary,
+html[data-layout="bento"] .no-results { margin: 0; }
+html[data-layout="bento"] .footer { margin-top: 0; padding-top: 0; }
 
 /* --- shared tile chrome (all widths) -------------------------------- */
 html[data-layout="bento"] .cheat-card {
@@ -244,7 +254,7 @@ html[data-layout="bento"] .section-badge {
 
 /* --- mosaic (>=720): section grid + wrapper sub-grids ---------------- */
 @media (min-width: 720px) {
-  html[data-layout="bento"] section { margin-top: 36px; }
+  html[data-layout="bento"] main { gap: 36px; }
 
   html[data-layout="bento"] section[data-view] {
     display: grid;
