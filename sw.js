@@ -2,7 +2,7 @@
 // Lives at the repo root; deck pages register it with '../../sw.js'
 // (the landing uses './sw.js').
 // After changing any page or asset, bump CACHE_VERSION (see AGENTS.md).
-const CACHE_VERSION = 'v45';
+const CACHE_VERSION = 'v47';
 const CACHE_NAME = `lang-cheat-${CACHE_VERSION}`;
 const APP_SHELL = [
   './',
@@ -11,6 +11,19 @@ const APP_SHELL = [
   // Layout lab stylesheet: inert without an active lab session (?layout=);
   // precached so offline preview works and the APP_SHELL stays all-200.
   './assets/layouts.css',
+  // Skin A stylesheet + its self-hosted fonts: precached so the skin works
+  // offline and the APP_SHELL stays all-200 (license texts are not cached).
+  './assets/skin-a.css',
+  './assets/fonts/onest-var-cyrillic.woff2',
+  './assets/fonts/onest-var-latin.woff2',
+  './assets/fonts/spectral-400-cyrillic.woff2',
+  './assets/fonts/spectral-400-latin.woff2',
+  './assets/fonts/spectral-800-cyrillic.woff2',
+  './assets/fonts/spectral-800-latin.woff2',
+  './assets/fonts/spectral-i400-cyrillic.woff2',
+  './assets/fonts/spectral-i400-latin.woff2',
+  './assets/fonts/spectral-i700-cyrillic.woff2',
+  './assets/fonts/spectral-i700-latin.woff2',
   './de/ru/',
   './de/ru/index.html',
   './de/ru/manifest.webmanifest',

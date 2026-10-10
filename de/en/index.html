@@ -29,6 +29,11 @@
       }
     }
   </script>
+  <script>
+    // Skin: apply before first paint so «Тетрадь» doesn't flash classic
+    // (stored skin only; default = classic = no attribute).
+    try { if (localStorage.getItem('skin') === 'a') document.documentElement.setAttribute('data-skin', 'a'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#10131b" media="(prefers-color-scheme: dark)" />
   <meta name="color-scheme" content="light dark" />
@@ -48,13 +53,14 @@
   <meta name="twitter:card" content="summary" />
   <title>German Grammar Cheatsheet</title>
   <link rel="stylesheet" href="../../assets/base.css" />
+  <link rel="stylesheet" href="../../assets/skin-a.css" />
   <!-- Generated from content/decks/de-en.json by tools/build_pages.py — do not edit by hand;
        regenerate with: python3 tools/build_pages.py content/decks/de-en.json -->
 </head>
 <body>
   <header class="topbar">
     <div class="topbar-inner">
-      <details class="app-menu"><summary aria-label="Menu: language, help, install"><span aria-hidden="true">☰</span></summary><div class="lang-pop app-pop"><div class="app-identity">German Cheat<small>EN → DE · A1–B1</small></div><div class="lang-group"><div class="lang-group-label">Learning language</div><span class="cur">Deutsch</span><a href="../../en/ru/">English</a></div><div class="lang-group"><div class="lang-group-label">Explanation language</div><a href="../ru/">Русский</a><span class="cur">English</span></div><div class="app-sep" aria-hidden="true"></div><button class="menu-row" type="button" data-detail="lookup-help">How to use</button><button class="menu-row" type="button" data-install hidden>Install</button></div></details>
+      <details class="app-menu"><summary aria-label="Menu: language, design, help, install"><span aria-hidden="true">☰</span></summary><div class="lang-pop app-pop"><div class="app-identity">German Cheat<small>EN → DE · A1–B1</small></div><div class="lang-group"><div class="lang-group-label">Learning language</div><span class="cur">Deutsch</span><a href="../../en/ru/">English</a></div><div class="lang-group"><div class="lang-group-label">Explanation language</div><a href="../ru/">Русский</a><span class="cur">English</span></div><div class="lang-group"><div class="lang-group-label">Design</div><div role="radiogroup" aria-label="Design"><button type="button" class="skin-row cur" role="radio" aria-checked="true" tabindex="0" data-skin-mode="classic">Classic</button><button type="button" class="skin-row" role="radio" aria-checked="false" tabindex="-1" data-skin-mode="a">Notebook</button></div></div><div class="app-sep" aria-hidden="true"></div><button class="menu-row" type="button" data-detail="lookup-help">How to use</button><button class="menu-row" type="button" data-install hidden>Install</button></div></details>
       <div class="brand">
         <div class="brand-mark" aria-hidden="true">DE</div>
         <div>German Cheat<small>EN → DE · A1–B1</small></div>
@@ -64,7 +70,7 @@
         <input id="search" class="search" type="search" autocomplete="off" enterkeyhint="search" placeholder="Search: wem, weil, modal, Dativ…" aria-label="Search the German cheat sheet" />
         <button id="clearSearch" class="clear-search" type="button" aria-label="Clear search" hidden>×</button>
       </div>
-      <details class="lang-menu" id="langMenu"><summary aria-label="Learning language and explanation language">DE · EN</summary><div class="lang-pop"><div class="lang-group"><div class="lang-group-label">Learning language</div><span class="cur">Deutsch</span><a href="../../en/ru/">English</a></div><div class="lang-group"><div class="lang-group-label">Explanation language</div><a href="../ru/">Русский</a><span class="cur">English</span></div></div></details>
+      <details class="lang-menu" id="langMenu"><summary aria-label="Learning language, explanation language and design">DE · EN</summary><div class="lang-pop"><div class="lang-group"><div class="lang-group-label">Learning language</div><span class="cur">Deutsch</span><a href="../../en/ru/">English</a></div><div class="lang-group"><div class="lang-group-label">Explanation language</div><a href="../ru/">Русский</a><span class="cur">English</span></div><div class="lang-group"><div class="lang-group-label">Design</div><div role="radiogroup" aria-label="Design"><button type="button" class="skin-row cur" role="radio" aria-checked="true" tabindex="0" data-skin-mode="classic">Classic</button><button type="button" class="skin-row" role="radio" aria-checked="false" tabindex="-1" data-skin-mode="a">Notebook</button></div></div></div></details>
       <button class="icon-btn" id="start" type="button" data-detail="lookup-help" aria-haspopup="dialog" aria-label="How to use" title="How to use"><span class="ico" aria-hidden="true">i</span></button>
       <button class="theme-btn" id="themeBtn" type="button" aria-label="Theme: system">◐</button>
       <button class="install-btn" type="button" data-install hidden>Install</button>
@@ -73,7 +79,7 @@
 
   <noscript>
     <style>
-      .tap, .install-btn, .clear-search, .theme-btn, .icon-btn, .menu-row, .install-nudge { display: none !important; }
+      .tap, .install-btn, .clear-search, .theme-btn, .icon-btn, .menu-row, .install-nudge, .skin-row { display: none !important; }
     </style>
     <div class="notice" style="margin:12px 16px 0">Search, details and app install need JavaScript. All cheat-sheet content below works without it.</div>
     <p class="intro" style="margin:10px 16px 0">Look at the <b>trigger</b> — case, preposition, conjunction or verb construction — then at the form and the position.</p>
@@ -845,6 +851,52 @@
       themeMode = themeMode === 'auto' ? 'light' : themeMode === 'light' ? 'dark' : 'auto';
       try { localStorage.setItem(THEME_KEY, themeMode); } catch (e) {}
       applyTheme(themeMode);
+      if (skinMode === 'a') applySkin(skinMode);
+    });
+
+    // Skin: classic / «Тетрадь» — persisted per visitor; classic needs no attribute.
+    const SKIN_KEY = 'skin';
+    const skinRows = [...document.querySelectorAll('[data-skin-mode]')];
+    function applySkin(skin) {
+      if (skin === 'a') document.documentElement.setAttribute('data-skin', 'a');
+      else document.documentElement.removeAttribute('data-skin');
+      skinRows.forEach(row => {
+        const on = row.dataset.skinMode === skin;
+        row.classList.toggle('cur', on);
+        row.setAttribute('aria-checked', String(on));
+        row.tabIndex = on ? 0 : -1;
+      });
+      // Paper chrome must follow the skin even in theme-auto (applyTheme
+      // restores the classic meta defaults there); classic hands the metas
+      // back to applyTheme.
+      if (skin === 'a') themeMetas.forEach(m => { m.content = getComputedStyle(document.body).backgroundColor; });
+      else applyTheme(themeMode);
+    }
+    let skinMode = 'classic';
+    try { skinMode = localStorage.getItem(SKIN_KEY) || 'classic'; } catch (e) {}
+    applySkin(skinMode);
+    document.addEventListener('click', (event) => {
+      const row = event.target.closest('[data-skin-mode]');
+      if (!row) return;
+      skinMode = row.dataset.skinMode;
+      try { localStorage.setItem(SKIN_KEY, skinMode); } catch (e) {}
+      applySkin(skinMode);
+      const menu = row.closest('details.app-menu, details.lang-menu');
+      if (menu) { menu.open = false; menu.querySelector('summary').focus(); }
+    });
+    document.addEventListener('keydown', (event) => {
+      const row = event.target.closest && event.target.closest('[data-skin-mode]');
+      if (!row) return;
+      const order = ['classic', 'a'];
+      const delta = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1
+                  : event.key === 'ArrowLeft'  || event.key === 'ArrowUp'   ? -1 : 0;
+      if (!delta) return;
+      event.preventDefault();
+      skinMode = order[(order.indexOf(row.dataset.skinMode) + delta + order.length) % order.length];
+      try { localStorage.setItem(SKIN_KEY, skinMode); } catch (e) {}
+      applySkin(skinMode);
+      const next = skinRows.find(r => r.dataset.skinMode === skinMode && r.closest('details') === row.closest('details'));
+      if (next) next.focus();
     });
 
     const dialog = document.getElementById('detailDialog');

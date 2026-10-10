@@ -634,3 +634,56 @@ strips ×2, verb+preposition ×2, EN dependent preps ×2).
 Not done, deliberately: no `[lang]` study voice on legend terms (chips never
 had it; the legend mirrors chips' typographic treatment), and case_grid cards
 are outside the one-entry rule (their tiles open per-case dialogs, not one).
+
+## 2026-10-10 — Skin A «Тетрадь»: selectable site skin + vendored fonts
+
+Skin A «Тетрадь» (editorial paper-and-ink direction) ships as a
+user-selectable alternative to the classic look, site-wide: deck pages,
+landing and style guide.
+
+1. **Mechanism: an attribute skin, not a fork.** `assets/skin-a.css`
+   links immediately after `assets/base.css` on every page; every rule in
+   it is scoped `[data-skin="a"]`, and JS sets `data-skin="a"` on `<html>`
+   from `localStorage.skin` (`classic` | `a`; absence = classic). Classic
+   rendering is untouched by construction — nothing in the new stylesheet
+   can match without the attribute. Skin A's token block mirrors base's
+   three-block pattern (light / auto-dark / manual-dark): A light is
+   paper `#F6F1E7`, ink `#1A1512`, muted `#6E6357`, vermilion accent
+   `#C63C1E`; A dark is `#171310` / `#EFE7D8` / `#A3937F` / `#E5603C`.
+   The DESIGN_SYSTEM raw-hex rule is amended accordingly: the
+   `[data-skin="a"]` token blocks in `skin-a.css` join base's `:root`
+   blocks as the only sanctioned raw-hex locations. The switcher is a
+   third group «Оформление» (Классика / Тетрадь) in the language menus
+   and the phone burger — a real `role="radiogroup"` with arrow-key
+   movement and roving tabindex, close-on-select, persisted in
+   `localStorage.skin`; noscript hides it and renders classic. The
+   radiogroup mechanics are reused, not invented: the reverted
+   layout-lab experiment had already proven this exact roving-tabindex
+   pattern in the menu codebase. `theme-color` metas re-sync on skin
+   switch through the same JS pass as manual theme changes.
+2. **Font vendoring: a scoped exception to hard rule 5.** Skin A's
+   editorial voice needs consistent type across devices, which the
+   2026-09-11 system-stack decision explicitly held in reserve as the
+   trigger ("revisit if cross-device consistency starts to matter more
+   than the zero-footprint rule"). The user approved the deviation; its
+   scope is strictly limited to the committed binaries in `assets/fonts/`
+   and the `@font-face` rules at the top of `skin-a.css` — no CDN, no
+   build step, no font loader. Procedure, subsets and inventory are owned
+   by `docs/FONTS.md`.
+3. **Spectral is static.** Spectral has no variable build on Google
+   Fonts, so it ships as four static instances (400/800 roman, 400/700
+   italic); Onest is variable (one file per subset). Ten woff2 files,
+   ≈147 KB total, precached next to `skin-a.css` in `APP_SHELL`.
+4. **Subset policy: cyrillic + latin only, no latin-ext.** Russian fits
+   cyrillic (incl. `ё`); German/English umlauts and `ß` fit latin. A
+   character outside both ranges falls back to the system stack for that
+   glyph only. A subset is added only when a real audience needs it.
+5. **No preload hints.** A `<link rel="preload">` would ship skin-A bytes
+   to every classic visitor — the opposite of the "classic pays nothing"
+   guarantee. `font-display: swap` covers the one-time first-switch
+   pop-in; the precache covers offline.
+6. **Section numbering restarts per visible view.** Skin A numbers
+   sections with CSS counters; because non-active views are `hidden`,
+   counters restart within each view. Intended, not a bug: a view is the
+   reading unit (see the view-switching decision above), and stacked
+   print/noscript views each restart at 1.

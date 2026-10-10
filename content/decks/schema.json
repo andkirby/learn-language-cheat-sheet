@@ -301,6 +301,9 @@
         "nudge_text": {"type": "string", "description": "one-time install nudge text"},
         "lang_group_target": {"type": "string", "description": "menu group header: learning language"},
         "lang_group_audience": {"type": "string", "description": "menu group header: explanation language"},
+        "skin_group": {"type": "string", "description": "menu group header: skin/design"},
+        "skin_classic": {"type": "string", "description": "skin option: classic"},
+        "skin_a": {"type": "string", "description": "skin option: alternative (notebook)"},
         "lang_soon": {"type": "string", "description": "marker for audiences without a deck yet"}
       }
     },

@@ -6,6 +6,17 @@ UI rationale lives in
 `.design/decisions.md`, content review evidence in `CONTENT_AUDIT.md`.
 Append the entry in the same commit that ships the change.
 
+## 2026-10-10 (skin A «Тетрадь»)
+
+- **New look you can opt into**: «Оформление» in the language menu (and
+  the phone burger) switches the whole site — deck pages, landing and
+  style guide — between Классика and the new editorial skin «Тетрадь»
+  (paper background, ink text, vermilion accent, vendored Onest +
+  Spectral type). The choice persists and works offline (stylesheet and
+  fonts are precached); the classic look is unchanged for everyone who
+  does not switch, and the skin composes with the theme toggle
+  (авто/светлая/тёмная). Service-worker cache v47.
+
 ## 2026-09-30 (one dialog, one entry button)
 
 - **Cards no longer show a stack of buttons that all open the same

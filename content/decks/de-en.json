@@ -60,11 +60,14 @@
     "footer_all": "all cheat sheets",
     "footer_install": "Install: page menu (☰) → “Install” · iPhone — Share → Add to Home Screen",
     "footer_plan": "content plan:",
-    "menu_aria": "Menu: language, help, install",
+    "menu_aria": "Menu: language, design, help, install",
     "nudge_text": "Work offline — install the cheat sheet on your phone",
-    "lang_menu_aria": "Learning language and explanation language",
+    "lang_menu_aria": "Learning language, explanation language and design",
     "lang_group_target": "Learning language",
     "lang_group_audience": "Explanation language",
+    "skin_group": "Design",
+    "skin_classic": "Classic",
+    "skin_a": "Notebook",
     "lang_soon": "soon"
   },
   "help": {

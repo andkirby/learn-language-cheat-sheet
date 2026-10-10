@@ -97,8 +97,9 @@ def _help_button_html(help_btn):
 
 
 def _lang_groups_html(deck, site):
-    """The two flat language groups («Язык обучения» / «Язык объяснений»),
-    shared by the desktop lang-menu popover and the mobile burger."""
+    """The two flat language groups («Язык обучения» / «Язык объяснений»)
+    plus the «Оформление» skin group, shared by the desktop lang-menu
+    popover and the mobile burger."""
     meta, strings = deck["meta"], deck["strings"]
     targets = site["targets"]
     cur_target = next(t for t in targets if t["id"] == meta["target"])
@@ -121,7 +122,23 @@ def _lang_groups_html(deck, site):
         else:
             a_items.append(f"<a href=\"../{escq(a['id'])}/\">{esc(a['label'])}</a>")
     return (f"<div class=\"lang-group\"><div class=\"lang-group-label\">{esc(strings['lang_group_target'])}</div>{''.join(t_items)}</div>"
-            f"<div class=\"lang-group\"><div class=\"lang-group-label\">{esc(strings['lang_group_audience'])}</div>{''.join(a_items)}</div>")
+            f"<div class=\"lang-group\"><div class=\"lang-group-label\">{esc(strings['lang_group_audience'])}</div>{''.join(a_items)}</div>"
+            + _skin_group_html(strings))
+
+
+def _skin_group_html(strings):
+    """«Оформление» skin switcher group (classic / Тетрадь), shared by the
+    desktop lang-menu popover and the mobile burger. The server marks classic
+    checked; the end-of-body script corrects to the visitor's stored skin."""
+    rows = []
+    for mode, label in (("classic", strings["skin_classic"]), ("a", strings["skin_a"])):
+        if mode == "classic":
+            state = ' class="skin-row cur" role="radio" aria-checked="true" tabindex="0"'
+        else:
+            state = ' class="skin-row" role="radio" aria-checked="false" tabindex="-1"'
+        rows.append(f'<button type="button"{state} data-skin-mode="{mode}">{esc(label)}</button>')
+    return (f'<div class="lang-group"><div class="lang-group-label">{esc(strings["skin_group"])}</div>'
+            f'<div role="radiogroup" aria-label="{escq(strings["skin_group"])}">{"".join(rows)}</div></div>')
 
 
 def _lang_menu_html(deck, site):

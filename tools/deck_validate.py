@@ -326,7 +326,7 @@ def _validate_site(deck, site, errors):
     elif not any(a.get("id") == meta.get("audience") and not a.get("soon") for a in own["audiences"]):
         errors.append(f"site.json: the deck's own audience {meta.get('audience')!r} cannot be marked soon")
     strings = deck.get("strings", {})
-    for s in ("lang_menu_aria", "lang_group_target", "lang_group_audience", "lang_soon"):
+    for s in ("lang_menu_aria", "lang_group_target", "lang_group_audience", "lang_soon", "skin_group", "skin_classic", "skin_a"):
         if not strings.get(s):
             errors.append(f"strings.{s} is required (header language menu)")
 

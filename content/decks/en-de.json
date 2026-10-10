@@ -60,11 +60,14 @@
     "footer_all": "alle Spickzettel",
     "footer_install": "Installation: Seitenmenü (☰) → „Installieren“ · iPhone — Teilen → Zum Home-Bildschirm",
     "footer_plan": "Inhaltsplan:",
-    "menu_aria": "Menü: Sprache, Hilfe, Installation",
+    "menu_aria": "Menü: Sprache, Design, Hilfe, Installation",
     "nudge_text": "Arbeite offline — installiere den Spickzettel auf dem Telefon",
-    "lang_menu_aria": "Lernsprache und Erklärungssprache",
+    "lang_menu_aria": "Lernsprache, Erklärungssprache und Design",
     "lang_group_target": "Lernsprache",
     "lang_group_audience": "Erklärungssprache",
+    "skin_group": "Design",
+    "skin_classic": "Klassisch",
+    "skin_a": "Notizbuch",
     "lang_soon": "bald"
   },
   "help": {

@@ -29,6 +29,11 @@
       }
     }
   </script>
+  <script>
+    // Skin: apply before first paint so «Тетрадь» doesn't flash classic
+    // (stored skin only; default = classic = no attribute).
+    try { if (localStorage.getItem('skin') === 'a') document.documentElement.setAttribute('data-skin', 'a'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#10131b" media="(prefers-color-scheme: dark)" />
   <meta name="color-scheme" content="light dark" />
@@ -48,6 +53,7 @@
   <meta name="twitter:card" content="summary" />
   <title>@@TITLE@@</title>
   <link rel="stylesheet" href="@@ROOT@@assets/base.css" />
+  <link rel="stylesheet" href="@@ROOT@@assets/skin-a.css" />
   <!-- Generated from @@DECK_PATH@@ by tools/build_pages.py — do not edit by hand;
        regenerate with: python3 tools/build_pages.py @@DECK_PATH@@ -->
 </head>
@@ -73,7 +79,7 @@
 
   <noscript>
     <style>
-      .tap, .install-btn, .clear-search, .theme-btn, .icon-btn, .menu-row, .install-nudge { display: none !important; }
+      .tap, .install-btn, .clear-search, .theme-btn, .icon-btn, .menu-row, .install-nudge, .skin-row { display: none !important; }
     </style>
     <div class="notice" style="margin:12px 16px 0">@@NOSCRIPT_NOTICE@@</div>
     <p class="intro" style="margin:10px 16px 0">@@NOSCRIPT_INTRO@@</p>
@@ -134,6 +140,52 @@
       themeMode = themeMode === 'auto' ? 'light' : themeMode === 'light' ? 'dark' : 'auto';
       try { localStorage.setItem(THEME_KEY, themeMode); } catch (e) {}
       applyTheme(themeMode);
+      if (skinMode === 'a') applySkin(skinMode);
+    });
+
+    // Skin: classic / «Тетрадь» — persisted per visitor; classic needs no attribute.
+    const SKIN_KEY = 'skin';
+    const skinRows = [...document.querySelectorAll('[data-skin-mode]')];
+    function applySkin(skin) {
+      if (skin === 'a') document.documentElement.setAttribute('data-skin', 'a');
+      else document.documentElement.removeAttribute('data-skin');
+      skinRows.forEach(row => {
+        const on = row.dataset.skinMode === skin;
+        row.classList.toggle('cur', on);
+        row.setAttribute('aria-checked', String(on));
+        row.tabIndex = on ? 0 : -1;
+      });
+      // Paper chrome must follow the skin even in theme-auto (applyTheme
+      // restores the classic meta defaults there); classic hands the metas
+      // back to applyTheme.
+      if (skin === 'a') themeMetas.forEach(m => { m.content = getComputedStyle(document.body).backgroundColor; });
+      else applyTheme(themeMode);
+    }
+    let skinMode = 'classic';
+    try { skinMode = localStorage.getItem(SKIN_KEY) || 'classic'; } catch (e) {}
+    applySkin(skinMode);
+    document.addEventListener('click', (event) => {
+      const row = event.target.closest('[data-skin-mode]');
+      if (!row) return;
+      skinMode = row.dataset.skinMode;
+      try { localStorage.setItem(SKIN_KEY, skinMode); } catch (e) {}
+      applySkin(skinMode);
+      const menu = row.closest('details.app-menu, details.lang-menu');
+      if (menu) { menu.open = false; menu.querySelector('summary').focus(); }
+    });
+    document.addEventListener('keydown', (event) => {
+      const row = event.target.closest && event.target.closest('[data-skin-mode]');
+      if (!row) return;
+      const order = ['classic', 'a'];
+      const delta = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1
+                  : event.key === 'ArrowLeft'  || event.key === 'ArrowUp'   ? -1 : 0;
+      if (!delta) return;
+      event.preventDefault();
+      skinMode = order[(order.indexOf(row.dataset.skinMode) + delta + order.length) % order.length];
+      try { localStorage.setItem(SKIN_KEY, skinMode); } catch (e) {}
+      applySkin(skinMode);
+      const next = skinRows.find(r => r.dataset.skinMode === skinMode && r.closest('details') === row.closest('details'));
+      if (next) next.focus();
     });
 
     const dialog = document.getElementById('detailDialog');

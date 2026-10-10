@@ -29,6 +29,11 @@
       }
     }
   </script>
+  <script>
+    // Skin: apply before first paint so «Тетрадь» doesn't flash classic
+    // (stored skin only; default = classic = no attribute).
+    try { if (localStorage.getItem('skin') === 'a') document.documentElement.setAttribute('data-skin', 'a'); } catch (e) {}
+  </script>
   <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#10131b" media="(prefers-color-scheme: dark)" />
   <meta name="color-scheme" content="light dark" />
@@ -43,6 +48,7 @@
   <meta name="twitter:card" content="summary" />
   <title>Языковые шпаргалки — Language Cheat Sheets</title>
   <link rel="stylesheet" href="./assets/base.css" />
+  <link rel="stylesheet" href="./assets/skin-a.css" />
   <style>
     /* Landing-specific: hero + language cards. Everything else is base.css. */
     body { padding-bottom: 24px; } /* no bottom nav on the hub */
@@ -93,6 +99,13 @@
               <a href="./de/en/" data-audience-item="en">English</a>
               <a href="./en/de/" data-audience-item="de">Deutsch</a>
             </div>
+            <div class="lang-group">
+              <div class="lang-group-label">Оформление</div>
+              <div role="radiogroup" aria-label="Оформление">
+                <button type="button" class="skin-row cur" role="radio" aria-checked="true" tabindex="0" data-skin-mode="classic">Классика</button>
+                <button type="button" class="skin-row" role="radio" aria-checked="false" tabindex="-1" data-skin-mode="a">Тетрадь</button>
+              </div>
+            </div>
           </div>
         </details>
         <button class="theme-btn" id="themeBtn" type="button" aria-label="Тема: системная">◐</button>
@@ -101,7 +114,7 @@
   </header>
 
   <noscript>
-    <style>.theme-btn { display: none !important; }</style>
+    <style>.theme-btn, .skin-row { display: none !important; }</style>
   </noscript>
 
   <main>
@@ -162,6 +175,48 @@
       themeMode = themeMode === 'auto' ? 'light' : themeMode === 'light' ? 'dark' : 'auto';
       try { localStorage.setItem(THEME_KEY, themeMode); } catch (e) {}
       applyTheme(themeMode);
+      if (skinMode === 'a') applySkin(skinMode);
+    });
+
+    // Skin: classic / «Тетрадь» — persisted per visitor; classic needs no attribute.
+    const skinRows = [...document.querySelectorAll('.skin-row')];
+    function applySkin(skin) {
+      if (skin === 'a') document.documentElement.setAttribute('data-skin', 'a');
+      else document.documentElement.removeAttribute('data-skin');
+      skinRows.forEach(row => {
+        const on = row.dataset.skinMode === skin;
+        row.classList.toggle('cur', on);
+        row.setAttribute('aria-checked', String(on));
+        row.tabIndex = on ? 0 : -1;
+      });
+      if (skin === 'a') themeMetas.forEach(m => { m.content = getComputedStyle(document.body).backgroundColor; });
+      else applyTheme(themeMode);
+    }
+    let skinMode = 'classic';
+    try { skinMode = localStorage.getItem('skin') || 'classic'; } catch (e) {}
+    applySkin(skinMode);
+    document.addEventListener('click', (event) => {
+      const row = event.target.closest('.skin-row');
+      if (!row) return;
+      skinMode = row.dataset.skinMode;
+      try { localStorage.setItem('skin', skinMode); } catch (e) {}
+      applySkin(skinMode);
+      const menu = row.closest('details.lang-menu');
+      if (menu) { menu.open = false; menu.querySelector('summary').focus(); }
+    });
+    document.addEventListener('keydown', (event) => {
+      const row = event.target.closest && event.target.closest('.skin-row');
+      if (!row) return;
+      const order = ['classic', 'a'];
+      const delta = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1
+                  : event.key === 'ArrowLeft'  || event.key === 'ArrowUp'   ? -1 : 0;
+      if (!delta) return;
+      event.preventDefault();
+      skinMode = order[(order.indexOf(row.dataset.skinMode) + delta + order.length) % order.length];
+      try { localStorage.setItem('skin', skinMode); } catch (e) {}
+      applySkin(skinMode);
+      const next = skinRows.find(r => r.dataset.skinMode === skinMode && r.closest('details') === row.closest('details'));
+      if (next) next.focus();
     });
 
     // Language menu: mirrors content/decks/site.json (update both together).

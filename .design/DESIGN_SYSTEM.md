@@ -23,9 +23,10 @@ local `<style>` block. Living component specimens and class roles:
 
 ## Tokens
 
-CSS custom properties in the `:root` blocks of `assets/base.css` are the
+CSS custom properties in the `:root` blocks of `assets/base.css` (and, for
+skin A, the `[data-skin="a"]` token blocks of `assets/skin-a.css`) are the
 **only** source of truth for color. Raw hex/rgba in component rules is
-forbidden — the one exception is the `:root` token blocks themselves (plus
+forbidden — the one exception is those token blocks themselves (plus
 black-key shadows). Every page gets the same token set via the shared
 stylesheet.
 
@@ -52,6 +53,9 @@ Rules:
 
 - New color need → add a semantic token here first, then use it. Never reuse a
   primitive for a different meaning.
+- The `:root` token blocks in `assets/base.css` **and** the
+  `[data-skin="a"]` token blocks in `assets/skin-a.css` are the only
+  sanctioned raw-hex locations (see Skins).
 - Both themes must ship together: changing a light value requires its dark
   counterpart to stay ≥ 4.5:1 for text.
 - `theme-color` meta tags must match `--bg` light/dark values.
@@ -78,6 +82,38 @@ Rules:
   тёмная; the choice persists in `localStorage` key `theme`; JS syncs the
   `theme-color` metas to the live `--bg` when a manual choice overrides the
   OS. Removing the button or the persistence is a contract change.
+
+## Skins (classic / Тетрадь)
+
+- Two skins: **classic** — the attribute-less default, rendering identical
+  to the pre-skin site — and **skin A «Тетрадь»** (editorial paper-and-ink
+  voice). Mechanism: `localStorage` key `skin` (`classic` | `a`; absence =
+  classic) → JS sets `data-skin="a"` on `<html>`. All skin rules live in
+  **`assets/skin-a.css`, linked immediately after `base.css` on every
+  page** — the load-order contract the selector matrix depends on.
+- Selector matrix in one line: the A-light `[data-skin="a"]` token block
+  beats base's `:root` by order; both A-dark blocks tie base's dark blocks
+  and win by order; the dark blocks out-specify A-light — so skin × theme
+  composes from the two attributes (`data-skin` with `data-theme`/media)
+  and no skin rule may bypass a dark block.
+- Scoping rule + gate: **every** rule in `assets/skin-a.css` starts with
+  `[data-skin="a"]` (only `@font-face`/`@media`/`@keyframes` wrappers sit
+  outside). Gate — must output nothing:
+
+  ```bash
+  grep -E '\{' assets/skin-a.css | grep -vE '(@font-face|@media|@keyframes|\[data-skin="a"])'
+  ```
+
+- Switcher: a third group «Оформление» (Классика / Тетрадь) in the
+  language menus — `.lang-menu` inline and the `.app-menu` burger — with
+  `role="radiogroup"`/`role="radio"`, arrow keys + roving tabindex,
+  close-on-select; the choice persists in `localStorage.skin`. Without JS
+  the group is hidden and the site renders classic.
+- `theme-color` metas re-sync on skin switch (same JS pass as theme
+  changes).
+- Fonts: skin A sets vendored Onest/Spectral via `@font-face` at the top
+  of `skin-a.css`; fetched only under skin A. Ownership, subsets and the
+  re-vendor procedure: [docs/FONTS.md](../docs/FONTS.md).
 
 ## Layout & responsive behavior
 
@@ -119,7 +155,8 @@ Rules:
 | `.app-menu` | Phone burger (native `<details>`, works without JS; hidden ≥720px): identity line (brand name + sub, which leave the one-line header), the same two language groups as `.lang-menu`, then help + install rows (`.menu-row`; the help row is id-less on purpose). JS adds light dismiss + Escape for both menus. |
 | `.search-chip` | Persistent target-language mark (the deck's `brand_mark`) leading the search field — "which deck am I in" survives typing, unlike a placeholder; the input's `aria-label` names the language for screen readers. |
 | `.lang-menu` | Topbar language control (native `<details>`, works without JS): one popover, two flat labeled groups — «Язык обучения» (targets, navigational links, from `content/decks/site.json`) and «Язык объяснений» (audiences; `.cur` = current, `.soon` = no deck yet). Deck pages: inline ≥720px, inside the burger on phones; landing: brand row. JS adds light dismiss + Escape. Never a submenu — both choices are visible state. |
-| `.install-nudge` | One-time install prompt above the bottom nav: browser tab only, shown after a ~25s dwell, `localStorage.installNudge` written when shown (once per visitor, ever); hidden in standalone and noscript. |
+| `.lang-menu` | Topbar language control (native `<details>`, works without JS): one popover, two flat labeled groups — «Язык обучения» (targets, navigational links, from `content/decks/site.json`) and «Язык объяснений» (audiences; `.cur` = current, `.soon` = no deck yet). Deck pages: inline ≥720px, inside the burger on phones; landing: brand row. JS adds light dismiss + Escape. Never a submenu — both choices are visible state. |
+| `.skin-row` | «Оформление» option row in the language menus (`.lang-menu` + `.app-menu`): `role="radio"` + `aria-checked` + roving tabindex, `data-skin-mode` classic / a; noscript hides it. |
 | `.lang-card` (landing only) | Whole-card link to a language folder: mark + name + topics + `→`; hover accent border. |
 
 ## Interaction states & feedback
@@ -141,7 +178,9 @@ Rules:
 - Contrast ≥ 4.5:1 for text in both themes.
 - Keyboard: every control reachable and operable; dialog traps focus natively
   (`showModal`), closes with Escape.
-- System font stack only; no external fonts.
+- System font stack by default; no external fonts. The one sanctioned
+  exception is skin A's vendored Onest/Spectral, served only under skin A
+  (see [docs/FONTS.md](../docs/FONTS.md)).
 - Viewport zoom: never `user-scalable=no`. `maximum-scale=1` is applied to
   installable pages **only on iOS** (synchronous `<head>` UA sniff) to stop
   the standalone relaunch zoom-state bug; Safari ignores the attribute, so

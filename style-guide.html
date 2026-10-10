@@ -8,7 +8,13 @@
   <meta name="theme-color" content="#10131b" media="(prefers-color-scheme: dark)" />
   <meta name="color-scheme" content="light dark" />
   <title>Style Guide — Language Cheat Sheets</title>
+  <script>
+    // Skin: apply before first paint so «Тетрадь» doesn't flash classic
+    // (stored skin only; default = classic = no attribute).
+    try { if (localStorage.getItem('skin') === 'a') document.documentElement.setAttribute('data-skin', 'a'); } catch (e) {}
+  </script>
   <link rel="stylesheet" href="./assets/base.css" />
+  <link rel="stylesheet" href="./assets/skin-a.css" />
   <style>
     /* Guide-specific layout only. Every component below is rendered by
        base.css — if a specimen here needs a style that is not in base.css,
@@ -82,6 +88,10 @@
           <div class="brand-mark" aria-hidden="true">Aa</div>
           <div>Style Guide<small>Language Cheat Sheets · base.css</small></div>
         </div>
+        <details class="lang-menu" id="skinMenu">
+          <summary aria-label="Оформление">Оформление</summary>
+          <div class="lang-pop"><div class="lang-group"><div class="lang-group-label">Оформление</div><div role="radiogroup" aria-label="Оформление"><button type="button" class="skin-row cur" role="radio" aria-checked="true" tabindex="0" data-skin-mode="classic">Классика</button><button type="button" class="skin-row" role="radio" aria-checked="false" tabindex="-1" data-skin-mode="a">Тетрадь</button></div></div></div>
+        </details>
         <button class="theme-btn" id="themeBtn" type="button" aria-label="Тема: системная">◐</button>
       </div>
     </div>
@@ -114,6 +124,7 @@
       <a href="#hub">Hub (landing)</a>
       <a href="#roles">Class roles</a>
       <a href="#rules">Do / don’t</a>
+      <a href="#skins">Skins (Тетрадь)</a>
       <a href="#research">Research</a>
     </nav>
 
@@ -141,7 +152,9 @@
           <p><code>lang</code> does two jobs: the serif study voice (<code>[lang]</code> selector in base.css) and screen-reader
             pronunciation. Never apply it to Russian text — that would flip the explanation into the study voice and mispronounce it.</p>
           <p>Stacks (no external fonts): <code>--font-ui</code> = system sans;
-            <code>--font-study</code> = Charter → ui-serif (New York) → Sitka/Cambria → Noto Serif.</p>
+            <code>--font-study</code> = Charter → ui-serif (New York) → Sitka/Cambria → Noto Serif. Skin «Тетрадь»
+            swaps both for vendored Onest/Spectral — a user-approved exception to the no-external-fonts rule
+            (see <code>docs/FONTS.md</code>); classic keeps these system stacks.</p>
         </div>
       </details>
     </section>
@@ -169,7 +182,8 @@
         <div class="sg-doc-body">
           <p>New color need → add a semantic token to base.css first (light + dark together, dark ≥ 4.5:1 for text), then use it.
             Never reuse a primitive for a second meaning; never put raw hex in component rules or page styles — the only
-            exceptions are the <code>:root</code> blocks and black-key shadows. The <code>theme-color</code> metas must match the
+            exceptions are the <code>:root</code> blocks, the <code>[data-skin="a"]</code> token blocks of
+            <code>assets/skin-a.css</code>, and black-key shadows. The <code>theme-color</code> metas must match the
             light/dark <code>--bg</code> values. The full role table with hex values lives in
             <code>.design/DESIGN_SYSTEM.md</code>; this page shows the roles, that file owns the numbers.</p>
         </div>
@@ -568,6 +582,7 @@
             <tr><td><code>.app-menu</code>, <code>.app-identity</code>, <code>.app-sep</code>, <code>.menu-row</code></td><td>Phone burger (native <code>&lt;details&gt;</code>): identity line + the language groups + help/install rows; hidden ≥720px</td></tr>
             <tr><td><code>.search-wrap</code>, <code>.search-chip</code>, <code>.search</code>, <code>.clear-search</code></td><td>Search field; persistent target-language chip leads the input; custom clear ✕ while typing</td></tr>
             <tr><td><code>.lang-menu</code>, <code>.lang-pop</code>, <code>.lang-group</code>, <code>.cur</code>, <code>.soon</code></td><td>Language control: «Язык обучения» links + «Язык объяснений» state in one native <code>&lt;details&gt;</code> popover (deck pages: inline ≥720px, inside the burger on phones; landing: brand row)</td></tr>
+            <tr><td><code>.skin-row</code></td><td>«Оформление» option row in the language menu popover: <code>role=radio</code> + <code>aria-checked</code> + roving tabindex; noscript hides it (classic is the default)</td></tr>
             <tr><td><code>.install-nudge</code>, <code>.nudge-text</code>, <code>.nudge-close</code></td><td>One-time install prompt above the bottom nav (browser tabs only, flag set when shown)</td></tr>
             <tr><td><code>.cheat-card</code></td><td>Atomic reference unit; searchable via <code>data-search</code></td></tr>
             <tr><td><code>.badges</code>, <code>.badge</code> <code>.level/.kind</code></td><td>Card metadata row under the title: CEFR level + what the card gives you (deck fields <code>level</code>/<code>kind</code>)</td></tr>
@@ -622,6 +637,26 @@
           <p>· <s>Submenus in the language menu — flat groups only, both choices visible.</s></p>
         </article>
       </div>
+    </section>
+
+    <section class="sg-block" id="skins">
+      <h2>Skins (Тетрадь)</h2>
+      <p class="sg-why">Оформление — второй скин, «Тетрадь»: атрибут <code>data-skin="a"</code> на <code>&lt;html&gt;</code> и таблица <code>assets/skin-a.css</code>, подключённая сразу после base.css. Каждое её правило начинается с атрибута скина, поэтому классика остаётся байт-в-байт прежней; выбор хранится в <code>localStorage.skin</code>, а без JavaScript сайт всегда показывается в классике.</p>
+      <div class="table-scroll">
+        <table class="roles">
+          <thead><tr><th>Role</th><th>Тетрадь light</th><th>Тетрадь dark</th></tr></thead>
+          <tbody>
+            <tr><td><code>--bg</code></td><td>#F6F1E7</td><td>#171310</td></tr>
+            <tr><td><code>--text</code></td><td>#1A1512</td><td>#EFE7D8</td></tr>
+            <tr><td><code>--muted</code></td><td>#6E6357</td><td>#A3937F</td></tr>
+            <tr><td><code>--line</code></td><td>чернила, 15%</td><td>крем, 16%</td></tr>
+            <tr><td><code>--accent</code></td><td>#C63C1E</td><td>#E5603C</td></tr>
+            <tr><td>шрифты (<code>--font-ui</code> / <code>--font-study</code>)</td><td>Onest · Spectral</td><td>Onest · Spectral</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="sg-note">Самый честный образец — эта страница: включи «Оформление» в шапке сверху, и все специмены на ней перекрасятся вживую.</p>
+      <p class="sg-anno">Вендорные шрифты Onest/Spectral — утверждённое исключение из правила «никаких внешних зависимостей»; политика, инвентарь и процедура: <code>docs/FONTS.md</code>.</p>
     </section>
 
     <section class="sg-block" id="research">
@@ -692,6 +727,51 @@
     });
     document.getElementById('closeDialog').addEventListener('click', () => dialog.close());
     dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+
+    // #skinMenu: light dismiss (native <details> has none) + Escape.
+    const skinMenu = document.getElementById('skinMenu');
+    document.addEventListener('click', (event) => { if (skinMenu.open && !skinMenu.contains(event.target)) skinMenu.open = false; });
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && skinMenu.open) skinMenu.open = false; });
+
+    // Skin: classic / «Тетрадь» — persisted per visitor; classic needs no attribute.
+    const SKIN_KEY = 'skin';
+    const skinRows = [...document.querySelectorAll('[data-skin-mode]')];
+    function applySkin(skin) {
+      if (skin === 'a') document.documentElement.setAttribute('data-skin', 'a');
+      else document.documentElement.removeAttribute('data-skin');
+      skinRows.forEach(row => {
+        const on = row.dataset.skinMode === skin;
+        row.classList.toggle('cur', on);
+        row.setAttribute('aria-checked', String(on));
+        row.tabIndex = on ? 0 : -1;
+      });
+    }
+    let skinMode = 'classic';
+    try { skinMode = localStorage.getItem(SKIN_KEY) || 'classic'; } catch (e) {}
+    applySkin(skinMode);
+    document.addEventListener('click', (event) => {
+      const row = event.target.closest('[data-skin-mode]');
+      if (!row) return;
+      skinMode = row.dataset.skinMode;
+      try { localStorage.setItem(SKIN_KEY, skinMode); } catch (e) {}
+      applySkin(skinMode);
+      const menu = row.closest('details.lang-menu');
+      if (menu) { menu.open = false; menu.querySelector('summary').focus(); }
+    });
+    document.addEventListener('keydown', (event) => {
+      const row = event.target.closest && event.target.closest('[data-skin-mode]');
+      if (!row) return;
+      const order = ['classic', 'a'];
+      const delta = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1
+                  : event.key === 'ArrowLeft'  || event.key === 'ArrowUp'   ? -1 : 0;
+      if (!delta) return;
+      event.preventDefault();
+      skinMode = order[(order.indexOf(row.dataset.skinMode) + delta + order.length) % order.length];
+      try { localStorage.setItem(SKIN_KEY, skinMode); } catch (e) {}
+      applySkin(skinMode);
+      const next = skinRows.find(r => r.dataset.skinMode === skinMode && r.closest('details') === row.closest('details'));
+      if (next) next.focus();
+    });
   </script>
 </body>
 </html>

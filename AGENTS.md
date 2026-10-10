@@ -15,6 +15,8 @@ step, no external dependencies, everything works offline.
 ```text
 index.html          landing (language cards + audience-locale selector)
 assets/base.css     shared stylesheet: tokens + components (specimens: style-guide.html)
+assets/skin-a.css   skin A «Тетрадь» (scoped overrides + @font-face) — linked after base.css on every page
+assets/fonts/       vendored Onest + Spectral woff2 + OFL licenses (docs/FONTS.md)
 style-guide.html    living component specimens + class roles (noindex, not cached)
 content/decks/      deck data + schema.json + site.json (language registry) — the source of generated pages
 de/ru/              German-for-Russians page: GENERATED from content/decks/de-ru.json
@@ -28,6 +30,7 @@ tools/build_pages.py deck→page generator CLI (stdlib only): validate + render 
 tools/deck_*.py generator modules: deck_blocks (block registry), deck_validate, deck_render, deck_html
 tools/page_template.html page skeleton (@@TOKENS@@) loaded by deck_render
 docs/               authoring, validation and add-language procedures
+docs/FONTS.md       font vendoring: subsets, re-vendor procedure, licenses
 research/           external reference research notes (not content source)
 CONTENT_AUDIT.md    content evidence, open questions and verdicts
 ROADMAP.md          candidate topics + standing scope decision rules
@@ -54,6 +57,7 @@ update both when adding a language or audience.
 | What could be added next; standing scope rules | `ROADMAP.md` |
 | External reference research (DE/EN grammar sites, tense-usage notes) | `research/` |
 | Design tokens, components, a11y rules | `.design/DESIGN_SYSTEM.md` |
+| Font vendoring, subsets, re-vendor procedure | `docs/FONTS.md` |
 | Component specimens and class roles | `style-guide.html` |
 | Why a UI decision was made | `.design/decisions.md` |
 | UI review evidence and open/deferred findings | `UI_AUDIT.md` |
@@ -77,6 +81,9 @@ update both when adding a language or audience.
    `make_icons.py` precedent). Deck pages (`de/ru/`, `en/ru/`) are edited via
    their deck JSON in `content/decks/` and regenerated with
    `python3 tools/build_pages.py <deck>`; the committed HTML is what deploys.
+   Second exception since 2026-10-10: vendored font binaries + skin
+   stylesheet (`assets/fonts/`, `assets/skin-a.css`) — user-approved;
+   procedure in `docs/FONTS.md`.
 6. Colors only via semantic tokens (light **and** dark + manual-dark blocks)
    — see `.design/DESIGN_SYSTEM.md`. Theme toggle is part of the contract.
 7. Keep section and card anchor ids stable within a language. Card anchors are
@@ -123,6 +130,9 @@ python3 -m http.server 8931   # open http://127.0.0.1:8931/
 - At ~390px: no horizontal page overflow; tables scroll inside `.table-scroll`.
 - Theme toggle cycles авто → светлая → тёмная and persists across
   reload.
+- «Оформление» group in the language menu + burger switches
+  Классика↔Тетрадь, persists across reload; classic renders unchanged;
+  skin works with авто/светлая/тёмная.
 - Bottom nav switches views (active item carries `aria-current`); legacy
   anchors (`#preps` on DE, `#nouns`/`#conditionals` on EN) open the right
   view and scroll to the section.

@@ -192,8 +192,13 @@ a { color: inherit; }
   display: block; width: 100%; text-align: left; padding: 10px 11px; border: 0; border-radius: 9px;
   font: inherit; font-size: .88rem; text-decoration: none; color: var(--text); background: none; cursor: pointer;
 }
-.lang-pop a:hover, .lang-pop a:active, .lang-pop button:not(:disabled):hover { background: var(--surface-2); }
+.lang-pop a:hover, .lang-pop a:active, .lang-pop button:not(:disabled):not(.cur):hover { background: var(--surface-2); }
 .lang-pop .cur { background: var(--accent-soft); color: var(--on-accent-soft); font-weight: 800; cursor: default; }
+.lang-pop .skin-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
 .lang-pop .soon { color: var(--muted); cursor: default; }
 /* Burger (deck pages, phones): a native <details> so the language groups
    keep working without JS; JS only adds light dismiss. Carries the page

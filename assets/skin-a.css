@@ -1,0 +1,284 @@
+/* Skin A «Тетрадь» — editorial notebook skin for the whole site.
+   Contract: .design/DESIGN_SYSTEM.md §Skins. Scoping rule: every rule in this
+   file starts with [data-skin="a"] (except the font-face/media wrappers) —
+   classic mode must be byte-identical (gate: every line holding an opening
+   brace carries an at-rule wrapper or the skin attribute; nothing else does).
+   Cascade: skin blocks tie-or-trail base.css blocks by specificity and win by
+   later load order: A-light [data-skin="a"] (0,1,0) beats :root (0,1,0) by
+   order; A-auto-dark [data-skin="a"]:not([data-theme="light"]) (0,2,0) ties
+   :root:not([data-theme="light"]) and wins by order; A-manual-dark
+   [data-skin="a"][data-theme="dark"] (0,2,0) likewise. Both dark blocks
+   out-specify A-light, so skin × theme composes from the two attributes alone.
+   Mode-invariant tokens (radius/shadow/fonts/nav-h) live only in the light
+   block; dark blocks override only what changes. */
+
+/* cyrillic */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(./fonts/onest-var-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(./fonts/onest-var-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Spectral';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(./fonts/spectral-i400-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin */
+@font-face {
+  font-family: 'Spectral';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(./fonts/spectral-i400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Spectral';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(./fonts/spectral-i700-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin */
+@font-face {
+  font-family: 'Spectral';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(./fonts/spectral-i700-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Spectral';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(./fonts/spectral-400-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin */
+@font-face {
+  font-family: 'Spectral';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(./fonts/spectral-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Spectral';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(./fonts/spectral-800-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin */
+@font-face {
+  font-family: 'Spectral';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(./fonts/spectral-800-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+[data-skin="a"] {
+  color-scheme: light;
+  --bg: #F6F1E7;
+  --surface: #F6F1E7;
+  --surface-2: #EDE6D7;
+  --text: #1A1512;
+  --muted: #6E6357;
+  --line: rgba(26, 21, 18, .15);
+  --accent: #C63C1E;
+  --accent-soft: rgba(198, 60, 30, .09);
+  --on-accent-soft: #C63C1E;
+  --tap-line: rgba(26, 21, 18, .15);
+  --ok: #2E5E4E;
+  --ok-soft: rgba(46, 94, 78, .08);
+  --warn: #7A5A17;
+  --warn-soft: rgba(122, 90, 23, .08);
+  --warn-line: #7A5A17;
+  --notice-warn-bg: rgba(122, 90, 23, .06);
+  --hero-1: transparent;
+  --hero-2: transparent;
+  --hero-text: #6E6357;
+  --hero-line: rgba(26, 21, 18, .15);
+  --hero-card: transparent;
+  --grab: rgba(26, 21, 18, .35);
+  --backdrop: rgba(26, 21, 18, .5);
+  --shadow: none;
+  --radius: 2px;
+  --font-ui: 'Onest', ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-study: 'Spectral', Charter, "Bitstream Charter", ui-serif, "Sitka Text", Cambria, "Noto Serif", serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-skin="a"]:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #171310;
+    --surface: #171310;
+    --surface-2: #201B16;
+    --text: #EFE7D8;
+    --muted: #A3937F;
+    --line: rgba(239, 231, 216, .16);
+    --accent: #E5603C;
+    --accent-soft: rgba(229, 96, 60, .14);
+    --on-accent-soft: #E5603C;
+    --tap-line: rgba(239, 231, 216, .16);
+    --ok: #7FB8A2;
+    --ok-soft: rgba(127, 184, 162, .1);
+    --warn: #C9A25E;
+    --warn-soft: rgba(201, 162, 94, .1);
+    --warn-line: #C9A25E;
+    --notice-warn-bg: rgba(201, 162, 94, .08);
+    --hero-text: #A3937F;
+    --hero-line: rgba(239, 231, 216, .16);
+    --grab: rgba(239, 231, 216, .35);
+    --backdrop: rgba(10, 8, 6, .6);
+  }
+}
+
+[data-skin="a"][data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #171310;
+  --surface: #171310;
+  --surface-2: #201B16;
+  --text: #EFE7D8;
+  --muted: #A3937F;
+  --line: rgba(239, 231, 216, .16);
+  --accent: #E5603C;
+  --accent-soft: rgba(229, 96, 60, .14);
+  --on-accent-soft: #E5603C;
+  --tap-line: rgba(239, 231, 216, .16);
+  --ok: #7FB8A2;
+  --ok-soft: rgba(127, 184, 162, .1);
+  --warn: #C9A25E;
+  --warn-soft: rgba(201, 162, 94, .1);
+  --warn-line: #C9A25E;
+  --notice-warn-bg: rgba(201, 162, 94, .08);
+  --hero-text: #A3937F;
+  --hero-line: rgba(239, 231, 216, .16);
+  --grab: rgba(239, 231, 216, .35);
+  --backdrop: rgba(10, 8, 6, .6);
+}
+
+/* Type & voice: hero heads take the paper ink instead of classic white-on-
+   gradient (skin flattens --hero-1/--hero-2 to transparent). */
+[data-skin="a"] .hero h1,
+[data-skin="a"] .sg-hub-hero h1 { color: var(--text); }
+
+/* Masthead & chrome: flattened hairline boxes; search = underline only. */
+[data-skin="a"] .topbar { border-top: 3px solid var(--text); }
+[data-skin="a"] .brand-mark { background: none; border: 2px solid var(--text); color: var(--text); border-radius: 4px; }
+[data-skin="a"] .search { background: none; border: 0; border-bottom: 2px solid var(--line); border-radius: 0; box-shadow: none; }
+[data-skin="a"] .search-chip { background: none; border: 1.5px solid var(--line); color: var(--muted); border-radius: 3px; }
+[data-skin="a"] .lang-menu summary,
+[data-skin="a"] .icon-btn,
+[data-skin="a"] .theme-btn,
+[data-skin="a"] .install-btn { background: none; border: 1.5px solid var(--line); border-radius: 4px; box-shadow: none; }
+[data-skin="a"] .lang-pop { box-shadow: none; }
+[data-skin="a"] .footer { border-top: 4px double var(--text); padding-top: 14px; margin-top: 26px; }
+
+/* Bottom nav: flat bar; outlined cue tags; active = filled accent tag.
+   The bordered tag replaces base's bare 1rem glyph, so the item column gets
+   its own clearance (base's 3px gap is tuned to the glyph line box) and the
+   tag zeroes its inherited line-height so the glyph line box can never
+   inflate or paint past the box. The tag sizes to its token — nav icons are
+   text of varying width (A/D, der, V2, weil), so min-width 22px plus 6px
+   side padding keeps every token clear of the border. */
+[data-skin="a"] .bottom-nav { box-shadow: none; }
+[data-skin="a"] .nav-item { gap: 7px; }
+[data-skin="a"] .nav-item .ico { display: inline-flex; align-items: center; justify-content: center; line-height: 0; flex: 0 0 auto; min-width: 22px; height: 22px; padding: 0 6px; border: 1.5px solid currentColor; border-radius: 4px; }
+[data-skin="a"] .nav-item.active { background: none; color: var(--text); }
+[data-skin="a"] .nav-item.active .ico { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+
+/* Sections & counters: indexed heads; numbering restarts per visible view
+   (intended — each view reads as its own notebook chapter). */
+[data-skin="a"] main { counter-reset: skin-sec; }
+[data-skin="a"] section[data-section] { counter-increment: skin-sec; }
+[data-skin="a"] .section-head h2::before { content: counter(skin-sec, decimal-leading-zero) "  "; font-family: var(--font-study); font-style: italic; font-weight: 400; color: var(--accent); }
+[data-skin="a"] .section-head p { font-variant: small-caps; letter-spacing: .06em; }
+[data-skin="a"] .section-badge { color: var(--muted); }
+
+/* — content surfaces (cards, taps, tables, formula, dialog, landing) — */
+
+/* Cards → entries: no boxes. A card is a block of text opened by a 2px ink
+   rule; badges become type (vermilion level, outlined kind stamp); examples
+   lose their grey well and the taught form keeps a vermilion underline where
+   classic paints a chip. Taps stop being pills — they read as italic serif
+   links in the study face (.tap.case keeps its sizing from base). */
+[data-skin="a"] .cheat-card { background: none; border: 0; border-top: 2px solid var(--text); border-radius: 0; box-shadow: none; }
+[data-skin="a"] .badge.level { background: none; color: var(--accent); border: 0; }
+[data-skin="a"] .badge.kind { background: none; color: var(--muted); border: 1.5px solid var(--line); }
+[data-skin="a"] .example { background: none; border-radius: 0; }
+[data-skin="a"] .example .hit { background: none; color: var(--accent); border-radius: 0; border-bottom: 2px solid var(--accent); }
+[data-skin="a"] .tap { background: none; border: 0; border-radius: 0; box-shadow: none; color: var(--accent); font-family: var(--font-study); font-style: italic; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+[data-skin="a"] .tap.neutral { color: var(--text); }
+[data-skin="a"] .legend-item b { font-family: var(--font-study); }
+
+/* Tables: printed paradigms. The scroll frame and grey header band go; the
+   head sits on a 2px rule like a book table. Rows stay hairline via --line
+   and td.hot stays vermilion through the tokens — no rules needed. */
+[data-skin="a"] .table-scroll { border: 0; border-radius: 0; }
+[data-skin="a"] .table-scroll table { background: none; }
+[data-skin="a"] th { background: none; border-bottom: 2px solid var(--line); }
+
+/* Formula: a serif reading line, not a row of chips. Conjunction turns
+   vermilion italic; verb stem keeps --ok and verb end keeps --warn (token
+   colors) but as underlines under ink. */
+[data-skin="a"] .formula { font-family: var(--font-study); font-weight: 400; }
+[data-skin="a"] .slot { background: none; border-radius: 0; padding: 0 2px; }
+[data-skin="a"] .slot.sub { color: var(--accent); font-style: italic; }
+[data-skin="a"] .slot.verb { border-bottom: 3px solid var(--line); }
+[data-skin="a"] .slot.end { border-bottom: 3px solid var(--text); }
+
+/* Dialogs, notices, misc: square corners; the sheet reads as a leaf of paper
+   with an ink border instead of a floating shadow slab. (.arrow inherits its
+   ink via --muted in base, so it needs no skin rule.) */
+[data-skin="a"] .notice,
+[data-skin="a"] .notice.warning { border-radius: 0; }
+[data-skin="a"] dialog { border: 2px solid var(--text); border-radius: 4px; box-shadow: none; }
+[data-skin="a"] .close-sheet { background: none; border: 1.5px solid var(--line); border-radius: 4px; }
+[data-skin="a"] .detail-block { background: none; border: 1px solid var(--line); border-radius: 0; }
+[data-skin="a"] .detail-block b { font-weight: 800; }
+[data-skin="a"] .install-nudge { box-shadow: none; }
+[data-skin="a"] .no-results { border-radius: 0; }
+
+/* Landing & style-guide hub twins: the hero flattens to plain type (tokens
+   already null the gradient and shadow — kept explicit, as in the masthead
+   rules above); language cards become entries like .cheat-card, and the
+   hover recolors the ink rule instead of a border box. The inline landing
+   <style> loads after this file, so these carry an extra class to out-rank
+   it. (.go is the card's arrow.) */
+[data-skin="a"] .hero,
+[data-skin="a"] .sg-hub-hero { background: none; border: 0; box-shadow: none; }
+[data-skin="a"] .lang-card,
+[data-skin="a"] .sg-hub-card { background: none; border: 0; border-top: 2px solid var(--text); border-radius: 0; box-shadow: none; }
+[data-skin="a"] .lang-card:hover,
+[data-skin="a"] .sg-hub-card:hover { border-top-color: var(--accent); }
+[data-skin="a"] .lang-card .go,
+[data-skin="a"] .sg-hub-card .go { color: var(--accent); }
+
+/* — end content surfaces — */
