@@ -29,7 +29,7 @@ tools/make_icons.py icon generator (stdlib only)
 tools/build_pages.py deck→page generator CLI (stdlib only): validate + render a deck JSON
 tools/deck_*.py generator modules: deck_blocks (block registry), deck_validate, deck_render, deck_html
 tools/page_template.html page skeleton (@@TOKENS@@) loaded by deck_render
-docs/               authoring, validation and add-language procedures
+docs/               authoring, validation, add-language and add-theme procedures
 docs/FONTS.md       font vendoring: subsets, re-vendor procedure, licenses
 research/           external reference research notes (not content source)
 CONTENT_AUDIT.md    content evidence, open questions and verdicts
@@ -57,6 +57,7 @@ update both when adding a language or audience.
 | What could be added next; standing scope rules | `ROADMAP.md` |
 | External reference research (DE/EN grammar sites, tense-usage notes) | `research/` |
 | Design tokens, components, a11y rules | `.design/DESIGN_SYSTEM.md` |
+| How to add a new design skin (a theme) | `docs/ADD_THEME.md` |
 | Font vendoring, subsets, re-vendor procedure | `docs/FONTS.md` |
 | Component specimens and class roles | `style-guide.html` |
 | Why a UI decision was made | `.design/decisions.md` |
