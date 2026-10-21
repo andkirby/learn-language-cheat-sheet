@@ -174,3 +174,36 @@ Focused Chromium checks via agent-browser at 127.0.0.1:8931:
 - All four generated-page checks, shell consistency and diff whitespace pass.
   Full screen-reader, print and installed-device relaunch checks NOT RUN.
   Grammar/content review NOT RUN: no language content changed.
+
+
+## 2026-10-21 — Landing localization and automatic audience selection
+
+Scope: landing UI and v52 cache update; no deck content, generated deck HTML,
+shared component styles or language scope changed.
+
+- **PASS — 22 browser cases:** regional DE/EN/RU tags, ordered browser
+  fallback, unsupported/empty preference lists, explicit-choice precedence,
+  invalid stored choice, legacy EN/DE migration, ambiguous legacy RU,
+  RU→DE→EN→RU switching without navigation, reload persistence, focus/current
+  state, both skins with all three themes, 390×844 and 1440×1000 overflow
+  checks, blocked-storage detection/switching, and automatic defaults not
+  becoming saved choices. Each case checked visible cards/menu targets and
+  their exact supported-pair links. German mobile/menu screenshots inspected.
+- **PASS — 15 smoke cases:** all four direct deck URLs retained the URL's
+  audience with English saved as the landing preference; keyboard selection,
+  Escape/outside dismiss; offline landing reload, language switching,
+  navigation into a deck and its offline reload; all four legacy redirects
+  online and offline after the online visit. No browser errors recorded.
+- **PASS — noscript:** Chromium with scripts disabled showed the Russian
+  landing, both RU deck cards and native language-menu links; the English
+  explanation link navigated directly to `/de/en/`. Dead theme/skin controls
+  were hidden by the existing noscript rules.
+- **PASS — static/runtime checks:** all four `build_pages.py --check` commands;
+  landing `DECKS` matched live pairs in `site.json`; all 53 `APP_SHELL` URLs
+  returned HTTP 200 locally; `git diff --check` clean.
+- **NOT RUN:** Safari/real-device install/relaunch; grammar, syllabus and
+  teaching-quality gates (UI copy only; no grammar changes). This record
+  does not change prior content-audit verdicts.
+
+Browser evidence: local Chromium, `http://127.0.0.1:8931/`, 2026-10-21.
+Live deployment verification is performed after pushing the same commit.

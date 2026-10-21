@@ -211,7 +211,10 @@ an unregistered pair or one still marked `"soon"`.
    `.lang-menu` «Язык обучения»/«Язык объяснений» markup — and, for a new
    target, add a `.lang-card` (mark, name, topics, meta, `→`,
    `data-target`). A new audience for an existing target usually needs no
-   new card.
+   new card. Add the audience's landing UI translation in `LANDING` (including
+   theme/accessibility labels), and each target's localized card name/topics.
+   The browser matcher uses these locale keys. The landing hides targets
+   without a live pair in `DECKS`; do not silently link to another audience.
 3. Root `sw.js`: add `'./<target>/<audience>/'`, `…/index.html`,
    `…/manifest.webmanifest` and its icons to `APP_SHELL`;
    **bump `CACHE_VERSION`**.

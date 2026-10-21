@@ -6,6 +6,16 @@ UI rationale lives in
 `.design/decisions.md`, content review evidence in `CONTENT_AUDIT.md`.
 Append the entry in the same commit that ships the change.
 
+## 2026-10-21 (automatic landing language)
+
+- The landing now translates its text, menus and accessibility labels into
+  Russian, English or German, using browser language preferences until a
+  manual choice is saved. Changing explanation language stays on the landing.
+- Cards and learning-language links show only available pairs: RU → DE/EN,
+  EN → DE, DE → EN. Deck URLs and installed apps retain their own language.
+- Preserved legacy manual EN/DE choices; ambiguous automatic RU defaults
+  now allow browser detection. Offline support retained; cache v52.
+
 ## 2026-10-21 (language menu and default appearance)
 
 - Fixed the «Русский» landing-menu row losing its padding when another

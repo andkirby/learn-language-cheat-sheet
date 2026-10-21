@@ -121,8 +121,11 @@ reviews must label unperformed checks NOT RUN.
 python3 -m http.server 8931   # open http://127.0.0.1:8931/
 ```
 
-- Landing loads, language cards link to `./de/ru/`, `./en/ru/`; the locale
-  selector persists its choice and only offers audiences that exist.
+- With Russian selected, landing cards link to `./de/ru/`, `./en/ru/`; the locale
+  selector updates the landing in place (RU/EN/DE), persists manual choices,
+  and shows only live pairs (RU → DE/EN, EN → DE, DE → EN). With no explicit
+  choice, the first supported browser language wins, then RU as fallback.
+  Direct deck URLs keep their language regardless of this preference.
 - Old URLs redirect: `/deutsch/` → `/de/ru/`, `/english/` → `/en/ru/`,
   `/de/` → `/de/ru/`, `/deutsch.html` → `/de/ru/` (online and offline).
 - Generated pages match their decks: `python3 tools/build_pages.py

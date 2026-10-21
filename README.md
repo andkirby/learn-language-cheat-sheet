@@ -17,7 +17,18 @@ syllabus/level-placement gaps.
 Live: <https://andkirby.github.io/learn-language-cheat-sheet/>
 
 Deck pages live at `<target>/<audience>/`; the landing locale selector picks
-the audience (Русский, English or Deutsch today).
+the audience (Русский, English or Deutsch today). The landing text follows
+that choice and shows only learning targets with an available audience deck:
+Russian → German / English, English → German, German → English. It stays at
+`/` when the explanation language changes.
+
+On first visit, the first supported browser language is used (regional tags
+such as `de-DE` match `de`); no match falls back to Russian. A manual selection
+wins on later visits. Only explicit choices are saved in `landingLocale`;
+legacy English/German `locale` values migrate, while old Russian values are
+ignored because previous visits also saved Russian automatically. Deck URLs,
+legacy redirects and installed deck start pages keep their explicit language.
+Without JavaScript, the Russian landing and direct deck links remain usable.
 
 | URL | What |
 | --- | --- |

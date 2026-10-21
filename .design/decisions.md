@@ -745,3 +745,32 @@ was a span whose only styling came from `.cur`; choosing another audience
 removed its padding and left a mouse-only click handler. A real link keeps
 the shared menu-row styling and native keyboard navigation in either state.
 All four deck pages are regenerated together; cache v51.
+
+
+### 2026-10-21 — Localized landing, browser audience and supported pairs
+
+The landing is a localized hub in Russian, English or German. The first
+supported `navigator.languages` entry selects its explanation language
+(regional tags match their base language), falling back to Russian. A manual
+choice takes precedence and is saved as `landingLocale`; automatic defaults
+are never saved as choices. Old `locale=en/de` values migrate; `locale=ru`
+is ambiguous because the previous landing saved RU on every default visit,
+so it does not suppress browser detection. With storage blocked, detection
+and manual switching still work for the current visit.
+
+Ordinary explanation-language selections update the hub in place, close the
+menu and restore focus to its summary. Anchors retain direct-deck fallbacks
+for noscript and modified clicks. Text, HTML language, title/description,
+menu labels, skin labels and theme accessible names follow the selection.
+The summary shows the selected audience only, avoiding a stale last-studied
+target. Target cards and menu links show only live pairs: RU → DE/EN,
+EN → DE, DE → EN. Hidden targets return with correct links when RU is
+selected again. An intrinsic card grid lets a single available target fill
+the row. The static Russian page remains usable without JavaScript.
+
+This is landing-only behavior; deck menus, explicit deck URLs, legacy
+redirects and installed deck start pages keep their existing behavior. No
+language plan or grammar content changes. Maintain the locale dictionary,
+`DECKS` and menu markup when updating `content/decks/site.json` (procedure:
+`docs/ADD_LANGUAGE.md`). All translations are inline and work offline; v52
+refreshes the shared cache.
