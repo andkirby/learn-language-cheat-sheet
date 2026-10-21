@@ -6,6 +6,16 @@ UI rationale lives in
 `.design/decisions.md`, content review evidence in `CONTENT_AUDIT.md`.
 Append the entry in the same commit that ships the change.
 
+## 2026-10-21 (readable term lists and German imperative contrast)
+
+- Modal meanings now appear one entry per row in all four pairs. Inline
+  inventories keep each term and meaning together, moving whole entries to
+  the next line and spacing middle dots equally. Long entries can still
+  wrap on narrow screens.
+- German Imperativ cards/dialogs now contrast Sie warten. (a statement)
+  with Warten Sie bitte! (a polite request), including translations and a
+  context caveat. Shared stylesheet, specimens and cache updated to v50.
+
 ## 2026-10-21 (meanings in every language pair)
 
 - All 164 cards and 166 dialogs were reviewed for meaning support. Every

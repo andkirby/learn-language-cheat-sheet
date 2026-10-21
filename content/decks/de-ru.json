@@ -643,9 +643,30 @@
           "search": "komm geht kommen sie повелительное наклонение приказ просьба команда",
           "blocks": [
             {"h": ["Повелительное"]},
+            {
+              "p": [
+                "Imperativ — просьба, команда или инструкция: говорим человеку, что сделать."
+              ]
+            },
             {"formula": [{"slot": "du → Komm!"}, {"arrow": "·"}, {"slot": "ihr → Geht!"}, {"arrow": "·"}, {"slot": "Sie → Kommen Sie!"}]},
             {"example": ["Komm ", {"t": "mal", "b": true}, " her! · ", {"t": "Seien", "b": true}, " Sie ruhig!"], "gloss": ["Подойди-ка сюда! · Ведите себя тихо!", {"br": true}, "Komm! — подойди; Geht! — идите (нескольким); Kommen Sie! — подойдите (вежливо)."]},
-            {"chips": [{"label": "du-форма: особенности", "detail": "imperative"}]}
+            {
+              "example": [
+                {
+                  "t": "Sie warten.",
+                  "b": true
+                },
+                " → ",
+                {
+                  "t": "Warten Sie bitte!",
+                  "hit": true
+                }
+              ],
+              "gloss": [
+                "Вы ждёте (утверждение). → Подождите, пожалуйста! (просьба). В форме Imperativ глагол стоит перед Sie."
+              ]
+            },
+            {"chips": [{"label": "Формы и порядок слов", "detail": "imperative"}]}
           ]
         }
       ]
@@ -663,7 +684,7 @@
           "level": "A1",
           "kind": "формы",
           "search": "modal müssen können wollen sollen dürfen mögen infinitiv end modal verbs",
-          "blocks": [{"h": ["Модальные глаголы"]}, {"formula": [{"slot": "Heute"}, {"slot": "muss", "role": "verb"}, {"slot": "ich in den Laden"}, {"slot": "gehen", "role": "end"}]}, {"tiny": ["Сегодня мне нужно пойти в магазин. heute — сегодня; gehen — идти; in den Laden — в магазин."]}, {"p": ["muss — спрягаемый модальный глагол на позиции 2; gehen — инфинитив в конце."]}, {"legend": {"items": [{"term": "können → kann", "meaning": "мочь / уметь"}, {"term": "müssen → muss", "meaning": "нужно / должен"}, {"term": "wollen → will", "meaning": "хотеть"}, {"term": "sollen → soll", "meaning": "следует / велено"}, {"term": "dürfen → darf", "meaning": "можно / разрешено"}, {"term": "mögen → mag", "meaning": "нравиться / любить"}]}}, {"chips": [{"label": "Все модальные", "detail": "modal"}]}]
+          "blocks": [{"h": ["Модальные глаголы"]}, {"formula": [{"slot": "Heute"}, {"slot": "muss", "role": "verb"}, {"slot": "ich in den Laden"}, {"slot": "gehen", "role": "end"}]}, {"tiny": ["Сегодня мне нужно пойти в магазин. heute — сегодня; gehen — идти; in den Laden — в магазин."]}, {"p": ["muss — спрягаемый модальный глагол на позиции 2; gehen — инфинитив в конце."]}, {"legend": {"items": [{"term": "können → kann", "meaning": "мочь / уметь"}, {"term": "müssen → muss", "meaning": "нужно / должен"}, {"term": "wollen → will", "meaning": "хотеть"}, {"term": "sollen → soll", "meaning": "следует / велено"}, {"term": "dürfen → darf", "meaning": "можно / разрешено"}, {"term": "mögen → mag", "meaning": "нравиться / любить"}], "layout": "list"}}, {"chips": [{"label": "Все модальные", "detail": "modal"}]}]
         },
         {
           "id": "perfekt",
@@ -1151,9 +1172,28 @@
       ]
     },
     "imperative": {
-      "title": "Повелительное: du-форма",
-      "lead": "du-форма → убираешь -st и само du.",
+      "title": "Imperativ: формы и порядок слов",
+      "lead": "Просьба, команда или инструкция; форма зависит от того, к кому обращаемся.",
       "blocks": [
+        {
+          "detail": {
+            "label": "Sie: утверждение и просьба",
+            "runs": [
+              {
+                "t": "Sie warten.",
+                "b": true
+              },
+              " → ",
+              {
+                "t": "Warten Sie bitte!",
+                "b": true
+              }
+            ],
+            "comment": [
+              "Вы ждёте. → Подождите, пожалуйста! Обычная форма Imperativ: глагол + Sie. Но Sie warten jetzt hier! — «Сейчас Вы будете ждать здесь!» — может звучать как строгая инструкция по контексту; это форма утверждения, не Imperativ."
+            ]
+          }
+        },
         {"detail": {"label": "Правило du", "runs": [{"t": "du kommst", "i": true}, " → ", {"t": "Komm!", "i": true}, " · ", {"t": "du machst", "i": true}, " → ", {"t": "Mach!", "i": true}, "."], "comment": ["du kommst → Komm! — ты приходишь → Приходи!; du machst → Mach! — ты делаешь → Делай!"]}},
         {"detail": {"label": "e→i остаётся, умлаут теряется", "runs": [{"t": "du gibst", "i": true}, " → ", {"t": "Gib!", "i": true}, " · ", {"t": "du liest", "i": true}, " → ", {"t": "Lies!", "i": true}, " · ", {"t": "du fährst", "i": true}, " → ", {"t": "Fahr!", "i": true}], "comment": ["Gib! — Дай!; Lies! — Читай!; Fahr! — Езжай! (умлаут в повелительном теряется)."]}},
         {"detail": {"label": "-t/-d основы", "runs": [{"t": "du wartest", "i": true}, " → ", {"t": "Warte!", "i": true}], "comment": ["Ты ждёшь → Жди! вставное -e-."]}},
@@ -1495,7 +1535,8 @@
                 "term": "mögen → mag",
                 "meaning": "нравиться / любить"
               }
-            ]
+            ],
+            "layout": "list"
           }
         },
         {"detail": {"label": "Главное предложение", "runs": ["Ich ", {"t": "muss", "b": true}, " heute ", {"t": "arbeiten", "b": true}, "."], "comment": ["Мне сегодня нужно работать. müssen → muss — нужно/должен; arbeiten — работать. finite modal в V2, инфинитив в конце."]}},

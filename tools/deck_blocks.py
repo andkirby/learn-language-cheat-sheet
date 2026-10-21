@@ -158,6 +158,8 @@ def _chips_check(block, where, chk):
 
 def _legend_check(block, where, chk):
     leg = block["legend"]
+    if leg.get("layout", "inline") not in ("inline", "list"):
+        chk.errors.append(f"{where}.legend.layout must be inline or list")
     items = leg.get("items")
     if not isinstance(items, list) or not items:
         chk.errors.append(f"{where}.legend.items must be a non-empty list")
@@ -206,23 +208,26 @@ def _legend_text(block):
     return parts
 
 
-def _legend_item_html(item):
+def _legend_item_html(item, tag="span"):
     if isinstance(item, str):
-        return f"<span class=\"legend-item\"><b>{esc(item)}</b></span>"
+        return f"<{tag} class=\"legend-item\"><b>{esc(item)}</b></{tag}>"
     if isinstance(item, list):
-        return f"<span class=\"legend-item\">{runs_html(item)}</span>"
+        return f"<{tag} class=\"legend-item\">{runs_html(item)}</{tag}>"
     term = (esc(item["term"]) if isinstance(item["term"], str)
             else runs_html(item["term"]))
     mean = (f"<span class=\"legend-mean\"> — {esc(item['meaning'])}</span>"
             if "meaning" in item else "")
-    return f"<span class=\"legend-item\"><b>{term}</b>{mean}</span>"
+    return f"<{tag} class=\"legend-item\"><b>{term}</b>{mean}</{tag}>"
 
 
 def _legend_html(block):
     leg = block["legend"]
-    html = ("<div class=\"legend\">"
-            + "".join(_legend_item_html(item) for item in leg["items"])
-            + "</div>\n")
+    stacked = leg.get("layout") == "list"
+    tag, item_tag = ("ul", "li") if stacked else ("div", "span")
+    attrs = 'class="legend legend-list" role="list"' if stacked else 'class="legend"'
+    html = (f"<{tag} {attrs}>"
+            + "\n".join(_legend_item_html(item, item_tag) for item in leg["items"])
+            + f"</{tag}>\n")
     if "label" in leg:
         html += ("        <div class=\"chips\">"
                  f"<button class=\"tap\" data-detail=\"{escq(leg['detail'])}\">{esc(leg['label'])}</button>"

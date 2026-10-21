@@ -712,3 +712,20 @@ replaces the old Russian-only assumption in the shared contract and agent
 entrypoint. This aligns documentation with the 2026-10-20 decision; it adds
 no component, interaction or deck content. The style-guide page edit bumps
 the shared cache to v49 under AGENTS.md hard rule 9.
+
+
+### 2026-10-21 — Keep term/meaning entries together; stack modal meanings
+
+The user approved a wrapping/spacing correction after the modal inventory
+split forms and meanings across lines and pressed separators against text.
+Inline `.legend` now uses a wrapping flex layout: each complete entry is
+one item, with a following middle dot and equal spacing on both sides.
+Only an entry wider than its container wraps internally; text is never
+truncated. Separators follow the preceding entry, so a new row cannot start
+with an orphan dot. No width breakpoint or JavaScript is needed.
+
+Deck authors can choose `legend.layout: "list"` for a semantic one-entry-per-row
+list without dots. Modal inventories use it in all four pairs and in both
+German modal dialogs. The renderer, validator, schema and living specimen
+share this contract; `detail`/`label` still create a single dialog entry.
+Both layouts work with either skin, every theme, print and noscript. Cache v50.

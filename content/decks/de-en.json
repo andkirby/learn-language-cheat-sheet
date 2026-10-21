@@ -639,11 +639,32 @@
           "search": "imperative command request komm geht kommen sie sein polite ruhig",
           "blocks": [
             {"h": ["Imperativ: commands & requests"]},
+            {
+              "p": [
+                "Use the imperative for requests, commands and instructions: telling someone what to do."
+              ]
+            },
             {"formula": [{"slot": [{"t": "du → Komm!", "b": true}]}, {"arrow": "·"}, {"slot": [{"t": "ihr → Geht!", "b": true}]}, {"arrow": "·"}, {"slot": [{"t": "Sie → Kommen Sie!", "b": true}]}]},
             {"p": ["English has one command form for everybody; German picks the form by listener — polite ", {"t": "Sie", "b": true}, " stays inside the command."]},
             {"example": [{"t": "Kommen Sie", "b": true}, " bitte mit! · ", {"t": "Seien", "b": true}, " Sie ruhig!"], "gloss": ["Please come along! · Be quiet!", {"br": true}, "Komm! — come (one familiar person); Geht! — go (several); Kommen Sie! — come (polite)."]},
             {"tiny": ["sein is irregular here, just like English ", {"t": "be", "i": true}, "."]},
-            {"chips": [{"label": "du-form: the details", "detail": "imperative"}]}
+            {
+              "example": [
+                {
+                  "t": "Sie warten.",
+                  "b": true
+                },
+                " → ",
+                {
+                  "t": "Warten Sie bitte!",
+                  "hit": true
+                }
+              ],
+              "gloss": [
+                "You are waiting (statement). → Please wait! (request). In the imperative form, the verb comes before Sie."
+              ]
+            },
+            {"chips": [{"label": "Forms and word order", "detail": "imperative"}]}
           ]
         }
       ]
@@ -661,7 +682,7 @@
           "level": "A1",
           "kind": "forms",
           "search": "modal verbs müssen können wollen sollen dürfen mögen infinitive bracket satzklammer",
-          "blocks": [{"h": ["Modal verbs"]}, {"formula": [{"slot": [{"t": "Heute", "b": true}]}, {"slot": [{"t": "muss", "b": true}], "role": "verb"}, {"slot": [{"t": "ich in den Laden", "b": true}]}, {"slot": [{"t": "gehen", "b": true}], "role": "end"}]}, {"tiny": ["Today I have to go to the shop. heute — today; gehen — go; in den Laden — to the shop."]}, {"p": ["The bracket: ", {"t": "muss", "b": true}, " opens it, the infinitive closes it — English keeps “must … go” together; German lets the two halves drift apart."]}, {"legend": {"items": [{"term": "können → kann", "meaning": "can / be able to"}, {"term": "müssen → muss", "meaning": "must / have to"}, {"term": "wollen → will", "meaning": "want to"}, {"term": "sollen → soll", "meaning": "be supposed to / should"}, {"term": "dürfen → darf", "meaning": "may / be allowed to"}, {"term": "mögen → mag", "meaning": "like"}]}}, {"chips": [{"label": "All six modals", "detail": "modal"}]}]
+          "blocks": [{"h": ["Modal verbs"]}, {"formula": [{"slot": [{"t": "Heute", "b": true}]}, {"slot": [{"t": "muss", "b": true}], "role": "verb"}, {"slot": [{"t": "ich in den Laden", "b": true}]}, {"slot": [{"t": "gehen", "b": true}], "role": "end"}]}, {"tiny": ["Today I have to go to the shop. heute — today; gehen — go; in den Laden — to the shop."]}, {"p": ["The bracket: ", {"t": "muss", "b": true}, " opens it, the infinitive closes it — English keeps “must … go” together; German lets the two halves drift apart."]}, {"legend": {"items": [{"term": "können → kann", "meaning": "can / be able to"}, {"term": "müssen → muss", "meaning": "must / have to"}, {"term": "wollen → will", "meaning": "want to"}, {"term": "sollen → soll", "meaning": "be supposed to / should"}, {"term": "dürfen → darf", "meaning": "may / be allowed to"}, {"term": "mögen → mag", "meaning": "like"}], "layout": "list"}}, {"chips": [{"label": "All six modals", "detail": "modal"}]}]
         },
         {
           "id": "perfekt",
@@ -1495,9 +1516,28 @@
       ]
     },
     "imperative": {
-      "title": "du-form: the details",
-      "lead": "du-form → drop -st and drop du.",
+      "title": "Imperative: forms and word order",
+      "lead": "Requests, commands and instructions; the form depends on whom you address.",
       "blocks": [
+        {
+          "detail": {
+            "label": "Sie: statement and request",
+            "runs": [
+              {
+                "t": "Sie warten.",
+                "b": true
+              },
+              " → ",
+              {
+                "t": "Warten Sie bitte!",
+                "b": true
+              }
+            ],
+            "comment": [
+              "You are waiting. → Please wait! The usual imperative form has verb + Sie. But Sie warten jetzt hier! — “You will wait here now!” — can function as a firm instruction in context; its grammatical form is declarative, not imperative."
+            ]
+          }
+        },
         {"detail": {"label": "The du rule", "runs": [{"t": "du kommst", "b": true}, " → ", {"t": "Komm!", "b": true}, " · ", {"t": "du machst", "b": true}, " → ", {"t": "Mach!", "b": true}, "."], "comment": ["du kommst → Komm! — you come → Come!; du machst → Mach! — you do → Do it!"]}},
         {"detail": {"label": "e→i stays, umlaut goes", "runs": [{"t": "du gibst", "b": true}, " → ", {"t": "Gib!", "b": true}, " · ", {"t": "du liest", "b": true}, " → ", {"t": "Lies!", "b": true}, " · ", {"t": "du fährst", "b": true}, " → ", {"t": "Fahr!", "b": true}], "comment": ["Gib! — Give!; Lies! — Read!; Fahr! — Drive!/Go! The vowel change survives; the umlaut disappears in the command."]}},
         {"detail": {"label": "-t/-d stems", "runs": [{"t": "du wartest", "b": true}, " → ", {"t": "Warte!", "b": true}], "comment": ["You wait → Wait! Insert -e-. Pure form learning — English has no parallel here."]}},
@@ -1536,7 +1576,8 @@
                 "term": "mögen → mag",
                 "meaning": "like"
               }
-            ]
+            ],
+            "layout": "list"
           }
         },
         {"detail": {"label": "Main clause", "runs": ["Ich ", {"t": "muss", "b": true}, " heute ", {"t": "arbeiten", "b": true}, "."], "comment": ["I have to work today. müssen → muss — must/have to; arbeiten — work. The finite modal takes slot 2, the infinitive goes last. English keeps “must work” adjacent; German spreads the bracket."]}},

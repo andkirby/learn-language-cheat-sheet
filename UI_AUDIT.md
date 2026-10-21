@@ -106,3 +106,37 @@ DE search filters across views, and clearing restores the selected view.
 Both generated-page checks pass. The landing, DE and EN pages loaded with
 the preview server stopped after their first load. A measured 390px overflow
 check and a full keyboard/screen-reader pass were not run in this pass.
+
+
+## 2026-10-21 — Whole-entry legends and stacked modal meanings
+
+User screenshot showed modal terms and meanings splitting across rows, with
+middle dots attached to preceding words. Resolved in the shared renderer/CSS:
+
+- Default legends wrap complete term/meaning entries as flex items. Dots
+  follow the preceding entry, with balanced spacing. Only an entry wider
+  than its container wraps internally; text is not truncated.
+- Explicit `layout: "list"` renders semantic UL/LI markup, one entry per
+  row without dots. All four modal cards and both German modal dialogs use
+  it. Skin A reuses the existing legend typography; classic also works.
+- Schema, stdlib validation/rendering, all four generated pages and the living
+  specimen were updated together; rationale is in `.design/decisions.md`.
+
+Chromium/agent-browser evidence, preview server at 127.0.0.1:8931:
+
+- 320/390/768/1280px × classic/skin A × auto/light/dark × 18 views = 432
+  combinations: no page/card horizontal overflow. Whole-entry width probes
+  found no entry shrunk below its preferred width when it fits the container.
+- All modal lists have the expected six German or four English entries,
+  semantic UL/LI/role=list, and no pseudo-element separator.
+- All 165 reachable dialog keys opened/closed in both skins at 390px
+  (330 checks), with populated bodies and no horizontal dialog overflow.
+- Imperativ/modal searches return hits in all pairs; clearing restores the
+  active view. No browser errors. Phone screenshot visually inspected for
+  readable modal rows; inline particle inventory also visually inspected.
+- Detailed metrics: `$BB_THREAD_STORAGE/legend-layout-browser.json`;
+  screenshot: `$BB_THREAD_STORAGE/legend-modal-mobile.png`.
+- Full keyboard/screen-reader, print/noscript and installed-device relaunch
+  checks NOT RUN for this focused update. Semantic markup and CSS-only layout
+  preserve content without requiring JavaScript; this is source evidence,
+  not a claim those runtime lanes ran.

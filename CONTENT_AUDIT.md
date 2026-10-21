@@ -1185,6 +1185,54 @@ this content change. No overall four-gate certification is claimed.
   200 and matched the released local files byte-for-byte. This extends the
   2026-10-20 local runtime evidence; it does not change the content-gate verdicts.
 
+## 2026-10-21 — Readable term lists and explicit German Imperativ contrast
+
+- Authorized scope: one-entry-per-row modal meanings; whole-entry inline
+  wrapping with balanced dots; an explicit German statement/request example.
+  Base: `a487f7237431c867b0f985ad370018812fc87c1b`.
+- Linguistic changes are confined to `order-imperativ` and
+  `details.imperative` in de-ru/de-en, with DE-21 plan depth updated first.
+  The cards define the use of Imperativ and contrast **Sie warten.** with
+  **Warten Sie bitte!**, carrying Russian/English translations. The dialogs
+  retain du/ihr/Sie formation and explain that a declarative sentence can
+  function as a firm instruction without becoming an imperative form.
+- Independent reviewer `/root/linguistic_review` read both changed cards,
+  their dialogs and owner rows against the named base; scoped Accuracy
+  **PASS**, Teaching **PASS**, no substantive findings. All other deck wording
+  was compared unchanged after excluding legend layout metadata. Carry
+  forward the 2026-10-20 full linguistic review only for those unchanged units.
+- References (reviewer accessed 2026-10-21):
+  [IDS, Aussagemodus: Interpretation als Aufforderung](https://grammis.ids-mannheim.de/systematische-grammatik/1872)
+  and [IDS, Distanzform in Aufforderungen](https://grammis.ids-mannheim.de/systematische-grammatik/389).
+  Probe: ordinary statement versus formal request → expected verb-before-Sie
+  for the imperative form, with no universal ban on Sie + verb; observed PASS
+  in both cards and dialogs, with matching translations.
+- Counts remain 164 cards and 166 dialogs. The new comparison adds one paired
+  example to each German deck: 41/41/39/40 example blocks, 161 total, all
+  glossed. Card anchors, dialog keys, tables and existing formula/example
+  content are preserved. Modal legends use `layout: "list"` on all four
+  modal cards and in both German modal dialogs; other inventories retain
+  their content and default inline layout.
+
+Final authored deck snapshots (SHA-256):
+
+- `de-ru`: `64a8a766c1664ffb9e6a0177bd89691a83e68984fe61a79e7eb0e5f3dbccf0b9`
+- `de-en`: `8bfbd6d66c53828ea2c5dcc7cb3bc2b66da1bab6dbc5de020cfcfe6f45011899`
+- `en-ru`: `f42d785ad599277b4295f9a2cc151c85cf61ee88113ef51834170bb63f21eec6`
+- `en-de`: `c6a98c934e29973205749a67a8023167a8effe4294542451cd7f0ddaf6147f50`
+
+Verification: all four builds and generated-page checks PASS; shell check
+PASS; sibling check has no table-row drift. Existing audience-adapted
+formula/example differences remain; the new comparison is identical across
+German siblings. Negative probe `legend.layout: "columns"` is rejected by
+the stdlib validator; valid list markup has UL/LI semantics and role=list.
+New `layout` metadata does not enter the search text.
+
+Baseline remains FAIL for sourced level placement; fresh syllabus/frequency
+coverage NOT RUN (D-01/D-02). Browser layout evidence is recorded in UI_AUDIT.
+The service-worker cache is v50. Live release verification is performed
+following push; no pre-push deployment claim is made here.
+
 ## Next full review record
 
 Append a dated record; preserve previous evidence. Include:
