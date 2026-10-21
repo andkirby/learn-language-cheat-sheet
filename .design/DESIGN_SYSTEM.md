@@ -190,9 +190,13 @@ Rules:
 
 - UI language Russian; grammar terms stay in the target language
   (German: Dativ, weil; English: Present Perfect).
-- Examples ≤ 2 lines; bold marks the pattern-carrying words. When an example
-  needs its deciding hint, the deck attaches a `gloss` and it renders as a
-  pair (hint under a hairline); `hit` runs mark the form the card teaches.
+- Keep source examples short (normally ≤ 2 lines); bold marks the
+  pattern-carrying words. Every example has explanation-language meaning
+  support in its `gloss`, rendered as a pair (translation and any deciding
+  hint under a hairline). Sentence formulas use an adjacent translated line;
+  word inventories use term/meaning legends. Dialog examples use adjacent
+  comments. `hit` runs mark the form the card teaches. See the content
+  validation protocol for linguistic acceptance.
 
 ## Governance & exceptions
 

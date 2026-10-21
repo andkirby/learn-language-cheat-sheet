@@ -92,10 +92,10 @@
     <section id="cases" data-section data-view="cases">
       <div class="section-head"><div><h2>Падежи</h2><p>Вопрос → функция → форма.</p></div><span class="section-badge">4 Fälle</span></div>
       <div class="case-grid cheat-card" id="cases-faelle" data-search="fälle cases падеж вопросы nominativ akkusativ dativ genitiv wer wen wem wessen was">
-        <button class="tap case" data-detail="nominativ"><b>Nominativ</b><br>Wer? Was?</button>
-        <button class="tap case" data-detail="akkusativ"><b>Akkusativ</b><br>Wen? Was?</button>
-        <button class="tap case" data-detail="dativ"><b>Dativ</b><br>Wem?</button>
-        <button class="tap case" data-detail="genitiv"><b>Genitiv</b><br>Wessen?</button>
+        <button class="tap case" data-detail="nominativ"><b>Nominativ</b><br>Wer? Was? — кто? что?</button>
+        <button class="tap case" data-detail="akkusativ"><b>Akkusativ</b><br>Wen? Was? — кого? что?</button>
+        <button class="tap case" data-detail="dativ"><b>Dativ</b><br>Wem? — кому? чему?</button>
+        <button class="tap case" data-detail="genitiv"><b>Genitiv</b><br>Wessen? — чей?</button>
       </div>
       <div class="cards two" style="margin-top:10px">
         <article class="cheat-card" id="cases-wo-wohin" data-search="wo wohin wechselpräpositionen movement location направление место akkusativ dativ">
@@ -103,7 +103,10 @@
           <div class="badges"><span class="badge level">A1</span><span class="badge kind">триггер → падеж</span></div>
         <p><b>Wo?</b> где? → обычно <b>Dativ</b> с Wechselpräpositionen.</p>
         <p><b>Wohin?</b> куда? → обычно <b>Akkusativ</b>.</p>
-        <div class="example"><b>Ich bin in der Schule (Wo?).</b><br><b>Ich gehe in die Schule (Wohin?).</b></div>
+        <div class="example pair">
+          <div class="pair-src"><b>Ich bin in der Schule (Wo?).</b><br><b>Ich gehe in die Schule (Wohin?).</b></div>
+          <div class="pair-gloss">Я в школе (где?).<br>Я иду в школу (куда?).</div>
+        </div>
         <div class="chips"><button class="tap" data-detail="wo-wohin">Когда это правило работает?</button></div>
         </article>
         <article class="cheat-card" id="cases-objects" data-search="direct indirect object прямое косвенное дополнение akkusativ dativ geben">
@@ -113,7 +116,7 @@
         <p><b>Dat.</b> часто = получатель/адресат: <i>даю кому?</i></p>
         <div class="example pair">
           <div class="pair-src">Ich gebe <b class="hit">dem Mann</b> <b class="hit">das Buch</b>.</div>
-          <div class="pair-gloss">dem Mann = Dat. · das Buch = Akk.</div>
+          <div class="pair-gloss">Я даю мужчине книгу. dem Mann — кому? (Dat.); das Buch — что? (Akk.).</div>
         </div>
         <div class="chips"><button class="tap" data-detail="objects">Два объекта</button></div>
         </article>
@@ -135,24 +138,33 @@
             </tbody>
           </table>
         </div>
-        <div class="example">Ich sehe <b>den</b> Mann.<br>mit <b>dem</b> Mann</div>
+<div class="legend"><span class="legend-item"><b>der / die / das</b><span class="legend-mean"> — определённый артикль; род/падеж, не отдельное слово в русском</span></span></div>
+        <div class="example pair">
+          <div class="pair-src">Ich sehe <b>den</b> Mann.<br>mit <b>dem</b> Mann</div>
+          <div class="pair-gloss">Я вижу мужчину.<br>С мужчиной. Mann — мужчина; der/den/dem — формы определённого артикля.</div>
+        </div>
         <p class="tiny">Жирным — ловушки этого уровня: Maskulin-Akkusativ и весь Dativ. Genitiv меняется тоже, но на A1–B1 нужен реже.</p>
         <p class="tiny">Genitiv и Dativ Plural меняют и существительное: des Mannes · den Kindern — см. «Окончания и изменения».</p>
+        <p class="tiny">Mask. — мужской род; Neut. — средний; Fem. — женский; Plural — множественное число.</p>
       </article>
       <article class="cheat-card" id="forms-dieser" data-search="dieser dieses diese указательное этот тот местоимение">
         <h3>dieser / diese / dieses</h3>
         <div class="badges"><span class="badge level">A1</span><span class="badge kind">формы</span></div>
-        <p>«Этот» и «тот» — одним словом. Склоняется как артикль: <b>dies-</b> + окончания der/die/das.</p>
-        <div class="example"><b>dieser</b> Mann · <b>diese</b> Frau · <b>dieses</b> Kind<br>Ich nehme <b>diesen</b> Bus.</div>
+        <p>dieser/diese/dieses — этот/эта/это; может указывать и на «тот» по контексту. Склоняется по образцу der/die/das.</p>
+        <div class="example pair">
+          <div class="pair-src"><b>dieser</b> Mann · <b>diese</b> Frau · <b>dieses</b> Kind<br>Ich nehme <b>diesen</b> Bus.</div>
+          <div class="pair-gloss">Этот мужчина · эта женщина · этот ребёнок.<br>Я поеду этим автобусом.</div>
+        </div>
         <div class="chips"><button class="tap" data-detail="dieser">Склонение и welcher</button></div>
       </article>
       <article class="cheat-card" id="forms-artikelwahl" data-search="der ein kein выбор впервые известный профессия артикль">
         <h3>der, ein или kein?</h3>
         <div class="badges"><span class="badge level">A1</span><span class="badge kind">употребление</span></div>
         <p><b>der</b> — конкретный, известный · <b>ein</b> — один из многих, впервые · <b>kein</b> — отрицание.</p>
+<div class="legend"><span class="legend-item"><b>Lehrer / Ärztin</b><span class="legend-mean"> — учитель / врач (женщина)</span></span></div>
         <div class="example pair">
           <div class="pair-src">Das ist <b class="hit">ein</b> Hund. <b class="hit">Der</b> Hund ist groß. · Das ist <b class="hit">kein</b> Hund.</div>
-          <div class="pair-gloss">впервые → ein · та самая → der · отрицание → kein</div>
+          <div class="pair-gloss">Это собака. Эта собака большая. · Это не собака.<br>ein — вводим предмет; der — он уже известен; kein — отрицаем.</div>
         </div>
         <p class="tiny">Профессия — без артикля, как в русском: Ich bin Lehrer. · Sie ist Ärztin.</p>
         <div class="chips"><button class="tap" data-detail="article-choice">Второе упоминание</button></div>
@@ -172,17 +184,25 @@
             </tbody>
           </table>
         </div>
-        <div class="example">Ich habe <b>einen</b> Bruder und <b>eine</b> Schwester.<br>mit <b>meinem</b> Bruder · mit <b>meiner</b> Schwester</div>
+<div class="legend"><span class="legend-item"><b>ein</b><span class="legend-mean"> — один / какой-то</span></span><span class="legend-item"><b>kein</b><span class="legend-mean"> — не / никакой</span></span><span class="legend-item"><b>mein</b><span class="legend-mean"> — мой</span></span><span class="legend-item"><b>dein</b><span class="legend-mean"> — твой</span></span><span class="legend-item"><b>sein</b><span class="legend-mean"> — его (также для среднего рода)</span></span><span class="legend-item"><b>ihr</b><span class="legend-mean"> — её / их</span></span><span class="legend-item"><b>unser</b><span class="legend-mean"> — наш</span></span><span class="legend-item"><b>euer</b><span class="legend-mean"> — ваш (нескольким на ты)</span></span><span class="legend-item"><b>Ihr</b><span class="legend-mean"> — Ваш (вежливо)</span></span></div>
+        <div class="example pair">
+          <div class="pair-src">Ich habe <b>einen</b> Bruder und <b>eine</b> Schwester.<br>mit <b>meinem</b> Bruder · mit <b>meiner</b> Schwester</div>
+          <div class="pair-gloss">У меня есть брат и сестра.<br>С моим братом · с моей сестрой.</div>
+        </div>
         <p class="tiny">Жирным — ловушки этого уровня: Maskulin-Akkusativ и весь Dativ. Genitiv меняется тоже, но на A1–B1 нужен реже.</p>
         <p class="tiny">* У <i>ein</i> нет мн. числа. Колонка <i>mein</i> — модель для всех: <i>kein, dein, sein, ihr, unser, euer</i> склоняются так же — основа + окончание из таблицы.</p>
         <div class="chips"><button class="tap" data-detail="possessives">mein / dein / sein / ihr…</button><button class="tap" data-detail="why-ein-endings">Почему meinen?</button><button class="tap" data-detail="ihrem">Почему mit ihrem Bruder?</button></div>
+        <p class="tiny">Mask. — мужской род; Neut. — средний; Fem. — женский; Plural — множественное число.</p>
         </article>
         <article class="cheat-card" id="forms-negation" data-search="nicht kein отрицание не никакой вообще нет машина">
         <h3>nicht или kein</h3>
           <div class="badges"><span class="badge level">A1</span><span class="badge kind">употребление</span></div>
         <p><b>kein</b> — вместо ein перед существительным: kein Geld, keine Zeit.</p>
         <p><b>nicht</b> — всё остальное: глаголы, прилагательные, местоимения.</p>
-        <div class="example">Ich habe <b>kein</b> Auto. · Ich schlafe <b>nicht</b>. · Das ist <b>nicht</b> mein Auto.</div>
+        <div class="example pair">
+          <div class="pair-src">Ich habe <b>kein</b> Auto. · Ich schlafe <b>nicht</b>. · Das ist <b>nicht</b> mein Auto.</div>
+          <div class="pair-gloss">У меня нет машины. · Я не сплю. · Это не моя машина.</div>
+        </div>
         <div class="chips"><button class="tap" data-detail="negation">Где стоит nicht?</button></div>
         </article>
         <article class="cheat-card" id="forms-pronomen" data-search="personal pronouns личные местоимения ich mich mir du dich dir ihn ihm uns euch ihnen">
@@ -203,7 +223,11 @@
             </tbody>
           </table>
         </div>
-        <div class="example">Kennst du <b>ihn</b>? — Ich helfe <b>ihm</b>.</div>
+<div class="legend"><span class="legend-item"><b>ich / du</b><span class="legend-mean"> — я / ты</span></span><span class="legend-item"><b>er / sie / es</b><span class="legend-mean"> — он / она / оно</span></span><span class="legend-item"><b>wir / ihr</b><span class="legend-mean"> — мы / вы (несколько)</span></span><span class="legend-item"><b>sie / Sie</b><span class="legend-mean"> — они / Вы (вежливо)</span></span></div>
+        <div class="example pair">
+          <div class="pair-src">Kennst du <b>ihn</b>? — Ich helfe <b>ihm</b>.</div>
+          <div class="pair-gloss">Ты его знаешь? — Я ему помогаю. ihn — его (Akk.); ihm — ему (Dat.).</div>
+        </div>
         <p class="tiny">Жирным — Dativ, отличающийся от Akkusativ (uns, euch совпадают).</p>
         <div class="chips"><button class="tap" data-detail="pronouns">Как быстро запомнить</button></div>
         </article>
@@ -215,35 +239,41 @@
         <article class="cheat-card" id="preps-praep-akk" data-search="akkusativ prepositions durch für gegen ohne um">
         <h3>Всегда Akkusativ</h3>
           <div class="badges"><span class="badge level">A1</span><span class="badge kind">триггер → падеж</span></div>
-<div class="legend"><span class="legend-item"><b>durch</b></span><span class="legend-item"><b>für</b></span><span class="legend-item"><b>gegen</b></span><span class="legend-item"><b>ohne</b></span><span class="legend-item"><b>um</b></span></div>
+<div class="legend"><span class="legend-item"><b>durch</b><span class="legend-mean"> — через</span></span><span class="legend-item"><b>für</b><span class="legend-mean"> — для / за</span></span><span class="legend-item"><b>gegen</b><span class="legend-mean"> — против / около (время)</span></span><span class="legend-item"><b>ohne</b><span class="legend-mean"> — без</span></span><span class="legend-item"><b>um</b><span class="legend-mean"> — вокруг / в (время)</span></span></div>
         <div class="chips"><button class="tap" data-detail="prep-akk">Разбор</button></div>
         <div class="example pair">
           <div class="pair-src">für <b class="hit">den</b> Mann · ohne <b class="hit">mich</b></div>
-          <div class="pair-gloss">падеж уже задан предлогом — смысловой вопрос не нужен</div>
+          <div class="pair-gloss">Для мужчины · без меня. Падеж задаёт предлог.</div>
         </div>
         </article>
         <article class="cheat-card" id="preps-praep-dat" data-search="dativ prepositions aus bei mit nach seit von zu">
         <h3>Всегда Dativ</h3>
           <div class="badges"><span class="badge level">A1</span><span class="badge kind">триггер → падеж</span></div>
-<div class="legend"><span class="legend-item"><b>aus</b></span><span class="legend-item"><b>bei</b></span><span class="legend-item"><b>mit</b></span><span class="legend-item"><b>nach</b></span><span class="legend-item"><b>seit</b></span><span class="legend-item"><b>von</b></span><span class="legend-item"><b>zu</b></span></div>
+<div class="legend"><span class="legend-item"><b>aus</b><span class="legend-mean"> — из (изнутри)</span></span><span class="legend-item"><b>bei</b><span class="legend-mean"> — у / при</span></span><span class="legend-item"><b>mit</b><span class="legend-mean"> — с / на (транспорт)</span></span><span class="legend-item"><b>nach</b><span class="legend-mean"> — после / в (город, страна без артикля)</span></span><span class="legend-item"><b>seit</b><span class="legend-mean"> — с / уже (длительность)</span></span><span class="legend-item"><b>von</b><span class="legend-mean"> — от / о / принадлежность</span></span><span class="legend-item"><b>zu</b><span class="legend-mean"> — к / на (к месту)</span></span></div>
         <div class="chips"><button class="tap" data-detail="prep-dat">Разбор</button></div>
         <div class="example pair">
           <div class="pair-src">mit <b class="hit">meinem</b> Bruder · zu <b class="hit">der</b> Arbeit → zur Arbeit</div>
-          <div class="pair-gloss">падеж уже задан предлогом — смысловой вопрос не нужен</div>
+          <div class="pair-gloss">С моим братом · на работу (zu der → zur). Падеж задаёт предлог.</div>
         </div>
         </article>
         <article class="cheat-card" id="preps-wechsel" data-search="wechselpräpositionen an auf hinter in neben über unter vor zwischen wo wohin two-way">
         <h3>Два падежа: Wo? / Wohin?</h3>
           <div class="badges"><span class="badge level">A2</span><span class="badge kind">триггер → падеж</span></div>
-        <p><b>an, auf, hinter, in, neben, über, unter, vor, zwischen</b></p>
-        <div class="example">auf <b>dem</b> Tisch (Wo?)<br>auf <b>den</b> Tisch (Wohin?)</div>
+<div class="legend"><span class="legend-item"><b>an</b><span class="legend-mean"> — у / на (контакт)</span></span><span class="legend-item"><b>auf</b><span class="legend-mean"> — на (поверхности)</span></span><span class="legend-item"><b>hinter</b><span class="legend-mean"> — за / позади</span></span><span class="legend-item"><b>in</b><span class="legend-mean"> — в / внутрь</span></span><span class="legend-item"><b>neben</b><span class="legend-mean"> — рядом с</span></span><span class="legend-item"><b>über</b><span class="legend-mean"> — над / через</span></span><span class="legend-item"><b>unter</b><span class="legend-mean"> — под / среди</span></span><span class="legend-item"><b>vor</b><span class="legend-mean"> — перед</span></span><span class="legend-item"><b>zwischen</b><span class="legend-mean"> — между</span></span></div>
+        <div class="example pair">
+          <div class="pair-src">auf <b>dem</b> Tisch (Wo?)<br>auf <b>den</b> Tisch (Wohin?)</div>
+          <div class="pair-gloss">На столе (где?) · на стол (куда?). Tisch — стол; dem/den показывают падеж.</div>
+        </div>
         <div class="chips"><button class="tap" data-detail="two-way">Главная оговорка</button></div>
         </article>
         <article class="cheat-card" id="preps-praep-gen" data-search="genitiv prepositions wegen trotz während statt innerhalb außerhalb">
         <h3>Часто Genitiv</h3>
           <div class="badges"><span class="badge level">B1</span><span class="badge kind">триггер → падеж</span></div>
-        <p><b>wegen, trotz, während, statt, innerhalb, außerhalb</b></p>
-        <div class="example">wegen <b>des Wetters</b></div>
+<div class="legend"><span class="legend-item"><b>wegen</b><span class="legend-mean"> — из-за</span></span><span class="legend-item"><b>trotz</b><span class="legend-mean"> — несмотря на</span></span><span class="legend-item"><b>während</b><span class="legend-mean"> — во время</span></span><span class="legend-item"><b>statt</b><span class="legend-mean"> — вместо</span></span><span class="legend-item"><b>innerhalb</b><span class="legend-mean"> — внутри / в течение</span></span><span class="legend-item"><b>außerhalb</b><span class="legend-mean"> — вне / за пределами</span></span></div>
+        <div class="example pair">
+          <div class="pair-src">wegen <b>des Wetters</b></div>
+          <div class="pair-gloss">Из-за погоды. Wetter — погода; des Wetters — Genitiv.</div>
+        </div>
         <p class="tiny">В разговорной речи некоторые из них встречаются и с Dativ, но в норме учи Genitiv.</p>
         </article>
         <article class="cheat-card" id="preps-verb-praep" data-search="warten auf denken an freuen sich teilnehmen глагол предлог ждать думать участвовать">
@@ -252,21 +282,21 @@
         <p>Русский предлог не совпадает: <b>ждать кого-то</b> → warten <b>auf</b>, <b>думать о чём-то</b> → denken <b>an</b>.</p>
         <div class="example pair">
           <div class="pair-src">Ich warte <b class="hit">auf</b> den Bus. · Er denkt <b class="hit">an</b> die Prüfung.</div>
-          <div class="pair-gloss">падеж — от предлога: auf → Akkusativ (Wen? — den Bus)</div>
+          <div class="pair-gloss">Я жду автобус. · Он думает об экзамене.<br>Учить падеж вместе с парой: warten auf + Akk.; denken an + Akk.</div>
         </div>
-<div class="legend"><span class="legend-item"><b>warten <b>auf</b></b></span><span class="legend-item"><b>denken <b>an</b></b></span><span class="legend-item"><b>sich freuen <b>auf/über</b></b></span><span class="legend-item"><b>sich interessieren <b>für</b></b></span><span class="legend-item"><b>teilnehmen <b>an</b></b></span></div>
+<div class="legend"><span class="legend-item"><b>warten auf + Akk.</b><span class="legend-mean"> — ждать</span></span><span class="legend-item"><b>denken an + Akk.</b><span class="legend-mean"> — думать о</span></span><span class="legend-item"><b>sich freuen auf + Akk.</b><span class="legend-mean"> — предвкушать</span></span><span class="legend-item"><b>sich freuen über + Akk.</b><span class="legend-mean"> — радоваться</span></span><span class="legend-item"><b>sich interessieren für + Akk.</b><span class="legend-mean"> — интересоваться</span></span><span class="legend-item"><b>teilnehmen an + Dat.</b><span class="legend-mean"> — участвовать в</span></span></div>
         <div class="chips"><button class="tap" data-detail="verb-preps">Вопрос-подсказка и sich</button></div>
         </article>
         <article class="cheat-card" id="preps-seit-vor" data-search="seit vor уже с тех пор назад два года живу">
         <h3>seit или vor?</h3>
           <div class="badges"><span class="badge level">A2</span><span class="badge kind">употребление</span></div>
-        <p><b>seit</b> + Dativ — «уже, с тех пор» (до сих пор): <b>Ich wohne seit einem Jahr hier</b>.</p>
-        <p><b>vor</b> + Dativ — «тому назад» (точка в прошлом): <b>Ich kam vor einem Jahr</b>.</p>
+        <p>seit + Dativ — «с / уже»: Ich wohne seit einem Jahr hier — Я живу здесь уже год.</p>
+        <p>vor + Dativ — «назад»: Ich kam vor einem Jahr — Я приехал год назад.</p>
         <div class="example pair">
           <div class="pair-src">Ich wohne <b class="hit">seit</b> zwei Jahren hier. · Ich bin <b class="hit">vor</b> zwei Jahren umgezogen.</div>
-          <div class="pair-gloss">seit = до сих пор + Präsens · vor = назад + прошедшее</div>
+          <div class="pair-gloss">Я живу здесь уже два года. · Я переехал два года назад.<br>seit — длится до сих пор; vor — назад.</div>
         </div>
-        <p class="tiny">seit стоит с настоящим временем (Präsens), не с Perfekt.</p>
+        <p class="tiny">Если состояние продолжается сейчас, обычно Präsens: Ich wohne seit zwei Jahren hier — Я живу здесь уже два года. Сам seit не запрещает Perfekt.</p>
         <div class="chips"><button class="tap" data-detail="seit-vor">Почему не Perfekt?</button></div>
         </article>
       </div>
@@ -280,7 +310,7 @@
         <div class="formula"><span class="slot">Позиция 1</span><span class="arrow">→</span><span class="slot verb">глагол</span><span class="arrow">→</span><span class="slot">остальное</span></div>
         <div class="example pair">
           <div class="pair-src">Ich <b class="hit">gehe</b> heute in den Laden.<br>Heute <b class="hit">gehe</b> ich in den Laden.</div>
-          <div class="pair-gloss">спрягаемый глагол — всегда на второй позиции, даже когда предложение начинается не с подлежащего</div>
+          <div class="pair-gloss">Я иду сегодня в магазин.<br>Сегодня я иду в магазин. gehe — иду; глагол остаётся на позиции 2.</div>
         </div>
         <div class="chips"><button class="tap" data-detail="v2">Что значит “позиция 2”?</button></div>
         </article>
@@ -288,20 +318,28 @@
         <h3>Если сначала Heute / Dann / Deshalb…</h3>
           <div class="badges"><span class="badge level">A2</span><span class="badge kind">порядок</span></div>
         <p>Подлежащее уходит <b>после глагола</b>.</p>
-        <div class="example"><b>Heute muss ich</b> arbeiten.<br>Не: <s>Heute ich muss…</s></div>
+        <div class="example pair">
+          <div class="pair-src"><b>Heute muss ich</b> arbeiten.<br>Не: <s>Heute ich muss…</s></div>
+          <div class="pair-gloss">Сегодня мне нужно работать. müssen → muss — нужно; arbeiten — работать.<br>После Heute глагол идёт перед ich.</div>
+        </div>
         </article>
         <article class="cheat-card" id="order-w-fragen" data-search="question fragen w frage wer was wann warum wie verb first v1">
         <h3>Вопросы</h3>
           <div class="badges"><span class="badge level">A1</span><span class="badge kind">порядок</span></div>
         <div class="formula"><span class="slot verb">Kommst</span><span class="slot">du heute?</span></div>
         <div class="formula"><span class="slot">Wann</span><span class="slot verb">kommst</span><span class="slot">du?</span></div>
+        <p class="tiny">Kommst du heute? — Ты придёшь сегодня? · Wann kommst du? — Когда ты придёшь?</p>
         <p class="tiny">Да/нет → глагол первым. W-вопрос (wer, was, wann, warum, wie…) → вопросительное слово + глагол.</p>
+<div class="legend"><span class="legend-item"><b>wer / was</b><span class="legend-mean"> — кто / что</span></span><span class="legend-item"><b>wann / warum</b><span class="legend-mean"> — когда / почему</span></span><span class="legend-item"><b>wie / wo / wohin</b><span class="legend-mean"> — как / где / куда</span></span></div>
         </article>
         <article class="cheat-card" id="order-tekamolo" data-search="tekamolo temporal kausal modal lokal order обстоятельства время причина способ место">
         <h3>TeKaMoLo</h3>
           <div class="badges"><span class="badge level">A2</span><span class="badge kind">порядок</span></div>
         <p><b>Te</b>mporal → <b>Ka</b>usal → <b>Mo</b>dal → <b>Lo</b>kal</p>
-        <div class="example">Ich fahre <b>heute</b> <b>wegen der Arbeit</b> <b>mit dem Zug</b> <b>nach Berlin</b>.</div>
+        <div class="example pair">
+          <div class="pair-src">Ich fahre <b>heute</b> <b>wegen der Arbeit</b> <b>mit dem Zug</b> <b>nach Berlin</b>.</div>
+          <div class="pair-gloss">Сегодня я еду в Берлин на поезде по работе.<br>heute — сегодня; wegen der Arbeit — по работе; mit dem Zug — на поезде; nach Berlin — в Берлин.</div>
+        </div>
         <div class="chips"><button class="tap" data-detail="tekamolo">Это жёсткое правило?</button></div>
         </article>
         <article class="cheat-card" id="order-partikeln" data-search="modalpartikeln doch mal denn ja schon gar wohl частицы ведь же ну разве оттенок">
@@ -312,14 +350,17 @@
         <div class="chips"><button class="tap" data-detail="particles">Разбор и позиция</button></div>
         <div class="example pair">
           <div class="pair-src">Komm <b class="hit">mal</b> her! · Das ist <b class="hit">ja</b> klar! · Wie heißt du <b class="hit">denn</b>?</div>
-          <div class="pair-gloss">mal ≈ -ка · ja ≈ ведь · denn ≈ же</div>
+          <div class="pair-gloss">Подойди-ка сюда! · Это ведь ясно! · А как тебя зовут?<br>Приблизительные оттенки в этих примерах, не постоянные переводы.</div>
         </div>
         </article>
         <article class="cheat-card" id="order-imperativ" data-search="komm geht kommen sie повелительное наклонение приказ просьба команда">
         <h3>Повелительное</h3>
           <div class="badges"><span class="badge level">A1</span><span class="badge kind">формы</span></div>
         <div class="formula"><span class="slot">du → Komm!</span><span class="arrow">·</span><span class="slot">ihr → Geht!</span><span class="arrow">·</span><span class="slot">Sie → Kommen Sie!</span></div>
-        <div class="example">Komm <b>mal</b> her! · <b>Seien</b> Sie ruhig!</div>
+        <div class="example pair">
+          <div class="pair-src">Komm <b>mal</b> her! · <b>Seien</b> Sie ruhig!</div>
+          <div class="pair-gloss">Подойди-ка сюда! · Ведите себя тихо!<br>Komm! — подойди; Geht! — идите (нескольким); Kommen Sie! — подойдите (вежливо).</div>
+        </div>
         <div class="chips"><button class="tap" data-detail="imperative">du-форма: особенности</button></div>
         </article>
       </div>
@@ -331,17 +372,19 @@
         <h3>Модальные глаголы</h3>
           <div class="badges"><span class="badge level">A1</span><span class="badge kind">формы</span></div>
         <div class="formula"><span class="slot">Heute</span><span class="slot verb">muss</span><span class="slot">ich in den Laden</span><span class="slot end">gehen</span></div>
-        <p><b>muss</b> = V2, смысловой инфинитив = конец.</p>
-        <p class="tiny">Модальные: können, müssen, wollen, sollen, dürfen, mögen.</p>
+        <p class="tiny">Сегодня мне нужно пойти в магазин. heute — сегодня; gehen — идти; in den Laden — в магазин.</p>
+        <p>muss — спрягаемый модальный глагол на позиции 2; gehen — инфинитив в конце.</p>
+<div class="legend"><span class="legend-item"><b>können → kann</b><span class="legend-mean"> — мочь / уметь</span></span><span class="legend-item"><b>müssen → muss</b><span class="legend-mean"> — нужно / должен</span></span><span class="legend-item"><b>wollen → will</b><span class="legend-mean"> — хотеть</span></span><span class="legend-item"><b>sollen → soll</b><span class="legend-mean"> — следует / велено</span></span><span class="legend-item"><b>dürfen → darf</b><span class="legend-mean"> — можно / разрешено</span></span><span class="legend-item"><b>mögen → mag</b><span class="legend-mean"> — нравиться / любить</span></span></div>
         <div class="chips"><button class="tap" data-detail="modal">Все модальные</button></div>
         </article>
         <article class="cheat-card" id="verbs-perfekt" data-search="perfekt haben sein partizip ii gegangen gemacht past perfect">
         <h3>Perfekt</h3>
           <div class="badges"><span class="badge level">A1</span><span class="badge kind">формы</span></div>
         <div class="formula"><span class="slot">Ich</span><span class="slot verb">habe</span><span class="slot">das schon</span><span class="slot end">gemacht</span></div>
+        <p class="tiny">Ich habe das schon gemacht — Я это уже сделал. machen → gemacht — делать → сделал; habe — вспомогательный глагол Perfekt.</p>
         <div class="example pair">
           <div class="pair-src">Ich <b class="hit">bin</b> nach Hause <b class="hit">gegangen</b>.</div>
-          <div class="pair-gloss">движение → sein</div>
+          <div class="pair-gloss">Я пошёл домой. gehen → gegangen — идти → пошёл; здесь движение к месту → sein.</div>
         </div>
         <div class="chips"><button class="tap" data-detail="perfekt">haben или sein?</button></div>
         </article>
@@ -349,13 +392,18 @@
         <h3>Отделяемые глаголы</h3>
           <div class="badges"><span class="badge level">A2</span><span class="badge kind">формы</span></div>
         <div class="formula"><span class="slot">Ich</span><span class="slot verb">stehe</span><span class="slot">um 7 Uhr</span><span class="slot end">auf</span></div>
-        <div class="example">weil ich um 7 Uhr <b>aufstehe</b></div>
+        <p class="tiny">Ich stehe um 7 Uhr auf — Я встаю в 7 часов. aufstehen — вставать.</p>
+        <div class="example pair">
+          <div class="pair-src">weil ich um 7 Uhr <b>aufstehe</b></div>
+          <div class="pair-gloss">…потому что я встаю в 7 часов. aufstehen — вставать; stehe … auf — встаю.</div>
+        </div>
         <div class="chips"><button class="tap" data-detail="separable">Почему в придаточном снова вместе?</button></div>
         </article>
         <article class="cheat-card" id="verbs-passiv" data-search="passive passiv werden partizip ii wird gebaut пассив">
         <h3>Passiv</h3>
           <div class="badges"><span class="badge level">B1</span><span class="badge kind">формы</span></div>
         <div class="formula"><span class="slot">Das Haus</span><span class="slot verb">wird</span><span class="slot">2026</span><span class="slot end">gebaut</span></div>
+        <p class="tiny">Das Haus wird 2026 gebaut — Дом строят в 2026 году. Haus — дом; bauen → gebaut — строить → построенный; wird образует Passiv.</p>
         <p><b>werden + Partizip II</b></p>
         <div class="chips"><button class="tap" data-detail="passive">Passiv в двух временах</button></div>
         </article>
@@ -363,9 +411,10 @@
         <h3>Konjunktiv II</h3>
           <div class="badges"><span class="badge level">B1</span><span class="badge kind">формы</span></div>
         <p><b>würde + инфинитив</b> — универсальная форма; частые прямые: <b>wäre, hätte, könnte, möchte, müsste, sollte</b>.</p>
+<div class="legend"><span class="legend-item"><b>wäre / hätte</b><span class="legend-mean"> — был бы / имел бы</span></span><span class="legend-item"><b>könnte / möchte</b><span class="legend-mean"> — мог бы / хотел бы</span></span><span class="legend-item"><b>müsste / sollte</b><span class="legend-mean"> — нужно было бы / следовало бы</span></span></div>
         <div class="example pair">
           <div class="pair-src">Wenn ich Zeit <b class="hit">hätte</b>, <b class="hit">würde</b> ich reisen.<br><b class="hit">Könnten Sie</b> mir helfen?</div>
-          <div class="pair-gloss">— нереальное сейчас.<br>— вежливая просьба.</div>
+          <div class="pair-gloss">Если бы у меня было время, я бы путешествовал.<br>Не могли бы Вы мне помочь? (вежливая просьба).</div>
         </div>
         <div class="chips"><button class="tap" data-detail="konjunktiv2">Когда и зачем</button></div>
         </article>
@@ -375,7 +424,7 @@
         <p>Вместо Partizip II — <b>Infinitiv + Infinitiv</b>.</p>
         <div class="example pair">
           <div class="pair-src">Ich <b class="hit">habe arbeiten müssen</b>. Не “gemusst”.</div>
-          <div class="pair-gloss">Я должен был работать.</div>
+          <div class="pair-gloss">Мне пришлось работать. müssen — нужно; arbeiten — работать.</div>
         </div>
         <p class="tiny">Достаточно узнавать; активно — уровень выше.</p>
         <div class="chips"><button class="tap" data-detail="double-infinitive">Разбор</button></div>
@@ -384,9 +433,10 @@
         <h3>Präteritum: war, hatte…</h3>
           <div class="badges"><span class="badge level">A2</span><span class="badge kind">формы</span></div>
         <p>Вторая форма прошедшего. В речи — Perfekt; в текстах, а также с <b>sein, haben и модальными</b> — Präteritum: <b>wollte, konnte, musste, sollte</b>:</p>
+<div class="legend"><span class="legend-item"><b>wollte / konnte</b><span class="legend-mean"> — хотел / мог</span></span><span class="legend-item"><b>musste / sollte / durfte</b><span class="legend-mean"> — пришлось / следовало / разрешалось</span></span></div>
         <div class="example pair">
           <div class="pair-src">Ich <b class="hit">war</b> krank. · Ich <b class="hit">hatte</b> keine Zeit.</div>
-          <div class="pair-gloss">«я был болен» · «у меня не было времени».</div>
+          <div class="pair-gloss">Я был болен. · У меня не было времени.<br>sein → war — быть → был; haben → hatte — иметь → имел.</div>
         </div>
         <p class="tiny">Достаточно узнавать; активно — в основном war/hatte/модальные.</p>
         <div class="chips"><button class="tap" data-detail="praeteritum">Формы и граница</button></div>
@@ -400,43 +450,60 @@
         <h3>weil — потому что</h3>
           <div class="badges"><span class="badge level">A1</span><span class="badge kind">связь</span></div>
         <div class="formula"><span class="slot sub">weil</span><span class="slot">ich heute arbeiten</span><span class="slot end">muss</span></div>
-        <div class="example">Ich komme nicht, <b>weil ich arbeiten muss.</b></div>
+        <p class="tiny">weil ich heute arbeiten muss — потому что мне сегодня нужно работать.</p>
+        <div class="example pair">
+          <div class="pair-src">Ich komme nicht, <b>weil ich arbeiten muss.</b></div>
+          <div class="pair-gloss">Я не приду, потому что мне нужно работать. kommen — приходить; arbeiten — работать.</div>
+        </div>
         </article>
         <article class="cheat-card" id="clauses-dass" data-search="dass that что ich glaube denke hoffe sage subordinate">
         <h3>dass — что</h3>
           <div class="badges"><span class="badge level">A2</span><span class="badge kind">связь</span></div>
-        <div class="example">Ich glaube, <b>dass er heute kommt.</b></div>
+<div class="legend"><span class="legend-item"><b>glauben / denken</b><span class="legend-mean"> — полагать / думать</span></span><span class="legend-item"><b>hoffen / sagen / wissen</b><span class="legend-mean"> — надеяться / говорить / знать</span></span></div>
+        <div class="example pair">
+          <div class="pair-src">Ich glaube, <b>dass er heute kommt.</b></div>
+          <div class="pair-gloss">Я думаю, что он сегодня придёт. glauben — полагать; kommt — придёт/приходит.</div>
+        </div>
         <p class="tiny">Типично после glauben, denken, hoffen, sagen, wissen…</p>
         </article>
         <article class="cheat-card" id="clauses-wenn-als" data-search="wenn if when если когда condition repeated als subordinate">
         <h3>wenn — если / когда</h3>
           <div class="badges"><span class="badge level">A2</span><span class="badge kind">связь</span></div>
-        <div class="example"><b>Wenn ich Zeit habe,</b> komme ich.</div>
+        <div class="example pair">
+          <div class="pair-src"><b>Wenn ich Zeit habe,</b> komme ich.</div>
+          <div class="pair-gloss">Если у меня будет время, я приду. haben — иметь; Zeit — время; komme — приду.</div>
+        </div>
         <p>Если придаточное стоит первым, после запятой сразу идёт глагол главного: <b>…, komme ich.</b></p>
         <div class="chips"><button class="tap" data-detail="wenn-als">wenn vs als</button></div>
         </article>
         <article class="cheat-card" id="clauses-obwohl" data-search="obwohl although хотя subordinate verb end trotzdem">
         <h3>obwohl — хотя</h3>
           <div class="badges"><span class="badge level">A2</span><span class="badge kind">связь</span></div>
-        <div class="example">Er geht spazieren, <b>obwohl es regnet.</b></div>
+        <div class="example pair">
+          <div class="pair-src">Er geht spazieren, <b>obwohl es regnet.</b></div>
+          <div class="pair-gloss">Он идёт гулять, хотя идёт дождь. spazieren gehen — гулять; es regnet — идёт дождь.</div>
+        </div>
         <div class="chips"><button class="tap" data-detail="obwohl">obwohl vs trotzdem</button></div>
         </article>
         <article class="cheat-card" id="clauses-ob" data-search="ob whether ли indirect question indirekte frage">
         <h3>ob — ли</h3>
           <div class="badges"><span class="badge level">A2</span><span class="badge kind">связь</span></div>
-        <div class="example">Ich weiß nicht, <b>ob er kommt.</b></div>
+        <div class="example pair">
+          <div class="pair-src">Ich weiß nicht, <b>ob er kommt.</b></div>
+          <div class="pair-gloss">Я не знаю, придёт ли он. wissen → weiß — знать → знаю.</div>
+        </div>
         </article>
         <article class="cheat-card" id="clauses-konnektoren" data-search="und aber denn oder sondern coordinating conjunctions coordinators verb second не отправляют глагол в конец sondern vs aber nicht sondern не а исправление не только но и">
         <h3>Не отправляют глагол в конец</h3>
           <div class="badges"><span class="badge level">A1</span><span class="badge kind">связь</span></div>
-        <p><b>und, aber, denn, oder, sondern</b></p>
+<div class="legend"><span class="legend-item"><b>und</b><span class="legend-mean"> — и</span></span><span class="legend-item"><b>aber</b><span class="legend-mean"> — но</span></span><span class="legend-item"><b>denn</b><span class="legend-mean"> — потому что</span></span><span class="legend-item"><b>oder</b><span class="legend-mean"> — или</span></span><span class="legend-item"><b>sondern</b><span class="legend-mean"> — а (не A, а B)</span></span></div>
         <div class="example pair">
           <div class="pair-src">Ich bleibe zu Hause, <b class="hit">denn</b> ich bin müde.</div>
-          <div class="pair-gloss">denn ≈ потому что, но порядок — как после und</div>
+          <div class="pair-gloss">Я остаюсь дома, потому что устал. denn — потому что; после него V2.</div>
         </div>
         <div class="example pair">
           <div class="pair-src">Sie kommt <b>nicht</b> aus Bukarest, <b class="hit">sondern</b> aus Deva.</div>
-          <div class="pair-gloss">«не из Бухареста, а из Девы»: после nicht/kein второй вариант вводит sondern</div>
+          <div class="pair-gloss">Она не из Бухареста, а из Девы. sondern — «а» при исправлении отрицания.</div>
         </div>
         <div class="chips"><button class="tap" data-detail="coordinators">weil vs denn</button><button class="tap" data-detail="sondern">sondern vs aber</button></div>
         </article>
@@ -447,7 +514,7 @@
           <div class="badges"><span class="badge level">A2</span><span class="badge kind">связь</span></div>
         <div class="example pair">
           <div class="pair-src">Ich lerne Deutsch, <b class="hit">um in Berlin zu arbeiten.</b><br>Ich erkläre es langsam, <b class="hit">damit du alles verstehst.</b></div>
-          <div class="pair-gloss">— субъект тот же.<br>— субъекты разные.</div>
+          <div class="pair-gloss">Я учу немецкий, чтобы работать в Берлине (один субъект).<br>Я объясняю медленно, чтобы ты всё понял (разные субъекты).</div>
         </div>
         <div class="chips"><button class="tap" data-detail="um-damit">Как выбрать?</button></div>
         </article>
@@ -456,7 +523,7 @@
           <div class="badges"><span class="badge level">B1</span><span class="badge kind">связь</span></div>
         <div class="example pair">
           <div class="pair-src">Das ist der Mann, <b class="hit">der</b> hier arbeitet.<br>Das ist der Mann, <b class="hit">den</b> ich kenne.</div>
-          <div class="pair-gloss">der — сам действует (Wer?)<br>den — над ним действие (Wen?)</div>
+          <div class="pair-gloss">Это мужчина, который здесь работает (der — субъект).<br>Это мужчина, которого я знаю (den — объект).</div>
         </div>
         <p class="tiny">Genitiv: der Mann, <b>dessen</b> Auto… (чей; ж.р./мн.ч. — <b>deren</b>)</p>
         <div class="chips"><button class="tap" data-detail="relative">Как выбрать der/den/dem?</button></div>
@@ -469,7 +536,7 @@
         <div class="chips"><button class="tap" data-detail="linking-adverbs">Чем отличаются от союзов?</button></div>
         <div class="example pair">
           <div class="pair-src">Es regnete. <b class="hit">Deshalb</b> blieben wir zu Hause. · <b class="hit">Trotzdem</b> ging er spazieren.</div>
-          <div class="pair-gloss">Deshalb ≈ поэтому · Trotzdem ≈ несмотря на это</div>
+          <div class="pair-gloss">Шёл дождь. Поэтому мы остались дома. · Тем не менее он пошёл гулять.</div>
         </div>
         </article>
       </div>
@@ -494,19 +561,26 @@
           </table>
         </div>
         <p class="tiny">Основа + окончание: -e, -st, -t (ich/du/er). Жирным — на чём чаще всего ошибаются.</p>
+<div class="legend"><span class="legend-item"><b>spielen</b><span class="legend-mean"> — играть</span></span><span class="legend-item"><b>sein</b><span class="legend-mean"> — быть</span></span><span class="legend-item"><b>haben</b><span class="legend-mean"> — иметь</span></span></div>
         <div class="chips"><button class="tap" data-detail="conjugation">Смена гласной и -t/-d</button></div>
         </article>
         <article class="cheat-card" id="extras-dativ-plural" data-search="dativ plural n kindern freunden существительное множественное">
         <h3>Dativ Plural</h3>
           <div class="badges"><span class="badge level">A2</span><span class="badge kind">формы</span></div>
         <p>Обычно артикль <b>den</b> + существительное получает <b>-n</b>, если его ещё нет.</p>
-        <div class="example">mit <b>den Kindern</b> · mit <b>meinen Freunden</b></div>
+        <div class="example pair">
+          <div class="pair-src">mit <b>den Kindern</b> · mit <b>meinen Freunden</b></div>
+          <div class="pair-gloss">С детьми · с моими друзьями. Kind → Kinder — ребёнок → дети; Freund → Freunde — друг → друзья.</div>
+        </div>
         </article>
         <article class="cheat-card" id="extras-plural" data-search="plural множественное число умлаут frauen stühle kinder autos">
-        <h3>Plural: ставка по роду</h3>
+        <h3>Множественное число: пять моделей</h3>
           <div class="badges"><span class="badge level">A1</span><span class="badge kind">формы</span></div>
-        <p>Единого правила нет: fem → <b>-en/-n</b>, mask → <b>-e</b>, neut → <b>-er</b> — часто с умлаутом; на -er/-el/-en чаще без изменения.</p>
-        <div class="example">die Frau → die <b>Frauen</b> · der Stuhl → die <b>Stühle</b><br>das Kind → die <b>Kinder</b> · das Auto → die <b>Autos</b></div>
+        <p>Множественное число учат со словом: -e, -er, -(e)n, -s или без окончания; иногда с умлаутом. Род даёт лишь подсказку, не надёжное правило.</p>
+        <div class="example pair">
+          <div class="pair-src">die Frau → die <b>Frauen</b> · der Stuhl → die <b>Stühle</b><br>das Kind → die <b>Kinder</b> · das Auto → die <b>Autos</b></div>
+          <div class="pair-gloss">Женщина → женщины · стул → стулья.<br>Ребёнок → дети · машина → машины.</div>
+        </div>
         <p class="tiny">Заимствования и короткие слова → -s: Parks, Handys. Форму конкретного слова при сомнении проверяй в словаре.</p>
         <div class="chips"><button class="tap" data-detail="plural">Все пять моделей</button></div>
         </article>
@@ -514,28 +588,40 @@
         <h3>Genitiv: -s / -es</h3>
           <div class="badges"><span class="badge level">A2</span><span class="badge kind">формы</span></div>
         <p>Maskulin/Neutrum часто получают <b>-s/-es</b>.</p>
-        <div class="example">das Auto <b>des Vaters</b><br>die Farbe <b>des Hauses</b></div>
+        <div class="example pair">
+          <div class="pair-src">das Auto <b>des Vaters</b><br>die Farbe <b>des Hauses</b></div>
+          <div class="pair-gloss">Машина отца · цвет дома. Vater — отец; Haus — дом.</div>
+        </div>
         </article>
         <article class="cheat-card" id="extras-n-deklination" data-search="n-deklination student studenten weak nouns">
         <h3>N-Deklination</h3>
           <div class="badges"><span class="badge level">B1</span><span class="badge kind">формы</span></div>
         <p>Некоторые мужские существительные получают <b>-n/-en</b> почти везде, кроме Nominativ Singular.</p>
-        <div class="example">der Student → den/dem/des <b>Studenten</b></div>
+        <div class="example pair">
+          <div class="pair-src">der Student → den/dem/des <b>Studenten</b></div>
+          <div class="pair-gloss">Студент: der Student (кто?) → den Studenten (кого?), dem Studenten (кому?), des Studenten (чей?).</div>
+        </div>
         <div class="chips"><button class="tap" data-detail="n-decl">Частые слова</button></div>
         </article>
         <article class="cheat-card" id="extras-adjektive" data-search="adjective endings прилагательные der ein guter guten gutem окончания">
         <h3>Прилагательные: не учи вслепую</h3>
           <div class="badges"><span class="badge level">A2</span><span class="badge kind">формы</span></div>
         <p>После <b>der-слов</b> артикль уже показывает род/падеж, поэтому прилагательное чаще имеет <b>-e/-en</b>.</p>
-        <div class="example">der gut<b>e</b> Mann · mit dem gut<b>en</b> Mann</div>
+        <div class="example pair">
+          <div class="pair-src">der gut<b>e</b> Mann · mit dem gut<b>en</b> Mann</div>
+          <div class="pair-gloss">Хороший мужчина · с хорошим мужчиной. gut → gute/guten — хороший, с окончанием.</div>
+        </div>
         <div class="chips"><button class="tap" data-detail="adjectives">Короткая модель</button></div>
         </article>
         <article class="cheat-card" id="extras-komparativ" data-search="komparativ superlativ schneller am schnellsten больше лучше сравнение степень als">
         <h3>Сравнение: -er / am -sten</h3>
           <div class="badges"><span class="badge level">A2</span><span class="badge kind">формы</span></div>
         <div class="formula"><span class="slot">schnell</span><span class="arrow">→</span><span class="slot">schneller</span><span class="arrow">→</span><span class="slot">am schnellsten</span></div>
-        <div class="example">Heute ist es <b>wärmer</b>. · Ich komme <b>später</b> <b>als</b> du.</div>
-        <p class="tiny">Неровные: gut – besser – am besten · viel – mehr – am meisten · gern – lieber.</p>
+<div class="legend"><span class="legend-item"><b>gut → besser → am besten</b><span class="legend-mean"> — хорошо → лучше → лучше всех</span></span><span class="legend-item"><b>viel → mehr → am meisten</b><span class="legend-mean"> — много → больше → больше всего</span></span><span class="legend-item"><b>gern → lieber → am liebsten</b><span class="legend-mean"> — охотно → охотнее → охотнее всего</span></span></div>
+        <div class="example pair">
+          <div class="pair-src">Heute ist es <b>wärmer</b>. · Ich komme <b>später</b> <b>als</b> du.</div>
+          <div class="pair-gloss">Сегодня теплее. · Я приду позже тебя.<br>schnell → schneller → am schnellsten — быстро → быстрее → быстрее всех.</div>
+        </div>
         <div class="chips"><button class="tap" data-detail="comparative">Умлаут и разбор</button></div>
         </article>
       </div>
@@ -572,147 +658,147 @@
   "lookup-help": {
     "title": "Как пользоваться",
     "lead": "Триггер → форма → позиция.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Схема</b>Найди триггер — падежный вопрос, предлог, союз или глагольную конструкцию, — потом смотри нужную форму и позицию глагола.</div><div class=\"detail-block\"><b class=\"detail-label\">Поиск</b>Ищи сразу: <i>wem</i>, <i>weil</i>, <i>Perfekt</i> — или по-русски. Поиск проверяет все разделы сразу.</div><div class=\"detail-block\"><b class=\"detail-label\">Навигация</b>Четыре раздела внизу: падежи, формы, порядок слов, придаточные.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Схема</b>Найди триггер — падежный вопрос, предлог, союз или глагольную конструкцию, — потом смотри нужную форму и позицию глагола.</div><div class=\"detail-block\"><b class=\"detail-label\">Поиск</b>Ищи сразу: <i>wem</i>, <i>weil</i>, <i>Perfekt</i> — или по-русски. Поиск проверяет все разделы сразу.</div><div class=\"detail-block\"><b class=\"detail-label\">Навигация</b>Четыре раздела внизу: падежи, формы, порядок слов, придаточные.</div><div class=\"detail-block\"><b class=\"detail-label\">Слова и формы</b>Модальные: müssen — нужно, muss — форма для ich/er/sie/es. Infinitiv — базовая форма; Partizip II — причастие (machen → gemacht). haben/sein могут образовывать Perfekt, werden — Passiv: переводится вся конструкция, а не каждое слово отдельно.</div>"
   },
   "linking-adverbs": {
     "title": "Связующие наречия: разбор",
     "lead": "Позиция 1, глагол сразу после: Deshalb blieben wir…",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">deshalb / deswegen</b>Ich war müde, <i>deshalb</i> schlief ich sofort.<p class=\"detail-comment\">«поэтому»: причина — в первом предложении.</p></div><div class=\"detail-block\"><b class=\"detail-label\">trotzdem vs obwohl</b>Es regnete. <i>Trotzdem</i> ging er raus. — наречие, позиция 1. · …, <i>obwohl</i> es regnete. — союз, глагол в конец. «Trotzdem, dass…» — разговорное; в норме obwohl.</div><div class=\"detail-block\"><b class=\"detail-label\">allerdings</b>Das Essen war gut. <i>Allerdings</i> war es teuer.<p class=\"detail-comment\">«впрочем/однако»: мягкий контраст.</p></div><div class=\"detail-block\"><b class=\"detail-label\">außerdem</b>Er ist müde. <i>Außerdem</i> hat er Kopfschmerzen.<p class=\"detail-comment\">«кроме того»: добавление.</p></div><div class=\"detail-block\"><b class=\"detail-label\">währenddessen</b>Ich koche. <i>Währenddessen</i> sieht er fern.<p class=\"detail-comment\">«тем временем»: одновременность.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Позиция</b>Позиция 1 — как Heute/Dann в V2. Сравни с союзом denn: после него обычный порядок слов, см. Coordinators.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">deshalb / deswegen</b>Ich war müde, <i>deshalb</i> schlief ich sofort.<p class=\"detail-comment\">Я устал, поэтому сразу уснул. «поэтому»: причина — в первом предложении.</p></div><div class=\"detail-block\"><b class=\"detail-label\">trotzdem vs obwohl</b>Es regnete. <i>Trotzdem</i> ging er raus. — наречие, позиция 1. · …, <i>obwohl</i> es regnete. — союз, глагол в конец. «Trotzdem, dass…» — разговорное; в норме obwohl.<p class=\"detail-comment\">Шёл дождь. Тем не менее он вышел. · …хотя шёл дождь.</p></div><div class=\"detail-block\"><b class=\"detail-label\">allerdings</b>Das Essen war gut. <i>Allerdings</i> war es teuer.<p class=\"detail-comment\">Еда была хорошая. Впрочем, она была дорогой. «впрочем/однако»: мягкий контраст.</p></div><div class=\"detail-block\"><b class=\"detail-label\">außerdem</b>Er ist müde. <i>Außerdem</i> hat er Kopfschmerzen.<p class=\"detail-comment\">Он устал. Кроме того, у него болит голова. «кроме того»: добавление.</p></div><div class=\"detail-block\"><b class=\"detail-label\">währenddessen</b>Ich koche. <i>Währenddessen</i> sieht er fern.<p class=\"detail-comment\">Я готовлю. Тем временем он смотрит телевизор. «тем временем»: одновременность.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Позиция</b>Позиция 1 — как Heute/Dann в V2. Сравни с союзом denn: после него обычный порядок слов, см. Coordinators.</div>"
   },
   "conjugation": {
     "title": "Спряжение: нюансы",
     "lead": "Основа + окончание — но у сильных глаголов меняется гласная.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">-t/-d основы</b>arbeiten → du <i>arbeitest</i><p class=\"detail-comment\">между -t-основой и -st/-t вставляется -e-.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Смена гласной</b><i>lesen</i> → du <i>liest</i> · <i>fahren</i> → du <i>fährst</i>, er <i>fährt</i> (a → ä).<p class=\"detail-comment\">Только du и er.</p></div><div class=\"detail-block\"><b class=\"detail-label\">sein / haben</b>Нерегулярные целиком: <i>bin, bist, ist…</i> · <i>habe, hast, hat…</i><p class=\"detail-comment\">учи как таблицу.</p></div><div class=\"detail-block\"><b class=\"detail-label\">wir / ihr / Sie</b>wir = инфинитив · ihr = основа + <i>-t</i> · sie/Sie = инфинитив<p class=\"detail-comment\">никогда не меняются.</p></div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">-t/-d основы</b>arbeiten → du <i>arbeitest</i><p class=\"detail-comment\">arbeiten → du arbeitest — работать → ты работаешь. между -t-основой и -st/-t вставляется -e-.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Смена гласной</b><i>lesen</i> → du <i>liest</i> · <i>fahren</i> → du <i>fährst</i>, er <i>fährt</i> (a → ä).<p class=\"detail-comment\">lesen → du liest — читать → ты читаешь; fahren → du fährst, er fährt — ехать → ты едешь, он едет. Только du и er.</p></div><div class=\"detail-block\"><b class=\"detail-label\">sein / haben</b>Нерегулярные целиком: <i>bin, bist, ist…</i> · <i>habe, hast, hat…</i><p class=\"detail-comment\">sein — быть: я есть, ты есть, он есть; haben — иметь: у меня/тебя/него есть. В русском «есть» часто опускается. учи как таблицу.</p></div><div class=\"detail-block\"><b class=\"detail-label\">wir / ihr / Sie</b>Для регулярных глаголов: wir/sie/Sie — как инфинитив; ihr — основа + -t. sein — исключение: wir/sie/Sie sind, ihr seid.</div>"
   },
   "negation": {
     "title": "nicht: позиция",
     "lead": "Обычно перед тем, что остаётся; перед словом — когда отрицаешь именно его.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Перед остатком</b>Ich komme <b>nicht</b>. · Ich gehe heute <b>nicht</b> ins Kino.<p class=\"detail-comment\">не в самом конце, а перед тем, что осталось в предложении.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Перед словом</b>Ich komme <b>nicht</b> heute, sondern morgen.<p class=\"detail-comment\">«не сегодня»: отрицаешь обстоятельство, а не приход. Этот «а» — sondern: он стоит только после отрицания.</p></div><div class=\"detail-block\"><b class=\"detail-label\">kein склоняется</b>Как ein: kein Auto · keine Zeit · <i>keinen</i> Mann (Akk.) · keinem Kind (Dat.).</div><div class=\"detail-block\"><b class=\"detail-label\">Разница</b><i>kein</i> Auto = вообще нет машины · <i>nicht</i> mein Auto = машина есть, но не моя.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Перед остатком</b>Ich komme <b>nicht</b>. · Ich gehe heute <b>nicht</b> ins Kino.<p class=\"detail-comment\">Я не приду. · Я сегодня не пойду в кино. не в самом конце, а перед тем, что осталось в предложении.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Перед словом</b>Ich komme <b>nicht</b> heute, sondern morgen.<p class=\"detail-comment\">Я приду не сегодня, а завтра. «не сегодня»: отрицаешь обстоятельство, а не приход. Этот «а» — sondern: он стоит только после отрицания.</p></div><div class=\"detail-block\"><b class=\"detail-label\">kein склоняется</b>Как ein: kein Auto · keine Zeit · <i>keinen</i> Mann (Akk.) · keinem Kind (Dat.).<p class=\"detail-comment\">kein Auto — нет машины; keine Zeit — нет времени; Ich sehe keinen Mann — Я не вижу ни одного мужчины; Ich helfe keinem Kind — Я не помогаю ни одному ребёнку.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Разница</b><i>kein</i> Auto = вообще нет машины · <i>nicht</i> mein Auto = машина есть, но не моя.</div>"
   },
   "imperative": {
     "title": "Повелительное: du-форма",
     "lead": "du-форма → убираешь -st и само du.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Правило du</b><i>du kommst</i> → <i>Komm!</i> · <i>du machst</i> → <i>Mach!</i>.</div><div class=\"detail-block\"><b class=\"detail-label\">e→i остаётся, умлаут теряется</b><i>du gibst</i> → <i>Gib!</i> · <i>du liest</i> → <i>Lies!</i> · <i>du fährst</i> → <i>Fahr!</i><p class=\"detail-comment\">(умлаут в повелительном теряется).</p></div><div class=\"detail-block\"><b class=\"detail-label\">-t/-d основы</b><i>du wartest</i> → <i>Warte!</i><p class=\"detail-comment\">вставное -e-.</p></div><div class=\"detail-block\"><b class=\"detail-label\">sein</b><i>Sei ruhig!</i> · <i>Seid ruhig!</i> · <i>Seien Sie ruhig!</i><p class=\"detail-comment\">исключение.</p></div><div class=\"detail-block\"><b class=\"detail-label\">ihr / Sie</b>ihr-форма без ihr: <i>Geht!</i> · глагол + Sie: <i>Kommen Sie bitte!</i>.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Правило du</b><i>du kommst</i> → <i>Komm!</i> · <i>du machst</i> → <i>Mach!</i>.<p class=\"detail-comment\">du kommst → Komm! — ты приходишь → Приходи!; du machst → Mach! — ты делаешь → Делай!</p></div><div class=\"detail-block\"><b class=\"detail-label\">e→i остаётся, умлаут теряется</b><i>du gibst</i> → <i>Gib!</i> · <i>du liest</i> → <i>Lies!</i> · <i>du fährst</i> → <i>Fahr!</i><p class=\"detail-comment\">Gib! — Дай!; Lies! — Читай!; Fahr! — Езжай! (умлаут в повелительном теряется).</p></div><div class=\"detail-block\"><b class=\"detail-label\">-t/-d основы</b><i>du wartest</i> → <i>Warte!</i><p class=\"detail-comment\">Ты ждёшь → Жди! вставное -e-.</p></div><div class=\"detail-block\"><b class=\"detail-label\">sein</b><i>Sei ruhig!</i> · <i>Seid ruhig!</i> · <i>Seien Sie ruhig!</i><p class=\"detail-comment\">Будь тихим! · Будьте тихими! · Ведите себя тихо! (вежливо). исключение.</p></div><div class=\"detail-block\"><b class=\"detail-label\">ihr / Sie</b>ihr-форма без ihr: <i>Geht!</i> · глагол + Sie: <i>Kommen Sie bitte!</i>.<p class=\"detail-comment\">Идите! (нескольким) · Приходите, пожалуйста! (вежливо).</p></div>"
   },
   "praeteritum": {
     "title": "Präteritum: формы",
-    "lead": "Модальные, sein и haben почти всегда в Präteritum — даже в речи.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Готовые формы</b><i>war, hatte, wollte, konnte, musste, sollte, durfte</i><p class=\"detail-comment\">учи списком.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Регулярные</b>основа + <i>-te</i>: machte, spielte, arbeitete. 1-е и 3-е лицо совпадают.</div><div class=\"detail-block\"><b class=\"detail-label\">Граница с Perfekt</b>Речь: <i>Ich bin gegangen</i>. Текст: <i>Er ging</i> — «пошёл». Но модальные и sein/haben — почти всегда Präteritum: <i>Ich musste arbeiten</i> (см. Два инфинитива).</div>"
+    "lead": "sein, haben и модальные часто употребляют в Präteritum даже в речи; это не запрет Perfekt.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Готовые формы</b><i>war, hatte, wollte, konnte, musste, sollte, durfte</i><p class=\"detail-comment\">war — был; hatte — имел; wollte — хотел; konnte — мог; musste — пришлось/должен был; sollte — следовало/было велено; durfte — разрешалось. учи списком.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Регулярные</b>основа + <i>-te</i>: machte, spielte, arbeitete. 1-е и 3-е лицо совпадают.<p class=\"detail-comment\">machte — делал; spielte — играл; arbeitete — работал.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Граница с Perfekt</b>Речь: <i>Ich bin gegangen</i>. Текст: <i>Er ging</i> — «пошёл». Но модальные и sein/haben — почти всегда Präteritum: <i>Ich musste arbeiten</i> (см. Два инфинитива).<p class=\"detail-comment\">Ich bin gegangen — Я ушёл/пошёл; Er ging — Он ушёл/пошёл. sein, haben и модальные часто стоят в Präteritum даже в речи, но Perfekt тоже возможен: Ich habe arbeiten müssen — Мне пришлось работать.</p></div>"
   },
   "comparative": {
     "title": "Сравнение: разбор",
     "lead": "Короткое прилагательное часто получает умлаут: kurz → kürzer.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Умлаут</b><i>kurz → kürzer</i> · <i>alt → älter</i> · <i>groß → größer</i><p class=\"detail-comment\">обычно односложные.</p></div><div class=\"detail-block\"><b class=\"detail-label\">than = als</b>größer <i>als</i> ich. — «чем я». В сравнении — всегда als (равенство — so … wie).</div><div class=\"detail-block\"><b class=\"detail-label\">am -sten</b>Суперлатив-наречие: Er läuft <i>am schnellsten</i>. С артиклем: der beste Film.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Умлаут</b><i>kurz → kürzer</i> · <i>alt → älter</i> · <i>groß → größer</i><p class=\"detail-comment\">Короткий → короче; старый → старше; большой/высокий → больше/выше. обычно односложные.</p></div><div class=\"detail-block\"><b class=\"detail-label\">than = als</b>größer <i>als</i> ich. — «чем я». В сравнении — всегда als (равенство — so … wie).<p class=\"detail-comment\">Выше/больше меня; so groß wie ich — такой же высокий, как я.</p></div><div class=\"detail-block\"><b class=\"detail-label\">am -sten</b>Суперлатив-наречие: Er läuft <i>am schnellsten</i>. С артиклем: der beste Film.<p class=\"detail-comment\">Он бегает быстрее всех. · Лучший фильм.</p></div>"
   },
   "article-choice": {
     "title": "der vs ein: впервые или уже известно",
     "lead": "Первый раз — ein; дальше — der.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Пара</b><i>Ein Hund</i> läuft durch den Park. <i>Der Hund</i> trägt einen Ball. — «какая-то собака» → «та самая собака».</div><div class=\"detail-block\"><b class=\"detail-label\">Профессия</b><i>Ich bin Lehrer</i> · <i>Sie ist Ärztin</i> — как в русском, без артикля.</div><div class=\"detail-block\"><b class=\"detail-label\">kein</b><i>Das ist kein Hund</i>, <i>sondern ein Wolf</i>. — отрицание того самого ein.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Пара</b><i>Ein Hund</i> läuft durch den Park. <i>Der Hund</i> trägt einen Ball. — «какая-то собака» → «та самая собака».<p class=\"detail-comment\">По парку бежит собака. Собака несёт мяч. laufen — бежать/идти; tragen — нести.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Профессия</b><i>Ich bin Lehrer</i> · <i>Sie ist Ärztin</i> — как в русском, без артикля.<p class=\"detail-comment\">Я учитель. · Она врач. Lehrer — учитель; Ärztin — врач (женщина).</p></div><div class=\"detail-block\"><b class=\"detail-label\">kein</b><i>Das ist kein Hund</i>, <i>sondern ein Wolf</i>. — отрицание того самого ein.<p class=\"detail-comment\">Это не собака, а волк. Wolf — волк.</p></div>"
   },
   "verb-preps": {
     "title": "Глагол + предлог: разбор",
-    "lead": "Падеж — от предлога; вопрос помогает вспомнить пару.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Подсказка вопросом</b>Auf <i>wen</i> wartest du? (Wen? = Akkusativ) — предлог auf требует Akk., поэтому <i>den Bus</i>.</div><div class=\"detail-block\"><b class=\"detail-label\">Частые пары</b>warten <i>auf + Akk</i> (ждать) · denken <i>an + Akk</i> (думать о) · sich erinnern <i>an + Akk</i> (помнить о) · teilnehmen <i>an + Dat</i> (участвовать в) · sich interessieren <i>für + Akk</i> (интересоваться).</div><div class=\"detail-block\"><b class=\"detail-label\">sich freuen</b><i>Ich freue mich auf die Reise</i> — предвкушаю (будущее) · <i>Ich freue mich über das Geschenk</i> — радуюсь уже случившемуся.</div><div class=\"detail-block\"><b class=\"detail-label\">sich</b>Возвратное местоимение: <i>Ich freue mich</i>, <i>du freust dich</i> — глагол «отражается» в местоимении. Пока достаточно узнавать.</div>"
+    "lead": "Учить пару вместе с падежом: warten auf + Akk., teilnehmen an + Dat.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Подсказка вопросом</b>Auf wen wartest du? — Кого ты ждёшь? Пара warten auf требует Akkusativ: Ich warte auf den Bus — Я жду автобус. Сам auf может употребляться и с Dativ в других конструкциях.<p class=\"detail-comment\">Wen? — кого?; Bus — автобус.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Частые пары</b>warten <i>auf + Akk</i> (ждать) · denken <i>an + Akk</i> (думать о) · sich erinnern <i>an + Akk</i> (помнить о) · teilnehmen <i>an + Dat</i> (участвовать в) · sich interessieren <i>für + Akk</i> (интересоваться).</div><div class=\"detail-block\"><b class=\"detail-label\">sich freuen</b><i>Ich freue mich auf die Reise</i> — предвкушаю (будущее) · <i>Ich freue mich über das Geschenk</i> — радуюсь уже случившемуся.<p class=\"detail-comment\">Я предвкушаю поездку. · Я рад подарку. Reise — поездка; Geschenk — подарок.</p></div><div class=\"detail-block\"><b class=\"detail-label\">sich</b>Возвратное местоимение: <i>Ich freue mich</i>, <i>du freust dich</i> — глагол «отражается» в местоимении. Пока достаточно узнавать.<p class=\"detail-comment\">Ich freue mich — Я рад/радуюсь; du freust dich — ты радуешься. mich/dich — возвратные формы, отдельный дословный перевод здесь не нужен.</p></div>"
   },
   "seit-vor": {
     "title": "seit: почему настоящее?",
-    "lead": "«Живу здесь два года» — по-немецки в настоящем времени.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">seit = до сих пор</b><i>Ich wohne seit zwei Jahren hier</i>. — Präsens + Dativ (zwei Jahr<i>en</i>! — см. Dativ Plural). Русское «живу» тоже настоящее.</div><div class=\"detail-block\"><b class=\"detail-label\">vor = назад</b><i>Ich bin vor zwei Jahren umgezogen</i>. — «переехал два года назад»: точка в прошлом + прошедшее время.</div><div class=\"detail-block\"><b class=\"detail-label\">Не как в английском</b>English: I have lived here for two years (Perfect). Немецкий — <i>Präsens</i>: <i>Ich wohne hier seit zwei Jahren</i>.</div>"
+    "lead": "Состояние продолжается сейчас → обычно Präsens; seit задаёт начало или длительность.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">seit = до сих пор</b><i>Ich wohne seit zwei Jahren hier</i>. — Präsens + Dativ (zwei Jahr<i>en</i>! — см. Dativ Plural). Русское «живу» тоже настоящее.<p class=\"detail-comment\">Я живу здесь уже два года.</p></div><div class=\"detail-block\"><b class=\"detail-label\">vor = назад</b><i>Ich bin vor zwei Jahren umgezogen</i>. — «переехал два года назад»: точка в прошлом + прошедшее время.</div><div class=\"detail-block\"><b class=\"detail-label\">Не как в английском</b>English: I have lived here for two years (Perfect). Немецкий — <i>Präsens</i>: <i>Ich wohne hier seit zwei Jahren</i>.<p class=\"detail-comment\">Я живу здесь уже два года. Разные языки выражают продолжающееся состояние разными временами.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Граница правила</b>Seit gestern habe ich nichts gegessen.<p class=\"detail-comment\">Со вчерашнего дня я ничего не ел. seit допускает Perfekt: действие рассматривается за период до настоящего.</p></div>"
   },
   "nominativ": {
     "title": "Nominativ",
     "lead": "Wer? Was? — кто? что?",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Обычно</b>Подлежащее: тот, кто выполняет действие.</div><div class=\"detail-block\"><b class=\"detail-label\">Пример</b><i>Der Mann</i> arbeitet.<p class=\"detail-comment\">Кто работает? Der Mann.</p></div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Обычно</b>Подлежащее: тот, кто выполняет действие.</div><div class=\"detail-block\"><b class=\"detail-label\">Пример</b><i>Der Mann</i> arbeitet.<p class=\"detail-comment\">Мужчина работает. arbeiten — работать. Кто работает? Der Mann.</p></div>"
   },
   "akkusativ": {
     "title": "Akkusativ",
     "lead": "Wen? Was? — кого? что?",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Часто</b>Прямой объект действия.</div><div class=\"detail-block\"><b class=\"detail-label\">Пример</b>Ich sehe <i>den Mann</i>.<p class=\"detail-comment\">Wen sehe ich?</p></div><div class=\"detail-block\"><b class=\"detail-label\">Самое заметное изменение</b>Maskulin: der → <b>den</b>, ein → <b>einen</b>.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Часто</b>Прямой объект действия.</div><div class=\"detail-block\"><b class=\"detail-label\">Пример</b>Ich sehe <i>den Mann</i>.<p class=\"detail-comment\">Я вижу мужчину. sehen → sehe — видеть → вижу. Wen sehe ich?</p></div><div class=\"detail-block\"><b class=\"detail-label\">Самое заметное изменение</b>Maskulin: der → <b>den</b>, ein → <b>einen</b>.</div>"
   },
   "dativ": {
     "title": "Dativ",
     "lead": "Wem? — кому? чему?",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Часто</b>Получатель, адресат, косвенный объект.</div><div class=\"detail-block\"><b class=\"detail-label\">Пример</b>Ich helfe <i>dem Mann</i>.<p class=\"detail-comment\">Wem helfe ich?</p></div><div class=\"detail-block\"><b class=\"detail-label\">Запомни</b>mit, bei, nach, seit, von, zu, aus → Dativ.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Часто</b>Получатель, адресат, косвенный объект.</div><div class=\"detail-block\"><b class=\"detail-label\">Пример</b>Ich helfe <i>dem Mann</i>.<p class=\"detail-comment\">Я помогаю мужчине. helfen → helfe — помогать → помогаю. Wem helfe ich?</p></div><div class=\"detail-block\"><b class=\"detail-label\">Запомни</b>mit, bei, nach, seit, von, zu, aus → Dativ.<p class=\"detail-comment\">mit — с; bei — у/при; nach — после/в (направление); seit — с/уже; von — от/о; zu — к/на; aus — из. Значение зависит от контекста.</p></div>"
   },
   "genitiv": {
     "title": "Genitiv",
     "lead": "Wessen? — чей? кого/чего?",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Часто</b>Принадлежность или связь.</div><div class=\"detail-block\"><b class=\"detail-label\">Пример</b>Das Auto <i>des Mannes</i>.</div><div class=\"detail-block\"><b class=\"detail-label\">Форма</b>Maskulin/Neutrum: des + существительное часто -s/-es.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Часто</b>Принадлежность или связь.</div><div class=\"detail-block\"><b class=\"detail-label\">Пример</b>Das Auto <i>des Mannes</i>.<p class=\"detail-comment\">Машина мужчины. Auto — машина; Mann — мужчина.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Форма</b>Maskulin/Neutrum: des + существительное часто -s/-es.</div>"
   },
   "wo-wohin": {
     "title": "Wo? / Wohin?",
     "lead": "Это правило связано с Wechselpräpositionen.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Wo? → Dativ</b>Статичное местоположение: Ich bin <i>in der Schule</i>.</div><div class=\"detail-block\"><b class=\"detail-label\">Wohin? → Akkusativ</b>Направление/смена положения относительно места: Ich gehe <i>in die Schule</i>.</div><div class=\"detail-block\"><b class=\"detail-label\">Важно</b>Не любое движение автоматически означает Akkusativ. Спроси: меняется ли положение относительно границы, которую задаёт предлог? <i>Ich jogge im Park</i> (движение внутри — Dat.) · <i>Ich jogge in den Park</i> (вхожу в парк — Akk.).</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Wo? → Dativ</b>Статичное местоположение: Ich bin <i>in der Schule</i>.<p class=\"detail-comment\">Я в школе. Schule — школа.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Wohin? → Akkusativ</b>Направление/смена положения относительно места: Ich gehe <i>in die Schule</i>.<p class=\"detail-comment\">Я иду в школу. gehen — идти.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Важно</b>Не любое движение автоматически означает Akkusativ. Спроси: меняется ли положение относительно границы, которую задаёт предлог? <i>Ich jogge im Park</i> (движение внутри — Dat.) · <i>Ich jogge in den Park</i> (вхожу в парк — Akk.).<p class=\"detail-comment\">Я бегаю в парке (внутри) · Я вбегаю в парк (направление внутрь).</p></div>"
   },
   "objects": {
     "title": "Два объекта",
     "lead": "Некоторые глаголы требуют сразу два объекта: кому (Dat.) + что (Akk.).",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Такие глаголы</b>geben, schenken, zeigen, bringen, sagen, erklären…</div><div class=\"detail-block\"><b class=\"detail-label\">geben</b>Ich gebe <i>dem Kind</i> (Wem? Dat.) <i>das Buch</i> (Was? Akk.).</div><div class=\"detail-block\"><b class=\"detail-label\">Типовая логика</b>Кому? = получатель → Dativ. Что? = передаваемая вещь → Akkusativ.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Такие глаголы</b>geben, schenken, zeigen, bringen, sagen, erklären…<p class=\"detail-comment\">geben — давать; schenken — дарить; zeigen — показывать; bringen — приносить; sagen — говорить; erklären — объяснять.</p></div><div class=\"detail-block\"><b class=\"detail-label\">geben</b>Ich gebe <i>dem Kind</i> (Wem? Dat.) <i>das Buch</i> (Was? Akk.).<p class=\"detail-comment\">Я даю ребёнку книгу. Kind — ребёнок; Buch — книга.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Типовая логика</b>Кому? = получатель → Dativ. Что? = передаваемая вещь → Akkusativ.</div>"
   },
   "possessives": {
     "title": "Притяжательные",
     "lead": "mein, dein, sein, ihr, unser, euer, ihr, Ihr",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Значения</b>мой, твой, его, её, наш, ваш, их, Ваш.</div><div class=\"detail-block\"><b class=\"detail-label\">Ihr — от Sie</b>Основа — по владельцу: du → dein (твой) · Sie → <b>Ihr</b> (Ваш, вежливое — с большой буквы) · sie → ihr (её/их). Окончание — из таблицы, по роду и падежу: die Adresse (Fem., Nom.) → <b>deine / Ihre Adresse</b> · das Auto → dein / Ihr Auto · den Bruder (Akk.) → deinen / Ihren Bruder.</div><div class=\"detail-block\"><b class=\"detail-label\">Модель</b>Склоняются как ein-слова. Поэтому: mein Bruder → meinen Bruder → meinem Bruder → meines Bruders. То же с любой основой: dein Bruder → deinen Bruder → deinem Bruder.</div><div class=\"detail-block\"><b class=\"detail-label\">Ловушка euer</b><b>euer</b> теряет e перед окончанием: mit <b>eurem</b> Bruder (не euerm) · <b>eure</b> Schwester.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Значения</b>мой, твой, его, её, наш, ваш, их, Ваш.<p class=\"detail-comment\">mein — мой; dein — твой; sein — его (м.р./ср.р.); ihr — её/их; unser — наш; euer — ваш; Ihr — Ваш.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Ihr — от Sie</b>Основа — по владельцу: du → dein (твой) · Sie → <b>Ihr</b> (Ваш, вежливое — с большой буквы) · sie → ihr (её/их). Окончание — из таблицы, по роду и падежу: die Adresse (Fem., Nom.) → <b>deine / Ihre Adresse</b> · das Auto → dein / Ihr Auto · den Bruder (Akk.) → deinen / Ihren Bruder.<p class=\"detail-comment\">Adresse — адрес; Auto — машина; Bruder — брат.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Модель</b>Склоняются как ein-слова. Поэтому: mein Bruder → meinen Bruder → meinem Bruder → meines Bruders. То же с любой основой: dein Bruder → deinen Bruder → deinem Bruder.<p class=\"detail-comment\">mein Bruder — мой брат; формы meinen/meinem/meines меняют падеж.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Ловушка euer</b><b>euer</b> теряет e перед окончанием: mit <b>eurem</b> Bruder; euerm тоже допустимо · <b>eure</b> Schwester.<p class=\"detail-comment\">mit eurem Bruder — с вашим братом; eure Schwester — ваша сестра.</p></div>"
   },
   "why-ein-endings": {
     "title": "Почему meinen / meinem?",
     "lead": "Окончание — как у артикля: den → meinen, dem → meinem, der → meiner.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Ключ</b>Окончания те же, что у определённого артикля. Сравни: den Mann → <i>meinen</i> Mann · dem Mann → <i>meinem</i> Mann · der Frau → <i>meiner</i> Frau.</div><div class=\"detail-block\"><b class=\"detail-label\">Где окончания нет</b>Только три клетки: Nom. m/n и Akk. n — <i>ein Mann, ein Kind</i>. Там форма без окончания, как в der-таблице der/das.</div><div class=\"detail-block\"><b class=\"detail-label\">Akkusativ</b>Заметно меняется только Maskulin: der → <i>den</i>, mein → <i>meinen</i>. Fem./Neut./Plural выглядят как Nominativ.</div><div class=\"detail-block\"><b class=\"detail-label\">Dativ</b>Различает всё: m/n → <i>-em</i>, f → <i>-er</i>, Plural → <i>-en</i> (+ -n у существительного).</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Ключ</b>Окончания те же, что у определённого артикля. Сравни: den Mann → <i>meinen</i> Mann · dem Mann → <i>meinem</i> Mann · der Frau → <i>meiner</i> Frau.<p class=\"detail-comment\">Mann — мужчина; meinen Mann — моего мужчину/мужа; meinem Mann — моему мужчине/мужу; meiner Frau — моей женщине/жене.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Где окончания нет</b>Только три клетки: Nom. m/n и Akk. n — <i>ein Mann, ein Kind</i>. Там форма без окончания, как в der-таблице der/das.<p class=\"detail-comment\">ein Mann — мужчина / один мужчина; ein Kind — ребёнок / один ребёнок.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Akkusativ</b>Заметно меняется только Maskulin: der → <i>den</i>, mein → <i>meinen</i>. Fem./Neut./Plural выглядят как Nominativ.</div><div class=\"detail-block\"><b class=\"detail-label\">Dativ</b>Различает всё: m/n → <i>-em</i>, f → <i>-er</i>, Plural → <i>-en</i> (+ -n у существительного).</div>"
   },
   "ihrem": {
     "title": "Почему ihrem?",
     "lead": "ihr + окончание Dativ.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Maskulin / Neutrum, Dativ</b>ihr + -em = <b>ihrem</b>.</div><div class=\"detail-block\"><b class=\"detail-label\">Примеры</b>mit <b>ihrem Bruder</b>; mit <b>ihrem Kind</b>.</div><div class=\"detail-block\"><b class=\"detail-label\">Но</b>Feminin: mit <b>ihrer Mutter</b>. Plural: mit <b>ihren Freunden</b>.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Maskulin / Neutrum, Dativ</b>ihr + -em = <b>ihrem</b>.<p class=\"detail-comment\">ihrem — её/их, с окончанием Dativ; заглавное Ihrem — Вашему/Вашим.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Примеры</b>mit <b>ihrem Bruder</b>; mit <b>ihrem Kind</b>.<p class=\"detail-comment\">С её/их братом · с её/их ребёнком.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Но</b>Feminin: mit <b>ihrer Mutter</b>. Plural: mit <b>ihren Freunden</b>.<p class=\"detail-comment\">С её/их матерью · с её/их друзьями.</p></div>"
   },
   "pronouns": {
     "title": "Личные местоимения",
     "lead": "Самые важные пары лучше выучить как тройки.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Тройки</b>ich–mich–mir · du–dich–dir · er–ihn–ihm · <b>sie–sie–ihr</b> (она) · es–es–ihm.</div><div class=\"detail-block\"><b class=\"detail-label\">Plural</b>wir–uns–uns · ihr–euch–euch · <b>sie–sie–ihnen</b> (они) · <b>Sie–Sie–Ihnen</b> (Вы — вежливое, с большой буквы).</div><div class=\"detail-block\"><b class=\"detail-label\">Genitiv</b>Личных местоимений в Genitiv здесь нет — формы редкие (statt meiner…), за пределами A1–B1.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Тройки</b>ich–mich–mir · du–dich–dir · er–ihn–ihm · <b>sie–sie–ihr</b> (она) · es–es–ihm.<p class=\"detail-comment\">ich–mich–mir — я–меня–мне; du–dich–dir — ты–тебя–тебе; er–ihn–ihm — он–его–ему; sie–sie–ihr — она–её–ей; es–es–ihm — оно–его–ему.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Plural</b>wir–uns–uns · ihr–euch–euch · <b>sie–sie–ihnen</b> (они) · <b>Sie–Sie–Ihnen</b> (Вы — вежливое, с большой буквы).<p class=\"detail-comment\">wir–uns–uns — мы–нас–нам; ihr–euch–euch — вы–вас–вам; sie–sie–ihnen — они–их–им; Sie–Sie–Ihnen — Вы–Вас–Вам.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Genitiv</b>Личных местоимений в Genitiv здесь нет — формы редкие (statt meiner…), за пределами A1–B1.<p class=\"detail-comment\">statt meiner — вместо меня.</p></div>"
   },
   "prep-akk": {
     "title": "Akkusativ-предлоги",
     "lead": "durch, für, gegen, ohne, um",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Примеры</b>für <i>den Mann</i> · ohne <i>mich</i> · durch <i>die Stadt</i>.</div><div class=\"detail-block\"><b class=\"detail-label\">Практика</b>Если видишь один из этих предлогов, не ищи смысловой вопрос — падеж уже задан предлогом.</div>"
+    "body": "<div class=\"legend\"><span class=\"legend-item\"><b>durch</b><span class=\"legend-mean\"> — через</span></span><span class=\"legend-item\"><b>für</b><span class=\"legend-mean\"> — для / за</span></span><span class=\"legend-item\"><b>gegen</b><span class=\"legend-mean\"> — против / около (время)</span></span><span class=\"legend-item\"><b>ohne</b><span class=\"legend-mean\"> — без</span></span><span class=\"legend-item\"><b>um</b><span class=\"legend-mean\"> — вокруг / в (время)</span></span></div>\n<div class=\"detail-block\"><b class=\"detail-label\">Примеры</b>für <i>den Mann</i> · ohne <i>mich</i> · durch <i>die Stadt</i>.<p class=\"detail-comment\">Для мужчины · без меня · через город.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Практика</b>Если видишь один из этих предлогов, не ищи смысловой вопрос — падеж уже задан предлогом.</div>"
   },
   "prep-dat": {
     "title": "Dativ-предлоги",
     "lead": "aus, bei, mit, nach, seit, von, zu",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Примеры</b>mit <i>meinem Bruder</i> · bei <i>der Arbeit</i> · nach <i>Berlin</i>.</div><div class=\"detail-block\"><b class=\"detail-label\">Сокращения</b>zu dem → <b>zum</b>, zu der → <b>zur</b>, von dem → <b>vom</b>.</div>"
+    "body": "<div class=\"legend\"><span class=\"legend-item\"><b>aus</b><span class=\"legend-mean\"> — из (изнутри)</span></span><span class=\"legend-item\"><b>bei</b><span class=\"legend-mean\"> — у / при</span></span><span class=\"legend-item\"><b>mit</b><span class=\"legend-mean\"> — с / на (транспорт)</span></span><span class=\"legend-item\"><b>nach</b><span class=\"legend-mean\"> — после / в (город, страна без артикля)</span></span><span class=\"legend-item\"><b>seit</b><span class=\"legend-mean\"> — с / уже (длительность)</span></span><span class=\"legend-item\"><b>von</b><span class=\"legend-mean\"> — от / о / принадлежность</span></span><span class=\"legend-item\"><b>zu</b><span class=\"legend-mean\"> — к / на (к месту)</span></span></div>\n<div class=\"detail-block\"><b class=\"detail-label\">Примеры</b>mit <i>meinem Bruder</i> · bei <i>der Arbeit</i> · nach <i>Berlin</i>.<p class=\"detail-comment\">С моим братом · на работе · в Берлин.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Сокращения</b>zu dem → <b>zum</b>, zu der → <b>zur</b>, von dem → <b>vom</b>.<p class=\"detail-comment\">zum/zur — к / на (к месту); vom — от / о / принадлежность, по контексту.</p></div>"
   },
   "two-way": {
     "title": "Wechselpräpositionen",
     "lead": "an, auf, hinter, in, neben, über, unter, vor, zwischen",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Dativ</b>Wo? положение: Das Buch liegt <i>auf dem Tisch</i>.</div><div class=\"detail-block\"><b class=\"detail-label\">Akkusativ</b>Wohin? смена положения: Ich lege das Buch <i>auf den Tisch</i>.</div>"
+    "body": "<div class=\"legend\"><span class=\"legend-item\"><b>an</b><span class=\"legend-mean\"> — у / на (контакт)</span></span><span class=\"legend-item\"><b>auf</b><span class=\"legend-mean\"> — на (поверхности)</span></span><span class=\"legend-item\"><b>hinter</b><span class=\"legend-mean\"> — за / позади</span></span><span class=\"legend-item\"><b>in</b><span class=\"legend-mean\"> — в / внутрь</span></span><span class=\"legend-item\"><b>neben</b><span class=\"legend-mean\"> — рядом с</span></span><span class=\"legend-item\"><b>über</b><span class=\"legend-mean\"> — над / через</span></span><span class=\"legend-item\"><b>unter</b><span class=\"legend-mean\"> — под / среди</span></span><span class=\"legend-item\"><b>vor</b><span class=\"legend-mean\"> — перед</span></span><span class=\"legend-item\"><b>zwischen</b><span class=\"legend-mean\"> — между</span></span></div>\n<div class=\"detail-block\"><b class=\"detail-label\">Dativ</b>Wo? положение: Das Buch liegt <i>auf dem Tisch</i>.<p class=\"detail-comment\">Книга лежит на столе. liegen — лежать.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Akkusativ</b>Wohin? смена положения: Ich lege das Buch <i>auf den Tisch</i>.<p class=\"detail-comment\">Я кладу книгу на стол. legen — класть.</p></div>"
   },
   "v2": {
     "title": "Что такое V2",
     "lead": "Глагол стоит во второй синтаксической позиции, не обязательно вторым словом.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">1 позиция может быть длинной</b><i>Heute Morgen um acht</i> gehe ich zur Arbeit.<p class=\"detail-comment\">Вся группа “Heute Morgen um acht” занимает позицию 1.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Потом</b>сразу идёт спрягаемый глагол.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">1 позиция может быть длинной</b><i>Heute Morgen um acht</i> gehe ich zur Arbeit.<p class=\"detail-comment\">Сегодня утром в восемь я иду на работу. Вся группа “Heute Morgen um acht” занимает позицию 1.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Потом</b>сразу идёт спрягаемый глагол.</div>"
   },
   "tekamolo": {
     "title": "TeKaMoLo",
     "lead": "Полезный порядок обстоятельств, но не железный закон.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">База</b>Temporal (когда?) → Kausal (почему?) → Modal (как?) → Lokal (где?): <i>Ich fahre heute wegen des Wetters mit dem Bus zur Arbeit</i>.</div><div class=\"detail-block\"><b class=\"detail-label\">Почему не закон</b>Порядок может меняться из-за акцента, местоимений, определённости и контекста. Используй TeKaMoLo как безопасный дефолт.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">База</b>Temporal (когда?) → Kausal (почему?) → Modal (как?) → Lokal (где?): <i>Ich fahre heute wegen des Wetters mit dem Bus zur Arbeit</i>.<p class=\"detail-comment\">Сегодня из-за погоды я еду на работу на автобусе.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Почему не закон</b>Порядок может меняться из-за акцента, местоимений, определённости и контекста. Используй TeKaMoLo как безопасный дефолт.</div>"
   },
   "particles": {
     "title": "Частицы: разбор",
     "lead": "Позиция — середина предложения, обычно сразу после глагола или подлежащего.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">doch</b>Es ist <i>doch</i> spät. — «ведь уже поздно»: ссылаешься на то, что собеседник знает или сам говорит.</div><div class=\"detail-block\"><b class=\"detail-label\">ja</b>Das ist <i>ja</i> klar. — «это ведь ясно»: очевидно для обоих, доказывать не нужно.</div><div class=\"detail-block\"><b class=\"detail-label\">denn</b>Только в вопросах: Wie heißt du <i>denn</i>? — «а как же тебя зовут»: живой интерес, не «зачем». Не путай с союзом denn — тот тоже есть, см. Придаточные.</div><div class=\"detail-block\"><b class=\"detail-label\">mal</b>Komm <i>mal</i> her! — смягчает просьбу: «ну подойди».</div><div class=\"detail-block\"><b class=\"detail-label\">schon / gar</b>Das stimmt <i>schon</i>. — «ладно, уж правда» (уступка) · Das ist <i>gar</i> nicht schwer. — «вообще не сложно» (усиление, чаще всего с nicht)</div><div class=\"detail-block\"><b class=\"detail-label\">wohl</b>Er kommt <i>wohl</i> später. — «наверное»: осторожное предположение, без уверенности.</div><div class=\"detail-block\"><b class=\"detail-label\">Позиция</b>В середине предложения: Ich habe <i>doch</i> nichts gesagt. — после глагола/подлежащего, перед остальным.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">doch</b>Es ist <i>doch</i> spät. — «ведь уже поздно»: ссылаешься на то, что собеседник знает или сам говорит.<p class=\"detail-comment\">Ведь уже поздно.</p></div><div class=\"detail-block\"><b class=\"detail-label\">ja</b>Das ist <i>ja</i> klar. — «это ведь ясно»: очевидно для обоих, доказывать не нужно.<p class=\"detail-comment\">Это ведь ясно.</p></div><div class=\"detail-block\"><b class=\"detail-label\">denn</b>Только в вопросах: Wie heißt du <i>denn</i>? — «а как же тебя зовут»: живой интерес, не «зачем». Не путай с союзом denn — тот тоже есть, см. Придаточные.<p class=\"detail-comment\">А как тебя зовут?</p></div><div class=\"detail-block\"><b class=\"detail-label\">mal</b>Komm <i>mal</i> her! — смягчает просьбу: «ну подойди».<p class=\"detail-comment\">Подойди-ка сюда!</p></div><div class=\"detail-block\"><b class=\"detail-label\">schon / gar</b>Das stimmt <i>schon</i>. — «ладно, уж правда» (уступка) · Das ist <i>gar</i> nicht schwer. — «вообще не сложно» (усиление, чаще всего с nicht)<p class=\"detail-comment\">Это, конечно, верно. · Это совсем не трудно.</p></div><div class=\"detail-block\"><b class=\"detail-label\">wohl</b>Er kommt <i>wohl</i> später. — «наверное»: осторожное предположение, без уверенности.<p class=\"detail-comment\">Он, наверное, придёт позже.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Позиция</b>В середине предложения: Ich habe <i>doch</i> nichts gesagt. — после глагола/подлежащего, перед остальным.<p class=\"detail-comment\">Я ведь ничего не сказал.</p></div>"
   },
   "modal": {
     "title": "Модальные глаголы",
     "lead": "können, müssen, wollen, sollen, dürfen, mögen",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Главное предложение</b>Ich <b>muss</b> heute <b>arbeiten</b>.<p class=\"detail-comment\">finite modal в V2, инфинитив в конце.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Придаточное</b>…, weil ich heute arbeiten <b>muss</b><p class=\"detail-comment\">Спрягаемый modal уходит в самый конец.</p></div>"
+    "body": "<div class=\"legend\"><span class=\"legend-item\"><b>können → kann</b><span class=\"legend-mean\"> — мочь / уметь</span></span><span class=\"legend-item\"><b>müssen → muss</b><span class=\"legend-mean\"> — нужно / должен</span></span><span class=\"legend-item\"><b>wollen → will</b><span class=\"legend-mean\"> — хотеть</span></span><span class=\"legend-item\"><b>sollen → soll</b><span class=\"legend-mean\"> — следует / велено</span></span><span class=\"legend-item\"><b>dürfen → darf</b><span class=\"legend-mean\"> — можно / разрешено</span></span><span class=\"legend-item\"><b>mögen → mag</b><span class=\"legend-mean\"> — нравиться / любить</span></span></div>\n<div class=\"detail-block\"><b class=\"detail-label\">Главное предложение</b>Ich <b>muss</b> heute <b>arbeiten</b>.<p class=\"detail-comment\">Мне сегодня нужно работать. müssen → muss — нужно/должен; arbeiten — работать. finite modal в V2, инфинитив в конце.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Придаточное</b>…, weil ich heute arbeiten <b>muss</b><p class=\"detail-comment\">…потому что мне сегодня нужно работать. Спрягаемый modal уходит в самый конец.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Отрицание</b>nicht müssen ≠ nicht dürfen<p class=\"detail-comment\">nicht müssen — не обязательно (нет необходимости); nicht dürfen — нельзя (запрет).</p></div>"
   },
   "perfekt": {
     "title": "Perfekt",
     "lead": "haben/sein + Partizip II",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">haben</b>Для большинства глаголов: Ich habe gearbeitet.</div><div class=\"detail-block\"><b class=\"detail-label\">sein</b>Часто для перемещения/смены состояния без прямого объекта: Ich bin gegangen. Er ist eingeschlafen.</div><div class=\"detail-block\"><b class=\"detail-label\">Важно</b>Есть глаголы, форму которых надо просто знать: <i>ist geblieben</i> (bleiben), <i>ist passiert</i> (passieren) — sein; но <i>hat getanzt</i> (tanzen) — haben, несмотря на «движение».</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">haben</b>Для большинства глаголов: Ich habe gearbeitet.<p class=\"detail-comment\">Я работал. arbeiten → gearbeitet — работать → работал.</p></div><div class=\"detail-block\"><b class=\"detail-label\">sein</b>Часто для перемещения/смены состояния без прямого объекта: Ich bin gegangen. Er ist eingeschlafen.<p class=\"detail-comment\">Я ушёл/пошёл. · Он уснул. gehen → gegangen — идти → ушёл; einschlafen → eingeschlafen — засыпать → уснул.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Важно</b>Есть глаголы, форму которых надо просто знать: <i>ist geblieben</i> (bleiben), <i>ist passiert</i> (passieren) — sein; но <i>hat getanzt</i> (tanzen) — haben, несмотря на «движение».<p class=\"detail-comment\">bleiben — оставаться; passieren — случаться; tanzen — танцевать.</p></div>"
   },
   "separable": {
     "title": "Отделяемые глаголы",
     "lead": "aufstehen, einkaufen, anrufen…",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Главное</b>Ich <b>rufe</b> dich später <b>an</b>.</div><div class=\"detail-block\"><b class=\"detail-label\">Инфинитив / придаточное</b>anrufen; …, weil ich dich später <b>anrufe</b>.</div><div class=\"detail-block\"><b class=\"detail-label\">Perfekt</b>angerufen<p class=\"detail-comment\">ge часто вставляется между приставкой и основой.</p></div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Главное</b>Ich <b>rufe</b> dich später <b>an</b>.<p class=\"detail-comment\">Я позвоню тебе позже. anrufen — звонить по телефону; später — позже.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Инфинитив / придаточное</b>anrufen; …, weil ich dich später <b>anrufe</b>.<p class=\"detail-comment\">anrufen — звонить; …потому что я позвоню тебе позже.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Perfekt</b>angerufen<p class=\"detail-comment\">angerufen — позвонил (Partizip II от anrufen). ge часто вставляется между приставкой и основой.</p></div>"
   },
   "passive": {
     "title": "Passiv",
@@ -722,62 +808,62 @@
   "konjunktiv2": {
     "title": "Konjunktiv II",
     "lead": "Нереальное, вежливость, совет.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">würde + Infinitiv</b>Подходит для большинства глаголов: Wenn ich Zeit hätte, <i>würde ich mehr lesen</i>.</div><div class=\"detail-block\"><b class=\"detail-label\">Прямые формы</b>wäre, hätte, könnte, möchte, müsste, sollte — учи как готовые слова: Ich <i>wäre</i> froh. Du <i>solltest</i> schlafen. <i>möchte</i> = «хотел бы» — самая частая из всех.</div><div class=\"detail-block\"><b class=\"detail-label\">Когда</b>Нереальное условие, вежливая просьба (Könnten Sie…?), пожелание (Ich hätte gern…), совет (Du solltest…).</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">würde + Infinitiv</b>Подходит для большинства глаголов: Wenn ich Zeit hätte, <i>würde ich mehr lesen</i>.<p class=\"detail-comment\">Если бы у меня было время, я бы больше читал.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Прямые формы</b>wäre, hätte, könnte, möchte, müsste, sollte — учи как готовые слова: Ich <i>wäre</i> froh. Du <i>solltest</i> schlafen. <i>möchte</i> = «хотел бы» — самая частая из всех.<p class=\"detail-comment\">Ich wäre froh — Я был бы рад. Du solltest schlafen — Тебе следовало бы поспать. wäre — был бы; hätte — имел бы; könnte — мог бы; möchte — хотел бы; müsste — нужно было бы; sollte — следовало бы.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Когда</b>Нереальное условие, вежливая просьба (Könnten Sie…?), пожелание (Ich hätte gern…), совет (Du solltest…).<p class=\"detail-comment\">Könnten Sie…? — Не могли бы Вы…? Ich hätte gern… — Я хотел бы… Du solltest… — Тебе следовало бы…</p></div>"
   },
   "double-infinitive": {
     "title": "Два инфинитива",
     "lead": "Perfekt с модальным глаголом.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Форма</b>haben + Infinitiv + Infinitiv: Ich habe lange <i>arbeiten müssen</i>.<p class=\"detail-comment\">Я долго должен был работать. Partizip II (gemusst) здесь не используется.</p></div><div class=\"detail-block\"><b class=\"detail-label\">В придаточном</b>…, weil ich lange <i>habe arbeiten müssen</i>.<p class=\"detail-comment\">«…что мне долго пришлось работать»; haben поднимается перед парой инфинитивов.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Уровень</b>Достаточно узнавать конструкцию; активно она понадобится позже.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Форма</b>haben + Infinitiv + Infinitiv: Ich habe lange <i>arbeiten müssen</i>.<p class=\"detail-comment\">Я долго должен был работать. Partizip II (gemusst) здесь не используется.</p></div><div class=\"detail-block\"><b class=\"detail-label\">В придаточном</b>…, weil ich lange <i>habe arbeiten müssen</i>.<p class=\"detail-comment\">…потому что мне пришлось долго работать. haben ставится перед парой инфинитивов.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Уровень</b>Достаточно узнавать конструкцию; активно она понадобится позже.</div>"
   },
   "wenn-als": {
     "title": "wenn vs als",
     "lead": "Оба могут значить “когда”.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">als</b>Однократное событие в прошлом: Als ich klein war…</div><div class=\"detail-block\"><b class=\"detail-label\">wenn</b>Повторяющееся “когда”, настоящее/будущее или “если”: Wenn ich Zeit habe…</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">als</b>Однократное событие в прошлом: Als ich klein war…<p class=\"detail-comment\">Когда я был маленьким / ребёнком…</p></div><div class=\"detail-block\"><b class=\"detail-label\">wenn</b>Повторяющееся “когда”, настоящее/будущее или “если”: Wenn ich Zeit habe…<p class=\"detail-comment\">Если у меня есть время… / Когда у меня будет время, я приду.</p></div>"
   },
   "obwohl": {
     "title": "obwohl vs trotzdem",
     "lead": "Оба дают контраст, но строят предложение по-разному.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">obwohl</b>Союз придаточного → глагол в конец: obwohl es regnet.</div><div class=\"detail-block\"><b class=\"detail-label\">trotzdem</b>Наречие в главном → V2: Es regnet. Trotzdem <b>gehe</b> ich raus.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">obwohl</b>Союз придаточного → глагол в конец: obwohl es regnet.<p class=\"detail-comment\">…хотя идёт дождь.</p></div><div class=\"detail-block\"><b class=\"detail-label\">trotzdem</b>Наречие в главном → V2: Es regnet. Trotzdem <b>gehe</b> ich raus.<p class=\"detail-comment\">Идёт дождь. Тем не менее я выйду.</p></div>"
   },
   "coordinators": {
     "title": "weil vs denn",
     "lead": "Оба = “потому что”, но порядок слов разный.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">weil</b>Ich bleibe, weil ich müde <b>bin</b>.</div><div class=\"detail-block\"><b class=\"detail-label\">denn</b>Ich bleibe, denn ich <b>bin</b> müde.<p class=\"detail-comment\">После denn остаётся обычный V2.</p></div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">weil</b>Ich bleibe, weil ich müde <b>bin</b>.<p class=\"detail-comment\">Я останусь, потому что устал.</p></div><div class=\"detail-block\"><b class=\"detail-label\">denn</b>Ich bleibe, denn ich <b>bin</b> müde.<p class=\"detail-comment\">Я останусь, потому что устал. denn — потому что; после него V2. После denn остаётся обычный V2.</p></div>"
   },
   "sondern": {
     "title": "sondern vs aber",
     "lead": "После отрицания (nicht, kein) второй вариант вводит sondern — «не A, а B». Простой контраст без исправления — aber.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">sondern — исправление</b>Sie kommt <b>nicht</b> aus Bukarest, <i>sondern</i> aus Deva.<p class=\"detail-comment\">«не из Бухареста, а из Девы»: сначала отрицаем, потом исправляем на другой вариант.</p></div><div class=\"detail-block\"><b class=\"detail-label\">aber — просто «но»</b>Sie kommt aus Bukarest, <i>aber</i> sie lebt in Deva.<p class=\"detail-comment\">оба факта верны, ничего не исправляется. Ошибка: <s>Er mag keinen Fisch, aber Fleisch</s> → <i>…, sondern Fleisch</i> («не рыбу, а мясо»).</p></div><div class=\"detail-block\"><b class=\"detail-label\">nicht nur …, sondern auch</b>Er spricht <b>nicht nur</b> Deutsch, <i>sondern auch</i> Russisch.<p class=\"detail-comment\">«не только по-немецки, но и по-русски».</p></div><div class=\"detail-block\"><b class=\"detail-label\">Порядок слов</b>sondern и aber — союзы позиции 0, как und: за ними обычный порядок. …, sondern sie <b>lebt</b> in Deva.</div><div class=\"detail-block\"><b class=\"detail-label\">По-русски</b>Оба союза звучат как «а/но», поэтому выбор виден только в немецком: есть <i>nicht/kein</i> перед исправляемым — берём sondern.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">sondern — исправление</b>Sie kommt <b>nicht</b> aus Bukarest, <i>sondern</i> aus Deva.<p class=\"detail-comment\">Она не из Бухареста, а из Девы. «не из Бухареста, а из Девы»: сначала отрицаем, потом исправляем на другой вариант.</p></div><div class=\"detail-block\"><b class=\"detail-label\">aber — просто «но»</b>Sie kommt aus Bukarest, <i>aber</i> sie lebt in Deva.<p class=\"detail-comment\">Она из Бухареста, но живёт в Деве. · Он любит не рыбу, а мясо. оба факта верны, ничего не исправляется. Ошибка: Er mag keinen Fisch, aber Fleisch → …, sondern Fleisch («не рыбу, а мясо»).</p></div><div class=\"detail-block\"><b class=\"detail-label\">nicht nur …, sondern auch</b>Er spricht <b>nicht nur</b> Deutsch, <i>sondern auch</i> Russisch.<p class=\"detail-comment\">Он говорит не только по-немецки, но и по-русски. «не только по-немецки, но и по-русски».</p></div><div class=\"detail-block\"><b class=\"detail-label\">Порядок слов</b>sondern и aber — союзы позиции 0, как und: за ними обычный порядок. …, sondern sie <b>lebt</b> in Deva.<p class=\"detail-comment\">…а живёт она в Деве.</p></div><div class=\"detail-block\"><b class=\"detail-label\">По-русски</b>Оба союза звучат как «а/но», поэтому выбор виден только в немецком: есть <i>nicht/kein</i> перед исправляемым — берём sondern.</div>"
   },
   "um-damit": {
     "title": "um … zu vs damit",
     "lead": "Оба часто переводятся “чтобы”.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">um … zu</b>Обычно субъект один и тот же: Ich lerne, um in Deutschland zu arbeiten.</div><div class=\"detail-block\"><b class=\"detail-label\">damit</b>Нужное полноценное придаточное, особенно если субъекты разные: Ich spreche langsam, damit du mich verstehst.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">um … zu</b>Обычно субъект один и тот же: Ich lerne, um in Deutschland zu arbeiten.<p class=\"detail-comment\">Я учусь, чтобы работать в Германии.</p></div><div class=\"detail-block\"><b class=\"detail-label\">damit</b>Нужное полноценное придаточное, особенно если субъекты разные: Ich spreche langsam, damit du mich verstehst.<p class=\"detail-comment\">Я говорю медленно, чтобы ты меня понял.</p></div>"
   },
   "relative": {
     "title": "Относительные предложения",
     "lead": "Род/число берём от существительного, падеж — из роли внутри придаточного.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Nominativ внутри</b>Der Mann, <b>der</b> hier arbeitet… (кто работает? der)</div><div class=\"detail-block\"><b class=\"detail-label\">Akkusativ внутри</b>Der Mann, <b>den</b> ich kenne… (кого я знаю? den)</div><div class=\"detail-block\"><b class=\"detail-label\">Dativ внутри</b>Der Mann, <b>dem</b> ich helfe… (кому я помогаю? dem)</div><div class=\"detail-block\"><b class=\"detail-label\">Genitiv внутри</b>Der Mann, <b>dessen</b> Auto dort steht, … — чей (м.р./ср.р.); <b>deren</b> — ж.р./мн.ч.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Nominativ внутри</b>Der Mann, <b>der</b> hier arbeitet… (кто работает? der)<p class=\"detail-comment\">Мужчина, который здесь работает…</p></div><div class=\"detail-block\"><b class=\"detail-label\">Akkusativ внутри</b>Der Mann, <b>den</b> ich kenne… (кого я знаю? den)<p class=\"detail-comment\">Мужчина, которого я знаю…</p></div><div class=\"detail-block\"><b class=\"detail-label\">Dativ внутри</b>Der Mann, <b>dem</b> ich helfe… (кому я помогаю? dem)<p class=\"detail-comment\">Мужчина, которому я помогаю…</p></div><div class=\"detail-block\"><b class=\"detail-label\">Genitiv внутри</b>Der Mann, <b>dessen</b> Auto dort steht, … — чей (м.р./ср.р.); <b>deren</b> — ж.р./мн.ч.<p class=\"detail-comment\">Мужчина, чья машина стоит там…</p></div>"
   },
   "dieser": {
     "title": "dieser: склонение",
     "lead": "dies- встаёт вместо der/die/das — окончания те же самые.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Модель</b>Nominativ: <i>dieser / diese / dieses</i> (der/die/das) · Akkusativ: <i>diesen</i> / diese / dieses (den/die/das) · Dativ: <i>diesem / dieser / diesen</i> (dem/der/den).</div><div class=\"detail-block\"><b class=\"detail-label\">Этот или тот</b>Русский различает «этот» (близко) и «тот» (далеко) — немецкий говорит <b>dieser</b> для обоих: Dieser Tisch = этот или тот стол.</div><div class=\"detail-block\"><b class=\"detail-label\">welcher</b>Тот же паттерн: <b>welch-</b> → welcher/welche/welches («который?»). Вопрос-ответ: <i>Welcher Bus? — Dieser.</i>.</div><div class=\"detail-block\"><b class=\"detail-label\">dieser или der</b>dieser выделяет предмет («вон тот»); der — обычная ссылка без указания: Der Mann dort. А «это» в общих фразах — das: <i>Das ist schön.</i> (не dieser).</div><div class=\"detail-block\"><b class=\"detail-label\">Практика</b>Прилагательное после dieser получает те же -e/-en, что после der-слов — см. карточку «Прилагательные» в разделе «Окончания и изменения».</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Модель</b>Nominativ: <i>dieser / diese / dieses</i> (der/die/das) · Akkusativ: <i>diesen</i> / diese / dieses (den/die/das) · Dativ: <i>diesem / dieser / diesen</i> (dem/der/den).<p class=\"detail-comment\">dieser/diese/dieses — этот/эта/это; diesen/diesem — падежные формы.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Этот или тот</b>dieser обычно значит «этот»: Dieser Tisch — этот стол. Для уточнения расстояния: dieser Tisch hier — этот стол здесь; der Tisch dort — тот стол там. jener — «тот», чаще в письменной речи.<p class=\"detail-comment\">dieser Tisch — этот стол; der Tisch dort — тот стол там; jener — тот (обычно книжное).</p></div><div class=\"detail-block\"><b class=\"detail-label\">welcher</b>Тот же паттерн: <b>welch-</b> → welcher/welche/welches («который?»). Вопрос-ответ: <i>Welcher Bus? — Dieser.</i>.<p class=\"detail-comment\">Welcher Bus? — Dieser. Какой автобус? — Этот.</p></div><div class=\"detail-block\"><b class=\"detail-label\">dieser или der</b>dieser выделяет предмет («вон тот»); der — обычная ссылка без указания: Der Mann dort. А «это» в общих фразах — das: <i>Das ist schön.</i> (не dieser).<p class=\"detail-comment\">Der Mann dort — тот мужчина там; Das ist schön — Это красиво/приятно.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Практика</b>Прилагательное после dieser получает те же -e/-en, что после der-слов — см. карточку «Прилагательные» в разделе «Окончания и изменения».</div>"
   },
   "plural": {
     "title": "Множественное число: пять моделей",
-    "lead": "Род делает ставку, словарь даёт ответ.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Feminin</b>Почти всегда <b>-en/-n</b>: die Frau → Frauen. На -ung/-heit/-keit/-schaft/-ion → <b>-en</b>: Zeitungen, Möglichkeiten.</div><div class=\"detail-block\"><b class=\"detail-label\">Maskulin</b>Часто <b>-e</b>, многие с умлаутом: Tische, <i>Stühle</i>, <i>Männer</i>.</div><div class=\"detail-block\"><b class=\"detail-label\">Neutrum</b>Часто <b>-er</b>, многие с умлаутом: Kinder, <i>Bücher</i>, <i>Häuser</i>.</div><div class=\"detail-block\"><b class=\"detail-label\">Заимствования</b>Короткие и иностранные слова → <b>-s</b>: Autos, Handys, Parks.</div><div class=\"detail-block\"><b class=\"detail-label\">Без изменения</b>На -er/-el/-en и -chen/-lein: Lehrer → Lehrer, Fenster → Fenster, Mädchen → Mädchen; иногда только умлаут: <i>Äpfel</i>, <i>Vögel</i>.</div><div class=\"detail-block\"><b class=\"detail-label\">Составные слова</b>Plural — у последнего корня: das Wörter<b>buch</b> → die Wörter<b>bücher</b>.</div><div class=\"detail-block\"><b class=\"detail-label\">Предел</b>Единого правила нет: ставка по роду покрывает большинство слов, но форму конкретного слова при сомнении проверяй в словаре. В Dativ Plural существительное почти всегда получает ещё <b>-n</b> — см. карточку Dativ Plural.</div><div class=\"detail-block\"><b class=\"detail-label\">Практика</b>Не знаешь род — не угадаешь и множественное число: сначала карточку «Определённый артикль».</div>"
+    "lead": "Пять моделей и значения примеров; форму учим вместе со словом.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Feminin</b>Почти всегда <b>-en/-n</b>: die Frau → Frauen. На -ung/-heit/-keit/-schaft/-ion → <b>-en</b>: Zeitungen, Möglichkeiten.<p class=\"detail-comment\">Frau — женщина; Zeitung — газета; Möglichkeit — возможность.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Maskulin</b>Часто <b>-e</b>, многие с умлаутом: Tische, <i>Stühle</i>, <i>Plätze</i>.<p class=\"detail-comment\">Tisch — стол; Stuhl — стул; Platz — место.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Neutrum</b>Некоторые средние существительные получают -er: Kinder, Bücher, Häuser. Другие: das Jahr → die Jahre (год → годы), das Fenster → die Fenster (окно → окна).<p class=\"detail-comment\">Kind — ребёнок; Buch — книга; Haus — дом.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Заимствования</b>Короткие и иностранные слова → <b>-s</b>: Autos, Handys, Parks.<p class=\"detail-comment\">Auto — машина; Handy — мобильный телефон; Park — парк.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Без изменения</b>На -er/-el/-en и -chen/-lein: Lehrer → Lehrer, Fenster → Fenster, Mädchen → Mädchen; иногда только умлаут: <i>Äpfel</i>, <i>Vögel</i>.<p class=\"detail-comment\">Lehrer — учитель; Fenster — окно; Mädchen — девочка; Apfel → Äpfel — яблоко → яблоки; Vogel → Vögel — птица → птицы.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Составные слова</b>Plural — у последнего корня: das Wörter<b>buch</b> → die Wörter<b>bücher</b>.<p class=\"detail-comment\">Словарь → словари. Wörterbuch — словарь.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Предел</b>Род не определяет форму однозначно. Учи артикль, слово и Plural вместе. В Dativ Plural обычно добавляется -n, кроме форм, уже оканчивающихся на -n/-s.</div><div class=\"detail-block\"><b class=\"detail-label\">Практика</b>Удобная запись: das Buch, die Bücher — книга, книги; der Tisch, die Tische — стол, столы.</div>"
   },
   "n-decl": {
     "title": "N-Deklination",
     "lead": "Частые слабые мужские существительные.",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Примеры</b>Student, Mensch, Junge, Kunde, Kollege, Herr (особая форма Herrn).</div><div class=\"detail-block\"><b class=\"detail-label\">Модель</b>der Student, aber den/dem/des Studenten.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Примеры</b>Student, Mensch, Junge, Kunde, Kollege, Herr (особая форма Herrn).<p class=\"detail-comment\">Student — студент; Mensch — человек; Junge — мальчик; Kunde — клиент; Kollege — коллега; Herr — господин.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Модель</b>der Student, aber den/dem/des Studenten.<p class=\"detail-comment\">Студент — слово Student меняется по падежу: Studenten, но значение сохраняется.</p></div>"
   },
   "adjectives": {
     "title": "Окончания прилагательных",
     "lead": "Сначала спроси: артикль уже показывает род/падеж или нет?",
-    "body": "<div class=\"detail-block\"><b class=\"detail-label\">После der-слов</b>Чаще -e или -en: der gute Mann, den guten Mann, dem guten Mann.</div><div class=\"detail-block\"><b class=\"detail-label\">После ein-слов</b>Если артикль не показывает окончание, это делает прилагательное: ein guter Mann, ein gutes Kind. Но: einen guten Mann, einem guten Mann.</div><div class=\"detail-block\"><b class=\"detail-label\">Без артикля</b>Прилагательное несёт больше грамматической информации: guter Wein, mit gutem Wein.</div>"
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">После der-слов</b>Чаще -e или -en: der gute Mann, den guten Mann, dem guten Mann.<p class=\"detail-comment\">Хороший мужчина: форма guten у Akk./Dat., лексическое значение gut — хороший.</p></div><div class=\"detail-block\"><b class=\"detail-label\">После ein-слов</b>Если артикль не показывает окончание, это делает прилагательное: ein guter Mann, ein gutes Kind. Но: einen guten Mann, einem guten Mann.<p class=\"detail-comment\">Хороший мужчина · хороший ребёнок; с хорошим мужчиной — mit einem guten Mann.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Без артикля</b>Прилагательное несёт больше грамматической информации: guter Wein, mit gutem Wein.<p class=\"detail-comment\">Хорошее вино · с хорошим вином. Wein — вино.</p></div>"
   }
 };
 

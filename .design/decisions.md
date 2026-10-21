@@ -687,3 +687,18 @@ landing and style guide.
    counters restart within each view. Intended, not a bug: a view is the
    reading unit (see the view-switching decision above), and stacked
    print/noscript views each restart at 1.
+
+
+### 2026-10-20 — Meaning support on every language pair
+
+The user approved making every card understandable without an external
+translator. This supersedes the 2026-09-11 rule-type restriction on glosses:
+form and word-order examples also need comprehension access. All four decks
+use the existing example pair, static term/meaning legend and dialog-comment
+components. Sentence formulas have adjacent translations; highlighting still
+shows the grammatical pattern. Word meanings are contextual; auxiliaries are
+explained by function. First-layer cards stay short, with longer contrasts in
+existing dialogs. No new interaction or component is introduced.
+
+Maintain this contract in the four language plans and
+`docs/CONTENT_VALIDATION.md`; review evidence belongs in `CONTENT_AUDIT.md`.

@@ -16,10 +16,10 @@ The page lives at `<target>/<audience>/` (`de/ru/`) so sibling audiences
 (`de/en/`, …) can later share the target. The former `deutsch/` URL is a
 redirect stub to here, kept for installed PWAs and old links.
 
-Status: the product and interaction target is accepted. The content baseline
-is provisional until the baseline gate is reviewed against named A1–B1 and
-grammar references. Page coverage, accuracy and teaching-quality gates are
-currently NOT RUN.
+Status: this is the accepted content and interaction target. The baseline
+remains provisional until level placement is supported by named syllabi and
+grammar references. Current review verdicts and evidence are maintained only
+in [CONTENT_AUDIT.md](../../CONTENT_AUDIT.md).
 
 ## Product and learner
 
@@ -92,18 +92,17 @@ defined in the design system. German content adds these requirements:
 - A first-layer rule gives the learner a trigger, form or position, and one
   short natural example. A dangerous simplification includes its essential
   limit on the card.
-- Example glosses follow the rule type. Form and position rules (endings,
-  case forms, word order) keep examples in the target language only, with
-  structural annotation — bold forms, `dem Mann = Dat.` labels, minimal
-  pairs; a Russian translation cannot demonstrate German morphology or
-  syntax. Meaning/usage rules (Konjunktiv II use, um … zu vs damit,
-  preposition choice) add a short Russian gloss carrying the deciding
-  difference, not a full translation. Recognition-level constructions
-  (double infinitive, Perfekt Passiv) are a third class: the learner is
-  not expected to decode the example, so it always carries a short
-  gloss — comprehension access to the sentence the rule is about, not
-  the choice criterion. Declension fragments stay unglossed.
-  A gloss that does not add the choice criterion is removed.
+- Examples and sentence formulas are understandable without a dictionary:
+  pair each with a short natural Russian translation, including form/position
+  rules and recognition-level constructions. Keep structural highlighting and
+  deciding usage hints alongside comprehension support; neither replaces the other.
+  Give taught words and phrases a contextual Russian meaning, linking inflected
+  forms to their lemma where helpful (müssen → muss, for example). Paradigm
+  endings need no literal translation; label the stems, pronouns and lexical
+  fragments they illustrate. Do not imply one fixed translation for a polysemous
+  word or a separate lexical meaning for an auxiliary. Dialog examples follow
+  the same comprehension contract. Keep the first layer concise; exceptions
+  and longer contrasts belong in dialogs.
 - Dialogs add reasoning, contrast or exceptions without contradicting the
   card. New tappable explanations use the page's `DETAILS` object.
 - German pattern text carries `lang="de"`; Russian explanations and
@@ -143,11 +142,11 @@ evidence in the content audit.
 | DE-21 | How do I command or request? | `#order` | du/ihr/Sie forms; sein exception; du vowel change and -t/-d +e in dialog |
 | DE-22 | Präteritum — what is it and when? | `#verbs` | Recognition: war/hatte/modals + regular -te; spoken-Perfekt vs written boundary; recognition-level → glossed examples |
 | DE-23 | Comparative and superlative? | `#extras` | -er / am -sten, umlaut group, gut/viel/gern irregulars; than = als |
-| DE-24 | How is the plural formed? Five ending patterns, guessed by gender | `#extras` | Feminin → -en/-n, Maskulin → -e, Neutrum → -er (umlaut group), unchanged -er/-el/-en, loanwords → -s; «no single rule» limit; Dativ-Plural cross-reference; suffix groups (-ung/-heit/-keit…), -chen/-lein and compounds in the `plural` dialog |
-| DE-25 | this/that — which demonstrative? dieser/diese/dieses | `#forms` | dieser copies the definite-article pattern (dies- + der-word endings); RU «этот/тот» collapse into one word; welcher- same pattern, dieser-vs-der and das in «это»-phrases in the `dieser` dialog; adjective-endings cross-reference |
-| DE-26 | Which preposition follows the verb? | `#preps` | High-frequency verb+preposition pairs; case comes from the preposition (Wen/Wem question trick); sich-reflexives at recognition level |
+| DE-24 | How is the plural formed? Five patterns learned per noun | `#extras` | -e, -er, -(e)n, -s or no added ending, sometimes with an umlaut; gender gives clues, not a reliable prediction. Learn article, noun and plural together. Dativ-plural cross-reference; suffix groups, diminutives and compounds in `plural`; examples carry Russian meaning clues. |
+| DE-25 | Which demonstrative? dieser/diese/dieses and welcher | `#forms` | der-word endings; dieser normally means «этот», with «тот» possible by context. Distance can be clarified with hier/dort or less-common jener. Include welcher, dieser-vs-der and das for situations, with meaning clues and the adjective-ending cross-reference. |
+| DE-26 | Which preposition and case follow the verb? | `#preps` | Learn each fixed verb + preposition + case together: warten auf + Akk., denken an + Akk., teilnehmen an + Dat. The bare preposition does not settle the case of every construction. Include contextual meanings, the Wen/Wem role clue and recognition-level sich-reflexives. |
 | DE-27 | der, ein or kein? | `#forms` | Three-way choice: known / one of many / negation; professions without an article (RU-friendly) |
-| DE-28 | seit or vor? | `#preps` | seit + Dativ = duration until now (with Präsens — unlike English PP!); vor + Dativ = a point in the past (ago) |
+| DE-28 | seit or vor? | `#preps` | seit + Dativ marks a starting point or continuing duration; ongoing states normally use Präsens (Ich wohne seit zwei Jahren hier), but seit also permits Perfekt (Seit gestern habe ich nichts gegessen). vor + Dativ marks a past point (ago). Include translated contrasts and the Dativ-plural ending. |
 
 ## Acceptance and maintenance
 

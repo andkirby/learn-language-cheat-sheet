@@ -16,10 +16,10 @@ The page lives at `<target>/<audience>/` (`en/ru/`) so sibling audiences
 (`en/de/`, …) can later share the target. The former `english/` URL is a
 redirect stub to here, kept for installed PWAs and old links.
 
-Status: the product and interaction target is accepted. The content baseline
-is provisional until the baseline gate is reviewed against named A1–B1 and
-grammar references. Page coverage, accuracy and teaching-quality gates are
-currently NOT RUN.
+Status: this is the accepted content and interaction target. The baseline
+remains provisional until level placement is supported by named syllabi and
+grammar references. Current review verdicts and evidence are maintained only
+in [CONTENT_AUDIT.md](../../CONTENT_AUDIT.md).
 
 ## Product and learner
 
@@ -93,18 +93,17 @@ defined in the design system. English content adds these requirements:
 
 - A first-layer rule gives the learner a meaning/use trigger, form or position,
   and one short natural example. Signal words are secondary clues.
-- Example glosses follow the rule type. Form and position rules (paradigms,
-  word order, V-ing/to V patterns) keep examples in the target language only,
-  with structural annotation — bold forms, minimal pairs; a Russian
-  translation cannot demonstrate English morphology or syntax. Meaning/usage
-  rules (article choice, tense choice, mustn't vs don't have to) add a short
-  Russian gloss carrying the deciding difference, not a full translation.
-  Recognition-level constructions are a third class: the learner is not
-  expected to decode the example, so it always carries a short gloss —
-  comprehension access to the sentence the rule is about, not the choice
-  criterion. No current English unit is recognition-level; apply this when
-  one enters the deck. Word fragments stay unglossed. A gloss that does
-  not add the choice criterion is removed.
+- Examples and sentence formulas are understandable without a dictionary:
+  pair each with a short natural Russian translation, including form/position
+  rules and recognition-level constructions. Keep structural highlighting and
+  deciding usage hints alongside comprehension support; neither replaces the other.
+  Give taught words and phrases a contextual Russian meaning, linking inflected
+  forms to their lemma where helpful (see → saw, for example). Paradigm
+  endings need no literal translation; label the stems, pronouns and lexical
+  fragments they illustrate. Do not imply one fixed translation for a polysemous
+  word or a separate lexical meaning for an auxiliary. Dialog examples follow
+  the same comprehension contract. Keep the first layer concise; exceptions
+  and longer contrasts belong in dialogs.
 - A dangerous simplification includes its essential limit on the card. In
   particular, Present Perfect versus Past Simple must use meaning and discourse
   context; “is a time mentioned?” is not a sufficient decision rule.
@@ -143,7 +142,7 @@ evidence in the content audit.
 | EN-17 | Which flavour word carries the tone? just, actually, still, even, though | `#order` | High-frequency set with Russian decision-equivalents; the *actually* ≠ «актуально» false friend named; bounded set (EN-X02) |
 | EN-18 | Which connector links the sentences? but/however, so/therefore, meanwhile, nevertheless, although/despite | `#order` | Core connectors with Russian equivalents; *despite* + noun vs *although* + clause rule; after a negation *not X, but Y* = «не X, а Y» and *not only … but also* = «не только …, но и» in the linkers dialog (EN-G11); bounded set (EN-X02) |
 | EN-19 | there is or there are? | `#order` | is/are choice, negatives and questions without do (be, not do-support); There's vs It's; was/were |
-| EN-20 | Past Continuous — when? | `#tenses` | was/were + V-ing as background vs Past Simple event; parallel actions; Russian-aspect mapping |
+| EN-20 | Past Continuous — when? | `#tenses` | was/were + V-ing as background vs Past Simple event; parallel actions; explain that Russian verbal aspect does not map one-to-one to English tense |
 | EN-21 | How do I negate? | `#verbs` | don't/doesn't/didn't + base form; never without not (double-negative trap vs Russian «никогда не»); no + noun vs not any |
 | EN-22 | Present Perfect Continuous — when? | `#tenses` | Recognition: have/has been + V-ing = duration up to now or fresh evidence; vs Present Perfect result; state verbs without -ing |
 | EN-23 | Relative clauses: who / which / that? | `#verbs` | Choice by noun type; whose/where; object-that omission; verb agrees with the antecedent |

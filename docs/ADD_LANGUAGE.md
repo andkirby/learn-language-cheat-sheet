@@ -52,8 +52,10 @@ rules define what "translation" means here:
   depth, exclusions — re-derived for the new audience, not copied.
 - **The audience language is the explanation language.** UI strings,
   dialogs, glosses and search hints are written in the audience language;
-  target-language terms stay in the target language. The gloss contract
-  lives in each language plan's content contract.
+  target-language terms stay in the target language. Examples, sentence
+  formulas and taught words need meaning support in that audience language,
+  including form/position rules. Follow [content validation](CONTENT_VALIDATION.md)
+  and the audience plan's content contract.
 - **Bounded units.** One card + one dialog per topic; the simplification
   limit is stated on the card. The standing
   scope rules in [ROADMAP.md](../ROADMAP.md) decide what may be added

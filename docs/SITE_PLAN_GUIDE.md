@@ -92,10 +92,12 @@ reviewable topic rather than one row for an entire grammar domain.
 
 - What must the first-layer card contain: trigger, meaning, form, position,
   example or contrast?
-- Can the intended learner decode every example? Any example the learner
-  cannot be expected to decode — recognition-level constructions first of
-  all — always carries a short gloss: the gloss there is comprehension
-  access to the sentence the rule is about, not the choice criterion.
+- Can the learner decode every example without an external translator?
+  Apply the meaning-support contract in [content validation](CONTENT_VALIDATION.md):
+  examples and sentence formulas need short audience-language translations,
+  taught words/forms need contextual clues, and structural highlighting and
+  deciding usage hints stay visible. This includes form/position rules and
+  recognition-level constructions; auxiliaries are explained by function.
 - Which limits or counterexamples must remain visible on the card?
 - Which details belong in a dialog?
 - Which tables or formula diagrams are necessary?

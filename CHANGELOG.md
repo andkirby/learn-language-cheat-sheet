@@ -1,10 +1,21 @@
 # Changelog
 
 One entry per user-visible change, newest first. Entries are written in
-English; target-language examples and Russian glosses stay as authored.
+English; target-language examples and audience-language glosses stay as authored.
 UI rationale lives in
 `.design/decisions.md`, content review evidence in `CONTENT_AUDIT.md`.
 Append the entry in the same commit that ships the change.
+
+## 2026-10-21 (meanings in every language pair)
+
+- All 164 cards and 166 dialogs were reviewed for meaning support. Every
+  card example now has a translation in its explanation language:
+  German→Russian, German→English, English→Russian and English→German.
+  Sentence formulas, word lists, pronoun forms and dialog examples also
+  include meaning clues; modal forms such as müssen → muss are linked.
+- Corrected misleading grammar shortcuts, including Perfekt vs English
+  present perfect, seit, fixed verb/preposition cases, modal negation,
+  relative-pronoun omission and was/were. Service-worker cache v48.
 
 ## 2026-10-10 (skin A «Тетрадь»)
 

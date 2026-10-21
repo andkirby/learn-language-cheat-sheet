@@ -90,7 +90,7 @@
           "type": "object", "required": ["example"], "additionalProperties": false,
           "properties": {
             "example": {"$ref": "#/definitions/runs"},
-            "gloss": {"$ref": "#/definitions/runs", "description": "optional short audience-language deciding hint; renders the pair layout (.example.pair)"}
+            "gloss": {"$ref": "#/definitions/runs", "description": "audience-language translation with optional deciding hint; renders the pair layout (.example.pair)"}
           }
         },
         {

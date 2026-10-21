@@ -85,8 +85,12 @@
   ],
   "sections": [
     {
-      "id": "articles", "view": "articles", "badge": "Articles",
-      "heading": "Артикли", "sub": "Главный маркер: известно, о чём речь, или нет.", "grid": "two",
+      "id": "articles",
+      "view": "articles",
+      "badge": "Articles",
+      "heading": "Артикли",
+      "sub": "Главный маркер: известно, о чём речь, или нет.",
+      "grid": "two",
       "cards": [
         {
           "id": "articles",
@@ -100,7 +104,7 @@
             {"example": [
               "I have ", {"t": "a", "hit": true}, " car.", {"br": true},
               {"t": "The", "hit": true}, " car is red."
-            ], "gloss": ["Это какая-то машина.", {"br": true}, "Уже та самая."]},
+            ], "gloss": ["У меня есть машина.", {"br": true}, "Эта машина красная. a — вводим предмет; the — он уже известен."]},
             {"chips": [
               {"label": "a или an?", "detail": "a-an"},
               {"label": "Когда the", "detail": "the-article"},
@@ -119,15 +123,19 @@
             {"example": [
               "I go to ", {"t": "school", "hit": true}, ".", {"br": true},
               "She plays ", {"t": "the", "hit": true}, " piano."
-            ], "gloss": ["Я учусь (роль), не «иду к зданию».", {"br": true}, "Инструмент — с the."]},
+            ], "gloss": ["Я хожу в школу (учусь).", {"br": true}, "Она играет на пианино. Обычно play the piano — с the."]},
             {"chips": [{"label": "Школа, кровать, тюрьма", "detail": "school-exceptions"}]}
           ]
         }
       ]
     },
     {
-      "id": "pronouns", "view": "articles", "badge": "Pronouns",
-      "heading": "Местоимения", "sub": "Четыре формы на каждое лицо — не путать роли.", "grid": null,
+      "id": "pronouns",
+      "view": "articles",
+      "badge": "Pronouns",
+      "heading": "Местоимения",
+      "sub": "Четыре формы на каждое лицо — не путать роли.",
+      "grid": null,
       "cards": [
         {
           "id": "pronouns",
@@ -148,7 +156,46 @@
                 ["they", {"hot": "them"}, "their", {"hot": "theirs"}]
               ]
             }},
-            {"example": ["I saw ", {"t": "him", "b": true}, " yesterday. · This is ", {"t": "his", "b": true}, " car."]},
+            {
+              "legend": {
+                "items": [
+                  {
+                    "term": "I / you / he / she / it",
+                    "meaning": "я / ты, вы / он / она / оно"
+                  },
+                  {
+                    "term": "we / they",
+                    "meaning": "мы / они"
+                  },
+                  {
+                    "term": "my / your / his / her / its",
+                    "meaning": "мой / твой, ваш / его / её / его, её (не о человеке)"
+                  },
+                  {
+                    "term": "our / their",
+                    "meaning": "наш / их"
+                  }
+                ]
+              }
+            },
+            {
+              "example": [
+                "I saw ",
+                {
+                  "t": "him",
+                  "b": true
+                },
+                " yesterday. · This is ",
+                {
+                  "t": "his",
+                  "b": true
+                },
+                " car."
+              ],
+              "gloss": [
+                "Я видел его вчера. · Это его машина. him — его (объект); his — его (чей?)."
+              ]
+            },
             {"tiny": ["Жирным — формы-ловушки: то, что меняется и на чём чаще всего ошибаются."]},
             {"chips": [
               {"label": "my или mine?", "detail": "my-mine"},
@@ -159,8 +206,12 @@
       ]
     },
     {
-      "id": "order", "view": "order", "badge": "Word order",
-      "heading": "Порядок слов", "sub": "Английский не позволяет переставлять, как русский.", "grid": "two",
+      "id": "order",
+      "view": "order",
+      "badge": "Word order",
+      "heading": "Порядок слов",
+      "sub": "Английский не позволяет переставлять, как русский.",
+      "grid": "two",
       "cards": [
         {
           "id": "svo",
@@ -173,7 +224,7 @@
             {"example": [
               {"t": "I love you.", "b": true}, " Порядок фиксирует роли.", {"br": true},
               "Не: ", {"t": "You love I.", "s": true}
-            ]},
+            ], "gloss": ["Я люблю тебя. I — я; love — люблю; you — тебя.", {"br": true}, "You love I — неверная форма: объект требует me."]},
             {"chips": [{"label": "Чем это отличается от русского", "detail": "svo"}]}
           ]
         },
@@ -185,11 +236,16 @@
           "blocks": [
             {"h": ["Вопросы: Do / Does / Did"]},
             {"formula": [{"slot": "Do", "role": "sub"}, {"slot": "you"}, {"slot": "like", "role": "verb"}, {"slot": "tea?"}]},
+            {
+              "tiny": [
+                "Do you like tea? — Ты любишь чай? like — любить/нравиться; tea — чай. Do — вспомогательный глагол вопроса."
+              ]
+            },
             {"p": ["После Do/Does/Did глагол — в ", {"t": "базовой форме", "b": true}, "."]},
             {"example": [
               {"t": "Does she work?", "b": true}, " Не: ", {"t": "Does she works?", "s": true}, {"br": true},
               {"t": "Where do you live?", "b": true}
-            ]},
+            ], "gloss": ["Она работает? · Где ты живёшь?", {"br": true}, "Does/Do строят вопрос, отдельно не переводятся; work — работать, live — жить."]},
             {"tiny": ["be и модальные обходятся без do: ", {"t": "Is she…? Can you…?", "b": true}]},
             {"chips": [{"label": "Как строить и где ошибаются", "detail": "do-questions"}]}
           ]
@@ -202,10 +258,43 @@
           "blocks": [
             {"h": ["Всегда / Обычно / Никогда"]},
             {"p": ["Наречия частоты — ", {"t": "перед смысловым глаголом", "b": true}, ", но ", {"t": "после be", "b": true}, "."]},
-            {"example": [
-              {"t": "I always drink", "b": true}, " coffee.", {"br": true},
-              {"t": "He is always late.", "b": true}
-            ]},
+            {
+              "legend": {
+                "items": [
+                  {
+                    "term": "always / usually",
+                    "meaning": "всегда / обычно"
+                  },
+                  {
+                    "term": "often / sometimes",
+                    "meaning": "часто / иногда"
+                  },
+                  {
+                    "term": "rarely / never",
+                    "meaning": "редко / никогда"
+                  }
+                ]
+              }
+            },
+            {
+              "example": [
+                {
+                  "t": "I always drink",
+                  "b": true
+                },
+                " coffee.",
+                {
+                  "br": true
+                },
+                {
+                  "t": "He is always late.",
+                  "b": true
+                }
+              ],
+              "gloss": [
+                "Я всегда пью кофе. · Он всегда опаздывает. always — всегда; late — опоздавший/поздно."
+              ]
+            },
             {"chips": [{"label": "Шкала always → never", "detail": "frequency"}]}
           ]
         },
@@ -219,7 +308,7 @@
             {"example": [
               {"t": "Where you work?", "s": true}, " → ", {"t": "Where do you work?", "hit": true}, {"br": true},
               {"t": "She like tea?", "s": true}, " → ", {"t": "Does she like tea?", "hit": true}
-            ], "gloss": ["В русском вопрос задаётся интонацией — в английском нужен вспомогательный глагол."]}
+            ], "gloss": ["Где ты работаешь? · Она любит чай?", {"br": true}, "Правильно: Where do you work? · Does she like tea?"]}
           ]
         },
         {
@@ -230,7 +319,7 @@
           "blocks": [
             {"h": ["Слова-оттенки: just, actually…"]},
             {"p": ["Один слог меняет тон фразы. Русские соответствия:"]},
-                        {"legend": {"items": [
+            {"legend": {"items": [
               {"term": "just", "meaning": "просто / как раз"},
               {"term": "actually", "meaning": "вообще-то"},
               {"term": "still", "meaning": "всё ещё"},
@@ -239,7 +328,7 @@
             ], "detail": "flavor-words", "label": "Разбор и ловушки"}},
             {"example": [
               "It's expensive. I like it, ", {"t": "though", "hit": true}, ". · ", {"t": "Even", "hit": true}, " a child can do it."
-            ], "gloss": ["though ≈ всё же / впрочем · even ≈ даже"]}
+            ], "gloss": ["Это дорого. Но мне всё равно нравится. · Даже ребёнок может это сделать."]}
           ]
         },
         {
@@ -250,7 +339,7 @@
           "blocks": [
             {"h": ["Связки: however, so, although…"]},
             {"p": ["Соединяют предложения — контраст, причина, время, уступка:"]},
-                        {"legend": {"items": [
+            {"legend": {"items": [
               {"term": "but / however", "meaning": "но / однако"},
               {"term": "so / therefore", "meaning": "поэтому"},
               {"term": "meanwhile", "meaning": "тем временем"},
@@ -258,15 +347,15 @@
               {"term": "although / though", "meaning": "хотя"},
               {"term": "despite", "meaning": "несмотря на"}
             ], "detail": "linking-words", "label": "despite или although?"}},
-                        {"chips": [
+            {"chips": [
               {"label": ["not (only) … but — ", {"t": "не…, а / не только…, но и", "b": true}], "detail": "not-but", "neutral": true}
             ]},
             {"example": [
               "It was raining. ", {"t": "However", "hit": true}, ", we went out. · ", {"t": "Although", "hit": true}, " it rained, we went out."
-            ], "gloss": ["However ≈ однако · Although ≈ хотя"]},
+            ], "gloss": ["Шёл дождь. Однако мы вышли. · Хотя шёл дождь, мы вышли.", {"br": true}, "however — однако (отдельное предложение); although — хотя (придаточное)."]},
             {"example": [
               "The meeting is ", {"t": "not", "hit": true}, " on Monday, ", {"t": "but", "hit": true}, " on Tuesday. · She is ", {"t": "not only", "hit": true}, " smart ", {"t": "but also", "hit": true}, " kind."
-            ], "gloss": ["«не в понедельник, а во вторник» · «не только умная, но и добрая»"]}
+            ], "gloss": ["Встреча не в понедельник, а во вторник. · Она не только умная, но и добрая."]}
           ]
         },
         {
@@ -279,7 +368,7 @@
             {"p": ["Контраст двух фактов сразу: ", {"t": "while", "b": true}, " (ещё и «пока»), ", {"t": "whereas", "b": true}, " (формальнее), ", {"t": "on the other hand", "b": true}, " (с другой стороны)."]},
             {"example": [
               "I drink tea, ", {"t": "whereas", "hit": true}, " my wife prefers coffee. · ", {"t": "On the other hand", "hit": true}, ", it's cheaper."
-            ], "gloss": ["while/whereas ≈ тогда как · on the other hand ≈ с другой стороны"]},
+            ], "gloss": ["Я пью чай, тогда как моя жена предпочитает кофе. · С другой стороны, это дешевле."]},
             {"chips": [{"label": "while — тоже «пока»", "detail": "contrast-linkers"}]}
           ]
         },
@@ -291,15 +380,19 @@
           "blocks": [
             {"h": ["there is / there are"]},
             {"p": ["= «есть, находится». ", {"t": "There is", "b": true}, " + одно или неисчисляемое, ", {"t": "There are", "b": true}, " + несколько:"]},
-            {"example": [{"t": "There is", "b": true}, " a shop nearby. · ", {"t": "There are", "b": true}, " two shops."]},
+            {"example": [{"t": "There is", "b": true}, " a shop nearby. · ", {"t": "There are", "b": true}, " two shops."], "gloss": ["Поблизости есть магазин. · Есть два магазина.", {"br": true}, "there is — один/неисчисляемое; there are — несколько."]},
             {"chips": [{"label": "Отрицание и There's vs It's", "detail": "there-is"}]}
           ]
         }
       ]
     },
     {
-      "id": "tenses", "view": "tenses", "badge": "Tenses",
-      "heading": "Времена", "sub": "Сигнальные слова подсказывают время.", "grid": "two",
+      "id": "tenses",
+      "view": "tenses",
+      "badge": "Tenses",
+      "heading": "Времена",
+      "sub": "Сигнальные слова подсказывают время.",
+      "grid": "two",
       "cards": [
         {
           "id": "present-simple",
@@ -310,10 +403,40 @@
             {"h": ["Present Simple"]},
             {"formula": [{"slot": "V"}, {"arrow": "+"}, {"slot": "s (3 л.)", "role": "end"}]},
             {"p": ["Привычки, факты, расписания. Маркеры: ", {"t": "every day, usually, always, often", "b": true}, "."]},
-            {"example": [
-              {"t": "She works", "b": true}, " every day.", {"br": true},
-              {"t": "He doesn't work", "b": true}, " on Sundays."
-            ]},
+            {
+              "legend": {
+                "items": [
+                  {
+                    "term": "every day / usually / always / often",
+                    "meaning": "каждый день / обычно / всегда / часто"
+                  }
+                ]
+              }
+            },
+            {
+              "example": [
+                {
+                  "t": "She works",
+                  "b": true
+                },
+                " every day.",
+                {
+                  "br": true
+                },
+                {
+                  "t": "He doesn't work",
+                  "b": true
+                },
+                " on Sundays."
+              ],
+              "gloss": [
+                "Она работает каждый день.",
+                {
+                  "br": true
+                },
+                "Он не работает по воскресеньям. every day — каждый день; on Sundays — по воскресеньям."
+              ]
+            },
             {"chips": [{"label": "Когда и как", "detail": "present-simple"}]}
           ]
         },
@@ -326,10 +449,43 @@
             {"h": ["Present Continuous"]},
             {"formula": [{"slot": "am / is / are"}, {"arrow": "+"}, {"slot": "V-ing", "role": "end"}]},
             {"p": ["Сейчас / в этот период. Маркеры: ", {"t": "now, at the moment, Look!, Listen!", "b": true}, "."]},
-            {"example": [
-              {"t": "I'm reading", "b": true}, " now.", {"br": true},
-              {"t": "Look! It's raining.", "b": true}
-            ]},
+            {
+              "legend": {
+                "items": [
+                  {
+                    "term": "now / at the moment",
+                    "meaning": "сейчас / в данный момент"
+                  },
+                  {
+                    "term": "Look! / Listen!",
+                    "meaning": "Смотри! / Слушай!"
+                  }
+                ]
+              }
+            },
+            {
+              "example": [
+                {
+                  "t": "I'm reading",
+                  "b": true
+                },
+                " now.",
+                {
+                  "br": true
+                },
+                {
+                  "t": "Look! It's raining.",
+                  "b": true
+                }
+              ],
+              "gloss": [
+                "Я сейчас читаю.",
+                {
+                  "br": true
+                },
+                "Смотри! Идёт дождь. reading — читаю; now — сейчас; raining — идёт дождь."
+              ]
+            },
             {"tiny": ["Ещё PC: ", {"t": "He's always losing his keys.", "b": true}, " — раздражение привычкой, не «сейчас»."]},
             {"chips": [{"label": "Simple vs Continuous", "detail": "present-continuous"}]}
           ]
@@ -343,10 +499,40 @@
             {"h": ["Past Simple"]},
             {"formula": [{"slot": "V2"}, {"arrow": "/"}, {"slot": "did + V1"}]},
             {"p": ["Завершённые события прошлого. Маркеры: ", {"t": "yesterday, last week, in 2010, ago", "b": true}, "."]},
-            {"example": [
-              {"t": "I saw", "b": true}, " him yesterday.", {"br": true},
-              {"t": "Did you see", "b": true}, " him?"
-            ]},
+            {
+              "legend": {
+                "items": [
+                  {
+                    "term": "yesterday / last week / ago",
+                    "meaning": "вчера / на прошлой неделе / назад"
+                  }
+                ]
+              }
+            },
+            {
+              "example": [
+                {
+                  "t": "I saw",
+                  "b": true
+                },
+                " him yesterday.",
+                {
+                  "br": true
+                },
+                {
+                  "t": "Did you see",
+                  "b": true
+                },
+                " him?"
+              ],
+              "gloss": [
+                "Я видел его вчера.",
+                {
+                  "br": true
+                },
+                "Ты его видел? see → saw — видеть → видел; yesterday — вчера."
+              ]
+            },
             {"chips": [{"label": "Правильные и неправильные", "detail": "past-simple"}]}
           ]
         },
@@ -359,10 +545,44 @@
             {"h": ["Present Perfect"]},
             {"formula": [{"slot": "have / has"}, {"arrow": "+"}, {"slot": "V3", "role": "end"}]},
             {"p": ["Результат сейчас / опыт без времени. Маркеры: ", {"t": "just, already, yet, ever, never, recently", "b": true}, "."]},
-            {"example": [
-              {"t": "I have lost", "b": true}, " my keys (не могу зайти).", {"br": true},
-              {"t": "Have you ever been", "b": true}, " to London?"
-            ]},
+            {
+              "legend": {
+                "items": [
+                  {
+                    "term": "just / already / yet",
+                    "meaning": "только что / уже / ещё, уже (вопрос)"
+                  },
+                  {
+                    "term": "ever / never / recently",
+                    "meaning": "когда-нибудь / никогда / недавно"
+                  }
+                ]
+              }
+            },
+            {
+              "example": [
+                {
+                  "t": "I have lost",
+                  "b": true
+                },
+                " my keys (не могу зайти).",
+                {
+                  "br": true
+                },
+                {
+                  "t": "Have you ever been",
+                  "b": true
+                },
+                " to London?"
+              ],
+              "gloss": [
+                "Я потерял ключи (и сейчас не могу войти).",
+                {
+                  "br": true
+                },
+                "Ты когда-нибудь бывал в Лондоне? lose → lost — терять → потерял; ever — когда-нибудь."
+              ]
+            },
             {"chips": [{"label": "Почему этого времени нет в русском", "detail": "present-perfect"}]}
           ]
         },
@@ -378,7 +598,7 @@
             {"example": [
               {"t": "I have seen", "b": true}, " this film (уже знаю его).", {"br": true},
               {"t": "I saw", "b": true}, " it ", {"t": "yesterday", "b": true}, "."
-            ]},
+            ], "gloss": ["Я уже видел этот фильм (опыт до настоящего).", {"br": true}, "Я видел его вчера (завершённое прошлое)."]},
             {"tiny": ["«Время названо?» — только подсказка: ", {"t": "I've lived here since 2020", "i": true}, " — время названо, но Perfect."]},
             {"chips": [{"label": "Разбор на парах", "detail": "pp-vs-past"}]}
           ]
@@ -395,7 +615,7 @@
             {"example": [
               {"t": "I'll help", "b": true}, " you (только что решил).", {"br": true},
               {"t": "I'm going to visit", "b": true}, " Paris (план)."
-            ]},
+            ], "gloss": ["Я тебе помогу (решение сейчас).", {"br": true}, "Я собираюсь посетить Париж (план)."]},
             {"chips": [{"label": "Как выбрать", "detail": "future"}]}
           ]
         },
@@ -408,7 +628,7 @@
             {"h": ["Past Continuous"]},
             {"formula": [{"slot": "was / were"}, {"arrow": "+"}, {"slot": "V-ing", "role": "end"}]},
             {"p": ["Был в процессе в момент прошлого — фон для события:"]},
-            {"example": ["I ", {"t": "was cooking", "b": true}, " when he ", {"t": "called", "b": true}, ". · They ", {"t": "were sleeping", "b": true}, "."]},
+            {"example": ["I ", {"t": "was cooking", "b": true}, " when he ", {"t": "called", "b": true}, ". · They ", {"t": "were sleeping", "b": true}, "."], "gloss": ["Я готовил, когда он позвонил. · Они спали.", {"br": true}, "was/were + -ing — действие в процессе в тот момент."]},
             {"chips": [{"label": "vs Past Simple", "detail": "past-continuous"}]}
           ]
         },
@@ -423,30 +643,26 @@
             {"p": ["Делаю это ", {"t": "уже какое-то время", "b": true}, " (до сих пор) — или только что закончил, и след виден:"]},
             {"example": [
               "I ", {"t": "have been waiting", "hit": true}, " for an hour. · You look tired — ", {"t": "have you been running", "hit": true}, "?"
-            ], "gloss": ["«жду уже час» — русский Present + «уже» = английский PPC"]},
+            ], "gloss": ["Я жду уже час. · Ты выглядишь уставшим — ты бегал?", {"br": true}, "for an hour — в течение часа; процесс длится или оставил видимый след."]},
             {"chips": [{"label": "vs Present Perfect", "detail": "pp-continuous"}]}
           ]
         }
       ]
     },
     {
-      "id": "verbs", "view": "verbs", "badge": "Verbs",
-      "heading": "Глагольные конструкции", "sub": "Модальные, пассив, V-ing vs to V.", "grid": "two",
+      "id": "verbs",
+      "view": "verbs",
+      "badge": "Verbs",
+      "heading": "Глагольные конструкции",
+      "sub": "Модальные, пассив, V-ing vs to V.",
+      "grid": "two",
       "cards": [
         {
           "id": "modals",
           "level": "A2",
           "kind": "употребление",
           "search": "modal can could must should may might модальные глаголы",
-          "blocks": [
-            {"h": ["Модальные глаголы"]},
-            {"formula": [{"slot": "modal", "role": "sub"}, {"arrow": "+"}, {"slot": "V1 без to", "role": "verb"}]},
-            {"p": [{"t": "can/could", "b": true}, " — умею/просьба · ", {"t": "must", "b": true}, " — должен · ", {"t": "should", "b": true}, " — совет · ", {"t": "may/might", "b": true}, " — возможно."]},
-            {"example": [
-              {"t": "Can you help", "b": true}, " me? · ", {"t": "You should sleep", "b": true}, " more."
-            ]},
-            {"chips": [{"label": "Все значения", "detail": "modals-en"}]}
-          ]
+          "blocks": [{"h": ["Модальные глаголы"]}, {"formula": [{"slot": "modal", "role": "sub"}, {"arrow": "+"}, {"slot": "V1 без to", "role": "verb"}]}, {"legend": {"items": [{"term": "can / could", "meaning": "могу / мог; could также смягчает просьбу"}, {"term": "must / have to", "meaning": "должен / нужно"}, {"term": "should", "meaning": "стоит / следует (совет)"}, {"term": "may / might", "meaning": "возможно; may также «разрешено»"}]}}, {"example": [{"t": "Can you help", "b": true}, " me? · ", {"t": "You should sleep", "b": true}, " more."], "gloss": ["Можешь мне помочь? · Тебе стоит больше спать. can — могу; should — стоит."]}, {"tiny": ["have to — отдельная модель: have/has to + V1; вопрос с do/does/did. I have to go — Мне нужно идти; Do you have to go? — Тебе нужно идти?"]}, {"chips": [{"label": "Все значения", "detail": "modals-en"}]}]
         },
         {
           "id": "mustnt",
@@ -459,7 +675,7 @@
             {"example": [
               {"t": "You mustn't smoke", "hit": true}, " here.", {"br": true},
               {"t": "You don't have to come", "hit": true}, " early."
-            ], "gloss": ["запрещено.", {"br": true}, "не обязательно."]},
+            ], "gloss": ["Здесь нельзя курить (запрет).", {"br": true}, "Тебе не обязательно приходить рано (нет обязанности)."]},
             {"chips": [{"label": "Почему это путают", "detail": "mustnt"}]}
           ]
         },
@@ -473,7 +689,7 @@
             {"formula": [{"slot": "be"}, {"arrow": "+"}, {"slot": "V3", "role": "end"}]},
             {"example": [
               {"t": "The house was built", "hit": true}, " in 1930."
-            ], "gloss": ["кто построил — не важно."]},
+            ], "gloss": ["Дом был построен в 1930 году. build → built — строить → построенный; исполнитель не назван."]},
             {"chips": [{"label": "Во сколько и в каком времени", "detail": "passive-en"}]}
           ]
         },
@@ -485,9 +701,36 @@
           "blocks": [
             {"h": ["V-ing или to V?"]},
             {"p": [{"t": "enjoy, finish, mind", "b": true}, " + V-ing · ", {"t": "want, decide, hope", "b": true}, " + to V."]},
-            {"example": [
-              {"t": "I enjoy reading.", "b": true}, " · ", {"t": "I want to read.", "b": true}
-            ]},
+            {
+              "legend": {
+                "items": [
+                  {
+                    "term": "enjoy / finish / mind",
+                    "meaning": "нравится делать / заканчивать / возражать"
+                  },
+                  {
+                    "term": "want / decide / hope",
+                    "meaning": "хотеть / решать / надеяться"
+                  }
+                ]
+              }
+            },
+            {
+              "example": [
+                {
+                  "t": "I enjoy reading.",
+                  "b": true
+                },
+                " · ",
+                {
+                  "t": "I want to read.",
+                  "b": true
+                }
+              ],
+              "gloss": [
+                "Мне нравится читать. · Я хочу читать. enjoy — получать удовольствие; want — хотеть."
+              ]
+            },
             {"chips": [{"label": "Список частых глаголов", "detail": "gerund-infinitive"}]}
           ]
         },
@@ -498,10 +741,20 @@
           "search": "relative clauses who which that который люди предметы вещи",
           "blocks": [
             {"h": ["Relative clauses: who / which / that"]},
-            {"p": [{"t": "который", "b": true}, ": ", {"t": "who", "b": true}, " — люди · ", {"t": "which", "b": true}, " — предметы · ", {"t": "that", "b": true}, " — и то и другое."]},
+            {"p": ["В определительных придаточных без запятых: who — люди; which — предметы; that — оба типа. Это не все виды относительных придаточных."]},
+            {
+              "legend": {
+                "items": [
+                  {
+                    "term": "who / which / that",
+                    "meaning": "который: люди / предметы / оба (в ограничительных придаточных)"
+                  }
+                ]
+              }
+            },
             {"example": [
               "The man ", {"t": "who", "hit": true}, " lives next door is 90. · The book ", {"t": "that", "hit": true}, " I read was great."
-            ], "gloss": ["who — люди · which — вещи · that — универсальный"]},
+            ], "gloss": ["Мужчине, который живёт по соседству, 90 лет. · Книга, которую я прочитал, была отличной."]},
             {"chips": [{"label": "whose, where и пропуск that", "detail": "relatives"}]}
           ]
         },
@@ -515,7 +768,7 @@
             {"p": [{"t": "don't / doesn't / didn't", "b": true}, " + базовая форма · ", {"t": "never", "b": true}, " вместо not · ", {"t": "no", "b": true}, " + существительное."]},
             {"example": [
               "I ", {"t": "don't", "hit": true}, " smoke. · I have ", {"t": "never", "hit": true}, " been to Rome. · I have ", {"t": "no", "hit": true}, " money."
-            ], "gloss": ["never — УЖЕ отрицание: второй not не добавляем"]},
+            ], "gloss": ["Я не курю. · Я никогда не был в Риме. · У меня нет денег.", {"br": true}, "never — никогда (уже отрицание); no money — нет денег."]},
             {"chips": [{"label": "Двойное отрицание — ловушка", "detail": "negation"}]}
           ]
         },
@@ -526,18 +779,22 @@
           "search": "imperative повелительное don't let's please базовая форма команда просьба",
           "blocks": [
             {"h": ["Imperative: базовая форма"]},
-            {"p": [{"t": "Open!", "b": true}, " · ", {"t": "Please open", "b": true}, " the window (без to) · ", {"t": "Don't open", "b": true}, " it. · ", {"t": "Let's go", "b": true}, "."]},
+            {"p": ["Open! — Открой! · Please open the window — Пожалуйста, открой окно · Don’t open it — Не открывай это · Let’s go — Пойдём."]},
             {"example": [
               {"t": "Please sit down", "hit": true}, ". · ", {"t": "Let's not argue", "hit": true}, "."
-            ], "gloss": ["подлежащего нет — просто базовая форма; Let's not = отрицание"]},
+            ], "gloss": ["Пожалуйста, садитесь. · Давайте не будем спорить. sit down — садиться; let’s — давайте."]},
             {"chips": [{"label": "Let's и вежливость", "detail": "imperative"}]}
           ]
         }
       ]
     },
     {
-      "id": "preps", "view": "preps", "badge": "Prepositions",
-      "heading": "Предлоги", "sub": "in / on / at + предлоги, которые не переводятся дословно.", "grid": "two",
+      "id": "preps",
+      "view": "preps",
+      "badge": "Prepositions",
+      "heading": "Предлоги",
+      "sub": "in / on / at + предлоги, которые не переводятся дословно.",
+      "grid": "two",
       "cards": [
         {
           "id": "time",
@@ -547,7 +804,7 @@
           "blocks": [
             {"h": ["Время: in / on / at"]},
             {"formula": [{"slot": "in", "role": "sub"}, {"slot": "месяцы, годы"}, {"slot": "on", "role": "sub"}, {"slot": "дни, даты"}, {"slot": "at", "role": "sub"}, {"slot": "часы, night"}]},
-            {"example": ["in July · in 2026 · on Monday · on the 5th of May · at 7 o'clock · at night"]},
+            {"example": ["in July · in 2026 · on Monday · on the 5th of May · at 7 o'clock · at night"], "gloss": ["В июле · в 2026 году · в понедельник · пятого мая · в 7 часов · ночью."]},
             {"chips": [{"label": "Полная модель", "detail": "time-preps"}]}
           ]
         },
@@ -559,7 +816,7 @@
           "blocks": [
             {"h": ["Место: in / on / at"]},
             {"formula": [{"slot": "in", "role": "sub"}, {"slot": "внутри"}, {"slot": "on", "role": "sub"}, {"slot": "поверхность"}, {"slot": "at", "role": "sub"}, {"slot": "точка"}]},
-            {"example": ["in the room · on the table · at the bus stop · at the door"]},
+            {"example": ["in the room · on the table · at the bus stop · at the door"], "gloss": ["В комнате · на столе · на автобусной остановке · у двери."]},
             {"chips": [{"label": "Как не перепутать", "detail": "place-preps"}]}
           ]
         },
@@ -571,15 +828,19 @@
           "blocks": [
             {"h": ["Предлоги-ловушки"]},
             {"p": ["Русский предлог ≠ английский. Учить парами:"]},
-                        {"legend": {"items": ["depend on", "interested in", "listen to", "afraid of", "good at", "wait for"], "detail": "dependent-preps", "label": "Разбор"}},
-            {"example": ["Зависит ", {"t": "от", "b": true}, " → depend ", {"t": "on", "b": true}, " (не from!)"]}
+            {"legend": {"items": [{"term": "depend on", "meaning": "зависеть от"}, {"term": "interested in", "meaning": "интересоваться"}, {"term": "listen to", "meaning": "слушать"}, {"term": "afraid of", "meaning": "бояться"}, {"term": "good at", "meaning": "хорошо уметь / разбираться в"}, {"term": "wait for", "meaning": "ждать"}], "detail": "dependent-preps", "label": "Разбор"}},
+            {"example": ["Зависит ", {"t": "от", "b": true}, " → depend ", {"t": "on", "b": true}, " (не from!)"], "gloss": ["depend on — зависеть от. Предлог учим вместе с глаголом."]}
           ]
         }
       ]
     },
     {
-      "id": "nouns", "view": "articles", "badge": "Nouns",
-      "heading": "Слова: числа и сравнения", "sub": "Множественное число, исчисляемость, степени сравнения.", "grid": "two",
+      "id": "nouns",
+      "view": "articles",
+      "badge": "Nouns",
+      "heading": "Слова: числа и сравнения",
+      "sub": "Множественное число, исчисляемость, степени сравнения.",
+      "grid": "two",
       "cards": [
         {
           "id": "plurals",
@@ -592,7 +853,7 @@
             {"example": [
               "cats · boxes · cities · days · leaves", {"br": true},
               "Исключения: ", {"t": "man–men, child–children, foot–feet, tooth–teeth", "b": true}
-            ]},
+            ], "gloss": ["Кошки · коробки · города · дни · листья.", {"br": true}, "Мужчина → мужчины; ребёнок → дети; ступня → ступни; зуб → зубы."]},
             {"chips": [{"label": "Правила и исключения", "detail": "plurals"}]}
           ]
         },
@@ -604,10 +865,28 @@
           "blocks": [
             {"h": ["Исчисляемое / нет"]},
             {"p": [{"t": "many/few", "b": true}, " + исчисляемые · ", {"t": "much/little", "b": true}, " + неисчисляемые."]},
+            {
+              "legend": {
+                "items": [
+                  {
+                    "term": "many / much",
+                    "meaning": "много: исчисляемое / неисчисляемое"
+                  },
+                  {
+                    "term": "few / little",
+                    "meaning": "мало: исчисляемое / неисчисляемое"
+                  },
+                  {
+                    "term": "a few / a little",
+                    "meaning": "несколько / немного (есть некоторое количество)"
+                  }
+                ]
+              }
+            },
             {"example": [
               "much time · many friends", {"br": true},
               {"t": "advice, news, money", "hit": true}
-            ], "gloss": ["— обычно как единственное число"]},
+            ], "gloss": ["Много времени · много друзей; advice — советы, news — новости, money — деньги.", {"br": true}, "В английском advice, news и money — неисчисляемые, обычно с единственным числом глагола."]},
             {"chips": [{"label": "Как считать неисчисляемое", "detail": "countable"}]}
           ]
         },
@@ -619,10 +898,47 @@
           "blocks": [
             {"h": ["some / any"]},
             {"formula": [{"slot": "some"}, {"arrow": "+"}, {"slot": "утверждение"}, {"slot": "any"}, {"arrow": "+"}, {"slot": "вопрос / отрицание", "role": "end"}]},
-            {"example": [
-              {"t": "I have some money.", "b": true}, {"br": true},
-              {"t": "Do you have any questions?", "b": true}, " · ", {"t": "I don't have any money.", "b": true}
-            ]},
+            {
+              "legend": {
+                "items": [
+                  {
+                    "term": "some",
+                    "meaning": "немного / несколько"
+                  },
+                  {
+                    "term": "any",
+                    "meaning": "какие-нибудь / никаких / любой — по контексту"
+                  }
+                ]
+              }
+            },
+            {
+              "example": [
+                {
+                  "t": "I have some money.",
+                  "b": true
+                },
+                {
+                  "br": true
+                },
+                {
+                  "t": "Do you have any questions?",
+                  "b": true
+                },
+                " · ",
+                {
+                  "t": "I don't have any money.",
+                  "b": true
+                }
+              ],
+              "gloss": [
+                "У меня есть немного денег.",
+                {
+                  "br": true
+                },
+                "У тебя есть вопросы? · У меня нет денег. some — немного/несколько; any — в вопросе «какие-нибудь», в отрицании «никаких»."
+              ]
+            },
             {"chips": [{"label": "Нюансы", "detail": "some-any"}]}
           ]
         },
@@ -634,11 +950,16 @@
           "blocks": [
             {"h": ["Сравнение"]},
             {"formula": [{"slot": "big — bigger — the biggest"}]},
+            {
+              "tiny": [
+                "big → bigger → the biggest — большой → больше → самый большой."
+              ]
+            },
             {"p": ["Короткие: ", {"t": "-er / the -est", "b": true}, ". Длинные: ", {"t": "more / the most", "b": true}, ". Сравнение — через ", {"t": "than", "b": true}, "."]},
             {"example": [
               {"t": "She is taller than", "b": true}, " me.", {"br": true},
               {"t": "good — better — the best", "b": true}
-            ]},
+            ], "gloss": ["Она выше меня.", {"br": true}, "Хороший → лучше → лучший; big → bigger → the biggest — большой → больше → самый большой."]},
             {"chips": [{"label": "Правила и исключения", "detail": "comparative"}]}
           ]
         },
@@ -650,17 +971,35 @@
           "blocks": [
             {"h": ["Числа и даты: 1st, 2nd, 3rd"]},
             {"p": ["Порядковые: ", {"t": "1st first · 2nd second · 3rd third · 5th fifth · 12th twelfth", "b": true}, " — fifth и twelfth меняют написание."]},
+            {
+              "legend": {
+                "items": [
+                  {
+                    "term": "first / second / third",
+                    "meaning": "первый / второй / третий"
+                  },
+                  {
+                    "term": "fifth / twelfth",
+                    "meaning": "пятый / двенадцатый"
+                  }
+                ]
+              }
+            },
             {"example": [
               "on ", {"t": "5 May", "hit": true}, " · on ", {"t": "the 5th of May", "hit": true}, " · ", {"t": "in the 1990s", "hit": true}, "."
-            ], "gloss": ["дата — on, год и месяц — in · десятилетие: the + -s"]},
+            ], "gloss": ["Пятого мая (обе записи даты) · в 1990-е годы.", {"br": true}, "on — с датой; in — с годом/месяцем/десятилетием."]},
             {"chips": [{"label": "Как читать годы", "detail": "numbers-dates"}]}
           ]
         }
       ]
     },
     {
-      "id": "conditionals", "view": "verbs", "badge": "If-clauses",
-      "heading": "Условные предложения", "sub": "Формула одинаковая: If + условие, + следствие.", "grid": "two",
+      "id": "conditionals",
+      "view": "verbs",
+      "badge": "If-clauses",
+      "heading": "Условные предложения",
+      "sub": "Формула одинаковая: If + условие, + следствие.",
+      "grid": "two",
       "cards": [
         {
           "id": "cond1",
@@ -672,7 +1011,7 @@
             {"formula": [{"slot": "If + Present", "role": "sub"}, {"arrow": ","}, {"slot": "will + V1", "role": "verb"}]},
             {"example": [
               {"t": "If it rains, we will stay", "hit": true}, " at home."
-            ], "gloss": ["После ", {"t": "if", "b": true}, " — не will! Will живёт в следствии."]},
+            ], "gloss": ["Если пойдёт дождь, мы останемся дома.", {"br": true}, "В этой модели после if — Present, will — в главной части."]},
             {"chips": [{"label": "Разбор", "detail": "cond1"}]}
           ]
         },
@@ -687,7 +1026,7 @@
             {"example": [
               {"t": "If I had time, I would help", "hit": true}, " you.", {"br": true},
               "If I ", {"t": "were", "hit": true}, " you…"
-            ], "gloss": ["нереальное сейчас.", {"br": true}, "were — для всех лиц."]},
+            ], "gloss": ["Если бы у меня было время, я бы тебе помог.", {"br": true}, "На твоём месте… (If I were you…)."]},
             {"chips": [{"label": "Почему were", "detail": "cond2"}]}
           ]
         },
@@ -701,7 +1040,7 @@
             {"formula": [{"slot": "If + Present", "role": "sub"}, {"arrow": ","}, {"slot": "Present", "role": "verb"}]},
             {"example": [
               {"t": "If you heat ice, it melts.", "hit": true}
-            ], "gloss": ["Законы, правила, привычные связи."]},
+            ], "gloss": ["Если нагревать лёд, он тает. heat — нагревать; ice — лёд; melt — таять."]},
             {"chips": [{"label": "Когда выбирать 0 вместо 1", "detail": "cond0"}]}
           ]
         },
@@ -715,7 +1054,7 @@
             {"formula": [{"slot": "If + had V3", "role": "sub"}, {"arrow": ","}, {"slot": "would have V3", "role": "verb"}]},
             {"example": [
               {"t": "If I had known, I would have called.", "hit": true}
-            ], "gloss": ["Сожаление о прошлом."]},
+            ], "gloss": ["Если бы я знал тогда, я бы позвонил (в прошлом этого не произошло)."]},
             {"tiny": ["Для B1+ — распознавать достаточно."]}
           ]
         }
@@ -724,340 +1063,445 @@
   ],
   "details": {
     "lookup-help": {
-      "title": "Как пользоваться", "lead": "Маркер → форма → порядок слов.",
+      "title": "Как пользоваться",
+      "lead": "Маркер → форма → порядок слов.",
       "blocks": [
         {"detail": {"label": "Схема", "runs": ["Найди маркер — сигнальное слово, артикль, союз или модальный глагол, — потом смотри нужную форму и порядок слов."]}},
         {"detail": {"label": "Поиск", "runs": ["Ищи сразу: ", {"t": "present", "i": true}, ", ", {"t": "the", "i": true}, ", ", {"t": "must", "i": true}, " — или по-русски. Поиск проверяет все разделы сразу."]}},
-        {"detail": {"label": "Навигация", "runs": ["Пять разделов внизу."]}}
+        {"detail": {"label": "Навигация", "runs": ["Пять разделов внизу."]}},
+        {
+          "detail": {
+            "label": "Обозначения",
+            "runs": [
+              "V/V1 — базовая форма (go — идти/ехать); V2 — прошедшая (went — пошёл/поехал); V3 — причастие (gone). be → am/is/are, was/were; have/has и do/does/did могут быть вспомогательными: переводится вся конструкция, а не каждое слово отдельно."
+            ]
+          }
+        }
       ]
     },
     "flavor-words": {
-      "title": "Слова-оттенки: разбор", "lead": "Позиция — перед смысловым глаголом, после be (как наречия частоты).",
+      "title": "Слова-оттенки: разбор",
+      "lead": "Позиция зависит от слова: just/still часто в середине; actually может начинать фразу; even — перед выделяемым словом; though — часто в конце.",
       "blocks": [
-        {"detail": {"label": "just", "runs": ["I've ", {"t": "just", "i": true}, " eaten. — «только что» (см. Present Perfect) · Just kidding! — «просто шучу»."]}},
-        {"detail": {"label": "actually", "runs": [{"t": "Actually", "i": true}, ", I don't know. — «вообще-то / на самом деле». Не «актуально»! Актуальный = relevant."]}},
-        {"detail": {"label": "still", "runs": ["I ", {"t": "still", "i": true}, " live here. — «всё ещё»: продолжается до сих пор. В вопросах/отрицаниях часто yet (см. Perfect)."]}},
-        {"detail": {"label": "even", "runs": [{"t": "Even", "i": true}, " a child can do it."], "comment": ["«даже»: усиление перед тем словом, которое удивляет."]}},
-        {"detail": {"label": "though", "runs": ["It's expensive. I like it, ", {"t": "though", "i": true}, ". — «впрочем/правда» в конце фразы. В начале — союз: Though it's expensive… (= хотя)."]}}
+        {"detail": {"label": "just", "runs": ["I've ", {"t": "just", "i": true}, " eaten. — «только что» (см. Present Perfect) · Just kidding! — «просто шучу»."], "comment": ["Я только что поел. · Просто шучу!"]}},
+        {"detail": {"label": "actually", "runs": [{"t": "Actually", "i": true}, ", I don't know. — «вообще-то / на самом деле». Не «актуально»! Актуальный = relevant."], "comment": ["Вообще-то я не знаю."]}},
+        {"detail": {"label": "still", "runs": ["I ", {"t": "still", "i": true}, " live here. — «всё ещё»: продолжается до сих пор. В вопросах/отрицаниях часто yet (см. Perfect)."], "comment": ["Я всё ещё живу здесь. still — всё ещё; not yet — ещё не."]}},
+        {"detail": {"label": "even", "runs": [{"t": "Even", "i": true}, " a child can do it."], "comment": ["Даже ребёнок может это сделать. «даже»: усиление перед тем словом, которое удивляет."]}},
+        {"detail": {"label": "though", "runs": ["It's expensive. I like it, ", {"t": "though", "i": true}, ". — «впрочем/правда» в конце фразы. В начале — союз: Though it's expensive… (= хотя)."], "comment": ["Это дорого. Но мне всё равно нравится. · Хотя это дорого…"]}}
       ]
     },
     "linking-words": {
-      "title": "Связки: разбор", "lead": "however, therefore, meanwhile начинают новое предложение — после них запятая.",
+      "title": "Связки: разбор",
+      "lead": "however, therefore, meanwhile начинают новое предложение — после них запятая.",
       "blocks": [
-        {"detail": {"label": "but / however", "runs": ["It was raining. ", {"t": "However", "i": true}, ", we went out."], "comment": ["то же «но», только формальнее и отдельным предложением."]}},
-        {"detail": {"label": "so / therefore", "runs": ["I was tired, ", {"t": "so", "i": true}, " I slept. — «поэтому». ", {"t": "Therefore", "i": true}, " — то же, формальнее."]}},
-        {"detail": {"label": "meanwhile", "runs": ["I cooked. ", {"t": "Meanwhile", "i": true}, ", he watched TV."], "comment": ["«тем временем»: два события одновременно."]}},
-        {"detail": {"label": "nevertheless", "runs": ["The task was hard. ", {"t": "Nevertheless", "i": true}, ", she finished it."], "comment": ["«тем не менее»: уступка."]}},
-        {"detail": {"label": "despite vs although", "runs": [{"t": "Despite", "i": true}, " the rain ✓ · ", {"t": "Despite it was raining", "s": true}, " ✗ → ", {"t": "Although it was raining", "i": true}, " ✓. Despite + существительное/-ing; although + подлежащее и глагол."]}}
+        {"detail": {"label": "but / however", "runs": ["It was raining. ", {"t": "However", "i": true}, ", we went out."], "comment": ["Шёл дождь. Однако мы вышли. то же «но», только формальнее и отдельным предложением."]}},
+        {"detail": {"label": "so / therefore", "runs": ["I was tired, ", {"t": "so", "i": true}, " I slept. — «поэтому». ", {"t": "Therefore", "i": true}, " — то же, формальнее."], "comment": ["Я устал, поэтому поспал. therefore — поэтому (формальнее)."]}},
+        {"detail": {"label": "meanwhile", "runs": ["I cooked. ", {"t": "Meanwhile", "i": true}, ", he watched TV."], "comment": ["Я готовил. Тем временем он смотрел телевизор. «тем временем»: два события одновременно."]}},
+        {"detail": {"label": "nevertheless", "runs": ["The task was hard. ", {"t": "Nevertheless", "i": true}, ", she finished it."], "comment": ["Задание было трудным. Тем не менее она его закончила. «тем не менее»: уступка."]}},
+        {"detail": {"label": "despite vs although", "runs": [{"t": "Despite", "i": true}, " the rain ✓ · ", {"t": "Despite it was raining", "s": true}, " ✗ → ", {"t": "Although it was raining", "i": true}, " ✓. Despite + существительное/-ing; although + подлежащее и глагол."], "comment": ["Несмотря на дождь · хотя шёл дождь. despite + существительное, although + предложение."]}}
       ]
     },
     "not-but": {
-      "title": "not …, but / not only … but also", "lead": "После отрицания: «не X, а Y» — not X, but Y; «не только…, но и» — not only … but also.",
+      "title": "not …, but / not only … but also",
+      "lead": "После отрицания: «не X, а Y» — not X, but Y; «не только…, но и» — not only … but also.",
       "blocks": [
-        {"detail": {"label": "not …, but", "runs": ["The meeting is ", {"t": "not on Monday, but on Tuesday", "i": true}, "."], "comment": ["«не в понедельник, а во вторник»: отрицаем один вариант и исправляем на другой."]}},
-        {"detail": {"label": "not only … but also", "runs": ["She is ", {"t": "not only smart but also kind", "i": true}, "."], "comment": ["«не только умная, но и добрая»."]}},
-        {"detail": {"label": "просто but", "runs": ["Ничего не исправляется, а просто противопоставляется — обычный ", {"t": "but", "i": true}, ": It was raining, ", {"t": "but", "i": true}, " we went out. — «но»."]}},
+        {"detail": {"label": "not …, but", "runs": ["The meeting is ", {"t": "not on Monday, but on Tuesday", "i": true}, "."], "comment": ["Встреча не в понедельник, а во вторник. «не в понедельник, а во вторник»: отрицаем один вариант и исправляем на другой."]}},
+        {"detail": {"label": "not only … but also", "runs": ["She is ", {"t": "not only smart but also kind", "i": true}, "."], "comment": ["Она не только умная, но и добрая. «не только умная, но и добрая»."]}},
+        {"detail": {"label": "просто but", "runs": ["Ничего не исправляется, а просто противопоставляется — обычный ", {"t": "but", "i": true}, ": It was raining, ", {"t": "but", "i": true}, " we went out. — «но»."], "comment": ["Шёл дождь, но мы вышли."]}},
         {"detail": {"label": "Позиция", "runs": ["Обе конструкции стоят внутри предложения — это не связки вроде however, которые начинают новое предложение."]}}
       ]
     },
     "there-is": {
-      "title": "there is / there are", "lead": "Без do: Is there…? There aren't… — это be.",
+      "title": "there is / there are",
+      "lead": "Без do: Is there…? There aren't… — это be.",
       "blocks": [
-        {"detail": {"label": "Отрицание/вопрос", "runs": [{"t": "There isn't", "i": true}, " a shop here. · ", {"t": "There aren't", "i": true}, " any shops. · ", {"t": "Is there", "i": true}, " a shop nearby?"]}},
-        {"detail": {"label": "Прошлое", "runs": [{"t": "There was", "i": true}, " a shop. · ", {"t": "There were", "i": true}, " two shops."]}},
+        {"detail": {"label": "Отрицание/вопрос", "runs": [{"t": "There isn't", "i": true}, " a shop here. · ", {"t": "There aren't", "i": true}, " any shops. · ", {"t": "Is there", "i": true}, " a shop nearby?"], "comment": ["Здесь нет магазина. · Нет магазинов. · Поблизости есть магазин?"]}},
+        {"detail": {"label": "Прошлое", "runs": [{"t": "There was", "i": true}, " a shop. · ", {"t": "There were", "i": true}, " two shops."], "comment": ["Был магазин. · Было два магазина."]}},
         {"detail": {"label": "There's vs It's", "runs": [{"t": "There's a problem", "i": true}, " — «есть проблема» (существует) · ", {"t": "It's a problem", "i": true}, " — «это проблема» (о конкретном)."]}}
       ]
     },
     "past-continuous": {
-      "title": "Past Continuous vs Past Simple", "lead": "Длинный процесс — was/were + -ing; событие — Past Simple.",
+      "title": "Past Continuous vs Past Simple",
+      "lead": "Длинный процесс — was/were + -ing; событие — Past Simple.",
       "blocks": [
-        {"detail": {"label": "Фон + событие", "runs": ["I ", {"t": "was cooking", "i": true}, " when he ", {"t": "called", "i": true}, "."], "comment": ["«готовил (в процессе), когда он позвонил»."]}},
-        {"detail": {"label": "Два параллельных", "runs": ["I ", {"t": "was reading", "i": true}, " while she ", {"t": "was sleeping", "i": true}, ". — оба процесса (см. meanwhile)."]}},
-        {"detail": {"label": "Русский аспект", "runs": ["«готовил» (процесс) → was cooking · «приготовил» (результат) → cooked. Выбор — как вид глагола."]}},
-        {"detail": {"label": "Не для фактов", "runs": ["Последовательность событий — Past Simple: I came home, saw the letter and read it."]}}
+        {"detail": {"label": "Фон + событие", "runs": ["I ", {"t": "was cooking", "i": true}, " when he ", {"t": "called", "i": true}, "."], "comment": ["Я готовил, когда он позвонил. «готовил (в процессе), когда он позвонил»."]}},
+        {"detail": {"label": "Два параллельных", "runs": ["I ", {"t": "was reading", "i": true}, " while she ", {"t": "was sleeping", "i": true}, ". — оба процесса (см. meanwhile)."], "comment": ["Я читал, пока она спала."]}},
+        {"detail": {"label": "Русский аспект", "runs": ["Русский вид не задаёт английское время автоматически. I cooked dinner yesterday — Я вчера готовил/приготовил ужин. I was cooking when he called — Я готовил, когда он позвонил: показываем действие в процессе."], "comment": ["Прошедший вид и русское совершенное/несовершенное действие не совпадают один к одному."]}},
+        {"detail": {"label": "Не для фактов", "runs": ["Последовательность событий — Past Simple: I came home, saw the letter and read it."], "comment": ["Я пришёл домой, увидел письмо и прочитал его."]}}
       ]
     },
     "negation": {
-      "title": "Отрицание: разбор", "lead": "Одно отрицание на предложение — главное отличие от русского.",
+      "title": "Отрицание: разбор",
+      "lead": "Одно отрицание на предложение — главное отличие от русского.",
       "blocks": [
-        {"detail": {"label": "Ловушка", "runs": ["«Я никогда не был в Риме» → ", {"t": "I have never been to Rome", "i": true}, " — never УЖЕ отрицание, второй ", {"t": "not", "i": true}, " не добавляем."]}},
-        {"detail": {"label": "no vs not any", "runs": [{"t": "I have no money", "i": true}, " = ", {"t": "I don't have any money", "i": true}, " — «нет денег»; no + существительное короче."]}},
-        {"detail": {"label": "Порядок", "runs": [{"t": "I don't smoke", "i": true}, " · ", {"t": "He doesn't smoke", "i": true}, " · ", {"t": "I didn't smoke", "i": true}, " — вспомогательный + not, смысловой в базовой форме."]}},
-        {"detail": {"label": "never = наречие", "runs": [{"t": "I never drink coffee", "i": true}, " — перед смысловым глаголом, как другие наречия частоты (см. «Всегда / Обычно / Никогда»)."]}}
+        {"detail": {"label": "Ловушка", "runs": ["«Я никогда не был в Риме» → ", {"t": "I have never been to Rome", "i": true}, " — never УЖЕ отрицание, второй ", {"t": "not", "i": true}, " не добавляем."], "comment": ["Я никогда не был в Риме."]}},
+        {"detail": {"label": "no vs not any", "runs": [{"t": "I have no money", "i": true}, " = ", {"t": "I don't have any money", "i": true}, " — «нет денег»; no + существительное короче."], "comment": ["У меня нет денег."]}},
+        {"detail": {"label": "Порядок", "runs": [{"t": "I don't smoke", "i": true}, " · ", {"t": "He doesn't smoke", "i": true}, " · ", {"t": "I didn't smoke", "i": true}, " — вспомогательный + not, смысловой в базовой форме."], "comment": ["Я не курю / Он не курит / Я не курил."]}},
+        {"detail": {"label": "never = наречие", "runs": [{"t": "I never drink coffee", "i": true}, " — перед смысловым глаголом, как другие наречия частоты (см. «Всегда / Обычно / Никогда»)."], "comment": ["Я никогда не пью кофе."]}}
       ]
     },
     "pp-continuous": {
-      "title": "Perfect vs Perfect Continuous", "lead": "Результат или процесс? since/for работают в обоих.",
+      "title": "Perfect vs Perfect Continuous",
+      "lead": "Результат или процесс? since/for работают в обоих.",
       "blocks": [
-        {"detail": {"label": "Результат vs процесс", "runs": [{"t": "I've painted the wall", "i": true}, " — стена покрашена (результат) · ", {"t": "I've been painting all day", "i": true}, " — весь день красил (процесс, может, и не закончил)."]}},
-        {"detail": {"label": "Как в русском", "runs": [{"t": "I've been waiting for an hour", "i": true}, " — «жду уже час»: русское настоящее + «уже» = английский PPC."]}},
-        {"detail": {"label": "Исключение", "runs": [{"t": "know, want, like", "i": true}, " — состояния без -ing даже здесь: ", {"t": "I've known him for years", "i": true}, "."]}}
+        {"detail": {"label": "Результат vs процесс", "runs": [{"t": "I've painted the wall", "i": true}, " — стена покрашена (результат) · ", {"t": "I've been painting all day", "i": true}, " — весь день красил (процесс, может, и не закончил)."], "comment": ["Я покрасил стену (готово). · Я весь день красил (процесс)."]}},
+        {"detail": {"label": "Как в русском", "runs": [{"t": "I've been waiting for an hour", "i": true}, " — «жду уже час»: русское настоящее + «уже» = английский PPC."], "comment": ["Я жду уже час. for — длительность; since — начальная точка."]}},
+        {"detail": {"label": "Исключение", "runs": [{"t": "know, want, like", "i": true}, " — состояния без -ing даже здесь: ", {"t": "I've known him for years", "i": true}, "."], "comment": ["Я знаю его много лет. know — знать."]}}
       ]
     },
     "relatives": {
-      "title": "Relative clauses: разбор", "lead": "Слово — по типу существительного, глагол — сразу за ним.",
+      "title": "Relative clauses: разбор",
+      "lead": "who — люди, which — предметы; that возможно в определительных придаточных без запятых. Местоимение можно опустить, если оно дополнение, но не подлежащее.",
       "blocks": [
-        {"detail": {"label": "whose / where", "runs": [{"t": "the man whose dog barks", "i": true}, " — «чей пёс лает» · ", {"t": "the city where I live", "i": true}, " — «город, где я живу»."]}},
-        {"detail": {"label": "that можно опустить", "runs": [{"t": "The book (that) I read", "i": true}, " — опускается, если дальше подлежащее. ", {"t": "The book that helps", "i": true}, " — после that подлежащее, не опускается."]}},
-        {"detail": {"label": "Согласование", "runs": [{"t": "people who are", "i": true}, " (мн.ч.) · ", {"t": "the person who is", "i": true}, " — глагол следует за существительным."]}}
+        {"detail": {"label": "whose / where", "runs": [{"t": "the man whose dog barks", "i": true}, " — «чей пёс лает» · ", {"t": "the city where I live", "i": true}, " — «город, где я живу»."], "comment": ["Мужчина, чей пёс лает · город, где я живу."]}},
+        {"detail": {"label": "that можно опустить", "runs": [{"t": "The book (that) I read", "b": true}, " — ", "книга, которую я прочитал: that — дополнение, I — подлежащее; that можно опустить. ", {"t": "The book that helps", "b": true}, " — ", "книга, которая помогает: that само подлежащее, поэтому его нельзя опустить. Правило относится к определительным придаточным без запятых."], "comment": ["Книга, которую я прочитал · книга, которая помогает."]}},
+        {"detail": {"label": "Согласование", "runs": [{"t": "people who are", "i": true}, " (мн.ч.) · ", {"t": "the person who is", "i": true}, " — глагол следует за существительным."], "comment": ["Люди, которые… (мн.ч.) · человек, который… (ед.ч.)."]}}
       ]
     },
     "imperative": {
-      "title": "Imperative: разбор", "lead": "Подлежащего нет — просто базовая форма.",
+      "title": "Imperative: разбор",
+      "lead": "Подлежащего нет — просто базовая форма.",
       "blocks": [
-        {"detail": {"label": "Let's", "runs": [{"t": "Let's go", "i": true}, " — «пойдём» (предложение себе и собеседнику) · ", {"t": "Let's not argue", "i": true}, " — отрицание."]}},
-        {"detail": {"label": "Вежливо", "runs": [{"t": "Please sit down", "i": true}, " · ", {"t": "Could you open the window", "i": true}, "? — could смягчает (см. Модальные)."]}},
-        {"detail": {"label": "Инструкции", "runs": [{"t": "Press the button. Add salt", "i": true}, " — рецепты и указания целиком в императиве."]}}
+        {"detail": {"label": "Let's", "runs": [{"t": "Let's go", "i": true}, " — «пойдём» (предложение себе и собеседнику) · ", {"t": "Let's not argue", "i": true}, " — отрицание."], "comment": ["Let’s go — Пойдём; Let’s not argue — Давайте не спорить."]}},
+        {"detail": {"label": "Вежливо", "runs": [{"t": "Please sit down", "i": true}, " · ", {"t": "Could you open the window", "i": true}, "? — could смягчает (см. Модальные)."], "comment": ["Please sit down — Пожалуйста, садитесь; Could you open the window? — Не могли бы Вы открыть окно?"]}},
+        {"detail": {"label": "Инструкции", "runs": [{"t": "Press the button. Add salt", "i": true}, " — рецепты и указания целиком в императиве."], "comment": ["Нажмите кнопку. Добавьте соль."]}}
       ]
     },
     "contrast-linkers": {
-      "title": "while / whereas: разбор", "lead": "Соединяют два факта в одном предложении — запятая перед ними.",
+      "title": "while / whereas: разбор",
+      "lead": "Соединяют два факта в одном предложении — запятая перед ними.",
       "blocks": [
-        {"detail": {"label": "while — двулико", "runs": [{"t": "I cook, while he watches TV", "i": true}, " — «тогда как» (контраст) · ", {"t": "While I cooked, he watched TV", "i": true}, " — «пока» (время). Смысл по контексту."]}},
-        {"detail": {"label": "whereas", "runs": [{"t": "She is tall, whereas her sister is short", "i": true}, " — «тогда как»: формальный контраст."]}},
-        {"detail": {"label": "on the other hand", "runs": ["Отдельным предложением: The flat is small. ", {"t": "On the other hand", "i": true}, ", it's cheap. — «с другой стороны»."]}}
+        {"detail": {"label": "while — двулико", "runs": [{"t": "I cook, while he watches TV", "i": true}, " — «тогда как» (контраст) · ", {"t": "While I cooked, he watched TV", "i": true}, " — «пока» (время). Смысл по контексту."], "comment": ["Я готовлю, тогда как он смотрит телевизор (контраст). · Пока я готовил, он смотрел телевизор (время)."]}},
+        {"detail": {"label": "whereas", "runs": [{"t": "She is tall, whereas her sister is short", "i": true}, " — «тогда как»: формальный контраст."], "comment": ["Она высокая, тогда как её сестра невысокая."]}},
+        {"detail": {"label": "on the other hand", "runs": ["Отдельным предложением: The flat is small. ", {"t": "On the other hand", "i": true}, ", it's cheap. — «с другой стороны»."], "comment": ["Квартира маленькая. С другой стороны, она дешёвая."]}}
       ]
     },
     "numbers-dates": {
-      "title": "Даты и годы: разбор", "lead": "Дата — всегда on, год и месяц — in.",
+      "title": "Даты и годы: разбор",
+      "lead": "С предлогом: конкретная дата обычно on, год и месяц — in.",
       "blocks": [
-        {"detail": {"label": "on vs in", "runs": [{"t": "on 5 May", "i": true}, " (дата) · ", {"t": "in 2026", "i": true}, " (год) · ", {"t": "in May", "i": true}, " (месяц) — см. Время: in/on/at."]}},
-        {"detail": {"label": "Годы", "runs": [{"t": "2026 → twenty twenty-six", "i": true}, " · ", {"t": "the 1990s → the nineties", "i": true}, " — десятилетие с the."]}},
-        {"detail": {"label": "Орфография", "runs": [{"t": "five → fifth", "i": true}, " (не «fiveth») · ", {"t": "twelve → twelfth", "i": true}, " · ", {"t": "nine → ninth", "i": true}, " (e выпадает)."]}}
+        {"detail": {"label": "on vs in", "runs": [{"t": "on 5 May", "i": true}, " (дата) · ", {"t": "in 2026", "i": true}, " (год) · ", {"t": "in May", "i": true}, " (месяц) — см. Время: in/on/at."], "comment": ["Пятого мая · в 2026 году · в мае."]}},
+        {"detail": {"label": "Годы", "runs": [{"t": "2026 → twenty twenty-six", "i": true}, " · ", {"t": "the 1990s → the nineties", "i": true}, " — десятилетие с the."], "comment": ["2026 — twenty twenty-six, две пары цифр; the 1990s — девяностые годы."]}},
+        {"detail": {"label": "Орфография", "runs": [{"t": "five → fifth", "i": true}, " (не «fiveth») · ", {"t": "twelve → twelfth", "i": true}, " · ", {"t": "nine → ninth", "i": true}, " (e выпадает)."], "comment": ["five → fifth — пять → пятый; twelve → twelfth — двенадцать → двенадцатый; nine → ninth — девять → девятый."]}}
       ]
     },
     "a-an": {
-      "title": "a или an", "lead": "Выбор по первому ЗВУКУ, не по букве.",
+      "title": "a или an",
+      "lead": "Выбор по первому ЗВУКУ, не по букве.",
       "blocks": [
-        {"detail": {"label": "Правило", "runs": ["a + согласный звук, an + гласный звук: a cat, an apple."]}},
-        {"detail": {"label": "Ловушки", "runs": ["an hour (h немая) · a university (произносится «ю») · an MBA (эм)."]}}
+        {"detail": {"label": "Правило", "runs": ["a + согласный звук, an + гласный звук: a cat, an apple."], "comment": ["a cat — кошка; an apple — яблоко. a/an — неопределённый артикль, отдельно обычно не переводится."]}},
+        {"detail": {"label": "Ловушки", "runs": ["an hour (h немая) · a university (произносится «ю») · an MBA (эм)."], "comment": ["Час · университет · человек со степенью MBA."]}}
       ]
     },
     "the-article": {
-      "title": "Когда the", "lead": "Собеседник понимает, о чём именно речь.",
+      "title": "Когда the",
+      "lead": "Собеседник понимает, о чём именно речь.",
       "blocks": [
-        {"detail": {"label": "Сигналы", "runs": ["Второе упоминание · единственный в контексте (the sun, the kitchen в нашем доме) · превосходная степень (the best)."]}},
-        {"detail": {"label": "Пример", "runs": ["I bought ", {"t": "a", "i": true}, " book. ", {"t": "The", "i": true}, " book is interesting."]}}
+        {"detail": {"label": "Сигналы", "runs": ["Второе упоминание · единственный в контексте (the sun, the kitchen в нашем доме) · превосходная степень (the best)."], "comment": ["the sun — солнце; the kitchen — кухня; the best — лучший."]}},
+        {"detail": {"label": "Пример", "runs": ["I bought ", {"t": "a", "i": true}, " book. ", {"t": "The", "i": true}, " book is interesting."], "comment": ["Я купил книгу. Эта книга интересная."]}}
       ]
     },
     "zero-article": {
-      "title": "Без артикля", "lead": "Обобщения и абстракции.",
+      "title": "Без артикля",
+      "lead": "Обобщения и абстракции.",
       "blocks": [
-        {"detail": {"label": "Обобщение множественным", "runs": ["Dogs are loyal. Coffee is expensive."]}},
-        {"detail": {"label": "Группы", "runs": ["Языки (English), приёмы пищи (at lunch), виды спорта (play football), имена людей/городов."]}},
-        {"detail": {"label": "Но", "runs": ["Инструмент — с the: play the piano."]}}
+        {"detail": {"label": "Обобщение множественным", "runs": ["Dogs are loyal. Coffee is expensive."], "comment": ["Собаки преданные. Кофе дорогой."]}},
+        {"detail": {"label": "Группы", "runs": ["Языки (English), приёмы пищи (at lunch), виды спорта (play football), имена людей/городов."], "comment": ["English — английский язык; at lunch — за обедом; play football — играть в футбол."]}},
+        {"detail": {"label": "Но", "runs": ["Инструмент — обычно с the: play the piano."], "comment": ["play the piano — играть на пианино."]}}
       ]
     },
     "school-exceptions": {
-      "title": "Школа, кровать, тюрьма", "lead": "Учреждение как роль — без артикля, как здание — с the.",
+      "title": "Школа, кровать, тюрьма",
+      "lead": "Учреждение как роль — без артикля, как здание — с the.",
       "blocks": [
-        {"detail": {"label": "Роль", "runs": ["go to school (учиться) · go to bed (спать) · in hospital (лечиться, брит.)."]}},
-        {"detail": {"label": "Здание/место", "runs": ["go to the school (родителя зовут) · meet at the hospital."]}}
+        {"detail": {"label": "Роль", "runs": ["go to school (учиться) · go to bed (спать) · in hospital (лечиться, брит.)."], "comment": ["Ходить в школу (учиться) · идти спать · быть в больнице (лечиться, BrE)."]}},
+        {"detail": {"label": "Здание/место", "runs": ["go to the school (родителя зовут) · meet at the hospital."], "comment": ["Идти к школьному зданию · встретиться у/в больнице."]}}
       ]
     },
     "my-mine": {
-      "title": "my или mine", "lead": "my + существительное, mine — само по себе.",
+      "title": "my или mine",
+      "lead": "my + существительное, mine — само по себе.",
       "blocks": [
-        {"detail": {"label": "Сравни", "runs": [{"t": "my", "i": true}, " book = the book is ", {"t": "mine", "i": true}, "."]}},
-        {"detail": {"label": "Ещё", "runs": ["a friend of mine"], "comment": ["«один из моих друзей»."]}}
+        {"detail": {"label": "Сравни", "runs": [{"t": "my", "i": true}, " book = the book is ", {"t": "mine", "i": true}, "."], "comment": ["Моя книга = эта книга моя. my требует существительного, mine заменяет всю группу."]}},
+        {"detail": {"label": "Ещё", "runs": ["a friend of mine"], "comment": ["Один из моих друзей. «один из моих друзей»."]}},
+        {
+          "detail": {
+            "label": "Формы из таблицы",
+            "runs": [
+              "me — меня/мне; him — его/ему; her — её/ей; us — нас/нам; them — их/им; you — тебя/тебе, вас/вам; it — его/её, ему/ей: по роду русского слова и по контексту. mine/yours/hers/ours/theirs заменяют группу «моя/твоя/её/наша/их вещь»."
+            ]
+          }
+        }
       ]
     },
     "reflexive": {
-      "title": "Возвратные", "lead": "-self / -selves: действие на себя.",
+      "title": "Возвратные",
+      "lead": "-self / -selves: действие на себя.",
       "blocks": [
-        {"detail": {"label": "Формы", "runs": ["myself, yourself, himself, herself, itself, ourselves, themselves."]}},
-        {"detail": {"label": "Пример", "runs": ["I hurt myself. · Help yourself!"]}}
+        {"detail": {"label": "Формы", "runs": ["myself, yourself, himself, herself, itself, ourselves, yourselves, themselves."], "comment": ["myself — себя/сам (я); yourself — себя/сам (ты); himself/herself/itself — себя/сам (он/она/оно); ourselves — себя/сами (мы); yourselves — себя/сами (вы); themselves — себя/сами (они)."]}},
+        {"detail": {"label": "Пример", "runs": ["I hurt myself. · Help yourself!"], "comment": ["Я поранился. · Угощайся! hurt → hurt — ранить → поранил."]}}
       ]
     },
     "svo": {
-      "title": "Чем отличается от русского", "lead": "В русском роли задают окончания, в английском — позиция.",
+      "title": "Чем отличается от русского",
+      "lead": "В русском роли задают окончания, в английском — позиция.",
       "blocks": [
         {"detail": {"label": "Русский", "runs": ["«Машу любит Ваня» — падежи спасают порядок."]}},
-        {"detail": {"label": "Английский", "runs": ["«Masha loves Vanya»"], "comment": ["кто первый, тот и субъект. Переставил — поменял смысл."]}}
+        {"detail": {"label": "Английский", "runs": ["«Masha loves Vanya»"], "comment": ["Маша любит Ваню. Masha — субъект; loves — любит; Vanya — объект. кто первый, тот и субъект. Переставил — поменял смысл."]}}
       ]
     },
     "do-questions": {
-      "title": "Как строить вопросы", "lead": "Вспомогательный глагол вперёд, смысловой — базовая форма.",
+      "title": "Как строить вопросы",
+      "lead": "Вспомогательный глагол вперёд, смысловой — базовая форма.",
       "blocks": [
-        {"detail": {"label": "Yes/No", "runs": ["Do/Does/Did + подлежащее + V1?: Does he work here?"]}},
-        {"detail": {"label": "W-вопрос", "runs": ["W-word + do/does/did…: Where did you go?"]}},
-        {"detail": {"label": "be / модальные", "runs": ["Тоже без do — просто инверсия: Is he…? Are they…? Can you…? Do нужен только смысловым глаголам."]}},
-        {"detail": {"label": "Исключение", "runs": ["Кто/что — субъект: Who lives here? (без do)."]}},
-        {"detail": {"label": "Частая ошибка", "runs": ["Did you saw → Did you ", {"t": "see", "b": true}, "."]}}
+        {"detail": {"label": "Yes/No", "runs": ["Do/Does/Did + подлежащее + V1?: Does he work here?"], "comment": ["Он здесь работает?"]}},
+        {"detail": {"label": "W-вопрос", "runs": ["W-word + do/does/did…: Where did you go?"], "comment": ["Куда ты ходил/ездил? go — идти/ехать; did — вспомогательный глагол прошедшего времени."]}},
+        {"detail": {"label": "be / модальные", "runs": ["Тоже без do — просто инверсия: Is he…? Are they…? Can you…? Do нужен только смысловым глаголам."], "comment": ["Is he…? — Он…?; Are they…? — Они…?; Can you…? — Ты можешь…?"]}},
+        {"detail": {"label": "Исключение", "runs": ["Кто/что — подлежащее: Who lives here? (без do)."], "comment": ["Кто здесь живёт? lives — живёт."]}},
+        {"detail": {"label": "Частая ошибка", "runs": ["Did you saw → Did you ", {"t": "see", "b": true}, "."], "comment": ["Did you see? — Ты видел? see — видеть; saw — прошедшая форма, после did не нужна."]}}
       ]
     },
     "frequency": {
-      "title": "Шкала частоты", "lead": "always → usually → often → sometimes → rarely → never.",
+      "title": "Шкала частоты",
+      "lead": "always → usually → often → sometimes → rarely → never.",
       "blocks": [
-        {"detail": {"label": "Позиция", "runs": ["Перед смысловым глаголом, после be: He ", {"t": "is always", "b": true}, " late. · I ", {"t": "always drive", "b": true}, "."]}},
-        {"detail": {"label": "Крайности", "runs": ["never и rarely уже отрицательные — второй not не нужен."]}}
+        {
+          "legend": {
+            "items": [
+              {
+                "term": "always / usually",
+                "meaning": "всегда / обычно"
+              },
+              {
+                "term": "often / sometimes",
+                "meaning": "часто / иногда"
+              },
+              {
+                "term": "rarely / never",
+                "meaning": "редко / никогда"
+              }
+            ]
+          }
+        },
+        {"detail": {"label": "Позиция", "runs": ["Перед смысловым глаголом, после be: He ", {"t": "is always", "b": true}, " late. · I ", {"t": "always drive", "b": true}, "."], "comment": ["Он всегда опаздывает. · Я всегда вожу машину."]}},
+        {"detail": {"label": "Крайности", "runs": ["never и rarely уже отрицательные — второй not не нужен."], "comment": ["Я никогда не пью кофе. never — никогда; rarely — редко."]}}
       ]
     },
     "present-simple": {
-      "title": "Present Simple", "lead": "Привычки, факты, расписания.",
+      "title": "Present Simple",
+      "lead": "Привычки, факты, расписания.",
       "blocks": [
-        {"detail": {"label": "Форма", "runs": ["V; 3-е лицо ед.ч. +s/-es (watches, studies)."]}},
-        {"detail": {"label": "Отрицание/вопрос", "runs": ["don't/doesn't + V1: She doesn't smoke."]}},
-        {"detail": {"label": "Маркеры", "runs": ["every day, usually, always, on Mondays, never."]}}
+        {"detail": {"label": "Форма", "runs": ["V; 3-е лицо ед.ч. +s/-es (watches, studies)."], "comment": ["watch → watches — смотреть → смотрит; study → studies — учиться → учится. V — базовая форма."]}},
+        {"detail": {"label": "Отрицание/вопрос", "runs": ["don't/doesn't + V1: She doesn't smoke."], "comment": ["Она не курит. smoke — курить."]}},
+        {"detail": {"label": "Маркеры", "runs": ["every day, usually, always, on Mondays, never."], "comment": ["Каждый день · обычно · всегда · по понедельникам · никогда."]}}
       ]
     },
     "present-continuous": {
-      "title": "Simple vs Continuous", "lead": "Факт/привычка против процесса сейчас.",
+      "title": "Simple vs Continuous",
+      "lead": "Факт/привычка против процесса сейчас.",
       "blocks": [
-        {"detail": {"label": "Simple", "runs": ["I work at Google"], "comment": ["(работаю вообще)."]}},
-        {"detail": {"label": "Continuous", "runs": ["I'm working now (в процессе). am/is/are + V-ing."]}},
-        {"detail": {"label": "Не с continuous", "runs": ["know, like, want, need — состояния, обычно Simple."]}},
-        {"detail": {"label": "always = раздражение", "runs": [{"t": "He's always losing his keys", "i": true}, ". — не «прямо сейчас»: привычка, которая бесит (маркеры now/Look! не нужны)."]}}
+        {"detail": {"label": "Simple", "runs": ["I work at Google"], "comment": ["Я работаю в Google (вообще). (работаю вообще)."]}},
+        {"detail": {"label": "Continuous", "runs": ["I'm working now (в процессе). am/is/are + V-ing."], "comment": ["Я сейчас работаю (в процессе). am/is/are — формы be (быть), здесь образуют Continuous."]}},
+        {"detail": {"label": "Не с continuous", "runs": ["know, like, want, need — состояния, обычно Simple."], "comment": ["know — знать; like — нравиться; want — хотеть; need — нуждаться."]}},
+        {"detail": {"label": "always = раздражение", "runs": [{"t": "He's always losing his keys", "i": true}, ". — не «прямо сейчас»: привычка, которая бесит (маркеры now/Look! не нужны)."], "comment": ["Он вечно теряет ключи! В данном контексте — раздражение привычкой."]}}
       ]
     },
     "past-simple": {
-      "title": "Правильные и неправильные", "lead": "V2 одинакова для всех лиц.",
+      "title": "Правильные и неправильные",
+      "lead": "Прошедшая форма одинакова для лиц, кроме be: I/he/she/it was; you/we/they were.",
       "blocks": [
-        {"detail": {"label": "Правильные", "runs": ["+ed: work → worked."]}},
-        {"detail": {"label": "Неправильные", "runs": ["надо знать: go–went–gone, see–saw–seen, have–had–had."]}},
-        {"detail": {"label": "Вопрос/отрицание", "runs": ["did + V1: Did you go? · I didn't go."]}}
+        {"detail": {"label": "Правильные", "runs": ["+ed: work → worked."], "comment": ["work → worked — работать → работал."]}},
+        {"detail": {"label": "Неправильные", "runs": ["надо знать: go–went–gone, see–saw–seen, have–had–had."], "comment": ["go–went–gone — идти/ехать; see–saw–seen — видеть; have–had–had — иметь. Три формы: базовая, прошедшая, причастие."]}},
+        {"detail": {"label": "Вопрос/отрицание", "runs": ["did + V1: Did you go? · I didn't go."], "comment": ["Ты ходил/ездил? · Я не ходил/не ездил."]}},
+        {
+          "detail": {
+            "label": "Исключение be",
+            "runs": [
+              "I was tired. · Were you tired? · I wasn’t tired."
+            ],
+            "comment": [
+              "Я устал. · Ты устал? · Я не устал. be образует вопросы/отрицания без did."
+            ]
+          }
+        }
       ]
     },
     "present-perfect": {
-      "title": "Present Perfect", "lead": "Прошлое, важное для настоящего.",
+      "title": "Present Perfect",
+      "lead": "Прошлое, важное для настоящего.",
       "blocks": [
-        {"detail": {"label": "Суть", "runs": ["Результат сейчас или опыт без указания времени: I've lost my keys (всё ещё нет ключей)."]}},
-        {"detail": {"label": "Маркеры", "runs": ["just, already, yet, ever, never, so far, recently."]}},
+        {"detail": {"label": "Суть", "runs": ["Результат сейчас или опыт без указания времени: I've lost my keys (всё ещё нет ключей)."], "comment": ["Я потерял ключи (они до сих пор не найдены)."]}},
+        {"detail": {"label": "Маркеры", "runs": ["just, already, yet, ever, never, so far, recently."], "comment": ["just — только что; already — уже; yet — ещё/уже в вопросе; ever — когда-нибудь; never — никогда; so far — пока, до сих пор; recently — недавно."]}},
         {"detail": {"label": "Форма", "runs": ["have/has + V3 (третья форма)."]}}
       ]
     },
     "pp-vs-past": {
-      "title": "Perfect vs Past Simple", "lead": "Решает смысл связи с «сейчас», а не слово-маркер.",
+      "title": "Perfect vs Past Simple",
+      "lead": "Решает смысл связи с «сейчас», а не слово-маркер.",
       "blocks": [
-        {"detail": {"label": "Past Simple", "runs": ["Факт законченного прошлого: I saw him yesterday / in 2020 / last week."]}},
-        {"detail": {"label": "Perfect", "runs": ["Связь с настоящим: результат сейчас (I have lost my keys — не могу зайти) или опыт без времени (I have seen him — важно, что знаю его)."]}},
-        {"detail": {"label": "Где подводит «время названо?»", "runs": ["Длительность до сих пор: I have lived here since 2020 / for two years. Незакрытый отрезок: Have you seen Anna today? Маркеры — подсказка, решение за смыслом."]}}
+        {"detail": {"label": "Past Simple", "runs": ["Факт законченного прошлого: I saw him yesterday / in 2020 / last week."], "comment": ["Я видел его вчера / в 2020 году / на прошлой неделе."]}},
+        {"detail": {"label": "Perfect", "runs": ["Связь с настоящим: результат сейчас (I have lost my keys — не могу зайти) или опыт без времени (I have seen him — опыт встречи/наблюдения до настоящего)."], "comment": ["Я потерял ключи. · Я его видел (это мой опыт; не обязательно знаком лично)."]}},
+        {"detail": {"label": "Где подводит «время названо?»", "runs": ["Длительность до сих пор: I have lived here since 2020 / for two years. Незакрытый отрезок: Have you seen Anna today? Маркеры — подсказка, решение за смыслом."], "comment": ["Я живу здесь с 2020 года / уже два года. · Ты видел Анну сегодня?"]}}
       ]
     },
     "future": {
-      "title": "will или going to", "lead": "Решение сейчас против плана.",
+      "title": "will или going to",
+      "lead": "Решение сейчас против плана.",
       "blocks": [
-        {"detail": {"label": "will", "runs": ["Решил в момент речи или прогноз: I'll help you. · It will rain."]}},
-        {"detail": {"label": "going to", "runs": ["План до этого или очевидное: I'm going to study tonight. · Look at the clouds — it's going to rain."]}},
-        {"detail": {"label": "Расписание", "runs": ["Present Simple для расписаний: The train leaves at 6."]}}
+        {"detail": {"label": "will", "runs": ["Решил в момент речи или прогноз: I'll help you. · It will rain."], "comment": ["Я тебе помогу. · Будет дождь."]}},
+        {"detail": {"label": "going to", "runs": ["План до этого или очевидное: I'm going to study tonight. · Look at the clouds — it's going to rain."], "comment": ["Я собираюсь заниматься сегодня вечером. · Смотри на облака — сейчас пойдёт дождь."]}},
+        {"detail": {"label": "Расписание", "runs": ["Present Simple для расписаний: The train leaves at 6."], "comment": ["Поезд отправляется в шесть."]}}
       ]
     },
     "modals-en": {
-      "title": "Модальные", "lead": "После модального — V1 без to.",
+      "title": "Модальные",
+      "lead": "После модального — V1 без to.",
       "blocks": [
-        {"detail": {"label": "can/could", "runs": ["способность, просьба, разрешение."]}},
-        {"detail": {"label": "must", "runs": ["необходимость: You must stop. · строгий вывод: He must be tired — «наверное, устал»."]}},
-        {"detail": {"label": "have to", "runs": ["внешнее правило: I have to wear a uniform."]}},
-        {"detail": {"label": "should", "runs": ["совет: You should rest."]}},
-        {"detail": {"label": "may/might", "runs": ["возможность/разрешение: It might rain."]}}
+        {"detail": {"label": "can/could", "runs": ["способность, просьба, разрешение."], "comment": ["can — могу/умею; could — мог/мог бы; оба в просьбах, could вежливее."]}},
+        {"detail": {"label": "must", "runs": ["Необходимость: You must stop — Ты должен остановиться. Уверенный вывод: He must be tired — Он, должно быть, устал."], "comment": ["Ты должен остановиться. · Он, должно быть, устал (уверенный вывод)."]}},
+        {"detail": {"label": "have to", "runs": ["внешнее правило: I have to wear a uniform."], "comment": ["Мне нужно носить форму. have to — необходимость, часто внешнее правило."]}},
+        {"detail": {"label": "should", "runs": ["совет: You should rest."], "comment": ["Тебе стоит отдохнуть. rest — отдыхать."]}},
+        {"detail": {"label": "may/might", "runs": ["may — можно (разрешение); may/might — возможно: It might rain — Возможно, пойдёт дождь."], "comment": ["Возможно, пойдёт дождь. may — также разрешение («можно»); might здесь — возможность."]}},
+        {
+          "detail": {
+            "label": "have to: форма",
+            "runs": [
+              "I have to go. · Do you have to go? · She has to go."
+            ],
+            "comment": [
+              "Мне нужно идти. · Тебе нужно идти? · Ей нужно идти. have to образует вопросы с do/does/did и после have требует to; это отличие от must/can."
+            ]
+          }
+        }
       ]
     },
     "mustnt": {
-      "title": "mustn't vs don't have to", "lead": "Оба про «не надо», но смысл противоположный.",
+      "title": "mustn't vs don't have to",
+      "lead": "Оба про «не надо», но смысл противоположный.",
       "blocks": [
-        {"detail": {"label": "mustn't", "runs": ["Запрещено: You mustn't tell anyone."]}},
-        {"detail": {"label": "don't have to", "runs": ["Не обязательно (можно, но не нужно): You don't have to come."]}},
+        {"detail": {"label": "mustn't", "runs": ["Запрещено: You mustn't tell anyone."], "comment": ["Тебе нельзя никому рассказывать. tell — рассказывать."]}},
+        {"detail": {"label": "don't have to", "runs": ["Не обязательно (можно, но не нужно): You don't have to come."], "comment": ["Тебе не обязательно приходить."]}},
         {"detail": {"label": "Почему путают", "runs": ["В русском «не должен» часто означает именно «не обязательно»."]}}
       ]
     },
     "passive-en": {
-      "title": "Пассив", "lead": "be (в нужном времени) + V3.",
+      "title": "Пассив",
+      "lead": "be (в нужном времени) + V3.",
       "blocks": [
-        {"detail": {"label": "Времена", "runs": ["is built (сейчас) · was built (прошлое) · will be built (будущее) · has been built (perfect)."]}},
-        {"detail": {"label": "Кем/чем", "runs": ["The house was built ", {"t": "by the workers", "b": true}, "."], "comment": ["рабочими (кем построили)."]}}
+        {"detail": {"label": "Времена", "runs": ["is built — строят вообще/регулярно; is being built — строят сейчас; was built — был построен; will be built — будет построен; has been built — уже построен."], "comment": ["is built — строят (обычно/регулярно); is being built — строят сейчас; was built — был построен; will be built — будет построен; has been built — уже построен."]}},
+        {"detail": {"label": "Кем/чем", "runs": ["The house was built ", {"t": "by the workers", "b": true}, "."], "comment": ["Дом был построен рабочими. рабочими (кем построили)."]}}
       ]
     },
     "gerund-infinitive": {
-      "title": "V-ing vs to V", "lead": "Какой глагол впереди — такой хвост.",
+      "title": "V-ing vs to V",
+      "lead": "Какой глагол впереди — такой хвост.",
       "blocks": [
-        {"detail": {"label": "+ V-ing", "runs": ["enjoy, finish, mind, suggest, avoid, keep."]}},
-        {"detail": {"label": "+ to V", "runs": ["want, decide, hope, plan, promise, need."]}},
-        {"detail": {"label": "Меняют смысл", "runs": ["stop smoking (бросить) ≠ stop to smoke (остановиться, чтобы)."]}}
+        {"detail": {"label": "+ V-ing", "runs": ["enjoy, finish, mind, suggest, avoid, keep."], "comment": ["enjoy — нравиться делать; finish — заканчивать; mind — возражать; suggest — предлагать; avoid — избегать; keep — продолжать."]}},
+        {"detail": {"label": "+ to V", "runs": ["want, decide, hope, plan, promise, need."], "comment": ["want — хотеть; decide — решать; hope — надеяться; plan — планировать; promise — обещать; need — нуждаться."]}},
+        {"detail": {"label": "Меняют смысл", "runs": ["stop smoking (бросить) ≠ stop to smoke (остановиться, чтобы)."], "comment": ["stop smoking — бросить курить; stop to smoke — остановиться, чтобы покурить."]}}
       ]
     },
     "time-preps": {
-      "title": "Время: in / on / at", "lead": "От длинного к точному.",
+      "title": "Время: in / on / at",
+      "lead": "От длинного к точному.",
       "blocks": [
-        {"detail": {"label": "in", "runs": ["Месяцы, годы, сезоны, части дня: in July, in 2026, in the morning."]}},
-        {"detail": {"label": "on", "runs": ["Дни и даты: on Monday, on 5 May, on my birthday."]}},
-        {"detail": {"label": "at", "runs": ["Точки времени: at 7 o'clock, at night, at the weekend (брит.)."]}}
+        {"detail": {"label": "in", "runs": ["Месяцы, годы, сезоны, части дня: in July, in 2026, in the morning."], "comment": ["В июле · в 2026 году · утром."]}},
+        {"detail": {"label": "on", "runs": ["Дни и даты: on Monday, on 5 May, on my birthday."], "comment": ["В понедельник · пятого мая · в мой день рождения."]}},
+        {"detail": {"label": "at", "runs": ["Точки времени: at 7 o'clock, at night, at the weekend (брит.)."], "comment": ["В семь часов · ночью · на выходных (BrE)."]}}
       ]
     },
     "place-preps": {
-      "title": "Место: in / on / at", "lead": "Объём, поверхность, точка.",
+      "title": "Место: in / on / at",
+      "lead": "Объём, поверхность, точка.",
       "blocks": [
-        {"detail": {"label": "in", "runs": ["Внутри объёма: in the kitchen, in Paris, in a car."]}},
-        {"detail": {"label": "on", "runs": ["Поверхность/линия: on the table, on the wall, on the bus."]}},
-        {"detail": {"label": "at", "runs": ["Точка/событие: at the door, at school, at the party."]}}
+        {"detail": {"label": "in", "runs": ["Внутри объёма: in the kitchen, in Paris, in a car."], "comment": ["На кухне · в Париже · в машине."]}},
+        {"detail": {"label": "on", "runs": ["Поверхность/линия: on the table, on the wall, on the bus."], "comment": ["На столе · на стене · в автобусе. on the bus — транспортная конструкция, не буквально «на поверхности»."]}},
+        {"detail": {"label": "at", "runs": ["Точка/событие: at the door, at school, at the party."], "comment": ["У двери · в школе · на вечеринке."]}}
       ]
     },
     "dependent-preps": {
-      "title": "Предлоги-ловушки", "lead": "Не переводить с русского — запоминать пару.",
+      "title": "Предлоги-ловушки",
+      "lead": "Не переводить с русского — запоминать пару.",
       "blocks": [
-        {"detail": {"label": "Частые", "runs": ["depend on · interested in · listen to · afraid of · good at · wait for · arrive in (город) / at (место) · apologize for."]}},
-        {"detail": {"label": "Примеры", "runs": ["I'm interested ", {"t": "in", "b": true}, " history. · Listen ", {"t": "to", "b": true}, " me. · I'm afraid ", {"t": "of", "b": true}, " dogs. · She's good ", {"t": "at", "b": true}, " math. · Wait ", {"t": "for", "b": true}, " me. · We arrived ", {"t": "in", "b": true}, " Berlin / ", {"t": "at", "b": true}, " the station. · He apologized ", {"t": "for", "b": true}, " the delay."]}},
+        {"detail": {"label": "Частые", "runs": ["depend on · interested in · listen to · afraid of · good at · wait for · arrive in (город) / at (место) · apologize for."], "comment": ["depend on — зависеть от; interested in — интересоваться; listen to — слушать; afraid of — бояться; good at — хорошо разбираться в; wait for — ждать; arrive in/at — прибыть в/на; apologize for — извиниться за."]}},
+        {"detail": {"label": "Примеры", "runs": ["I'm interested ", {"t": "in", "b": true}, " history. · Listen ", {"t": "to", "b": true}, " me. · I'm afraid ", {"t": "of", "b": true}, " dogs. · She's good ", {"t": "at", "b": true}, " math. · Wait ", {"t": "for", "b": true}, " me. · We arrived ", {"t": "in", "b": true}, " Berlin / ", {"t": "at", "b": true}, " the station. · He apologized ", {"t": "for", "b": true}, " the delay."], "comment": ["Я интересуюсь историей. · Слушай меня. · Я боюсь собак. · Она хорошо знает математику. · Подожди меня. · Мы прибыли в Берлин / на вокзал. · Он извинился за задержку."]}},
         {"detail": {"label": "Ошибка №1", "runs": ["«зависит от» → depend ", {"t": "on", "b": true}, ", не from."]}}
       ]
     },
     "plurals": {
-      "title": "Множественное число", "lead": "+s по умолчанию, но есть правила и исключения.",
+      "title": "Множественное число",
+      "lead": "+s по умолчанию, но есть правила и исключения.",
       "blocks": [
-        {"detail": {"label": "Правила", "runs": ["+s по умолчанию · после -s/-sh/-ch/-x/-o часто +es (boxes, tomatoes) · согласная+y → ies (cities), но гласная+y → просто +s (days, boys)."]}},
-        {"detail": {"label": "-f/-fe → -ves", "runs": ["Часто: knife → knives, leaf → leaves, wolf → wolves. Но не всегда: roofs, chiefs."]}},
-        {"detail": {"label": "Исключения", "runs": ["man–men · woman–women · child–children · foot–feet · tooth–teeth · mouse–mice · person–people."]}},
-        {"detail": {"label": "Не меняются", "runs": ["fish, sheep, aircraft."]}},
-        {"detail": {"label": "Только исчисляемые", "runs": ["Множественное число образуют исчисляемые: water, advice, information числа не имеют (см. Исчисляемое / нет)."]}}
+        {"detail": {"label": "Правила", "runs": ["+s по умолчанию · после -s/-sh/-ch/-x/-o часто +es (boxes, tomatoes) · согласная+y → ies (cities), но гласная+y → просто +s (days, boys)."], "comment": ["boxes — коробки; tomatoes — помидоры; cities — города; days — дни; boys — мальчики."]}},
+        {"detail": {"label": "-f/-fe → -ves", "runs": ["Часто: knife → knives, leaf → leaves, wolf → wolves. Но не всегда: roofs, chiefs."], "comment": ["Нож → ножи; лист → листья; волк → волки; roofs — крыши; chiefs — начальники."]}},
+        {"detail": {"label": "Исключения", "runs": ["man–men · woman–women · child–children · foot–feet · tooth–teeth · mouse–mice · person–people."], "comment": ["Мужчина → мужчины; женщина → женщины; ребёнок → дети; ступня → ступни; зуб → зубы; мышь → мыши; человек → люди."]}},
+        {"detail": {"label": "Не меняются", "runs": ["fish, sheep, aircraft."], "comment": ["fish — рыба/рыбы; sheep — овца/овцы; aircraft — самолёт/самолёты. Это обычные формы; fishes бывает при описании видов рыб."]}},
+        {"detail": {"label": "Только исчисляемые", "runs": ["Множественное число образуют исчисляемые: water, advice, information числа не имеют (см. Исчисляемое / нет)."], "comment": ["water — вода; advice — советы; information — информация. В обычных значениях неисчисляемые; water может стать waters в специальных значениях."]}}
       ]
     },
     "countable": {
-      "title": "Исчисляемость", "lead": "Можно ли «посчитать» слово напрямую.",
+      "title": "Исчисляемость",
+      "lead": "Можно ли «посчитать» слово напрямую.",
       "blocks": [
-        {"detail": {"label": "Исчисляемые", "runs": ["many friends, a few books, few mistakes."]}},
-        {"detail": {"label": "Неисчисляемые", "runs": ["much time, a little money, little news."]}},
-        {"detail": {"label": "Счётная форма", "runs": ["a piece of advice / a cup of coffee / a news item."]}},
-        {"detail": {"label": "Ловушки", "runs": ["advice, information, news, money — без -s и с it."]}}
+        {"detail": {"label": "Исчисляемые", "runs": ["many friends, a few books, few mistakes."], "comment": ["Много друзей · несколько книг · мало ошибок. a few — некоторое количество; few — мало, недостаточно."]}},
+        {"detail": {"label": "Неисчисляемые", "runs": ["much time, a little money, little news."], "comment": ["Много времени · немного денег · мало новостей. a little — некоторое количество; little — мало, недостаточно."]}},
+        {"detail": {"label": "Счётная форма", "runs": ["a piece of advice / a cup of coffee / a news item."], "comment": ["Один совет · чашка кофе · одна новость."]}},
+        {"detail": {"label": "Ловушки", "runs": ["advice, information, news, money — без -s и с it."], "comment": ["advice — советы; information — информация; news — новости; money — деньги."]}}
       ]
     },
     "some-any": {
-      "title": "some / any", "lead": "some — утверждения, any — вопросы и отрицания.",
+      "title": "some / any",
+      "lead": "some — утверждения, any — вопросы и отрицания.",
       "blocks": [
-        {"detail": {"label": "База", "runs": ["I have some money. · Do you have any money? · I don't have any money."]}},
-        {"detail": {"label": "any = любой", "runs": ["В утверждениях: Take any seat."]}},
-        {"detail": {"label": "Просьба", "runs": ["В вопросах-просьбах some: Can I have some water?"]}}
+        {"detail": {"label": "База", "runs": ["I have some money. · Do you have any money? · I don't have any money."], "comment": ["У меня есть немного денег. · У тебя есть деньги? · У меня нет денег."]}},
+        {"detail": {"label": "any = любой", "runs": ["В утверждениях: Take any seat."], "comment": ["Садись на любое место."]}},
+        {"detail": {"label": "Просьба", "runs": ["В вопросах-просьбах some: Can I have some water?"], "comment": ["Можно мне немного воды? some также в предложениях: Would you like some tea? — Хотите чаю?"]}}
       ]
     },
     "comparative": {
-      "title": "Степени сравнения", "lead": "Короче слово — суффикс, длиннее — more/most.",
+      "title": "Степени сравнения",
+      "lead": "Короче слово — суффикс, длиннее — more/most.",
       "blocks": [
-        {"detail": {"label": "Короткие", "runs": ["cheap – cheaper – the cheapest."]}},
-        {"detail": {"label": "Орфография", "runs": ["удвоение согласной: big → bigger · -y → -ier: happy → happier · немое -e отпадает: nice → nicer."]}},
-        {"detail": {"label": "Длинные", "runs": ["expensive – more expensive – the most expensive."]}},
-        {"detail": {"label": "Исключения", "runs": ["good–better–best · bad–worse–worst · far–further–furthest."]}},
+        {"detail": {"label": "Короткие", "runs": ["cheap – cheaper – the cheapest."], "comment": ["Дешёвый → дешевле → самый дешёвый."]}},
+        {"detail": {"label": "Орфография", "runs": ["удвоение согласной: big → bigger · -y → -ier: happy → happier · немое -e отпадает: nice → nicer."], "comment": ["Большой → больше; счастливый → счастливее; приятный → приятнее."]}},
+        {"detail": {"label": "Длинные", "runs": ["expensive – more expensive – the most expensive."], "comment": ["Дорогой → дороже → самый дорогой."]}},
+        {"detail": {"label": "Исключения", "runs": ["good–better–best · bad–worse–worst · far–further–furthest."], "comment": ["Хороший → лучше → лучший; плохой → хуже → худший; далеко → дальше → дальше всего."]}},
         {"detail": {"label": "Формула", "runs": ["…er ", {"t": "than", "b": true}, " · the …est / the most …"]}}
       ]
     },
     "cond0": {
-      "title": "Type 0", "lead": "Если всегда так — оба Present.",
+      "title": "Type 0",
+      "lead": "Если всегда так — оба Present.",
       "blocks": [
         {"detail": {"label": "Формула", "runs": ["If + Present Simple, Present Simple."]}},
-        {"detail": {"label": "Смысл", "runs": ["Законы природы, правила, инструкции: If you press this, the light turns on."]}},
+        {"detail": {"label": "Смысл", "runs": ["Законы природы, правила, инструкции: If you press this, the light turns on."], "comment": ["Если нажать это, загорится свет."]}},
         {"detail": {"label": "vs Type 1", "runs": ["Type 1 — конкретное будущее условие; Type 0 — «всегда»."]}}
       ]
     },
     "cond1": {
-      "title": "Type 1", "lead": "Реальное условие о будущем.",
+      "title": "Type 1",
+      "lead": "Реальное условие о будущем.",
       "blocks": [
         {"detail": {"label": "Формула", "runs": ["If + Present Simple, will + V1."]}},
-        {"detail": {"label": "Главная ошибка", "runs": ["will после if: ", {"t": "If it will rain…", "s": true}, " → If it ", {"t": "rains", "b": true}, "…"]}},
-        {"detail": {"label": "Порядок", "runs": ["Можно и наоборот: We'll stay at home if it rains (без запятой)."]}}
+        {"detail": {"label": "Главная ошибка", "runs": ["will после if: ", {"t": "If it will rain…", "s": true}, " → If it ", {"t": "rains", "b": true}, "…"], "comment": ["If it rains… — Если пойдёт дождь…"]}},
+        {"detail": {"label": "Порядок", "runs": ["Можно и наоборот: We'll stay at home if it rains (без запятой)."], "comment": ["Мы останемся дома, если пойдёт дождь."]}},
+        {
+          "detail": {
+            "label": "Граница правила",
+            "runs": [
+              "В этой модели будущего после if обычно Present. will бывает после if в других значениях, например готовность: If you will wait… — Если Вы согласитесь подождать…"
+            ]
+          }
+        }
       ]
     },
     "cond2": {
-      "title": "Type 2", "lead": "Нереальное сейчас/в будущем.",
+      "title": "Type 2",
+      "lead": "Нереальное сейчас/в будущем.",
       "blocks": [
         {"detail": {"label": "Формула", "runs": ["If + Past Simple, would + V1."]}},
-        {"detail": {"label": "were для всех", "runs": ["If I were you, If she were here — сослагательное were."]}},
-        {"detail": {"label": "Смысл", "runs": ["Мечты, советы: If I had money, I would travel."]}}
+        {"detail": {"label": "were для всех", "runs": ["If I were you, If she were here — сослагательное were."], "comment": ["На твоём месте… · Если бы она была здесь…"]}},
+        {"detail": {"label": "Смысл", "runs": ["Мечты, советы: If I had money, I would travel."], "comment": ["Если бы у меня были деньги, я бы путешествовал."]}}
       ]
     }
   }

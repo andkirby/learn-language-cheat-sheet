@@ -25,16 +25,10 @@ Target-Inventar. Abschnitts-Anker und Karten-`id`-Slugs erben das Skelett
 des Geschwisters, damit publikumsübergreifende Referenzen lesbar bleiben;
 nach dem Shipment sind sie für immer stabil (harte Regel 7).
 
-Status: Dieser Plan ist das akzeptierte Inhaltsziel für das `en-de`-Publikum.
-Deck-JSON, Seite und Icons sind am 2026-09-28 erschienen (Commit a0a7a70);
-der interaktive Runtime-Smoke lief fehlerfrei. Coverage ist PASS (26/26
-Pflichtzeilen, siehe CONTENT_AUDIT.md §5). Accuracy und Teaching sind pro
-D-01 NOT RUN — ein Ganzwerk-Review fand keine Fehler, ersetzt aber nicht
-das referenzgestützte Gate. Der per-Target-Basiskonjunkt (Syllabus- und Referenzvergleich, C-03/D-02)
-wird mit `en/ru/` geteilt; pro ROADMAP Tier 3 wird er einmal pro Target
-erledigt und von seinen Publika geerbt, während die Interferenzfallen pro
-Publikum neu abgeleitet werden — diese Neuableitung ist, was dieser Plan
-trägt.
+Status: Dieser Plan ist das akzeptierte Inhaltsziel. Die Baseline bleibt
+vorläufig, bis die Levelzuordnung durch benannte Syllabi und Referenzen
+belegt ist. Aktuelle Review-Ergebnisse und Nachweise gehören ausschließlich
+in [CONTENT_AUDIT.md](../../CONTENT_AUDIT.md).
 
 ## Produkt und Lernende
 
@@ -160,23 +154,16 @@ deutschsprachige Lernende ergänzt diese Anforderungen:
   versus Past Simple entscheidet über Bedeutung und Diskurskontext; „Wurde
   eine Zeit genannt?" ist keine ausreichende Entscheidungsregel — das
   *since 2020*-Gegenbeispiel bleibt auf der Karte.
-- Beispiel-Glossen folgen der Regelart, mit deutschen Glossen. Form- und
-  Positionsregeln (Paradigmen, Wortstellung, V-ing/to-V-Muster) halten
-  Beispiele in der Zielsprache allein, mit struktureller Annotation — fette
-  Formen, Minimalpaare (*she works / she's working*); eine deutsche
-  Übersetzung kann englische Morphologie und Syntax nicht zeigen — genau sie
-  sind ja der Lernstoff. Bedeutungs-/Gebrauchsregeln (Artikelwahl, Perfect
-  vs Past, must not vs don't have to, some/any) bekommen eine kurze deutsche
-  Glosse, die den Entscheidungsunterschied trägt, keine Vollübersetzung.
-  Recognition-level-Konstruktionen sind die dritte Klasse. Abnahmetiefe und
-  Gloss-Klasse sind zwei Dinge: EN-16 (Typ 3) und EN-22 sind in der Tiefe
-  „recognition" (erkennen statt bilden), aber ihre decodierbaren Beispiele
-  glossiert die Bedeutungs-/Gebrauchsklasse — eine echte Gloss-Klasse-3-
-  Einheit existiert im englischen Deck derzeit nicht; tritt eine ins Deck,
-  trägt ihr Beispiel stets eine kurze deutsche Glosse — Verständniszugang zu
-  dem Satz, um den die Regel geht, nicht das Entscheidungskriterium.
-  Wortfragmente
-  bleiben ohne Glosse. Eine Glosse ohne Entscheidungsgehalt wird entfernt.
+- Beispiele und Satzformeln sind ohne Wörterbuch verständlich: eine kurze,
+  natürliche deutsche Übersetzung steht beim Beispiel, auch bei Form- und
+  Positionsregeln sowie beim Erkennungswissen. Strukturelle Hervorhebung und
+  entscheidende Gebrauchshinweise bleiben erhalten. Gelernte Wörter und
+  Wendungen erhalten kontextbezogene deutsche Bedeutungen; flektierte Formen
+  werden bei Bedarf mit ihrer Grundform verbunden. Paradigmenendungen brauchen
+  keine wörtliche Übersetzung, ihre Wortstämme, Pronomen und Wortgruppen schon.
+  Keine starre Eins-zu-eins-Zuordnung für mehrdeutige Wörter und keine künstliche
+  Einzelübersetzung für Hilfsverben. Dieselbe Regel gilt für Dialogbeispiele.
+  Karten bleiben knapp; Vertiefungen gehören in Dialoge.
 - Englischer Mustertext bleibt Englisch; deutsche Erklärungen, kursive
   Hinweise und Glossen bleiben in deutscher Stimme. Das ist ein
   Latin-Skript-Publikum, also greift die Target-Voice-Markierung des
@@ -220,12 +207,12 @@ Seitenabgleich brauchen weiterhin Evidenz im Content-Audit.
 | EN-12 | Welche abhängige Präposition folgt auf ein Wort? | `#preps` | Alle gelisteten Kombinationen mit Beispielen; keine Behauptung eines erschöpfenden Lexikons. Offensichtlich: Deutsche trainieren feste Verbpaare bereits (*warten auf*, *denken an*) — die Lerntechnik ist vertraut. Fallen: die englische Präposition wechselt fast nie 1:1 — *warten auf* → *wait for*, *denken an* → *think of/about*, *sich freuen auf* → *look forward to* + -ing, *abhängen von* → *depend on*, *teilnehmen an* → *take part in*. |
 | EN-13 | Wie werden regelmäßige und hochfrequente unregelmäßige Plurale gebildet? | `#nouns` | Kernregeln, gelistete Unregelmäßige und Zählbarkeits-Vorbehalt. Offensichtlich: die gute Nachricht zuerst — EINE -s-Regel gegen fünf deutsche Pluralmuster (*Kind/Kinder, Haus/Häuser* → *house/houses*); *child/children* ist als englische Reliktform wiedererkennbar. Fallen: im Englischen unzählbar, im Deutschen zählbar — *Informationen* → *information* (kein -s!), *Knowledges* → *knowledge*, *Softwares* → *software*; dazu *news, advice, money*. |
 | EN-14 | Ist ein Nomen zählbar, und welches Quantorwort gilt? | `#nouns` | much/many/few/little und some/any mit Interferenzfallen für Deutschsprachige. Offensichtlich: *viel/viele* mapt auf *much/many* — die Zählbarkeitsentscheidung ist aus dem Deutschen vertraute Arbeit (*viel Zeit / viele Freunde*); *few/little* ≈ *wenige/wenig*. Fallen: dieselben Schein-Unzählbaren wie EN-13 (✗ *How much people?*); *some* in Angeboten und Bitten, *any* in Verneinung und Fragen — diese Teilzuordnung ist Neulernen. |
-| EN-15 | Wie werden Komparativ und Superlativ gebaut? | `#nouns` | Kernmuster, Rechtschreibgrenzen und hochfrequente Unregelmäßige. Offensichtlich: *gut–besser–am besten* = *good–better–best* — dasselbe Unregelmäßigentrio; *schneller* = *faster*. Fallen: deutsch *als* heißt *than* UND *as* — *bigger THAN* (*größer als*), *as big AS* (*so groß wie*); ✗ *bigger as* ist der vorhersehbare Fehler; Doppelsteigerung (✗ *more better*) — universeller A1-Fehler, kein deutscher Kalk; Rechtschreibregeln (*big → bigger, happy → happier, nice → nicer*). |
-| EN-16 | Welcher Bedingungssatz drückt Fakt, reale Zukunft, unrealistische Gegenwart oder unrealistische Vergangenheit aus? | `#conditionals` | Typen 0–2 Kern; Typ 3 recognition; Bedeutung und Form für jeden gezeigten Typ. Offensichtlich: Typ 2 ist strukturell Konjunktiv II — *If I had time, I would help* ≈ *Wenn ich Zeit hätte, würde ich helfen*; *were* für alle Personen. Fallen: nach *if* steht kein will (*Wenn es regnen wird, …* → *If it rains, …* — das Deutsche erlaubt Futur im wenn-Satz, das Englische nicht: ✗ *If it will rain*); deutsch *wenn* deckt if UND when/whenever ab — die Aufteilung ist Neulernen (*If I have time* = falls · *When I have time* = wenn/immer wenn). |
+| EN-15 | Wie werden Komparativ und Superlativ gebaut? | `#nouns` | Kernmuster, Rechtschreibgrenzen und hochfrequente Unregelmäßige. Offensichtlich: *gut–besser–am besten* = *good–better–best* — dasselbe Unregelmäßigentrio; *schneller* = *faster*. Fallen: deutsch *als* heißt im Vergleich *than*; Gleichheit heißt *so … wie* → *as … as* — *bigger THAN* (*größer als*), *as big AS* (*so groß wie*); ✗ *bigger as* ist der vorhersehbare Fehler; Doppelsteigerung (✗ *more better*) — universeller A1-Fehler, kein deutscher Kalk; Rechtschreibregeln (*big → bigger, happy → happier, nice → nicer*). |
+| EN-16 | Welcher Bedingungssatz drückt Fakt, reale Zukunft, unrealistische Gegenwart oder unrealistische Vergangenheit aus? | `#conditionals` | Typen 0–2 Kern; Typ 3 recognition; Bedeutung und Form für jeden gezeigten Typ. Offensichtlich: Typ 2 ist strukturell Konjunktiv II — *If I had time, I would help* ≈ *Wenn ich Zeit hätte, würde ich helfen*; *were* für alle Personen. Fallen: Im üblichen Typ-1-Zukunftsmuster steht nach *if* Present statt will (*If it rains, …*); andere Bedeutungen wie Bereitschaft können will nach if erlauben und werden im Dialog abgegrenzt; deutsch *wenn* deckt if UND when/whenever ab — die Aufteilung ist Neulernen (*If I have time* = falls · *When I have time* = wenn/immer wenn). |
 | EN-17 | Welches Tönungswort trägt den Ton? just, actually, still, even, though | `#order` | Hochfrequentes Set mit deutschen Entscheidungsäquivalenten; begrenztes Set (EN-X02). Hier verdichtet sich die False-Friend-Zone: *actually* ≠ *aktuell* (*aktuell* = *current*); *even* ≠ *eben* (*even* = *sogar*); *just* = *gerade eben* ODER *bloß* (zwei Bedeutungen trennen); *still* vs. *yet* (*immer noch* = *still*, *noch nicht* = *not yet*); *though* am Satzende (≈ *doch*) hat keine deutsche Endposition — die Position selbst ist Neustoff. |
 | EN-18 | Welches Konnektorwort verbindet die Sätze? but/however, so/therefore, meanwhile, nevertheless, although/despite | `#order` | Kernkonnektoren mit deutschen Äquivalenten; *despite* + Nomen vs. *although* + Satz; nach Verneinung *not X, but Y* = *nicht A, sondern B* (das sondern-Paar, 1:1) und *not only … but also* = *nicht nur …, sondern auch* im Linker-Dialog; begrenztes Set (EN-X02). Offensichtlich: die despite/although-Aufteilung EXISTIERT im Deutschen (*trotz* + Nomen vs. *obwohl* + Satz) — transferfreundlich; *meanwhile* = *währenddessen*, *nevertheless* = *trotzdem*. Fallen: *also* ≠ *also*! (deutsches *also* = *so/therefore*; englisches *also* = *auch*; ✗ *Also, I went…* für „Also bin ich gegangen"); Register und Komma bei *however*. |
 | EN-19 | there is oder there are? | `#order` | is/are-Wahl, Verneinung und Fragen ohne do (be, nicht do-support); There's vs It's; was/were. Offensichtlich: Verneinung und Frage über be laufen wie deutsche Umkehrung. Fallen: *es gibt* deckt is UND are ab, ohne Pluralunterscheidung → ✗ *There's many people* ist der Kalk-Fehler (*There are two shops*); *There's* vs. *It's* (*es gibt* vs. *das ist*). |
-| EN-20 | Past Continuous — wann? | `#tenses` | was/were + V-ing als Hintergrund vs. Past-Simple-Ereignis; parallele Handlungen; die deutsche Abbildung über *gerade*. Offensichtlich: *war/were* ≈ *war/waren* — direktes Wortpaar. Fallen: keine deutsche Verlaufsform — Deutsch markiert den Verlauf mit *gerade* (*Ich kochte gerade, als er kam*): *gerade* ≈ Past Continuous, der Nebensatz im Präteritum ≈ Past Simple; *while* = *während* — dieselbe Zeit-und-Kontrast-Doppelnutzung wie im Deutschen (transfer). |
+| EN-20 | Past Continuous — wann? | `#tenses` | was/were + V-ing als Hintergrund vs. Past-Simple-Ereignis; parallele Handlungen; die deutsche Abbildung über *gerade*. Offensichtlich: *war/were* ≈ *war/waren* — direktes Wortpaar. Fallen: keine deutsche Verlaufsform — Deutsch markiert den Verlauf mit *gerade* (*Ich kochte gerade, als er anrief*): *gerade* ≈ Past Continuous, der Nebensatz im Präteritum ≈ Past Simple; *while* = *während* — dieselbe Zeit-und-Kontrast-Doppelnutzung wie im Deutschen (transfer). |
 | EN-21 | Wie verneine ich? | `#verbs` | don't/doesn't/didn't + Grundform; never ohne not; no + Nomen vs. not any. Offensichtlich: *no* + Nomen = *kein* (*I have no money* ≈ *Ich habe kein Geld* — 1:1); *never* ist bereits Verneinung, wie deutsch *nie* — die Doppelverneinungs-Falle der en-ru-Fassung (russisch «никогда не») existiert im Deutschen nicht und entfällt. Fallen: do-support in der Verneinung — Deutsch negiert das Verb direkt (*Ich sehe es nicht*), Englisch verlangt don't/doesn't/didn't + Grundform (✗ *I see not*); das *not* steht nach dem Auxiliar, nicht wie das deutsche *nicht* im Mittelfeld. |
 | EN-22 | Present Perfect Continuous — wann? | `#tenses` | Recognition: have/has been + V-ing = Dauer bis jetzt oder frischer Beweis; vs. Present-Perfect-Ergebnis; Zustandsverben ohne -ing. Fallen: der seit-Satz — *Ich wohne hier seit zwei Jahren* → *I have been living here for two years*; Deutsche wählen das Präsens (✗ *I live here since two years* — Doppelkalk: falsche Zeit UND *since* statt *for*). |
 | EN-23 | Relativsätze: who / which / that? | `#verbs` | Wahl nach Nomentyp; whose/where; Objekt-that-Auslassung; Kongruenz mit dem Bezugswort. Offensichtlich: *whose* = *dessen/deren* — das überlebende Genitiv-Relativ; *where* = *wo*. Fallen: der/die/das markieren Genus und Kasus, NICHT belebt/unbelebt → ✗ *The man which…* ist der typische deutsche Fehler; die who/which/that-Entscheidung ist Neulernen; *that* darf entfallen und das Komma entfällt im restriktiven Satz — das Deutsche setzt immer das Komma und lässt nie weg (*der Mann, den ich kenne* → *the man (that) I know*); die Präposition darf hinten bleiben (*the house I live in* statt *in dem ich wohne* vorn). |

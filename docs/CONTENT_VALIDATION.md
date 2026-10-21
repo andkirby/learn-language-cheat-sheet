@@ -70,9 +70,15 @@ Check every content unit, including every table cell and hidden answer:
   visible wherever a standalone card would otherwise teach a false rule.
 - Examples are natural, demonstrate the stated rule and agree with the
   audience-language explanation. Translations preserve the relevant meaning. Every
-  example is decodable by the intended learner; recognition-level examples
-  carry a short gloss (comprehension access) — attach it as the example's
-  `gloss` so it renders as a pair under the sentence, not as loose prose.
+  example is decodable without a dictionary: sentence examples and sentence
+  formulas carry short natural translations in the explanation language, even
+  for form/position rules. Taught words, pronouns and lexical fragments have
+  contextual meaning clues; inflection endings alone do not need translation.
+  Link opaque inflected forms to their lemma when helpful. Preserve structural
+  annotations and deciding usage hints. Attach example translations as `gloss`
+  so they render as a pair; dialog examples use their adjacent `comment`.
+  Auxiliaries are explained by function, not forced word-for-word translations.
+  Check polysemy and negation contrasts instead of teaching fixed equivalents.
 - Formulas account for the constructions they claim to cover; cases,
   endings, spelling, person/number and tense are consistent throughout.
 - When the target has a sibling audience deck (e.g. `de-ru`/`de-en`), run

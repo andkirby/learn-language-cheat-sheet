@@ -6,12 +6,13 @@ This README is the human front door. It owns project orientation, the shortest
 local run path, repository layout and deployment notes. Language scope,
 shared UI contracts and audit evidence belong to the documents linked below.
 
-Mobile-first cheatsheets of German and English grammar for Russian speakers
-(A1–B1). Installable as PWAs and fully offline after first load.
+Mobile-first German and English grammar cheatsheets for A1–B1 learners,
+with explanations in Russian, English or German depending on the pair.
+Installable as PWAs and fully offline after first load. Examples include
+translations; taught words and forms include contextual meaning clues.
 
-Content maturity: the product scope is documented, but reference-based
-baseline, page coverage, accuracy and teaching-quality reviews are currently
-NOT RUN. See [the content audit](CONTENT_AUDIT.md).
+The [content audit](CONTENT_AUDIT.md) owns current review results and remaining
+syllabus/level-placement gaps.
 
 Live: <https://andkirby.github.io/learn-language-cheat-sheet/>
 
