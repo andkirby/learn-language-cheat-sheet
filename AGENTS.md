@@ -6,9 +6,9 @@ This file is the coding-agent entrypoint. It owns repository-wide operating
 rules, documentation routing, maintenance triggers and verification commands.
 It does not own language content or shared UI details.
 
-Multi-language PWA cheatsheet hub: German and English grammar for
-Russian-speaking learners (A1–B1). Static site on GitHub Pages — no build
-step, no external dependencies, everything works offline.
+Multi-language PWA cheatsheet hub: German and English grammar for A1–B1
+learners, explained in Russian, English or German by audience. Static site on
+GitHub Pages — no build step, no external dependencies, everything works offline.
 
 ## Structure
 

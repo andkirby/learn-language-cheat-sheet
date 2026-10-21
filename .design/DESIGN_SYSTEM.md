@@ -188,8 +188,9 @@ Rules:
 
 ## Content/copy conventions
 
-- UI language Russian; grammar terms stay in the target language
-  (German: Dativ, weil; English: Present Perfect).
+- UI and explanations use the deck audience language (Russian, English or
+  German); grammar terms stay in the target language (German: Dativ, weil;
+  English: Present Perfect).
 - Keep source examples short (normally ≤ 2 lines); bold marks the
   pattern-carrying words. Every example has explanation-language meaning
   support in its `gloss`, rendered as a pair (translation and any deciding

@@ -702,3 +702,13 @@ existing dialogs. No new interaction or component is introduced.
 
 Maintain this contract in the four language plans and
 `docs/CONTENT_VALIDATION.md`; review evidence belongs in `CONTENT_AUDIT.md`.
+
+
+### 2026-10-21 — Specimens follow the meaning-support contract
+
+The style guide now shows translated card examples and describes glosses as
+comprehension support plus any deciding hint. Audience-language wording
+replaces the old Russian-only assumption in the shared contract and agent
+entrypoint. This aligns documentation with the 2026-10-20 decision; it adds
+no component, interaction or deck content. The style-guide page edit bumps
+the shared cache to v49 under AGENTS.md hard rule 9.

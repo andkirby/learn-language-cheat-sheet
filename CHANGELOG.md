@@ -15,7 +15,8 @@ Append the entry in the same commit that ships the change.
   include meaning clues; modal forms such as müssen → muss are linked.
 - Corrected misleading grammar shortcuts, including Perfekt vs English
   present perfect, seit, fixed verb/preposition cases, modal negation,
-  relative-pronoun omission and was/were. Service-worker cache v48.
+  relative-pronoun omission and was/were. The style guide and authoring
+  docs now teach the same meaning-support contract. Service-worker cache v49.
 
 ## 2026-10-10 (skin A «Тетрадь»)
 

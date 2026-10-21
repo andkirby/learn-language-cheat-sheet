@@ -1166,6 +1166,25 @@ is a cross-audience content fix larger than one line: the separate,
 byte-identical core-extraction refactor is pending in DEBT, not included in
 this content change. No overall four-gate certification is claimed.
 
+## 2026-10-21 — Documentation and release follow-up
+
+- Released content revision: `4e5382159a846cf9b805c3786dec7f810eb2b7ca`.
+  All four deck SHA-256 snapshots above are unchanged.
+- Durable-doc pass corrected README's stale review status, added the
+  meaning-support contract to both authoring playbooks, and aligned accepted
+  plan wording for word order, purpose clauses, hypothetical forms and if.
+- A final specimen pass removed the style guide's superseded “hints, not
+  translations” instruction, added translations to its two card specimens,
+  and corrected Russian-only wording in the shared contract/agent entrypoint.
+  This documentation page change advances the service-worker cache to v49.
+- Style-guide smoke: Chromium at 390×844, both card specimens render paired
+  translations, page width equals viewport width, superseded policy absent,
+  no browser errors. All four generated-page checks and shell check pass.
+- GitHub Pages built `4e53821` successfully. Live HTTP checks on 2026-10-21:
+  landing, all four generated pages, sw.js and all four legacy stubs returned
+  200 and matched the released local files byte-for-byte. This extends the
+  2026-10-20 local runtime evidence; it does not change the content-gate verdicts.
+
 ## Next full review record
 
 Append a dated record; preserve previous evidence. Include:

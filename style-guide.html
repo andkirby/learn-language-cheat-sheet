@@ -132,7 +132,7 @@
 
     <section class="sg-block" id="voices">
       <h2>Type voices</h2>
-      <p class="sg-why">Two voices, one rule: Russian explanation text uses <code>--font-ui</code> (system sans); any element carrying the studied language is marked with a <code>lang</code> attribute and rendered in <code>--font-study</code> (system serif) — the “this is the language you are learning” signal.</p>
+      <p class="sg-why">Two voices, one rule: audience-language explanation text uses <code>--font-ui</code> (system sans); any element carrying the studied language is marked with a <code>lang</code> attribute and rendered in <code>--font-study</code> (system serif) — the “this is the language you are learning” signal.</p>
       <div class="cheat-card">
         <h3>RU explanation — sans <code>--font-ui</code></h3>
         <p>Предлог часто сразу определяет падеж: спроси <i>Wo?</i> или <i>Wohin?</i> перед Wechselpräpositionen.</p>
@@ -144,13 +144,13 @@
         <summary>Marking rules, fonts, and what must never take the serif</summary>
         <div class="sg-doc-body">
           <p>Pages set <code>lang</code> via <code>markTargetLang</code> in the page script (see <code>page_template.html</code>):
-            whole <code>.example</code> / <code>.table-scroll</code> containers are marked when they
+            for Cyrillic audiences, whole <code>.example</code> / <code>.table-scroll</code> containers are marked when they
             contain no Cyrillic; otherwise the fragments are marked — bold in <code>.example</code>,
             bold/strike/italic runs in <code>.detail-block</code> (the Cyrillic-bearing <code>.detail-label</code> excluded),
-            and formula slots without Cyrillic individually. Pair glosses and <code>.detail-comment</code> lines always
+            and formula slots without Cyrillic individually. Latin-script audiences use explicit bold/hit target runs instead of script detection. Pair glosses and <code>.detail-comment</code> lines always
             stay in the UI voice.</p>
           <p><code>lang</code> does two jobs: the serif study voice (<code>[lang]</code> selector in base.css) and screen-reader
-            pronunciation. Never apply it to Russian text — that would flip the explanation into the study voice and mispronounce it.</p>
+            pronunciation. Do not tag explanation text as the studied language — that would change its voice and pronunciation.</p>
           <p>Stacks (no external fonts): <code>--font-ui</code> = system sans;
             <code>--font-study</code> = Charter → ui-serif (New York) → Sitka/Cambria → Noto Serif. Skin «Тетрадь»
             swaps both for vendored Onest/Spectral — a user-approved exception to the no-external-fonts rule
@@ -325,7 +325,7 @@
               <tbody>
                 <tr><td><code>h</code></td><td><code>&lt;h3&gt;</code></td><td>card title</td></tr>
                 <tr><td><code>p</code> / <code>tiny</code></td><td><code>&lt;p&gt;</code> / <code>&lt;p class="tiny"&gt;</code></td><td>runs: strings or <code>{t, b, i, s, br}</code></td></tr>
-                <tr><td><code>example</code></td><td><code>&lt;div class="example"&gt;</code></td><td>optional <code>gloss</code> → <code>.example.pair</code> (hint under a hairline); runs may carry <code>hit</code> (bold + highlight)</td></tr>
+                <tr><td><code>example</code></td><td><code>&lt;div class="example"&gt;</code></td><td><code>gloss</code> required by the content contract → <code>.example.pair</code> (translation and any deciding hint under a hairline); runs may carry <code>hit</code> (bold + highlight)</td></tr>
                 <tr><td><code>formula</code></td><td><code>&lt;div class="formula"&gt;</code></td><td>slots + <code>{arrow}</code> items; slot <code>role</code>: verb/end/sub</td></tr>
                 <tr><td><code>table</code></td><td><code>&lt;div class="table-scroll"&gt;&lt;table&gt;</code></td><td>cell object <code>{hot: …}</code> → <code>td.hot</code></td></tr>
                 <tr><td><code>chips</code></td><td><code>&lt;div class="chips"&gt;</code></td><td>needs label + known detail key; <code>neutral: true</code> variant; a menu only — each chip opens a <em>different</em> dialog (validator enforces)</td></tr>
@@ -354,14 +354,14 @@
           <div class="formula"><span class="slot">Позиция 1</span><span class="arrow">→</span><span class="slot verb">глагол</span><span class="arrow">→</span><span class="slot">остальное</span></div>
           <div class="example pair">
             <div class="pair-src" lang="de">Ich <b class="hit">gehe</b> heute in den Laden.<br>Heute <b class="hit">gehe</b> ich in den Laden.</div>
-            <div class="pair-gloss">спрягаемый глагол — всегда на второй позиции, даже когда предложение начинается не с подлежащего</div>
+            <div class="pair-gloss">Я иду сегодня в магазин.<br>Сегодня я иду в магазин. gehe — иду; глагол остаётся на позиции 2.</div>
           </div>
           <div class="chips"><button class="tap" type="button" data-detail="v2-demo">Что значит “позиция 2”?</button></div>
         </article>
         <article class="cheat-card">
           <h3>Быстрый смысл</h3>
           <p><b>Dat.</b> часто = получатель: <i>даю кому?</i></p>
-          <div class="example"><b lang="de">Ich gebe dem Mann das Buch.</b></div>
+          <div class="example pair"><div class="pair-src"><b lang="de">Ich gebe dem Mann das Buch.</b></div><div class="pair-gloss">Я даю мужчине книгу. dem Mann — кому? (Dat.); das Buch — что? (Akk.).</div></div>
           <p class="sg-anno">Real specimens from <code>de-ru.json</code>. Grid: <code>.cards.two</code> → 2 columns ≥ 720px.</p>
         </article>
       </div>
@@ -376,10 +376,10 @@
             you — формы / употребление / порядок / время / связь / условное / триггер) render the <code>.badges</code> row under
             the title. The build validator enforces the level enum and a 1–40 char kind, and rejects both on case-grid cards.
             Every badge carries a text label — never information by color alone.</p>
-          <p><strong>Pairs.</strong> An example block with an optional <code>gloss</code> (runs) renders as
+          <p><strong>Pairs.</strong> The content contract requires an example <code>gloss</code> (runs), rendered as
             <code>.example.pair</code>: the target-language <code>.pair-src</code> line takes the study voice and
             <code>.hit</code> marks the form the card teaches; the audience-language <code>.pair-gloss</code> stays in the UI
-            voice under a hairline. Glosses follow the gloss policy (SITE_PLAN_GUIDE §6): deciding hints, not translations.</p>
+            voice under a hairline. Follow <a href="./docs/CONTENT_VALIDATION.md">content validation</a>: short translations provide comprehension access, with deciding usage hints preserved.</p>
         </div>
       </details>
     </section>
@@ -588,7 +588,7 @@
             <tr><td><code>.badges</code>, <code>.badge</code> <code>.level/.kind</code></td><td>Card metadata row under the title: CEFR level + what the card gives you (deck fields <code>level</code>/<code>kind</code>)</td></tr>
             <tr><td><code>.cards</code> + <code>.two/.three</code></td><td>Card grid and its density columns (layout layer)</td></tr>
             <tr><td><code>.tap</code> / <code>.neutral</code> / <code>.case</code></td><td>Tappable chip: opens detail dialog / secondary / 44px case tile</td></tr>
-            <tr><td><code>.example</code>, <code>.pair-src</code>, <code>.pair-gloss</code>, <code>.hit</code></td><td>Example line(s); may carry <code>lang</code> wholesale when pure target-language; with a gloss → pair layout (hint under a hairline); <code>.hit</code> = the taught form</td></tr>
+            <tr><td><code>.example</code>, <code>.pair-src</code>, <code>.pair-gloss</code>, <code>.hit</code></td><td>Example line(s); may carry <code>lang</code> wholesale when pure target-language; with a gloss → pair layout (translation and any deciding hint under a hairline); <code>.hit</code> = the taught form</td></tr>
             <tr><td><code>.formula</code> + <code>.slot</code> <code>.verb/.end/.sub</code>, <code>.arrow</code></td><td>Sentence-position diagram; slot color = grammatical role</td></tr>
             <tr><td><code>.table-scroll</code>, <code>td.hot</code></td><td>Scrollable table; <code>.hot</code> = the form that changes across cases</td></tr>
             <tr><td><code>.case-grid</code>, <code>.case-box</code>, <code>.case-q</code>, <code>.case-hint</code></td><td>Case tiles (DE page only); question word + Russian hint</td></tr>
