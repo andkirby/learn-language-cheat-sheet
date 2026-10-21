@@ -140,3 +140,37 @@ Chromium/agent-browser evidence, preview server at 127.0.0.1:8931:
   checks NOT RUN for this focused update. Semantic markup and CSS-only layout
   preserve content without requiring JavaScript; this is source evidence,
   not a claim those runtime lanes ran.
+
+
+## 2026-10-21 — Russian audience row and Notebook default
+
+The landing's Russian audience option was a span styled only while `.cur`
+was present. Selecting English removed the class and its menu-row spacing.
+Resolved by using the same native anchor as the other audience options; the
+row retains padding and can be focused/activated with Enter in either skin.
+
+Notebook is the static/default skin on the landing, all four generated decks
+and the style guide. A saved Classic preference removes the attribute in the
+head before stylesheets; missing, invalid or blocked storage keeps Notebook.
+Server-rendered radio states match the default. Shared contract and theme
+authoring instructions updated; cache v51.
+
+Focused Chromium checks via agent-browser at 127.0.0.1:8931:
+
+- 30 storage/route combinations: absent, Classic, Notebook, invalid and empty
+  saved values across all six surfaces; skin attribute, radio state and
+  roving tabindex agree. Blocked storage and JavaScript-disabled checks also
+  retain Notebook on all six surfaces. Without JS, skin/theme controls are
+  hidden on the landing and deck pages.
+- 72 layout combinations: six surfaces × both skins × auto/light/dark ×
+  390/1280px; no horizontal page overflow.
+- Russian link spacing and Enter navigation verified in both skins. Actual
+  appearance controls switch, arrow-key selection works, reload preserves
+  choices, and all four decks plus the landing reload offline with v51.
+- No browser errors. Light/dark phone screenshots visually checked. Evidence:
+  `$BB_THREAD_STORAGE/menu-default-browser.json`,
+  `$BB_THREAD_STORAGE/russian-menu-fixed-light.png` and
+  `$BB_THREAD_STORAGE/russian-menu-fixed.png`.
+- All four generated-page checks, shell consistency and diff whitespace pass.
+  Full screen-reader, print and installed-device relaunch checks NOT RUN.
+  Grammar/content review NOT RUN: no language content changed.

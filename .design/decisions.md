@@ -729,3 +729,19 @@ list without dots. Modal inventories use it in all four pairs and in both
 German modal dialogs. The renderer, validator, schema and living specimen
 share this contract; `detail`/`label` still create a single dialog entry.
 Both layouts work with either skin, every theme, print and noscript. Cache v50.
+
+
+### 2026-10-21 — Notebook by default; Russian audience remains a link
+
+The user selected «Тетрадь» as the default appearance. Landing, deck template,
+server-rendered skin radios and style guide now start in skin A, including
+without JavaScript or access to storage. An explicit saved Classic choice
+removes the skin attribute before stylesheets load; existing choices are
+respected. Light/dark/auto remains an independent preference. This supersedes
+the earlier opt-in default, while retaining Classic as a selectable skin.
+
+On the landing, every explanation-language option is an anchor. «Русский»
+was a span whose only styling came from `.cur`; choosing another audience
+removed its padding and left a mouse-only click handler. A real link keeps
+the shared menu-row styling and native keyboard navigation in either state.
+All four deck pages are regenerated together; cache v51.

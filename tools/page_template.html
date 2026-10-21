@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="@@HTML_LANG@@">
+<html lang="@@HTML_LANG@@" data-skin="a">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -30,9 +30,9 @@
     }
   </script>
   <script>
-    // Skin: apply before first paint so «Тетрадь» doesn't flash classic
-    // (stored skin only; default = classic = no attribute).
-    try { if (localStorage.getItem('skin') === 'a') document.documentElement.setAttribute('data-skin', 'a'); } catch (e) {}
+    // Notebook is the default, including without JS or storage access.
+    // Honor a saved Classic choice before stylesheets load.
+    try { if (localStorage.getItem('skin') === 'classic') document.documentElement.removeAttribute('data-skin'); } catch (e) {}
   </script>
   <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#10131b" media="(prefers-color-scheme: dark)" />
@@ -161,8 +161,8 @@
       if (skin === 'a') themeMetas.forEach(m => { m.content = getComputedStyle(document.body).backgroundColor; });
       else applyTheme(themeMode);
     }
-    let skinMode = 'classic';
-    try { skinMode = localStorage.getItem(SKIN_KEY) || 'classic'; } catch (e) {}
+    let skinMode = 'a';
+    try { skinMode = localStorage.getItem(SKIN_KEY) === 'classic' ? 'classic' : 'a'; } catch (e) {}
     applySkin(skinMode);
     document.addEventListener('click', (event) => {
       const row = event.target.closest('[data-skin-mode]');

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-skin="a">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -30,9 +30,9 @@
     }
   </script>
   <script>
-    // Skin: apply before first paint so «Тетрадь» doesn't flash classic
-    // (stored skin only; default = classic = no attribute).
-    try { if (localStorage.getItem('skin') === 'a') document.documentElement.setAttribute('data-skin', 'a'); } catch (e) {}
+    // Notebook is the default, including without JS or storage access.
+    // Honor a saved Classic choice before stylesheets load.
+    try { if (localStorage.getItem('skin') === 'classic') document.documentElement.removeAttribute('data-skin'); } catch (e) {}
   </script>
   <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#10131b" media="(prefers-color-scheme: dark)" />
@@ -95,15 +95,15 @@
             </div>
             <div class="lang-group">
               <div class="lang-group-label">Язык объяснений</div>
-              <span class="cur" data-audience-item="ru">Русский</span>
+              <a class="cur" href="./de/ru/" data-audience-item="ru">Русский</a>
               <a href="./de/en/" data-audience-item="en">English</a>
               <a href="./en/de/" data-audience-item="de">Deutsch</a>
             </div>
             <div class="lang-group">
               <div class="lang-group-label">Оформление</div>
               <div role="radiogroup" aria-label="Оформление">
-                <button type="button" class="skin-row cur" role="radio" aria-checked="true" tabindex="0" data-skin-mode="classic">Классика</button>
-                <button type="button" class="skin-row" role="radio" aria-checked="false" tabindex="-1" data-skin-mode="a">Тетрадь</button>
+                <button type="button" class="skin-row" role="radio" aria-checked="false" tabindex="-1" data-skin-mode="classic">Классика</button>
+                <button type="button" class="skin-row cur" role="radio" aria-checked="true" tabindex="0" data-skin-mode="a">Тетрадь</button>
               </div>
             </div>
           </div>
@@ -192,8 +192,8 @@
       if (skin === 'a') themeMetas.forEach(m => { m.content = getComputedStyle(document.body).backgroundColor; });
       else applyTheme(themeMode);
     }
-    let skinMode = 'classic';
-    try { skinMode = localStorage.getItem('skin') || 'classic'; } catch (e) {}
+    let skinMode = 'a';
+    try { skinMode = localStorage.getItem('skin') === 'classic' ? 'classic' : 'a'; } catch (e) {}
     applySkin(skinMode);
     document.addEventListener('click', (event) => {
       const row = event.target.closest('.skin-row');

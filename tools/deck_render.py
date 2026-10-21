@@ -128,11 +128,11 @@ def _lang_groups_html(deck, site):
 
 def _skin_group_html(strings):
     """«Оформление» skin switcher group (classic / Тетрадь), shared by the
-    desktop lang-menu popover and the mobile burger. The server marks classic
+    desktop lang-menu popover and the mobile burger. The server marks Notebook
     checked; the end-of-body script corrects to the visitor's stored skin."""
     rows = []
     for mode, label in (("classic", strings["skin_classic"]), ("a", strings["skin_a"])):
-        if mode == "classic":
+        if mode == "a":
             state = ' class="skin-row cur" role="radio" aria-checked="true" tabindex="0"'
         else:
             state = ' class="skin-row" role="radio" aria-checked="false" tabindex="-1"'

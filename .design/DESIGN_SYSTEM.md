@@ -85,10 +85,11 @@ Rules:
 
 ## Skins (classic / Тетрадь)
 
-- Two skins: **classic** — the attribute-less default, rendering identical
-  to the pre-skin site — and **skin A «Тетрадь»** (editorial paper-and-ink
-  voice). Mechanism: `localStorage` key `skin` (`classic` | `a`; absence =
-  classic) → JS sets `data-skin="a"` on `<html>`. All skin rules live in
+- Two skins: **skin A «Тетрадь»** — the default (editorial paper-and-ink
+  voice) — and **classic**, rendering identical to the pre-skin site.
+  Static HTML carries `data-skin="a"`. `localStorage.skin` accepts `classic`
+  or `a`; absent, invalid or unavailable storage keeps Notebook. A saved
+  `classic` removes the attribute before stylesheets load. All skin rules live in
   **`assets/skin-a.css`, linked immediately after `base.css` on every
   page** — the load-order contract the selector matrix depends on.
 - Selector matrix in one line: the A-light `[data-skin="a"]` token block
@@ -108,7 +109,7 @@ Rules:
   language menus — `.lang-menu` inline and the `.app-menu` burger — with
   `role="radiogroup"`/`role="radio"`, arrow keys + roving tabindex,
   close-on-select; the choice persists in `localStorage.skin`. Without JS
-  the group is hidden and the site renders classic.
+  the group is hidden and the site renders Notebook.
 - `theme-color` metas re-sync on skin switch (same JS pass as theme
   changes).
 - Fonts: skin A sets vendored Onest/Spectral via `@font-face` at the top

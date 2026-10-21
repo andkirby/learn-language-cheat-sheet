@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-skin="a">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -9,9 +9,9 @@
   <meta name="color-scheme" content="light dark" />
   <title>Style Guide — Language Cheat Sheets</title>
   <script>
-    // Skin: apply before first paint so «Тетрадь» doesn't flash classic
-    // (stored skin only; default = classic = no attribute).
-    try { if (localStorage.getItem('skin') === 'a') document.documentElement.setAttribute('data-skin', 'a'); } catch (e) {}
+    // Notebook is the default, including without JS or storage access.
+    // Honor a saved Classic choice before stylesheets load.
+    try { if (localStorage.getItem('skin') === 'classic') document.documentElement.removeAttribute('data-skin'); } catch (e) {}
   </script>
   <link rel="stylesheet" href="./assets/base.css" />
   <link rel="stylesheet" href="./assets/skin-a.css" />
@@ -90,7 +90,7 @@
         </div>
         <details class="lang-menu" id="skinMenu">
           <summary aria-label="Оформление">Оформление</summary>
-          <div class="lang-pop"><div class="lang-group"><div class="lang-group-label">Оформление</div><div role="radiogroup" aria-label="Оформление"><button type="button" class="skin-row cur" role="radio" aria-checked="true" tabindex="0" data-skin-mode="classic">Классика</button><button type="button" class="skin-row" role="radio" aria-checked="false" tabindex="-1" data-skin-mode="a">Тетрадь</button></div></div></div>
+          <div class="lang-pop"><div class="lang-group"><div class="lang-group-label">Оформление</div><div role="radiogroup" aria-label="Оформление"><button type="button" class="skin-row" role="radio" aria-checked="false" tabindex="-1" data-skin-mode="classic">Классика</button><button type="button" class="skin-row cur" role="radio" aria-checked="true" tabindex="0" data-skin-mode="a">Тетрадь</button></div></div></div>
         </details>
         <button class="theme-btn" id="themeBtn" type="button" aria-label="Тема: системная">◐</button>
       </div>
@@ -591,7 +591,7 @@
             <tr><td><code>.app-menu</code>, <code>.app-identity</code>, <code>.app-sep</code>, <code>.menu-row</code></td><td>Phone burger (native <code>&lt;details&gt;</code>): identity line + the language groups + help/install rows; hidden ≥720px</td></tr>
             <tr><td><code>.search-wrap</code>, <code>.search-chip</code>, <code>.search</code>, <code>.clear-search</code></td><td>Search field; persistent target-language chip leads the input; custom clear ✕ while typing</td></tr>
             <tr><td><code>.lang-menu</code>, <code>.lang-pop</code>, <code>.lang-group</code>, <code>.cur</code>, <code>.soon</code></td><td>Language control: «Язык обучения» links + «Язык объяснений» state in one native <code>&lt;details&gt;</code> popover (deck pages: inline ≥720px, inside the burger on phones; landing: brand row)</td></tr>
-            <tr><td><code>.skin-row</code></td><td>«Оформление» option row in the language menu popover: <code>role=radio</code> + <code>aria-checked</code> + roving tabindex; noscript hides it (classic is the default)</td></tr>
+            <tr><td><code>.skin-row</code></td><td>«Оформление» option row in the language menu popover: <code>role=radio</code> + <code>aria-checked</code> + roving tabindex; noscript hides it (Notebook is the default)</td></tr>
             <tr><td><code>.install-nudge</code>, <code>.nudge-text</code>, <code>.nudge-close</code></td><td>One-time install prompt above the bottom nav (browser tabs only, flag set when shown)</td></tr>
             <tr><td><code>.cheat-card</code></td><td>Atomic reference unit; searchable via <code>data-search</code></td></tr>
             <tr><td><code>.badges</code>, <code>.badge</code> <code>.level/.kind</code></td><td>Card metadata row under the title: CEFR level + what the card gives you (deck fields <code>level</code>/<code>kind</code>)</td></tr>
@@ -650,7 +650,7 @@
 
     <section class="sg-block" id="skins">
       <h2>Skins (Тетрадь)</h2>
-      <p class="sg-why">Оформление — второй скин, «Тетрадь»: атрибут <code>data-skin="a"</code> на <code>&lt;html&gt;</code> и таблица <code>assets/skin-a.css</code>, подключённая сразу после base.css. Каждое её правило начинается с атрибута скина, поэтому классика остаётся байт-в-байт прежней; выбор хранится в <code>localStorage.skin</code>, а без JavaScript сайт всегда показывается в классике.</p>
+      <p class="sg-why">Оформление — второй скин, «Тетрадь»: атрибут <code>data-skin="a"</code> на <code>&lt;html&gt;</code> и таблица <code>assets/skin-a.css</code>, подключённая сразу после base.css. Каждое её правило начинается с атрибута скина, поэтому классика остаётся байт-в-байт прежней; выбор хранится в <code>localStorage.skin</code>, по умолчанию и без JavaScript сайт показывается в «Тетради». Сохранённый выбор классики применяется до загрузки стилей.</p>
       <div class="table-scroll">
         <table class="roles">
           <thead><tr><th>Role</th><th>Тетрадь light</th><th>Тетрадь dark</th></tr></thead>
@@ -755,8 +755,8 @@
         row.tabIndex = on ? 0 : -1;
       });
     }
-    let skinMode = 'classic';
-    try { skinMode = localStorage.getItem(SKIN_KEY) || 'classic'; } catch (e) {}
+    let skinMode = 'a';
+    try { skinMode = localStorage.getItem(SKIN_KEY) === 'classic' ? 'classic' : 'a'; } catch (e) {}
     applySkin(skinMode);
     document.addEventListener('click', (event) => {
       const row = event.target.closest('[data-skin-mode]');

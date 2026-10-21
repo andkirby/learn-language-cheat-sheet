@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-skin="a">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -30,9 +30,9 @@
     }
   </script>
   <script>
-    // Skin: apply before first paint so «Тетрадь» doesn't flash classic
-    // (stored skin only; default = classic = no attribute).
-    try { if (localStorage.getItem('skin') === 'a') document.documentElement.setAttribute('data-skin', 'a'); } catch (e) {}
+    // Notebook is the default, including without JS or storage access.
+    // Honor a saved Classic choice before stylesheets load.
+    try { if (localStorage.getItem('skin') === 'classic') document.documentElement.removeAttribute('data-skin'); } catch (e) {}
   </script>
   <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#10131b" media="(prefers-color-scheme: dark)" />
@@ -60,7 +60,7 @@
 <body>
   <header class="topbar">
     <div class="topbar-inner">
-      <details class="app-menu"><summary aria-label="Меню: язык, оформление, справка, установка"><span aria-hidden="true">☰</span></summary><div class="lang-pop app-pop"><div class="app-identity">German Cheat<small>RU → DE · A1–B1</small></div><div class="lang-group"><div class="lang-group-label">Язык обучения</div><span class="cur">Deutsch</span><a href="../../en/ru/">English</a></div><div class="lang-group"><div class="lang-group-label">Язык объяснений</div><span class="cur">Русский</span><a href="../en/">English</a></div><div class="lang-group"><div class="lang-group-label">Оформление</div><div role="radiogroup" aria-label="Оформление"><button type="button" class="skin-row cur" role="radio" aria-checked="true" tabindex="0" data-skin-mode="classic">Классика</button><button type="button" class="skin-row" role="radio" aria-checked="false" tabindex="-1" data-skin-mode="a">Тетрадь</button></div></div><div class="app-sep" aria-hidden="true"></div><button class="menu-row" type="button" data-detail="lookup-help">Как пользоваться</button><button class="menu-row" type="button" data-install hidden>Установить</button></div></details>
+      <details class="app-menu"><summary aria-label="Меню: язык, оформление, справка, установка"><span aria-hidden="true">☰</span></summary><div class="lang-pop app-pop"><div class="app-identity">German Cheat<small>RU → DE · A1–B1</small></div><div class="lang-group"><div class="lang-group-label">Язык обучения</div><span class="cur">Deutsch</span><a href="../../en/ru/">English</a></div><div class="lang-group"><div class="lang-group-label">Язык объяснений</div><span class="cur">Русский</span><a href="../en/">English</a></div><div class="lang-group"><div class="lang-group-label">Оформление</div><div role="radiogroup" aria-label="Оформление"><button type="button" class="skin-row" role="radio" aria-checked="false" tabindex="-1" data-skin-mode="classic">Классика</button><button type="button" class="skin-row cur" role="radio" aria-checked="true" tabindex="0" data-skin-mode="a">Тетрадь</button></div></div><div class="app-sep" aria-hidden="true"></div><button class="menu-row" type="button" data-detail="lookup-help">Как пользоваться</button><button class="menu-row" type="button" data-install hidden>Установить</button></div></details>
       <div class="brand">
         <div class="brand-mark" aria-hidden="true">DE</div>
         <div>German Cheat<small>RU → DE · A1–B1</small></div>
@@ -70,7 +70,7 @@
         <input id="search" class="search" type="search" autocomplete="off" enterkeyhint="search" placeholder="Поиск: wem, weil, modal, Dativ…" aria-label="Поиск по немецкой шпаргалке" />
         <button id="clearSearch" class="clear-search" type="button" aria-label="Очистить поиск" hidden>×</button>
       </div>
-      <details class="lang-menu" id="langMenu"><summary aria-label="Язык обучения, язык объяснений и оформление">DE · RU</summary><div class="lang-pop"><div class="lang-group"><div class="lang-group-label">Язык обучения</div><span class="cur">Deutsch</span><a href="../../en/ru/">English</a></div><div class="lang-group"><div class="lang-group-label">Язык объяснений</div><span class="cur">Русский</span><a href="../en/">English</a></div><div class="lang-group"><div class="lang-group-label">Оформление</div><div role="radiogroup" aria-label="Оформление"><button type="button" class="skin-row cur" role="radio" aria-checked="true" tabindex="0" data-skin-mode="classic">Классика</button><button type="button" class="skin-row" role="radio" aria-checked="false" tabindex="-1" data-skin-mode="a">Тетрадь</button></div></div></div></details>
+      <details class="lang-menu" id="langMenu"><summary aria-label="Язык обучения, язык объяснений и оформление">DE · RU</summary><div class="lang-pop"><div class="lang-group"><div class="lang-group-label">Язык обучения</div><span class="cur">Deutsch</span><a href="../../en/ru/">English</a></div><div class="lang-group"><div class="lang-group-label">Язык объяснений</div><span class="cur">Русский</span><a href="../en/">English</a></div><div class="lang-group"><div class="lang-group-label">Оформление</div><div role="radiogroup" aria-label="Оформление"><button type="button" class="skin-row" role="radio" aria-checked="false" tabindex="-1" data-skin-mode="classic">Классика</button><button type="button" class="skin-row cur" role="radio" aria-checked="true" tabindex="0" data-skin-mode="a">Тетрадь</button></div></div></div></details>
       <button class="icon-btn" id="start" type="button" data-detail="lookup-help" aria-haspopup="dialog" aria-label="Как пользоваться" title="Как пользоваться"><span class="ico" aria-hidden="true">i</span></button>
       <button class="theme-btn" id="themeBtn" type="button" aria-label="Тема: системная">◐</button>
       <button class="install-btn" type="button" data-install hidden>Установить</button>
@@ -997,8 +997,8 @@
       if (skin === 'a') themeMetas.forEach(m => { m.content = getComputedStyle(document.body).backgroundColor; });
       else applyTheme(themeMode);
     }
-    let skinMode = 'classic';
-    try { skinMode = localStorage.getItem(SKIN_KEY) || 'classic'; } catch (e) {}
+    let skinMode = 'a';
+    try { skinMode = localStorage.getItem(SKIN_KEY) === 'classic' ? 'classic' : 'a'; } catch (e) {}
     applySkin(skinMode);
     document.addEventListener('click', (event) => {
       const row = event.target.closest('[data-skin-mode]');

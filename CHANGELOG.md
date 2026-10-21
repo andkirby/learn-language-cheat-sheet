@@ -6,6 +6,14 @@ UI rationale lives in
 `.design/decisions.md`, content review evidence in `CONTENT_AUDIT.md`.
 Append the entry in the same commit that ships the change.
 
+## 2026-10-21 (language menu and default appearance)
+
+- Fixed the «Русский» landing-menu row losing its padding when another
+  explanation language was selected; it is now a keyboard-accessible link.
+- Notebook («Тетрадь») is now the default across the landing, all four
+  decks and the style guide, including without JavaScript. Saved Classic
+  choices still apply before styles load. Service-worker cache v51.
+
 ## 2026-10-21 (readable term lists and German imperative contrast)
 
 - Modal meanings now appear one entry per row in all four pairs. Inline

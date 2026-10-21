@@ -14,8 +14,9 @@ same markup, same anchors, same dialogs, same noscript story.
 
 A **skin** is one attribute plus one stylesheet:
 
-- `data-skin="<id>"` on `<html>` (set by JS; absent = classic, which keeps
-  classic byte-identical — the scoping gate enforces it).
+- `data-skin="<id>"` on `<html>` (static default `a` = Notebook; JS removes
+  it for a saved Classic choice before stylesheets load). Without the
+  attribute, classic stays byte-identical — the scoping gate enforces it.
 - `assets/skin-<id>.css`, linked after `base.css` on every page. Tokens
   first, structure second:
   - **token layer** — three blocks mirroring base.css
@@ -88,13 +89,15 @@ python3 -c "s=open('assets/skin-<id>.css').read(); print(s.count('{')-s.count('}
   required tuple (`tools/deck_validate.py`).
 - `tools/deck_render.py` `_skin_group_html`: add the option row
   (`data-skin-mode="<id>"`). **Generalize the hardcodes** — the reference
-  implementation has exactly three, all listed for the next skin:
-  1. the early head script tests `=== 'a'` (make it set the attribute to
-     any known non-classic stored value),
+  implementation has these hardcodes to generalize for the next skin:
+  1. static HTML and server-rendered radio rows default to `a`; the early
+     head script removes the attribute only for stored `classic`, while
+     the bottom script accepts `classic` and otherwise defaults to `a`
+     (extend both scripts to accept any known non-classic stored value),
   2. the bottom-script `order` array is `['classic', 'a']`,
   3. `applySkin`'s meta-sync branch tests `'a'`.
 - Switcher mechanics (radiogroup, roving tabindex, arrows, close-on-select,
-  persistence in `localStorage.skin`, noscript = classic) are contract —
+  persistence in `localStorage.skin`, noscript = Notebook) are contract —
   reuse, don't reinvent. `.design/DESIGN_SYSTEM.md` documents them.
 
 ### 3. Mirrors
@@ -121,6 +124,8 @@ Every page-level change is made in one commit on **all** surfaces:
 3. Regenerate: `python3 tools/build_pages.py content/decks/<deck>.json` ×4,
    then `--check` ×4 + `--check-shell` — all green.
 4. Verification matrix (condensed from A's):
+   - fresh, unavailable or invalid storage defaults to Notebook; an explicit
+     saved Classic choice remains Classic before first paint;
    - switch both directions in menu + burger; persists across reload and
      across pages; classic restored exactly (attribute gone, system fonts,
      classic tokens, metas back to defaults);
@@ -133,6 +138,6 @@ Every page-level change is made in one commit on **all** surfaces:
      tags (**check the deck with the most/widest nav icons** — A shipped
      with a fixed box that fit DE's `V2` and clipped `A/D`/`weil`);
    - keyboard: roving tabindex, arrows, `aria-checked`; noscript: rows
-     hidden, classic; offline: new assets present in the fresh cache;
+     hidden, Notebook; offline: new assets present in the fresh cache;
    - screenshots (light + dark) for human review — numeric checks pass
      cramped-but-not-clipped layouts; eyes catch them.
