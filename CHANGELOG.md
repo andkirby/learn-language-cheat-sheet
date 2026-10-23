@@ -6,6 +6,18 @@ UI rationale lives in
 `.design/decisions.md`, content review evidence in `CONTENT_AUDIT.md`.
 Append the entry in the same commit that ships the change.
 
+## 2026-10-23 (content audit split into record files)
+
+- `CONTENT_AUDIT.md` is now the entrypoint: current status, open scope
+  questions, the findings ledger and a dated records index (~150 lines);
+  each index row keeps the record's old anchor as a compatibility stub.
+- Full dated review evidence moved verbatim to `docs/content-audit/` (seven
+  bounded records); the 2026-10-23 Italian and French reviews are separate
+  records with their shared context and final verdicts in
+  `2026-10-23-it-fr-context.md`. Grammar, generated pages and content
+  verdicts are unchanged.
+- Recorded successful live deployment checks for the Italian/French release.
+
 ## 2026-10-23 (Italian and French for English speakers)
 
 - Added selective A1–B1 Italian and French grammar references at `/it/en/`

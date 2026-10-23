@@ -326,3 +326,23 @@ reviewer inspected the parent runtime artifacts and final page hashes;
 no duplicate browser/runtime execution or linguistic verdict was claimed.
 Full scope, snapshots, hashes and findings:
 [shared review](/Users/kirby/.bb/thread-storage/thr_4bsuy4n7xv/shared-integration-review/review.md).
+
+## 2026-10-23 — IT/FR live deployment check
+
+GitHub Pages built `bcfca002488bd9043ff6f7dd8ebb7c88d2eddd62` from `main`.
+Parent Chromium verification at
+`https://andkirby.github.io/learn-language-cheat-sheet/`: **PASS**.
+
+- Public landing, worker, all six generated pages and both new manifests
+  returned 200 and matched committed file bytes by SHA256.
+- English landing offers DE/IT/FR. All six direct pages rendered populated
+  cards at 390px without overflow; manifest/favicon/touch-icon requests
+  returned 200 and page-error buffers were empty. New IT/FR dialogs opened.
+- All four old URLs resolved to the correct decks. The deployed root worker
+  controlled the site with `lang-cheat-v54` present.
+- Evidence: parent storage `live-it-fr.json`, live harness and before/after
+  resource snapshots. Named browser `it-fr-live-bktaq` was closed; no local
+  HTTP server was started. Actual device standalone install remains NOT RUN.
+
+The full local UI/offline matrix above applies to identical deployed HTML and
+worker bytes; this live check does not repeat the entire linguistic or UI review.

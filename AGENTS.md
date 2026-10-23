@@ -31,9 +31,10 @@ tools/build_pages.py deck→page generator CLI (stdlib only): validate + render 
 tools/deck_*.py generator modules: deck_blocks (block registry), deck_validate, deck_render, deck_html
 tools/page_template.html page skeleton (@@TOKENS@@) loaded by deck_render
 docs/               authoring, validation, add-language and add-theme procedures
+docs/content-audit/ dated content-review records (append-only) — indexed by CONTENT_AUDIT.md
 docs/FONTS.md       font vendoring: subsets, re-vendor procedure, licenses
 research/           external reference research notes (not content source)
-CONTENT_AUDIT.md    content evidence, open questions and verdicts
+CONTENT_AUDIT.md    content status, findings and verdicts; indexes docs/content-audit/ records
 ROADMAP.md          candidate topics + standing scope decision rules
 UI_AUDIT.md         UI review evidence and open findings
 DEBT.md             deferred work with owners and triggers
@@ -54,7 +55,7 @@ update both when adding a language or audience.
 | How to author or revise a language plan | `docs/SITE_PLAN_GUIDE.md` |
 | Accepted language scope, exclusions and topic inventory | `de/ru/SITE_PLAN.md` / `en/ru/SITE_PLAN.md` / `it/en/SITE_PLAN.md` / `fr/en/SITE_PLAN.md` |
 | How content is validated | `docs/CONTENT_VALIDATION.md` |
-| Open content questions, review evidence and verdicts | `CONTENT_AUDIT.md` |
+| Open content questions, review evidence and verdicts | `CONTENT_AUDIT.md` (dated records: `docs/content-audit/`) |
 | What could be added next; standing scope rules | `ROADMAP.md` |
 | External reference research (grammar sources and IT/FR planning) | `research/` |
 | Design tokens, components, a11y rules | `.design/DESIGN_SYSTEM.md` |
@@ -114,7 +115,8 @@ update both when adding a language or audience.
 
 For grammar/content changes and new languages, follow
 [content validation](docs/CONTENT_VALIDATION.md) and record results in
-[CONTENT_AUDIT.md](CONTENT_AUDIT.md). Page quality requires its content gates
+[CONTENT_AUDIT.md](CONTENT_AUDIT.md) (current status/findings) and its
+`docs/content-audit/` dated records. Page quality requires its content gates
 to pass; the runtime checklist below does not validate grammar. Restricted
 reviews must label unperformed checks NOT RUN.
 

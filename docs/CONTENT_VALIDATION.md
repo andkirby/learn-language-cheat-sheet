@@ -17,7 +17,8 @@ review results:
 - Each language's `SITE_PLAN.md` owns accepted scope, durable exclusions and
   the required-topic inventory.
 - [CONTENT_AUDIT.md](../CONTENT_AUDIT.md) owns observed results, references,
-  unresolved questions, findings and review provenance.
+  unresolved questions, findings and review provenance. Dated review records
+  live in `docs/content-audit/` and are indexed in `CONTENT_AUDIT.md`.
 
 Do not treat the plan as evidence that the page implements it. Do not promote
 an unresolved audit finding into the plan until its scope decision is accepted.
@@ -106,7 +107,10 @@ can establish structural coverage, not certify naturalness or correctness.
 
 Each review records date, reviewer, exact revision (plus dirty paths if any),
 scope, topic/content-unit counts, inspected locations, reference evidence,
-probe + expected result + observed result, findings and verdict.
+probe + expected result + observed result, findings and verdict. File the
+dated record as a file in `docs/content-audit/` and index it in
+`CONTENT_AUDIT.md`; keep current status and the findings ledger in
+`CONTENT_AUDIT.md` itself.
 
 | Gate | PASS requires |
 | --- | --- |

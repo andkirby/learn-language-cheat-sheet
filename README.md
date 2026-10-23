@@ -76,6 +76,7 @@ relative, so the site works at the project subpath unchanged.
 | `.design/` | Design system contract + decision log (all pages) |
 | `docs/CONTENT_VALIDATION.md` | Content accuracy, coverage and teaching-quality review procedure |
 | `CONTENT_AUDIT.md` | Open content questions, review evidence and verdicts |
+| `docs/content-audit/` | Dated content-review records, indexed by `CONTENT_AUDIT.md` |
 | `UI_AUDIT.md` | Verified UI issues and status |
 | `AGENTS.md` | Rules for coding agents working here |
 
