@@ -136,6 +136,12 @@ Rules:
   truth. Each language plan owns its destinations, section membership and
   legacy anchors. A legacy anchor opens the section's view before scrolling.
 
+Project destinations appear after appearance settings in the landing language menu
+and both deck menus: GitHub (embedded decorative icon) and a new-issue form
+link localized to the UI language. They use native links in the current tab
+and remain available without JavaScript. `.project-link` rows have a 44px
+minimum height and a visible keyboard focus outline.
+
 ## Components
 
 | Component | Contract |

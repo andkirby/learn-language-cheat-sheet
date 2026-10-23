@@ -123,7 +123,8 @@ def _lang_groups_html(deck, site):
             a_items.append(f"<a href=\"../{escq(a['id'])}/\">{esc(a['label'])}</a>")
     return (f"<div class=\"lang-group\"><div class=\"lang-group-label\">{esc(strings['lang_group_target'])}</div>{''.join(t_items)}</div>"
             f"<div class=\"lang-group\"><div class=\"lang-group-label\">{esc(strings['lang_group_audience'])}</div>{''.join(a_items)}</div>"
-            + _skin_group_html(strings))
+            + _skin_group_html(strings)
+            + _project_links_html(strings))
 
 
 def _skin_group_html(strings):
@@ -139,6 +140,13 @@ def _skin_group_html(strings):
         rows.append(f'<button type="button"{state} data-skin-mode="{mode}">{esc(label)}</button>')
     return (f'<div class="lang-group"><div class="lang-group-label">{esc(strings["skin_group"])}</div>'
             f'<div role="radiogroup" aria-label="{escq(strings["skin_group"])}">{"".join(rows)}</div></div>')
+
+
+def _project_links_html(strings):
+    """Project links shared by desktop and mobile menus; audience-localized label."""
+    return ('<div class="lang-group project-links">'
+            '<a class="project-link" href="https://github.com/andkirby/learn-language-cheat-sheet"><svg class="menu-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 .75a11.25 11.25 0 0 0-3.558 21.923c.563.104.768-.244.768-.542 0-.267-.01-.975-.015-1.914-3.13.68-3.79-1.508-3.79-1.508-.512-1.3-1.25-1.646-1.25-1.646-1.022-.699.078-.685.078-.685 1.13.08 1.725 1.16 1.725 1.16 1.005 1.722 2.637 1.225 3.278.937.102-.728.393-1.225.715-1.507-2.498-.284-5.124-1.249-5.124-5.56 0-1.229.44-2.233 1.16-3.02-.117-.284-.503-1.428.11-2.977 0 0 .945-.302 3.094 1.153A10.79 10.79 0 0 1 12 6.186c.956.004 1.918.129 2.817.378 2.148-1.455 3.09-1.153 3.09-1.153.616 1.549.23 2.693.113 2.977.722.787 1.158 1.791 1.158 3.02 0 4.322-2.63 5.273-5.136 5.552.404.35.766 1.043.766 2.1 0 1.516-.014 2.738-.014 3.11 0 .3.203.65.774.54A11.252 11.252 0 0 0 12 .75Z"/></svg><span>GitHub</span></a>'
+            f'<a class="project-link" href="https://github.com/andkirby/learn-language-cheat-sheet/issues/new">{esc(strings["menu_issue"])}</a></div>')
 
 
 def _lang_menu_html(deck, site):

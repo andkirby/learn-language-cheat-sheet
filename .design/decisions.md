@@ -774,3 +774,12 @@ language plan or grammar content changes. Maintain the locale dictionary,
 `DECKS` and menu markup when updating `content/decks/site.json` (procedure:
 `docs/ADD_LANGUAGE.md`). All translations are inline and work offline; v52
 refreshes the shared cache.
+
+### 2026-10-23 — Project and feedback links in every menu
+
+Add GitHub and a localized Submit issue destination after appearance settings
+in landing, desktop deck and phone burger menus. Native links navigate in the
+current tab; GitHub uses an embedded decorative SVG with currentColor so both
+skins and themes work without external assets. Each deck owns `strings.menu_issue`
+in its audience language; landing owns the equivalent RU/EN/DE translations.
+The issue destination is the repository's `/issues/new` form.

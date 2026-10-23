@@ -269,7 +269,7 @@
     },
     "strings": {
       "type": "object",
-      "required": ["search_placeholder", "search_aria", "clear_aria", "search_results", "install_label", "close_aria", "nav_aria", "no_results", "noscript_notice", "noscript_intro", "theme", "install_ios", "install_generic", "footer_all", "footer_install", "footer_plan", "menu_aria", "nudge_text"],
+      "required": ["search_placeholder", "search_aria", "clear_aria", "search_results", "install_label", "close_aria", "nav_aria", "no_results", "noscript_notice", "noscript_intro", "theme", "install_ios", "install_generic", "footer_all", "footer_install", "footer_plan", "menu_aria", "nudge_text", "menu_issue"],
       "additionalProperties": false,
       "properties": {
         "_note": {"type": "string"},
@@ -302,6 +302,7 @@
         "nudge_text": {"type": "string", "description": "one-time install nudge text"},
         "lang_group_target": {"type": "string", "description": "menu group header: learning language"},
         "lang_group_audience": {"type": "string", "description": "menu group header: explanation language"},
+        "menu_issue": {"type": "string", "description": "localized label for the GitHub new issue form"},
         "skin_group": {"type": "string", "description": "menu group header: skin/design"},
         "skin_classic": {"type": "string", "description": "skin option: classic"},
         "skin_a": {"type": "string", "description": "skin option: alternative (notebook)"},

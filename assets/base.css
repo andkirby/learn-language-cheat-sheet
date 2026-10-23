@@ -199,6 +199,10 @@ a { color: inherit; }
   align-items: center;
   gap: 9px;
 }
+/* Project destinations retain native link and keyboard behavior. */
+.lang-pop .project-link { display: flex; align-items: center; gap: 9px; min-block-size: 44px; }
+.menu-icon { flex: none; inline-size: 20px; block-size: 20px; }
+.lang-pop .project-link:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 .lang-pop .soon { color: var(--muted); cursor: default; }
 /* Burger (deck pages, phones): a native <details> so the language groups
    keep working without JS; JS only adds light dismiss. Carries the page

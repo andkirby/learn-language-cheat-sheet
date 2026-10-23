@@ -6,6 +6,12 @@ UI rationale lives in
 `.design/decisions.md`, content review evidence in `CONTENT_AUDIT.md`.
 Append the entry in the same commit that ships the change.
 
+## 2026-10-23 (project and feedback links)
+
+- Added a GitHub repository link with its icon and a localized Submit issue
+  link to the landing menu and every deck's desktop and mobile menus.
+- Updated offline shell cache to v53.
+
 ## 2026-10-21 (automatic landing language)
 
 - The landing now translates its text, menus and accessibility labels into
