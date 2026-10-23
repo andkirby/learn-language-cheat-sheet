@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate PWA PNG icons with the Python stdlib only (no Pillow).
 
-Regenerate every language set (root "Aa", German "DE", English "EN"):
+Regenerate the landing and language sets ("Aa", "DE", "EN", "IT", "FR"):
     python3 tools/make_icons.py
 
 Add a set for a new language (letters must exist in FONT below):
@@ -22,6 +22,10 @@ FG = (255, 255, 255)  # mark text white
 
 # 5x7 uppercase bitmap glyphs. Extend when a new language needs a letter.
 FONT = {
+    "F": ["XXXXX", "X....", "X....", "XXXX.", "X....", "X....", "X...."],
+    "I": ["XXXXX", "..X..", "..X..", "..X..", "..X..", "..X..", "XXXXX"],
+    "R": ["XXXX.", "X...X", "X...X", "XXXX.", "X.X..", "X..X.", "X...X"],
+    "T": ["XXXXX", "..X..", "..X..", "..X..", "..X..", "..X..", "..X.."],
     "A": [
         ".XXX.",
         "X...X",
@@ -84,6 +88,8 @@ SETS = [
     {"mark": "Aa", "out": ".", "sizes": FULL_SIZES[:1] + FULL_SIZES[3:4]},
     {"mark": "DE", "out": "de/ru"},
     {"mark": "EN", "out": "en/ru"},
+    {"mark": "IT", "out": "it/en"},
+    {"mark": "FR", "out": "fr/en"},
 ]
 
 

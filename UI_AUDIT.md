@@ -207,3 +207,122 @@ shared component styles or language scope changed.
 
 Browser evidence: local Chromium, `http://127.0.0.1:8931/`, 2026-10-21.
 Live deployment verification is performed after pushing the same commit.
+
+## 2026-10-23 — Italian/French integration and target-language fragments
+
+Scope: landing plus `de/ru/`, `de/en/`, `en/ru/`, `en/de/`, `it/en/`,
+`fr/en/`, served beneath `/learn-language-cheat-sheet/` locally. Reviewer:
+parent Codex agent, distinct from the IT/FR content authors. This records UI
+and runtime observations, not linguistic acceptance. Root cache: v54.
+
+- At 390×844 and 1280×900, all six pages loaded with no observed page
+  overflow. Manifests, favicon and Apple-touch icon requests returned 200;
+  both project-menu destinations rendered. All view destinations had the
+  expected aria-current and visible sections. Empty search and clear restored
+  the active view. All reachable dialog triggers opened a populated dialog;
+  ×, Escape and backdrop dismissal passed.
+- Both skins and all three theme modes were exercised on every deck;
+  theme cycles and saved Notebook selection survived reload. Screenshots of
+  IT/FR mobile and desktop views were visually inspected. New target marks,
+  target serif text, English meaning support and fixed bottom navigation
+  render within the viewport. These are Chromium checks, not iOS/Android
+  standalone installation evidence.
+- Landing RU/EN/DE filtering and links passed; English offers DE/IT/FR,
+  Russian DE/EN, German EN. Manual English preference survived reload.
+- Latin-audience legend terms received the appropriate target lang tag on
+  all four Latin-audience decks. Explicit target runs in card/dialog prose
+  are now supported by the shared selector; unmarked French fragments are
+  a content-authoring finding tracked in CONTENT_AUDIT.
+- Page error buffers were empty on all six decks. The initial offline-mode
+  harness's navigator.onLine assertion was not reliable across CLI navigation;
+  offline acceptance uses the subsequent origin-down test instead: after
+  worker installation, stop the owned HTTP server, load the landing and all
+  six deck URLs, and verify an uncached request fails. All seven cached
+  navigations passed. Three cached legacy redirect stubs also resolved with
+  the origin stopped; four legacy routes passed online.
+- Both new pair shells include favicon and all PNG sizes, including 32px,
+  in APP_SHELL. The worker installed and controlled the subpath successfully.
+  Generator checks and shell consistency passed. Source text in existing
+  DE/EN decks was compared unchanged after excluding seven emphasis-only
+  b→i run changes; no grammatical wording was changed there.
+
+Evidence from this session lives in parent thread storage: runtime-it-fr.json,
+its final failure restricted to the superseded navigator.onLine assertion,
+offline-it-fr.json (PASS), IT/FR mobile/desktop screenshots and resource
+snapshots. Every named browser session was closed and the owned HTTP server
+stopped in finally blocks. Resource inspection showed no remaining task
+browser/server tree; unrelated services were preserved.
+
+NOT RUN: real-device standalone installation, live deployment, a fresh
+browser-language/storage-blocking matrix (unchanged detection algorithm).
+Independent grammar gates are recorded only in CONTENT_AUDIT.
+
+### Final correction-boundary runtime retest — 2026-10-23
+
+- **PASS:** all 156 combinations of deck view × two skins × three theme
+  modes at 390×844, across all six decks; no horizontal page overflow.
+  Manual dark and light preferences each survived reload on every deck.
+- **PASS:** all reachable dialog triggers populated their dialog. Latin
+  bold target fragments in legends, card paragraphs/notices and dialog
+  bodies received the correct target `lang`; English/German glosses and
+  italic audience hints retained the audience language. A direct dialog
+  paragraph probe also passed. No page errors or console messages observed.
+- **PASS:** representative old anchors (`#preps`, `#nouns`, `#conditionals`)
+  opened the owning view with matching aria-current state.
+- Evidence: parent storage `final-runtime-it-fr.json` and
+  `final-runtime-source-hashes.txt`; named session `it-fr-bktaq`. This
+  extends the first desktop/mobile/dialog/search/landing pass above after
+  the explicit language-run corrections. It is a UI retest, not grammar
+  certification. The final origin-down offline result is recorded below.
+
+- **PASS — final origin-down offline retest:** v54 installed 72 shell
+  requests under `/learn-language-cheat-sheet/`. With the owned HTTP server
+  stopped, the landing and all six deck URLs loaded populated pages;
+  an uncached fetch failed, proving origin unavailability. All four cached
+  redirects (`deutsch/`, `english/`, `de/`, `deutsch.html`) resolved to their
+  expected decks. Evidence: parent storage `offline-it-fr.json`.
+- Browser and HTTP-server cleanup completed in finally blocks. Before/after
+  `memo inspect` records and process checks found no task browser/server
+  left running; unrelated processes were preserved. Real-device installation
+  and live deployment remain **NOT RUN**.
+
+- **PASS — matching search:** English `subjunctive` and Italian `piacciono` /
+  French `voudrais` found the expected cards while their owning views were
+  inactive. Search cleared nav selection while active, and clearing search
+  restored the previous view. Final IT/FR mobile screenshots were visually
+  inspected. Evidence: `search-runtime-it-fr.json`, `it-final-mobile.png`,
+  `fr-final-mobile.png`; both page hashes are recorded in that evidence.
+
+### Final independent-review fixes — 2026-10-23
+
+Independent review found one English `on` mistakenly marked as French, one
+unmarked French lemma `trouver`, and a German comparison ending `-t` tagged
+as English. Corrected those three runs without changing their text. The
+last change brings the existing-deck audience-hint adaptations to eight.
+
+**PASS:** fresh v54 cache responses for the final `fr/en/` and `en/de/`
+pages matched the on-disk SHA256 values. After stopping the owned origin,
+all seven landing/deck navigations and all four legacy redirects passed
+again. Actual offline DOM checks confirmed English `on` remains English,
+French pronoun `on` and lemma `trouver` are French, and the comparison `-t`
+retains German. An uncached request failed. Evidence:
+`final-offline-it-fr.json`, `resources-before-final-offline-it-fr.json`,
+`resources-after-final-offline-it-fr.json` in parent storage. Cleanup passed.
+The earlier full UI matrix carries forward across these three inspected
+markup-only corrections; no layout, rule or interaction code changed.
+
+Final explicit process/port check: no task-session process and no listener on
+8931 remained (`final-cleanup-check.json` in parent storage).
+
+### Independent shared integration review — 2026-10-23
+
+French agent `thr_4bsuy4n7xv`, distinct from the parent integration author,
+reviewed the registry, landing, worker, template, pair assets/manifests,
+all generated menu changes and eight audience-hint adaptations. **ACCEPT**:
+51 focused static checks passed; S1 (German comparison `-t`) is independently
+closed after the exact b→i retest. Existing DE/EN wording/anchors were
+unchanged outside the permitted menu/tagging/emphasis differences. The
+reviewer inspected the parent runtime artifacts and final page hashes;
+no duplicate browser/runtime execution or linguistic verdict was claimed.
+Full scope, snapshots, hashes and findings:
+[shared review](/Users/kirby/.bb/thread-storage/thr_4bsuy4n7xv/shared-integration-review/review.md).

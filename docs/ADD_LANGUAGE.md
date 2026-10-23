@@ -100,10 +100,12 @@ When the target language already has a deck (e.g. `de-ru` exists, adding
    `tools/page_template.html` follows the audience's registry `script`:
    cyrillic audiences keep the script heuristic (anything without Cyrillic
    is target text); latin audiences tag only the explicit markup convention
-   — bold/hit runs are target text, while prose, italic hints and glosses
+   — bold/hit runs in examples, legends, card paragraphs/notices, dialogs
+   and formula slots are target text, while unmarked prose, italic hints and glosses
    stay in the audience voice. On a Latin pair, bold every target fragment
-   that needs the study voice (tables, plain formula slots and notice prose
-   have no explicit target marking and stay untagged).
+   that needs the study voice (tables, plain formula slots and unmarked notice prose
+   have no explicit target marking and stay untagged). Use italic rather
+   than bold runs for audience-language emphasis in card paragraphs/notices.
 
 An audience variant is a new deck: run the full content review in step 5.
 
@@ -151,7 +153,7 @@ python3 tools/make_icons.py --mark IT --out it/ru
 ```
 
 Each glyph is a 5×7 bitmap (rows of `X`/`.`). Letters already present:
-A, D, E, N, a. The set lands in `<out>/icons/` (32/180/192/512 + maskable) —
+A, D, E, F, I, N, R, T, a. The set lands in `<out>/icons/` (32/180/192/512 + maskable) —
 use `<target>/<audience>` as `--out`. Edit `icons/favicon.svg` letters by hand
 (SVG text — no font needed).
 
@@ -224,7 +226,7 @@ Render **every** deck after changing `site.json`: every generated header menu
 reads that registry, including those on existing pages.
 
 ```bash
-for deck in content/decks/de-*.json content/decks/en-*.json; do
+for deck in content/decks/*-*.json; do
   python3 tools/build_pages.py "$deck"
   python3 tools/build_pages.py "$deck" --check || exit 1
 done
@@ -240,7 +242,7 @@ Check the generated pages and the hand-maintained shells, then run the
 separate runtime checks:
 
 ```bash
-for deck in content/decks/*.json; do
+for deck in content/decks/*-*.json; do
   python3 tools/build_pages.py "$deck" --check
 done
 python3 tools/build_pages.py content/decks/de-ru.json --check-shell

@@ -64,6 +64,30 @@
         }
       ],
       "grammar_terms": []
+    },
+    {
+      "id": "it",
+      "label": "Italiano",
+      "audiences": [
+        {
+          "id": "en",
+          "label": "English",
+          "script": "latin"
+        }
+      ],
+      "grammar_terms": []
+    },
+    {
+      "id": "fr",
+      "label": "Français",
+      "audiences": [
+        {
+          "id": "en",
+          "label": "English",
+          "script": "latin"
+        }
+      ],
+      "grammar_terms": []
     }
   ],
   "grammar_terms_common": [

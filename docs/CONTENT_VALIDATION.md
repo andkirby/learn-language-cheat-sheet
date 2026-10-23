@@ -1,9 +1,9 @@
 # Content validation protocol
 
 Purpose: establish whether the selected grammar content is accurate, useful
-and sufficiently covered for the deck's audience — Russian-speaking A1–B1
-learners today; new audiences generalize this protocol when they ship (see
-[ADD_LANGUAGE.md](ADD_LANGUAGE.md), audience variants). This is a
+and sufficiently covered for the deck's audience and accepted level/depth,
+as defined in its `SITE_PLAN.md`. Current explanation audiences are Russian,
+English and German (see [ADD_LANGUAGE.md](ADD_LANGUAGE.md), audience variants). This is a
 focused reference, not a complete course or a claim of CEFR certification.
 UI checks in `AGENTS.md` remain a separate gate.
 

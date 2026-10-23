@@ -205,6 +205,11 @@ minimum height and a visible keyboard focus outline.
   word inventories use term/meaning legends. Dialog examples use adjacent
   comments. `hit` runs mark the form the card teaches. See the content
   validation protocol for linguistic acceptance.
+- For Latin-script audiences, bold/hit target runs in examples, legends,
+  card paragraphs/notices, dialog bodies and formula slots receive the
+  target `lang` tag. Use italic runs for audience-language emphasis in card
+  paragraphs/notices. Glosses, dialog labels and unmarked prose retain the
+  audience language; plain table cells have no explicit run-level tagging.
 
 ## Governance & exceptions
 

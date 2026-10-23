@@ -1,0 +1,1715 @@
+<!doctype html>
+<html lang="en" data-skin="a">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <!-- iOS standalone (Add to Home Screen): two WebKit viewport workarounds.
+       (1) Relaunch restores a stale zoom level and pinch-out is unavailable
+       there, so the scale is locked on iOS only (Safari itself ignores
+       maximum-scale, Android and desktop keep pinch-zoom entirely).
+       (2) A resumed standalone window can come back reporting a ~980px
+       viewport, which trips the 720px desktop breakpoint in base.css;
+       rewriting the meta forces WebKit to rebuild the real one. -->
+  <script>
+    if (/iphone|ipod/i.test(navigator.userAgent) || (/macintosh/i.test(navigator.userAgent) && navigator.maxTouchPoints > 1)) {
+      const viewportMeta = document.querySelector('meta[name="viewport"]');
+      const iOSViewport = 'width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover';
+      viewportMeta.setAttribute('content', iOSViewport);
+      if (navigator.standalone) {
+        const repairViewport = () => {
+          if (window.innerWidth > screen.width * 1.5) {
+            viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1');
+            setTimeout(() => viewportMeta.setAttribute('content', iOSViewport), 50);
+          }
+        };
+        window.addEventListener('pageshow', repairViewport);
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible') setTimeout(repairViewport, 0);
+        });
+      }
+    }
+  </script>
+  <script>
+    // Notebook is the default, including without JS or storage access.
+    // Honor a saved Classic choice before stylesheets load.
+    try { if (localStorage.getItem('skin') === 'classic') document.documentElement.removeAttribute('data-skin'); } catch (e) {}
+  </script>
+  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#10131b" media="(prefers-color-scheme: dark)" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="IT Cheat" />
+  <meta name="description" content="Selective Italian A1–B1 grammar in English: articles, verb forms, pronouns, prepositions and clauses." />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./icons/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="./icons/icon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="./icons/icon-180.png" />
+  <meta property="og:title" content="Italian Grammar Cheatsheet" />
+  <meta property="og:description" content="Italian grammar lookup with English meanings: forms, past choices, pronouns and clause links. Selective A1–B1, offline." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://andkirby.github.io/learn-language-cheat-sheet/it/en/" />
+  <meta property="og:image" content="https://andkirby.github.io/learn-language-cheat-sheet/it/en/icons/icon-512.png" />
+  <meta name="twitter:card" content="summary" />
+  <title>Italian Grammar Cheatsheet</title>
+  <link rel="stylesheet" href="../../assets/base.css" />
+  <link rel="stylesheet" href="../../assets/skin-a.css" />
+  <!-- Generated from content/decks/it-en.json by tools/build_pages.py — do not edit by hand;
+       regenerate with: python3 tools/build_pages.py content/decks/it-en.json -->
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <details class="app-menu"><summary aria-label="Menu: language, design, help, install"><span aria-hidden="true">☰</span></summary><div class="lang-pop app-pop"><div class="app-identity">Italian Cheat<small>EN → IT · A1–B1</small></div><div class="lang-group"><div class="lang-group-label">Learning language</div><a href="../../de/en/">Deutsch</a><a href="../../en/ru/">English</a><span class="cur">Italiano</span><a href="../../fr/en/">Français</a></div><div class="lang-group"><div class="lang-group-label">Explanation language</div><span class="cur">English</span></div><div class="lang-group"><div class="lang-group-label">Design</div><div role="radiogroup" aria-label="Design"><button type="button" class="skin-row" role="radio" aria-checked="false" tabindex="-1" data-skin-mode="classic">Classic</button><button type="button" class="skin-row cur" role="radio" aria-checked="true" tabindex="0" data-skin-mode="a">Notebook</button></div></div><div class="lang-group project-links"><a class="project-link" href="https://github.com/andkirby/learn-language-cheat-sheet"><svg class="menu-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 .75a11.25 11.25 0 0 0-3.558 21.923c.563.104.768-.244.768-.542 0-.267-.01-.975-.015-1.914-3.13.68-3.79-1.508-3.79-1.508-.512-1.3-1.25-1.646-1.25-1.646-1.022-.699.078-.685.078-.685 1.13.08 1.725 1.16 1.725 1.16 1.005 1.722 2.637 1.225 3.278.937.102-.728.393-1.225.715-1.507-2.498-.284-5.124-1.249-5.124-5.56 0-1.229.44-2.233 1.16-3.02-.117-.284-.503-1.428.11-2.977 0 0 .945-.302 3.094 1.153A10.79 10.79 0 0 1 12 6.186c.956.004 1.918.129 2.817.378 2.148-1.455 3.09-1.153 3.09-1.153.616 1.549.23 2.693.113 2.977.722.787 1.158 1.791 1.158 3.02 0 4.322-2.63 5.273-5.136 5.552.404.35.766 1.043.766 2.1 0 1.516-.014 2.738-.014 3.11 0 .3.203.65.774.54A11.252 11.252 0 0 0 12 .75Z"/></svg><span>GitHub</span></a><a class="project-link" href="https://github.com/andkirby/learn-language-cheat-sheet/issues/new">Submit issue</a></div><div class="app-sep" aria-hidden="true"></div><button class="menu-row" type="button" data-detail="lookup-help">How to use</button><button class="menu-row" type="button" data-install hidden>Install</button></div></details>
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">IT</div>
+        <div>Italian Cheat<small>EN → IT · A1–B1</small></div>
+      </div>
+      <div class="search-wrap">
+        <span class="search-chip" aria-hidden="true">IT</span>
+        <input id="search" class="search" type="search" autocomplete="off" enterkeyhint="search" placeholder="Search: articles, past, pronouns, piace…" aria-label="Search the Italian cheat sheet" />
+        <button id="clearSearch" class="clear-search" type="button" aria-label="Clear search" hidden>×</button>
+      </div>
+      <details class="lang-menu" id="langMenu"><summary aria-label="Learning language, explanation language and design">IT · EN</summary><div class="lang-pop"><div class="lang-group"><div class="lang-group-label">Learning language</div><a href="../../de/en/">Deutsch</a><a href="../../en/ru/">English</a><span class="cur">Italiano</span><a href="../../fr/en/">Français</a></div><div class="lang-group"><div class="lang-group-label">Explanation language</div><span class="cur">English</span></div><div class="lang-group"><div class="lang-group-label">Design</div><div role="radiogroup" aria-label="Design"><button type="button" class="skin-row" role="radio" aria-checked="false" tabindex="-1" data-skin-mode="classic">Classic</button><button type="button" class="skin-row cur" role="radio" aria-checked="true" tabindex="0" data-skin-mode="a">Notebook</button></div></div><div class="lang-group project-links"><a class="project-link" href="https://github.com/andkirby/learn-language-cheat-sheet"><svg class="menu-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 .75a11.25 11.25 0 0 0-3.558 21.923c.563.104.768-.244.768-.542 0-.267-.01-.975-.015-1.914-3.13.68-3.79-1.508-3.79-1.508-.512-1.3-1.25-1.646-1.25-1.646-1.022-.699.078-.685.078-.685 1.13.08 1.725 1.16 1.725 1.16 1.005 1.722 2.637 1.225 3.278.937.102-.728.393-1.225.715-1.507-2.498-.284-5.124-1.249-5.124-5.56 0-1.229.44-2.233 1.16-3.02-.117-.284-.503-1.428.11-2.977 0 0 .945-.302 3.094 1.153A10.79 10.79 0 0 1 12 6.186c.956.004 1.918.129 2.817.378 2.148-1.455 3.09-1.153 3.09-1.153.616 1.549.23 2.693.113 2.977.722.787 1.158 1.791 1.158 3.02 0 4.322-2.63 5.273-5.136 5.552.404.35.766 1.043.766 2.1 0 1.516-.014 2.738-.014 3.11 0 .3.203.65.774.54A11.252 11.252 0 0 0 12 .75Z"/></svg><span>GitHub</span></a><a class="project-link" href="https://github.com/andkirby/learn-language-cheat-sheet/issues/new">Submit issue</a></div></div></details>
+      <button class="icon-btn" id="start" type="button" data-detail="lookup-help" aria-haspopup="dialog" aria-label="How to use" title="How to use"><span class="ico" aria-hidden="true">i</span></button>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Theme: system">◐</button>
+      <button class="install-btn" type="button" data-install hidden>Install</button>
+    </div>
+  </header>
+
+  <noscript>
+    <style>
+      .tap, .install-btn, .clear-search, .theme-btn, .icon-btn, .menu-row, .install-nudge, .skin-row { display: none !important; }
+    </style>
+    <div class="notice" style="margin:12px 16px 0">Search, dialogs and install controls need JavaScript. The lookup cards below remain readable without it.</div>
+    <p class="intro" style="margin:10px 16px 0">Find the decision: article, verb form, pronoun position or clause link. Then check its forms and limits.</p>
+  </noscript>
+
+  <main>
+    <p id="searchSummary" class="search-summary" role="status" aria-live="polite" hidden></p>
+    <div id="noResults" class="no-results">Nothing found. Try “past”, “pronouns”, “piace”, “future”, “ne”.</div>
+
+    <section id="nouns" data-section data-view="forms">
+      <div class="section-head"><div><h2>Nouns</h2><p>Gender and plural endings.</p></div></div>
+      <div class="cards two">
+        <article class="cheat-card" id="nouns-gender" data-search="noun gender genere">
+        <h3>Noun gender · <b>genere</b></h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Forms and use</span></div>
+        <p>Learn each noun with an article: grammatical gender is not the same as sex.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>il libro</b></b><span class="legend-mean"> — the book: masculine, often -o</span></li>
+<li class="legend-item"><b><b>la casa</b></b><span class="legend-mean"> — the house: feminine, often -a</span></li>
+<li class="legend-item"><b><b>il pane / la notte</b></b><span class="legend-mean"> — bread / night: -e can be either gender</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>La notte è lunga.</b></div>
+          <div class="pair-gloss">The night is long. <b>notte</b> is feminine, so <b>lunga</b> has -a.</div>
+        </div>
+        <div class="notice">Endings are clues, not guarantees. Check the noun with its article.</div>
+        <div class="chips"><button class="tap" data-detail="gender">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="nouns-plural" data-search="noun plurals plurale">
+        <h3>Noun plurals · <b>plurale</b></h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Forms and use</span></div>
+        <p>Change the noun ending and the article together.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>libro → libri</b></b><span class="legend-mean"> — book → books; normally -o → -i</span></li>
+<li class="legend-item"><b><b>casa → case</b></b><span class="legend-mean"> — house → houses; feminine -a → -e</span></li>
+<li class="legend-item"><b><b>notte → notti</b></b><span class="legend-mean"> — night → nights; -e → -i</span></li>
+<li class="legend-item"><b><b>problema → problemi</b></b><span class="legend-mean"> — problem → problems; masculine -a → -i</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Le case sono piccole.</b></div>
+          <div class="pair-gloss">The houses are small.</div>
+        </div>
+        <div class="notice">Not every noun changes: learn irregular and invariant plurals with the noun.</div>
+        <div class="chips"><button class="tap" data-detail="plural">Details and contrasts</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="articles" data-section data-view="forms">
+      <div class="section-head"><div><h2>Articles</h2><p>Choose the form and the intended reference.</p></div></div>
+      <div class="cards two">
+        <article class="cheat-card" id="articles-definite" data-search="the definite articles il lo la">
+        <h3>The · definite articles · <b>il / lo / la</b></h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Forms and use</span></div>
+        <p>Match gender and number, then the sound of the next word.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>il → i</b></b><span class="legend-mean"> — masculine, most consonants: the book(s)</span></li>
+<li class="legend-item"><b><b>lo → gli</b></b><span class="legend-mean"> — masculine, s + consonant, z, gn, ps: the student(s)</span></li>
+<li class="legend-item"><b><b>l’ → gli</b></b><span class="legend-mean"> — masculine before a vowel: the friend(s)</span></li>
+<li class="legend-item"><b><b>la / l’ → le</b></b><span class="legend-mean"> — feminine: the house(s), the female friend(s)</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Lo studente legge il libro.</b></div>
+          <div class="pair-gloss">The student reads the book.</div>
+        </div>
+        <div class="notice">The next word may be an adjective. Article use does not match English in every context.</div>
+        <div class="chips"><button class="tap" data-detail="definite">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="articles-indefinite" data-search="a an un uno una">
+        <h3>A/an · <b>un / uno / una / un’</b></h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Forms and use</span></div>
+        <p>Use an indefinite article for one nonspecific person or thing.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>un libro / un amico</b></b><span class="legend-mean"> — a book / a male friend</span></li>
+<li class="legend-item"><b><b>uno studente / uno zaino</b></b><span class="legend-mean"> — a student / a backpack</span></li>
+<li class="legend-item"><b><b>una casa / un’amica</b></b><span class="legend-mean"> — a house / a female friend</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Ho un amico e un’amica a Roma.</b></div>
+          <div class="pair-gloss">I have a male friend and a female friend in Rome.</div>
+        </div>
+        <div class="notice">Masculine un has no apostrophe before a vowel. These articles have no plural form.</div>
+        <div class="chips"><button class="tap" data-detail="indefinite">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="articles-partitive" data-search="some partitive articles del dei">
+        <h3>Some · partitive articles · <b>del / dei</b></h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Forms and use</span></div>
+        <p>For an unspecified amount or some countable items, <b>di</b> + article can act as a partitive.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>del pane / della pasta</b></b><span class="legend-mean"> — some bread / some pasta</span></li>
+<li class="legend-item"><b><b>dell’acqua</b></b><span class="legend-mean"> — some water</span></li>
+<li class="legend-item"><b><b>dei libri / degli amici / delle mele</b></b><span class="legend-mean"> — some books / friends / apples</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Compro del pane e delle mele.</b></div>
+          <div class="pair-gloss">I’m buying some bread and some apples.</div>
+        </div>
+        <div class="notice">Partitives are not compulsory everywhere. The same forms can mean of/from the.</div>
+        <div class="chips"><button class="tap" data-detail="partitive">Details and contrasts</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="determiners" data-section data-view="forms">
+      <div class="section-head"><div><h2>Determiners</h2><p>Possession, pointing and quantities.</p></div></div>
+      <div class="cards two">
+        <article class="cheat-card" id="determiners-possessives" data-search="my his her possessivi">
+        <h3>My/his/her · <b>possessivi</b></h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Forms and use</span></div>
+        <p>The possessive agrees with what is possessed, not with the owner’s gender.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>il mio / la mia / i miei / le mie</b></b><span class="legend-mean"> — my: masculine/feminine, singular/plural</span></li>
+<li class="legend-item"><b><b>il tuo / il suo</b></b><span class="legend-mean"> — your (informal singular) / his or her: same ending pattern</span></li>
+<li class="legend-item"><b><b>nostro / vostro / loro</b></b><span class="legend-mean"> — our / your (plural) / their; the last form is invariant</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>La sua macchina è nuova.</b></div>
+          <div class="pair-gloss">His or her car is new. <b>sua</b> agrees with <b>macchina</b>, not the owner.</div>
+        </div>
+        <div class="notice">Normally use article + possessive. Singular family nouns have a bounded exception.</div>
+        <div class="chips"><button class="tap" data-detail="possessives">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="determiners-demonstratives" data-search="this that questo quello">
+        <h3>This/that · <b>questo / quello</b></h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Forms and use</span></div>
+        <p>Point to something near or further away; match the noun’s gender and number.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>questo / questa / questi / queste</b></b><span class="legend-mean"> — this / these: masculine/feminine</span></li>
+<li class="legend-item"><b><b>quel libro / quei libri</b></b><span class="legend-mean"> — that book / those books</span></li>
+<li class="legend-item"><b><b>quello studente / quegli studenti</b></b><span class="legend-mean"> — that student / those students</span></li>
+<li class="legend-item"><b><b>quell’amico / quegli amici</b></b><span class="legend-mean"> — that friend / those friends</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Questo libro è mio; quello è tuo.</b></div>
+          <div class="pair-gloss">This book is mine; that one is yours.</div>
+        </div>
+        <div class="notice">Before a masculine noun, <b>quello</b> changes like an article. Alone, use <b>quello</b>/<b>quelli</b>, not <b>quel</b>/<b>quei</b>.</div>
+        <div class="chips"><button class="tap" data-detail="demonstratives">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="determiners-indefinites" data-search="all some each none indefiniti">
+        <h3>All, some, each, none · <b>indefiniti</b></h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>Decide whether the word counts things, distributes them, or replaces the noun.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>molto / tanto / poco</b></b><span class="legend-mean"> — much/many / so much/many / little/few; agree before a noun</span></li>
+<li class="legend-item"><b><b>tutto il / tutti i</b></b><span class="legend-mean"> — all the: match the noun</span></li>
+<li class="legend-item"><b><b>ogni / qualche + singular noun</b></b><span class="legend-mean"> — each/every / some/a few</span></li>
+<li class="legend-item"><b><b>nessuno / qualcuno / qualcosa</b></b><span class="legend-mean"> — nobody / somebody / something</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Leggo qualche libro ogni mese.</b></div>
+          <div class="pair-gloss">I read a few books every month. <b>libro</b> and <b>mese</b> stay singular here.</div>
+        </div>
+        <div class="notice"><b>Qualche</b> and <b>ogni</b> take singular nouns. English “a few” does not justify a plural after <b>qualche</b>.</div>
+        <div class="chips"><button class="tap" data-detail="indefinites">Details and contrasts</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="adjectives" data-section data-view="forms">
+      <div class="section-head"><div><h2>Adjectives</h2><p>Agreement, position and comparison.</p></div></div>
+      <div class="cards two">
+        <article class="cheat-card" id="adjectives-bello" data-search="beautiful bel bello bei begli">
+        <h3>Beautiful · <b>bel / bello / bei / begli</b></h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>Before a noun, masculine <b>bello</b> follows article-like sound choices.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>bel libro / bei libri</b></b><span class="legend-mean"> — beautiful book / books</span></li>
+<li class="legend-item"><b><b>bello spettacolo / begli spettacoli</b></b><span class="legend-mean"> — beautiful show / shows</span></li>
+<li class="legend-item"><b><b>bell’albero / begli alberi</b></b><span class="legend-mean"> — beautiful tree / trees</span></li>
+<li class="legend-item"><b><b>bella casa / belle case</b></b><span class="legend-mean"> — beautiful house / houses</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Ho un bel libro e dei bei quaderni.</b></div>
+          <div class="pair-gloss">I have a beautiful book and some beautiful notebooks.</div>
+        </div>
+        <div class="notice">After the noun or <b>essere</b>, use ordinary <b>bello</b>/<b>bella</b>/<b>belli</b>/<b>belle</b>. Most adjectives do not shorten this way.</div>
+        <div class="chips"><button class="tap" data-detail="bello">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="adjectives-agreement" data-search="adjective agreement accordo">
+        <h3>Adjective agreement · <b>accordo</b></h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Forms and use</span></div>
+        <p>An adjective describes a noun and follows its gender and number.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>nuovo / nuova / nuovi / nuove</b></b><span class="legend-mean"> — new: four forms</span></li>
+<li class="legend-item"><b><b>grande → grandi</b></b><span class="legend-mean"> — big: one singular, one plural form for both genders</span></li>
+<li class="legend-item"><b><b>case nuove / libri nuovi</b></b><span class="legend-mean"> — new houses / new books</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Le chiavi sono piccole.</b></div>
+          <div class="pair-gloss">The keys are small. <b>chiave</b> is feminine; <b>chiavi</b> is plural.</div>
+        </div>
+        <div class="notice">Agreement still applies after <b>essere</b>. Some adjectives are invariant.</div>
+        <div class="chips"><button class="tap" data-detail="agreement">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="adjectives-position" data-search="adjective position before or after">
+        <h3>Adjective position · before or after?</h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>A descriptive adjective often follows the noun; some common adjectives can precede it.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>una casa rossa</b></b><span class="legend-mean"> — a red house: classifying colour after noun</span></li>
+<li class="legend-item"><b><b>un film italiano</b></b><span class="legend-mean"> — an Italian film: relation/origin after noun</span></li>
+<li class="legend-item"><b><b>un vecchio amico</b></b><span class="legend-mean"> — a long-standing friend</span></li>
+<li class="legend-item"><b><b>un amico vecchio</b></b><span class="legend-mean"> — an elderly friend</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Ho incontrato un vecchio amico.</b></div>
+          <div class="pair-gloss">I met a long-standing friend.</div>
+        </div>
+        <div class="notice">Position can change emphasis or meaning. “All Italian adjectives follow the noun” is false.</div>
+        <div class="chips"><button class="tap" data-detail="position">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="adjectives-comparison" data-search="comparisons più meno issimo">
+        <h3>Comparisons · <b>più / meno / -issimo</b></h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>Compare a property, or distinguish “the most” from “very”.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>più alto di / meno alto di</b></b><span class="legend-mean"> — taller than / less tall than</span></li>
+<li class="legend-item"><b><b>alto come / tanto alto quanto</b></b><span class="legend-mean"> — as tall as</span></li>
+<li class="legend-item"><b><b>il più alto / altissimo</b></b><span class="legend-mean"> — the tallest / very tall</span></li>
+<li class="legend-item"><b><b>migliore / peggiore</b></b><span class="legend-mean"> — better / worse: irregular comparisons</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Luca è più alto di Marco.</b></div>
+          <div class="pair-gloss">Luca is taller than Marco.</div>
+        </div>
+        <div class="notice">-issimo means very/extremely, not “the most in a group”. The comparison link is not always <b>di</b>.</div>
+        <div class="chips"><button class="tap" data-detail="comparison">Details and contrasts</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="adverbs" data-section data-view="forms">
+      <div class="section-head"><div><h2>Adverbs</h2><p>Form and position.</p></div></div>
+      <div class="cards two">
+        <article class="cheat-card" id="adverbs-mente" data-search="adverbs in mente">
+        <h3>Adverbs in <b>-mente</b></h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>Many manner adverbs use an adjective’s feminine singular base + -mente.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>lenta → lentamente</b></b><span class="legend-mean"> — slow → slowly</span></li>
+<li class="legend-item"><b><b>felice → felicemente</b></b><span class="legend-mean"> — happy → happily</span></li>
+<li class="legend-item"><b><b>normale → normalmente</b></b><span class="legend-mean"> — normal → normally</span></li>
+<li class="legend-item"><b><b>regolare → regolarmente</b></b><span class="legend-mean"> — regular → regularly</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Parla lentamente, per favore.</b></div>
+          <div class="pair-gloss">Speak slowly, please.</div>
+        </div>
+        <div class="notice">Before -mente, adjectives in -<b>le</b>/-re often drop final e. Not every English -ly word uses -mente.</div>
+        <div class="chips"><button class="tap" data-detail="mente">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="adverbs-adverb-use" data-search="adverbs well already never here">
+        <h3>Adverbs: well, already, never, here</h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Forms and use</span></div>
+        <p>Adverbs describe a verb, adjective or another adverb; place depends on the word and focus.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>bene / male</b></b><span class="legend-mean"> — well / badly: how</span></li>
+<li class="legend-item"><b><b>già / sempre / mai</b></b><span class="legend-mean"> — already / always / never or ever</span></li>
+<li class="legend-item"><b><b>qui / lì / prima / poi</b></b><span class="legend-mean"> — here / there / before / then</span></li>
+<li class="legend-item"><b><b>molto / poco / più / meno</b></b><span class="legend-mean"> — a lot / little / more / less</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Non ho mai visto quel film.</b></div>
+          <div class="pair-gloss">I have never seen that film.</div>
+        </div>
+        <div class="notice">No single position rule covers all adverbs. <b>mai</b> can mean “ever” in a question.</div>
+        <div class="chips"><button class="tap" data-detail="adverb-use">Details and contrasts</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="numbers" data-section data-view="forms">
+      <div class="section-head"><div><h2>Numbers and dates</h2><p>Closed patterns for amounts, dates and times.</p></div></div>
+      <div class="cards two">
+        <article class="cheat-card" id="numbers-numbers-dates" data-search="numbers dates and clock time">
+        <h3>Numbers, dates and clock time</h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Forms and use</span></div>
+        <p>Use cardinal numbers for quantities; ordinals agree with nouns.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>uno, due, tre, quattro, cinque</b></b><span class="legend-mean"> — one, two, three, four, five</span></li>
+<li class="legend-item"><b><b>sei, sette, otto, nove, dieci</b></b><span class="legend-mean"> — six, seven, eight, nine, ten</span></li>
+<li class="legend-item"><b><b>primo / secondo / terzo</b></b><span class="legend-mean"> — first / second / third; change endings</span></li>
+<li class="legend-item"><b><b>È l’una / Sono le due</b></b><span class="legend-mean"> — It is one o’clock / two o’clock</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>La lezione è il primo maggio alle due.</b></div>
+          <div class="pair-gloss">The lesson is on the first of May at two o’clock.</div>
+        </div>
+        <div class="notice">Dates normally use cardinals after day one. Ordinals change for gender and number.</div>
+        <div class="chips"><button class="tap" data-detail="numbers-dates">Details and contrasts</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="present" data-section data-view="verbs">
+      <div class="section-head"><div><h2>Present forms</h2><p>Regular patterns and essential irregular verbs.</p></div></div>
+      <div class="cards two">
+        <article class="cheat-card" id="present-present" data-search="present tense presente">
+        <h3>Present tense · <b>presente</b></h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Forms and use</span></div>
+        <p>The present can describe a habit, a current situation or an action happening now.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>parlare → </b><b>parlo, parli, parla; parliamo, parlate, parlano</b></b><span class="legend-mean"> — speak; I, you, he/she, we, you plural, they</span></li>
+<li class="legend-item"><b><b>credere → </b><b>credo, credi, crede; crediamo, credete, credono</b></b><span class="legend-mean"> — believe; same person order</span></li>
+<li class="legend-item"><b><b>dormire → </b><b>dormo, dormi, dorme; dormiamo, dormite, dormono</b></b><span class="legend-mean"> — sleep; same person order</span></li>
+<li class="legend-item"><b><b>finire → </b><b>finisco, finisci, finisce; finiamo, finite, finiscono</b></b><span class="legend-mean"> — finish; -isc- in four persons</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Parlo italiano e lavoro qui.</b></div>
+          <div class="pair-gloss">I speak Italian and work here.</div>
+        </div>
+        <div class="notice">Not every -ire verb uses -isc-. Italian present can translate English “am doing” without a progressive.</div>
+        <div class="chips"><button class="tap" data-detail="present">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="present-irregulars" data-search="essential irregulars essere avere">
+        <h3>Essential irregulars · <b>essere / avere</b></h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Forms and use</span></div>
+        <p>Keep frequent irregular forms together; the Italian grammatical subject controls the verb ending, even when its pronoun is omitted.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>essere → </b><b>sono / sei / è / siamo / siete / sono</b></b><span class="legend-mean"> — be; I / you / he-she / we / you plural / they</span></li>
+<li class="legend-item"><b><b>avere → </b><b>ho / hai / ha / abbiamo / avete / hanno</b></b><span class="legend-mean"> — have; same person order</span></li>
+<li class="legend-item"><b><b>vado / faccio / vengo / so</b></b><span class="legend-mean"> — I go / I do-make / I come / I know how or know a fact</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Ho una chiave e sono a casa.</b></div>
+          <div class="pair-gloss">I have a key and I am at home.</div>
+        </div>
+        <div class="notice">An <b>io</b> form does not predict the whole paradigm. Modals have their own forms in the modals card.</div>
+        <div class="chips"><button class="tap" data-detail="irregulars">Details and contrasts</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="patterns" data-section data-view="verbs">
+      <div class="section-head"><div><h2>Verb patterns</h2><p>Modals, reflexives and liking.</p></div></div>
+      <div class="cards two">
+        <article class="cheat-card" id="patterns-reflexives" data-search="reflexive and reciprocal mi ti si">
+        <h3>Reflexive and reciprocal · <b>mi / ti / si</b></h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>Match the pronoun to the subject; many routine verbs have a pronominal form.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>mi lavo / ti lavi / si lava</b></b><span class="legend-mean"> — I wash myself / you wash yourself / he-she washes</span></li>
+<li class="legend-item"><b><b>ci laviamo / vi lavate / si lavano</b></b><span class="legend-mean"> — we wash / you plural wash / they wash</span></li>
+<li class="legend-item"><b><b>alzarsi / incontrarsi</b></b><span class="legend-mean"> — get up / meet each other: base forms end in -si</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Ci siamo incontrati ieri.</b></div>
+          <div class="pair-gloss">We met each other yesterday.</div>
+        </div>
+        <div class="notice">Not every -<b>si</b> verb means literally “oneself”. Personal reflexive/reciprocal compound forms use <b>essere</b>.</div>
+        <div class="chips"><button class="tap" data-detail="reflexives">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="patterns-modals" data-search="can must want potere dovere volere">
+        <h3>Can, must, want · <b>potere / dovere / volere</b></h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Forms and use</span></div>
+        <p>Put the modal before an infinitive, without adding a or <b>di</b>.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>posso, puoi, può; possiamo, potete, possono</b></b><span class="legend-mean"> — can: I / you / he-she / we / you plural / they</span></li>
+<li class="legend-item"><b><b>devo, devi, deve; dobbiamo, dovete, devono</b></b><span class="legend-mean"> — must/have to: same order</span></li>
+<li class="legend-item"><b><b>voglio, vuoi, vuole; vogliamo, volete, vogliono</b></b><span class="legend-mean"> — want: same order</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Non posso venire, ma voglio aiutarti.</b></div>
+          <div class="pair-gloss">I can’t come, but I want to help you.</div>
+        </div>
+        <div class="notice">Do not insert the English word “to”. <b>sapere</b> + infinitive often expresses a learned skill.</div>
+        <div class="chips"><button class="tap" data-detail="modals">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="patterns-piacere" data-search="i like mi piace piacciono">
+        <h3>I like… · <b>mi piace / mi piacciono</b></h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Forms and use</span></div>
+        <p>The liked thing is the grammatical subject; the person experiencing the liking is indirect.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>mi / ti / gli / le</b></b><span class="legend-mean"> — to me / to you / to him / to her</span></li>
+<li class="legend-item"><b><b>piace + singular / infinitive</b></b><span class="legend-mean"> — is pleasing: I like one thing or an activity</span></li>
+<li class="legend-item"><b><b>piacciono + plural</b></b><span class="legend-mean"> — are pleasing: I like several things</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Mi piacciono questi libri.</b></div>
+          <div class="pair-gloss">I like these books. <b>libri</b> controls the plural verb.</div>
+        </div>
+        <div class="notice">Do not make the experiencer an English-style subject of <b>piace</b>.</div>
+        <div class="chips"><button class="tap" data-detail="piacere">Details and contrasts</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="past" data-section data-view="verbs">
+      <div class="section-head"><div><h2>Past time</h2><p>Forms, auxiliaries and viewpoints.</p></div></div>
+      <div class="cards two">
+        <article class="cheat-card" id="past-compound-past" data-search="completed past passato prossimo">
+        <h3>Completed past · <b>passato prossimo</b></h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Forms and use</span></div>
+        <p>Use a present auxiliary + past participle for a past event viewed as a whole.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>ho parlato / ho creduto / ho dormito</b></b><span class="legend-mean"> — I spoke / believed / slept: -ato/-uto/-ito</span></li>
+<li class="legend-item"><b><b>sono arrivato / sono arrivata</b></b><span class="legend-mean"> — I arrived: masculine / feminine</span></li>
+<li class="legend-item"><b><b>ho fatto / ho detto / ho visto</b></b><span class="legend-mean"> — I did-made / said / saw: irregular participles</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Ieri ho lavorato a casa.</b></div>
+          <div class="pair-gloss">Yesterday I worked at home.</div>
+        </div>
+        <div class="notice">This tense often translates English simple past. It is not limited to recent events or English “have done”.</div>
+        <div class="chips"><button class="tap" data-detail="compound-past">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="past-auxiliary" data-search="auxiliary choice essere avere">
+        <h3>Auxiliary choice · <b>essere / avere</b></h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Forms and use</span></div>
+        <p>Learn the auxiliary with the verb and construction; meaning and pronoun position can matter.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>ho letto / ho camminato</b></b><span class="legend-mean"> — I read / walked: have auxiliary</span></li>
+<li class="legend-item"><b><b>sono partito / sono partita</b></b><span class="legend-mean"> — I left: be auxiliary + subject agreement</span></li>
+<li class="legend-item"><b><b>mi sono alzato / alzata</b></b><span class="legend-mean"> — I got up: personal reflexive</span></li>
+<li class="legend-item"><b><b>ho finito / è finito</b></b><span class="legend-mean"> — I finished / it finished: changed construction</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Ho camminato, poi sono tornata a casa.</b></div>
+          <div class="pair-gloss">I walked, then I returned home (female speaker).</div>
+        </div>
+        <div class="notice">“All motion verbs take <b>essere</b>” is false. Some verbs and modals allow alternatives.</div>
+        <div class="chips"><button class="tap" data-detail="auxiliary">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="past-participle-agreement" data-search="past participle agreement accordo">
+        <h3>Past-participle agreement · <b>accordo</b></h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>Check the auxiliary and the function of any preceding pronoun.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>Anna è arrivata / i ragazzi sono arrivati</b></b><span class="legend-mean"> — be auxiliary: subject controls ending</span></li>
+<li class="legend-item"><b><b>ho comprato le mele</b></b><span class="legend-mean"> — have auxiliary, following object: normally -o</span></li>
+<li class="legend-item"><b><b>le ho comprate</b></b><span class="legend-mean"> — preceding feminine them: agree with object</span></li>
+<li class="legend-item"><b><b>ne ho comprate due</b></b><span class="legend-mean"> — I bought two of them: feminine items</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Le chiavi? Le ho trovate.</b></div>
+          <div class="pair-gloss">The keys? I found them. <b>le</b> replaces feminine plural <b>chiavi</b>.</div>
+        </div>
+        <div class="notice">Not every preceding object behaves like <b>lo</b>/<b>la</b>/<b>li</b>/<b>le</b>. Nonpartitive <b>ne</b> does not trigger this object agreement.</div>
+        <div class="chips"><button class="tap" data-detail="participle-agreement">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="past-imperfect" data-search="past background imperfetto">
+        <h3>Past background · <b>imperfetto</b></h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Forms and use</span></div>
+        <p>Use the imperfect to view a past situation from inside: background, habit or an action underway.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>parlavo, parlavi, parlava; parlavamo, parlavate, parlavano</b></b><span class="legend-mean"> — parlare = speak: I / you / he-she / we / you plural / they</span></li>
+<li class="legend-item"><b><b>credevo / dormivo</b></b><span class="legend-mean"> — I believed / I slept or was sleeping</span></li>
+<li class="legend-item"><b><b>ero, eri, era; eravamo, eravate, erano</b></b><span class="legend-mean"> — essere = be: same order</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Da piccolo giocavo qui.</b></div>
+          <div class="pair-gloss">As a child I used to play here (male speaker).</div>
+        </div>
+        <div class="notice">The imperfect is a viewpoint, not simply “a long action” or every English “was”.</div>
+        <div class="chips"><button class="tap" data-detail="imperfect">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="past-past-choice" data-search="past choice event or background passato remoto">
+        <h3>Past choice · event or background?</h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Forms and use</span></div>
+        <p>Choose the viewpoint in context: a bounded event, or a situation viewed from inside.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>ho letto il libro</b></b><span class="legend-mean"> — I read the book: whole event</span></li>
+<li class="legend-item"><b><b>leggevo quando…</b></b><span class="legend-mean"> — I was reading when…: background</span></li>
+<li class="legend-item"><b><b>andavo ogni estate</b></b><span class="legend-mean"> — I used to go every summer: habit</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Leggevo quando mi hai chiamato.</b></div>
+          <div class="pair-gloss">I was reading when you called me.</div>
+        </div>
+        <div class="notice">Duration and repetition alone do not decide the tense. Recognition: <b>passato remoto</b> forms are explained in Details.</div>
+        <div class="chips"><button class="tap" data-detail="past-choice">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="past-pluperfect" data-search="earlier than a past moment trapassato prossimo">
+        <h3>Earlier than a past moment · <b>trapassato prossimo</b></h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>Use an imperfect auxiliary + participle to place an event before another past reference point.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>avevo / avevi / aveva + participle</b></b><span class="legend-mean"> — I / you / he-she had done</span></li>
+<li class="legend-item"><b><b>avevamo / avevate / avevano + participle</b></b><span class="legend-mean"> — we / you plural / they had done</span></li>
+<li class="legend-item"><b><b>ero / eri / era + participle</b></b><span class="legend-mean"> — I / you / he-she had arrived, etc. with the be auxiliary</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Quando sono arrivata, il treno era già partito.</b></div>
+          <div class="pair-gloss">When I arrived, the train had already left (female speaker).</div>
+        </div>
+        <div class="notice">Choose the auxiliary as for the compound past. <b>già</b> is useful context, not a compulsory trigger.</div>
+        <div class="chips"><button class="tap" data-detail="pluperfect">Details and contrasts</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="future" data-section data-view="verbs">
+      <div class="section-head"><div><h2>Future reference</h2><p>Plans, predictions and inference.</p></div></div>
+      <div class="cards two">
+        <article class="cheat-card" id="future-future" data-search="future reference futuro semplice">
+        <h3>Future reference · <b>futuro semplice</b></h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>Use a future form for a prediction or later event; a present can also express a contextualized plan.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>parlerò, parlerai, parlerà; parleremo, parlerete, parleranno</b></b><span class="legend-mean"> — I / you / he-she / we / you plural / they will speak</span></li>
+<li class="legend-item"><b><b>crederò / dormirò</b></b><span class="legend-mean"> — I will believe / sleep: same future endings</span></li>
+<li class="legend-item"><b><b>sarò / avrò / andrò / farò</b></b><span class="legend-mean"> — I will be / have / go / do</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Domani parto; tornerò lunedì.</b></div>
+          <div class="pair-gloss">I’m leaving tomorrow; I’ll return on Monday.</div>
+        </div>
+        <div class="notice">Distance alone does not force a tense. Future can also express a present-time guess.</div>
+        <div class="chips"><button class="tap" data-detail="future">Details and contrasts</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="requests" data-section data-view="verbs">
+      <div class="section-head"><div><h2>Requests and commands</h2><p>Conditional, tu/voi and formal Lei.</p></div></div>
+      <div class="cards two">
+        <article class="cheat-card" id="requests-conditional" data-search="polite requests and advice condizionale">
+        <h3>Polite requests and advice · <b>condizionale</b></h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>Use present conditional for a softened request, desire, advice or uncertainty.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>parlerei, parleresti, parlerebbe; parleremmo, parlereste, parlerebbero</b></b><span class="legend-mean"> — I / you / he-she / we / you plural / they would speak</span></li>
+<li class="legend-item"><b><b>vorrei / potresti / dovrebbe</b></b><span class="legend-mean"> — I would like / could you / he-she should</span></li>
+<li class="legend-item"><b><b>sarei / avrei</b></b><span class="legend-mean"> — I would be / have</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Potresti aiutarmi? Vorrei capire.</b></div>
+          <div class="pair-gloss">Could you help me? I’d like to understand.</div>
+        </div>
+        <div class="notice">English “would” has several uses. This card does not teach the full unreal-condition system.</div>
+        <div class="chips"><button class="tap" data-detail="conditional">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="requests-imperative" data-search="commands to tu voi imperativo">
+        <h3>Commands to <b>tu</b>/<b>voi</b> · <b>imperativo</b></h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Forms and use</span></div>
+        <p>Choose informal singular <b>tu</b> or plural <b>voi</b>; negative <b>tu</b> uses the infinitive.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>parla / parlate</b></b><span class="legend-mean"> — speak: informal singular / plural</span></li>
+<li class="legend-item"><b><b>prendi / prendete</b></b><span class="legend-mean"> — take: informal singular / plural</span></li>
+<li class="legend-item"><b><b>dormi / dormite; finisci / finite</b></b><span class="legend-mean"> — sleep; finish: informal singular / plural</span></li>
+<li class="legend-item"><b><b>non parlare / non parlate</b></b><span class="legend-mean"> — don’t speak: informal singular / plural</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Prendi il libro e leggilo.</b></div>
+          <div class="pair-gloss">Take the book and read it (<b>tu</b>).</div>
+        </div>
+        <div class="notice">Positive <b>tu</b>/<b>voi</b> commands attach object pronouns. Formal <b>Lei</b> uses a different pattern.</div>
+        <div class="chips"><button class="tap" data-detail="imperative">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="requests-formal-command" data-search="polite instructions to lei">
+        <h3>Polite instructions to <b>Lei</b></h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>Formal singular address uses third-person present-subjunctive forms as instructions.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>parli / prenda / dorma</b></b><span class="legend-mean"> — speak / take / sleep: formal singular</span></li>
+<li class="legend-item"><b><b>scusi / dica / venga</b></b><span class="legend-mean"> — excuse me / say-tell / come: formal singular</span></li>
+<li class="legend-item"><b><b>non entri</b></b><span class="legend-mean"> — do not enter: formal singular</span></li>
+<li class="legend-item"><b><b>mi dica / lo prenda</b></b><span class="legend-mean"> — tell me / take it: pronoun before formal command</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Mi dica, per favore.</b></div>
+          <div class="pair-gloss">Please tell me (formal singular address).</div>
+        </div>
+        <div class="notice">Unlike positive <b>tu</b> commands, formal <b>Lei</b> commands place the pronoun before the verb.</div>
+        <div class="chips"><button class="tap" data-detail="formal-command">Details and contrasts</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="mood" data-section data-view="verbs">
+      <div class="section-head"><div><h2>Subjunctive</h2><p>Bounded B1 patterns, with recognition notes.</p></div></div>
+      <div class="cards two">
+        <article class="cheat-card" id="mood-present-subjunctive" data-search="present subjunctive congiuntivo presente passato">
+        <h3>Present subjunctive · <b>congiuntivo presente</b></h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>Certain constructions select a mood: begin with common opinions, wishes and necessity.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>che io parli / che tu parli / che lui parli</b></b><span class="legend-mean"> — that I / you / he speak: -are singular uses -i</span></li>
+<li class="legend-item"><b><b>che noi parliamo / voi parliate / loro parlino</b></b><span class="legend-mean"> — that we / you plural / they speak</span></li>
+<li class="legend-item"><b><b>che io creda / dorma / finisca</b></b><span class="legend-mean"> — that I believe / sleep / finish</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Spero che tu stia bene.</b></div>
+          <div class="pair-gloss">I hope you are well.</div>
+        </div>
+        <div class="notice">Not every <b>che</b> clause takes subjunctive. Recognition: <b>congiuntivo passato</b> (past subjunctive) is included in Details; full sequencing is deferred.</div>
+        <div class="chips"><button class="tap" data-detail="present-subjunctive">Details and contrasts</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="aspect" data-section data-view="verbs">
+      <div class="section-head"><div><h2>Ongoing and imminent</h2><p>Two different stare constructions.</p></div></div>
+      <div class="cards two">
+        <article class="cheat-card" id="aspect-progressive" data-search="ongoing action stare gerundio">
+        <h3>Ongoing action · <b>stare + gerundio</b></h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>Use this construction to focus on a process underway at a particular moment.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>sto / stai / sta / stiamo / state / stanno</b></b><span class="legend-mean"> — present of stay/be: I / you / he-she / we / you plural / they</span></li>
+<li class="legend-item"><b><b>parlando / credendo / dormendo</b></b><span class="legend-mean"> — speaking / believing / sleeping: -ando or -endo</span></li>
+<li class="legend-item"><b><b>stavo leggendo</b></b><span class="legend-mean"> — I was reading: imperfect of stay/be + gerund</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Sto leggendo; ti chiamo dopo.</b></div>
+          <div class="pair-gloss">I’m reading; I’ll call you later.</div>
+        </div>
+        <div class="notice">The simple present can also describe what is happening now. Do not use the progressive for every English -ing.</div>
+        <div class="chips"><button class="tap" data-detail="progressive">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="aspect-about-to" data-search="about to stare per infinitive">
+        <h3>About to · <b>stare per + infinitive</b></h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>Use <b>stare</b> <b>per</b> when an event is on the point of happening.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>sto per partire</b></b><span class="legend-mean"> — I am about to leave</span></li>
+<li class="legend-item"><b><b>sta per finire</b></b><span class="legend-mean"> — it is about to end</span></li>
+<li class="legend-item"><b><b>stavamo per uscire</b></b><span class="legend-mean"> — we were about to go out</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Sto per uscire. Hai le chiavi?</b></div>
+          <div class="pair-gloss">I’m about to go out. Do you have the keys?</div>
+        </div>
+        <div class="notice">This means imminent, not every intention expressed by English “going to”.</div>
+        <div class="chips"><button class="tap" data-detail="about-to">Details and contrasts</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="basics" data-section data-view="sentences">
+      <div class="section-head"><div><h2>Sentence basics</h2><p>Subjects, questions, negatives and generic statements.</p></div></div>
+      <div class="cards two">
+        <article class="cheat-card" id="basics-subjects" data-search="subjects and address io tu lei">
+        <h3>Subjects and address · <b>io / tu / Lei</b></h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Forms and use</span></div>
+        <p>The ending identifies the subject when context is clear; say the pronoun for emphasis or clarification.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>io / tu / lui / lei</b></b><span class="legend-mean"> — I / you informal / he / she</span></li>
+<li class="legend-item"><b><b>noi / voi / loro</b></b><span class="legend-mean"> — we / you plural / they</span></li>
+<li class="legend-item"><b><b>Lei parla / tu parli</b></b><span class="legend-mean"> — you speak: formal singular / informal singular</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Parlo inglese. E tu?</b></div>
+          <div class="pair-gloss">I speak English. And you?</div>
+        </div>
+        <div class="notice">Italian often omits a recoverable subject. Formal <b>Lei</b> still takes third-person singular verb forms.</div>
+        <div class="chips"><button class="tap" data-detail="subjects">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="basics-questions" data-search="questions chi cosa quale quanto">
+        <h3>Questions · <b>chi / cosa / quale / quanto</b></h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Forms and use</span></div>
+        <p>A yes/no question can keep statement word order. Question words identify what you need to know.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>chi / che cosa / cosa</b></b><span class="legend-mean"> — who / what</span></li>
+<li class="legend-item"><b><b>dove / quando / come / perché</b></b><span class="legend-mean"> — where / when / how / why</span></li>
+<li class="legend-item"><b><b>quale / quali</b></b><span class="legend-mean"> — which: singular / plural</span></li>
+<li class="legend-item"><b><b>quanto / quanta / quanti / quante</b></b><span class="legend-mean"> — how much/many: agree with a noun</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Quanti libri hai?</b></div>
+          <div class="pair-gloss">How many books do you have?</div>
+        </div>
+        <div class="notice">No English do-support or obligatory subject–verb inversion. Intonation distinguishes many spoken yes/no questions.</div>
+        <div class="chips"><button class="tap" data-detail="questions">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="basics-negation" data-search="not never nobody non mai nessuno">
+        <h3>Not, never, nobody · <b>non / mai / nessuno</b></h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Forms and use</span></div>
+        <p>Put <b>non</b> before the finite verb and any object pronouns.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>non capisco / non lo capisco</b></b><span class="legend-mean"> — I don’t understand / I don’t understand it</span></li>
+<li class="legend-item"><b><b>non…mai / non…più</b></b><span class="legend-mean"> — never / no longer</span></li>
+<li class="legend-item"><b><b>nessuno / niente</b></b><span class="legend-mean"> — nobody / nothing</span></li>
+<li class="legend-item"><b><b>sì / no</b></b><span class="legend-mean"> — yes / no: standalone answers</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Non ho mai visto nessuno qui.</b></div>
+          <div class="pair-gloss">I have never seen anyone here.</div>
+        </div>
+        <div class="notice">Negative words after the verb normally need <b>non</b> in negative statements. Before the verb, <b>nessuno</b>/<b>niente</b> can negate without <b>non</b>.</div>
+        <div class="chips"><button class="tap" data-detail="negation">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="basics-exclamations" data-search="what a how che quanto">
+        <h3>What a…! How…! · <b>che / quanto</b></h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Forms and use</span></div>
+        <p>Use a short exclamatory pattern to highlight a quality or amount.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>Che bello! / Che bella casa!</b></b><span class="legend-mean"> — How lovely! / What a beautiful house!</span></li>
+<li class="legend-item"><b><b>Che fortuna!</b></b><span class="legend-mean"> — What luck!</span></li>
+<li class="legend-item"><b><b>Quanti libri! / Quanta gente!</b></b><span class="legend-mean"> — So many books! / So many people!</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Che bella giornata!</b></div>
+          <div class="pair-gloss">What a beautiful day!</div>
+        </div>
+        <div class="notice"><b>Che</b> stays unchanged. <b>Quanto</b> changes with a following noun; punctuation and context distinguish an exclamation from a question.</div>
+        <div class="chips"><button class="tap" data-detail="exclamations">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="basics-impersonal-si" data-search="generic people si impersonale">
+        <h3>Generic people · <b>si impersonale</b></h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>Use <b>si</b> for an unspecified human agent: people, generic you, or sometimes we.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>si parte / si dorme</b></b><span class="legend-mean"> — people leave / sleep: impersonal singular</span></li>
+<li class="legend-item"><b><b>si mangia bene</b></b><span class="legend-mean"> — people eat well: verb used without an object</span></li>
+<li class="legend-item"><b><b>si vendono libri</b></b><span class="legend-mean"> — books are sold: passive construction, plural</span></li>
+<li class="legend-item"><b><b>ci si lava</b></b><span class="legend-mean"> — one washes oneself: reflexive + impersonal</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>In Italia si parla italiano.</b></div>
+          <div class="pair-gloss">People speak Italian in Italy.</div>
+        </div>
+        <div class="notice">Not every <b>si</b> means “oneself”, and not every <b>si</b> construction has a singular verb.</div>
+        <div class="chips"><button class="tap" data-detail="impersonal-si">Details and contrasts</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="pronouns" data-section data-view="sentences">
+      <div class="section-head"><div><h2>Object pronouns</h2><p>Function before position.</p></div></div>
+      <div class="cards two">
+        <article class="cheat-card" id="pronouns-direct" data-search="direct objects lo la li le">
+        <h3>Direct objects · <b>lo / la / li / le</b></h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Forms and use</span></div>
+        <p>Replace a direct object without adding a preposition; match its gender and number.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>mi / ti / ci / vi</b></b><span class="legend-mean"> — me / you / us / you plural</span></li>
+<li class="legend-item"><b><b>lo / la / li / le</b></b><span class="legend-mean"> — him-it / her-it / them masculine / them feminine</span></li>
+<li class="legend-item"><b><b>lo vedo / voglio vederlo</b></b><span class="legend-mean"> — I see it / I want to see it</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Le chiavi? Le cerco.</b></div>
+          <div class="pair-gloss">The keys? I’m looking for them. <b>le</b> replaces feminine plural <b>chiavi</b>.</div>
+        </div>
+        <div class="notice">A normal finite verb has the clitic before it. Infinitives and positive informal commands use attachment.</div>
+        <div class="chips"><button class="tap" data-detail="direct">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="pronouns-indirect" data-search="indirect objects gli le">
+        <h3>Indirect objects · <b>gli / le</b></h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>Replace a recipient or experiencer introduced by a in the verb’s pattern.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>mi / ti / ci / vi</b></b><span class="legend-mean"> — to me / to you / to us / to you plural</span></li>
+<li class="legend-item"><b><b>gli / le</b></b><span class="legend-mean"> — to him / to her; singular</span></li>
+<li class="legend-item"><b><b>a loro / gli</b></b><span class="legend-mean"> — to them; explicit phrase / common modern clitic</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Le do il libro.</b></div>
+          <div class="pair-gloss">I give her the book. <b>le</b> means to her here, not feminine plural them.</div>
+        </div>
+        <div class="notice">The same spelling can serve a different function: identify the verb’s recipient versus direct object.</div>
+        <div class="chips"><button class="tap" data-detail="indirect">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="pronouns-combined" data-search="two pronouns me lo glielo">
+        <h3>Two pronouns · <b>me lo / glielo</b></h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>In common recipient + direct-object combinations, put the recipient first.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>me / te / se / ce / ve + lo/la/li/le/ne</b></b><span class="legend-mean"> — recipient/reflexive form changes before the second clitic</span></li>
+<li class="legend-item"><b><b>glielo / gliela / glieli / gliele / gliene</b></b><span class="legend-mean"> — to him or her + it/them/of it: joined spelling</span></li>
+<li class="legend-item"><b><b>me lo dà / vuole darmelo</b></b><span class="legend-mean"> — he-she gives it to me / wants to give it to me</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Il libro? Glielo do domani.</b></div>
+          <div class="pair-gloss">The book? I’ll give it to him/her tomorrow.</div>
+        </div>
+        <div class="notice">The final <b>lo</b>/<b>la</b>/<b>li</b>/<b>le</b> identifies the direct object, not the recipient’s gender. This is a bounded common ordering pattern.</div>
+        <div class="chips"><button class="tap" data-detail="combined">Details and contrasts</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="particles" data-section data-view="sentences">
+      <div class="section-head"><div><h2>ci and ne</h2><p>Recover the intended phrase, not an English word.</p></div></div>
+      <div class="cards two">
+        <article class="cheat-card" id="particles-ci" data-search="ci us there or a verb pattern">
+        <h3><b>ci</b> · us, there, or a verb pattern?</h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>Recover the phrase <b>ci</b> stands for: a person group, a place or a selected complement.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>ci vede</b></b><span class="legend-mean"> — he/she sees us: personal object</span></li>
+<li class="legend-item"><b><b>ci vado</b></b><span class="legend-mean"> — I go there: place</span></li>
+<li class="legend-item"><b><b>c’è / ci sono</b></b><span class="legend-mean"> — there is / there are</span></li>
+<li class="legend-item"><b><b>ci penso / ci credo</b></b><span class="legend-mean"> — I think about it / I believe in it</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Vai a Roma? Sì, ci vado domani.</b></div>
+          <div class="pair-gloss">Are you going to Rome? Yes, I’m going there tomorrow.</div>
+        </div>
+        <div class="notice"><b>ci</b> is not one fixed English word and does not replace every prepositional phrase.</div>
+        <div class="chips"><button class="tap" data-detail="ci">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="particles-ne" data-search="ne of it them about">
+        <h3><b>ne</b> · of it, of them, about it</h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>Use <b>ne</b> for a quantity taken from an identified set, or in selected <b>di</b>-phrases.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>ne voglio due</b></b><span class="legend-mean"> — I want two of them</span></li>
+<li class="legend-item"><b><b>non ne voglio nessuno</b></b><span class="legend-mean"> — I don’t want any of them (masculine items)</span></li>
+<li class="legend-item"><b><b>ne parlo</b></b><span class="legend-mean"> — I talk about it: the pattern talk about</span></li>
+<li class="legend-item"><b><b>ne / né</b></b><span class="legend-mean"> — pronoun / neither-nor conjunction: accent distinguishes</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Quante mele vuoi? Ne voglio due.</b></div>
+          <div class="pair-gloss">How many apples do you want? I want two of them.</div>
+        </div>
+        <div class="notice">Keep the quantity when it is needed. <b>ne</b> does not always mean “some”; full idiomatic verb inventories are deferred.</div>
+        <div class="chips"><button class="tap" data-detail="ne">Details and contrasts</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="prepositions" data-section data-view="connections">
+      <div class="section-head"><div><h2>Prepositions</h2><p>Relations and article contractions.</p></div></div>
+      <div class="cards two">
+        <article class="cheat-card" id="prepositions-simple" data-search="simple prepositions di a da in">
+        <h3>Simple prepositions · <b>di / a / da / in</b></h3>
+          <div class="badges"><span class="badge level">A1</span><span class="badge kind">Forms and use</span></div>
+        <p>Choose a relationship in the Italian construction, rather than one English equivalent.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>di / a / da / in</b></b><span class="legend-mean"> — of-about / to-at / from-at someone’s / in-to</span></li>
+<li class="legend-item"><b><b>con / su / per</b></b><span class="legend-mean"> — with / on-about / for-through</span></li>
+<li class="legend-item"><b><b>tra / fra</b></b><span class="legend-mean"> — between-among or in a future interval: alternatives</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Vado da Anna con Luca.</b></div>
+          <div class="pair-gloss">I’m going to Anna’s with Luca.</div>
+        </div>
+        <div class="notice">Each preposition has several uses. A verb’s selected preposition may differ from English.</div>
+        <div class="chips"><button class="tap" data-detail="simple-prepositions">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="prepositions-contracted" data-search="preposition the preposizioni articolate">
+        <h3>Preposition + the · <b>preposizioni articolate</b></h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Forms and use</span></div>
+        <p>Combine <b>di</b>/a/da/in/su with the definite article required by the next word.</p>
+        <p>Article order for the rows: <b>il / lo / l’ / la / i / gli / le</b>.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>di → del / dello / dell’ / della / dei / degli / delle</b></b><span class="legend-mean"> — of: article order shown above</span></li>
+<li class="legend-item"><b><b>a → al / allo / all’ / alla / ai / agli / alle</b></b><span class="legend-mean"> — to-at: same article order</span></li>
+<li class="legend-item"><b><b>da → dal / dallo / dall’ / dalla / dai / dagli / dalle</b></b><span class="legend-mean"> — from-at: same order</span></li>
+<li class="legend-item"><b><b>in → nel / nello / nell’ / nella / nei / negli / nelle</b></b><span class="legend-mean"> — in-to: same order</span></li>
+<li class="legend-item"><b><b>su → sul / sullo / sull’ / sulla / sui / sugli / sulle</b></b><span class="legend-mean"> — on-about: same order</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Il libro è nello zaino, vicino alla porta.</b></div>
+          <div class="pair-gloss">The book is in the backpack, near the door.</div>
+        </div>
+        <div class="notice">Do not fuse every preposition. <b>con</b> usually stays separate; <b>col/coi</b> also occur. <b>per</b>/<b>tra</b>/<b>fra</b> normally stay separate.</div>
+        <div class="chips"><button class="tap" data-detail="contracted">Details and contrasts</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="time-place" data-section data-view="connections">
+      <div class="section-head"><div><h2>Time and place</h2><p>Destinations, duration and time intervals.</p></div></div>
+      <div class="cards two">
+        <article class="cheat-card" id="time-place-time-place" data-search="place and duration a in da per">
+        <h3>Place and duration · <b>a / in / da / per</b></h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Forms and use</span></div>
+        <p>Choose the location or time relationship, then the construction’s tense.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>a Roma / in Italia / da Anna</b></b><span class="legend-mean"> — in-to Rome / in-to Italy / at-to Anna’s</span></li>
+<li class="legend-item"><b><b>da due anni</b></b><span class="legend-mean"> — for two years, continuing from the past</span></li>
+<li class="legend-item"><b><b>per due ore / due ore fa</b></b><span class="legend-mean"> — for two hours (duration) / two hours ago</span></li>
+<li class="legend-item"><b><b>tra due giorni / alle due</b></b><span class="legend-mean"> — in two days / at two o’clock</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Vivo qui da due anni.</b></div>
+          <div class="pair-gloss">I’ve lived here for two years. The situation is still continuing.</div>
+        </div>
+        <div class="notice">Ongoing duration commonly uses Italian present + da, even when English uses a perfect tense. Place choices have lexical exceptions.</div>
+        <div class="chips"><button class="tap" data-detail="time-place">Details and contrasts</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="clauses" data-section data-view="connections">
+      <div class="section-head"><div><h2>Linking clauses</h2><p>Connections, relatives and real conditions.</p></div></div>
+      <div class="cards two">
+        <article class="cheat-card" id="clauses-relatives" data-search="relative clauses che cui dove">
+        <h3>Relative clauses · <b>che / cui / dove</b></h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>Link a description to a noun: use <b>che</b> for a subject or direct object, preposition + <b>cui</b> for other relations.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>il libro che leggo</b></b><span class="legend-mean"> — the book that I’m reading: object</span></li>
+<li class="legend-item"><b><b>la persona che parla</b></b><span class="legend-mean"> — the person who is speaking: subject</span></li>
+<li class="legend-item"><b><b>la persona con cui parlo</b></b><span class="legend-mean"> — the person I’m talking to: prepositional relation</span></li>
+<li class="legend-item"><b><b>la casa dove abito</b></b><span class="legend-mean"> — the house where I live: place</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Questo è il libro che cerco.</b></div>
+          <div class="pair-gloss">This is the book I’m looking for.</div>
+        </div>
+        <div class="notice">Do not omit <b>che</b> as you can omit English object “that”. Do not strand the preposition after <b>cui</b>.</div>
+        <div class="chips"><button class="tap" data-detail="relatives">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="clauses-connectors" data-search="add contrast explain conclude">
+        <h3>Add, contrast, explain, conclude</h3>
+          <div class="badges"><span class="badge level">A2</span><span class="badge kind">Forms and use</span></div>
+        <p>Select the relation between ideas before selecting a connector.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>e / ma / o</b></b><span class="legend-mean"> — and / but / or</span></li>
+<li class="legend-item"><b><b>invece / infatti</b></b><span class="legend-mean"> — instead-whereas / in fact-for</span></li>
+<li class="legend-item"><b><b>allora / quindi</b></b><span class="legend-mean"> — then-so / therefore</span></li>
+<li class="legend-item"><b><b>non solo…ma anche</b></b><span class="legend-mean"> — not only…but also</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Sono stanca, quindi resto a casa.</b></div>
+          <div class="pair-gloss">I’m tired, so I’m staying home (female speaker).</div>
+        </div>
+        <div class="notice">These words do not all introduce the same clause type. <b>allora</b> can also mean “then” in time.</div>
+        <div class="chips"><button class="tap" data-detail="connectors">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="clauses-subordinates" data-search="that when because in order to">
+        <h3>That, when, because, in order to</h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>Choose a finite clause with a subject, or a bounded infinitive pattern.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>so che… / penso di…</b></b><span class="legend-mean"> — I know that… / I think I will… (same subject)</span></li>
+<li class="legend-item"><b><b>quando / mentre / prima di</b></b><span class="legend-mean"> — when / while / before + infinitive</span></li>
+<li class="legend-item"><b><b>perché / per + infinitive</b></b><span class="legend-mean"> — because / in order to</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Leggo per capire, perché il testo è difficile.</b></div>
+          <div class="pair-gloss">I read in order to understand, because the text is difficult.</div>
+        </div>
+        <div class="notice">Cause <b>perché</b> and purpose <b>perché</b> need different mood choices. This card does not teach full tense backshift.</div>
+        <div class="chips"><button class="tap" data-detail="subordinates">Details and contrasts</button></div>
+        </article>
+        <article class="cheat-card" id="clauses-real-conditions" data-search="real open if se indicative">
+        <h3>Real/open if · <b>se + indicative</b></h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>For a condition treated as open or real, use indicative in the <b>se</b> clause.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>se piove, resto</b></b><span class="legend-mean"> — if it rains, I stay</span></li>
+<li class="legend-item"><b><b>se piove, resterò</b></b><span class="legend-mean"> — if it rains, I’ll stay</span></li>
+<li class="legend-item"><b><b>se verrà, parleremo</b></b><span class="legend-mean"> — if he-she comes, we’ll talk</span></li>
+<li class="legend-item"><b><b>se hai tempo, chiamami</b></b><span class="legend-mean"> — if you have time, call me</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Se hai tempo, vieni con noi.</b></div>
+          <div class="pair-gloss">If you have time, come with us.</div>
+        </div>
+        <div class="notice">Italian permits future after <b>se</b>. Unreal and past-counterfactual systems are deferred; do not extend this pattern to every English “if”.</div>
+        <div class="chips"><button class="tap" data-detail="real-conditions">Details and contrasts</button></div>
+        </article>
+      </div>
+    </section>
+    <section id="infinitives" data-section data-view="connections">
+      <div class="section-head"><div><h2>Verb + infinitive</h2><p>Learn the linking pattern with the verb.</p></div></div>
+      <div class="cards two">
+        <article class="cheat-card" id="infinitives-verb-infinitive" data-search="verb infinitive a di no link">
+        <h3>Verb + infinitive · <b>a / di / no link</b></h3>
+          <div class="badges"><span class="badge level">B1</span><span class="badge kind">Forms and use</span></div>
+        <p>Learn the first verb with its infinitive pattern; English “to” does not select a or <b>di</b>.</p>
+<ul class="legend legend-list" role="list"><li class="legend-item"><b><b>posso / devo / voglio + infinitive</b></b><span class="legend-mean"> — can / must / want: no added preposition</span></li>
+<li class="legend-item"><b><b>comincio a / imparo a</b></b><span class="legend-mean"> — I begin to / learn to</span></li>
+<li class="legend-item"><b><b>cerco di / finisco di</b></b><span class="legend-mean"> — I try to / finish doing</span></li>
+<li class="legend-item"><b><b>penso di / spero di</b></b><span class="legend-mean"> — I think I will / hope to: same subject</span></li></ul>
+        <div class="example pair">
+          <div class="pair-src"><b>Cerco di capire e comincio a scrivere.</b></div>
+          <div class="pair-gloss">I try to understand and start writing.</div>
+        </div>
+        <div class="notice">These are selected patterns, not a rule that every verb takes the same link. <b>che</b> + finite verb can introduce a different subject.</div>
+        <div class="chips"><button class="tap" data-detail="verb-infinitive">Details and contrasts</button></div>
+        </article>
+      </div>
+    </section>
+    <div class="footer">Italian Cheat · <a href="../../">all cheat sheets</a> · <span id="install-help">Install: page menu (☰) → “Install” · iPhone — Share → Add to Home Screen</span> · content plan: <code>it/en/SITE_PLAN.md</code></div>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <a class="nav-item active" aria-current="true" href="#forms" data-nav="forms"><span class="ico" aria-hidden="true">Aa</span><span>Forms</span></a>
+    <a class="nav-item" href="#verbs" data-nav="verbs"><span class="ico" aria-hidden="true">↻</span><span>Verbs</span></a>
+    <a class="nav-item" href="#sentences" data-nav="sentences"><span class="ico" aria-hidden="true">?</span><span>Sentences</span></a>
+    <a class="nav-item" href="#connections" data-nav="connections"><span class="ico" aria-hidden="true">↔</span><span>Links</span></a>
+  </nav>
+
+  <div id="installNudge" class="install-nudge" role="status" hidden>
+    <span class="nudge-text">Work offline — install the cheat sheet on your phone</span>
+    <button class="tap neutral" type="button" data-install>Install</button>
+    <button class="nudge-close" type="button" aria-label="Close">×</button>
+  </div>
+
+  <dialog id="detailDialog" aria-labelledby="detailTitle">
+    <div class="sheet">
+      <div class="grab" aria-hidden="true"></div>
+      <div class="sheet-head">
+        <div><h2 id="detailTitle"></h2><p class="lead" id="detailLead"></p></div>
+        <button class="close-sheet" id="closeDialog" aria-label="Close" type="button">×</button>
+      </div>
+      <div id="detailBody"></div>
+    </div>
+  </dialog>
+
+  <script>
+    const DETAILS = {
+  "gender": {
+    "title": "Noun gender",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Common exceptions</b><b>la mano</b> (hand) is feminine; <b>il problema</b> (problem) is masculine. <b>il/la turista</b> refers to a male/female tourist; the article supplies the gender.</div><div class=\"detail-block\"><b class=\"detail-label\">People and agreement</b><b>La persona è gentile.</b><p class=\"detail-comment\">The person is kind. <b>persona</b> stays feminine even when the person is a man.</p></div><div class=\"detail-block\"><b class=\"detail-label\">A useful habit</b>Record <b>la chiave</b> (the key), not just <b>chiave</b>. The noun supplies the gender; articles and adjectives respond to it.</div>"
+  },
+  "plural": {
+    "title": "Noun plurals",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Spelling</b><b>amica → amiche</b> (female friend → female friends), <b>banca → banche</b> (bank → banks): h keeps the hard sound. <b>amico → amici</b> (male friend → male friends): -co/-go plurals need checking; there is no safe single rule.</div><div class=\"detail-block\"><b class=\"detail-label\">Unchanged nouns</b><b>la città → le città</b> (city → cities), <b>il film → i film</b> (film → films). The article shows number.</div><div class=\"detail-block\"><b class=\"detail-label\">A small irregular set</b><b>uomo → uomini</b> (man → men), <b>uovo → uova</b> (egg → eggs: masculine singular, feminine plural), <b>mano → mani</b> (hand → hands: still feminine).</div>"
+  },
+  "definite": {
+    "title": "The",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Next sound</b><b>lo studente</b> (the student), but <b>il bravo studente</b> (the good student); <b>l’amico</b> (the friend), but <b>il nuovo amico</b> (the new friend).</div><div class=\"detail-block\"><b class=\"detail-label\">Plural choices</b><b>gli studenti / gli amici / le amiche</b><p class=\"detail-comment\">the students / the male or mixed-group friends / the female friends. Feminine plural <b>le</b> normally remains unelided.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Use and omission</b><b>Mi piace la musica.</b> / <b>Studio italiano.</b><p class=\"detail-comment\">I like music. / I study Italian. Generic music has an article here; the language after <b>studiare</b> does not. Learn the construction, not “use the wherever English does”.</p></div>"
+  },
+  "indefinite": {
+    "title": "A/an",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">The same sound groups</b>Use <b>uno</b> before the groups that take <b>lo</b>: <b>uno psicologo</b>, <b>uno studente</b> (a psychologist, a student). Use <b>un</b> before a masculine vowel: <b>un uomo</b> (a man).</div><div class=\"detail-block\"><b class=\"detail-label\">Feminine elision</b><b>una donna / un’isola</b><p class=\"detail-comment\">a woman / an island. The apostrophe marks the missing -a of <b>una</b>.</p></div><div class=\"detail-block\"><b class=\"detail-label\">More than one</b><b>Ho amici in Italia.</b> / <b>Ho degli amici in Italia.</b><p class=\"detail-comment\">I have friends in Italy. / I have some friends in Italy. Plural indefiniteness has other expressions; it is not a plural <b>un</b>.</p></div>"
+  },
+  "partitive": {
+    "title": "Some",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Amount or relationship?</b><b>Bevo del vino.</b> / <b>Il colore del vino è rosso.</b><p class=\"detail-comment\">I drink some wine. / The colour of the wine is red. Only the first <b>del</b> is a partitive.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Alternatives</b><b>Compro pane.</b> / <b>Compro un po’ di pane.</b><p class=\"detail-comment\">I’m buying bread. / I’m buying a little bread. With a quantity expression, use <b>di</b> rather than a second partitive article.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Negation and questions</b><b>Non compro pane.</b> / <b>Vuoi del pane?</b><p class=\"detail-comment\">I’m not buying bread. / Would you like some bread? Do not translate English any mechanically; a negative statement often has a bare noun.</p></div>"
+  },
+  "possessives": {
+    "title": "My/his/her",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Family nouns</b><b>mia sorella / le mie sorelle / il loro padre</b><p class=\"detail-comment\">my sister / my sisters / their father. Plain singular family terms commonly omit the article, but plurals and <b>loro</b> retain it.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Family nouns with modifiers</b><b>la mia sorellina / la mia cara sorella</b><p class=\"detail-comment\">my little sister / my dear sister. Use the article with diminutives and adjectives before the family noun. Following modifiers vary: <b>mio fratello maggiore / mio fratello gemello</b> (my older brother / my twin brother) are allowed without it; <b>il mio fratello gemello</b> (my twin brother) is also possible. Some combinations require it, such as <b>la mia cugina preferita</b> (my favourite female cousin). Article choice after the noun can depend on the expression, meaning or register.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Without the noun</b><b>La tua casa è grande; la mia è piccola.</b><p class=\"detail-comment\">Your house is big; mine is small. <b>la mia</b> replaces <b>casa</b> and retains its feminine singular form.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Predicative ownership</b><b>Questo libro è mio.</b><p class=\"detail-comment\">This book is mine. After <b>essere</b> in this ownership construction, the possessive can appear without an article.</p></div>"
+  },
+  "demonstratives": {
+    "title": "This/that",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Feminine forms</b><b>quella casa / quell’amica / quelle case</b><p class=\"detail-comment\">that house / that female friend / those houses. Feminine plural is <b>quelle</b>.</p></div><div class=\"detail-block\"><b class=\"detail-label\">With and without a noun</b><b>Quei libri sono nuovi; quelli sono vecchi.</b><p class=\"detail-comment\">Those books are new; those ones are old. The independent pronoun is <b>quelli</b>.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Intervening adjective</b><b>quel bravo studente / quello studente</b><p class=\"detail-comment\">that good student / that student. The following sound decides the shortened form.</p></div>"
+  },
+  "bello": {
+    "title": "Beautiful",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Position changes the form</b><b>bei libri / libri belli / i libri sono belli</b><p class=\"detail-comment\">beautiful books / beautiful books / the books are beautiful.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Feminine vowel</b><b>una bell’amica / delle belle amiche</b><p class=\"detail-comment\">a beautiful female friend / some beautiful female friends. Feminine plural stays <b>belle</b>.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Next word</b><b>un bel nuovo libro</b> / <b>un bello spettacolo</b><p class=\"detail-comment\">a beautiful new book / a beautiful show. Match the next word, not a distant noun; check unfamiliar loanword sounds in a dictionary.</p></div>"
+  },
+  "agreement": {
+    "title": "Adjective agreement",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Two classes</b><b>un libro interessante / una casa interessante / case interessanti</b><p class=\"detail-comment\">an interesting book / an interesting house / interesting houses. -e becomes -i regardless of gender.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Across the verb</b><b>La casa è nuova; i libri sono nuovi.</b><p class=\"detail-comment\">The house is new; the books are new.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Bounded exceptions</b><b>una maglia rosa / due maglie rosa</b><p class=\"detail-comment\">a pink sweater / two pink sweaters. <b>rosa</b> used as a colour adjective stays unchanged. Do not add -s as in an English plural noun.</p></div>"
+  },
+  "position": {
+    "title": "Adjective position",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">A meaning contrast</b><b>una certa notizia / una notizia certa</b><p class=\"detail-comment\">some particular news / certain (reliable) news. The interpretation depends on position and context.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Not arbitrary</b><b>un film italiano interessante</b><p class=\"detail-comment\">an interesting Italian film. A relation adjective such as <b>italiano</b> normally follows the noun.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Useful default</b>Start with noun + descriptive adjective. Learn common pre-noun combinations as phrases, rather than moving every English adjective to the same side.</div>"
+  },
+  "comparison": {
+    "title": "Comparisons",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Choosing the comparison link</b><b>Luca è più alto di me.</b> / <b>È più facile leggere che scrivere.</b><p class=\"detail-comment\">Luca is taller than me. / Reading is easier than writing. <b>che</b> compares these two infinitives; do not replace every than with <b>di</b>.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Equality</b><b>Luca è alto come Marco.</b> / <b>Luca è tanto alto quanto Marco.</b><p class=\"detail-comment\">Luca is as tall as Marco. Both patterns express equality; <b>tanto</b>/<b>quanto</b> are unchanged here because they modify an adjective.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Relative and absolute</b><b>È il più alto della classe.</b> / <b>È altissimo.</b><p class=\"detail-comment\">He is the tallest in the class. / He is very tall. Add gender/number endings: <b>altissima</b>, <b>altissimi</b>, <b>altissime</b>.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Irregular forms</b><b>Questo libro è migliore.</b> / <b>Qui si mangia meglio.</b><p class=\"detail-comment\">This book is better. / People eat better here. <b>migliore</b> describes a noun; <b>meglio</b> modifies how an action happens. <b>buono</b>/<b>cattivo</b> give <b>migliore</b>/<b>peggiore</b>; <b>grande</b>/<b>piccolo</b> also have <b>maggiore</b>/<b>minore</b> in some meanings.</p></div>"
+  },
+  "indefinites": {
+    "title": "All, some, each, none",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Agreement</b><b>molta acqua / molti libri / tutte le case</b><p class=\"detail-comment\">much water / many books / all the houses. Used as adverbs, <b>molto</b>/<b>tanto</b>/<b>poco</b> do not agree: <b>lavoro</b> <b>molto</b> = I work a lot.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Individuals</b><b>Ciascuno ha una chiave.</b> / <b>Non ho nessun libro.</b><p class=\"detail-comment\">Each person has a key. / I have no book. <b>ciascuno</b> is singular. <b>nessun/nessuno/nessuna/nessun’</b> follow the indefinite-article shape before a noun.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Replacing a noun</b><b>Qualcuno arriva.</b> / <b>Cerco qualcosa di nuovo.</b><p class=\"detail-comment\">Someone is arriving. / I’m looking for something new. <b>qualcuno</b> and <b>qualcosa</b> take a singular verb; <b>di nuovo</b> describes something new, not something again.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Negative position</b><b>Nessuno viene.</b> / <b>Non viene nessuno.</b><p class=\"detail-comment\">Nobody is coming. In these statements, a negative word before the verb removes <b>non</b>; after the verb it needs <b>non</b>.</p></div>"
+  },
+  "mente": {
+    "title": "Forming manner adverbs",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">The base</b><b>chiaro → chiara → chiaramente</b><p class=\"detail-comment\">clear → feminine clear → clearly. The resulting adverb does not change for gender or number.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Shortened bases</b><b>facile → facilmente / particolare → particolarmente</b><p class=\"detail-comment\">easy → easily / particular → particularly. Learn the derived form with its meaning.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Useful non-mente forms</b><b>bene / male / molto</b><p class=\"detail-comment\">well / badly / a lot. These frequent adverbs have their own forms. An English adjective/adverb label does not determine an Italian suffix.</p></div>"
+  },
+  "adverb-use": {
+    "title": "Using time, place and quantity words",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Adjective or adverb</b><b>È un buon libro.</b> / <b>Scrive bene.</b><p class=\"detail-comment\">It is a good book. / He/she writes well. <b>buono</b> describes the noun; <b>bene</b> describes the action.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Typical placement</b><b>Ho già mangiato.</b> / <b>Vado spesso lì.</b><p class=\"detail-comment\">I have already eaten. / I often go there. <b>già</b> often sits between auxiliary and participle; place expressions often follow the verb.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Meaning changes with context</b><b>Sei mai stato a Roma?</b> / <b>Non vado mai a Roma.</b><p class=\"detail-comment\">Have you ever been to Rome? / I never go to Rome.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Quantity</b><b>molte case / molto belle</b><p class=\"detail-comment\">many houses / very beautiful (feminine plural). The adjective <b>molte</b> agrees with <b>case</b>; the degree adverb <b>molto</b> stays unchanged.</p></div>"
+  },
+  "numbers-dates": {
+    "title": "Numbers, dates and clock time",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">11–20</b><b>undici, dodici, tredici, quattordici, quindici, sedici, diciassette, diciotto, diciannove, venti</b><p class=\"detail-comment\">eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Larger cardinals</b><b>trenta / quaranta / cinquanta / sessanta / settanta / ottanta / novanta / cento / mille</b><p class=\"detail-comment\">thirty / forty / fifty / sixty / seventy / eighty / ninety / a hundred / a thousand. <b>ventuno</b> = 21, <b>ventotto</b> = 28: drop the tens’ final vowel before <b>uno</b>/<b>otto</b>; <b>ventitré</b> = 23 has a written accent. <b>duemila</b> = 2,000.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Ordinals</b><b>quarto, quinto, sesto, settimo, ottavo, nono, decimo</b><p class=\"detail-comment\">fourth through tenth. Above ten, usually base minus final vowel + <b>-esimo</b>: <b>undicesimo</b> = eleventh; use <b>ventitreesimo</b> = twenty-third. <b>la</b> <b>seconda</b> <b>lezione</b> = the second lesson.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Dates and times</b><b>il due maggio / alle tre e mezza / alle quattro meno un quarto</b><p class=\"detail-comment\">on the second of May / at half past three / at quarter to four. <b>l’una</b> is singular; <b>le</b> <b>due</b> and later clock hours are plural.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Counting objects</b><b>un libro / una casa / due libri / due case</b><p class=\"detail-comment\">one book / one house / two books / two houses. <b>uno</b> has gender/article-like variants before a noun; other simple cardinals such as <b>due</b> are invariant.</p></div>"
+  },
+  "present": {
+    "title": "Present tense",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Read the endings</b>Remove <b>-are / -ere / -ire</b> to find the stem, then use the person ending. <b>tu lavori / noi lavoriamo</b><p class=\"detail-comment\">you work / we work. A written subject is unnecessary when the context identifies it.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Spelling</b><b>cerco → cerchi / pagare → paghi / mangiare → mangi</b><p class=\"detail-comment\">I look for → you look for / to pay → you pay / to eat → you eat. -care/-gare keep the hard sound with h; not every spelling retains all infinitive letters.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Now or habitual</b><b>Che fai? Leggo.</b> / <b>Leggo ogni sera.</b><p class=\"detail-comment\">What are you doing? I’m reading. / I read every evening. Use <b>stare</b> + <b>gerundio</b> to focus explicitly on an ongoing process, not for every present sentence.</p></div>"
+  },
+  "irregulars": {
+    "title": "Essential irregulars",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Go — forms</b><b>io vado</b> · <b>tu vai</b> · <b>lui/lei/Lei va</b> · <b>noi andiamo</b> · <b>voi andate</b> · <b>loro vanno</b><p class=\"detail-comment\">I go / you go / he-she goes / we go / you plural go / they go.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Do/make — forms</b><b>io faccio</b> · <b>tu fai</b> · <b>lui/lei/Lei fa</b> · <b>noi facciamo</b> · <b>voi fate</b> · <b>loro fanno</b><p class=\"detail-comment\">Present forms of do/make, in the same person order.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Come — forms</b><b>io vengo</b> · <b>tu vieni</b> · <b>lui/lei/Lei viene</b> · <b>noi veniamo</b> · <b>voi venite</b> · <b>loro vengono</b><p class=\"detail-comment\">Present forms of come, in the same person order.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Give — forms</b><b>io do</b> · <b>tu dai</b> · <b>lui/lei/Lei dà</b> · <b>noi diamo</b> · <b>voi date</b> · <b>loro danno</b><p class=\"detail-comment\">Present forms of give. <b>dà</b> (gives) has an accent; <b>da</b> (from) does not.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Stay/be — forms</b><b>io sto</b> · <b>tu stai</b> · <b>lui/lei/Lei sta</b> · <b>noi stiamo</b> · <b>voi state</b> · <b>loro stanno</b><p class=\"detail-comment\">Present forms of stay; <b>stare</b> also helps form the progressive.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Drink — forms</b><b>io bevo</b> · <b>tu bevi</b> · <b>lui/lei/Lei beve</b> · <b>noi beviamo</b> · <b>voi bevete</b> · <b>loro bevono</b><p class=\"detail-comment\">Present forms of drink.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Say/tell — forms</b><b>io dico</b> · <b>tu dici</b> · <b>lui/lei/Lei dice</b> · <b>noi diciamo</b> · <b>voi dite</b> · <b>loro dicono</b><p class=\"detail-comment\">Present forms of say/tell.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Know — forms</b><b>io so</b> · <b>tu sai</b> · <b>lui/lei/Lei sa</b> · <b>noi sappiamo</b> · <b>voi sapete</b> · <b>loro sanno</b><p class=\"detail-comment\">Knowing facts or knowing how: <b>so nuotare</b> = I can swim (have the skill). <b>conoscere</b> is used for familiarity: <b>conosco Roma</b> = I know Rome.</p></div>"
+  },
+  "reflexives": {
+    "title": "Reflexive and reciprocal",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Routine</b><b>Mi alzo alle sette.</b> / <b>Devo alzarmi presto.</b><p class=\"detail-comment\">I get up at seven. / I have to get up early. Attach the pronoun to an infinitive after dropping final e.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Reciprocal meaning</b><b>Anna e Luca si salutano.</b><p class=\"detail-comment\">Anna and Luca greet each other. The context identifies a reciprocal action, rather than each greeting themselves.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Past agreement</b><b>Anna si è alzata; Marco si è alzato.</b><p class=\"detail-comment\">Anna got up; Marco got up. In these personal patterns, the participle follows the subject’s gender and number.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Not always literal</b><b>Mi chiamo Anna.</b><p class=\"detail-comment\">My name is Anna. Learn <b>chiamarsi</b> as a pattern; a literal “I call myself” translation is not needed here.</p></div>"
+  },
+  "modals": {
+    "title": "Can, must, want",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Meaning</b><b>Devo partire.</b> / <b>Voglio partire.</b> / <b>Posso partire?</b><p class=\"detail-comment\">I have to leave. / I want to leave. / May I leave? <b>potere</b> can concern permission or possibility, depending on context.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Pronoun alternatives</b><b>Lo voglio vedere.</b> / <b>Voglio vederlo.</b><p class=\"detail-comment\">I want to see it/him. Both placements are possible; do not use both pronouns together.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Past forms</b><b>Ho dovuto lavorare.</b> / <b>Sono dovuta uscire.</b><p class=\"detail-comment\">I had to work. / I had to go out (female speaker). Auxiliary choice and accepted alternatives are explained under Auxiliary choice.</p></div>"
+  },
+  "piacere": {
+    "title": "I like…",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">One item or activity</b><b>Mi piace il film.</b> / <b>Mi piace leggere.</b><p class=\"detail-comment\">I like the film. / I like reading. An infinitive subject takes singular <b>piace</b>.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Named experiencer</b><b>A Luca piacciono i film italiani.</b><p class=\"detail-comment\">Luca likes Italian films. <b>a Luca</b> identifies who likes them, not the subject controlling <b>piacciono</b>.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Past</b><b>Mi è piaciuta la lezione.</b> / <b>Mi sono piaciuti i libri.</b><p class=\"detail-comment\">I liked the lesson. / I liked the books. Use <b>essere</b>; agree with <b>lezione</b> (feminine singular) or <b>libri</b> (masculine plural).</p></div>"
+  },
+  "compound-past": {
+    "title": "Completed past",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Build the form</b><b>Ho comprato un libro.</b> / <b>Siamo partiti ieri.</b><p class=\"detail-comment\">I bought a book. / We left yesterday (male or mixed group). Auxiliary is present; the participle carries the lexical action.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Common irregular participles</b><b>essere → stato; fare → fatto; dire → detto; vedere → visto; leggere → letto; scrivere → scritto; prendere → preso; venire → venuto; bere → bevuto</b><p class=\"detail-comment\">be → been; do → done; say → said; see → seen; read → read; write → written; take → taken; come → come; drink → drunk. Choose the auxiliary separately.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Negation</b><b>Non ho capito.</b><p class=\"detail-comment\">I didn’t understand. <b>non</b> precedes the auxiliary; do not add English did.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Whole event</b><b>Ho abitato qui per dieci anni.</b><p class=\"detail-comment\">I lived here for ten years. A long but bounded period can still use <b>passato prossimo</b>; length alone does not demand <b>imperfetto</b>.</p></div>"
+  },
+  "auxiliary": {
+    "title": "Auxiliary choice",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Object versus event</b><b>Ho cominciato il lavoro.</b> / <b>Il lavoro è cominciato.</b><p class=\"detail-comment\">I started the work. / The work started. Transitive active use takes <b>avere</b>; this intransitive use takes <b>essere</b>.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Modals</b><b>Sono dovuto partire.</b> / <b>Ho dovuto lavorare.</b><p class=\"detail-comment\">I had to leave. / I had to work. Modals often follow the infinitive’s auxiliary; <b>avere</b> can also occur with an intransitive infinitive, as in <b>ho</b> <b>dovuto</b> <b>partire</b>.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Reflexive placement with a modal</b><b>Mi sono dovuta alzare.</b> / <b>Ho dovuto alzarmi.</b><p class=\"detail-comment\">I had to get up (female speaker in the first example). With the clitic before the modal, use <b>essere</b>; attached to the infinitive, use <b>avere</b> in this pattern.</p></div><div class=\"detail-block\"><b class=\"detail-label\">A limit</b><b>Ho voluto essere presente.</b><p class=\"detail-comment\">I wanted to be present. A modal before the infinitive <b>essere</b> uses <b>avere</b>. Look up unfamiliar intransitive constructions rather than inventing a motion rule.</p></div>"
+  },
+  "participle-agreement": {
+    "title": "Past-participle agreement",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">The ordinary pattern</b><b>L’ho vista.</b> / <b>Li ho visti.</b><p class=\"detail-comment\">I saw her/it (feminine). / I saw them (masculine or mixed). <b>lo</b>/<b>la</b> can elide to <b>l’</b>; the participle still identifies gender.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Combined objects</b><b>Le lettere? Gliele ho date.</b><p class=\"detail-comment\">The letters? I gave them to him/her. <b>date</b> follows feminine plural letters, not the recipient.</p></div><div class=\"detail-block\"><b class=\"detail-label\">First- and second-person variation</b><b>Maria, ti ho visto.</b> / <b>Maria, ti ho vista.</b><p class=\"detail-comment\">Maria, I saw you. Both invariable and agreeing participles occur with these preceding direct-object pronouns; do not mark one automatically wrong.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Partitive versus topic</b><b>Di mele ne ho comprate tre.</b> / <b>Di quel problema ne ho parlato.</b><p class=\"detail-comment\">I bought three apples. / I talked about that problem. The first <b>ne</b> is partitive; the second means about it and does not cause agreement. More complex quantified <b>ne</b> cases are outside this slice.</p></div>"
+  },
+  "imperfect": {
+    "title": "Past background",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Other regular patterns</b><b>credevo, credevi, credeva, credevamo, credevate, credevano</b>; <b>dormivo, dormivi, dormiva, dormivamo, dormivate, dormivano</b><p class=\"detail-comment\">Imperfect of believe and sleep in the six-person order shown on the card.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Have — forms</b><b>avevo, avevi, aveva, avevamo, avevate, avevano</b><p class=\"detail-comment\">I had / you had / he-she had / we had / you plural had / they had.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Background and interruption</b><b>Pioveva quando sono uscito.</b><p class=\"detail-comment\">It was raining when I went out. The rain is background; the departure advances the narrative.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Frequent stems</b><b>facevo / dicevo / bevevo</b><p class=\"detail-comment\">I was doing / saying / drinking. Irregular infinitives <b>fare</b>/<b>dire</b>/<b>bere</b> use <b>fac-</b>/<b>dic-</b>/<b>bev-</b> before imperfect endings.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Habits</b><b>Ogni estate andavamo al mare.</b><p class=\"detail-comment\">Every summer we used to go to the seaside. A repeated situation without a bounded summary is a normal imperfect use.</p></div>"
+  },
+  "past-choice": {
+    "title": "Past choice",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">A bounded repetition</b><b>Ho chiamato tre volte.</b> / <b>Chiamavo ogni sera.</b><p class=\"detail-comment\">I called three times. / I used to call every evening. Counted, bounded repetition can use the compound past.</p></div><div class=\"detail-block\"><b class=\"detail-label\">A long event</b><b>Ho lavorato lì per dieci anni.</b> / <b>Lavoravo lì quando ci siamo conosciuti.</b><p class=\"detail-comment\">I worked there for ten years. / I was working there when we met. The first summarizes a bounded period; the second sets background.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Changed viewpoint with modals</b><b>Potevo uscire, ma sono rimasto a casa.</b> / <b>Sono potuto uscire.</b><p class=\"detail-comment\">I could go out, but stayed home. / I was able to go out. The compound past commonly presents the realized opportunity; context still matters.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Knowing versus finding out</b><b>Sapevo la risposta.</b> / <b>Ho saputo la notizia ieri.</b><p class=\"detail-comment\">I knew the answer. / I found out the news yesterday. English “knew” cannot be substituted mechanically.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Recognition: narrative simple past</b><b>fu ← essere; disse ← dire; andò ← andare; fece ← fare</b><p class=\"detail-comment\">he/she was; said; went; did/made. These are bounded-event past forms, frequent in narrative and with regional contemporary uses. They are not solely literary, and distance in years alone does not select the tense. Productive paradigms are deferred.</p></div>"
+  },
+  "pluperfect": {
+    "title": "Earlier than a past moment",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Have auxiliary pattern</b><b>Avevo già letto il libro quando è uscito il film.</b><p class=\"detail-comment\">I had already read the book when the film came out. The reading is earlier than the film’s release.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Be auxiliary and agreement</b><b>Eravamo partite prima delle otto.</b><p class=\"detail-comment\">We had left before eight (all-female group). The participle agrees as in <b>siamo partite</b>.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Do not add it everywhere</b><b>Ieri ho letto e poi ho dormito.</b><p class=\"detail-comment\">Yesterday I read and then slept. A simple sequence can use two compound past forms; not every past narrative needs a pluperfect.</p></div>"
+  },
+  "future": {
+    "title": "Future reference",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Regular and spelling patterns</b><b>credere → crederò; dormire → dormirò; cercare → cercherò; pagare → pagherò; mangiare → mangerò</b><p class=\"detail-comment\">I will believe / sleep / look for / pay / eat. -are changes to -er- in the normal pattern; h preserves the hard sound.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Essential irregular stems</b><b>essere → sar-; avere → avr-; andare → andr-; fare → far-; venire → verr-; potere → potr-; dovere → dovr-; volere → vorr-; sapere → sapr-; bere → berr-; dire → dir-; stare → star-</b><p class=\"detail-comment\">Add the future endings to these stems: <b>verrà</b> = he/she will come; <b>potranno</b> = they will be able to.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Inference</b><b>Dov’è Anna? Sarà a casa.</b><p class=\"detail-comment\">Where is Anna? She’s probably at home. <b>sarà</b> need not describe a later time.</p></div><div class=\"detail-block\"><b class=\"detail-label\">After if</b><b>Se verrà, parleremo.</b><p class=\"detail-comment\">If he/she comes, we’ll talk. Italian can use a future after <b>se</b>; the English restriction after if does not transfer.</p></div>"
+  },
+  "conditional": {
+    "title": "Polite requests and advice",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Forms</b>Use the future-type stem with <b>-ei, -esti, -ebbe, -emmo, -este, -ebbero</b>. <b>farei / andrei / verrei / dovrei / potrei / vorrei</b><p class=\"detail-comment\">I would do / go / come / should / could / would like. Check the double r in <b>verrei</b> and <b>vorrei</b>.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Advice and desire</b><b>Dovresti riposare.</b> / <b>Mi piacerebbe partire.</b><p class=\"detail-comment\">You should rest. / I would like to leave.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Uncertainty</b><b>Potrebbe essere vero.</b><p class=\"detail-comment\">It could be true. This expresses a possibility rather than a polite request.</p></div><div class=\"detail-block\"><b class=\"detail-label\">A1 recognition</b><b>Vorrei un caffè, per favore.</b><p class=\"detail-comment\">I’d like a coffee, please. This useful formula can be recognized before mastering the whole conditional.</p></div>"
+  },
+  "imperative": {
+    "title": "Commands to tu/voi",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Useful irregulars</b><b>sii / siate; abbi / abbiate; vieni / venite; di’ / dite</b><p class=\"detail-comment\">be; have; come; say: <b>tu</b> / <b>voi</b>. <b>sii</b> is the singular command of <b>essere</b>.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Short commands</b><b>fa’ / fai; va’ / vai; da’ / dai; sta’ / stai</b><p class=\"detail-comment\">do, go, give, stay (<b>tu</b>). The short forms use an apostrophe, not an accent.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Attachment</b><b>dammi / dimmi / fammi / digli</b><p class=\"detail-comment\">give me / tell me / make-let me / tell him. With the shortened commands, most following initial consonants double; <b>gli</b> does not.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Negative alternatives</b><b>Non farlo.</b> / <b>Non lo fare.</b> / <b>Non lo fate.</b><p class=\"detail-comment\">Don’t do it (<b>tu</b>, two placements). / Don’t do it (<b>voi</b>). The pronoun may precede or follow in these negative commands.</p></div>"
+  },
+  "formal-command": {
+    "title": "Formal singular instructions",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Compare address</b><b>Dimmi!</b> / <b>Mi dica!</b><p class=\"detail-comment\">Tell me! (<b>tu</b>) / Please tell me! (<b>Lei</b>). Both request the same action, with different address and placement.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Positive and negative</b><b>Entri, prego.</b> / <b>Non entri qui.</b><p class=\"detail-comment\">Please come in. / Do not come in here. Formal negatives retain the finite form, unlike negative <b>tu</b>.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Useful forms</b><b>sia / abbia / faccia / vada</b><p class=\"detail-comment\">be / have / do / go, addressed to <b>Lei</b>. These come from the present subjunctive.</p></div><div class=\"detail-block\"><b class=\"detail-label\">A shared invitation</b><b>Andiamo!</b> / <b>Non dimentichiamo le chiavi.</b><p class=\"detail-comment\">Let’s go! / Let’s not forget the keys. The <b>noi</b> invitation is included here as a bounded related pattern.</p></div>"
+  },
+  "present-subjunctive": {
+    "title": "Present subjunctive",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Regular forms</b><b>parli, parli, parli, parliamo, parliate, parlino</b>; <b>creda, creda, creda, crediamo, crediate, credano</b>; <b>dorma, dorma, dorma, dormiamo, dormiate, dormano</b><p class=\"detail-comment\">Speak / believe / sleep: <b>io</b>, <b>tu</b>, <b>lui</b>-<b>lei</b>-<b>Lei</b>, <b>noi</b>, <b>voi</b>, <b>loro</b>. <b>finire</b> adds -isc- in the same four persons as its present indicative.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Essential irregulars</b><b>sia, sia, sia, siamo, siate, siano</b>; <b>abbia, abbia, abbia, abbiamo, abbiate, abbiano</b><p class=\"detail-comment\">Present subjunctive of <b>essere</b> (be) and <b>avere</b> (have), in the same person order. Other common singulars: <b>vada</b> (go), <b>faccia</b> (do), <b>venga</b> (come), <b>possa</b> (can), <b>debba</b> (must), <b>voglia</b> (want), <b>sappia</b> (know), <b>stia</b> (stay/be).</p></div><div class=\"detail-block\"><b class=\"detail-label\">Frequent triggers and a contrast</b><b>Penso che sia utile.</b> / <b>Voglio che tu venga.</b> / <b>È necessario che partiamo.</b> / <b>So che è utile.</b><p class=\"detail-comment\">I think it is useful. / I want you to come. / It is necessary for us to leave. / I know it is useful. <b>sapere</b> asserting a fact takes indicative here.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Same subject</b><b>Penso di partire.</b> / <b>Penso che Anna parta.</b><p class=\"detail-comment\">I think I’ll leave. / I think Anna will leave. The same-subject infinitive often avoids a finite mood choice; it does not justify removing <b>che</b> whenever subjects differ.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Two connector patterns</b><b>Parlo piano perché tu capisca.</b> / <b>Benché sia tardi, resto.</b><p class=\"detail-comment\">I speak slowly so that you understand. / Although it is late, I’m staying. Purpose <b>perché</b> differs from causal <b>perché</b>; <b>benché</b> selects subjunctive. Full connector taxonomy is deferred.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Register</b>After <b>penso che / credo che</b> (I think/believe that), indicative occurs in informal speech. Use the subjunctive as the standard learner pattern here; do not describe every informal indicative as meaningless or every <b>che</b> as a trigger.</div><div class=\"detail-block\"><b class=\"detail-label\">Recognition: past subjunctive</b><b>Penso che sia partito.</b> / <b>Credo che abbia finito.</b><p class=\"detail-comment\">I think he has left. / I believe he/she has finished. <b>sia</b>/<b>abbia</b> + participle marks an earlier, completed event relative to this present belief. Recognize the construction and agreement; productive tense sequencing is outside this slice.</p></div>"
+  },
+  "progressive": {
+    "title": "Ongoing action",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Current versus habitual</b><b>Sto lavorando adesso.</b> / <b>Lavoro ogni giorno.</b><p class=\"detail-comment\">I am working now. / I work every day. A habitual statement normally uses the ordinary present.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Past viewpoint</b><b>Stavo cucinando quando sei arrivato.</b><p class=\"detail-comment\">I was cooking when you arrived (male addressee). The action was underway at the reference moment.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Irregular gerunds</b><b>fare → facendo / dire → dicendo / bere → bevendo</b><p class=\"detail-comment\">do → doing / say → saying / drink → drinking.</p></div><div class=\"detail-block\"><b class=\"detail-label\">English mismatch</b><b>Mi piace leggere.</b><p class=\"detail-comment\">I like reading. The activity after <b>piacere</b> is an infinitive, not a gerund just because English uses -ing.</p></div>"
+  },
+  "about-to": {
+    "title": "About to",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Two constructions</b><b>Sto per leggere.</b> / <b>Sto leggendo.</b><p class=\"detail-comment\">I am about to read. / I am reading. <b>per</b> + infinitive precedes the start; the gerund focuses on the ongoing process.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Imminence in the past</b><b>Stavo per telefonarti quando hai chiamato.</b><p class=\"detail-comment\">I was about to phone you when you called. This does not assert that the planned call actually took place.</p></div><div class=\"detail-block\"><b class=\"detail-label\">A scheduled plan</b><b>L’anno prossimo studio in Italia.</b><p class=\"detail-comment\">Next year I’m studying in Italy. A future-reference present can express a plan without implying it is about to happen.</p></div>"
+  },
+  "subjects": {
+    "title": "Subjects and address",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">When a pronoun helps</b><b>Io resto; tu parti.</b><p class=\"detail-comment\">I’m staying; you’re leaving. Pronouns highlight the contrast rather than fill an obligatory English subject slot.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Third person</b><b>Lui lavora; lei studia; loro abitano qui.</b><p class=\"detail-comment\">He works; she studies; they live here. <b>lui</b>/<b>lei</b>/<b>loro</b> are ordinary contemporary subject forms.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Formal address</b><b>Lei è pronto, signor Rossi?</b> / <b>Lei è pronta, signora Rossi?</b><p class=\"detail-comment\">Are you ready, Mr Rossi? / Are you ready, Ms Rossi? Formal <b>Lei</b> uses a third-person verb; the adjective normally matches the person addressed.</p></div><div class=\"detail-block\"><b class=\"detail-label\">No dummy it</b><b>Piove.</b> / <b>È tardi.</b><p class=\"detail-comment\">It’s raining. / It’s late. Do not insert an English-style dummy subject pronoun.</p></div>"
+  },
+  "questions": {
+    "title": "Questions",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Yes/no</b><b>Hai tempo?</b> / <b>Tu hai tempo?</b><p class=\"detail-comment\">Do you have time? / Do you have time? (with explicit focus or clarification on you).</p></div><div class=\"detail-block\"><b class=\"detail-label\">Which</b><b>Quale libro vuoi?</b> / <b>Quali libri vuoi?</b><p class=\"detail-comment\">Which book do you want? / Which books do you want? <b>quale</b> has no masculine/feminine distinction.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Agreement</b><b>Quanta acqua vuoi?</b> / <b>Quante mele vuoi?</b><p class=\"detail-comment\">How much water do you want? / How many apples do you want?</p></div><div class=\"detail-block\"><b class=\"detail-label\">What and who</b><b>Chi viene?</b> / <b>Che cosa leggi?</b><p class=\"detail-comment\">Who is coming? / What are you reading? <b>chi</b> as the subject of this ordinary question takes a singular verb.</p></div>"
+  },
+  "negation": {
+    "title": "Not, never, nobody",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Before and after</b><b>Nessuno viene.</b> / <b>Non viene nessuno.</b><p class=\"detail-comment\">Nobody is coming. Both are negative; Italian negative concord is not the English “two negatives make a positive” rule.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Nothing and no longer</b><b>Non vedo niente.</b> / <b>Non lavoro più qui.</b><p class=\"detail-comment\">I see nothing. / I no longer work here.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Compound tense</b><b>Non l’ho visto.</b> / <b>Non sono mai stata lì.</b><p class=\"detail-comment\">I didn’t see him/it. / I have never been there (female speaker). <b>non</b> precedes the clitic and auxiliary; <b>mai</b> normally follows the auxiliary.</p></div><div class=\"detail-block\"><b class=\"detail-label\">A question is different</b><b>Hai mai visto questo film?</b><p class=\"detail-comment\">Have you ever seen this film? <b>mai</b> does not mean never in every question. The negative-statement rule is not a universal ban on postverbal negative words without <b>non</b>.</p></div>"
+  },
+  "exclamations": {
+    "title": "What a…! How…!",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">No extra indefinite article</b><b>Che bel libro!</b><p class=\"detail-comment\">What a beautiful book! In this pattern Italian does not insert <b>un</b> after <b>che</b>.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Number and gender</b><b>Che belle case!</b> / <b>Quante case!</b><p class=\"detail-comment\">What beautiful houses! / So many houses! <b>che</b> stays the same; the adjective <b>belle</b> and quantifier <b>quante</b> agree with case.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Question contrast</b><b>Quanti libri hai?</b> / <b>Quanti libri!</b><p class=\"detail-comment\">How many books do you have? / So many books! The first asks for information; the second expresses a reaction.</p></div>"
+  },
+  "direct": {
+    "title": "Direct objects",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Position</b><b>Lo vedo.</b> / <b>Voglio vederlo.</b> / <b>Guardalo!</b><p class=\"detail-comment\">I see him/it. / I want to see him/it. / Look at him/it! Drop final e from <b>vedere</b> before attaching <b>lo</b>.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Strong forms</b><b>Hanno chiamato me, non te.</b> / <b>Vieni con me.</b><p class=\"detail-comment\">They called me, not you. / Come with me. Strong <b>me</b>/<b>te</b>/<b>lui</b>/<b>lei</b>/<b>noi</b>/<b>voi</b>/<b>loro</b> express contrast or follow a preposition.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Past</b><b>La lettera? L’ho letta.</b><p class=\"detail-comment\">The letter? I read it. <b>la</b> can elide before <b>ho</b>; <b>letta</b> still agrees with <b>lettera</b>.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Verb function</b><b>Aspetto Anna. La aspetto.</b><p class=\"detail-comment\">I’m waiting for Anna. I’m waiting for her. <b>aspettare</b> has a direct object even though English uses for; check the Italian verb pattern.</p></div>"
+  },
+  "indirect": {
+    "title": "Indirect objects",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Named recipient</b><b>Telefono a Luca. Gli telefono.</b><p class=\"detail-comment\">I phone Luca. I phone him. <b>telefonare</b> takes an indirect recipient in Italian, despite English phone him.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Strong and weak</b><b>Do il libro a lei.</b> / <b>Le do il libro.</b><p class=\"detail-comment\">I give the book to her (explicit or contrasted recipient). / I give her the book.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Plural and register</b><b>Ho dato il libro a loro.</b> / <b>Gli ho dato il libro.</b><p class=\"detail-comment\">I gave the book to them. Plural <b>gli</b> is common in contemporary usage; <b>a loro</b> is explicit. Formal written <b>loro</b> after the verb also occurs: <b>ho dato loro il libro</b> (I gave them the book).</p></div><div class=\"detail-block\"><b class=\"detail-label\">Two spellings, two jobs</b><b>Le vedo.</b> / <b>Le scrivo.</b><p class=\"detail-comment\">I see them (feminine direct objects). / I write to her (indirect recipient). Do not infer the function solely from the pronoun’s spelling.</p></div>"
+  },
+  "ci": {
+    "title": "The place and complement particle",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Existence</b><b>C’è un libro; ci sono due chiavi.</b><p class=\"detail-comment\">There is a book; there are two keys. Singular/plural follows what exists.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Selected patterns</b><b>Tengo a questo progetto. Ci tengo.</b> / <b>Provo a farlo. Ci provo.</b><p class=\"detail-comment\">I care about this project. I care about it. / I try to do it. I try. Learn <b>tenerci</b>/<b>provarci</b> with their meaning; the particle is not an interchangeable English preposition.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Place and people</b><b>Conosciamo Roma e ci torniamo spesso.</b> / <b>Anna ci chiama.</b><p class=\"detail-comment\">We know Rome and often return there. / Anna calls us. Only the first <b>ci</b> is a place replacement.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Two different particles</b><b>Penso al problema: ci penso.</b> / <b>Parlo del problema: ne parlo.</b><p class=\"detail-comment\">I think about the problem: I think about it. / I talk about the problem: I talk about it. The Italian regency, not the English word about, selects the particle.</p></div>"
+  },
+  "ne": {
+    "title": "The quantity and topic particle",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Quantity including zero</b><b>Hai libri italiani? Sì, ne ho tre.</b> / <b>Non ne ho nessuno.</b><p class=\"detail-comment\">Do you have Italian books? Yes, I have three of them. / I have none. <b>ne</b> keeps the already-known set recoverable.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Topic</b><b>Parliamo del viaggio. Ne parliamo domani.</b><p class=\"detail-comment\">We’re talking about the trip. We’ll talk about it tomorrow. <b>ne</b> replaces <b>di</b> + the topic.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Past agreement</b><b>Di mele ne ho comprate due.</b> / <b>Di libri ne ho comprati due.</b><p class=\"detail-comment\">I bought two apples. / I bought two books. In these ordinary quantified patterns, agree with the items counted.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Position and accent</b><b>Voglio prenderne due.</b> / <b>Non voglio né tè né caffè.</b><p class=\"detail-comment\">I want to take two of them. / I want neither tea nor coffee. Attach <b>ne</b> to the infinitive; accented <b>né</b> connects negatives and is a different word.</p></div>"
+  },
+  "combined": {
+    "title": "Two pronouns",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Fusion</b><b>Le do il libro. Glielo do.</b> / <b>Gli do le chiavi. Gliele do.</b><p class=\"detail-comment\">I give her the book. I give it to her. / I give him the keys. I give them to him. Both <b>gli</b> and <b>le</b> become <b>glie-</b> in these combinations.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Position</b><b>Te lo posso dare.</b> / <b>Posso dartelo.</b> / <b>Dammelo!</b><p class=\"detail-comment\">I can give it to you (two placements). / Give it to me! Keep the combination together; informal commands attach it.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Elision and agreement</b><b>La lettera? Gliel’ho data.</b><p class=\"detail-comment\">The letter? I gave it to him/her. <b>gliela</b> + <b>ho</b> can elide; <b>data</b> agrees with <b>lettera</b>, not the recipient.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Adding the quantity particle</b><b>Di libri? Me ne dà due.</b><p class=\"detail-comment\">Books? He/she gives me two of them. The first clitic changes to <b>me</b> before <b>ne</b> too. Full multi-clitic strings and idiomatic meanings are outside this card.</p></div>"
+  },
+  "impersonal-si": {
+    "title": "Generic people",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Generic human subject</b><b>Qui si lavora molto.</b> / <b>Domani si parte.</b><p class=\"detail-comment\">People work a lot here. / We’re leaving tomorrow (in an appropriate shared-plan context).</p></div><div class=\"detail-block\"><b class=\"detail-label\">Passive-si agreement</b><b>Si vende una casa.</b> / <b>Si vendono case.</b><p class=\"detail-comment\">A house is for sale. / Houses are for sale. In the passive pattern, <b>casa/case</b> controls singular/plural; the seller is unspecified.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Personal reflexive versus impersonal</b><b>Luca si lava.</b> / <b>Qui ci si lava prima di entrare.</b><p class=\"detail-comment\">Luca washes himself. / Here people wash themselves before entering. <b>ci si</b> avoids a sequence of two <b>si</b> forms.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Boundary</b>This card covers ordinary present patterns. The compound impersonal-<b>si</b> agreement system and every possible ambiguous <b>si</b> construction are deferred; do not extrapolate “<b>si</b> + singular” to all examples.</div>"
+  },
+  "contracted": {
+    "title": "Preposition + the",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Select the article first</b><b>a + lo studente → allo studente</b> / <b>in + gli zaini → negli zaini</b><p class=\"detail-comment\">to the student / in the backpacks. The next sound affects the article and therefore the contraction.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Vowel and number</b><b>dell’amica / delle amiche / all’amico / agli amici</b><p class=\"detail-comment\">of the female friend / of the female friends / to the male friend / to the male or mixed-group friends.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Separate forms</b><b>con il libro / col libro / per gli amici</b><p class=\"detail-comment\">with the book (two accepted forms) / for the friends. Do not invent <b>per + gli</b> fusion as the normal learner form.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Two jobs of del</b><b>del pane / il prezzo del pane</b><p class=\"detail-comment\">some bread / the price of the bread. The first is a partitive; the second expresses <b>di</b> + definite article.</p></div>"
+  },
+  "time-place": {
+    "title": "Place and duration",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Ongoing versus bounded</b><b>Studio italiano da un anno.</b> / <b>Ho studiato per un’ora.</b><p class=\"detail-comment\">I’ve been studying Italian for a year (and still do). / I studied for an hour. <b>da</b> locates the start of a continuing situation; <b>per</b> measures a duration.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Since and ago</b><b>Abito qui dal 2020.</b> / <b>Sono arrivato due ore fa.</b><p class=\"detail-comment\">I’ve lived here since 2020. / I arrived two hours ago (male speaker). <b>da</b> can take a date, not only an amount of time.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Destination/location</b><b>Sono a casa. Vado a casa.</b> / <b>Sono in ufficio. Vado in ufficio.</b><p class=\"detail-comment\">I’m at home. I’m going home. / I’m in the office. I’m going to the office. The same preposition can serve position and destination.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Bounded place phrases</b><b>al mare / in montagna / dal medico / a destra / vicino a casa</b><p class=\"detail-comment\">at-to the seaside / in-to the mountains / at-to the doctor / on-to the right / near home. Learn the construction rather than deriving it solely from English in or to.</p></div>"
+  },
+  "relatives": {
+    "title": "Relative clauses",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">No gender change</b><b>la ragazza che parla / i ragazzi che parlano</b><p class=\"detail-comment\">the girl who speaks / the boys who speak. <b>che</b> is invariant; the verb still agrees with its subject.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Choose the preposition</b><b>il problema di cui parliamo / la persona a cui scrivo</b><p class=\"detail-comment\">the problem we are talking about / the person I’m writing to. The relation comes from <b>parlare di / scrivere a</b>.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Recognition</b><b>gli amici con i quali viaggio</b><p class=\"detail-comment\">the friends with whom I travel. <b>il</b> <b>quale</b>/<b>la</b> <b>quale</b>/<b>i quali</b>/<b>le</b> <b>quali</b> are agreeing relative forms, especially useful in formal clarity; productive complex relatives are deferred.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Place</b><b>la città in cui vivo / la città dove vivo</b><p class=\"detail-comment\">the city where I live: two choices. Do not extend <b>dove</b> to every time or abstract relation.</p></div>"
+  },
+  "connectors": {
+    "title": "Add, contrast, explain, conclude",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Contrast</b><b>Io resto; Luca invece parte.</b><p class=\"detail-comment\">I’m staying; Luca, on the other hand, is leaving. <b>invece</b> contrasts the two choices.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Explanation</b><b>Resto a casa: infatti sono stanca.</b><p class=\"detail-comment\">I’m staying home: in fact, I’m tired. <b>infatti</b> supports the preceding statement; <b>quindi</b> introduces its consequence.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Correlation</b><b>Non solo legge, ma anche scrive.</b><p class=\"detail-comment\">He/she not only reads but also writes. Keep the two linked parts parallel.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Cause versus consequence</b><b>Resto perché piove.</b> / <b>Piove, quindi resto.</b><p class=\"detail-comment\">I’m staying because it’s raining. / It’s raining, so I’m staying. A cause clause and a conclusion have different jobs.</p></div>"
+  },
+  "subordinates": {
+    "title": "That, when, because, in order to",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Finite and infinitival complements</b><b>So che Anna parte.</b> / <b>Penso di partire.</b><p class=\"detail-comment\">I know Anna is leaving. / I think I’ll leave. The infinitive has the same understood subject as <b>penso</b> in this pattern; a different subject normally needs a finite clause.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Time</b><b>Quando arrivi, chiamami.</b> / <b>Mentre leggo, prendo appunti.</b><p class=\"detail-comment\">When you arrive, call me. / While I read, I take notes. Italian may use future after <b>quando</b> when the intended time is future.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Before an action</b><b>Prima di uscire, chiudo la porta.</b><p class=\"detail-comment\">Before going out, I close the door. The same person closes the door and goes out; use <b>prima</b> <b>di</b> + infinitive for this bounded pattern.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Cause and purpose</b><b>Parlo piano perché sono stanco.</b> / <b>Parlo piano perché tu capisca.</b><p class=\"detail-comment\">I speak slowly because I am tired (male speaker). / I speak slowly so that you understand. The purpose clause uses subjunctive; <b>per</b> + infinitive expresses a same-subject purpose.</p></div>"
+  },
+  "verb-infinitive": {
+    "title": "Verb + infinitive",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">No link</b><b>Voglio partire.</b> / <b>Mi piace leggere.</b><p class=\"detail-comment\">I want to leave. / I like reading. Neither construction inserts a or <b>di</b>.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Linking with the first pattern</b><b>Imparo a nuotare.</b> / <b>Continuo a leggere.</b><p class=\"detail-comment\">I’m learning to swim. / I keep reading. Learn <b>imparare a</b> and <b>continuare a</b> as complete patterns.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Linking with the second pattern</b><b>Finisco di lavorare.</b> / <b>Decido di partire.</b><p class=\"detail-comment\">I finish working. / I decide to leave. Italian infinitives can correspond to English -ing forms.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Subject contrast</b><b>Spero di arrivare presto.</b> / <b>Spero che Anna arrivi presto.</b><p class=\"detail-comment\">I hope to arrive soon. / I hope Anna arrives soon. The finite different-subject clause needs its own person and mood.</p></div>"
+  },
+  "real-conditions": {
+    "title": "Real/open if",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Present or future</b><b>Se domani piove, resto a casa.</b> / <b>Se domani pioverà, resterò a casa.</b><p class=\"detail-comment\">If it rains tomorrow, I’ll stay home. Both can express an open future condition; choice depends on how the speaker frames it.</p></div><div class=\"detail-block\"><b class=\"detail-label\">A consequence can be a command</b><b>Se arrivi presto, aspettami.</b><p class=\"detail-comment\">If you arrive early, wait for me. The main clause can give an instruction.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Boundary</b>A remote or contrary-to-fact hypothesis uses other tense/mood combinations. A past English would or had does not license copying this real-condition pattern; that system is outside this slice.</div>"
+  },
+  "lookup-help": {
+    "title": "How to use this reference",
+    "lead": "Find the decision, check the form, then open its limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Four views</b>Forms: nouns, articles and agreement. Verbs: conjugation, past choices and mood. Sentences: questions, negatives and pronouns. Links: prepositions and clauses.</div><div class=\"detail-block\"><b class=\"detail-label\">Meaning support</b>Each Italian sentence has an English meaning. A form inventory names its person order or function; auxiliary forms explain the construction rather than force word-for-word translation.</div><div class=\"detail-block\"><b class=\"detail-label\">Levels and boundary</b>This is a selective A1–B1 lookup, not a full course or exam syllabus. B1 supplementary topics have bounded depth. Past subjunctive and narrative <b>passato remoto</b> are recognition notes, not full production targets.</div><div class=\"detail-block\"><b class=\"detail-label\">Search and dialogs</b>Search in English or use visible Italian forms, such as <b>ne</b>, <b>piace</b> or <b>congiuntivo</b>. Search filters cards; Details contains contrasts and exceptions. Clear search to return to your selected view.</div>"
+  },
+  "simple-prepositions": {
+    "title": "Simple prepositions",
+    "lead": "Check the forms, then compare the situations and limits.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Relationship</b><b>il libro di Anna / un regalo per Anna / parlo con Anna</b><p class=\"detail-comment\">Anna’s book / a gift for Anna / I talk with Anna. These are different relationships, not interchangeable labels.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Person and destination</b><b>Vado a Roma.</b> / <b>Vado in Italia.</b> / <b>Vado dal medico.</b><p class=\"detail-comment\">I’m going to Rome. / to Italy. / to the doctor. <b>da</b> can express a destination associated with a person.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Other relations</b><b>Il libro è sul tavolo.</b> / <b>Un libro su Roma.</b><p class=\"detail-comment\">The book is on the table. / A book about Rome. <b>su</b> can indicate location or topic.</p></div><div class=\"detail-block\"><b class=\"detail-label\">Verb pattern</b><b>Cerco di capire.</b> / <b>Comincio a capire.</b><p class=\"detail-comment\">I’m trying to understand. / I’m starting to understand. Learn <b>di/a</b> with the governing verb; there is no universal translation of to.</p></div>"
+  }
+};
+
+    // Theme: auto (OS) / light / dark — persisted per visitor.
+    const THEME_KEY = 'theme';
+    const THEME_UI = {
+  "auto": {
+    "icon": "◐",
+    "label": "Theme: system"
+  },
+  "light": {
+    "icon": "☀",
+    "label": "Theme: light"
+  },
+  "dark": {
+    "icon": "☾",
+    "label": "Theme: dark"
+  }
+};
+    const themeBtn = document.getElementById('themeBtn');
+    const themeMetas = [...document.querySelectorAll('meta[name="theme-color"]')];
+    const themeMetaDefaults = themeMetas.map(m => m.content);
+    function applyTheme(mode) {
+      if (mode === 'auto') document.documentElement.removeAttribute('data-theme');
+      else document.documentElement.setAttribute('data-theme', mode);
+      themeBtn.textContent = THEME_UI[mode].icon;
+      themeBtn.setAttribute('aria-label', THEME_UI[mode].label);
+      themeBtn.title = THEME_UI[mode].label;
+      themeMetas.forEach((m, i) => {
+        m.content = mode === 'auto' ? themeMetaDefaults[i] : getComputedStyle(document.body).backgroundColor;
+      });
+    }
+    let themeMode = 'auto';
+    try { themeMode = localStorage.getItem(THEME_KEY) || 'auto'; } catch (e) {}
+    applyTheme(themeMode);
+    themeBtn.addEventListener('click', () => {
+      themeMode = themeMode === 'auto' ? 'light' : themeMode === 'light' ? 'dark' : 'auto';
+      try { localStorage.setItem(THEME_KEY, themeMode); } catch (e) {}
+      applyTheme(themeMode);
+      if (skinMode === 'a') applySkin(skinMode);
+    });
+
+    // Skin: classic / «Тетрадь» — persisted per visitor; classic needs no attribute.
+    const SKIN_KEY = 'skin';
+    const skinRows = [...document.querySelectorAll('[data-skin-mode]')];
+    function applySkin(skin) {
+      if (skin === 'a') document.documentElement.setAttribute('data-skin', 'a');
+      else document.documentElement.removeAttribute('data-skin');
+      skinRows.forEach(row => {
+        const on = row.dataset.skinMode === skin;
+        row.classList.toggle('cur', on);
+        row.setAttribute('aria-checked', String(on));
+        row.tabIndex = on ? 0 : -1;
+      });
+      // Paper chrome must follow the skin even in theme-auto (applyTheme
+      // restores the classic meta defaults there); classic hands the metas
+      // back to applyTheme.
+      if (skin === 'a') themeMetas.forEach(m => { m.content = getComputedStyle(document.body).backgroundColor; });
+      else applyTheme(themeMode);
+    }
+    let skinMode = 'a';
+    try { skinMode = localStorage.getItem(SKIN_KEY) === 'classic' ? 'classic' : 'a'; } catch (e) {}
+    applySkin(skinMode);
+    document.addEventListener('click', (event) => {
+      const row = event.target.closest('[data-skin-mode]');
+      if (!row) return;
+      skinMode = row.dataset.skinMode;
+      try { localStorage.setItem(SKIN_KEY, skinMode); } catch (e) {}
+      applySkin(skinMode);
+      const menu = row.closest('details.app-menu, details.lang-menu');
+      if (menu) { menu.open = false; menu.querySelector('summary').focus(); }
+    });
+    document.addEventListener('keydown', (event) => {
+      const row = event.target.closest && event.target.closest('[data-skin-mode]');
+      if (!row) return;
+      const order = ['classic', 'a'];
+      const delta = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1
+                  : event.key === 'ArrowLeft'  || event.key === 'ArrowUp'   ? -1 : 0;
+      if (!delta) return;
+      event.preventDefault();
+      skinMode = order[(order.indexOf(row.dataset.skinMode) + delta + order.length) % order.length];
+      try { localStorage.setItem(SKIN_KEY, skinMode); } catch (e) {}
+      applySkin(skinMode);
+      const next = skinRows.find(r => r.dataset.skinMode === skinMode && r.closest('details') === row.closest('details'));
+      if (next) next.focus();
+    });
+
+    const dialog = document.getElementById('detailDialog');
+    const detailTitle = document.getElementById('detailTitle');
+    const detailLead = document.getElementById('detailLead');
+    const detailBody = document.getElementById('detailBody');
+
+    // Target-language text gets lang="it" (screen-reader pronunciation + the
+    // serif study voice from base.css). The tagging policy follows the
+    // audience's script (site.json registry, threaded through the generator):
+    //  - cyrillic audience: the script heuristic. Whole containers that carry
+    //    only target-language text (examples incl. pair sources,
+    //    declension tables) are marked directly; otherwise the fragments are:
+    //    bold in .example (hits included), detail-block runs —
+    //    bold/strike/italic, the Cyrillic .detail-label excluded — and
+    //    formula slots without Cyrillic. Pair glosses stay in the UI voice.
+    //  - latin audience: explanations share the target's script, so no
+    //    script heuristic is safe. Only the explicit markup convention is
+    //    tagged — bold/hit runs are target text (examples, legends, card
+    //    paragraphs/notices, detail blocks, formula slots); italic hints and glosses stay in the
+    //    audience voice. Deck copy must bold every target fragment that
+    //    needs the study voice. Tables/unmarked prose/plain slots have no
+    //    explicit target marking in the block schema and stay untagged.
+    const TARGET_LANG = 'it';
+    const AUDIENCE_SCRIPT = 'latin';
+    function markTargetLang(root) {
+      if (AUDIENCE_SCRIPT === 'cyrillic') {
+        root.querySelectorAll('.example, .table-scroll, .pair-src').forEach(el => {
+          if (!/[а-яё]/i.test(el.textContent)) el.lang = TARGET_LANG;
+        });
+        root.querySelectorAll('.example b, .detail-block b:not(.detail-label), .detail-block i, .detail-block s, .formula .slot').forEach(el => {
+          if (!/[а-яё]/i.test(el.textContent)) el.lang = TARGET_LANG;
+        });
+      } else {
+        root.querySelectorAll('.example b, .legend b, .cheat-card > p b, .cheat-card > .notice b, #detailBody > p b, #detailBody > .notice b, .detail-block b:not(.detail-label), .formula .slot b').forEach(el => {
+          el.lang = TARGET_LANG;
+        });
+      }
+    }
+    markTargetLang(document);
+
+    document.addEventListener('click', (event) => {
+      const trigger = event.target.closest('[data-detail]');
+      if (trigger) {
+        const item = DETAILS[trigger.dataset.detail];
+        if (item) {
+          detailTitle.textContent = item.title;
+          detailLead.textContent = item.lead || '';
+          detailBody.innerHTML = item.body || '';
+          markTargetLang(detailBody);
+          dialog.showModal();
+        }
+      }
+    });
+
+    document.getElementById('closeDialog').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+
+    // Topbar popovers (burger on phones, language menu on desktop): light
+    // dismiss (native <details> has none) + Escape.
+    const menus = [...document.querySelectorAll('details.app-menu, details.lang-menu')];
+    document.addEventListener('click', (event) => {
+      menus.forEach(menu => {
+        if (menu.open && !menu.contains(event.target)) menu.open = false;
+      });
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') menus.forEach(menu => { if (menu.open) menu.open = false; });
+    });
+    // Remember what is being studied so the landing can greet the learner.
+    try { localStorage.setItem('target', TARGET_LANG); } catch (e) {}
+
+    const search = document.getElementById('search');
+    const clearSearch = document.getElementById('clearSearch');
+    const cards = [...document.querySelectorAll('.cheat-card')];
+    const sections = [...document.querySelectorAll('section[data-section]')];
+    const noResults = document.getElementById('noResults');
+    const searchSummary = document.getElementById('searchSummary');
+    const searchResultsLabel = "Cards found";
+
+    function applySearch() {
+      const q = search.value.trim().toLowerCase();
+      document.body.classList.toggle('searching', !!q);
+      clearSearch.hidden = !q;
+      let shown = 0;
+      cards.forEach(card => {
+        const hay = `${card.textContent} ${card.dataset.search || ''}`.toLowerCase();
+        const match = !q || hay.includes(q);
+        card.style.display = match ? '' : 'none';
+        if (match) shown++;
+      });
+      sections.forEach(section => {
+        if (!q) { section.style.display = ''; return; }
+        section.hidden = false; // search spans every view
+        const visible = [...section.querySelectorAll('.cheat-card')].some(c => c.style.display !== 'none');
+        section.style.display = visible ? '' : 'none';
+      });
+      if (!q) setView(currentView); // re-apply the active view
+      else navItems.forEach(item => item.removeAttribute('aria-current'));
+      updateHitLabels(q);
+      searchSummary.hidden = !q;
+      searchSummary.textContent = q ? `${searchResultsLabel}: ${shown}` : '';
+      noResults.style.display = q && shown === 0 ? 'block' : 'none';
+    }
+    search.addEventListener('input', applySearch);
+    clearSearch.addEventListener('click', () => { search.value = ''; applySearch(); search.focus(); });
+
+    // Views: the bottom nav switches discrete views; the selection is the truth
+    // (no scrollspy). Sections carry data-view; legacy anchors open the right
+    // view first, then scroll to the section.
+    const navItems = [...document.querySelectorAll('.nav-item')];
+    const viewSections = [...document.querySelectorAll('section[data-view]')];
+    let currentView = navItems[0].dataset.nav;
+    function setView(viewId) {
+      currentView = viewId;
+      viewSections.forEach(s => {
+        s.hidden = s.dataset.view !== viewId;
+        s.style.display = '';
+      });
+      navItems.forEach(item => {
+        const on = item.dataset.nav === viewId;
+        item.classList.toggle('active', on);
+        if (on) item.setAttribute('aria-current', 'true');
+        else item.removeAttribute('aria-current');
+      });
+    }
+    navItems.forEach(item => item.addEventListener('click', (event) => {
+      event.preventDefault();
+      const viewId = item.dataset.nav;
+      if (search.value) { search.value = ''; applySearch(); } // predictable destination
+      if (location.hash !== '#' + viewId) history.pushState(null, '', '#' + viewId);
+      setView(viewId);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }));
+    function onHash() {
+      const id = location.hash.slice(1);
+      const target = id ? document.getElementById(id) : null;
+      const hostSection = target && target.closest('section[data-view]');
+      const viewId = hostSection ? hostSection.dataset.view
+        : (navItems.some(n => n.dataset.nav === id) ? id : null);
+      if (!viewId) return; // unknown hash: keep the current view
+      setView(viewId);
+      if (target && hostSection && target !== hostSection) target.scrollIntoView();
+    }
+    window.addEventListener('hashchange', onHash);
+    if (location.hash) onHash(); else setView(currentView);
+
+    // Search hits: label each visible card with «view · section» and jump to
+    // the card in context on tap — clears the query, routes via the card
+    // anchor (view switch + scroll + :target flash). Labels are built from
+    // the deck's own nav/heading text, so no extra UI strings are needed.
+    const viewLabels = {};
+    navItems.forEach(item => {
+      const label = item.querySelector('span:not(.ico)'); // skip the glyph
+      viewLabels[item.dataset.nav] = (label || item).textContent.trim();
+    });
+    function updateHitLabels(q) {
+      document.querySelectorAll('.hit-jump').forEach(b => b.remove());
+      if (!q) return;
+      cards.forEach(card => {
+        if (card.style.display === 'none' || !card.id) return;
+        const sec = card.closest('section[data-view]');
+        const h2 = sec && sec.querySelector('h2');
+        if (!sec || !h2) return;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'hit-jump';
+        const view = document.createElement('span');
+        view.className = 'view';
+        view.textContent = viewLabels[sec.dataset.view] || sec.dataset.view;
+        const heading = h2.textContent.trim();
+        btn.appendChild(view);
+        if (view.textContent !== heading) btn.appendChild(document.createTextNode(' · ' + heading));
+        btn.appendChild(document.createTextNode(' ↗'));
+        btn.addEventListener('click', () => {
+          search.value = '';
+          applySearch();
+          if (location.hash === '#' + card.id) onHash();
+          else location.hash = '#' + card.id;
+        });
+        card.insertAdjacentElement('afterbegin', btn);
+      });
+    }
+
+    let deferredPrompt = null;
+    // Visibility wiring covers the header buttons only; the nudge's own
+    // button shows with the nudge — browsers without beforeinstallprompt
+    // (Firefox, desktop Safari) still get a working install action.
+    const installTargets = [...document.querySelectorAll('[data-install]')];
+    const installBtns = installTargets.filter((btn) => !btn.closest('.install-nudge'));
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+    const showInstall = (eligible) => installBtns.forEach((btn) => { btn.hidden = !eligible; });
+    if (isIOS && !isStandalone) showInstall(true); // iOS Safari never fires beforeinstallprompt
+    else showInstall(false);
+
+    // Install nudge: browser tab only, once per visitor — showing it writes
+    // the flag, so a dismissal and a later visit both stay quiet. The delay
+    // keeps it off bounce visits; a hidden tab defers to the next focus.
+    const nudge = document.getElementById('installNudge');
+    const NUDGE_KEY = 'installNudge';
+    nudge.querySelector('.nudge-close').addEventListener('click', () => { nudge.hidden = true; });
+    function maybeShowNudge() {
+      if (isStandalone) return;
+      try {
+        if (localStorage.getItem(NUDGE_KEY) === '1') return;
+        localStorage.setItem(NUDGE_KEY, '1');
+      } catch (e) { return; } // storage unavailable: never nag
+      nudge.hidden = false;
+    }
+    setTimeout(() => {
+      if (document.visibilityState === 'visible') maybeShowNudge();
+      else document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') maybeShowNudge();
+      }, { once: true });
+    }, 25000);
+
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault();
+      deferredPrompt = event;
+      showInstall(true);
+    });
+
+    window.addEventListener('appinstalled', () => {
+      deferredPrompt = null;
+      showInstall(false);
+      nudge.hidden = true;
+    });
+
+    const INSTALL = {
+  "ios": {
+    "title": "Install on iPhone",
+    "lead": "Safari doesn’t show the standard install prompt.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">1.</b>Open the Share menu.</div><div class=\"detail-block\"><b class=\"detail-label\">2.</b>Choose Add to Home Screen.</div><div class=\"detail-block\"><b class=\"detail-label\">3.</b>Confirm with Add.</div>"
+  },
+  "generic": {
+    "title": "Install on your phone",
+    "lead": "This is a PWA: after the first load it works offline too.",
+    "body": "<div class=\"detail-block\"><b class=\"detail-label\">Android / Chrome</b>Browser menu → Install app / Add to Home screen.</div><div class=\"detail-block\"><b class=\"detail-label\">iPhone / Safari</b>Share → Add to Home Screen.</div><div class=\"detail-block\"><b class=\"detail-label\">Important</b>Install and offline caching need the page opened over HTTPS (or localhost), not as a local file from the Files app.</div>"
+  }
+};
+    installTargets.forEach((btn) => btn.addEventListener('click', async () => {
+      nudge.hidden = true;
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        await deferredPrompt.userChoice;
+        deferredPrompt = null;
+        showInstall(false);
+      } else if (isIOS) {
+        detailTitle.textContent = INSTALL.ios.title;
+        detailLead.textContent = INSTALL.ios.lead;
+        detailBody.innerHTML = INSTALL.ios.body;
+        dialog.showModal();
+      } else {
+        detailTitle.textContent = INSTALL.generic.title;
+        detailLead.textContent = INSTALL.generic.lead;
+        detailBody.innerHTML = INSTALL.generic.body;
+        dialog.showModal();
+      }
+    }));
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('../../sw.js').catch(() => {}));
+    }
+  </script>
+
+  <!-- Layout lab (preview-only, never production): ?layout=bento|sidebar|spread
+       activates an experimental page composition for this tab session
+       (sessionStorage — visitors without the param never enter the lab).
+       Variant CSS lives in assets/layouts.css and is loaded only while the
+       lab is active, so the production page ships zero extra bytes. A layout
+       that gets adopted graduates into assets/base.css; the rest is deleted
+       (see .design/decisions.md). -->
+  <script>
+    (function () {
+      const LAB_KEY = 'layoutLab';
+      const LAYOUTS = ['bento', 'sidebar', 'spread'];
+      let layout = null;
+      try { layout = sessionStorage.getItem(LAB_KEY); } catch (e) {}
+      const requested = new URLSearchParams(location.search).get('layout');
+      if (requested !== null) {
+        layout = LAYOUTS.includes(requested) ? requested : 'stack';
+        try { sessionStorage.setItem(LAB_KEY, layout); } catch (e) {}
+      }
+      if (layout === null) return; // production path: nothing stored, nothing to do
+
+      document.documentElement.dataset.layoutLab = '';
+      const labStyle = document.createElement('link');
+      labStyle.rel = 'stylesheet';
+      labStyle.href = '../../assets/layouts.css';
+      document.head.appendChild(labStyle);
+
+      // Editorial spread: the first card of every section is its featured rule.
+      document.querySelectorAll('section[data-section]').forEach(sec => {
+        const lead = sec.querySelector('.cheat-card');
+        if (lead) lead.classList.add('spread-lead');
+      });
+
+      function buildRail() {
+        if (document.querySelector('.layout-rail')) return;
+        const rail = document.createElement('aside');
+        rail.className = 'layout-rail';
+        rail.setAttribute('aria-label', 'Views');
+        document.querySelectorAll('.nav-item').forEach(item => {
+          const viewId = item.dataset.nav;
+          const group = document.createElement('div');
+          group.className = 'rail-group';
+          const view = document.createElement('a');
+          view.className = 'rail-view';
+          view.href = '#' + viewId;
+          view.dataset.railView = viewId;
+          const label = item.querySelector('span:not(.ico)');
+          view.textContent = (label || item).textContent.trim();
+          group.appendChild(view);
+          document.querySelectorAll('section[data-view="' + viewId + '"]').forEach(sec => {
+            const h2 = sec.querySelector('h2');
+            if (!h2) return;
+            const link = document.createElement('a');
+            link.className = 'rail-link';
+            link.href = '#' + sec.id;
+            link.textContent = h2.textContent.trim();
+            group.appendChild(link);
+          });
+          rail.appendChild(group);
+        });
+        document.body.prepend(rail);
+      }
+      function removeRail() {
+        const rail = document.querySelector('.layout-rail');
+        if (rail) rail.remove();
+      }
+      // Rail active state follows the view switcher: wrap the page's own
+      // setView so every switch path (nav, search clear, hash) stays in sync.
+      if (typeof window.setView === 'function') {
+        const baseSetView = window.setView;
+        window.setView = function (viewId) {
+          baseSetView(viewId);
+          document.querySelectorAll('.rail-view').forEach(a => {
+            const on = a.dataset.railView === viewId;
+            a.classList.toggle('active', on);
+            if (on) a.setAttribute('aria-current', 'true');
+            else a.removeAttribute('aria-current');
+          });
+        };
+      }
+
+      const dock = document.createElement('div');
+      dock.className = 'lab-dock';
+      dock.setAttribute('role', 'group');
+      dock.setAttribute('aria-label', 'Layout lab');
+      ['bento', 'sidebar', 'spread', 'stack'].forEach(name => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'lab-btn';
+        btn.dataset.lab = name;
+        btn.textContent = name[0].toUpperCase() + name.slice(1);
+        dock.appendChild(btn);
+      });
+      const exit = document.createElement('button');
+      exit.type = 'button';
+      exit.className = 'lab-exit';
+      exit.dataset.labExit = '';
+      exit.setAttribute('aria-label', 'Exit layout lab');
+      exit.textContent = '×';
+      dock.appendChild(exit);
+      dock.addEventListener('click', (event) => {
+        if (event.target.closest('[data-lab-exit]')) {
+          try { sessionStorage.removeItem(LAB_KEY); } catch (e) {}
+          location.replace(location.pathname + location.hash);
+          return;
+        }
+        const btn = event.target.closest('[data-lab]');
+        if (!btn) return;
+        const next = btn.dataset.lab;
+        try { sessionStorage.setItem(LAB_KEY, next); } catch (e) {}
+        if (LAYOUTS.includes(next)) {
+          document.documentElement.dataset.layout = next;
+          if (next === 'sidebar') buildRail(); else removeRail();
+        } else {
+          delete document.documentElement.dataset.layout;
+          removeRail();
+        }
+        syncDock();
+      });
+      function syncDock() {
+        const current = document.documentElement.dataset.layout || 'stack';
+        dock.querySelectorAll('[data-lab]').forEach(btn => {
+          const on = btn.dataset.lab === current;
+          btn.classList.toggle('active', on);
+          btn.setAttribute('aria-pressed', String(on));
+        });
+      }
+      document.body.appendChild(dock);
+
+      if (LAYOUTS.includes(layout)) {
+        document.documentElement.dataset.layout = layout;
+        if (layout === 'sidebar') buildRail();
+      }
+      syncDock();
+      // The page's initial setView ran before the wrap: resync the rail once.
+      if (document.querySelector('.layout-rail') && typeof window.setView === 'function') {
+        window.setView(currentView);
+      }
+    })();
+  </script>
+</body>
+</html>

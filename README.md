@@ -6,7 +6,7 @@ This README is the human front door. It owns project orientation, the shortest
 local run path, repository layout and deployment notes. Language scope,
 shared UI contracts and audit evidence belong to the documents linked below.
 
-Mobile-first German and English grammar cheatsheets for A1–B1 learners,
+Mobile-first German, English, Italian and French grammar cheatsheets for A1–B1 learners,
 with explanations in Russian, English or German depending on the pair.
 Installable as PWAs and fully offline after first load. Examples include
 translations; taught words and forms include contextual meaning clues.
@@ -19,7 +19,7 @@ Live: <https://andkirby.github.io/learn-language-cheat-sheet/>
 Deck pages live at `<target>/<audience>/`; the landing locale selector picks
 the audience (Русский, English or Deutsch today). The landing text follows
 that choice and shows only learning targets with an available audience deck:
-Russian → German / English, English → German, German → English. It stays at
+Russian → German / English, English → German / Italian / French, German → English. It stays at
 `/` when the explanation language changes.
 
 On first visit, the first supported browser language is used (regional tags
@@ -37,6 +37,8 @@ Without JavaScript, the Russian landing and direct deck links remain usable.
 | `/en/ru/` | Английский: времена, артикли, вопросы, условные |
 | `/de/en/` | German explained in English: cases, articles, word order, clauses |
 | `/en/de/` | Englisch erklärt auf Deutsch: Zeiten, Artikel, Satzbau, Bedingungssätze |
+| `/it/en/` | Italian explained in English: forms, tenses, pronouns and connections |
+| `/fr/en/` | French explained in English: forms, tenses, pronouns and clauses |
 | `/deutsch/`, `/english/`, `/de/`, `/deutsch.html` | Legacy URLs — redirect stubs |
 
 ## Run locally
@@ -62,6 +64,7 @@ relative, so the site works at the project subpath unchanged.
 | `content/decks/` | Deck data (`de-ru.json`, `en-ru.json`, …) + `schema.json` |
 | `de/ru/` | German-for-Russians page — generated from its deck, plus manifest, `icons/`, `SITE_PLAN.md` |
 | `en/ru/` | English-for-Russians page — same model |
+| `it/en/`, `fr/en/` | Italian/French for English speakers — decks, plans, manifests and pair-local icons |
 | `deutsch/`, `english/`, `de/` | Redirect stubs to the new URLs (kept for old links and installed PWAs) |
 | `sw.js` | Shared service worker — caches every language shell; bump `CACHE_VERSION` after changes |
 | `icons/` | Landing favicon + og image (generator: `tools/make_icons.py`) |
@@ -95,7 +98,8 @@ wire it into `sw.js` + landing, verify, push.
 
 Use [the SITE_PLAN guide](docs/SITE_PLAN_GUIDE.md) to define accepted scope,
 including durable exclusions. The [German](de/ru/SITE_PLAN.md) and
-[English](en/ru/SITE_PLAN.md) plans own those language-specific decisions.
+[English](en/ru/SITE_PLAN.md), [Italian](it/en/SITE_PLAN.md) and
+[French](fr/en/SITE_PLAN.md) plans own those language-specific decisions.
 
 Follow [content validation](docs/CONTENT_VALIDATION.md) for content changes.
 `CONTENT_AUDIT.md` owns unresolved questions, sources and results. A plan

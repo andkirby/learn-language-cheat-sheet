@@ -6,7 +6,7 @@ This file is the coding-agent entrypoint. It owns repository-wide operating
 rules, documentation routing, maintenance triggers and verification commands.
 It does not own language content or shared UI details.
 
-Multi-language PWA cheatsheet hub: German and English grammar for A1–B1
+Multi-language PWA cheatsheet hub: German, English, Italian and French grammar for A1–B1
 learners, explained in Russian, English or German by audience. Static site on
 GitHub Pages — no build step, no external dependencies, everything works offline.
 
@@ -21,6 +21,7 @@ style-guide.html    living component specimens + class roles (noindex, not cache
 content/decks/      deck data + schema.json + site.json (language registry) — the source of generated pages
 de/ru/              German-for-Russians page: GENERATED from content/decks/de-ru.json
 en/ru/              English-for-Russians page: GENERATED from content/decks/en-ru.json
+it/en/, fr/en/      Italian/French-for-English pages: GENERATED from their deck JSON
 deutsch/, english/  redirect stubs to ./de/ru/, ./en/ru/ (kept for old URLs and installs)
 de/                 default stub → ./ru/
 sw.js               shared service worker (root scope, all languages)
@@ -39,7 +40,7 @@ DEBT.md             deferred work with owners and triggers
 CHANGELOG.md        user-visible changes, newest first
 ```
 
-Deck pages live at `<target>/<audience>/` (`de/ru/`, `de/en/`, `en/ru/`, `en/de/`) so sibling
+Deck pages live at `<target>/<audience>/` (`de/ru/`, `de/en/`, `en/ru/`, `en/de/`, `it/en/`, `fr/en/`) so sibling
 audiences share a target. Every page's header shows one combined language
 menu («Язык обучения» + «Язык объяснений») driven by `content/decks/site.json`
 on deck pages and mirrored by hand in `index.html` (DECKS + the menu markup) —
@@ -51,11 +52,11 @@ update both when adding a language or audience.
 | --- | --- |
 | How to add a new language or audience variant (a translation) | `docs/ADD_LANGUAGE.md` |
 | How to author or revise a language plan | `docs/SITE_PLAN_GUIDE.md` |
-| Accepted language scope, exclusions and topic inventory | `de/ru/SITE_PLAN.md` / `en/ru/SITE_PLAN.md` |
+| Accepted language scope, exclusions and topic inventory | `de/ru/SITE_PLAN.md` / `en/ru/SITE_PLAN.md` / `it/en/SITE_PLAN.md` / `fr/en/SITE_PLAN.md` |
 | How content is validated | `docs/CONTENT_VALIDATION.md` |
 | Open content questions, review evidence and verdicts | `CONTENT_AUDIT.md` |
 | What could be added next; standing scope rules | `ROADMAP.md` |
-| External reference research (DE/EN grammar sites, tense-usage notes) | `research/` |
+| External reference research (grammar sources and IT/FR planning) | `research/` |
 | Design tokens, components, a11y rules | `.design/DESIGN_SYSTEM.md` |
 | How to add a new design skin (a theme) | `docs/ADD_THEME.md` |
 | Font vendoring, subsets, re-vendor procedure | `docs/FONTS.md` |
@@ -123,13 +124,14 @@ python3 -m http.server 8931   # open http://127.0.0.1:8931/
 
 - With Russian selected, landing cards link to `./de/ru/`, `./en/ru/`; the locale
   selector updates the landing in place (RU/EN/DE), persists manual choices,
-  and shows only live pairs (RU → DE/EN, EN → DE, DE → EN). With no explicit
+  and shows only live pairs (RU → DE/EN, EN → DE/IT/FR, DE → EN). With no explicit
   choice, the first supported browser language wins, then RU as fallback.
   Direct deck URLs keep their language regardless of this preference.
 - Old URLs redirect: `/deutsch/` → `/de/ru/`, `/english/` → `/en/ru/`,
   `/de/` → `/de/ru/`, `/deutsch.html` → `/de/ru/` (online and offline).
 - Generated pages match their decks: `python3 tools/build_pages.py
-  content/decks/de-ru.json --check` (and `en-ru.json`) exits 0.
+  content/decks/de-ru.json --check` exits 0 for each `content/decks/*-*.json` deck.
+- `python3 tools/build_pages.py content/decks/de-ru.json --check-shell` exits 0.
 - No console errors on any page; manifests, icons, `sw.js` resolve.
 - At ~390px: no horizontal page overflow; tables scroll inside `.table-scroll`.
 - Theme toggle cycles авто → светлая → тёмная and persists across
@@ -145,14 +147,14 @@ python3 -m http.server 8931   # open http://127.0.0.1:8931/
 - Offline reload works after first load.
 - Live check after push:
   `https://andkirby.github.io/learn-language-cheat-sheet/`
-  (+ `/de/ru/`, `/en/ru/`, `/de/en/`, `/en/de/`; `/deutsch/`, `/english/`,
+  (+ `/de/ru/`, `/en/ru/`, `/de/en/`, `/en/de/`, `/it/en/`, `/fr/en/`; `/deutsch/`, `/english/`,
   `/de/`, `/deutsch.html` redirect).
 
 ## Regenerating icons
 
 ```bash
-python3 tools/make_icons.py                    # all sets (Aa, DE, EN)
-python3 tools/make_icons.py --mark IT --out ital   # new language (see docs/)
+python3 tools/make_icons.py                    # landing + DE/EN/IT/FR sets
+python3 tools/make_icons.py --mark IT --out it/en   # new language (see docs/)
 ```
 
 Then bump `CACHE_VERSION` in `sw.js`.

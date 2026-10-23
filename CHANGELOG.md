@@ -6,6 +6,16 @@ UI rationale lives in
 `.design/decisions.md`, content review evidence in `CONTENT_AUDIT.md`.
 Append the entry in the same commit that ships the change.
 
+## 2026-10-23 (Italian and French for English speakers)
+
+- Added selective A1–B1 Italian and French grammar references at `/it/en/`
+  and `/fr/en/`, with English explanations and meaning-supported examples.
+- Connected both pairs to language menus and the English landing; added
+  pair-local icons/manifests and offline shells. Cache v54.
+- Included the legacy `/deutsch.html` redirect in the offline shell.
+- Explicit target terms in Latin-audience legends and card notes now carry
+  the target-language tag for pronunciation and study typography.
+
 ## 2026-10-23 (project and feedback links)
 
 - Added a GitHub repository link with its icon and a localized Submit issue

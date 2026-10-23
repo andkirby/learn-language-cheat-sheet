@@ -37,11 +37,11 @@
   <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#10131b" media="(prefers-color-scheme: dark)" />
   <meta name="color-scheme" content="light dark" />
-  <meta name="description" content="Мобильные шпаргалки по грамматике: немецкий и английский с объяснениями на русском, английском или немецком. Падежи, времена, артикли, порядок слов. Работают офлайн." />
+  <meta name="description" content="Мобильные шпаргалки по немецкой, английской, итальянской и французской грамматике. Доступные языки объяснений зависят от пары. A1–B1, офлайн." />
   <link rel="icon" href="./icons/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="./icons/icon-32.png" sizes="32x32" type="image/png" />
   <meta property="og:title" content="Языковые шпаргалки — Language Cheat Sheets" />
-  <meta property="og:description" content="Немецкий и английский с объяснениями на русском, английском или немецком: короткие мобильные шпаргалки по грамматике. A1–B1, офлайн." />
+  <meta property="og:description" content="Немецкая, английская, итальянская и французская грамматика: короткие мобильные шпаргалки. Доступные языки объяснений зависят от пары. A1–B1, офлайн." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://andkirby.github.io/learn-language-cheat-sheet/" />
   <meta property="og:image" content="https://andkirby.github.io/learn-language-cheat-sheet/icons/icon-512.png" />
@@ -92,6 +92,8 @@
               <div class="lang-group-label" data-i18n="targetLabel">Язык обучения</div>
               <a href="./de/ru/" data-target-link="de">Deutsch</a>
               <a href="./en/ru/" data-target-link="en">English</a>
+              <a href="./it/en/" data-target-link="it" hidden>Italiano</a>
+              <a href="./fr/en/" data-target-link="fr" hidden>Français</a>
             </div>
             <div class="lang-group">
               <div class="lang-group-label" data-i18n="audienceLabel">Язык объяснений</div>
@@ -146,6 +148,24 @@
         </span>
         <span class="go" aria-hidden="true">→</span>
       </a>
+      <a class="lang-card" href="./it/en/" data-target="it" hidden>
+        <span class="lang-mark" aria-hidden="true">IT</span>
+        <span>
+          <b>Итальянский · Italiano</b>
+          <span class="topics">Артикли · времена · местоимения · предлоги</span>
+          <span class="meta">EN → IT · A1–B1 · install on your phone</span>
+        </span>
+        <span class="go" aria-hidden="true">→</span>
+      </a>
+      <a class="lang-card" href="./fr/en/" data-target="fr" hidden>
+        <span class="lang-mark" aria-hidden="true">FR</span>
+        <span>
+          <b>Французский · Français</b>
+          <span class="topics">Артикли · времена · местоимения · придаточные</span>
+          <span class="meta">EN → FR · A1–B1 · install on your phone</span>
+        </span>
+        <span class="go" aria-hidden="true">→</span>
+      </a>
     </div>
 
     <div class="footer" data-i18n="footer">Каждую шпаргалку можно установить как приложение — меню (☰) на её странице.</div>
@@ -156,7 +176,7 @@
     const LANDING = {
       ru: {
         brand: 'Языковые шпаргалки', title: 'Языковые шпаргалки — Language Cheat Sheets',
-        description: 'Мобильные шпаргалки по немецкой и английской грамматике с объяснениями на русском, английском или немецком. A1–B1, офлайн.',
+        description: 'Мобильные шпаргалки по немецкой, английской, итальянской и французской грамматике. Доступные языки объяснений зависят от пары. A1–B1, офлайн.',
         heading: 'Грамматика без листания учебника',
         intro: 'Короткие мобильные шпаргалки: сначала триггер — падеж, предлог, время или союз, — потом форма и позиция. Открой один раз: дальше работает офлайн.',
         targetLabel: 'Язык обучения', audienceLabel: 'Язык объяснений', menuLabel: 'Язык обучения и язык объяснений',
@@ -168,11 +188,13 @@
         cards: {
           de: { name: 'Немецкий · Deutsch', topics: 'Падежи · артикли · порядок слов · придаточные' },
           en: { name: 'Английский · English', topics: 'Времена · артикли · порядок слов · условные' },
+          it: { name: 'Итальянский · Italiano', topics: 'Артикли · времена · местоимения · предлоги' },
+          fr: { name: 'Французский · Français', topics: 'Артикли · времена · местоимения · придаточные' },
         },
       },
       en: {
-        brand: 'Language cheat sheets', title: 'Language Cheat Sheets — German & English',
-        description: 'Mobile German and English grammar cheat sheets with explanations in Russian, English or German. A1–B1, offline.',
+        brand: 'Language cheat sheets', title: 'Language Cheat Sheets — German, English, Italian & French',
+        description: 'Mobile German, English, Italian and French grammar references. Available explanation languages depend on the pair. Selective A1–B1, offline.',
         heading: 'Grammar without flipping through textbooks',
         intro: 'Quick grammar references for your phone: find the case, preposition, tense or conjunction, then check the form and word order. Open once and use offline.',
         targetLabel: 'Learning language', audienceLabel: 'Explanation language', menuLabel: 'Learning and explanation languages',
@@ -184,11 +206,13 @@
         cards: {
           de: { name: 'German · Deutsch', topics: 'Cases · articles · word order · subordinate clauses' },
           en: { name: 'English', topics: 'Tenses · articles · word order · conditionals' },
+          it: { name: 'Italian · Italiano', topics: 'Articles · tenses · pronouns · prepositions' },
+          fr: { name: 'French · Français', topics: 'Articles · tenses · pronouns · clauses' },
         },
       },
       de: {
-        brand: 'Sprachspickzettel', title: 'Sprachspickzettel — Deutsch & Englisch',
-        description: 'Mobile Spickzettel zur deutschen und englischen Grammatik mit Erklärungen auf Russisch, Englisch oder Deutsch. A1–B1, offline.',
+        brand: 'Sprachspickzettel', title: 'Sprachspickzettel — Deutsch, Englisch, Italienisch & Französisch',
+        description: 'Mobile Grammatik-Spickzettel für Deutsch, Englisch, Italienisch und Französisch. Verfügbare Erklärungssprachen hängen vom Sprachpaar ab. A1–B1, offline.',
         heading: 'Grammatik ohne Blättern im Lehrbuch',
         intro: 'Kompakte Grammatik fürs Handy: Kasus, Präposition, Zeitform oder Konjunktion finden, dann Form und Wortstellung nachschlagen. Einmal öffnen, danach offline nutzen.',
         targetLabel: 'Lernsprache', audienceLabel: 'Erklärungssprache', menuLabel: 'Lernsprache und Erklärungssprache',
@@ -200,11 +224,13 @@
         cards: {
           de: { name: 'Deutsch', topics: 'Kasus · Artikel · Wortstellung · Nebensätze' },
           en: { name: 'Englisch · English', topics: 'Zeitformen · Artikel · Wortstellung · Bedingungssätze' },
+          it: { name: 'Italienisch · Italiano', topics: 'Artikel · Zeitformen · Pronomen · Präpositionen' },
+          fr: { name: 'Französisch · Français', topics: 'Artikel · Zeitformen · Pronomen · Nebensätze' },
         },
       },
     };
     // Mirrors live pairs in content/decks/site.json. Never invent a fallback pair.
-    const DECKS = { de: ['ru', 'en'], en: ['ru', 'de'] };
+    const DECKS = { de: ['ru', 'en'], en: ['ru', 'de'], it: ['en'], fr: ['en'] };
     // Only explicit selections belong in this key. Legacy RU was also saved
     // automatically, so it cannot reliably identify a manual preference.
     const LOCALE_KEY = 'landingLocale';

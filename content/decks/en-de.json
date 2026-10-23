@@ -250,7 +250,7 @@
                 "Do you like tea? — Magst du Tee? like — mögen; tea — Tee. Do bildet die Frage ohne eigene Übersetzung."
               ]
             },
-            {"p": ["Englisch schiebt das Hilfsverb Do/Does/Did nach vorn; das Vollverb bleibt in der ", {"t": "Grundform", "b": true}, " — nicht in der -s-Form."]},
+            {"p": ["Englisch schiebt das Hilfsverb Do/Does/Did nach vorn; das Vollverb bleibt in der ", {"t": "Grundform", "i": true}, " — nicht in der -s-Form."]},
             {"example": [
               {"t": "Does she work?", "b": true}, " Nicht: ", {"t": "Does she works?", "s": true}, {"br": true},
               {"t": "Where do you live?", "b": true}
@@ -418,7 +418,7 @@
           "blocks": [
             {"h": ["Present Simple"]},
             {"formula": [{"slot": "V"}, {"arrow": "+"}, {"slot": "s (3. Person)", "role": "end"}]},
-            {"p": ["Gewohnheiten, Tatsachen, Fahrpläne. Marker: ", {"t": "every day, usually, often", "b": true}, ". Nur die 3. Person Singular bekommt ", {"t": "-s", "b": true}, " — wie das deutsche ", {"t": "-t", "b": true}, " bei er/sie/es."]},
+            {"p": ["Gewohnheiten, Tatsachen, Fahrpläne. Marker: ", {"t": "every day, usually, often", "b": true}, ". Nur die 3. Person Singular bekommt ", {"t": "-s", "b": true}, " — wie das deutsche ", {"t": "-t", "i": true}, " bei er/sie/es."]},
             {
               "legend": {
                 "items": [
@@ -551,7 +551,7 @@
           "search": "present perfect past simple unterschied entscheidung wahl zeitangabe yesterday since for dauer punkt seit",
           "blocks": [
             {"h": ["Perfect vs Past Simple"]},
-            {"p": ["Die Entscheidung trifft die Bedeutung, nicht das Signalwort: Ergebnis/Erfahrung, die ", {"t": "jetzt", "b": true}, " noch zählt → Perfect · abgeschlossene Tatsache → Past Simple. Gesprochenes Deutsch wählt Perfekt für beides — dieser Unterschied ist Gefahr Nr. 1."]},
+            {"p": ["Die Entscheidung trifft die Bedeutung, nicht das Signalwort: Ergebnis/Erfahrung, die ", {"t": "jetzt", "i": true}, " noch zählt → Perfect · abgeschlossene Tatsache → Past Simple. Gesprochenes Deutsch wählt Perfekt für beides — dieser Unterschied ist Gefahr Nr. 1."]},
             {"example": [
               {"t": "I have seen", "b": true}, " this film (ich kenne ihn jetzt).", {"br": true},
               {"t": "I saw", "b": true}, " it ", {"t": "yesterday", "b": true}, "."
@@ -647,7 +647,7 @@
           "blocks": [
             {"h": ["Passiv"]},
             {"formula": [{"slot": "be"}, {"arrow": "+"}, {"slot": "V3", "role": "end"}]},
-            {"p": [{"t": "werden + Partizip II", "b": true}, " wird zu ", {"t": "be + V3", "b": true}, " — nur das Hilfsverb wechselt."]},
+            {"p": [{"t": "werden + Partizip II", "i": true}, " wird zu ", {"t": "be + V3", "b": true}, " — nur das Hilfsverb wechselt."]},
             {"example": [
               {"t": "The house was built", "hit": true}, " in 1930."
             ], "gloss": ["Das Haus wurde 1930 gebaut. build → built — bauen → gebaut; der Handelnde ist nicht genannt."]},
@@ -752,7 +752,7 @@
             {"example": [
               {"t": "Please sit down", "hit": true}, ". · ", {"t": "Let's not argue", "hit": true}, "."
             ], "gloss": ["Bitte setzen Sie sich. · Streiten wir nicht. sit down — sich setzen; let’s — lasst uns."]},
-            {"tiny": [{"t": "Bitte + Grundform", "b": true}, " — die Bitte ohne ", {"t": "to", "b": true}, " · nicht ", {"t": "Sit you down", "s": true}, " — das deutsche ", {"t": "Sie", "i": true}, " trägt das Pronomen mit, der englische Imperativ nicht."]},
+            {"tiny": [{"t": "Bitte + Grundform", "i": true}, " — die Bitte ohne ", {"t": "to", "b": true}, " · nicht ", {"t": "Sit you down", "s": true}, " — das deutsche ", {"t": "Sie", "i": true}, " trägt das Pronomen mit, der englische Imperativ nicht."]},
             {"chips": [{"label": "Let's und Höflichkeit", "detail": "imperative"}]}
           ]
         }

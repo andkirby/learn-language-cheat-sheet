@@ -3,11 +3,12 @@
 ## Responsibility
 
 This file owns the forward-looking content pipeline: candidate topics for
-both decks, a recommended order, and the standing decision rules that let a
+the language decks, a recommended order, and the standing decision rules that let a
 working session add bounded topics **without a per-item owner round-trip**.
 
 It does not own accepted scope — that is the language plans
-([German](de/ru/SITE_PLAN.md), [English](en/ru/SITE_PLAN.md)); it does not own
+([German](de/ru/SITE_PLAN.md), [English](en/ru/SITE_PLAN.md),
+[Italian](it/en/SITE_PLAN.md), [French](fr/en/SITE_PLAN.md)); it does not own
 evidence or open questions — that is [CONTENT_AUDIT.md](CONTENT_AUDIT.md);
 procedure lives in [content validation](docs/CONTENT_VALIDATION.md). When an
 item ships or the owner rejects it, its row here is updated (and the audit
@@ -36,6 +37,17 @@ density, or assessment-like structure.
 
 **ASK the owner** when it changes product intent: practice redesign (D-03),
 new target language or audience, view/navigation restructure, audio.
+
+## 2026-10-23 — Italian and French, English audience first
+
+The owner authorized implementation of `it-en` and `fr-en` following the
+language-specific research proposals. Their accepted plans own the Required
+topics and bounded productive/recognition depths: [Italian](it/en/SITE_PLAN.md),
+[French](fr/en/SITE_PLAN.md). Recommended deferrals and exclusions are retained;
+neither target becomes an explanation locale in this addition. Content
+acceptance and open findings remain in CONTENT_AUDIT; implementation is not
+proof of a passed linguistic gate. Shared template, registry and offline
+integration continue to use the existing new-language procedure.
 
 ## Where the decks stand (2026-09-28, post-Tier-2 + Phase-3 pair)
 

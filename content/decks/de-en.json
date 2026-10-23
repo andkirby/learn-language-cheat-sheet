@@ -982,7 +982,7 @@
               "search": "deshalb trotzdem allerdings außerdem währenddessen linking adverbs therefore nevertheless however besides meanwhile position inversion",
               "blocks": [
                 {"h": ["Linking adverbs"]},
-                {"p": ["Not conjunctions: they take ", {"t": "position 1", "b": true}, ", then the verb (see V2):"]},
+                {"p": ["Not conjunctions: they take ", {"t": "position 1", "i": true}, ", then the verb (see V2):"]},
                 {"legend": {"items": [
                   {"term": "deshalb", "meaning": "so / therefore"},
                   {"term": "trotzdem", "meaning": "nevertheless / even so"},
@@ -1097,7 +1097,7 @@
           "search": "adjective endings der-words ein-words guter guten",
           "blocks": [
             {"h": ["Adjectives: don’t learn them blind"]},
-            {"p": ["English adjectives never change — German endings are pure new territory. The shortcut: after ", {"t": "der-words", "b": true}, " the article already shows gender and case, so the adjective mostly just echoes ", {"t": "-e/-en", "b": true}, "; after ", {"t": "ein-words", "b": true}, " it carries more (see the dialog)."]},
+            {"p": ["English adjectives never change — German endings are pure new territory. The shortcut: after ", {"t": "der-words", "i": true}, " the article already shows gender and case, so the adjective mostly just echoes ", {"t": "-e/-en", "b": true}, "; after ", {"t": "ein-words", "i": true}, " it carries more (see the dialog)."]},
             {"example": ["der gut", {"t": "e", "b": true}, " Mann · mit dem gut", {"t": "en", "b": true}, " Mann"], "gloss": ["The good man · with the good man. gut — good; -e/-en are adjective endings."]},
             {"chips": [{"label": "The short model", "detail": "adjectives"}]}
           ]

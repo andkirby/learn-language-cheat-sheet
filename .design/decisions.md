@@ -783,3 +783,22 @@ current tab; GitHub uses an embedded decorative SVG with currentColor so both
 skins and themes work without external assets. Each deck owns `strings.menu_issue`
 in its audience language; landing owns the equivalent RU/EN/DE translations.
 The issue destination is the repository's `/issues/new` form.
+
+### 2026-10-23 — Italian/French English-audience decks and explicit target runs
+
+Add `it-en` and `fr-en` to the registry and mirror them in the landing's
+cards, target links and all three existing locale dictionaries. The English
+landing offers DE/IT/FR; RU still offers DE/EN and DE still offers EN.
+Italian/French do not become explanation locales. Regenerate all six deck
+menus together and precache both new pair-local shells/assets; cache v54.
+The `/deutsch.html` legacy redirect is explicitly precached alongside the
+directory redirects so the existing offline-redirect contract includes it.
+
+Latin-audience target-language tagging now includes legend terms and explicit
+bold/hit runs in card paragraphs and notices, in addition to examples,
+dialogs and formula slots. This makes the existing meaning-supported
+inventories usable for Italian/French paradigms without inventing a new
+component. Preserve English/German audience hints in the audience voice:
+eight older paragraph hints use italic emphasis instead of target-marking
+bold. Labels, glosses, unmarked prose and plain table cells retain their
+existing language behavior. No style/token or Cyrillic-heuristic change.
